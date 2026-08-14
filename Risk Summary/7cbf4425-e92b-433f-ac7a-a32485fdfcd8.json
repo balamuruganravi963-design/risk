@@ -1,0 +1,190 @@
+{
+  "kpis": {
+    "project_name": "Acme Corp - Customer Portal Revamp - Phase 2",
+    "project_status": "In Progress",
+    "overall_risk_score": 54,
+    "overall_risk_level": "Medium",
+    "total_predicted_risks": 3
+  },
+  "risk_summary": {
+    "critical": 0,
+    "high": 1,
+    "medium": 2,
+    "low": 0
+  },
+  "category_distribution": [
+    {
+      "segment": "External",
+      "value": 1
+    },
+    {
+      "segment": "Quality Assurance",
+      "value": 1
+    },
+    {
+      "segment": "Project Management",
+      "value": 1
+    }
+  ],
+  "risks": [
+    {
+      "title": "API Vendor Response Delays",
+      "category": "External",
+      "likelihood": 60,
+      "impact": "Medium",
+      "severity": "Medium",
+      "confidence": 72,
+      "priority": "Medium",
+      "owner": "Integration Lead",
+      "reviewFrequency": "Weekly",
+      "reason": "Third-party payment API vendor has a history of slow ticket resolution, which could delay integration testing.",
+      "recommendedActions": [
+        "Establish escalation contact with vendor account manager",
+        "Build a mock API layer to unblock development",
+        "Track vendor response times weekly"
+      ],
+      "preventiveActions": "Negotiate a formal SLA with the vendor before integration begins",
+      "mitigation": "Use a sandbox/mock environment to continue development in parallel",
+      "contingency": "Delay go-live for payment features only, launch other features on schedule",
+      "relatedHistoricalRisks": [
+        "Vendor SLA breaches",
+        "Integration testing delays"
+      ]
+    },
+    {
+      "title": "Insufficient QA Resourcing for Regression Testing",
+      "category": "Quality Assurance",
+      "likelihood": 70,
+      "impact": "High",
+      "severity": "High",
+      "confidence": 80,
+      "priority": "High",
+      "owner": "QA Lead",
+      "reviewFrequency": "Sprint-based",
+      "reason": "Current QA headcount is not sufficient to cover full regression testing within the sprint cadence, risking undetected defects.",
+      "recommendedActions": [
+        "Add one additional QA engineer to the team",
+        "Automate top 20 regression test cases",
+        "Prioritize regression testing on high-risk modules first"
+      ],
+      "preventiveActions": "Plan QA capacity alongside sprint planning, not after",
+      "mitigation": "Introduce automated smoke tests to catch critical regressions early",
+      "contingency": "Extend QA cycle by 3 days before each release if automation isn't ready",
+      "relatedHistoricalRisks": [
+        "Missed regression cycles in Phase 1"
+      ]
+    },
+    {
+      "title": "Unclear Data Migration Ownership",
+      "category": "Project Management",
+      "likelihood": 45,
+      "impact": "Medium",
+      "severity": "Medium",
+      "confidence": 65,
+      "priority": "Medium",
+      "owner": "Data Architect",
+      "reviewFrequency": "Bi-weekly",
+      "reason": "No single owner has been assigned for legacy data migration, creating risk of missed deadlines and data quality issues.",
+      "recommendedActions": [
+        "Assign a dedicated data migration owner",
+        "Create a data mapping and validation checklist",
+        "Schedule a dry-run migration before production cutover"
+      ],
+      "preventiveActions": "Define RACI matrix for migration tasks at project kickoff",
+      "mitigation": "Run migration in stages with validation checkpoints",
+      "contingency": "Maintain legacy system in read-only mode as fallback",
+      "relatedHistoricalRisks": [
+        "Data mapping gaps in Phase 1"
+      ]
+    }
+  ],
+  "consolidated_risks": [
+    {
+      "title": "Testing and Resourcing Gaps",
+      "occurrences": 1,
+      "confidence": 80,
+      "description": "QA capacity has not scaled with feature complexity, increasing the chance of regressions reaching production.",
+      "rootCause": "QA hiring plan was not aligned with sprint velocity increases",
+      "businessImpact": "Increased defect rate post-release and potential customer-facing issues",
+      "mergedFrom": [
+        "Insufficient QA Resourcing for Regression Testing"
+      ]
+    }
+  ],
+  "historical_patterns": {
+    "mostFrequentRiskCategories": [
+      "Project Management (4 occurrences)",
+      "Quality Assurance (2 occurrences)"
+    ],
+    "commonRiskTypes": [
+      "Resourcing risks (3 occurrences)",
+      "Vendor risks (1 occurrence)"
+    ],
+    "severityTrends": {
+      "major": 2,
+      "moderate": 3,
+      "minor": 1,
+      "severe": 0
+    },
+    "likelihoodTrends": {
+      "unlikely": 2,
+      "possible": 3,
+      "rare": 1
+    },
+    "impactTrends": {
+      "high": 2,
+      "medium": 3,
+      "low": 1
+    },
+    "statusDistribution": {
+      "closed": 4,
+      "identified": 2,
+      "assessed": 0,
+      "resolved": 0
+    },
+    "averageRiskDuration": "Approximately 3 months",
+    "riskResolutionRate": "67% (4 of 6 risks closed)",
+    "topRiskOwners": [
+      "QA Lead",
+      "Integration Lead"
+    ]
+  },
+  "risk_chains": [
+    {
+      "chainTitle": "Vendor-to-Testing Risk Chain",
+      "sequence": [
+        "Vendor API delays",
+        "Blocked integration testing",
+        "Compressed QA timeline"
+      ],
+      "description": "Delays from the third-party vendor cascade into a compressed testing window, increasing the chance of undetected defects.",
+      "overallImpact": "High",
+      "mitigationApproach": "Use a mock API layer to decouple development from vendor timelines"
+    }
+  ],
+  "key_insights": {
+    "strengths": [
+      "Sprint velocity has remained stable across the last three sprints",
+      "Stakeholder engagement has been consistent and responsive"
+    ],
+    "weaknesses": [
+      "QA capacity has not kept pace with feature delivery",
+      "Data migration ownership has not been formally assigned"
+    ],
+    "lessonsLearned": [
+      "Vendor SLAs should be negotiated before integration work begins",
+      "QA capacity planning should happen during sprint planning, not after"
+    ],
+    "successFactors": [
+      "Early and proactive risk identification",
+      "Cross-functional collaboration between engineering and QA"
+    ]
+  },
+  "compliance_and_security": {
+    "dataProtection": "All risk data has been filtered for PHI/PII. No sensitive personal or health information is present in this analysis.",
+    "encryption": "Risk data encrypted at rest and in transit per SOC2 and ISO27001 standards",
+    "auditLog": "Risk analysis activity logged with timestamp, user, and data access details for compliance audit trail",
+    "accessControl": "Role-based access control applied. Only authorized project stakeholders can view this risk assessment.",
+    "dataRetention": "Risk register data retained per organizational policy and regulatory requirements"
+  }
+}
