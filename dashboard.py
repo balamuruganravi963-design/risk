@@ -42,65 +42,65 @@ content = base64.b64decode(file_data["content"]).decode("utf-8")
 data = json.loads(content)
 
 # ---------------- HEADER ---------------- #
-st.title(f"📊 {data.get('project', 'Project Risk Dashboard')}")
+kpis = data.get("kpis", {})
 
-client = data.get("Client", "")
-status = data.get("projectStatus", "Unknown")
-risk_score = data.get("overallRiskScore", 0)
-risk_level = data.get("overallRiskLevel", "Unknown")
+st.title(f"📊 {kpis.get('project_name', 'Project Risk Dashboard')}")
 
-if client:
-    st.caption(f"Client: {client}")
+status = kpis.get("project_status", "Unknown")
+risk_score = kpis.get("overall_risk_score", 0)
+risk_level = kpis.get("overall_risk_level", "Unknown")
+total_predicted_risks = kpis.get("total_predicted_risks", 0)
 
-col1, col2, col3 = st.columns(3)
+col1, col2, col3, col4 = st.columns(4)
 col1.metric("Project Status", status)
 col2.metric("Overall Risk Score", risk_score)
 col3.metric("Overall Risk Level", risk_level)
+col4.metric("Total Predicted Risks", total_predicted_risks)
 
 st.divider()
 
 # ---------------- RISK SUMMARY KPIs ---------------- #
 st.subheader("Risk Summary")
 
-risk_summary = data.get("riskSummary", {})
-predicted_risks = data.get("predictedRisks", [])
+risk_summary = data.get("risk_summary", {})
 
-kc1, kc2, kc3, kc4, kc5 = st.columns(5)
+kc1, kc2, kc3, kc4 = st.columns(4)
 kc1.metric("Critical", risk_summary.get("critical", 0))
 kc2.metric("High", risk_summary.get("high", 0))
 kc3.metric("Medium", risk_summary.get("medium", 0))
 kc4.metric("Low", risk_summary.get("low", 0))
-kc5.metric("Total Predicted Risks", len(predicted_risks))
 
 st.divider()
 
 # ---------------- CATEGORY DISTRIBUTION ---------------- #
 st.subheader("Risk Category Distribution")
 
-category_dist = data.get("categoryDistribution", [])
+category_dist = data.get("category_distribution", [])
 if category_dist:
-    df_cat = pd.DataFrame(category_dist).set_index("category")
-    st.bar_chart(df_cat["count"])
+    df_cat = pd.DataFrame(category_dist).set_index("segment")
+    st.bar_chart(df_cat["value"])
 else:
     st.write("No category distribution data available.")
 
 st.divider()
 
-# ---------------- PREDICTED RISKS ---------------- #
+# ---------------- RISKS ---------------- #
 st.subheader("Predicted Risks")
 
-for r in predicted_risks:
+risks = data.get("risks", [])
+
+for r in risks:
     severity = r.get("severity", "Unknown")
     icon = {"Critical": "🔴", "High": "🟠", "Medium": "🟡", "Low": "🟢"}.get(severity, "⚪")
 
-    with st.expander(f"{icon} {r.get('riskTitle', 'Untitled Risk')} — {severity} (Confidence: {r.get('confidence', 0)}%)"):
+    with st.expander(f"{icon} {r.get('title', 'Untitled Risk')} — {severity} (Confidence: {r.get('confidence', 0)}%)"):
         c1, c2, c3 = st.columns(3)
         c1.write(f"**Category:** {r.get('category', '-')}")
         c2.write(f"**Likelihood:** {r.get('likelihood', '-')}%")
         c3.write(f"**Impact:** {r.get('impact', '-')}")
 
         review_freq = r.get("reviewFrequency", "")
-        owner_line = f"**Priority:** {r.get('priority', '-')}  |  **Owner:** {r.get('suggestedOwner', '-')}"
+        owner_line = f"**Priority:** {r.get('priority', '-')}  |  **Owner:** {r.get('owner', '-')}"
         if review_freq:
             owner_line += f"  |  **Review Frequency:** {review_freq}"
         st.write(owner_line)
@@ -125,8 +125,8 @@ for r in predicted_risks:
 
 st.divider()
 
-# ---------------- CONSOLIDATED RISKS (optional) ---------------- #
-consolidated_risks = data.get("consolidatedRisks", [])
+# ---------------- CONSOLIDATED RISKS ---------------- #
+consolidated_risks = data.get("consolidated_risks", [])
 if consolidated_risks:
     st.subheader("Consolidated Risks")
     for cr in consolidated_risks:
@@ -144,7 +144,7 @@ if consolidated_risks:
 # ---------------- HISTORICAL PATTERNS ---------------- #
 st.subheader("Historical Patterns")
 
-hp = data.get("historicalPatterns", {})
+hp = data.get("historical_patterns", {})
 
 hc1, hc2 = st.columns(2)
 
@@ -158,12 +158,6 @@ with hc1:
         st.write(f"- {item}")
 
 with hc2:
-    risk_freq = hp.get("riskFrequency", {})
-    if risk_freq:
-        st.write("**Risk Frequency**")
-        for k, v in risk_freq.items():
-            st.write(f"- {k}: {v}")
-
     if hp.get("averageRiskDuration"):
         st.write(f"**Average Risk Duration:** {hp.get('averageRiskDuration')}")
     if hp.get("riskResolutionRate"):
@@ -174,11 +168,16 @@ with hc2:
         for o in owners:
             st.write(f"- {o}")
 
+    status_dist = hp.get("statusDistribution", {})
+    if status_dist:
+        st.write("**Status Distribution**")
+        for k, v in status_dist.items():
+            st.write(f"- {k}: {v}")
+
 trend_cols = st.columns(3)
 severity_trends = {k: v for k, v in hp.get("severityTrends", {}).items() if isinstance(v, (int, float))}
 likelihood_trends = {k: v for k, v in hp.get("likelihoodTrends", {}).items() if isinstance(v, (int, float))}
-impact_data = hp.get("impactAnalysis", hp.get("impactTrends", {}))
-impact_trends = {k: v for k, v in impact_data.items() if isinstance(v, (int, float))}
+impact_trends = {k: v for k, v in hp.get("impactTrends", {}).items() if isinstance(v, (int, float))}
 
 if severity_trends:
     with trend_cols[0]:
@@ -195,20 +194,12 @@ if impact_trends:
         st.write("**Impact Trends**")
         st.bar_chart(pd.Series(impact_trends))
 
-for label, obj in [("Severity", hp.get("severityTrends", {})),
-                    ("Likelihood", hp.get("likelihoodTrends", {})),
-                    ("Impact", impact_data),
-                    ("Status", hp.get("statusEffects", {}))]:
-    desc = obj.get("distribution") or obj.get("description")
-    if desc:
-        st.caption(f"{label}: {desc}")
-
 st.divider()
 
 # ---------------- RISK CHAINS ---------------- #
 st.subheader("Risk Chains")
 
-for rc in data.get("riskChains", []):
+for rc in data.get("risk_chains", []):
     with st.expander(f"⛓️ {rc.get('chainTitle', 'Untitled Chain')} — Overall Impact: {rc.get('overallImpact', '-')}"):
         sequence = rc.get("sequence", [])
         if sequence:
@@ -221,18 +212,17 @@ st.divider()
 # ---------------- KEY INSIGHTS ---------------- #
 st.subheader("Key Insights")
 
-ki = data.get("keyInsights", {})
-health = ki.get("projectHealthIndicators", {})
+ki = data.get("key_insights", {})
 
 ic1, ic2 = st.columns(2)
 with ic1:
     st.write("**Strengths**")
-    for s in health.get("strengths", []):
+    for s in ki.get("strengths", []):
         st.success(s)
 
 with ic2:
     st.write("**Weaknesses**")
-    for w in health.get("weaknesses", []):
+    for w in ki.get("weaknesses", []):
         st.warning(w)
 
 lessons = ki.get("lessonsLearned", [])
@@ -247,23 +237,11 @@ if success_factors:
     for sf in success_factors:
         st.write(f"- {sf}")
 
-critical_deps = ki.get("criticalDependencies", [])
-if critical_deps:
-    st.write("**Critical Dependencies**")
-    for cd in critical_deps:
-        st.write(f"- {cd}")
-
-financial_exposure = ki.get("financialRiskExposure", {})
-if financial_exposure:
-    st.write("**Financial Risk Exposure**")
-    for k, v in financial_exposure.items():
-        st.write(f"- **{k}:** {v}")
-
 st.divider()
 
-# ---------------- COMPLIANCE & SECURITY (optional) ---------------- #
-cs = data.get("complianceAndSecurity", {})
-if cs:
+# ---------------- COMPLIANCE & SECURITY ---------------- #
+cs = data.get("compliance_and_security", {})
+if any(cs.get(k) for k in ["dataProtection", "encryption", "auditLog", "accessControl", "dataRetention"]):
     st.subheader("Compliance & Security")
     for label, key in [
         ("Data Protection", "dataProtection"),
