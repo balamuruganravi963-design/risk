@@ -7,7 +7,7 @@ import pandas as pd
 st.set_page_config(layout="wide", page_title="Project Risk Dashboard")
 
 # ---------------- CONFIG ---------------- #
-GITHUB_REPO = "your-username/your-repo"
+GITHUB_REPO = "balamuruganravi963-design/risk"
 GITHUB_BRANCH = "main"
 
 # Only needed if the repo is PRIVATE. Leave blank ("") if public.
