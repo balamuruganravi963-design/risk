@@ -1,39 +1,56 @@
 import streamlit as st
-import json
+import requests
 import base64
+import json
 import pandas as pd
 
 st.set_page_config(layout="wide", page_title="Project Risk Dashboard")
 
+# ---------------- CONFIG ---------------- #
+GITHUB_REPO = "your-username/your-repo"
+GITHUB_BRANCH = "main"
 
-def decode_data(encoded_str):
-    decoded = base64.b64decode(encoded_str).decode("utf-8")
-    return json.loads(decoded)
-
+# Only needed if the repo is PRIVATE. Leave blank ("") if public.
+# If set, add this in Streamlit Cloud -> App settings -> Secrets:
+#   GITHUB_READ_TOKEN = "ghp_xxxxxxxxxxxx"
+GITHUB_READ_TOKEN = st.secrets.get("GITHUB_READ_TOKEN", "")
 
 # ---------------- GET DATA ---------------- #
-# Supports either ?data=<base64 json> in the URL, or a local risk_data.json file
-# placed next to this script (useful for local testing without query params).
+# st.query_params automatically URL-decodes the value, so "path" arrives
+# as a normal string like "dashboard-data/a1b2c3d4.json"
 params = st.query_params
-encoded_data = params.get("data")
+file_path = params.get("path")
 
-data = None
-if encoded_data:
-    data = decode_data(encoded_data)
-else:
-    try:
-        with open("risk_data.json", "r", encoding="utf-8") as f:
-            data = json.load(f)
-    except FileNotFoundError:
-        st.error("No dashboard data found in URL and no local risk_data.json present.")
-        st.stop()
+if not file_path:
+    st.error("No file path found in URL")
+    st.stop()
+
+api_url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{file_path}"
+
+headers = {"Accept": "application/vnd.github+json"}
+if GITHUB_READ_TOKEN:
+    headers["Authorization"] = f"token {GITHUB_READ_TOKEN}"
+
+response = requests.get(api_url, headers=headers, params={"ref": GITHUB_BRANCH}, timeout=15)
+
+if response.status_code != 200:
+    st.error(f"Failed to load dashboard data (status {response.status_code}).")
+    st.stop()
+
+file_data = response.json()
+content = base64.b64decode(file_data["content"]).decode("utf-8")
+data = json.loads(content)
 
 # ---------------- HEADER ---------------- #
 st.title(f"📊 {data.get('project', 'Project Risk Dashboard')}")
 
+client = data.get("Client", "")
 status = data.get("projectStatus", "Unknown")
 risk_score = data.get("overallRiskScore", 0)
 risk_level = data.get("overallRiskLevel", "Unknown")
+
+if client:
+    st.caption(f"Client: {client}")
 
 col1, col2, col3 = st.columns(3)
 col1.metric("Project Status", status)
@@ -82,7 +99,11 @@ for r in predicted_risks:
         c2.write(f"**Likelihood:** {r.get('likelihood', '-')}%")
         c3.write(f"**Impact:** {r.get('impact', '-')}")
 
-        st.write(f"**Priority:** {r.get('priority', '-')}  |  **Owner:** {r.get('suggestedOwner', '-')}  |  **Review Frequency:** {r.get('reviewFrequency', '-')}")
+        review_freq = r.get("reviewFrequency", "")
+        owner_line = f"**Priority:** {r.get('priority', '-')}  |  **Owner:** {r.get('suggestedOwner', '-')}"
+        if review_freq:
+            owner_line += f"  |  **Review Frequency:** {review_freq}"
+        st.write(owner_line)
 
         st.write(f"**Reason:** {r.get('reason', '-')}")
 
@@ -104,21 +125,21 @@ for r in predicted_risks:
 
 st.divider()
 
-# ---------------- CONSOLIDATED RISKS ---------------- #
-st.subheader("Consolidated Risks")
-
-for cr in data.get("consolidatedRisks", []):
-    with st.expander(f"🔗 {cr.get('title', 'Untitled')} (Occurrences: {cr.get('occurrences', 0)}, Confidence: {cr.get('confidence', 0)}%)"):
-        st.write(f"**Description:** {cr.get('description', '-')}")
-        st.write(f"**Root Cause:** {cr.get('rootCause', '-')}")
-        st.write(f"**Business Impact:** {cr.get('businessImpact', '-')}")
-        merged = cr.get("mergedFrom", [])
-        if merged:
-            st.write("**Merged From:**")
-            for m in merged:
-                st.write(f"- {m}")
-
-st.divider()
+# ---------------- CONSOLIDATED RISKS (optional) ---------------- #
+consolidated_risks = data.get("consolidatedRisks", [])
+if consolidated_risks:
+    st.subheader("Consolidated Risks")
+    for cr in consolidated_risks:
+        with st.expander(f"🔗 {cr.get('title', 'Untitled')} (Occurrences: {cr.get('occurrences', 0)}, Confidence: {cr.get('confidence', 0)}%)"):
+            st.write(f"**Description:** {cr.get('description', '-')}")
+            st.write(f"**Root Cause:** {cr.get('rootCause', '-')}")
+            st.write(f"**Business Impact:** {cr.get('businessImpact', '-')}")
+            merged = cr.get("mergedFrom", [])
+            if merged:
+                st.write("**Merged From:**")
+                for m in merged:
+                    st.write(f"- {m}")
+    st.divider()
 
 # ---------------- HISTORICAL PATTERNS ---------------- #
 st.subheader("Historical Patterns")
@@ -137,8 +158,16 @@ with hc1:
         st.write(f"- {item}")
 
 with hc2:
-    st.write(f"**Average Risk Duration:** {hp.get('averageRiskDuration', '-')}")
-    st.write(f"**Risk Resolution Rate:** {hp.get('riskResolutionRate', '-')}")
+    risk_freq = hp.get("riskFrequency", {})
+    if risk_freq:
+        st.write("**Risk Frequency**")
+        for k, v in risk_freq.items():
+            st.write(f"- {k}: {v}")
+
+    if hp.get("averageRiskDuration"):
+        st.write(f"**Average Risk Duration:** {hp.get('averageRiskDuration')}")
+    if hp.get("riskResolutionRate"):
+        st.write(f"**Risk Resolution Rate:** {hp.get('riskResolutionRate')}")
     owners = hp.get("topRiskOwners", [])
     if owners:
         st.write("**Top Risk Owners:**")
@@ -146,9 +175,10 @@ with hc2:
             st.write(f"- {o}")
 
 trend_cols = st.columns(3)
-severity_trends = hp.get("severityTrends", {})
-likelihood_trends = hp.get("likelihoodTrends", {})
-impact_trends = hp.get("impactTrends", {})
+severity_trends = {k: v for k, v in hp.get("severityTrends", {}).items() if isinstance(v, (int, float))}
+likelihood_trends = {k: v for k, v in hp.get("likelihoodTrends", {}).items() if isinstance(v, (int, float))}
+impact_data = hp.get("impactAnalysis", hp.get("impactTrends", {}))
+impact_trends = {k: v for k, v in impact_data.items() if isinstance(v, (int, float))}
 
 if severity_trends:
     with trend_cols[0]:
@@ -164,6 +194,14 @@ if impact_trends:
     with trend_cols[2]:
         st.write("**Impact Trends**")
         st.bar_chart(pd.Series(impact_trends))
+
+for label, obj in [("Severity", hp.get("severityTrends", {})),
+                    ("Likelihood", hp.get("likelihoodTrends", {})),
+                    ("Impact", impact_data),
+                    ("Status", hp.get("statusEffects", {}))]:
+    desc = obj.get("distribution") or obj.get("description")
+    if desc:
+        st.caption(f"{label}: {desc}")
 
 st.divider()
 
@@ -209,19 +247,31 @@ if success_factors:
     for sf in success_factors:
         st.write(f"- {sf}")
 
+critical_deps = ki.get("criticalDependencies", [])
+if critical_deps:
+    st.write("**Critical Dependencies**")
+    for cd in critical_deps:
+        st.write(f"- {cd}")
+
+financial_exposure = ki.get("financialRiskExposure", {})
+if financial_exposure:
+    st.write("**Financial Risk Exposure**")
+    for k, v in financial_exposure.items():
+        st.write(f"- **{k}:** {v}")
+
 st.divider()
 
-# ---------------- COMPLIANCE & SECURITY ---------------- #
-st.subheader("Compliance & Security")
-
+# ---------------- COMPLIANCE & SECURITY (optional) ---------------- #
 cs = data.get("complianceAndSecurity", {})
-for label, key in [
-    ("Data Protection", "dataProtection"),
-    ("Encryption", "encryption"),
-    ("Audit Log", "auditLog"),
-    ("Access Control", "accessControl"),
-    ("Data Retention", "dataRetention"),
-]:
-    val = cs.get(key)
-    if val:
-        st.write(f"**{label}:** {val}")
+if cs:
+    st.subheader("Compliance & Security")
+    for label, key in [
+        ("Data Protection", "dataProtection"),
+        ("Encryption", "encryption"),
+        ("Audit Log", "auditLog"),
+        ("Access Control", "accessControl"),
+        ("Data Retention", "dataRetention"),
+    ]:
+        val = cs.get(key)
+        if val:
+            st.write(f"**{label}:** {val}")
