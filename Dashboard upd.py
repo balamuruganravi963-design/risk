@@ -4,20 +4,15 @@ import base64
 import json
 import pandas as pd
 
-st.set_page_config(layout="wide", page_title="Project Risk Dashboard")
+st.set_page_config(layout="wide", page_title="Risk Dashboard")
 
 # ---------------- CONFIG ---------------- #
 GITHUB_REPO = "balamuruganravi963-design/risk"
 GITHUB_BRANCH = "main"
 
-# Only needed if the repo is PRIVATE. Leave blank ("") if public.
-# If set, add this in Streamlit Cloud -> App settings -> Secrets:
-#   GITHUB_READ_TOKEN = "ghp_xxxxxxxxxxxx"
 GITHUB_READ_TOKEN = st.secrets.get("GITHUB_READ_TOKEN", "")
 
 # ---------------- GET DATA ---------------- #
-# st.query_params automatically URL-decodes the value, so "path" arrives
-# as a normal string like "dashboard-data/a1b2c3d4.json"
 params = st.query_params
 file_path = params.get("path")
 
@@ -46,12 +41,10 @@ all_risks = data.get("risks", [])
 all_consolidated = data.get("consolidated_risks", [])
 
 # ---------------- FIELD HELPERS ---------------- #
-# Some fields (client, status) may be stored as combined comma-separated
-# strings at the project level (e.g. "Centene, Volvo, Lenovo") rather than
-# per-risk. These helpers try several common key names and fall back to
-# splitting those combined strings so the slicers still work either way.
-
-CLIENT_KEYS = ["client", "clientName", "client_name", "account", "customer", "project", "projectName"]
+# Preferred: an explicit per-risk key naming the client/engagement.
+# Update this list first if you learn the real field name in your JSON.
+CLIENT_KEYS = ["client", "clientName", "client_name", "account", "customer",
+               "engagement", "sow", "sowName", "project", "projectName"]
 STATUS_KEYS = ["status", "project_status"]
 
 
@@ -70,30 +63,56 @@ def split_combined(value):
     return [v.strip() for v in str(value).split(",") if v.strip()]
 
 
-# Per-risk client: try explicit key on the risk itself, else fall back to
-# the combined project-level name (means the risk can't be isolated to one
-# client until the JSON tags risks individually — update CLIENT_KEYS above
-# to match your real field name once you confirm it).
+# project_name in this dataset is a combined string of every SOW/engagement
+# name, e.g. "Centene Corporation (SOW) - SOW 110, Volvo Car USA LLC - ...".
 project_level_clients = split_combined(kpis.get("project_name"))
 
 
 def risk_client(r):
+    """
+    Returns the client name for a risk, or None if it can't be determined.
+    1) Explicit field on the risk object, if present (best case).
+    2) Heuristic fallback: check whether any known client/engagement name
+       is mentioned in the risk's title/category/reason text. This is a
+       best-effort guess only — replace with an exact field lookup once
+       the real schema is confirmed.
+    IMPORTANT: unlike the previous version, a risk with no determinable
+    client returns None and is NOT force-filtered out by the client slicer.
+    """
     val = get_first(r, CLIENT_KEYS)
     if val:
         return str(val)
+
+    if len(project_level_clients) > 1:
+        haystack = " ".join(str(x) for x in [
+            r.get("title", ""), r.get("category", ""), r.get("reason", "")
+        ]).lower()
+        for name in project_level_clients:
+            # Use a short distinguishing token (e.g. "Centene", "Volvo",
+            # "Lenovo") rather than the full string, since full SOW names
+            # rarely appear verbatim inside a risk's text.
+            token = name.split("(")[0].split("-")[0].strip().split(" ")[0]
+            if token and token.lower() in haystack:
+                return name
+
     if len(project_level_clients) == 1:
         return project_level_clients[0]
-    return "Unspecified"
+
+    return None  # unknown — do not force a fake label
 
 
 def risk_status(r):
-    val = get_first(r, STATUS_KEYS)
-    if val:
-        return str(val)
-    return None
+    return get_first(r, STATUS_KEYS)
 
 
-# ---------------- SIDEBAR SLICERS ---------------- #
+# ---------------- CASCADING SIDEBAR SLICERS ---------------- #
+# Each filter's option list is computed from data already narrowed by the
+# filters above it, so you can never pick a combination that yields zero
+# results by construction. Widgets are re-created without a fixed "key" so
+# their default always matches the currently valid option set (prevents
+# Streamlit errors when a shrinking option list no longer contains a
+# previously selected value).
+
 st.sidebar.header("🔍 Filters")
 
 
@@ -101,50 +120,51 @@ def multiselect_options(values):
     return sorted({v for v in values if v})
 
 
-client_options = multiselect_options(
-    [risk_client(r) for r in all_risks] + project_level_clients
-)
-status_options = multiselect_options(
-    [risk_status(r) for r in all_risks] + split_combined(kpis.get("project_status"))
-)
-severity_options = multiselect_options([r.get("severity") for r in all_risks])
-category_options = multiselect_options([r.get("category") for r in all_risks])
-priority_options = multiselect_options([r.get("priority") for r in all_risks])
-owner_options = multiselect_options([r.get("owner") for r in all_risks])
+pool = all_risks  # progressively narrowed subset
 
+# --- Client ---
+client_options = multiselect_options([risk_client(r) for r in pool] + project_level_clients)
 sel_clients = st.sidebar.multiselect("Client Name", client_options, default=client_options)
-sel_status = st.sidebar.multiselect("Project Status", status_options, default=status_options) if status_options else status_options
+if client_options:
+    # Risks with an unknown client are kept regardless of selection,
+    # since we can't confirm which client they belong to.
+    pool = [r for r in pool if risk_client(r) is None or risk_client(r) in sel_clients]
+
+# --- Project Status ---
+status_options = multiselect_options([risk_status(r) for r in pool])
+if status_options:
+    sel_status = st.sidebar.multiselect("Project Status", status_options, default=status_options)
+    pool = [r for r in pool if risk_status(r) is None or risk_status(r) in sel_status]
+
+# --- Severity ---
+severity_options = multiselect_options([r.get("severity") for r in pool])
 sel_severity = st.sidebar.multiselect("Severity", severity_options, default=severity_options)
+if severity_options:
+    pool = [r for r in pool if r.get("severity") in sel_severity]
+
+# --- Category ---
+category_options = multiselect_options([r.get("category") for r in pool])
 sel_category = st.sidebar.multiselect("Category", category_options, default=category_options)
-sel_priority = st.sidebar.multiselect("Priority", priority_options, default=priority_options) if priority_options else priority_options
-sel_owner = st.sidebar.multiselect("Owner", owner_options, default=owner_options) if owner_options else owner_options
+if category_options:
+    pool = [r for r in pool if r.get("category") in sel_category]
+
+# --- Priority ---
+priority_options = multiselect_options([r.get("priority") for r in pool])
+if priority_options:
+    sel_priority = st.sidebar.multiselect("Priority", priority_options, default=priority_options)
+    pool = [r for r in pool if r.get("priority") is None or r.get("priority") in sel_priority]
+
+# --- Owner ---
+owner_options = multiselect_options([r.get("owner") for r in pool])
+if owner_options:
+    sel_owner = st.sidebar.multiselect("Owner", owner_options, default=owner_options)
+    pool = [r for r in pool if r.get("owner") is None or r.get("owner") in sel_owner]
 
 if st.sidebar.button("Reset Filters"):
     st.rerun()
 
+risks = pool
 
-def risk_matches(r):
-    if client_options and risk_client(r) not in sel_clients:
-        return False
-    if status_options:
-        rs = risk_status(r)
-        if rs is not None and rs not in sel_status:
-            return False
-    if severity_options and r.get("severity") not in sel_severity:
-        return False
-    if category_options and r.get("category") not in sel_category:
-        return False
-    if priority_options and r.get("priority") is not None and r.get("priority") not in sel_priority:
-        return False
-    if owner_options and r.get("owner") is not None and r.get("owner") not in sel_owner:
-        return False
-    return True
-
-
-risks = [r for r in all_risks if risk_matches(r)]
-
-# Consolidated risks don't carry client/severity tags directly, so filter
-# them by whether their title matches any currently-visible risk title.
 visible_titles = {r.get("title") for r in risks}
 consolidated_risks = [
     cr for cr in all_consolidated
@@ -152,7 +172,10 @@ consolidated_risks = [
 ] if all_consolidated else []
 
 # ---------------- HEADER ---------------- #
-st.title(f"📊 {kpis.get('project_name', 'Project Risk Dashboard')}")
+st.title("📊 Risk Dashboard")
+
+if len(project_level_clients) > 1:
+    st.caption("Aggregated view across: " + ", ".join(project_level_clients))
 
 status = kpis.get("project_status", "Unknown")
 risk_score = kpis.get("overall_risk_score", 0)
