@@ -84,61 +84,94 @@ except Exception as e:
 
 
 # ============================================================
-# EXTRACT NEW JSON STRUCTURE
+# EXTRACT DATA FROM WORKFLOWOP INPUT FORMAT
 #
+# Input structure:
 # {
-#   "portfolio_summary": {},
 #   "projects": [
-#       {
-#           "project_name": "",
-#           "kpis": {},
-#           "risk_summary": {},
-#           "category_distribution": [],
-#           "risk_type_distribution": [],
-#           "risks": [],
-#           "risk_chains": [],
-#           "historical_risk_summary": {},
-#           "predictive_insights": {},
-#           "risk_concentration": {},
-#           "risk_forecast_insights": {}
-#       }
-#   ]
+#     {
+#       "projectName": "",
+#       "RiskAnalysis": {
+#         "Risks": []
+#       },
+#       "projectForecastInsights": {}
+#     }
+#   ],
+#   "summaryStatistics": {}
 # }
 # ============================================================
 
-projects = data.get("projects", [])
-
-portfolio_summary = data.get(
-    "portfolio_summary",
-    {}
-)
+projects_raw = data.get("projects", [])
+summary_stats = data.get("summaryStatistics", {})
 
 
 # ============================================================
-# FLATTEN ALL PROJECT RISKS
+# TRANSFORM INPUT TO DASHBOARD FORMAT
 # ============================================================
 
 all_risks = []
+projects_transformed = []
 
-for project in projects:
+for project_raw in projects_raw:
 
-    project_name = project.get(
-        "project_name",
-        "Unknown"
+    project_name = project_raw.get("projectName", "Unknown")
+    
+    # Extract risks from nested RiskAnalysis.Risks
+    project_risks_raw = (
+        project_raw
+        .get("RiskAnalysis", {})
+        .get("Risks", [])
     )
-
-    project_risks = project.get(
-        "risks",
-        []
-    )
-
-    for risk in project_risks:
-
-        risk_copy = risk.copy()
-
-        risk_copy["project"] = project_name
-
-        all_risks.append(risk_copy)
+    
+    # Transform each risk
+    project_risks_transformed = []
+    
+    for risk_raw in project_risks_raw:
+        
+        # Map fields from input format to dashboard format
+        risk_transformed = {
+            "riskID": risk_raw.get("riskID", ""),
+            "title": risk_raw.get("riskTitle", ""),
+            "description": risk_raw.get("riskDescription", ""),
+            "category": risk_raw.get("category", ""),
+            "riskType": risk_raw.get("riskType", ""),
+            "severity": risk_raw.get("severity", ""),
+            "likelihood": risk_raw.get("likelihood", ""),
+            "confidence": risk_raw.get("confidenceScore", ""),
+            "businessImpact": risk_raw.get("businessImpact", ""),
+            "currentProjectEvidence": risk_raw.get("currentProjectEvidence", ""),
+            "currentContextReasoning": risk_raw.get("currentContextReasoning", ""),
+            "historicalCorrelation": risk_raw.get("historicalCorrelation", {}),
+            "futureRiskProjection": risk_raw.get("futureRiskProjection", ""),
+            "recurrenceJustification": risk_raw.get("recurrenceJustification", ""),
+            "leadingIndicators": risk_raw.get("leadingIndicators", ""),
+            "predictiveInsight": risk_raw.get("predictiveInsight", ""),
+            "mitigation": risk_raw.get("mitigation", ""),
+            "recommendations": risk_raw.get("recommendations", ""),
+            "riskChain": risk_raw.get("riskChain", {}),
+            "project": project_name
+        }
+        
+        project_risks_transformed.append(risk_transformed)
+        all_risks.append(risk_transformed)
+    
+    # Build project-level metrics
+    project_forecast = project_raw.get("projectForecastInsights", {})
+    
+    project_obj = {
+        "project_name": project_name,
+        "risks": project_risks_transformed,
+        "risk_chains": [],
+        "risk_forecast_insights": project_forecast,
+        "kpis": {
+            "total_current_risks": len(project_risks_transformed),
+            "major_bottleneck_count": len(project_forecast.get("majorBottlenecks", [])),
+            "emerging_concern_count": len(project_forecast.get("emergingConcerns", [])),
+            "high_risk_dependency_count": len(project_forecast.get("highRiskDependencies", []))
+        }
+    }
+    
+    projects_transformed.append(project_obj)
 
 
 # ============================================================
@@ -178,14 +211,7 @@ def confidence_rank(value):
 
     """
     Convert categorical confidence into a sortable rank.
-
-    New JSON uses:
-        High
-        Medium
-        Low
-        None
-
-    It does NOT use numeric confidence percentages.
+    Supports: High, Medium, Low, None
     """
 
     ranking = {
@@ -219,15 +245,8 @@ def severity_rank(value):
 def parse_recommendations(value):
 
     """
-    Recommendations in the new JSON are strings.
-
-    Example:
-        1. Do X.
-        2. Do Y.
-        3. Do Z.
-
-    Display them as individual numbered items
-    when possible.
+    Parse recommendations string into list items.
+    Handles numbered lists: "1. X. 2. Y."
     """
 
     if isinstance(value, list):
@@ -240,6 +259,7 @@ def parse_recommendations(value):
     if not isinstance(value, str):
         return []
 
+    # Split by newlines
     lines = value.split("\n")
 
     cleaned = []
@@ -247,6 +267,11 @@ def parse_recommendations(value):
     for line in lines:
 
         line = line.strip()
+
+        # Remove numbering like "1.", "2.", etc.
+        if line and line[0].isdigit():
+            # Remove "N. " prefix
+            line = ".".join(line.split(".")[1:]).strip()
 
         if line:
             cleaned.append(line)
@@ -467,28 +492,23 @@ st.subheader("Portfolio Overview")
 
 col1, col2, col3, col4 = st.columns(4)
 
+total_projects = summary_stats.get("totalProjects", len(projects_transformed))
+projects_with_risks = summary_stats.get("projectsWithCurrentRisks", 0)
+total_risks = summary_stats.get("totalCurrentRisks", len(all_risks))
+
 col1.metric(
     "Total Projects",
-    portfolio_summary.get(
-        "totalProjects",
-        len(projects)
-    )
+    total_projects
 )
 
 col2.metric(
     "Projects With Risks",
-    portfolio_summary.get(
-        "projectsWithCurrentRisks",
-        0
-    )
+    projects_with_risks
 )
 
 col3.metric(
     "Total Current Risks",
-    portfolio_summary.get(
-        "totalCurrentRisks",
-        len(all_risks)
-    )
+    total_risks
 )
 
 col4.metric(
@@ -519,10 +539,7 @@ severity_counts = {
 
 for risk in filtered_risks:
 
-    severity = risk.get(
-        "severity",
-        ""
-    )
+    severity = risk.get("severity", "")
 
     if severity in severity_counts:
         severity_counts[severity] += 1
@@ -530,26 +547,10 @@ for risk in filtered_risks:
 
 sc1, sc2, sc3, sc4 = st.columns(4)
 
-sc1.metric(
-    "Critical",
-    severity_counts["Critical"]
-)
-
-sc2.metric(
-    "High",
-    severity_counts["High"]
-)
-
-sc3.metric(
-    "Medium",
-    severity_counts["Medium"]
-)
-
-sc4.metric(
-    "Low",
-    severity_counts["Low"]
-)
-
+sc1.metric("Critical", severity_counts["Critical"])
+sc2.metric("High", severity_counts["High"])
+sc3.metric("Medium", severity_counts["Medium"])
+sc4.metric("Low", severity_counts["Low"])
 
 st.divider()
 
@@ -572,19 +573,14 @@ if filtered_risks:
 
         category_counts = pd.Series(
             [
-                r.get(
-                    "category",
-                    "Unknown"
-                )
+                r.get("category", "Unknown")
                 for r in filtered_risks
             ]
         ).value_counts()
 
         st.write("**By Category**")
 
-        st.bar_chart(
-            category_counts
-        )
+        st.bar_chart(category_counts)
 
     # --------------------------------------------------------
     # RISK TYPE
@@ -594,19 +590,14 @@ if filtered_risks:
 
         risk_type_counts = pd.Series(
             [
-                r.get(
-                    "riskType",
-                    "Unknown"
-                )
+                r.get("riskType", "Unknown")
                 for r in filtered_risks
             ]
         ).value_counts()
 
         st.write("**By Risk Type**")
 
-        st.bar_chart(
-            risk_type_counts
-        )
+        st.bar_chart(risk_type_counts)
 
 else:
 
@@ -712,24 +703,10 @@ else:
         1
     ):
 
-        severity = risk.get(
-            "severity",
-            "Unknown"
-        )
-
-        icon = get_severity_icon(
-            severity
-        )
-
-        risk_title = risk.get(
-            "title",
-            "Untitled Risk"
-        )
-
-        confidence = risk.get(
-            "confidence",
-            ""
-        )
+        severity = risk.get("severity", "Unknown")
+        icon = get_severity_icon(severity)
+        risk_title = risk.get("title", "Untitled Risk")
+        confidence = risk.get("confidence", "")
 
         with st.expander(
             f"{i}. {icon} {risk_title} "
@@ -741,9 +718,7 @@ else:
             # CORE INFORMATION
             # =================================================
 
-            st.write(
-                "### Core Information"
-            )
+            st.write("### Core Information")
 
             rcol1, rcol2, rcol3, rcol4 = st.columns(4)
 
@@ -782,9 +757,7 @@ else:
             # RISK ASSESSMENT
             # =================================================
 
-            st.write(
-                "### Risk Assessment"
-            )
+            st.write("### Risk Assessment")
 
             acol1, acol2, acol3, acol4 = st.columns(4)
 
@@ -818,9 +791,7 @@ else:
             # CURRENT PROJECT CONTEXT
             # =================================================
 
-            st.write(
-                "### Current Project Context"
-            )
+            st.write("### Current Project Context")
 
             st.write(
                 f"**Evidence:** "
@@ -837,104 +808,86 @@ else:
             # RISK CHAIN
             # =================================================
 
-            st.write(
-                "### Risk Chain Analysis"
-            )
+            st.write("### Risk Chain Analysis")
 
-            chain = risk.get(
-                "riskChain",
-                {}
-            )
+            chain = risk.get("riskChain", {})
 
-            if not chain:
+            if chain:
+                
+                chain_col1, chain_col2 = st.columns(2)
 
-                # New dashboard JSON may contain
-                # risk-chain information through
-                # the generated risk_chains structure.
-                matching_chain = next(
-                    (
-                        c for c in
-                        data.get(
-                            "risk_chains",
-                            []
-                        )
-                        if c.get("riskID")
-                        == risk.get("riskID")
-                    ),
-                    {}
-                )
+                with chain_col1:
 
-                chain = matching_chain
+                    st.write(
+                        f"**Root Cause:** "
+                        f"{chain.get('rootCause', '-')}"
+                    )
 
+                    st.write(
+                        f"**Trigger:** "
+                        f"{chain.get('trigger', '-')}"
+                    )
 
-            chain_col1, chain_col2 = st.columns(2)
+                    st.write(
+                        f"**Primary Risk:** "
+                        f"{chain.get('primaryRisk', '-')}"
+                    )
 
-            with chain_col1:
+                with chain_col2:
 
-                st.write(
-                    f"**Root Cause:** "
-                    f"{chain.get('rootCause', '-')}"
-                )
+                    st.write(
+                        f"**Downstream Risk:** "
+                        f"{chain.get('downstreamRisk', '-')}"
+                    )
 
-                st.write(
-                    f"**Trigger:** "
-                    f"{chain.get('trigger', '-')}"
-                )
+                    st.write(
+                        f"**Impact:** "
+                        f"{chain.get('impact', '-')}"
+                    )
 
-                st.write(
-                    f"**Primary Risk:** "
-                    f"{chain.get('primaryRisk', '-')}"
-                )
+            else:
 
-            with chain_col2:
-
-                st.write(
-                    f"**Downstream Risk:** "
-                    f"{chain.get('downstreamRisk', '-')}"
-                )
-
-                st.write(
-                    f"**Impact:** "
-                    f"{chain.get('impact', '-')}"
-                )
+                st.write("No risk chain information available.")
 
 
             # =================================================
             # HISTORICAL CORRELATION
             # =================================================
 
-            st.write(
-                "### Historical Correlation"
-            )
+            st.write("### Historical Correlation")
 
             historical = risk.get(
                 "historicalCorrelation",
                 {}
             )
 
-            st.write(
-                f"**Similar Historical Pattern:** "
-                f"{historical.get('similarHistoricalPattern', '-')}"
-            )
+            if historical:
 
-            st.write(
-                f"**Support Level:** "
-                f"{historical.get('historicalSupportLevel', '-')}"
-            )
+                st.write(
+                    f"**Similar Historical Pattern:** "
+                    f"{historical.get('similarHistoricalPattern', '-')}"
+                )
 
-            st.write(
-                f"**Historical Reasoning:** "
-                f"{historical.get('historicalReasoning', '-')}"
-            )
+                st.write(
+                    f"**Support Level:** "
+                    f"{historical.get('historicalSupportLevel', '-')}"
+                )
+
+                st.write(
+                    f"**Historical Reasoning:** "
+                    f"{historical.get('historicalReasoning', '-')}"
+                )
+
+            else:
+
+                st.write("No historical correlation data available.")
 
 
             # =================================================
             # FORWARD-LOOKING ANALYSIS
             # =================================================
 
-            st.write(
-                "### Forward-Looking Analysis"
-            )
+            st.write("### Forward-Looking Analysis")
 
             st.write(
                 f"**Future Risk Projection:** "
@@ -961,14 +914,9 @@ else:
             # MITIGATION
             # =================================================
 
-            st.write(
-                "### Mitigation"
-            )
+            st.write("### Mitigation")
 
-            mitigation = risk.get(
-                "mitigation",
-                ""
-            )
+            mitigation = risk.get("mitigation", "")
 
             st.write(
                 mitigation
@@ -981,28 +929,19 @@ else:
             # RECOMMENDATIONS
             # =================================================
 
-            st.write(
-                "### Recommendations"
-            )
+            st.write("### Recommendations")
 
-            recommendations = risk.get(
-                "recommendations",
-                ""
-            )
+            recommendations = risk.get("recommendations", "")
 
             recommendation_items = (
-                parse_recommendations(
-                    recommendations
-                )
+                parse_recommendations(recommendations)
             )
 
             if recommendation_items:
 
                 for recommendation in recommendation_items:
 
-                    st.write(
-                        f"- {recommendation}"
-                    )
+                    st.write(f"- {recommendation}")
 
             else:
 
@@ -1016,62 +955,41 @@ st.divider()
 # PROJECT FORECAST INSIGHTS
 # ============================================================
 
-st.subheader(
-    "Project Forecast Insights"
-)
+st.subheader("Project Forecast Insights")
 
-for project in projects:
+for project in projects_transformed:
 
-    project_name = project.get(
-        "project_name",
-        "Unknown"
-    )
+    project_name = project.get("project_name", "Unknown")
+    forecast = project.get("risk_forecast_insights", {})
 
-    forecast = project.get(
-        "risk_forecast_insights",
-        {}
-    )
-
-    with st.expander(
-        f"📌 {project_name}"
-    ):
+    with st.expander(f"📌 {project_name}"):
 
         # ----------------------------------------------------
         # OUTLOOK
         # ----------------------------------------------------
 
-        st.write(
-            "### Overall Outlook"
-        )
+        st.write("### Overall Outlook")
 
-        st.info(
-            forecast.get(
-                "overallOutlook",
-                "-"
-            )
-        )
+        outlook = forecast.get("overallOutlook", "-")
+        
+        if outlook and outlook != "-":
+            st.info(outlook)
+        else:
+            st.write("-")
 
 
         # ----------------------------------------------------
         # BOTTLENECKS
         # ----------------------------------------------------
 
-        bottlenecks = forecast.get(
-            "majorBottlenecks",
-            []
-        )
+        bottlenecks = forecast.get("majorBottlenecks", [])
 
         if bottlenecks:
 
-            st.write(
-                "### Major Bottlenecks"
-            )
+            st.write("### Major Bottlenecks")
 
             for item in bottlenecks:
-
-                st.write(
-                    f"- {item}"
-                )
+                st.write(f"- {item}")
 
 
         # ----------------------------------------------------
@@ -1085,15 +1003,10 @@ for project in projects:
 
         if propagation:
 
-            st.write(
-                "### Risk Propagation Patterns"
-            )
+            st.write("### Risk Propagation Patterns")
 
             for item in propagation:
-
-                st.write(
-                    f"- {item}"
-                )
+                st.write(f"- {item}")
 
 
         # ----------------------------------------------------
@@ -1107,15 +1020,10 @@ for project in projects:
 
         if concerns:
 
-            st.write(
-                "### Emerging Concerns"
-            )
+            st.write("### Emerging Concerns")
 
             for item in concerns:
-
-                st.write(
-                    f"- {item}"
-                )
+                st.write(f"- {item}")
 
 
         # ----------------------------------------------------
@@ -1129,15 +1037,10 @@ for project in projects:
 
         if dependencies:
 
-            st.write(
-                "### High-Risk Dependencies"
-            )
+            st.write("### High-Risk Dependencies")
 
             for item in dependencies:
-
-                st.write(
-                    f"- {item}"
-                )
+                st.write(f"- {item}")
 
 
         # ----------------------------------------------------
@@ -1151,15 +1054,10 @@ for project in projects:
 
         if root_causes:
 
-            st.write(
-                "### Root Cause Concentration"
-            )
+            st.write("### Root Cause Concentration")
 
             for item in root_causes:
-
-                st.write(
-                    f"- {item}"
-                )
+                st.write(f"- {item}")
 
 
         # ----------------------------------------------------
@@ -1173,15 +1071,10 @@ for project in projects:
 
         if failure_triggers:
 
-            st.write(
-                "### Most Likely Failure Triggers"
-            )
+            st.write("### Most Likely Failure Triggers")
 
             for item in failure_triggers:
-
-                st.write(
-                    f"- {item}"
-                )
+                st.write(f"- {item}")
 
 
 st.divider()
@@ -1191,11 +1084,9 @@ st.divider()
 # PROJECT SUMMARY TABLE
 # ============================================================
 
-st.subheader(
-    "Summary Statistics by Project"
-)
+st.subheader("Summary Statistics by Project")
 
-risks_by_project = portfolio_summary.get(
+risks_by_project = summary_stats.get(
     "risksByProject",
     []
 )
@@ -1214,37 +1105,19 @@ if risks_by_project:
 
 else:
 
-    # Build fallback summary directly from projects
-
-    fallback_project_stats = []
-
-    for project in projects:
-
-        project_name = project.get(
-            "project_name",
-            "Unknown"
-        )
-
-        project_risks = project.get(
-            "risks",
-            []
-        )
-
-        fallback_project_stats.append(
-            {
-                "projectName": project_name,
-                "currentRisksCount": len(
-                    project_risks
-                )
-            }
-        )
+    # Build fallback summary from transformed projects
+    fallback_project_stats = [
+        {
+            "projectName": p.get("project_name", "Unknown"),
+            "currentRisksCount": len(p.get("risks", []))
+        }
+        for p in projects_transformed
+    ]
 
     if fallback_project_stats:
 
         st.dataframe(
-            pd.DataFrame(
-                fallback_project_stats
-            ),
+            pd.DataFrame(fallback_project_stats),
             use_container_width=True,
             hide_index=True
         )
@@ -1254,23 +1127,14 @@ else:
 # PROJECT × SEVERITY BREAKDOWN
 # ============================================================
 
-st.write(
-    "**Risk Breakdown by Project & Severity:**"
-)
+st.write("**Risk Breakdown by Project & Severity:**")
 
 project_risk_details = []
 
-for project in projects:
+for project in projects_transformed:
 
-    project_name = project.get(
-        "project_name",
-        "Unknown"
-    )
-
-    project_risks = project.get(
-        "risks",
-        []
-    )
+    project_name = project.get("project_name", "Unknown")
+    project_risks = project.get("risks", [])
 
     if project_risks:
 
@@ -1279,42 +1143,32 @@ for project in projects:
             "Critical": sum(
                 1
                 for r in project_risks
-                if r.get("severity")
-                == "Critical"
+                if r.get("severity") == "Critical"
             ),
             "High": sum(
                 1
                 for r in project_risks
-                if r.get("severity")
-                == "High"
+                if r.get("severity") == "High"
             ),
             "Medium": sum(
                 1
                 for r in project_risks
-                if r.get("severity")
-                == "Medium"
+                if r.get("severity") == "Medium"
             ),
             "Low": sum(
                 1
                 for r in project_risks
-                if r.get("severity")
-                == "Low"
+                if r.get("severity") == "Low"
             ),
-            "Total": len(
-                project_risks
-            )
+            "Total": len(project_risks)
         }
 
-        project_risk_details.append(
-            severity_breakdown
-        )
+        project_risk_details.append(severity_breakdown)
 
 
 if project_risk_details:
 
-    detail_df = pd.DataFrame(
-        project_risk_details
-    )
+    detail_df = pd.DataFrame(project_risk_details)
 
     st.dataframe(
         detail_df,
@@ -1330,9 +1184,7 @@ st.divider()
 # KEY METRICS
 # ============================================================
 
-st.subheader(
-    "Key Metrics"
-)
+st.subheader("Key Metrics")
 
 metric_col1, metric_col2, metric_col3, metric_col4 = st.columns(4)
 
@@ -1344,10 +1196,7 @@ metric_col1, metric_col2, metric_col3, metric_col4 = st.columns(4)
 high_confidence_count = sum(
     1
     for r in filtered_risks
-    if normalize_text(
-        r.get("confidence")
-    ).lower()
-    == "high"
+    if normalize_text(r.get("confidence")).lower() == "high"
 )
 
 with metric_col1:
@@ -1365,8 +1214,7 @@ with metric_col1:
 critical_count = sum(
     1
     for r in filtered_risks
-    if r.get("severity")
-    == "Critical"
+    if r.get("severity") == "Critical"
 )
 
 with metric_col2:
@@ -1389,8 +1237,7 @@ with metric_col2:
 high_count = sum(
     1
     for r in filtered_risks
-    if r.get("severity")
-    == "High"
+    if r.get("severity") == "High"
 )
 
 with metric_col3:
@@ -1414,8 +1261,7 @@ strong_historical_count = sum(
     ).get(
         "historicalSupportLevel",
         ""
-    )
-    == "Strong"
+    ) == "Strong"
 )
 
 with metric_col4:
@@ -1433,52 +1279,54 @@ st.divider()
 # HISTORICAL RISK SUMMARY BY PROJECT
 # ============================================================
 
-st.subheader(
-    "Historical Risk Intelligence"
-)
+st.subheader("Historical Risk Intelligence")
 
 historical_project_rows = []
 
-for project in projects:
+for project in projects_transformed:
 
-    project_name = project.get(
-        "project_name",
-        "Unknown"
+    project_name = project.get("project_name", "Unknown")
+    project_risks = project.get("risks", [])
+
+    # Count historical support levels
+    strong = sum(
+        1
+        for r in project_risks
+        if r.get("historicalCorrelation", {}).get("historicalSupportLevel") == "Strong"
     )
-
-    historical_summary = project.get(
-        "historical_risk_summary",
-        {}
+    
+    moderate = sum(
+        1
+        for r in project_risks
+        if r.get("historicalCorrelation", {}).get("historicalSupportLevel") == "Moderate"
+    )
+    
+    weak = sum(
+        1
+        for r in project_risks
+        if r.get("historicalCorrelation", {}).get("historicalSupportLevel") == "Weak"
+    )
+    
+    none = sum(
+        1
+        for r in project_risks
+        if r.get("historicalCorrelation", {}).get("historicalSupportLevel") == "None"
     )
 
     historical_project_rows.append(
         {
             "Project": project_name,
-            "Strong": historical_summary.get(
-                "strongSupport",
-                0
-            ),
-            "Moderate": historical_summary.get(
-                "moderateSupport",
-                0
-            ),
-            "Weak": historical_summary.get(
-                "weakSupport",
-                0
-            ),
-            "None": historical_summary.get(
-                "noSupport",
-                0
-            )
+            "Strong": strong,
+            "Moderate": moderate,
+            "Weak": weak,
+            "None": none
         }
     )
 
 
 if historical_project_rows:
 
-    historical_df = pd.DataFrame(
-        historical_project_rows
-    )
+    historical_df = pd.DataFrame(historical_project_rows)
 
     st.dataframe(
         historical_df,
@@ -1498,5 +1346,6 @@ st.caption(
     f"Dashboard generated on "
     f"{datetime.now().strftime('%Y-%m-%d %H:%M:%S')} "
     f"| Data source: GitHub "
-    f"{GITHUB_BRANCH} branch"
+    f"{GITHUB_BRANCH} branch | "
+    f"Input format: WorkflowOP"
 )
