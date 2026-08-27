@@ -1,0 +1,674 @@
+{
+  "projects": [
+    {
+      "projectName": "Producer Portal",
+      "RiskAnalysis": {
+        "Risks": [
+          {
+            "riskID": "R01",
+            "riskTitle": "Data Hub mapping changes may cause schedule impact",
+            "riskDescription": "Due to the team proceeding with currently provided Data Hub mappings while possible mapping-value issues may require design and entity-stitching changes, Data Hub integration rework may occur, resulting in schedule slippage for Producer Portal build, integration testing, and downstream UAT readiness.",
+            "riskChain": {
+              "rootCause": "Incomplete stability in Data Hub mappings and open discussion on mapping values and entity stitching for BoB-related integration.",
+              "trigger": "Integration, E2E, or UAT validation exposes mismatches between assumed mappings and actual Data Hub values or stitching rules.",
+              "primaryRisk": "Integration design and wrapper-service logic require rework.",
+              "downstreamRisk": "Retesting of BoB, dashboard, and related integrated flows; compressed E2E and UAT windows.",
+              "impact": "Schedule delay and reduced release-readiness confidence in the Implement & Build phase."
+            },
+            "category": "Operational",
+            "riskType": "Dependency",
+            "severity": "High",
+            "likelihood": "High",
+            "confidenceScore": "High",
+            "businessImpact": "Potential delay to core Producer Portal capabilities tied to BoB, dashboard, and producer-facing integrated workflows; possible compression of validation and delayed rollout readiness.",
+            "currentProjectEvidence": "WSR risk register states DH integration data mappings may lead back to design and time impact. Current project context also shows DH API integrations completed, BoB and Dashboard integrated with DH, and integration/accessibility testing in progress, making late mapping correction a live risk in current delivery.",
+            "currentContextReasoning": "This project is in Implement & Build with active integration testing. The portal depends on DH for business-facing functionality, so late clarification of mapping or entity stitching would create immediate downstream rework rather than a distant design concern.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Comparable to the historical Premera Claims pattern where unresolved upstream integration decisions constrained downstream delivery readiness and execution flow.",
+              "historicalSupportLevel": "Moderate",
+              "historicalReasoning": "Historical evidence shows an external integration dependency can quickly propagate into delivery disruption. While the historical case involved FACETS rather than Data Hub, the dependency-to-rework-to-schedule-impact structure is similar."
+            },
+            "futureRiskProjection": "If current mapping assumptions remain unresolved into broader validation, the most likely next event is late-cycle redesign of DH integration or entity-stitching logic, followed by retesting and UAT timeline compression.",
+            "recurrenceJustification": "Moderate historical support exists for upstream dependency ambiguity causing downstream execution disruption in Premera projects.",
+            "leadingIndicators": "Repeated mapping clarification requests with DH; unresolved entity-stitching discussions; new integration defects during E2E; inability to baseline mappings before UAT preparation; rising integration rework backlog.",
+            "predictiveInsight": "This risk is likely to evolve from a localized integration ambiguity into a broader schedule-pressure event if actual Data Hub behavior diverges from current design assumptions.",
+            "mitigation": "Freeze an interim mapping baseline with explicit assumption log, obtain DH signoff on high-risk fields/entities, run targeted integration validation on BoB/dashboard flows before full E2E, and isolate mapping-related rework into a controlled defect triage stream.",
+            "recommendations": "1. Establish a DH mapping decision register with owner, due date, and business signoff. 2. Prioritize early validation of high-variance fields and entity stitching scenarios. 3. Protect UAT by introducing a pre-UAT integration checkpoint specific to DH mapping stability. 4. Keep fallback presentation logic ready for any field that remains unsettled."
+          },
+          {
+            "riskID": "R02",
+            "riskTitle": "Late availability of total premium fields may delay changes",
+            "riskDescription": "Due to dependency on 4 additional Data Hub fields for total premium calculation with expected availability only on 30th July, BoB-related changes may not be completed until after that date, resulting in delayed functionality readiness and compressed downstream testing.",
+            "riskChain": {
+              "rootCause": "Late upstream delivery of required total premium data fields from Data Hub.",
+              "trigger": "Fields arrive late, incomplete, or with quality issues requiring clarification.",
+              "primaryRisk": "BoB total premium changes are implemented in a narrow late window.",
+              "downstreamRisk": "Premium-related E2E and UAT scenarios are compressed or partially blocked.",
+              "impact": "Potential delay to BoB readiness and increased signoff risk."
+            },
+            "category": "Operational",
+            "riskType": "Delay",
+            "severity": "High",
+            "likelihood": "High",
+            "confidenceScore": "High",
+            "businessImpact": "Potential delay to a business-facing BoB capability and reduced confidence in premium-related functionality due to compressed validation and possible late defect discovery.",
+            "currentProjectEvidence": "WSR challenges explicitly state the project is awaiting 4 new fields for total premium from DH with ETA 30th July, and open risk items note changes can only be made by 5th August if fields arrive then.",
+            "currentContextReasoning": "This is a dated, concrete, phase-relevant dependency in a project already nearing deeper validation stages. The risk is immediate because premium logic is tied to visible business behavior and downstream testing.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Comparable to the historical Claims project pattern where unresolved upstream decisions limited sprint readiness and delayed progress.",
+              "historicalSupportLevel": "Moderate",
+              "historicalReasoning": "Historical Premera evidence shows external dependency delay can rapidly convert into delivery timing risk. The current case has stronger direct evidence because the dependency date and downstream consequence are explicitly stated."
+            },
+            "futureRiskProjection": "If the fields are not available and validated quickly, the project is likely to face either deferred premium-related testing or late implementation under time pressure, increasing defect and acceptance risk.",
+            "recurrenceJustification": "Moderate support from historical upstream-dependency delay patterns; very strong support from current evidence.",
+            "leadingIndicators": "Revised DH ETA; premium stories moved across sprint boundaries; blocked premium test cases; business clarification churn after field arrival; premium defect spike after implementation.",
+            "predictiveInsight": "This risk is likely to shift from a data-availability issue into a late functional readiness and acceptance-risk issue if DH field delivery slips or arrives unstable.",
+            "mitigation": "Pre-build premium logic placeholders, validate field contracts immediately upon arrival, prepare test cases in advance, and sequence premium-specific implementation/testing as a fast-track stream.",
+            "recommendations": "1. Obtain daily status from DH until field delivery closes. 2. Pre-stage development branches and test scripts so implementation can begin immediately when fields arrive. 3. Define fallback handling if one or more fields arrive unusable. 4. Escalate if ETA changes beyond the current committed date."
+          },
+          {
+            "riskID": "R03",
+            "riskTitle": "Pending DB connection update may delay move to ACPT",
+            "riskDescription": "Due to the DB connection configuration being maintained outside Auth0 and requiring update by the Premera team because the project team lacks ACPT tenant access, environment promotion to ACPT may be delayed, resulting in postponed deployment and dependent testing activities.",
+            "riskChain": {
+              "rootCause": "External ownership of DB connection configuration and lack of team access to the ACPT tenant.",
+              "trigger": "Premera-owned update is not completed within the environment-promotion window.",
+              "primaryRisk": "Move to ACPT is delayed.",
+              "downstreamRisk": "Environment-based validation, defect resolution, and UAT preparation slip.",
+              "impact": "Schedule pressure on deployment progression and release readiness."
+            },
+            "category": "Operational",
+            "riskType": "Dependency",
+            "severity": "High",
+            "likelihood": "High",
+            "confidenceScore": "High",
+            "businessImpact": "Potential delay to environment progression and inability to complete planned validation and stabilization activities needed for release confidence.",
+            "currentProjectEvidence": "WSR open items state the DB connection update must be performed by the Premera team because the project team lacks ACPT tenant access, and any delay may impact move to ACPT. Support required also references Auth0 terraform release pipeline support.",
+            "currentContextReasoning": "This is a live environment-gating dependency during active build and integration. Because deployment progression depends on external configuration control, the risk can become a bottleneck quickly.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Comparable to historical Claims dependency patterns where external control points constrained work readiness and downstream delivery flow.",
+              "historicalSupportLevel": "Moderate",
+              "historicalReasoning": "Historical evidence supports the proposition that when key delivery enablers remain under external ownership, project execution becomes vulnerable to downstream schedule disruption."
+            },
+            "futureRiskProjection": "If the external configuration action is delayed, the likely next consequence is blocked ACPT validation followed by compressed fix-test cycles and increased milestone slippage.",
+            "recurrenceJustification": "Moderate support through dependency-gated disruption in historical Premera patterns.",
+            "leadingIndicators": "Aging open access/configuration tickets; repeated follow-ups with Premera admins; deployment completed without validation access; unresolved ACPT connectivity issues.",
+            "predictiveInsight": "This risk is likely to propagate from environment dependency into broader validation delay if tenant-controlled updates are not executed on time.",
+            "mitigation": "Create a named dependency owner matrix for ACPT actions, set deadline-triggered escalation, pre-validate all non-tenant-controlled items, and prepare a promotion checklist with explicit dependency completion gates.",
+            "recommendations": "1. Escalate tenant update dependency to joint governance with due date confirmation. 2. Track ACPT gating items daily until closure. 3. Reserve a rapid validation window immediately after update completion. 4. Prepare rollback and alternate sequencing if ACPT progression slips."
+          },
+          {
+            "riskID": "R04",
+            "riskTitle": "Single LLM availability may reduce agent effectiveness",
+            "riskDescription": "Due to only one LLM being available in Port Key and the inability to use a reviewer-agent, agent outputs may underperform on certain tasks, resulting in increased manual review effort, lower automation efficiency, and slower completion of agent-enabled work.",
+            "riskChain": {
+              "rootCause": "Constrained model choice for AAVA-enabled work and absence of reviewer-agent support.",
+              "trigger": "Available model underperforms on generation, review, or orchestration-heavy tasks.",
+              "primaryRisk": "Agent-assisted work requires heavier manual intervention.",
+              "downstreamRisk": "Expected productivity gains are not realized and agent-enabled work consumes more effort than planned.",
+              "impact": "Efficiency loss, quality variability, and possible schedule drag."
+            },
+            "category": "Technical",
+            "riskType": "Performance and reliability",
+            "severity": "Medium",
+            "likelihood": "Medium",
+            "confidenceScore": "Medium",
+            "businessImpact": "Potential increase in manual review effort and reduced productivity gains from the AI-enabled delivery model, affecting schedule efficiency and delivery cost.",
+            "currentProjectEvidence": "WSR states only one LLM is available in Port Key, that it may underperform on specific tasks, and that reviewer-agent use is not possible. Current project context also notes active AAVA-related risks and agent development dependencies.",
+            "currentContextReasoning": "The portal can still be built through conventional engineering, so this is not a total-delivery blocker. The more likely impact is weakened acceleration and inconsistent output quality in agent-supported tasks.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Closest analogue is the historical Servicing AI-capability confidence pattern where expected AI value was not consistently visible in outcomes.",
+              "historicalSupportLevel": "Weak",
+              "historicalReasoning": "Historical data does not show single-model technical underperformance, but it does show AI-related expectations can become delivery and perception risks when outcomes do not demonstrate expected value."
+            },
+            "futureRiskProjection": "If model limitations persist, agent-supported tasks are likely to remain manual-heavy, reducing expected acceleration and increasing skepticism around AI-enabled productivity assumptions.",
+            "recurrenceJustification": "Weak direct historical support; current-project evidence is primary.",
+            "leadingIndicators": "High manual correction rate; repeated prompt tuning without quality improvement; low reuse of generated artifacts; widening gap between estimated and realized AI productivity.",
+            "predictiveInsight": "This risk is likely to remain an efficiency and quality-variance issue unless model constraints are offset by stronger human review patterns and narrower use-case targeting.",
+            "mitigation": "Limit LLM usage to task types with proven performance, add manual QA checkpoints for agent outputs, and maintain a reviewer checklist in place of unavailable reviewer-agent behavior.",
+            "recommendations": "1. Define approved use cases for the current model. 2. Re-estimate agent-enabled tasks using actual observed productivity. 3. Monitor output quality by task type. 4. Escalate alternate model access if critical use cases continue underperforming."
+          },
+          {
+            "riskID": "R05",
+            "riskTitle": "Delayed tool integration may hold up agent development",
+            "riskDescription": "Due to AAVA and Premera tool integrations being required before full agent development and access to Premera-specific tools remaining constrained, agent development and downstream dependent tasks may be delayed, resulting in schedule slippage and refactoring effort.",
+            "riskChain": {
+              "rootCause": "Open dependency on access to Premera-specific tools and incomplete integration needed for AAVA-based agents.",
+              "trigger": "Required tool access or integration endpoints remain unavailable for planned agent build work.",
+              "primaryRisk": "Agent development continues through workaround or partial patterns.",
+              "downstreamRisk": "Later refactoring, orchestration delay, and slower completion of dependent work.",
+              "impact": "Schedule slippage and additional technical rework."
+            },
+            "category": "Technical",
+            "riskType": "Dependency",
+            "severity": "High",
+            "likelihood": "High",
+            "confidenceScore": "High",
+            "businessImpact": "Potential delay to in-scope AAVA architecture, agent development, and orchestration work, along with additional refactoring cost if workaround implementations must later be aligned to actual tool integrations.",
+            "currentProjectEvidence": "WSR identifies open dependency on access to Premera-specific tools for AAVA integration and notes tool integration is required before agent development. Current context also references active dependency on SharePoint, Azure Blob, and ADO access.",
+            "currentContextReasoning": "This risk is already affecting technical sequencing because delayed integrations force workaround-based implementation. That increases probability of later redesign during a phase with less schedule flexibility.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Comparable to historical Claims dependency patterns where upstream decisions were not ready and teams were forced into readiness gaps that affected execution.",
+              "historicalSupportLevel": "Moderate",
+              "historicalReasoning": "Historical evidence supports dependency-not-ready leading to downstream inefficiency and work disruption. The current case is a tool-integration variant of the same structure."
+            },
+            "futureRiskProjection": "If tool integration remains incomplete, later-stage refactoring and retesting of agent capabilities are likely, especially as orchestration and enterprise-tool-enabled workflows are exercised.",
+            "recurrenceJustification": "Moderate support from historical dependency-delay patterns; strong direct evidence in current project.",
+            "leadingIndicators": "Aging access requests; workaround stories increasing; refactor tasks added to backlog; agent stories blocked pending integration; governance escalation on tool access.",
+            "predictiveInsight": "This risk is likely to evolve from a local access blocker into broader architecture and rework pressure if tool integration remains partial during build-to-test transition.",
+            "mitigation": "Separate tool-independent from tool-dependent agent components, control workaround scope, document technical debt created by atomic-agent fallback, and keep access escalation active in governance.",
+            "recommendations": "1. Baseline which agent capabilities are blocked strictly by tool access. 2. Avoid overbuilding workaround flows that will require major redesign. 3. Set access dependency deadlines with escalation rules. 4. Plan explicit refactoring capacity if access remains late."
+          },
+          {
+            "riskID": "R06",
+            "riskTitle": "Insufficient agent hardening may cause inconsistent production behavior",
+            "riskDescription": "Due to incomplete agent hardening, scenario testing, or fallback logic, Producer Portal agents may behave inconsistently under production conditions, resulting in quality issues, remediation effort, and potential delay to release readiness.",
+            "riskChain": {
+              "rootCause": "Insufficient hardening controls for agents requiring iterative refinement and reliability validation.",
+              "trigger": "Production-like or edge-case scenarios expose unstable agent behavior.",
+              "primaryRisk": "Agent outputs or actions behave inconsistently.",
+              "downstreamRisk": "More fixes, retesting, and release-gate concerns before go-live.",
+              "impact": "Quality degradation, remediation effort, and possible release delay."
+            },
+            "category": "Technical",
+            "riskType": "Quality",
+            "severity": "Medium",
+            "likelihood": "Medium",
+            "confidenceScore": "Medium",
+            "businessImpact": "Potential instability in AI-enabled features and added stabilization effort before release, reducing confidence in agent-enabled delivery quality.",
+            "currentProjectEvidence": "Current risk signals explicitly include agent hardening risk. The project scope includes AAVA agent design and development, while testing and NFR validation are in scope during the current phase.",
+            "currentContextReasoning": "As the project moves deeper into integrated testing, hardening risk becomes more relevant because multi-scenario behavior will be exercised under more realistic conditions than isolated development.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Closest analogue is the historical Servicing quality/confidence pattern, where technical-quality concerns expanded into stakeholder trust issues.",
+              "historicalSupportLevel": "Weak",
+              "historicalReasoning": "Historical evidence does not specifically record agent hardening failures, but it supports that unresolved technical quality issues in AI-related work can damage confidence."
+            },
+            "futureRiskProjection": "If hardening remains incomplete, the likely next event is inconsistent behavior in integrated or user-facing scenarios, followed by late remediation and increased scrutiny of production readiness.",
+            "recurrenceJustification": "Weak direct historical support; current risk is strongly evidenced in project signals.",
+            "leadingIndicators": "Repeated scenario-test failures; unresolved fallback handling; inconsistent outcomes across similar prompts; increasing manual overrides during testing.",
+            "predictiveInsight": "This risk is likely to become visible late in validation unless reliability controls are strengthened before broader end-to-end usage.",
+            "mitigation": "Implement scenario-based hardening checklists, fallback logic, and monitored failure handling; validate agents in production-like workflows before release gates.",
+            "recommendations": "1. Define minimum hardening criteria per agent. 2. Run edge-case and negative-path tests early. 3. Ensure graceful degradation is implemented for unstable actions. 4. Tie release readiness to hardening evidence, not just functional completion."
+          },
+          {
+            "riskID": "R07",
+            "riskTitle": "Limited training datasets may slow agent maturity",
+            "riskDescription": "Due to limited training datasets and reference data availability for agent learning, agent maturity may develop more slowly than expected, resulting in delayed productivity gains and reduced cost efficiency during implementation.",
+            "riskChain": {
+              "rootCause": "Insufficient volume or completeness of training datasets, reference datasets, and sample outputs for agent learning.",
+              "trigger": "Agent refinement cycles fail to improve usefulness or accuracy within planned sprint windows.",
+              "primaryRisk": "Agent maturity lags expectations.",
+              "downstreamRisk": "More manual delivery work continues and acceleration benefits remain below plan.",
+              "impact": "Schedule drag and lower efficiency from the AI-enabled delivery model."
+            },
+            "category": "Technical",
+            "riskType": "Dependency",
+            "severity": "Medium",
+            "likelihood": "Medium",
+            "confidenceScore": "Medium",
+            "businessImpact": "Potential slower realization of AAVA productivity gains and continued dependence on manual execution during implementation.",
+            "currentProjectEvidence": "Current risk signals include agent learning dataset limitation risk. Project scope and assumptions require knowledge bases, templates, and reference materials to support agent development.",
+            "currentContextReasoning": "The risk is phase-appropriate because agent development is ongoing during Implement & Build. Dataset sufficiency directly influences how quickly agent-supported work becomes reliable enough to reduce manual effort.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Closest analogue is the historical Servicing AI capability confidence issue where expected AI value was not fully demonstrated.",
+              "historicalSupportLevel": "Weak",
+              "historicalReasoning": "No direct historical evidence of dataset scarcity exists, but historical patterns show AI expectations can become stakeholder risks when outputs do not mature convincingly."
+            },
+            "futureRiskProjection": "If dataset limitations persist, the project is likely to see slower-than-expected agent maturity, weaker productivity improvement, and increased reliance on curated/manual intervention through the remaining build window.",
+            "recurrenceJustification": "Weak historical support; current evidence is the main basis.",
+            "leadingIndicators": "Slow output improvement over iterations; repeated dependence on curated examples; low scenario coverage; high human correction rate; delayed closure of learning-related stories.",
+            "predictiveInsight": "This risk is likely to remain an efficiency and maturity issue unless more representative enterprise examples and reference data are made available soon.",
+            "mitigation": "Prioritize curated high-value datasets for near-term use cases, constrain learning objectives to highest-value scenarios, and capture reusable examples from current work.",
+            "recommendations": "1. Identify minimum viable datasets for priority agent use cases. 2. Work with client stakeholders to release representative samples faster. 3. Measure maturity by scenario rather than broad claims of agent readiness. 4. Keep manual fallback capacity for tasks where learning remains weak."
+          },
+          {
+            "riskID": "R08",
+            "riskTitle": "Late client-specific format discovery may cause rework",
+            "riskDescription": "Due to unavailability or late discovery of client-specific output formats and templates, agent or portal outputs may not match expected formats, resulting in rework and delayed delivery milestones.",
+            "riskChain": {
+              "rootCause": "Incomplete early availability of client-specific templates, formats, or sample outputs.",
+              "trigger": "Format expectations are clarified after outputs are already built or reviewed.",
+              "primaryRisk": "Delivered outputs do not conform to expected client format requirements.",
+              "downstreamRisk": "Rework, repeated reviews, and milestone churn.",
+              "impact": "Schedule and cost impact through formatting-related rework."
+            },
+            "category": "Operational",
+            "riskType": "Dependency",
+            "severity": "Medium",
+            "likelihood": "Medium",
+            "confidenceScore": "Medium",
+            "businessImpact": "Potential acceptance delay and rework for portal or agent outputs where business users expect specific presentation standards.",
+            "currentProjectEvidence": "Current risk signals explicitly include client template alignment risk. The project scope includes UI/UX, documentation, testing, and AI-enabled outputs, all of which can be affected by late format expectations.",
+            "currentContextReasoning": "This risk matters because output format mismatches often surface late, during reviews or UAT, when correction consumes scarce schedule buffer.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Indirectly similar to the historical Servicing confidence pattern where expectation mismatch and weak proactive communication reduced stakeholder trust.",
+              "historicalSupportLevel": "Weak",
+              "historicalReasoning": "Historical evidence does not reference template mismatch specifically, but it supports that output-vs-expectation gaps can create broader confidence issues."
+            },
+            "futureRiskProjection": "If expected formats are clarified late, iterative rework and review cycles are likely to increase during a compressed validation window.",
+            "recurrenceJustification": "Weak direct historical support; current risk signal is explicit.",
+            "leadingIndicators": "Late arrival of sample templates; repeated formatting comments from SMEs; output standards still undefined during testing; increasing review cycles on presentation artifacts.",
+            "predictiveInsight": "This risk is likely to create avoidable acceptance churn if format baselines are not confirmed before late-stage validation.",
+            "mitigation": "Collect sample outputs early, validate formatting expectations with SMEs, and prototype high-visibility outputs before broader implementation is finalized.",
+            "recommendations": "1. Create a format baseline repository for all client-specific outputs. 2. Secure SME review on representative artifacts early. 3. Distinguish structural format requirements from cosmetic preferences. 4. Keep formatting changes out of the critical path where possible."
+          },
+          {
+            "riskID": "R09",
+            "riskTitle": "External tool invocation failures may disrupt automation continuity",
+            "riskDescription": "Due to dependency on external tools and APIs for agent execution, tool or API invocation failures may interrupt automated workflows, resulting in broken automation continuity, manual intervention, and reduced output quality.",
+            "riskChain": {
+              "rootCause": "Reliance on external tools/APIs with variable reliability, timeout behavior, or runtime availability.",
+              "trigger": "Tool calls fail, time out, or return unusable responses during execution.",
+              "primaryRisk": "Agent workflows stop, degrade, or produce incomplete outputs.",
+              "downstreamRisk": "Manual recovery and inconsistent automation results increase.",
+              "impact": "Reduced reliability and slower delivery throughput."
+            },
+            "category": "Technical",
+            "riskType": "Dependency",
+            "severity": "Medium",
+            "likelihood": "Medium",
+            "confidenceScore": "Medium",
+            "businessImpact": "Potential interruption to AI-enabled automation and added manual effort to recover partially completed tasks.",
+            "currentProjectEvidence": "Current risk signals explicitly include tool/API invocation failures risk and indicate AAVA-based work depends on external tools and enterprise integrations.",
+            "currentContextReasoning": "This is an operational reliability risk for an AI-enabled delivery pattern. The most likely impact is intermittent disruption rather than complete project failure, but repeated failures can materially reduce confidence and efficiency.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Only broadly comparable to historical dependency-driven disruption in Claims.",
+              "historicalSupportLevel": "Weak",
+              "historicalReasoning": "Historical dataset does not record tool invocation reliability events. Support is limited to the general pattern of dependency instability creating downstream delivery issues."
+            },
+            "futureRiskProjection": "If invocation reliability is not stabilized, automation workflows are likely to face sporadic failures, leading teams to adopt manual bypasses and reducing trust in agent-driven processes.",
+            "recurrenceJustification": "Weak historical support; current project evidence is sufficient.",
+            "leadingIndicators": "Timeout trends rising; retry counts increasing; repeated manual reruns; inconsistent automation completion rates; integration incidents clustered around specific tools.",
+            "predictiveInsight": "This risk is likely to degrade automation adoption and throughput if runtime reliability controls are not strengthened early.",
+            "mitigation": "Add retries, timeout handling, graceful degradation, and execution logging around all critical tool calls.",
+            "recommendations": "1. Measure tool reliability by dependency and scenario. 2. Identify highest-failure integrations and prioritize stabilization there. 3. Create manual fallback paths for business-critical automated steps. 4. Review invocation patterns before scaling usage."
+          },
+          {
+            "riskID": "R10",
+            "riskTitle": "Poor agent coordination may delay workflows",
+            "riskDescription": "Due to immature orchestration patterns or weak coordination between multiple agents, workflow sequencing may be delayed or executed incorrectly, resulting in schedule impact, rework, and quality issues in multi-agent tasks.",
+            "riskChain": {
+              "rootCause": "Incomplete definition and validation of multi-agent orchestration patterns.",
+              "trigger": "Agents hand off incomplete context, act in the wrong sequence, or fail to coordinate reliably.",
+              "primaryRisk": "Workflow delays or incorrect task sequencing occur.",
+              "downstreamRisk": "Outputs require rework and dependent work slows.",
+              "impact": "Schedule inefficiency and quality issues in agent-enabled workflows."
+            },
+            "category": "Technical",
+            "riskType": "Dependency",
+            "severity": "Medium",
+            "likelihood": "Medium",
+            "confidenceScore": "Medium",
+            "businessImpact": "Potential disruption to multi-agent delivery tasks and reduced confidence in agent orchestration as an in-scope capability.",
+            "currentProjectEvidence": "Current risk signals explicitly include agent orchestration risk. The project scope includes AAVA integration and orchestration, and other current risks show tool-access and model constraints that can compound orchestration complexity.",
+            "currentContextReasoning": "Orchestration issues often become visible when moving from isolated prototypes to integrated workflows, which aligns with the current phase of the project.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Weak direct match; nearest analogue is the historical Servicing pattern where technical process weakness widened into stakeholder confidence risk.",
+              "historicalSupportLevel": "Weak",
+              "historicalReasoning": "Historical data does not include orchestration failures, but it supports that unresolved AI-delivery quality weaknesses can expand into credibility concerns."
+            },
+            "futureRiskProjection": "If orchestration remains immature, the likely next impact is increased rework and manual coordination in end-to-end flows, reducing the value of multi-agent implementation before validation milestones.",
+            "recurrenceJustification": "Weak historical support; strong current relevance from explicit project signals.",
+            "leadingIndicators": "Multi-agent test failures; context-loss defects; orchestration debugging effort increasing; workflows requiring manual sequencing; repeated integration breaks between agent steps.",
+            "predictiveInsight": "This risk is likely to remain latent until broader chained workflows are tested, at which point it can create concentrated rework pressure.",
+            "mitigation": "Define orchestration patterns early, test multi-agent flows before UAT, and instrument context handoff and failure points.",
+            "recommendations": "1. Limit orchestration complexity until baseline flows are stable. 2. Validate stepwise handoff behavior with traceable logs. 3. Prioritize high-value orchestrated scenarios over broad rollout. 4. Keep manual override procedures for critical chained tasks."
+          },
+          {
+            "riskID": "R11",
+            "riskTitle": "Citrix slowness is impacting offshore team productivity",
+            "riskDescription": "Due to Citrix server slowness and timeouts affecting offshore access, team productivity may decline during active build and testing work, resulting in slower sprint progress and reduced delivery efficiency.",
+            "riskChain": {
+              "rootCause": "Unstable Citrix or network access for offshore team members.",
+              "trigger": "Persistent slowness and timeout behavior continues during development or testing work.",
+              "primaryRisk": "Offshore productivity is reduced.",
+              "downstreamRisk": "Carryover work, slower defect turnaround, and weaker capacity to absorb late changes.",
+              "impact": "Schedule inefficiency during active build and testing."
+            },
+            "category": "Operational",
+            "riskType": "Delay",
+            "severity": "Medium",
+            "likelihood": "Medium",
+            "confidenceScore": "High",
+            "businessImpact": "Potential throughput loss for coding, testing, and coordination work in a hybrid model during a time-sensitive phase.",
+            "currentProjectEvidence": "Operational context explicitly lists Citrix server slowness and timeouts impacting offshore team efforts.",
+            "currentContextReasoning": "This is an active operational issue, not a hypothetical one. During build and integration testing, productivity drag has immediate schedule consequences and reduces the project's ability to absorb other dependency-related delays.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Moderately similar to the historical Claims project where offshore delivery effectiveness was impaired by visibility and coordination conditions outside direct engineering control.",
+              "historicalSupportLevel": "Moderate",
+              "historicalReasoning": "Historical evidence shows offshore delivery can become materially less effective when key enabling conditions are weak, producing utilization and schedule consequences."
+            },
+            "futureRiskProjection": "If access issues persist, offshore throughput is likely to stay below plan, increasing carryover risk and reducing flexibility to handle DH or Auth0-related late changes.",
+            "recurrenceJustification": "Moderate support through historical offshore-delivery sensitivity to external constraints.",
+            "leadingIndicators": "Rising access complaints; longer task cycle time for offshore work; increasing carryover; test execution delays; more unresolved environment-access incidents.",
+            "predictiveInsight": "This risk is likely to amplify the impact of other schedule risks by reducing the team's recovery capacity.",
+            "mitigation": "Log and escalate Citrix incidents quickly, prioritize critical-path work during stable access windows, and shift non-dependent tasks to local/offline preparation where feasible.",
+            "recommendations": "1. Establish daily productivity-impact reporting for Citrix issues. 2. Quantify lost hours to strengthen escalation. 3. Re-sequence offshore work toward lower-access-dependency tasks when incidents spike. 4. Secure infrastructure-owner commitment for resolution timing."
+          },
+          {
+            "riskID": "R12",
+            "riskTitle": "Late UAT test case availability may compress validation timelines",
+            "riskDescription": "Due to the need for early UAT test cases from project stakeholders and support teams, delayed availability of those test cases may compress the validation timeline, resulting in reduced UAT readiness and less time to address defects before signoff.",
+            "riskChain": {
+              "rootCause": "Late provision of UAT scenarios by business or stakeholder teams.",
+              "trigger": "UAT cases are not finalized or shared early enough for preparation.",
+              "primaryRisk": "Validation planning and execution are compressed.",
+              "downstreamRisk": "Reduced defect turnaround time and lower acceptance confidence.",
+              "impact": "Pressure on UAT signoff and release readiness."
+            },
+            "category": "Operational",
+            "riskType": "Delay",
+            "severity": "Medium",
+            "likelihood": "Medium",
+            "confidenceScore": "High",
+            "businessImpact": "Potential compression of testing timelines and reduced readiness for business validation and contractual signoff milestones.",
+            "currentProjectEvidence": "Operational support required explicitly asks for help getting UAT test cases early.",
+            "currentContextReasoning": "Because the project is moving toward later validation stages, UAT preparation is time-sensitive. Late business test readiness can cause concentrated downstream pressure even if build progress remains nominal.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Broadly similar to historical dependency-driven disruption in Claims.",
+              "historicalSupportLevel": "Weak",
+              "historicalReasoning": "Historical evidence does not specifically mention UAT delays, but it does support that late external inputs can quickly disrupt execution flow."
+            },
+            "futureRiskProjection": "If UAT scenarios remain late, the project will likely face compressed business validation, late defect discovery, or reduced functional coverage under schedule pressure.",
+            "recurrenceJustification": "Weak historical support; current evidence is direct and sufficient.",
+            "leadingIndicators": "No baselined UAT pack; unresolved business participant availability; many TBD scenarios as UAT nears; unchanged signoff dates despite test-prep lag.",
+            "predictiveInsight": "This risk is likely to turn into a signoff-pressure issue rather than a simple testing inconvenience if business cases do not arrive early.",
+            "mitigation": "Prepare a provisional UAT skeleton from requirements and use cases, pre-map business scenarios to existing test assets, and escalate missing stakeholder-owned cases early.",
+            "recommendations": "1. Set a hard UAT case baseline date. 2. Identify critical business journeys that must be available first. 3. Use draft cases to begin environment and data preparation. 4. Escalate unresolved business test ownership in governance."
+          },
+          {
+            "riskID": "R13",
+            "riskTitle": "Upstream data setup dependency may delay integration and E2E validation",
+            "riskDescription": "Due to dependency on upstream teams to set up data for integration and E2E scenarios, validation activities may be delayed, resulting in blocked or incomplete integration testing and reduced confidence in end-to-end readiness.",
+            "riskChain": {
+              "rootCause": "Reliance on upstream teams for test data and scenario setup across integrations.",
+              "trigger": "Required producer, agency, BoB, or related scenario data is unavailable, incomplete, or late.",
+              "primaryRisk": "Integration and E2E validation are blocked or only partially executed.",
+              "downstreamRisk": "Late defect discovery and compressed UAT preparation.",
+              "impact": "Reduced end-to-end confidence and possible schedule delay."
+            },
+            "category": "Operational",
+            "riskType": "Dependency",
+            "severity": "High",
+            "likelihood": "High",
+            "confidenceScore": "High",
+            "businessImpact": "Potential delay to integration testing and end-to-end validation of key producer-facing journeys, with release confidence weakened because completed code remains insufficiently proven.",
+            "currentProjectEvidence": "Support required explicitly calls for upstream data setup for integration and E2E scenarios. Current accomplishments also note the team is working with Edge and DH on creating test data.",
+            "currentContextReasoning": "This is a major near-term risk because the project is transitioning from build to integrated validation. Without upstream data, multiple completed features may remain unvalidated, masking true readiness.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Comparable to the historical Claims project where external dependency readiness constrained work allocation and downstream delivery progress.",
+              "historicalSupportLevel": "Moderate",
+              "historicalReasoning": "Historical Premera evidence supports the pattern of external readiness delay leading to downstream execution and schedule impact."
+            },
+            "futureRiskProjection": "If upstream data setup continues to lag, blocked scenarios, deferred E2E coverage, and late defect discovery are the most likely next outcomes, followed by compressed UAT readiness.",
+            "recurrenceJustification": "Moderate historical support with strong direct current evidence.",
+            "leadingIndicators": "Daily calls continue without data closure; test cases stay blocked for lack of data; scenario coverage remains partial; validation completion lags code completion; late-stage defect density rises once data finally arrives.",
+            "predictiveInsight": "This risk is likely to become one of the main bottlenecks for release readiness because it sits directly on the path from build completion to validated end-to-end confidence.",
+            "mitigation": "Create a scenario-data matrix by owner and due date, prioritize critical-path persona journeys first, and establish daily closure tracking for blocked test data items.",
+            "recommendations": "1. Escalate unresolved data setup items in joint business/technical governance. 2. Define minimum data needed for each critical integration path. 3. Start partial validation with available data but preserve a tracked gap list. 4. Protect UAT entry criteria with explicit E2E data readiness thresholds."
+          }
+        ]
+      },
+      "projectForecastInsights": {
+        "majorBottlenecks": [
+          "Data Hub dependency resolution for mappings and premium fields",
+          "ACPT promotion dependency on Premera-controlled Auth0/DB configuration",
+          "Upstream integration and E2E test data setup",
+          "Tool-access dependency for AAVA and Premera-tool integration",
+          "Citrix access instability affecting offshore productivity"
+        ],
+        "riskPropagationPatterns": [
+          "Upstream dependency delay -> late implementation/rework -> compressed integration/E2E -> UAT pressure",
+          "Tool access constraints -> workaround implementation -> later refactoring/orchestration risk",
+          "Operational productivity drag -> reduced recovery capacity -> amplified impact of other schedule risks"
+        ],
+        "emergingConcerns": [
+          "Concentration of active risks around external dependencies and validation readiness",
+          "AI-related risks are trending toward efficiency and quality variability rather than immediate delivery stoppage",
+          "Multiple independent risks converge on late-stage testing and release confidence"
+        ],
+        "highRiskDependencies": [
+          "DH for field delivery, mappings, and support",
+          "Premera for ACPT/Auth0 configuration actions",
+          "Upstream teams for integration and E2E data setup",
+          "Premera-specific tool access for AAVA integration"
+        ],
+        "rootCauseConcentration": [
+          "External dependency readiness",
+          "Late availability of integration inputs and validation assets",
+          "Incomplete access/control over critical environments and tools",
+          "Immature AI-enablement prerequisites during active build"
+        ],
+        "mostLikelyFailureTriggers": [
+          "DH changes or delays beyond committed dates",
+          "Unavailable or unstable integration/E2E data",
+          "ACPT update dependency not closed in time",
+          "Late emergence of integration defects from mapping assumptions",
+          "Continued infrastructure/access instability for offshore execution"
+        ],
+        "overallOutlook": "Cautiously at risk. The project has tangible build progress and minor deviation status, but the forward risk profile is concentrated in dependency-driven late-cycle disruption. The most credible threat is not isolated technical failure; it is convergence of unresolved external dependencies into compressed validation and release-readiness pressure."
+      }
+    },
+    {
+      "projectName": "Premera Blue Cross - AI Platform Build - Claims",
+      "RiskAnalysis": {
+        "Risks": [
+          {
+            "riskID": "R01",
+            "riskTitle": "Limited scope visibility may leave engineers without allocated work",
+            "riskDescription": "Due to limited scope visibility, inconsistent inclusion in key Scrum meetings, and offshore-only dependence on the McK team for program, sprint, and design context, engineers may not receive aligned work assignments, resulting in idle capacity, billing impact, and quality concerns.",
+            "riskChain": {
+              "rootCause": "Weak project visibility and incomplete context transfer in a T&M, offshore-only delivery model.",
+              "trigger": "Scope, design, or priority decisions occur without consistent team participation or timely communication.",
+              "primaryRisk": "Engineers receive little work or work with incomplete context.",
+              "downstreamRisk": "Utilization drops, quality concerns increase, and sprint commitments become harder to meet.",
+              "impact": "Financial impact, revenue loss, and client-relationship strain."
+            },
+            "category": "Operational",
+            "riskType": "Execution",
+            "severity": "High",
+            "likelihood": "High",
+            "confidenceScore": "High",
+            "businessImpact": "Potential billing impact, reduced offshore utilization, and quality concerns from low visibility into scope, priorities, and design decisions.",
+            "currentProjectEvidence": "The risk artifact explicitly states T&M delivery, no onshore team, McK ownership of program management/sprint/design, inconsistent inclusion in key Scrum meetings, no work allocated to some engineers, billing impact, and quality concerns.",
+            "currentContextReasoning": "In an offshore-only model with limited access to upstream planning and design conversations, even minor gaps in communication can quickly become work-allocation and quality issues. The project context directly supports this cause-and-effect structure.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Direct match to historical cluster 119971-C1: scope visibility and offshore coordination gap.",
+              "historicalSupportLevel": "Strong",
+              "historicalReasoning": "Historical evidence from the same project shows limited program/design visibility and inconsistent Scrum inclusion caused weak scope alignment, underutilization, and quality concerns. Daily connects, single-POC coordination, and access to recordings were historically successful."
+            },
+            "futureRiskProjection": "If this condition had continued, the most likely next development would have been sustained task starvation for some engineers, followed by utilization loss, rushed execution later, and increased quality leakage from delayed context alignment.",
+            "recurrenceJustification": "Strong. The exact same causal structure is recorded in project-specific historical intelligence.",
+            "leadingIndicators": "Missed inclusion in key meetings; uneven task allocation; repeated design clarification requests; engineers relying on recordings rather than live participation; growing utilization variance.",
+            "predictiveInsight": "The dominant future path from this risk is progression from visibility failure to utilization loss and then to quality pressure once work finally arrives.",
+            "mitigation": "Maintain daily connects, single-POC task coordination, mandatory inclusion or recording access for design/Scrum discussions, and explicit scope alignment checkpoints before sprint commitment.",
+            "recommendations": "1. Convert design and sprint decisions into written action summaries for offshore teams. 2. Enforce meeting participation criteria for critical roles. 3. Maintain alternate work backlog for anyone blocked by upstream clarity. 4. Add early warning reporting on engineer-level allocation gaps."
+          },
+          {
+            "riskID": "R02",
+            "riskTitle": "Pending FACETS integration decision may delay sprint progress",
+            "riskDescription": "Due to leadership delay in finalizing the FACETS integration approach after multiple options were discussed, sprint-ready PBIs and tasks may remain unavailable, resulting in reduced resource utilization and delayed sprint progress.",
+            "riskChain": {
+              "rootCause": "Unresolved leadership decision on the FACETS integration approach needed for claims SOP automation.",
+              "trigger": "The integration approach remains pending after workshop discussions and PBI readiness cannot be finalized.",
+              "primaryRisk": "Sprint commitments and work allocation stall.",
+              "downstreamRisk": "Offshore engineers have limited task availability and delivery timelines slip.",
+              "impact": "Reduced utilization, delayed sprint progress, and timeline pressure."
+            },
+            "category": "Operational",
+            "riskType": "Planning",
+            "severity": "High",
+            "likelihood": "High",
+            "confidenceScore": "High",
+            "businessImpact": "Potential delay to sprint commitments and delivery timelines, along with reduced offshore utilization on a core integration-dependent project objective.",
+            "currentProjectEvidence": "The risk artifact states sprint commitments and resource allocation depended on finalizing the FACETS integration approach; final leadership decision remained pending after workshop discussions; PBI/task readiness was limited; reduced utilization and delayed sprint progress were expected consequences.",
+            "currentContextReasoning": "Because the project objective included automating claims adjudication SOP manuals using FACETS data, this dependency was central rather than peripheral. The lack of approved integration direction directly impacted work readiness.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Direct match to historical cluster 119971-C2: pending integration decision and resource utilization risk.",
+              "historicalSupportLevel": "Strong",
+              "historicalReasoning": "Historical evidence from the same project shows unresolved FACETS integration decisions constrained task readiness, reduced utilization, and threatened sprint commitments. Escalation for faster decisions and alternate sprint-ready work were historically effective."
+            },
+            "futureRiskProjection": "If unresolved, the next likely evolution would be either continued idle capacity or substitution of lower-value work, followed by compressed execution after decision closure and heightened quality/schedule risk.",
+            "recurrenceJustification": "Strong. This causal chain is explicitly evidenced in project-specific history.",
+            "leadingIndicators": "Leadership decision not finalized; blocked PBIs; alternate spike or learning work increasing; sprint plans lacking implementation-ready items; repeated dependency escalations.",
+            "predictiveInsight": "The most likely propagation path is from architecture decision latency to task starvation and then to schedule compression once the dependency clears.",
+            "mitigation": "Escalate decision deadlines, prepare alternate sprint-ready work, isolate blocked FACETS tasks in dependency tracking, and protect sprint integrity by using spikes for uncertain mid-sprint additions.",
+            "recommendations": "1. Tie external decision dates to sprint planning checkpoints. 2. Maintain backup backlog to absorb blocked capacity. 3. Use decision logs with named owners and deadline-based escalation. 4. Separate architecture-dependent and independent work streams earlier."
+          }
+        ]
+      },
+      "projectForecastInsights": {
+        "majorBottlenecks": [
+          "External leadership delay on FACETS integration decisions",
+          "Limited scope and design visibility for offshore-only delivery",
+          "Weak inclusion in key Scrum/governance channels"
+        ],
+        "riskPropagationPatterns": [
+          "Low planning/design visibility -> poor work allocation -> utilization and quality risk",
+          "Pending integration decision -> no sprint-ready work -> reduced utilization -> schedule pressure"
+        ],
+        "emergingConcerns": [
+          "Commercial exposure from T&M idle capacity",
+          "Quality risk from late context transfer",
+          "Dependence on upstream control outside the delivery team"
+        ],
+        "highRiskDependencies": [
+          "McK ownership of program, sprint, and design communication",
+          "Leadership finalization of FACETS integration approach"
+        ],
+        "rootCauseConcentration": [
+          "Insufficient visibility into planning and design structures",
+          "External decision latency on core integration path",
+          "Offshore-only coordination without robust context-transfer mechanisms"
+        ],
+        "mostLikelyFailureTriggers": [
+          "Missed participation in key design/sprint meetings",
+          "Delayed leadership signoff on integration approach",
+          "Lack of alternate work when integration decisions remain pending"
+        ],
+        "overallOutlook": "Historically contained but structurally fragile. The project closed its recorded risks quickly, yet the underlying exposure pattern shows strong dependence on upstream visibility and external decision readiness. Execution recovery was better than execution prevention."
+      }
+    },
+    {
+      "projectName": "Premera Blue Cross - AI Platform Build - Servicing",
+      "RiskAnalysis": {
+        "Risks": [
+          {
+            "riskID": "R01",
+            "riskTitle": "PR misalignment may sustain code quality concerns",
+            "riskDescription": "Due to internal PR misalignment and mid-sprint dependency mapping changes, code submissions may continue to attract quality concerns, resulting in reduced team morale, weakened rapport, and lower confidence in delivery quality.",
+            "riskChain": {
+              "rootCause": "Insufficient pre-PR alignment and changing dependency mappings during sprint execution.",
+              "trigger": "PRs are raised while dependency-related changes or review disagreements remain unresolved.",
+              "primaryRisk": "Client-visible or McK-visible code quality concerns recur.",
+              "downstreamRisk": "Team morale, rapport, and trust in engineering discipline deteriorate.",
+              "impact": "Reputation and client-relationship impact."
+            },
+            "category": "Technical",
+            "riskType": "Quality",
+            "severity": "Medium",
+            "likelihood": "Medium",
+            "confidenceScore": "High",
+            "businessImpact": "Potential impact on team morale, working rapport, and delivery confidence if client-visible quality concerns recur.",
+            "currentProjectEvidence": "The risk artifact states concerns were raised based on PR comments from McK; review of the code base found issues tied to internal PR conversations and dependency changes mid sprint; repeated misalignment could affect morale and rapport.",
+            "currentContextReasoning": "This risk is less about broad coding incompetence and more about review discipline under changing technical dependencies. In an active project where offshore contributions are already being judged, such issues can quickly become signals of deeper capability weakness.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Direct match to historical cluster 119972-C1: code review quality alignment risk.",
+              "historicalSupportLevel": "Strong",
+              "historicalReasoning": "Historical evidence from the same project shows internal PR alignment issues and dependency changes created quality concerns. Tightened code review, internal draft PRs, and training resolved the issue."
+            },
+            "futureRiskProjection": "If review discipline weakens again or dependency changes continue without better alignment, the most likely next effect is recurrence of quality concerns and renewed stakeholder scrutiny.",
+            "recurrenceJustification": "Strong. Project-specific history records the same pattern and shows it can act as a precursor to broader confidence risk.",
+            "leadingIndicators": "Increasing PR comments on alignment issues; frequent mid-sprint dependency changes; slow PR turnaround; repeated rework before submission; renewed McK concern on code quality.",
+            "predictiveInsight": "The most likely future evolution is escalation from tactical PR-quality concern into a wider client-confidence issue if the symptom reappears.",
+            "mitigation": "Sustain stringent code review gates, internal draft PR review, dependency-change impact checks before submission, and targeted coaching for engineers on review expectations.",
+            "recommendations": "1. Add dependency-change review before raising PRs. 2. Track PR rejection and rework trends. 3. Use lead-level pre-submission signoff for high-visibility code. 4. Link quality metrics to stakeholder governance updates."
+          },
+          {
+            "riskID": "R02",
+            "riskTitle": "Weak AI capability signaling may reduce client confidence",
+            "riskDescription": "Due to delivered outcomes and communication not consistently demonstrating the level of AI expertise, proactive solutioning, and value-add expected by the client, stakeholder confidence in the team's AI delivery capability may decline, resulting in increased scrutiny, escalations, lower satisfaction, and reduced approval of future work.",
+            "riskChain": {
+              "rootCause": "Gaps in proactive AI solutioning, capability demonstration, and communication of value beyond core delivery.",
+              "trigger": "Client reviews work and governance interactions without seeing convincing evidence of expected AI expertise or innovation.",
+              "primaryRisk": "Client confidence in offshore AI delivery capability erodes.",
+              "downstreamRisk": "Escalations, tighter scrutiny, reluctance to approve future work, and account-level continuity risk.",
+              "impact": "Client relationship, reputation, financial exposure, and future revenue risk."
+            },
+            "category": "Reputational",
+            "riskType": "Performance and reliability",
+            "severity": "High",
+            "likelihood": "Medium",
+            "confidenceScore": "High",
+            "businessImpact": "Potential loss of stakeholder confidence, increased escalations, lower stakeholder satisfaction, reduced approval of future work, and possible impact to account growth and project continuity.",
+            "currentProjectEvidence": "The risk artifact states the client selected the organization for AI expertise and expects proactive recommendations and value-add, but delivered code/outcomes did not consistently reflect expected AI expertise and communication gaps reduced confidence in offshore contributions. It also explicitly notes risk of escalations, lower satisfaction, and future work reluctance.",
+            "currentContextReasoning": "This is the most strategic risk in the active Servicing project because it extends beyond immediate delivery into perception, account confidence, and growth. Trust risks also resolve slower than process-quality risks, which increases exposure.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Direct match to historical cluster 119972-C2: AI capability credibility and stakeholder confidence risk; historically linked to the preceding code-quality concern through perception propagation.",
+              "historicalSupportLevel": "Strong",
+              "historicalReasoning": "Historical evidence from the same project shows progression from a tactical code-quality concern to a broader client-confidence issue. Historical resolution intelligence also shows this strategic trust issue remained open longer than process-quality risks."
+            },
+            "futureRiskProjection": "If the underlying communication and value-demonstration gaps remain, the next likely stage is intensified governance scrutiny, direct questions on staffing capability, and hesitancy to approve follow-on scope or future account expansion.",
+            "recurrenceJustification": "Strong. This exact project history shows the same trust-oriented pattern and confirms it is slow-resolving.",
+            "leadingIndicators": "More governance attention on capability rather than delivery status; repeated requests for demos and walkthroughs; stakeholder challenge to offshore suitability; escalation beyond delivery leads; delayed approval decisions.",
+            "predictiveInsight": "This risk is most likely to evolve into an account-level credibility issue rather than a simple delivery concern unless visible AI value and stronger communication are demonstrated consistently.",
+            "mitigation": "Use SME-backed demos, architecture walkthroughs, and concrete AI-value showcases in governance forums; improve communication quality; highlight proactive recommendations and realized benefits in every reporting cycle.",
+            "recommendations": "1. Convert delivery updates into capability-evidence updates with measurable AI value. 2. Use SMEs or circle leaders in critical client-facing sessions until confidence improves. 3. Create a visible pipeline of proactive AI recommendations. 4. Escalate to executive engagement before confidence deterioration hardens into account resistance."
+          }
+        ]
+      },
+      "projectForecastInsights": {
+        "majorBottlenecks": [
+          "Weak proactive signaling of AI expertise",
+          "PR quality alignment under mid-sprint dependency changes",
+          "Communication gap between delivered work and perceived capability"
+        ],
+        "riskPropagationPatterns": [
+          "PR quality concern -> credibility signal -> client confidence erosion",
+          "Communication/value gap -> increased scrutiny -> strategic account risk"
+        ],
+        "emergingConcerns": [
+          "Shift from tactical delivery symptom to strategic trust issue",
+          "Longer aging for confidence risks than for process-quality risks",
+          "Potential growth and continuity impact if capability proof remains weak"
+        ],
+        "highRiskDependencies": [
+          "Stakeholder perception of offshore AI contribution quality",
+          "Dependence on SMEs/circle leaders to reinforce capability narrative",
+          "Consistency of quality controls in client-visible submissions"
+        ],
+        "rootCauseConcentration": [
+          "Insufficient proactive AI solutioning and value articulation",
+          "Weak pre-submission quality alignment amid changing dependencies",
+          "Communication gaps in stakeholder-facing delivery narrative"
+        ],
+        "mostLikelyFailureTriggers": [
+          "Another client-visible PR or code-quality concern",
+          "Governance reviews with insufficient proof of AI value-add",
+          "Failure to show architectural or innovation leadership beyond execution"
+        ],
+        "overallOutlook": "Strategically sensitive. The tactical quality issue appears containable, but the broader AI capability confidence risk remains the key threat. Historical evidence indicates such trust issues resolve more slowly and can affect future work approval if not actively countered with visible capability proof and improved governance narrative."
+      }
+    }
+  ],
+  "summaryStatistics": {
+    "totalProjects": 3,
+    "projectsWithCurrentRisks": 3,
+    "projectsWithNoCurrentRisks": 0,
+    "totalCurrentRisks": 17,
+    "risksByProject": [
+      {
+        "projectName": "Producer Portal",
+        "currentRisksCount": 13
+      },
+      {
+        "projectName": "Premera Blue Cross - AI Platform Build - Claims",
+        "currentRisksCount": 2
+      },
+      {
+        "projectName": "Premera Blue Cross - AI Platform Build - Servicing",
+        "currentRisksCount": 2
+      }
+    ]
+  }
+}
