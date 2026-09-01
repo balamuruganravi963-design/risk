@@ -1,0 +1,571 @@
+{
+  "projects": [
+    {
+      "clientName": "Premera",
+      "projectName": "Producer Portal",
+      "RiskAnalysis": {
+        "Risks": [
+          {
+            "riskID": "R01",
+            "riskTitle": "Data Hub mapping discrepancies may drive design rework",
+            "riskDescription": "The team is proceeding with the provided data mappings while possible issues with mapped values may lead back to entity stitching design changes, which can create schedule impact.",
+            "riskChain": {
+              "rootCause": "Unresolved uncertainty in DH mapped values and entity stitching design assumptions during the Implement & Build phase.",
+              "trigger": "Mapped values are found to be incorrect, incomplete, or incompatible during integration validation or E2E preparation.",
+              "primaryRisk": "Required DH integration and related design may need revision after build work has progressed.",
+              "downstreamRisk": "Integration testing, E2E scenario setup, and UAT preparation may be compressed or delayed.",
+              "impact": "Potential delay to integration completion and downstream testing if mapped values require design changes."
+            },
+            "category": "Technical",
+            "riskType": "Dependency",
+            "severity": "Medium",
+            "likelihood": "Medium",
+            "confidenceScore": "",
+            "businessImpact": "Potential delay to integration completion and downstream testing if mapped values require design changes.",
+            "currentProjectEvidence": "The team is proceeding with the provided data mappings while possible issues with mapped values may lead back to entity stitching design changes, which can create schedule impact.",
+            "currentContextReasoning": "",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "",
+              "historicalSupportLevel": "",
+              "historicalReasoning": ""
+            },
+            "futureRiskProjection": "",
+            "recurrenceJustification": "",
+            "leadingIndicators": "",
+            "predictiveInsight": "",
+            "mitigation": "",
+            "recommendations": ""
+          },
+          {
+            "riskID": "R02",
+            "riskTitle": "Delayed availability of total premium fields may defer BoB changes",
+            "riskDescription": "The 4 additional fields needed for total premium calculation are expected from DH on 30th July, and if they arrive on that date the related changes can only be made by 5th August, which may push schedule-dependent work.",
+            "riskChain": {
+              "rootCause": "Late upstream delivery of required DH data fields needed for total premium calculation.",
+              "trigger": "The fields arrive on the stated ETA or later, leaving insufficient time for immediate implementation and validation.",
+              "primaryRisk": "BoB-related changes may not be completed until around 5th August or later.",
+              "downstreamRisk": "Dependent integration, regression, and UAT sequencing may be compressed.",
+              "impact": "Potential slippage in BoB-related implementation and test sequencing."
+            },
+            "category": "Operational",
+            "riskType": "Delay",
+            "severity": "Medium",
+            "likelihood": "Medium",
+            "confidenceScore": "",
+            "businessImpact": "Potential slippage in BoB-related implementation and test sequencing.",
+            "currentProjectEvidence": "The 4 additional fields needed for total premium calculation are expected from DH on 30th July, and if they arrive on that date the related changes can only be made by 5th August, which may push schedule-dependent work.",
+            "currentContextReasoning": "",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "",
+              "historicalSupportLevel": "",
+              "historicalReasoning": ""
+            },
+            "futureRiskProjection": "",
+            "recurrenceJustification": "",
+            "leadingIndicators": "",
+            "predictiveInsight": "",
+            "mitigation": "",
+            "recommendations": ""
+          },
+          {
+            "riskID": "R03",
+            "riskTitle": "Pending Auth0 configuration update may block move to ACPT",
+            "riskDescription": "The DB connection configuration is maintained outside Auth0 and must be updated by the Premera team because the project team does not have access to the ACPT tenant, so any delay can impact the move to ACPT.",
+            "riskChain": {
+              "rootCause": "External control of Auth0/ACPT tenant configuration and lack of direct project-team access.",
+              "trigger": "Premera does not complete the DB connection configuration update in time or defects emerge during change propagation.",
+              "primaryRisk": "Application components may be unable to progress cleanly into ACPT.",
+              "downstreamRisk": "Environment-based integration, authentication validation, and UAT-preparatory testing may be delayed.",
+              "impact": "Potential delay in environment progression and associated testing activities."
+            },
+            "category": "Operational",
+            "riskType": "Dependency",
+            "severity": "High",
+            "likelihood": "High",
+            "confidenceScore": "",
+            "businessImpact": "Potential delay in environment progression and associated testing activities.",
+            "currentProjectEvidence": "The DB connection configuration is maintained outside Auth0 and must be updated by the Premera team because the project team does not have access to the ACPT tenant, so any delay can impact the move to ACPT.",
+            "currentContextReasoning": "",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "",
+              "historicalSupportLevel": "",
+              "historicalReasoning": ""
+            },
+            "futureRiskProjection": "",
+            "recurrenceJustification": "",
+            "leadingIndicators": "",
+            "predictiveInsight": "",
+            "mitigation": "",
+            "recommendations": ""
+          },
+          {
+            "riskID": "R04",
+            "riskTitle": "Single LLM availability may reduce agent quality and increase manual effort",
+            "riskDescription": "Only one LLM is available in Port Key and it may underperform on specific tasks while preventing the use of a reviewer-agent, which can increase manual effort and affect quality, schedule, and cost.",
+            "riskChain": {
+              "rootCause": "",
+              "trigger": "",
+              "primaryRisk": "",
+              "downstreamRisk": "",
+              "impact": "Potential reduction in agent effectiveness and added delivery effort."
+            },
+            "category": "Technical",
+            "riskType": "Performance and reliability",
+            "severity": "Medium",
+            "likelihood": "Medium",
+            "confidenceScore": "",
+            "businessImpact": "Potential reduction in agent effectiveness and added delivery effort.",
+            "currentProjectEvidence": "Only one LLM is available in Port Key and it may underperform on specific tasks while preventing the use of a reviewer-agent, which can increase manual effort and affect quality, schedule, and cost.",
+            "currentContextReasoning": "",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "",
+              "historicalSupportLevel": "",
+              "historicalReasoning": ""
+            },
+            "futureRiskProjection": "",
+            "recurrenceJustification": "",
+            "leadingIndicators": "",
+            "predictiveInsight": "",
+            "mitigation": "",
+            "recommendations": ""
+          },
+          {
+            "riskID": "R05",
+            "riskTitle": "Delayed tool integration may slow downstream agent work",
+            "riskDescription": "AAVA and Premera tools integration is required before agent development, and if that integration is delayed it may limit agent development and delay downstream tasks.",
+            "riskChain": {
+              "rootCause": "",
+              "trigger": "",
+              "primaryRisk": "",
+              "downstreamRisk": "",
+              "impact": "Potential delay to agent-enabled delivery tasks and related schedule commitments."
+            },
+            "category": "Technical",
+            "riskType": "Dependency",
+            "severity": "High",
+            "likelihood": "High",
+            "confidenceScore": "",
+            "businessImpact": "Potential delay to agent-enabled delivery tasks and related schedule commitments.",
+            "currentProjectEvidence": "AAVA and Premera tools integration is required before agent development, and if that integration is delayed it may limit agent development and delay downstream tasks.",
+            "currentContextReasoning": "",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "",
+              "historicalSupportLevel": "",
+              "historicalReasoning": ""
+            },
+            "futureRiskProjection": "",
+            "recurrenceJustification": "",
+            "leadingIndicators": "",
+            "predictiveInsight": "",
+            "mitigation": "",
+            "recommendations": ""
+          },
+          {
+            "riskID": "R06",
+            "riskTitle": "Inadequate agent hardening may cause inconsistent production behavior",
+            "riskDescription": "If agent hardening is inadequate, agent behavior in production may be inconsistent, which can affect quality, schedule, and cost.",
+            "riskChain": {
+              "rootCause": "",
+              "trigger": "",
+              "primaryRisk": "",
+              "downstreamRisk": "",
+              "impact": "Potential instability in production-facing agent behavior and additional remediation effort."
+            },
+            "category": "Technical",
+            "riskType": "Quality",
+            "severity": "Medium",
+            "likelihood": "Medium",
+            "confidenceScore": "",
+            "businessImpact": "Potential instability in production-facing agent behavior and additional remediation effort.",
+            "currentProjectEvidence": "If agent hardening is inadequate, agent behavior in production may be inconsistent, which can affect quality, schedule, and cost.",
+            "currentContextReasoning": "",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "",
+              "historicalSupportLevel": "",
+              "historicalReasoning": ""
+            },
+            "futureRiskProjection": "",
+            "recurrenceJustification": "",
+            "leadingIndicators": "",
+            "predictiveInsight": "",
+            "mitigation": "",
+            "recommendations": ""
+          },
+          {
+            "riskID": "R07",
+            "riskTitle": "Limited training datasets may delay agent maturity",
+            "riskDescription": "Limited training datasets may delay agent maturity and the expected productivity gains, which can affect schedule and cost.",
+            "riskChain": {
+              "rootCause": "",
+              "trigger": "",
+              "primaryRisk": "",
+              "downstreamRisk": "",
+              "impact": "Potential delay in realizing planned productivity benefits from agent development."
+            },
+            "category": "Technical",
+            "riskType": "Dependency",
+            "severity": "Medium",
+            "likelihood": "Medium",
+            "confidenceScore": "",
+            "businessImpact": "Potential delay in realizing planned productivity benefits from agent development.",
+            "currentProjectEvidence": "Limited training datasets may delay agent maturity and the expected productivity gains, which can affect schedule and cost.",
+            "currentContextReasoning": "",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "",
+              "historicalSupportLevel": "",
+              "historicalReasoning": ""
+            },
+            "futureRiskProjection": "",
+            "recurrenceJustification": "",
+            "leadingIndicators": "",
+            "predictiveInsight": "",
+            "mitigation": "",
+            "recommendations": ""
+          },
+          {
+            "riskID": "R08",
+            "riskTitle": "Late client template alignment may cause rework",
+            "riskDescription": "Unavailability or late discovery of client-specific format may cause agent outputs to miss expected formats, which can create rework and delivery delays.",
+            "riskChain": {
+              "rootCause": "",
+              "trigger": "",
+              "primaryRisk": "",
+              "downstreamRisk": "",
+              "impact": "Potential rework in output formatting and delay in deliverable readiness."
+            },
+            "category": "Operational",
+            "riskType": "Dependency",
+            "severity": "Medium",
+            "likelihood": "Medium",
+            "confidenceScore": "",
+            "businessImpact": "Potential rework in output formatting and delay in deliverable readiness.",
+            "currentProjectEvidence": "Unavailability or late discovery of client-specific format may cause agent outputs to miss expected formats, which can create rework and delivery delays.",
+            "currentContextReasoning": "",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "",
+              "historicalSupportLevel": "",
+              "historicalReasoning": ""
+            },
+            "futureRiskProjection": "",
+            "recurrenceJustification": "",
+            "leadingIndicators": "",
+            "predictiveInsight": "",
+            "mitigation": "",
+            "recommendations": ""
+          },
+          {
+            "riskID": "R09",
+            "riskTitle": "External tool failures may disrupt automation continuity",
+            "riskDescription": "Agent dependency on external tools may result in execution failures, which can impact automation continuity and affect schedule and quality.",
+            "riskChain": {
+              "rootCause": "",
+              "trigger": "",
+              "primaryRisk": "",
+              "downstreamRisk": "",
+              "impact": "Potential interruption to automated workflows and additional manual intervention."
+            },
+            "category": "Technical",
+            "riskType": "Dependency",
+            "severity": "Medium",
+            "likelihood": "Medium",
+            "confidenceScore": "",
+            "businessImpact": "Potential interruption to automated workflows and additional manual intervention.",
+            "currentProjectEvidence": "Agent dependency on external tools may result in execution failures, which can impact automation continuity and affect schedule and quality.",
+            "currentContextReasoning": "",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "",
+              "historicalSupportLevel": "",
+              "historicalReasoning": ""
+            },
+            "futureRiskProjection": "",
+            "recurrenceJustification": "",
+            "leadingIndicators": "",
+            "predictiveInsight": "",
+            "mitigation": "",
+            "recommendations": ""
+          },
+          {
+            "riskID": "R10",
+            "riskTitle": "Poor agent orchestration may delay workflows",
+            "riskDescription": "Poor coordination between multiple agents may cause workflow delays or incorrect task sequencing, which can affect schedule, cost, and quality.",
+            "riskChain": {
+              "rootCause": "",
+              "trigger": "",
+              "primaryRisk": "",
+              "downstreamRisk": "",
+              "impact": "Potential inefficiency in multi-agent execution and slower delivery flow."
+            },
+            "category": "Technical",
+            "riskType": "Dependency",
+            "severity": "Medium",
+            "likelihood": "Medium",
+            "confidenceScore": "",
+            "businessImpact": "Potential inefficiency in multi-agent execution and slower delivery flow.",
+            "currentProjectEvidence": "Poor coordination between multiple agents may cause workflow delays or incorrect task sequencing, which can affect schedule, cost, and quality.",
+            "currentContextReasoning": "",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "",
+              "historicalSupportLevel": "",
+              "historicalReasoning": ""
+            },
+            "futureRiskProjection": "",
+            "recurrenceJustification": "",
+            "leadingIndicators": "",
+            "predictiveInsight": "",
+            "mitigation": "",
+            "recommendations": ""
+          },
+          {
+            "riskID": "R11",
+            "riskTitle": "Delayed DH BoB API availability may cause project overrun",
+            "riskDescription": "The timeline explicitly states a risk of overrun if the DH BoB API is not made available before 15th June, which can extend delivery timelines.",
+            "riskChain": {
+              "rootCause": "",
+              "trigger": "",
+              "primaryRisk": "",
+              "downstreamRisk": "",
+              "impact": "Potential extension of project timeline and pressure on rollout readiness."
+            },
+            "category": "Operational",
+            "riskType": "Delay",
+            "severity": "High",
+            "likelihood": "High",
+            "confidenceScore": "",
+            "businessImpact": "Potential extension of project timeline and pressure on rollout readiness.",
+            "currentProjectEvidence": "The timeline explicitly states a risk of overrun if the DH BoB API is not made available before 15th June, which can extend delivery timelines.",
+            "currentContextReasoning": "",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "",
+              "historicalSupportLevel": "",
+              "historicalReasoning": ""
+            },
+            "futureRiskProjection": "",
+            "recurrenceJustification": "",
+            "leadingIndicators": "",
+            "predictiveInsight": "",
+            "mitigation": "",
+            "recommendations": ""
+          },
+          {
+            "riskID": "R12",
+            "riskTitle": "Citrix slowness may reduce offshore delivery efficiency",
+            "riskDescription": "Citrix server slowness and timeouts are impacting offshore team efforts, which can slow execution and affect schedule.",
+            "riskChain": {
+              "rootCause": "",
+              "trigger": "",
+              "primaryRisk": "",
+              "downstreamRisk": "",
+              "impact": "Potential reduction in team productivity during build and test activities."
+            },
+            "category": "Operational",
+            "riskType": "Performance and reliability",
+            "severity": "Medium",
+            "likelihood": "Medium",
+            "confidenceScore": "",
+            "businessImpact": "Potential reduction in team productivity during build and test activities.",
+            "currentProjectEvidence": "Citrix server slowness and timeouts are impacting offshore team efforts, which can slow execution and affect schedule.",
+            "currentContextReasoning": "",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "",
+              "historicalSupportLevel": "",
+              "historicalReasoning": ""
+            },
+            "futureRiskProjection": "",
+            "recurrenceJustification": "",
+            "leadingIndicators": "",
+            "predictiveInsight": "",
+            "mitigation": "",
+            "recommendations": ""
+          }
+        ]
+      },
+      "projectForecastInsights": {
+        "majorBottlenecks": [],
+        "riskPropagationPatterns": [],
+        "emergingConcerns": [],
+        "highRiskDependencies": [],
+        "rootCauseConcentration": [],
+        "mostLikelyFailureTriggers": [],
+        "overallOutlook": ""
+      }
+    },
+    {
+      "clientName": "Premera",
+      "projectName": "Premera Blue Cross - AI Platform Build - Claims",
+      "RiskAnalysis": {
+        "Risks": [
+          {
+            "riskID": "",
+            "riskTitle": "Lack visibility into scope of work",
+            "riskDescription": "Context: Project runs in T&M model, with no onshore & only offshore team working directly with McK team who owns program management, sprint and design.\nCondition: Team lacks overall context and design and there were changes in requirement wrt skill set and tasks getting allocated and involvement in sprint calls started only from last sprint started on 04/22 but not consistently included in all key Scrum meetings\nConsequence: Billing impact no work allocated to a few engineers due to scope alignment issues and limiting visibility into scope, priorities, and decision-making which could lead to quality concerns",
+            "riskChain": {
+              "rootCause": "",
+              "trigger": "",
+              "primaryRisk": "",
+              "downstreamRisk": "",
+              "impact": ""
+            },
+            "category": "Project-Level",
+            "riskType": "Project Management",
+            "severity": "Major",
+            "likelihood": "Possible",
+            "confidenceScore": "",
+            "businessImpact": "High",
+            "currentProjectEvidence": "",
+            "currentContextReasoning": "",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "",
+              "historicalSupportLevel": "",
+              "historicalReasoning": ""
+            },
+            "futureRiskProjection": "",
+            "recurrenceJustification": "",
+            "leadingIndicators": "",
+            "predictiveInsight": "",
+            "mitigation": "Project Closed\n\nWorking closely with client lead to align him with concerns and getting process streamlined. Additionally, daily connects established with single Poc on tasks assigned so that deliverables are not impacted. Access to recordings requested for design calls happens outside offshore hours.",
+            "recommendations": ""
+          },
+          {
+            "riskID": "",
+            "riskTitle": "Lack of Work / Resource Utilization ",
+            "riskDescription": "Context: Projects objective is to automate claims adjudication SOP manuals and includes data integration from FACETS. Sprint commitments and resource allocation are now dependent on finalizing FACETS integration approach and related leadership decisions from a workshop between client & FACETS team in May last week\nCondition: Workshop was conducted to understand FACETS integration and multiple options were discussed on the approaches on data retrieval to perform SOP automation. The final approach is pending with leadership, and this has impact on PBI/task readiness, resulting in limited task availability for Ascendion offshore engineers. \nConsequence: Reduced resource utilization and risk of delayed sprint progress, potentially impacting sprint commitments and delivery timelines.",
+            "riskChain": {
+              "rootCause": "",
+              "trigger": "",
+              "primaryRisk": "",
+              "downstreamRisk": "",
+              "impact": ""
+            },
+            "category": "Project-Level",
+            "riskType": "Project Management",
+            "severity": "Major",
+            "likelihood": "Possible",
+            "confidenceScore": "",
+            "businessImpact": "High",
+            "currentProjectEvidence": "",
+            "currentContextReasoning": "",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "",
+              "historicalSupportLevel": "",
+              "historicalReasoning": ""
+            },
+            "futureRiskProjection": "",
+            "recurrenceJustification": "",
+            "leadingIndicators": "",
+            "predictiveInsight": "",
+            "mitigation": "Project Closed\n\nRequest to expedite decisions and prepare alternate sprint-ready work items to Premera and McK respectively. Add any mid sprints tasks only as spikes so that say do is not impacted.",
+            "recommendations": ""
+          }
+        ]
+      },
+      "projectForecastInsights": {
+        "majorBottlenecks": [],
+        "riskPropagationPatterns": [],
+        "emergingConcerns": [],
+        "highRiskDependencies": [],
+        "rootCauseConcentration": [],
+        "mostLikelyFailureTriggers": [],
+        "overallOutlook": ""
+      }
+    },
+    {
+      "clientName": "Premera",
+      "projectName": "Premera Blue Cross - AI Platform Build - Servicing",
+      "RiskAnalysis": {
+        "Risks": [
+          {
+            "riskID": "",
+            "riskTitle": "Code quality Concerns",
+            "riskDescription": "Context: Concerns received on code quality based on PR comments from McK\nCondition: Reviewed the code base and the samples shared and found they are more related to the internal PR conversations and due to dependency mappings / changes mid sprint. \nConsequence: Team morale and rapport with full team will be impacted if there are misalignment again",
+            "riskChain": {
+              "rootCause": "",
+              "trigger": "",
+              "primaryRisk": "",
+              "downstreamRisk": "",
+              "impact": ""
+            },
+            "category": "Project-Level",
+            "riskType": "Organizational",
+            "severity": "Major",
+            "likelihood": "Possible",
+            "confidenceScore": "",
+            "businessImpact": "High",
+            "currentProjectEvidence": "",
+            "currentContextReasoning": "",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "",
+              "historicalSupportLevel": "",
+              "historicalReasoning": ""
+            },
+            "futureRiskProjection": "",
+            "recurrenceJustification": "",
+            "leadingIndicators": "",
+            "predictiveInsight": "",
+            "mitigation": "Informed client leads on review details. Additionally, measures have made stringent on code review process, identify gaps, conduct internal draft PR process, training session etc.",
+            "recommendations": ""
+          },
+          {
+            "riskID": "",
+            "riskTitle": "Client Confidence in AI Delivery Capability",
+            "riskDescription": "Context: The client selected our organization based on our proven experience and expertise in the AI space and expects the team to provide proactive AI-driven recommendations, innovative solutions, and value-added insights beyond core delivery.\nCondition: The delivered code and outcomes have not consistently reflected the expected level of AI expertise, and communication gaps have further reduced the confidence of offshore contributions and technical capabilities. Also, there has not come up with proactive solutioning, and value-add contributions, leading to doubts about whether the project is staffed with the right capabilities to meet their expectations.\nConsequence: Client perception of offshore AI competency may be impacted, potentially affecting confidence, increased scrutiny and escalations, lower stakeholder satisfaction, reluctance to approve future work, and potential impact to account growth and project continuity.",
+            "riskChain": {
+              "rootCause": "",
+              "trigger": "",
+              "primaryRisk": "",
+              "downstreamRisk": "",
+              "impact": ""
+            },
+            "category": "Project-Level",
+            "riskType": "Organizational",
+            "severity": "Major",
+            "likelihood": "Possible",
+            "confidenceScore": "",
+            "businessImpact": "High",
+            "currentProjectEvidence": "",
+            "currentContextReasoning": "",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "",
+              "historicalSupportLevel": "",
+              "historicalReasoning": ""
+            },
+            "futureRiskProjection": "",
+            "recurrenceJustification": "",
+            "leadingIndicators": "",
+            "predictiveInsight": "",
+            "mitigation": "Enable offshore engineers technically and process wise with help of SMEs, circle leaders to proactively showcase offshore AI capabilities through regular solution demonstrations, code walkthroughs, architectural contributions, and improved stakeholder communication. Also, include AI-focused achievements, innovation ideas, and realized value-adds in regular governance reports.",
+            "recommendations": ""
+          }
+        ]
+      },
+      "projectForecastInsights": {
+        "majorBottlenecks": [],
+        "riskPropagationPatterns": [],
+        "emergingConcerns": [],
+        "highRiskDependencies": [],
+        "rootCauseConcentration": [],
+        "mostLikelyFailureTriggers": [],
+        "overallOutlook": ""
+      }
+    }
+  ],
+  "summaryStatistics": {
+    "totalProjects": 3,
+    "projectsWithCurrentRisks": 3,
+    "projectsWithNoCurrentRisks": 0,
+    "totalCurrentRisks": 16,
+    "risksByProject": [
+      {
+        "projectName": "Producer Portal",
+        "currentRisksCount": 12
+      },
+      {
+        "projectName": "Premera Blue Cross - AI Platform Build - Claims",
+        "currentRisksCount": 2
+      },
+      {
+        "projectName": "Premera Blue Cross - AI Platform Build - Servicing",
+        "currentRisksCount": 2
+      }
+    ]
+  }
+}
