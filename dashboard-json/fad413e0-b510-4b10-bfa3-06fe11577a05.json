@@ -1,0 +1,347 @@
+{
+  "projects": [
+    {
+      "clientName": "Vivli",
+      "projectName": "Vivli - Researcher Experience Modernization & Workflow Automation",
+      "RiskAnalysis": {
+        "Risks": [
+          {
+            "riskID": "R01",
+            "riskTitle": "Sprint 1 delay reduced the validation window for subsequent delivery activities",
+            "riskDescription": "Due to broader scope and client cloud environment dependencies, Sprint 1 delivery may slip or create residual schedule compression, resulting in a reduced customer validation window that can affect subsequent sprint timelines, QA/PAT readiness, and delivery predictability.",
+            "riskChain": {
+              "rootCause": "Due to broader scope pressure and dependency on client cloud/non-production environment readiness for development and integration activities.",
+              "trigger": "Sprint work or environment availability does not align to the planned delivery window, or pending fixes consume remaining sprint capacity.",
+              "primaryRisk": "Sprint delivery is delayed or downstream validation time remains compressed.",
+              "downstreamRisk": "QA, early access review, PAT preparation, and Sprint 5 commitments are compressed; unresolved defects or backlog carryover increase.",
+              "impact": "Schedule slippage may affect Sprint 4 closeout, Sprint 5 completion targeted for Aug 31, and readiness for PAT, regression, and later deployment milestones."
+            },
+            "category": "Operational",
+            "riskType": "Delay",
+            "severity": "High",
+            "likelihood": "Medium",
+            "confidenceScore": "High",
+            "businessImpact": "This risk threatens schedule-sensitive delivery objectives for the AI Form Check and Agentic Chat workstreams. A compressed validation window can reduce time for QA, business demo, early access review, and defect resolution, increasing the chance of carryover into Sprint 5 and weakening confidence in PAT and downstream release readiness.",
+            "currentProjectEvidence": "Evidence from source files: vivli Risk dump.xlsx states Sprint 1 slipped by one week due to broader scope and client cloud environment dependencies; the SOW states client must provide sandbox/non-production environment access and support environment/connectivity resolution within agreed timelines; weekly review shows Schedule is UNDER REVIEW, Sprint 4 development and QA are in progress, and PAT early verification feedback produced defects/enhancements to be fixed in the current sprint; open dependency list includes provisioning a dedicated automation testing environment.",
+            "currentContextReasoning": "The original Sprint 1 event is resolved, but the causal pattern remains active because the project is still sprint-based, current schedule is under review, and unresolved environment/testing dependencies can recreate the same compression dynamic in later sprints.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Historical cluster 12077-C1: Sprint Delivery and Validation Dependency.",
+              "historicalSupportLevel": "Strong",
+              "historicalReasoning": "Historical intelligence for the same project shows a recurring pattern where client environment readiness and customer-response timing reduced validation windows and created downstream sprint pressure. Root cause intelligence ranks client dependency/external response timing as the top recurring cause, and environment readiness is explicitly listed as a delivery bottleneck."
+            },
+            "futureRiskProjection": "If current sprint fixes, environment items, or other client-owned readiness actions are delayed, the most likely outcome is compression of Sprint 4 closeout and Sprint 5 start activities, leading to reduced test depth, delayed demo/early access review, and spillover into PAT preparation.",
+            "recurrenceJustification": "Strong recurrence support because the same project has multiple historical records tied to dependency-led validation instability. The current likelihood is moderated to Medium because the exact Sprint 1 issue is resolved and the project has advanced to Sprint 4.",
+            "leadingIndicators": "Missed Sprint 4 close target; unresolved PAT fixes at sprint close; delayed Sprint 4 demo or early access review; pending automation environment provisioning; renewed environment/connectivity issues in QA3 or sandbox; growing bug backlog; carryover into Sprint 5.",
+            "predictiveInsight": "Dependency-driven schedule compression remains the most credible execution pattern for this project. If environment readiness and current rework are not tightly controlled, validation windows will narrow again and schedule instability will likely reappear before PAT.",
+            "mitigation": "Establish a sprint-level dependency burn-down for all client-controlled environment and access items; ringfence capacity for PAT-driven fixes; enforce daily tracking of unresolved blockers affecting QA or early access review; add explicit buffer for validation closure before Sprint 5 commitments are baselined.",
+            "recommendations": "1. Create a dated closure plan for environment and testing dependencies with Vivli owners and escalation path. 2. Rebaseline near-term sprint commitments to reflect current PAT fix effort rather than preserving optimistic dates. 3. Add a readiness gate before Sprint 5 start covering environment stability, open defects, and QA completion. 4. Use weekly review to track residual schedule compression as a named risk until Sprint 4 close is achieved."
+          },
+          {
+            "riskID": "R02",
+            "riskTitle": "Post-initiation testing additions create scope and contractual control exposure",
+            "riskDescription": "Due to regression testing and extended PAT duration being added after project initiation without original SOW coverage, scope and delivery obligations may expand beyond agreed baselines, resulting in unplanned effort, contractual ambiguity, schedule pressure, and potential margin/control erosion.",
+            "riskChain": {
+              "rootCause": "Due to post-initiation additions to regression testing and PAT duration that are outside the original SOW and milestone structure.",
+              "trigger": "Additional testing effort is treated as delivery obligation without approved change control, rebasing, or commercial alignment.",
+              "primaryRisk": "Unplanned work enters the sprint/release plan and consumes capacity needed for in-scope deliverables.",
+              "downstreamRisk": "Schedule buffers are reduced, validation windows tighten, delivery teams absorb extra effort, and client expectations diverge from contracted scope.",
+              "impact": "The project may experience schedule variance, governance friction, financial exposure, and reduced ability to complete in-scope objectives across build, PAT, regression, and release preparation."
+            },
+            "category": "Compliance",
+            "riskType": "Dependency",
+            "severity": "High",
+            "likelihood": "High",
+            "confidenceScore": "High",
+            "businessImpact": "This risk directly affects governance, cost protection, and schedule integrity. The SOW is milestone-based, and later phases include UAT sign-off, deployment, and hypercare. Adding regression testing and longer PAT outside the original agreement can consume delivery capacity, create ambiguity over acceptance obligations, and weaken control over timeline and commercial performance.",
+            "currentProjectEvidence": "Evidence from source files: vivli Risk dump.xlsx explicitly states regression testing and extended PAT duration were added after initiation and were not part of the original SOW; the SOW defines milestone-based phases and payments through Build & Test, UAT Sign Off, Deployment, and Hypercare; weekly review timeline includes future PAT, Regression Period, Product Deployment, and Hyper Care; current PAT early verification has already generated defects/enhancements being fixed in the current sprint while Schedule remains UNDER REVIEW.",
+            "currentContextReasoning": "This is the most material governance risk because the project is moving toward the most testing-intensive lifecycle stages. If expanded testing obligations are absorbed without change control, governance ambiguity will convert directly into execution strain.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Historical cluster 12077-C2: Post-Initiation Scope and SOW Governance Drift.",
+              "historicalSupportLevel": "Moderate",
+              "historicalReasoning": "The same project has one directly matching historical occurrence centered on regression testing and PAT duration added outside the original SOW. Historical root cause intelligence also identifies weak scope containment and governance as a meaningful failure driver. Support is moderate because the dataset is limited to a single directly matching occurrence."
+            },
+            "futureRiskProjection": "If not formally controlled, testing and acceptance work may continue to expand during Sprint 5, PAT, or regression without rebaselining, consuming planned capacity and creating conflict over what is contractual versus requested enhancement or extended validation support.",
+            "recurrenceJustification": "Moderate recurrence support from the exact same project plus strong current evidence. Dataset depth is limited, but available historical evidence directly supports this risk.",
+            "leadingIndicators": "Additional test activities added without change request; PAT/regression workload rises without timeline or funding adjustment; disagreements on acceptance criteria; test-related enhancements bundled into delivery; milestone dates remain fixed while workload increases; extra effort tracked informally rather than through governance.",
+            "predictiveInsight": "Governance drift is likely to manifest as late-cycle schedule and commercial stress. If added PAT and regression work is not contractually normalized now, the project will carry hidden execution debt into acceptance and release.",
+            "mitigation": "Implement immediate formal change control for all testing work added outside the SOW; classify current and future PAT/regression tasks into in-scope, change-request, or client-owned categories; re-estimate delivery impact and align milestones accordingly; document acceptance responsibilities and exit criteria for PAT and regression.",
+            "recommendations": "1. Conduct a scope-control workshop with Vivli and Ascendion service managers to reconcile SOW versus actual testing obligations. 2. Issue a written change note or commercial clarification before PAT start. 3. Separate defect remediation from enhancement and extended validation support in governance reporting. 4. Add weekly tracking of unplanned testing effort and its schedule impact through PMR, with owner Ravi Ramaswamy and escalation contacts if unresolved."
+          },
+          {
+            "riskID": "R03",
+            "riskTitle": "Delayed customer feedback can disrupt sprint validation and implementation",
+            "riskDescription": "Due to dependency on timely customer feedback for sprint validation, required approvals or directional input may be delayed, resulting in slower validation closure, deferred implementation decisions, and possible carryover of defects or enhancements into later sprint and PAT activities.",
+            "riskChain": {
+              "rootCause": "Due to reliance on Vivli feedback, sign-off, and business review inputs for validation and acceptance progression.",
+              "trigger": "Customer feedback, sign-off, or clarification is not received within the expected review window.",
+              "primaryRisk": "Sprint validation and implementation decisions are delayed.",
+              "downstreamRisk": "Defect prioritization, enhancement closure, demo readiness, and PAT preparation are postponed or compressed.",
+              "impact": "Delivery flow may slow, planned sprint transitions may slip, and confidence in milestone readiness may decrease."
+            },
+            "category": "Operational",
+            "riskType": "Dependency",
+            "severity": "High",
+            "likelihood": "Medium",
+            "confidenceScore": "High",
+            "businessImpact": "The project relies on business review, PAT feedback, and formal approval behaviors. Delayed feedback can postpone closure of open questions, hold up validation decisions, and force the team either to wait for confirmation or proceed with assumptions, both of which affect schedule and rework levels across Sprint 4, Sprint 5, and PAT readiness.",
+            "currentProjectEvidence": "Evidence from source files: vivli Risk dump.xlsx states delayed customer feedback may impact validation and implementation; the SOW acceptance criteria gives the client 3 business days to review deliverables and raise issues; SOW dependencies require documented review rules, rule sign-off, domain expert availability, and support for issue resolution; weekly review highlights FRD review/sign-off completion, receipt of PAT early verification feedback, and an open dependency to refine chat-based escalation requirements pending client discussion.",
+            "currentContextReasoning": "The original July feedback date has passed, but the underlying dependency pattern persists because the project still depends on client review cycles for requirements refinement, PAT observations, and sprint acceptance decisions.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Historical cluster 12077-C1: Sprint Delivery and Validation Dependency.",
+              "historicalSupportLevel": "Strong",
+              "historicalReasoning": "Historical intelligence ranks client dependency and external response timing as the top recurring root cause in this project. One historical risk directly tied customer feedback timing to validation and implementation disruption."
+            },
+            "futureRiskProjection": "If pending client discussions, approvals, or PAT feedback turnaround slow down, sprint item closure will likely spill into Sprint 5 or PAT, increasing assumption-based development and late rework.",
+            "recurrenceJustification": "Strong recurrence support because current and historical evidence both show that customer timing materially influences validation flow in this project.",
+            "leadingIndicators": "Open client decisions stay unresolved beyond planned dates; pending escalation-requirement discussion remains open; slower PAT observation turnaround; repeated backlog reprioritization due to late client direction; rescheduled demos or reviews; increased 'to be confirmed' items.",
+            "predictiveInsight": "Client-response timing remains a live schedule risk. If review and approval cycles slow during Sprint 4 and Sprint 5, the project will likely experience deferred validation closure and elevated carryover into PAT.",
+            "mitigation": "Timebox all client review decisions with dated response expectations aligned to the SOW review window; escalate overdue approvals through named service managers and escalation contacts; publish a decision log for all pending business clarifications and tie each to a sprint impact statement.",
+            "recommendations": "1. Convert all open client discussions into tracked decision items with due dates and impact levels. 2. Use the weekly review to highlight any review item older than 3 business days. 3. Pre-schedule PAT and sprint review sessions to reduce turnaround latency. 4. Where possible, define provisional acceptance logic to avoid idle team time while awaiting non-critical confirmation."
+          },
+          {
+            "riskID": "R04",
+            "riskTitle": "PAT feedback requiring fixes in the current sprint may pressure Sprint 4 delivery",
+            "riskDescription": "Due to PAT early verification feedback generating defects and enhancement requests during Sprint 4, the team may need to absorb rework within the current sprint, resulting in reduced delivery predictability, possible spillover into Sprint 5, and weaker readiness for planned demonstrations and validation gates.",
+            "riskChain": {
+              "rootCause": "Due to active PAT early verification feedback producing defects and enhancement requests while Sprint 4 development and QA are still in progress.",
+              "trigger": "The volume or complexity of fixes exceeds remaining Sprint 4 capacity or requires reprioritization of planned work.",
+              "primaryRisk": "Current sprint commitments are disrupted by rework and defect closure effort.",
+              "downstreamRisk": "Sprint 4 demo and early access readiness slip, Sprint 5 capacity is consumed by carryover work, and later validation stages inherit unresolved items.",
+              "impact": "Schedule pressure and quality risk may increase as the project approaches Sprint 5, PAT, regression, and release readiness."
+            },
+            "category": "Technical",
+            "riskType": "Defect",
+            "severity": "High",
+            "likelihood": "High",
+            "confidenceScore": "High",
+            "businessImpact": "This risk can reduce near-term sprint stability and create downstream effects. If Sprint 4 absorbs too much corrective work, planned feature completion, demos, and validation may slip. Because the timeline is tightly sequenced into Sprint 5 and then PAT, rework now can directly compress later quality gates and acceptance activities.",
+            "currentProjectEvidence": "Evidence from weekly review: PAT early verification feedback was received; defects and enhancement requests were prioritized and fixes are planned for the current sprint; Executive Dashboard shows Sprint 4 development and QA are still in progress; Key Highlights state the team is assessing observations and working on resolutions; Sprint 4 demo and early access review are yet to start; bug list indicates many UI-related issues and some enhancement-marked items.",
+            "currentContextReasoning": "This is an immediate risk because defect discovery, enhancement triage, and sprint commitments are competing for the same finite Sprint 4 capacity. The project is in the exact phase where unresolved rework can shift the entire near-term plan.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Historical evidence shows feedback-driven validation pressure translated into sprint schedule compression in the same project.",
+              "historicalSupportLevel": "Moderate",
+              "historicalReasoning": "There is no exact prior PAT-defect record in the limited history, but historical observations show clustered execution stress once delivery pressure became visible, and validation-stage dependencies repeatedly affected schedule confidence."
+            },
+            "futureRiskProjection": "If current PAT observations are not closed within Sprint 4, defects and enhancements will likely spill into Sprint 5 and compete with planned work such as MSAL/RBAC, testing coverage, infrastructure sign-off, and model migration.",
+            "recurrenceJustification": "Moderate support because the exact PAT-fix pattern is current-phase specific, but it fits the historically established project behavior of validation feedback causing execution strain.",
+            "leadingIndicators": "Growth in open defect/enhancement count; unresolved PAT items near Sprint 4 close; repeated reprioritization meetings; demo delay; Sprint 5 backlog absorbs Sprint 4 fixes; review comments remain open; issue mix shifts from small fixes to structural changes.",
+            "predictiveInsight": "PAT-driven rework is likely to be the main near-term execution pressure point. If not tightly bounded, it will consume Sprint 5 capacity before planned readiness work can complete.",
+            "mitigation": "Separate PAT issues into must-fix defects, defer-able enhancements, and post-sprint backlog items; reserve protected capacity for only acceptance-critical remediation; enforce daily defect aging and closure review through Sprint 4 end.",
+            "recommendations": "1. Create a PAT issue triage matrix with business-criticality, effort, and sprint disposition. 2. Avoid allowing enhancements to displace acceptance-critical work unless approved by governance. 3. Reconfirm Sprint 4 exit criteria using only mandatory closure items. 4. Carry forward non-critical enhancements to a controlled backlog instead of masking them inside current sprint commitments."
+          },
+          {
+            "riskID": "R05",
+            "riskTitle": "Heavy reliance on manual validation increases front-end quality risk",
+            "riskDescription": "Due to growing form validation rules and continued reliance on manual front-end validation, defects in UI behavior or rule implementation may not be detected consistently, resulting in defect leakage, repeat rework during QA/PAT, and reduced confidence in release quality.",
+            "riskChain": {
+              "rootCause": "Due to increasing rule complexity in the form validation solution and incomplete automation coverage for front-end validation paths.",
+              "trigger": "Manual testing misses edge cases, regression scenarios, or UI-rule interaction defects as functionality expands.",
+              "primaryRisk": "Front-end or validation-rule defects remain undetected until later QA, PAT, or business review.",
+              "downstreamRisk": "Defect leakage increases rework, extends validation cycles, and creates repeated review loops with the client.",
+              "impact": "Quality degradation may slow acceptance, increase effort during Sprint 5, PAT, and regression, and weaken trust in the AI form-check experience."
+            },
+            "category": "Technical",
+            "riskType": "Defect",
+            "severity": "High",
+            "likelihood": "Medium",
+            "confidenceScore": "Medium",
+            "businessImpact": "This project is intended to reduce review cycles through intelligent submission validation. If UI or rule behavior is inconsistently validated, the solution may return unreliable feedback, increase manual review burden for Vivli, and undermine expected efficiency gains.",
+            "currentProjectEvidence": "Evidence from weekly review: project risks/issues slide explicitly states risk of relying heavily on manual validation due to the growing number of form validation rules; mitigation notes extensive backend automated testing exists but additional QA focus on UI/UX is needed; automation resource starts in Sprint 4; open dependency exists for a dedicated automation testing environment; bug list states a good percentage of issues are UI-related.",
+            "currentContextReasoning": "This is not only a QA-efficiency issue but a product-value risk. As the validation rule set expands, manual-only verification becomes less dependable for regression detection across front-end and business-rule interactions.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "No exact historical front-end manual-validation record exists; however, historical evidence shows compressed validation windows and reactive control behavior in this project.",
+              "historicalSupportLevel": "Weak",
+              "historicalReasoning": "The historical dataset focuses on execution and governance rather than test automation quality. Still, historical validation compression would amplify the impact of insufficient automated coverage."
+            },
+            "futureRiskProjection": "If automation coverage does not improve before Sprint 5, PAT, and regression, defects are likely to escape earlier QA and appear later in client-facing review or acceptance testing, increasing rework and reducing delivery confidence.",
+            "recurrenceJustification": "Weak historical specificity but strong current-project support because the risk is explicitly documented in the weekly review and reinforced by UI-heavy bug signals.",
+            "leadingIndicators": "Increase in UI-related defects; repeated reopening of rule-validation issues; manual execution remains dominant; delayed front-end automation implementation; automation environment still unavailable; more defects found in PAT than QA.",
+            "predictiveInsight": "The project's growing rule complexity makes manual validation progressively less reliable. Without stronger front-end automation and regression discipline, defect leakage will likely rise late in the cycle.",
+            "mitigation": "Prioritize automated coverage for high-change and high-visibility front-end validation scenarios; define a minimum regression pack for UI/rule interactions; align automation work with the newly mobilized automation resource and available environments.",
+            "recommendations": "1. Build a risk-based front-end regression suite covering critical form rules, error states, and workflow transitions. 2. Track UI-related defect leakage separately from backend defects. 3. Require automated test addition for any new high-risk validation rule. 4. Use PAT defect trends to decide which manual scenarios must be automated before regression begins."
+          },
+          {
+            "riskID": "R06",
+            "riskTitle": "Pending dedicated automation testing environment may constrain testing readiness",
+            "riskDescription": "Due to the dedicated automation testing environment remaining an open dependency, efficient automated test execution may be delayed or limited, resulting in reduced testing throughput, lower regression confidence, and schedule pressure on Sprint 5, PAT, and later release readiness activities.",
+            "riskChain": {
+              "rootCause": "Due to dependency on Vivli to provision a dedicated automation testing environment.",
+              "trigger": "Environment provisioning is delayed, incomplete, or insufficient for the planned automation/testing workload.",
+              "primaryRisk": "Automated testing cannot run as planned or is forced into shared or less suitable environments.",
+              "downstreamRisk": "Testing throughput drops, manual validation increases, defects are found later, and PAT/regression windows are compressed.",
+              "impact": "Quality assurance and schedule confidence weaken, increasing the risk of unresolved issues entering client review or later release stages."
+            },
+            "category": "Technical",
+            "riskType": "Dependency",
+            "severity": "High",
+            "likelihood": "High",
+            "confidenceScore": "High",
+            "businessImpact": "This risk affects both quality and schedule. Without the right environment, the team may not execute automation efficiently, increasing manual effort and leaving insufficient stabilization time before PAT, regression, and go-live preparation.",
+            "currentProjectEvidence": "Evidence from weekly review: open dependency list includes 'Provision dedicated automation testing environment' with status In Progress and owner Vivli Team; project risks/issues highlight front-end testing coverage concern; SOW makes environment access and support for connectivity/access resolution explicit client dependencies; project is moving into test-intensive future stages including PAT and regression.",
+            "currentContextReasoning": "The environment dependency directly intersects with the project's most visible current quality risk. As the project approaches PAT and regression, delayed environment provisioning becomes a likely validation bottleneck rather than a manageable setup issue.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Historical intelligence identifies environment readiness as a delivery bottleneck and links client cloud environment dependency to Sprint 1 delay.",
+              "historicalSupportLevel": "Strong",
+              "historicalReasoning": "The same project has direct historical precedent where client-controlled environment dependency contributed to schedule slippage and reduced validation window. The current issue is highly similar in causal structure."
+            },
+            "futureRiskProjection": "If the environment is not provisioned in time, the project will likely continue relying on manual or constrained testing during Sprint 5 and enter PAT with reduced regression confidence, increasing late defect discovery.",
+            "recurrenceJustification": "Strong support because current evidence is explicit and the project has documented historical environment-readiness delays.",
+            "leadingIndicators": "Environment remains In Progress near Sprint 5 start; automation scripts cannot run end-to-end; increased manual execution; environment access/configuration failures; QA delays due to unavailable environment; slower defect closure because validation cannot be completed.",
+            "predictiveInsight": "This is one of the clearest evidence-based future risks. If the dedicated automation environment is not available soon, testing readiness will degrade at exactly the point the project needs stronger regression confidence.",
+            "mitigation": "Escalate environment provisioning as a dated critical dependency; define minimum technical readiness criteria for the automation environment; create fallback execution options only for essential scenarios while preserving the primary provisioning deadline.",
+            "recommendations": "1. Assign a committed environment-ready date with Vivli ownership and escalation if missed. 2. Validate access, data, configuration, and execution stability before Sprint 5 automation begins. 3. Maintain a short list of blocker defects attributable to missing environment readiness. 4. Review this item in every weekly status meeting until closed because it is historically linked to schedule slippage."
+          },
+          {
+            "riskID": "R07",
+            "riskTitle": "Unconfirmed monitoring and alerting process weakens operational readiness",
+            "riskDescription": "Due to the Azure monitoring and escalation email failure alert process not yet being confirmed and part of the dead-letter queue work remaining with Vivli, operational controls may remain incomplete, resulting in delayed detection/escalation of production or near-production issues and weaker go-live support readiness.",
+            "riskChain": {
+              "rootCause": "Due to unresolved design and ownership for monitoring, alerting, and dead-letter queue handling across Vivli and Ascendion.",
+              "trigger": "Monitoring configuration, escalation rules, or internal Vivli story completion is delayed beyond the implementation window.",
+              "primaryRisk": "Operational alerting and failure-detection capability is incomplete when needed for later-stage validation or deployment readiness.",
+              "downstreamRisk": "Issues are detected late, escalation is slower, support response is weaker, and operational defects can persist longer.",
+              "impact": "Go-live confidence and support readiness may be reduced, especially for integrated AI/chat workflows requiring timely failure visibility."
+            },
+            "category": "Operational",
+            "riskType": "Dependency",
+            "severity": "High",
+            "likelihood": "Medium",
+            "confidenceScore": "Medium",
+            "businessImpact": "The solution includes AI form validation, chat automation, notifications, and human escalation paths. If alerting and monitoring are not operationally defined and tested, failures may not be detected promptly, affecting supportability, business continuity, and stakeholder confidence during deployment and hypercare.",
+            "currentProjectEvidence": "Evidence from weekly review: open dependency states Azure monitoring and escalation email failure alert process must be confirmed; Vivli must do the story internally for dead-letter queue; Sprint 5 plans include chat-based notifications and infrastructure/security-related tasks; SOW later milestones include deployment and hypercare, making operational readiness time-sensitive.",
+            "currentContextReasoning": "This is a forward-phase risk rather than an immediate sprint build issue. Its main risk mechanism is split ownership and incomplete dependency closure before operational readiness stages.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "No exact prior monitoring/alerting risk exists, but historical evidence shows recurring vulnerability to client-owned dependencies and delayed external actions affecting delivery confidence.",
+              "historicalSupportLevel": "Weak",
+              "historicalReasoning": "Historical support exists at the dependency-pattern level rather than the specific monitoring-control topic."
+            },
+            "futureRiskProjection": "If confirmation and internal implementation lag, deployment readiness may proceed with incomplete monitoring assumptions, leading to late-stage workaround design, delayed sign-off, or operational risk acceptance.",
+            "recurrenceJustification": "Weak direct historical specificity, but justified by clear current dependency evidence and the project's established sensitivity to client-owned timing.",
+            "leadingIndicators": "Dead-letter queue story remains incomplete; no agreed alerting runbook; escalation email path untested; monitoring ownership unresolved; Sprint 5 closes without alert validation evidence; go-live checklist lacks monitoring proof.",
+            "predictiveInsight": "Operational readiness risk is likely to surface closer to release, not during early build. If ownership and implementation remain unresolved, deployment confidence will fall late when remediation options are narrower.",
+            "mitigation": "Define joint ownership for monitoring configuration, alert routing, and dead-letter handling; create an operational readiness checklist with evidence requirements; run a pre-deployment alert simulation before PAT exit or go-live approval.",
+            "recommendations": "1. Convert the monitoring dependency into a release gate item with named owners on both sides. 2. Require documented runbook, alert recipients, and test results before deployment approval. 3. Track dead-letter queue readiness separately because it depends on Vivli internal work. 4. Include monitoring proof in the hypercare readiness review."
+          },
+          {
+            "riskID": "R08",
+            "riskTitle": "Pending authentication and role-based access control work may delay security readiness",
+            "riskDescription": "Due to MSAL and RBAC implementation still being planned for Sprint 5, authentication and authorization controls may not be completed on schedule, resulting in delayed security readiness, restricted validation of controlled-access scenarios, and possible hold-up to later release activities.",
+            "riskChain": {
+              "rootCause": "Due to critical authentication and role-based access work being deferred into a later sprint while other delivery, defect-fix, and migration tasks also compete for Sprint 5 capacity.",
+              "trigger": "Sprint 5 capacity is consumed by bug fixes, enhancement work, or other priorities before MSAL/RBAC is fully completed and validated.",
+              "primaryRisk": "Security and access-control implementation remains incomplete or partially validated.",
+              "downstreamRisk": "Admin access workflows, user role restrictions, and secure operational readiness remain unresolved; later testing or approvals are delayed.",
+              "impact": "Release readiness may be delayed or proceed with unresolved access-control gaps affecting compliance and operational control."
+            },
+            "category": "Compliance",
+            "riskType": "Dependency",
+            "severity": "High",
+            "likelihood": "Medium",
+            "confidenceScore": "Medium",
+            "businessImpact": "The project includes a Vivli team-facing dashboard, platform chat integration, and defined authorization needs. Delayed MSAL/RBAC completion may affect secure access validation, admin workflow testing, and downstream approval confidence.",
+            "currentProjectEvidence": "Evidence from weekly review and SOW: Sprint 5 plans explicitly include completing MSAL/RBAC implementation; Sprint 5 also includes bug fixes, chat escalation workflow, unit/integration test coverage, IaC sign-off, and GPT-5 Mini migration; SOW client responsibilities include user accounts, security approvals, and role-based permissions; project scope includes a team-facing UI dashboard and admin-access needs.",
+            "currentContextReasoning": "The risk is driven less by lack of intent and more by timing concentration. Security readiness work is placed in a sprint already carrying material competing priorities and dependency pressure.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "No direct historical security-control analogue is present; historical patterns show dependency-driven schedule pressure can push critical readiness items into compressed windows.",
+              "historicalSupportLevel": "Weak",
+              "historicalReasoning": "Historical evidence supports only the general schedule-compression dynamic, not this specific security workstream."
+            },
+            "futureRiskProjection": "If Sprint 5 absorbs carryover from current defects or other open dependencies, authentication and authorization controls may be partially implemented or weakly validated, delaying admin-access sign-off and readiness approval.",
+            "recurrenceJustification": "Weak direct historical support but sufficient current evidence. The known project pattern of delivery compression increases exposure for later-scheduled foundational controls.",
+            "leadingIndicators": "MSAL/RBAC stories open late in Sprint 5; admin access requirements still evolving; security approvals or accounts delayed; role matrix incomplete; functionality tests proceed while access-control tests remain pending.",
+            "predictiveInsight": "This is a latent release-readiness risk. If Sprint 5 gets compressed, security controls are likely to become partially completed rather than fully closed, which can delay approval late in the cycle.",
+            "mitigation": "Prioritize MSAL/RBAC as release-critical work and protect it from being displaced by lower-value enhancement items; validate role scenarios early rather than waiting until sprint end; align client-side approvals and account provisioning to the sprint plan.",
+            "recommendations": "1. Make MSAL/RBAC a non-deferrable Sprint 5 exit criterion. 2. Define and test role matrix scenarios before final sprint close. 3. Track security approvals and user-account provisioning as explicit dependencies. 4. Report incomplete security validation separately from general feature progress."
+          },
+          {
+            "riskID": "R09",
+            "riskTitle": "Incomplete planned test coverage can weaken release quality confidence",
+            "riskDescription": "Due to unit and/or integration test coverage still being a planned Sprint 5 activity rather than a completed control baseline, test coverage may remain insufficient for the evolving solution, resulting in lower defect detection confidence and increased risk of defects reaching PAT, regression, or release preparation.",
+            "riskChain": {
+              "rootCause": "Due to testing coverage still needing to be ensured while the solution continues to change through fixes, enhancements, and migrations.",
+              "trigger": "Sprint 5 ends before adequate unit/integration coverage is implemented or validated across critical workflows.",
+              "primaryRisk": "Important defects or integration issues are not detected early enough.",
+              "downstreamRisk": "Later QA, PAT, or regression identify additional defects, causing rework and schedule compression.",
+              "impact": "Release quality confidence declines and the project may require additional stabilization effort before deployment."
+            },
+            "category": "Technical",
+            "riskType": "Defect",
+            "severity": "High",
+            "likelihood": "Medium",
+            "confidenceScore": "Medium",
+            "businessImpact": "This risk affects reliability across both use cases: AI form validation and agentic chat. Weak unit/integration coverage can allow API, workflow, escalation, or environment-specific defects to persist until later stages, increasing rework and threatening acceptance and deployment timing.",
+            "currentProjectEvidence": "Evidence from weekly review and technical context: Sprint 5 plans explicitly include ensuring unit test and/or integration test coverages; current project already has front-end testing coverage concern; PAT early verification has produced defects and enhancements; dedicated automation testing environment remains open; solution stack spans Azure OpenAI, LangGraph, Cosmos DB, Container Apps, Entra ID, chatbot integration, and dashboard/workflow features.",
+            "currentContextReasoning": "Because test coverage is explicitly still pending as future work, it should be treated as an active readiness exposure. Late-cycle changes from bug fixes, RBAC work, and model migration increase the need for stronger automated coverage, not less.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "No direct historical test-coverage record is available; historical evidence shows compressed validation windows and execution stress, which would magnify the consequence of incomplete coverage.",
+              "historicalSupportLevel": "Weak",
+              "historicalReasoning": "Historical intelligence does not directly address test coverage, but it supports the consequence pathway: compressed validation windows reduce time to catch issues late."
+            },
+            "futureRiskProjection": "If coverage work is not completed before Sprint 5 close, defect discovery will likely rise during PAT or regression, especially after bug fixes, security-control work, or model transition activities.",
+            "recurrenceJustification": "Weak historical support, but current evidence is direct and sufficient for future-risk enrichment.",
+            "leadingIndicators": "Coverage targets undefined or missed; key APIs/workflows lack tests; regressions appear after fixes; integration defects found late; automation environment remains constrained; QA exit relies heavily on manual evidence.",
+            "predictiveInsight": "Quality confidence will likely weaken late if test coverage remains incomplete. This risk becomes more acute as the solution continues to change while moving toward PAT and regression.",
+            "mitigation": "Define minimum coverage thresholds for critical workflows and integrate them into Sprint 5 exit criteria; prioritize unit/integration automation for high-change components and integration points; align coverage work with environment readiness and defect-fix sequencing.",
+            "recommendations": "1. Publish critical workflow coverage targets before Sprint 5 execution. 2. Treat uncovered high-risk integration paths as open risks, not as implied backlog. 3. Add automated tests for any code changed by PAT fixes, RBAC work, or GPT-5 Mini migration. 4. Review coverage evidence in weekly governance alongside defect trends."
+          }
+        ]
+      },
+      "projectForecastInsights": {
+        "majorBottlenecks": [
+          "Client-controlled environment readiness, including sandbox/QA3 and dedicated automation testing environment",
+          "Customer feedback and approval turnaround for validation and requirements clarification",
+          "Post-initiation testing and PAT scope expansion outside the original SOW",
+          "Current sprint capacity pressure from PAT defects and enhancement requests",
+          "Late-phase readiness items concentrated in Sprint 5, including MSAL/RBAC, monitoring readiness, and test coverage"
+        ],
+        "riskPropagationPatterns": [
+          "Scope/gov drift amplifies execution delay risk by increasing work volume and reducing validation windows",
+          "Environment dependency constrains testing and validation, which increases manual effort and late defect discovery",
+          "Delayed client feedback slows sprint validation and creates carryover into later acceptance stages",
+          "PAT feedback-driven rework competes with planned sprint scope, causing spillover into Sprint 5 and reducing readiness for PAT/regression",
+          "Incomplete test automation or environment readiness increases defect leakage, which then expands PAT and regression effort"
+        ],
+        "emergingConcerns": [
+          "Testing readiness is becoming a larger forward risk than early sprint execution alone",
+          "Operational readiness controls such as monitoring, alerting, and dead-letter handling are not yet fully confirmed",
+          "Security/access readiness is concentrated in Sprint 5 and may be vulnerable to schedule compression",
+          "A notable portion of issues are UI-related, increasing concern over manual front-end validation dependency"
+        ],
+        "highRiskDependencies": [
+          "Vivli-owned automation testing environment provisioning",
+          "Vivli feedback and decision turnaround for open business and escalation requirements",
+          "Vivli internal dead-letter queue story and monitoring/alerting confirmation",
+          "Client-provided accounts, approvals, permissions, and environment support",
+          "Scope alignment on regression testing and PAT duration versus original SOW"
+        ],
+        "rootCauseConcentration": [
+          "External/client dependency timing",
+          "Environment readiness dependency",
+          "Weak scope containment and contractual governance",
+          "Validation and feedback cycles not sufficiently protected by schedule buffer",
+          "Control formalization lagging behind risk emergence"
+        ],
+        "mostLikelyFailureTriggers": [
+          "Automation environment not provisioned before Sprint 5 testing ramps up",
+          "PAT defects/enhancements exceed remaining Sprint 4 capacity",
+          "Additional testing obligations continue without formal scope/change control",
+          "Client review or approval delays on pending requirements and validation items",
+          "Sprint 5 overload causes slippage in security, coverage, or operational readiness work"
+        ],
+        "overallOutlook": "Cautiously at risk. The project shows active management attention, named ownership, and visible governance cadence, but current evidence indicates that late-cycle execution risk is rising through the interaction of environment dependency, PAT-driven rework, testing readiness gaps, and unresolved governance around expanded testing obligations. The most likely future risk path is not a single technical failure; it is compounded schedule and quality pressure as Sprint 4 transitions into Sprint 5, PAT, and regression. Outlook improves materially only if dependency closure, scope governance, and test-readiness controls are tightened immediately."
+      }
+    }
+  ],
+  "summaryStatistics": {
+    "totalProjects": 1,
+    "projectsWithCurrentRisks": 1,
+    "projectsWithNoCurrentRisks": 0,
+    "totalCurrentRisks": 9,
+    "risksByProject": [
+      {
+        "projectName": "Vivli - Researcher Experience Modernization & Workflow Automation",
+        "currentRisksCount": 9
+      }
+    ]
+  }
+}
