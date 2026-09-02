@@ -108,35 +108,6 @@ if eligibility:
     if reason:
         st.caption(reason)
 
-with st.expander("Input Validation Details"):
-    input_validation = project.get("inputValidation", {})
-    st.write(f"**Project Delivery Intelligence Accepted:** {input_validation.get('projectDeliveryIntelligenceAccepted', False)}")
-    st.write(f"**Historical Risk Intelligence Accepted:** {input_validation.get('historicalRiskIntelligenceAccepted', False)}")
-
-    rejected_docs = input_validation.get("rejectedDocuments", [])
-    if rejected_docs:
-        st.write("**Rejected Documents**")
-        df_rejected = pd.DataFrame(rejected_docs)
-        st.table(df_rejected.set_index(df_rejected.columns[0]) if not df_rejected.empty else df_rejected)
-
-    consistency = input_validation.get("projectConsistencyCheck", {})
-    if consistency:
-        st.write("**Project Consistency Check**")
-        rows = [{"Check": k, "Status": v.get("status", "-") if isinstance(v, dict) else "-",
-                 "Details": v.get("details", "-") if isinstance(v, dict) else str(v)}
-                for k, v in consistency.items()]
-        st.table(pd.DataFrame(rows).set_index("Check"))
-
-    missing = input_validation.get("missingDataHandling", {})
-    if missing:
-        st.write("**Missing Data Handling**")
-        missing_fields = missing.get("missingFields", [])
-        for item in missing_fields:
-            st.write(f"- {item}")
-        confidence_note = missing.get("confidenceAnnotation", "")
-        if confidence_note:
-            st.caption(confidence_note)
-
 risks = project.get("predictedRisks", [])
 
 st.divider()
@@ -167,7 +138,7 @@ else:
 
 st.divider()
 
-# ---------------- RISK SELECTION ---------------- #
+# ---------------- RISK TABLE ---------------- #
 st.subheader("Predicted Risks")
 
 if not risks:
@@ -175,115 +146,127 @@ if not risks:
 else:
     rating_icon = {"Critical": "🔴", "High": "🟠", "Medium": "🟡", "Low": "🟢"}
 
-    def risk_option_label(r):
-        icon = rating_icon.get(r.get("overallRiskRating", "Unknown"), "⚪")
+    df_risks = pd.DataFrame(
+        [
+            {
+                "Risk ID": r.get("riskId", "-"),
+                "Risk Title": r.get("riskTitle", "-"),
+                "Category": r.get("riskCategory", "-"),
+                "Risk Type": r.get("riskType", "-"),
+                "Overall Rating": f"{rating_icon.get(r.get('overallRiskRating', 'Unknown'), '⚪')} {r.get('overallRiskRating', '-')}",
+                "Likelihood": r.get("likelihood", "-"),
+                "Impact Severity": r.get("impactSeverity", "-"),
+                "Priority": r.get("riskPriority", "-"),
+                "Confidence Score": r.get("confidenceScore", "-"),
+                "Time To Materialization": r.get("timeToMaterialization", "-"),
+            }
+            for r in risks
+        ]
+    )
+    st.table(df_risks.set_index("Risk ID"))
+
+    st.write("**Risk Details**")
+    st.caption("Expand the ➕ next to a risk title for its full breakdown.")
+
+    for r in risks:
         risk_id = r.get("riskId", "-")
         title = r.get("riskTitle", "Untitled Risk")
-        return f"{icon} [{risk_id}] {title}"
+        overall_rating = r.get("overallRiskRating", "Unknown")
+        icon = rating_icon.get(overall_rating, "⚪")
 
-    risk_labels = [risk_option_label(r) for r in risks]
-    selected_risk_label = st.selectbox("Select Risk", risk_labels)
-    r = risks[risk_labels.index(selected_risk_label)]
+        with st.expander(f"➕ [{risk_id}] {title} — {icon} {overall_rating}"):
+            c1, c2, c3, c4 = st.columns(4)
+            c1.write(f"**Category:** {r.get('riskCategory', '-')}")
+            c2.write(f"**Risk Type:** {r.get('riskType', '-')}")
+            c3.write(f"**Likelihood:** {r.get('likelihood', '-')}")
+            c4.write(f"**Confidence Score:** {r.get('confidenceScore', '-')}")
 
-    overall_rating = r.get("overallRiskRating", "Unknown")
-    icon = rating_icon.get(overall_rating, "⚪")
-    risk_id = r.get("riskId", "-")
-    title = r.get("riskTitle", "Untitled Risk")
+            c5, c6, c7 = st.columns(3)
+            c5.write(f"**Impact Severity:** {r.get('impactSeverity', '-')}")
+            c6.write(f"**Risk Priority:** {r.get('riskPriority', '-')}")
+            c7.write(f"**Time To Materialization:** {r.get('timeToMaterialization', '-')}")
 
-    st.markdown(f"### {icon} [{risk_id}] {title} — {overall_rating}")
+            c8, c9, c10 = st.columns(3)
+            c8.write(f"**Preventability:** {r.get('preventability', '-')}")
+            c9.write(f"**Business Criticality:** {r.get('businessCriticality', '-')}")
+            c10.write(f"**Estimated Resolution Time:** {r.get('estimatedResolutionTime', '-')}")
 
-    c1, c2, c3, c4 = st.columns(4)
-    c1.write(f"**Category:** {r.get('riskCategory', '-')}")
-    c2.write(f"**Risk Type:** {r.get('riskType', '-')}")
-    c3.write(f"**Likelihood:** {r.get('likelihood', '-')}")
-    c4.write(f"**Confidence Score:** {r.get('confidenceScore', '-')}")
+            st.write(f"**Description:** {r.get('riskDescription', '-')}")
+            st.write(f"**Root Cause:** {r.get('rootCause', '-')}")
 
-    c5, c6, c7 = st.columns(3)
-    c5.write(f"**Impact Severity:** {r.get('impactSeverity', '-')}")
-    c6.write(f"**Risk Priority:** {r.get('riskPriority', '-')}")
-    c7.write(f"**Time To Materialization:** {r.get('timeToMaterialization', '-')}")
+            p1, p2, p3 = st.columns(3)
+            p1.write(f"**Current Project Phase:** {r.get('currentProjectPhase', '-')}")
+            p2.write(f"**Expected Occurrence Phase:** {r.get('expectedOccurrencePhase', '-')}")
+            p3.write(f"**Likely Impact Phase:** {r.get('likelyImpactPhase', '-')}")
 
-    c8, c9, c10 = st.columns(3)
-    c8.write(f"**Preventability:** {r.get('preventability', '-')}")
-    c9.write(f"**Business Criticality:** {r.get('businessCriticality', '-')}")
-    c10.write(f"**Estimated Resolution Time:** {r.get('estimatedResolutionTime', '-')}")
+            trigger_conditions = r.get("triggerConditions", [])
+            if trigger_conditions:
+                st.write("**Trigger Conditions**")
+                for item in trigger_conditions:
+                    st.write(f"- {item}")
 
-    st.write(f"**Description:** {r.get('riskDescription', '-')}")
-    st.write(f"**Root Cause:** {r.get('rootCause', '-')}")
+            # Potential Impact
+            potential_impact = r.get("potentialImpact", {})
+            if potential_impact:
+                st.write("**Potential Impact**")
+                df_impact = pd.DataFrame(
+                    {
+                        "Dimension": ["Schedule", "Cost", "Quality", "Customer", "Operations"],
+                        "Detail": [
+                            potential_impact.get("schedule", "-"),
+                            potential_impact.get("cost", "-"),
+                            potential_impact.get("quality", "-"),
+                            potential_impact.get("customer", "-"),
+                            potential_impact.get("operations", "-"),
+                        ],
+                    }
+                ).set_index("Dimension")
+                st.table(df_impact)
 
-    p1, p2, p3 = st.columns(3)
-    p1.write(f"**Current Project Phase:** {r.get('currentProjectPhase', '-')}")
-    p2.write(f"**Expected Occurrence Phase:** {r.get('expectedOccurrencePhase', '-')}")
-    p3.write(f"**Likely Impact Phase:** {r.get('likelyImpactPhase', '-')}")
+            # Historical Relevance
+            hist_rel = r.get("historicalRelevance", {})
+            if hist_rel:
+                st.write("**Historical Relevance**")
+                matched_ids = hist_rel.get("matchedHistoricalRiskIds", [])
+                st.write(f"**Matched Historical Risk IDs:** {', '.join(matched_ids) if matched_ids else '-'}")
+                st.write(f"**Recurrence Likelihood:** {hist_rel.get('recurrenceLikelihood', '-')}")
+                supporting_patterns = hist_rel.get("supportingPatterns", [])
+                if supporting_patterns:
+                    st.write("**Supporting Patterns**")
+                    for item in supporting_patterns:
+                        st.write(f"- {item}")
 
-    trigger_conditions = r.get("triggerConditions", [])
-    if trigger_conditions:
-        st.write("**Trigger Conditions**")
-        for item in trigger_conditions:
-            st.write(f"- {item}")
+            st.write(f"**Reasoning:** {r.get('reasoning', '-')}")
 
-    # Potential Impact
-    potential_impact = r.get("potentialImpact", {})
-    if potential_impact:
-        st.write("**Potential Impact**")
-        df_impact = pd.DataFrame(
-            {
-                "Dimension": ["Schedule", "Cost", "Quality", "Customer", "Operations"],
-                "Detail": [
-                    potential_impact.get("schedule", "-"),
-                    potential_impact.get("cost", "-"),
-                    potential_impact.get("quality", "-"),
-                    potential_impact.get("customer", "-"),
-                    potential_impact.get("operations", "-"),
-                ],
-            }
-        ).set_index("Dimension")
-        st.table(df_impact)
+            mitigation_plan = r.get("mitigationPlan", [])
+            if mitigation_plan:
+                st.write("**Mitigation Plan**")
+                for item in mitigation_plan:
+                    st.write(f"- {item}")
 
-    # Historical Relevance
-    hist_rel = r.get("historicalRelevance", {})
-    if hist_rel:
-        st.write("**Historical Relevance**")
-        matched_ids = hist_rel.get("matchedHistoricalRiskIds", [])
-        st.write(f"**Matched Historical Risk IDs:** {', '.join(matched_ids) if matched_ids else '-'}")
-        st.write(f"**Recurrence Likelihood:** {hist_rel.get('recurrenceLikelihood', '-')}")
-        supporting_patterns = hist_rel.get("supportingPatterns", [])
-        if supporting_patterns:
-            st.write("**Supporting Patterns**")
-            for item in supporting_patterns:
-                st.write(f"- {item}")
+            recommendations = r.get("recommendations", [])
+            if recommendations:
+                st.write("**Recommendations**")
+                for item in recommendations:
+                    st.write(f"- {item}")
 
-    st.write(f"**Reasoning:** {r.get('reasoning', '-')}")
+            monitoring_indicators = r.get("monitoringIndicators", [])
+            if monitoring_indicators:
+                st.write("**Monitoring Indicators**")
+                for item in monitoring_indicators:
+                    st.write(f"- {item}")
 
-    mitigation_plan = r.get("mitigationPlan", [])
-    if mitigation_plan:
-        st.write("**Mitigation Plan**")
-        for item in mitigation_plan:
-            st.write(f"- {item}")
-
-    recommendations = r.get("recommendations", [])
-    if recommendations:
-        st.write("**Recommendations**")
-        for item in recommendations:
-            st.write(f"- {item}")
-
-    monitoring_indicators = r.get("monitoringIndicators", [])
-    if monitoring_indicators:
-        st.write("**Monitoring Indicators**")
-        for item in monitoring_indicators:
-            st.write(f"- {item}")
-
-    # Evidence
-    evidence = r.get("evidence", {})
-    if evidence:
-        st.write("**Evidence**")
-        project_indicators = evidence.get("projectIndicators", [])
-        if project_indicators:
-            st.write("*Project Indicators*")
-            for item in project_indicators:
-                st.write(f"- {item}")
-        historical_references = evidence.get("historicalReferences", [])
-        if historical_references:
-            st.write("*Historical References*")
-            for item in historical_references:
-                st.write(f"- {item}")
+            # Evidence
+            evidence = r.get("evidence", {})
+            if evidence:
+                st.write("**Evidence**")
+                project_indicators = evidence.get("projectIndicators", [])
+                if project_indicators:
+                    st.write("*Project Indicators*")
+                    for item in project_indicators:
+                        st.write(f"- {item}")
+                historical_references = evidence.get("historicalReferences", [])
+                if historical_references:
+                    st.write("*Historical References*")
+                    for item in historical_references:
+                        st.write(f"- {item}")
