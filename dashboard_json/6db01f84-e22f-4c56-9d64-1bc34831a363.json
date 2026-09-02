@@ -1,0 +1,285 @@
+{
+  "projects": [
+    {
+      "clientName": "Vivli",
+      "projectName": "Vivli AI Form Check Validation & Agentic Chat Automation",
+      "RiskAnalysis": {
+        "Risks": [
+          {
+            "riskID": "R01",
+            "riskTitle": "Contractual Extension Formalization Failure Leading to Legal and Payment Disputes",
+            "riskDescription": "The project timeline extends 6.57 weeks (49 calendar days) beyond the contractual end date of September 11, 2026, with go-live planned for October 10-16, 2026 and hypercare through October 30, 2026. No formal SOW amendment or extension approval has been documented, creating significant legal, commercial, and governance ambiguity. Payment milestones remain misaligned with the extended timeline, and activities worth approximately $60,500 (Deployment 5% + Hypercare 10%) are scheduled entirely post-contract.",
+            "riskChain": {
+              "rootCause": "Historical pattern of testing scope expansion without formal change control (regression and extended PAT added post-initiation in prior engagement). Current project exhibits identical governance weakness: extended timeline inferred from WSR but not formalized in contract amendment. Weak change control processes allow operational reality to diverge from contractual baseline without triggering formal approval mechanisms.",
+              "trigger": "Contractual end date (September 11, 2026) passes without formal extension; Deployment milestone invoice submitted for work occurring post-contract; Client questions payment obligation for post-contract activities; Resource commitment disputes arise due to undefined extension terms; Audit or compliance review identifies contract-delivery misalignment",
+              "primaryRisk": "Contractual extension not formally approved or documented before post-contract execution",
+              "downstreamRisk": "Legal disputes, payment conflicts, resource de-allocation, deployment/hypercare disruption",
+              "impact": "Critical schedule, contractual, financial, and stakeholder impact"
+            },
+            "category": "Contractual & Governance",
+            "riskType": "Contractual & Governance",
+            "severity": "Critical",
+            "likelihood": "Very High",
+            "confidenceScore": "96",
+            "businessImpact": "Payment disputes for post-contract work, potential project abandonment, delayed business value realization, relationship damage, and operational continuity disruption.",
+            "currentProjectEvidence": "WSR timeline shows activities through October 30, 2026 vs. contract end September 11, 2026; no documented SOW amendment; deployment and hypercare milestones occur post-contract; schedule status marked UNDER REVIEW; feasibility assessment says contractual deadline NOT FEASIBLE.",
+            "currentContextReasoning": "This is the highest-priority current risk because the contractual deadline is fixed, the extension is operationally real, and formal commercial governance has not caught up to delivery reality.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Historical risk recorded that regression testing and extended PAT were added after project initiation but were not part of the original SOW, creating scope creep and contractual ambiguity.",
+              "historicalSupportLevel": "High",
+              "historicalReasoning": "Same client, same transformation program family, and the same governance/change-control weakness are visible in both historical and current project evidence."
+            },
+            "futureRiskProjection": "If not formally amended immediately, this risk is likely to materialize before or at the contractual end date and can delay deployment and hypercare significantly.",
+            "recurrenceJustification": "Historical mitigation effectiveness was weak and no formal structural correction is documented, making recurrence highly likely.",
+            "leadingIndicators": "No signed SOW amendment; unresolved milestone realignment; ongoing execution beyond contractual plan; executive escalation pending.",
+            "predictiveInsight": "Without immediate executive and commercial action, contractual ambiguity will likely convert into payment, legal, and delivery disruption risk.",
+            "mitigation": "Escalate immediately to both parties' leadership, prepare and approve a formal SOW amendment, realign milestones, confirm scope additions, and formalize resource commitments through October 30, 2026.",
+            "recommendations": "Treat as an immediate program-level escalation, obtain legal/commercial sign-off, document extension terms, and establish strict change control for the remaining project."
+          },
+          {
+            "riskID": "R02",
+            "riskTitle": "Client Dependency Bottleneck Causing Sprint 5 Delay and PAT Entry Failure",
+            "riskDescription": "Four high-severity client dependencies remain unresolved at Week 12 of 16 (71.4% project elapsed): chat-based escalation requirements, Azure monitoring confirmation, automation testing environment provisioning, and Guru Card fit assessment. These dependencies gate Sprint 5 scope and PAT readiness and can cascade delays into user demo, PAT, regression, and deployment.",
+            "riskChain": {
+              "rootCause": "Persistent client-side dependency and environment readiness constraints combined with insufficient dependency management as delivery gates.",
+              "trigger": "Sprint 5 starts without closed dependencies; automation environment unavailable; Azure monitoring unconfirmed; escalation requirements unresolved; Guru Card assessment incomplete",
+              "primaryRisk": "Critical client-side decisions and environments are not ready in time for Sprint 5 and PAT entry",
+              "downstreamRisk": "Sprint 5 delay, demo delay, PAT entry delay, and broader schedule slippage",
+              "impact": "High schedule, quality, and operational readiness impact"
+            },
+            "category": "Dependency & Schedule",
+            "riskType": "Dependency & Schedule",
+            "severity": "High",
+            "likelihood": "High",
+            "confidenceScore": "92",
+            "businessImpact": "Delayed Sprint 5 execution, compressed QA, increased rework, lower test readiness, possible overall project extension, and stakeholder confidence erosion.",
+            "currentProjectEvidence": "WSR open dependencies lists 4 high severity items with Vivli team ownership; Sprint 5 scope explicitly depends on escalation workflow, automation, monitoring, and related confirmations; schedule is UNDER REVIEW.",
+            "currentContextReasoning": "These dependencies are current gating conditions for the next sprint and directly threaten the critical path into PAT.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Historical risk noted Sprint 1 slipped due to broader scope and client cloud environment dependencies.",
+              "historicalSupportLevel": "High",
+              "historicalReasoning": "The historical project experienced dependency-driven sprint slippage, and the current project shows the same dependency pattern at a later and more critical stage."
+            },
+            "futureRiskProjection": "If unresolved before Sprint 5, this risk will likely cause immediate execution delay and reduce PAT readiness.",
+            "recurrenceJustification": "Historical dependency mitigation was weakly evidenced and the same dependency drivers are still active.",
+            "leadingIndicators": "Unresolved dependency tracker items; delayed client decisions; incomplete test environment; pending technical confirmations.",
+            "predictiveInsight": "Dependency-driven wait states are likely to compress later phases further and amplify quality and schedule risk.",
+            "mitigation": "Escalate dependencies immediately, conduct focused resolution sessions with Vivli stakeholders, secure written dates for environment readiness and decisions, and re-sequence Sprint 5 work to reduce dependency exposure.",
+            "recommendations": "Run daily dependency reviews, invoke client-responsibility clauses, define contingency plans for blocked items, and document dependency delays for governance escalation."
+          },
+          {
+            "riskID": "R03",
+            "riskTitle": "PAT Failure Due to UI/UX Quality Defects and Compressed Testing Coverage",
+            "riskDescription": "Product Acceptance Testing (PAT) scheduled for August 31 - September 18 faces failure risk because of significant UI-related bug backlog, late front-end automation, compressed QA cycles, ongoing PAT early access feedback, and incomplete prior PAT review closure. Any major defects found during PAT will delay code freeze, regression, and deployment.",
+            "riskChain": {
+              "rootCause": "Backend-first execution, late front-end automation, compressed QA, ongoing enhancement inflow from feedback, and insufficient schedule protection for iterative validation.",
+              "trigger": "PAT starts with unresolved UI bugs; front-end coverage remains weak; prior feedback unresolved; critical defects found in UI, workflow, escalation, or access flows",
+              "primaryRisk": "PAT reveals blocking defects and acceptance issues that the team is not fully prepared to absorb within the planned window",
+              "downstreamRisk": "PAT extension, code freeze delay, regression delay, deployment postponement",
+              "impact": "High quality, schedule, acceptance, and user confidence impact"
+            },
+            "category": "Quality & Acceptance",
+            "riskType": "Quality & Acceptance",
+            "severity": "High",
+            "likelihood": "Medium-High",
+            "confidenceScore": "88",
+            "businessImpact": "Acceptance failure, rework, delayed go-live, reduced user confidence, and increased support burden post-deployment.",
+            "currentProjectEvidence": "WSR bug list states UI-related bugs are a good percent of total bugs; front-end testing coverage risk was identified; automation resource started only in Sprint 4; Sprint 3 PAT review still in progress while Sprint 4 is active.",
+            "currentContextReasoning": "PAT is on the critical path with zero effective buffer, so unresolved quality issues are likely to surface at the worst possible point in the lifecycle.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Historical risk warned that delayed customer feedback could impact subsequent sprint validation and implementation.",
+              "historicalSupportLevel": "High",
+              "historicalReasoning": "The project still depends on iterative feedback-driven validation, and unresolved feedback now directly threatens PAT outcomes and timing."
+            },
+            "futureRiskProjection": "If UI and front-end quality gaps are not reduced before PAT, the PAT window is likely to be extended or produce significant rework.",
+            "recurrenceJustification": "The feedback-loop risk has already recurred across sprint boundaries and mitigation effectiveness historically was only partial.",
+            "leadingIndicators": "Growing UI bug backlog; low front-end automation coverage; unresolved prior PAT review; continued enhancement inflow from early access feedback.",
+            "predictiveInsight": "Quality issues deferred into PAT are likely to convert from manageable sprint issues into formal acceptance blockers.",
+            "mitigation": "Prioritize PAT-blocking defects, complete front-end automation for critical workflows, run a pre-PAT dry run, and establish strict PAT entry criteria.",
+            "recommendations": "Use a formal PAT go/no-go review, define critical vs non-critical defect thresholds with Vivli, and maintain a rapid-response defect triage team during PAT."
+          },
+          {
+            "riskID": "R04",
+            "riskTitle": "Scope Creep Through Enhancement Backlog Preventing Sprint 5 and Code Freeze Completion",
+            "riskDescription": "Sprint 5 is overloaded with bug fixes, enhancement requests, escalation workflow integration, access restrictions, MSAL/RBAC implementation, test coverage, DevOps IaC sign-off, and GPT-5 Mini migration. Some bugs are already marked as enhancements, indicating scope creep. Without strict scope freeze and prioritization, Sprint 5 may overrun and delay user demo, PAT entry, and code freeze.",
+            "riskChain": {
+              "rootCause": "Scope evolution through discovery, weak change control, incomplete early requirements definition, and feedback-driven backlog growth without hard scope boundaries.",
+              "trigger": "New enhancements continue entering Sprint 5; migration or RBAC work exceeds estimates; backlog is not prioritized; QA window proves insufficient",
+              "primaryRisk": "Sprint 5 scope exceeds available capacity and disrupts readiness for downstream milestones",
+              "downstreamRisk": "User demo delay, PAT delay, code freeze delay, broader project extension",
+              "impact": "High schedule and quality pressure with operational and stakeholder consequences"
+            },
+            "category": "Scope & Schedule",
+            "riskType": "Scope & Schedule",
+            "severity": "Medium-High",
+            "likelihood": "High",
+            "confidenceScore": "90",
+            "businessImpact": "Sprint overrun, rushed implementation, more technical debt, delayed milestones, and expectation misalignment with stakeholders.",
+            "currentProjectEvidence": "Sprint 5 plan includes bug fixes, enhancement feedback, escalation workflow, access restrictions, MSAL/RBAC, test coverage, DevOps sign-off, and GPT-5 Mini migration; some bugs are marked as enhancements; no formal change control board is documented.",
+            "currentContextReasoning": "The planned scope and available time are visibly mismatched, making scope control a near-term delivery necessity.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Historical risks captured broader scope causing sprint slip and post-initiation additions such as regression testing and extended PAT outside the original baseline.",
+              "historicalSupportLevel": "High",
+              "historicalReasoning": "The current backlog growth and non-baselined additions strongly resemble the historical scope-expansion pattern."
+            },
+            "futureRiskProjection": "If scope is not frozen and prioritized immediately, Sprint 5 is likely to slip and compress all remaining quality gates.",
+            "recurrenceJustification": "Historical scope-control mitigation was ineffective and similar drivers remain active.",
+            "leadingIndicators": "Enhancement requests continuing to appear; overloaded Sprint 5 plan; limited QA duration; no formal scope gate.",
+            "predictiveInsight": "Uncontrolled enhancement intake will likely convert schedule pressure into both quality risk and milestone slippage.",
+            "mitigation": "Freeze Sprint 5 scope, categorize backlog by necessity, defer non-critical enhancements, and timebox risky technical additions like GPT-5 Mini migration and advanced RBAC work.",
+            "recommendations": "Establish immediate change control, communicate no-new-enhancement rules for Sprint 5, and focus only on PAT-blocking and baseline-critical items."
+          },
+          {
+            "riskID": "R05",
+            "riskTitle": "Regression Phase Defect Discovery Causing Deployment Delay and Go-Live Postponement",
+            "riskDescription": "The regression period from September 21 to October 9 is the first full end-to-end regression of integrated workflows and occurs entirely post-contract with zero schedule buffer. Given UI defects, late automation, compressed prior QA, Sprint 5 scope additions, and multi-service integration complexity, critical defects may be found that require fixes and re-testing, delaying deployment beyond October 16.",
+            "riskChain": {
+              "rootCause": "Quality debt carried forward from compressed earlier testing, late automation maturity, and new integration complexity introduced late in delivery.",
+              "trigger": "Critical defects are found during regression in integrated workflows, authentication, model migration, or Azure integrations",
+              "primaryRisk": "Regression uncovers issues too late for comfortable repair within the planned deployment window",
+              "downstreamRisk": "Deployment delay, go-live postponement, hypercare shift, further extension beyond current plan",
+              "impact": "High schedule, quality, and business value realization impact"
+            },
+            "category": "Quality & Schedule",
+            "riskType": "Quality & Schedule",
+            "severity": "High",
+            "likelihood": "Medium-High",
+            "confidenceScore": "85",
+            "businessImpact": "Delayed deployment, added rework, production defect risk, slower business value realization, and stakeholder confidence loss.",
+            "currentProjectEvidence": "Regression is explicitly planned post-contract; project has compressed testing patterns, significant UI bug indicators, late front-end automation, and late technical additions such as GPT-5 Mini migration and MSAL/RBAC.",
+            "currentContextReasoning": "Regression is positioned as a major downstream quality gate but the project has little slack left to absorb meaningful discovery.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Historical risk documented that regression testing and extended PAT were added after project initiation and were not part of the original SOW.",
+              "historicalSupportLevel": "Medium-High",
+              "historicalReasoning": "The very existence of the added regression phase reflects anticipated quality risk and governance drift that are still active in the current project."
+            },
+            "futureRiskProjection": "If pre-regression quality improvements are insufficient, regression is likely to surface defects that move deployment to a later date.",
+            "recurrenceJustification": "Testing expansion historically emerged from unresolved quality and governance issues, and the current project retains the same structural stressors.",
+            "leadingIndicators": "Unfinished automation, unresolved PAT defects, unstable late-stage features, and incomplete regression planning.",
+            "predictiveInsight": "Quality problems not eliminated before regression will likely reappear as critical deployment blockers.",
+            "mitigation": "Create a comprehensive regression plan, increase automation coverage for critical flows, run pre-regression dry runs, and maintain rapid-turnaround defect triage during regression.",
+            "recommendations": "Set regression entry criteria, define defect thresholds for deployment readiness, and prepare contingency deployment dates."
+          },
+          {
+            "riskID": "R06",
+            "riskTitle": "Resource Availability and Knowledge Continuity Risk During Extended Timeline",
+            "riskDescription": "The project extends 6.57 weeks beyond the original 16-week timeline, creating risk of Ascendion resource reassignment, Vivli SME and PAT team availability constraints, knowledge loss, team fatigue, and competing priorities during PAT, regression, deployment, training, and hypercare.",
+            "riskChain": {
+              "rootCause": "Timeline extension without formally documented resource commitment planning or updated availability assumptions for the extended period.",
+              "trigger": "Key team members become unavailable; PAT participants are not available for the full validation window; critical knowledge sits with individuals who rotate off the project",
+              "primaryRisk": "Extended delivery outlasts assumed resource commitments and reduces continuity during critical final phases",
+              "downstreamRisk": "Delays, reduced velocity, weaker validation, knowledge-transfer gaps, and lower support readiness",
+              "impact": "Medium-High schedule, quality, and operational transition impact"
+            },
+            "category": "Resource & Knowledge Management",
+            "riskType": "Resource & Knowledge Management",
+            "severity": "Medium-High",
+            "likelihood": "Medium",
+            "confidenceScore": "82",
+            "businessImpact": "Potential delays, replacement cost, knowledge-transfer overhead, reduced quality, and operational handoff risk.",
+            "currentProjectEvidence": "Extension analysis shows 41.1% timeline increase; original SOW assumptions cite domain expert availability during Weeks 1-4; no documented extension approval for resource commitments; PAT, regression, and hypercare all require ongoing stakeholder participation.",
+            "currentContextReasoning": "The longer the project runs beyond its baseline, the more likely people and attention drift away from planned commitments.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "",
+              "historicalSupportLevel": "",
+              "historicalReasoning": ""
+            },
+            "futureRiskProjection": "If resource commitments are not reconfirmed, continuity gaps are likely to emerge during the most coordination-heavy end phases.",
+            "recurrenceJustification": "Although not directly stated as a historical risk, the current extension materially increases exposure to normal availability and continuity failures.",
+            "leadingIndicators": "Declining velocity, delayed stakeholder responses, reassignment signals, and missing confirmations for PAT or hypercare participation.",
+            "predictiveInsight": "Resource continuity risk will likely intensify as the project enters post-contract execution and sustained client participation becomes essential.",
+            "mitigation": "Confirm resource commitments formally through October 30, identify backups for critical roles, and complete knowledge-transfer documentation for key components.",
+            "recommendations": "Track continuity risks in weekly reviews, include resource commitments in any amendment, and establish backup coverage for critical project roles."
+          },
+          {
+            "riskID": "R07",
+            "riskTitle": "Deployment Failure Due to Incomplete DevOps Automation and Production Readiness Gaps",
+            "riskDescription": "Production deployment scheduled for October 10-16 faces elevated failure risk because DevOps IaC sign-off is deferred to Sprint 5, Azure monitoring and escalation alerting remain unresolved, production readiness validation is incomplete, and the deployment window is compressed with no buffer. Deployment occurs post-contract and any failure would significantly disrupt go-live and hypercare.",
+            "riskChain": {
+              "rootCause": "Late prioritization of DevOps and production-readiness activities, unresolved monitoring dependencies, and insufficient buffer before go-live.",
+              "trigger": "IaC sign-off is delayed; monitoring is unconfirmed; deployment scripts fail; production integration issues appear; smoke testing identifies critical issues",
+              "primaryRisk": "Production deployment proceeds without fully validated automation and operational readiness controls",
+              "downstreamRisk": "Go-live delay, rollback, unstable production support, and hypercare disruption",
+              "impact": "High operational, schedule, and stakeholder impact"
+            },
+            "category": "Deployment & Operations",
+            "riskType": "Deployment & Operations",
+            "severity": "Medium-High",
+            "likelihood": "Medium",
+            "confidenceScore": "80",
+            "businessImpact": "Go-live disruption, emergency production support effort, delayed value realization, operational instability, and stakeholder confidence loss.",
+            "currentProjectEvidence": "Sprint 5 includes DevOps IaC sign-off; WSR lists unresolved Azure monitoring and escalation alert dependency; deployment is scheduled post-contract in a five-day window.",
+            "currentContextReasoning": "Production readiness work is landing late in the project, increasing the chance that deployment becomes the point where unresolved operational risks surface.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "",
+              "historicalSupportLevel": "",
+              "historicalReasoning": ""
+            },
+            "futureRiskProjection": "If production-readiness activities are not completed early and validated thoroughly, deployment is likely to experience avoidable failures or delays.",
+            "recurrenceJustification": "No direct historical match is provided, but the current operational dependency and late-readiness pattern materially increase deployment risk.",
+            "leadingIndicators": "Unfinished IaC sign-off; unresolved monitoring design; missing deployment dry run; incomplete production readiness review.",
+            "predictiveInsight": "Late operational readiness often converts at deployment time into issues that are expensive and highly visible.",
+            "mitigation": "Prioritize IaC sign-off, resolve Azure monitoring, validate production environment readiness, run pre-production deployment rehearsals, and prepare a rollback-capable deployment runbook.",
+            "recommendations": "Use formal deployment entry criteria, hold a go/no-go readiness review, maintain deployment support coverage, and prepare contingency deployment windows."
+          }
+        ]
+      },
+      "projectForecastInsights": {
+        "majorBottlenecks": [
+          "Unresolved high-severity Vivli dependencies gating Sprint 5 and PAT readiness",
+          "Contract extension and milestone formalization gap before post-contract execution",
+          "Compressed QA and late front-end automation creating acceptance pressure",
+          "Overloaded Sprint 5 backlog with scope creep indicators",
+          "Late DevOps and production-readiness activities"
+        ],
+        "riskPropagationPatterns": [
+          "Dependency delays in Sprint 5 can push PAT entry, then regression, then deployment and hypercare",
+          "Scope creep and enhancement inflow increase sprint overload, which reduces QA effectiveness and raises PAT failure risk",
+          "Quality issues deferred into PAT and regression can convert directly into deployment delays",
+          "Contractual ambiguity can compound schedule and resource issues if extension approval is delayed",
+          "Late production-readiness decisions can surface during deployment and amplify business disruption"
+        ],
+        "emergingConcerns": [
+          "Zero effective schedule buffer under the extended plan",
+          "PAT early access feedback continuing across sprint boundaries",
+          "UI-related defects remain a notable share of overall bug volume",
+          "Regression and post-contract phases carry concentrated delivery risk",
+          "Resource continuity risk increases as execution extends beyond baseline assumptions"
+        ],
+        "highRiskDependencies": [
+          "Refine chat-based escalation requirements",
+          "Confirm Azure monitoring and escalation email failure alert process",
+          "Provision dedicated automation testing environment",
+          "Complete Guru Card fit assessment in Agentic chat"
+        ],
+        "rootCauseConcentration": [
+          "Weak change control and governance formalization",
+          "Client-side dependency and environment readiness constraints",
+          "Feedback-driven scope growth without sufficient schedule protection",
+          "Compressed testing and late automation maturity",
+          "Late operational readiness and DevOps finalization"
+        ],
+        "mostLikelyFailureTriggers": [
+          "Contractual end date passes without approved extension",
+          "Sprint 5 starts with unresolved client dependencies",
+          "PAT begins with unresolved UI or front-end quality blockers",
+          "Regression discovers critical integrated workflow defects",
+          "Deployment proceeds without fully validated monitoring and IaC readiness"
+        ],
+        "overallOutlook": "At risk. Scope and cost remain broadly stable in reported status, but schedule, governance, dependency, and quality pressures are converging in the final delivery phases with little to no buffer."
+      }
+    }
+  ],
+  "summaryStatistics": {
+    "totalProjects": 1,
+    "projectsWithCurrentRisks": 1,
+    "projectsWithNoCurrentRisks": 0,
+    "totalCurrentRisks": 7,
+    "risksByProject": [
+      {
+        "projectName": "Vivli AI Form Check Validation & Agentic Chat Automation",
+        "currentRisksCount": 7
+      }
+    ]
+  }
+}
