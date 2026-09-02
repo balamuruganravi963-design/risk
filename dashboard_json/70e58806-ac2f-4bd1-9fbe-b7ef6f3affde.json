@@ -1,0 +1,152 @@
+{
+  "projects": [
+    {
+      "clientName": "Vivli",
+      "projectName": "Vivli - AI Form Check Validation & Agentic Chat Automation",
+      "RiskAnalysis": {
+        "Risks": [
+          {
+            "riskID": "R01",
+            "riskTitle": "Post-Contract Delivery Activities May Proceed Without Formal Commercial and Governance Coverage",
+            "riskDescription": "Critical acceptance, stabilization, deployment, and hypercare activities are scheduled beyond the contractual end date without documented extension approval, creating a high probability of disruption to delivery continuity and decision rights as the project approaches PAT and post-PAT execution.",
+            "riskChain": {
+              "rootCause": "Original baseline did not fully align the full SDLC effort with the 16-week contract term, and no formal extension, amended payment structure, or documented approval is evidenced despite activities extending to October 30, 2026.",
+              "trigger": "No approved SOW amendment or change order before September 11, 2026",
+              "primaryRisk": "Post-Contract Delivery Activities May Proceed Without Formal Commercial and Governance Coverage",
+              "downstreamRisk": "PAT, regression, deployment, or hypercare may pause or slow due to approval/commercial ambiguity; downstream milestones could slip by multiple weeks.",
+              "impact": "Critical"
+            },
+            "category": "Governance",
+            "riskType": "Future Delivery Risk",
+            "severity": "Critical",
+            "likelihood": "High",
+            "confidenceScore": "95",
+            "businessImpact": "PAT, regression, deployment, or hypercare may pause or slow due to approval/commercial ambiguity; downstream milestones could slip by multiple weeks. Additional unplanned commercial negotiation, extension cost exposure, and payment milestone disputes may arise. Compressed or interrupted stabilization/testing may increase defect leakage into go-live. Confidence may decline if delivery proceeds without clear contractual alignment; acceptance disputes may emerge. Post-contract governance ambiguity may weaken escalation handling, support continuity, and operational readiness.",
+            "currentProjectEvidence": "Contract ends September 11, 2026; PAT runs August 31 - September 18, 2026; Code freeze September 18, regression September 21 - October 9, deployment October 10-16, hypercare October 19-30; explicit extension detected as inferred, not formally documented; remaining work requires 78 days versus 29 remaining contract days.",
+            "currentContextReasoning": "This is the strongest evidence-backed future risk because the condition is already emerging and will materially affect future critical phases. Current intelligence explicitly identifies a 49-day timeline overrun beyond contract end, while historical risk R02 shows near-identical PAT/regression governance ambiguity for the same client context. The recurrence pattern is direct, current, and highly consequential.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Historical R02: Regression testing and extended PAT were added after initiation and outside the original SOW baseline",
+              "historicalSupportLevel": "Very High",
+              "historicalReasoning": "Historical precedent of PAT/regression effort being introduced outside SOW baseline; current project shows a materially larger recurrence of the same governance failure mode; historical mitigation was weakly evidenced and only partially effective."
+            },
+            "futureRiskProjection": "If not formalized immediately, this risk is likely to materialize during PAT / Code Freeze / Regression Preparation and affect PAT, Regression, Deployment, and Hypercare.",
+            "recurrenceJustification": "Same client, similar governance failure mode, and direct historical match to undocumented PAT/regression work outside contract baseline.",
+            "leadingIndicators": "Absence of signed extension/change order; no revised payment milestone plan; no documented post-contract acceptance/governance process; September 11 contract end approaching while PAT remains active.",
+            "predictiveInsight": "High probability of disruption to delivery continuity and decision rights as the project approaches PAT and post-PAT execution.",
+            "mitigation": "Escalate immediately to client and vendor commercial/governance leads for formal timeline extension approval; issue a documented SOW amendment or change order covering PAT, regression, deployment, training, and hypercare; align payment milestones, acceptance criteria, support obligations, and escalation rights with the extended timeline; publish an updated governance calendar through the revised end date.",
+            "recommendations": "Do not enter PAT without explicit decision on post-September 11 contractual coverage. Obtain written approval for resource continuity through October 30, 2026. Re-baseline remaining milestones and define acceptance authority for post-contract deliverables. Track this as a steering-level risk until documented closure evidence exists."
+          },
+          {
+            "riskID": "R02",
+            "riskTitle": "Unresolved High-Severity Dependencies May Cause Sprint 5 Rework and PAT Readiness Delay",
+            "riskDescription": "Late-stage unresolved dependencies across escalation requirements, Azure monitoring/failure handling, automation environment readiness, and Guru Card fit assessment may trigger design changes, incomplete validation, or blocked completion of Sprint 5 and PAT readiness activities.",
+            "riskChain": {
+              "rootCause": "Critical client/joint decisions and enabling environment items remain unresolved in Week 12 of 16, while the project is entering acceptance-intensive phases with limited schedule buffer and overlapping workstreams.",
+              "trigger": "Chat escalation requirements remain unresolved after Sprint 4 demo",
+              "primaryRisk": "Unresolved High-Severity Dependencies May Cause Sprint 5 Rework and PAT Readiness Delay",
+              "downstreamRisk": "Sprint 5 completion and PAT start could slip, or PAT may start with known gaps and unresolved dependencies.",
+              "impact": "High"
+            },
+            "category": "Dependency",
+            "riskType": "Future Delivery Risk",
+            "severity": "High",
+            "likelihood": "High",
+            "confidenceScore": "90",
+            "businessImpact": "Sprint 5 completion and PAT start could slip, or PAT may start with known gaps and unresolved dependencies. Additional rework, coordination effort, and possibly extended support effort may be required. Incomplete dependency resolution may reduce coverage, leave failure-handling paths untested, or introduce last-minute fixes. Client confidence may decline if agreed functionality or monitoring expectations are clarified too late. Operational support, alerting, and escalation readiness may be incomplete for production transition.",
+            "currentProjectEvidence": "Four high-severity dependencies unresolved in Week 12; Sprint 5 depends on high-severity dependency resolution; schedule pressure increasing with only 4.57 weeks left in contract; Sprint 3 early access review still in progress, indicating feedback closure lag.",
+            "currentContextReasoning": "This risk is phase-relevant and actionable because all four high-severity dependencies remain active near PAT. Historical evidence shows dependency drag and client feedback latency have already caused schedule and validation risk in the same account. The unresolved items are specific, current, and directly connected to upcoming milestone readiness.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Historical R01: client cloud environment dependencies caused sprint slip; Historical R03: delayed customer feedback threatened validation and implementation timing",
+              "historicalSupportLevel": "High",
+              "historicalReasoning": "Historical client environment dependency caused sprint slip; historical client feedback timing risk affected validation sequencing; current project still has unresolved client-side and joint dependency bottlenecks late in lifecycle."
+            },
+            "futureRiskProjection": "Likely to materialize during Sprint 5 Execution / PAT Readiness and affect PAT and Regression if not resolved.",
+            "recurrenceJustification": "Historical dependency-driven schedule pressure and client feedback latency are recurring patterns in the same client environment.",
+            "leadingIndicators": "Open dependency age and owner status; Sprint 4 demo decisions not captured; automation environment still marked in progress; PAT entry criteria unmet by August 31.",
+            "predictiveInsight": "Specific unresolved dependencies are directly connected to upcoming milestone readiness and may trigger design changes, incomplete validation, or blocked completion.",
+            "mitigation": "Run an immediate dependency resolution workshop with named client and vendor owners; set dated decisions and acceptance deadlines for each open dependency; separate critical-path items needed for PAT from non-blocking enhancements; escalate any unresolved dependency older than 3 business days to governance forum.",
+            "recommendations": "Create a dependency burn-down view tied to Sprint 5 and PAT entry criteria. Freeze requirement interpretation for chat escalation and monitoring before Sprint 5 build completion. Provision or confirm fallback automation/testing approach if dedicated environment remains delayed. Document design decisions and impacts immediately to avoid repeat clarification loops."
+          },
+          {
+            "riskID": "R03",
+            "riskTitle": "Late Feedback and Defect Backlog May Reduce PAT Pass Readiness",
+            "riskDescription": "Ongoing early access feedback, low work item closure rate, and a significant UI/UX-heavy defect backlog may result in incomplete stabilization before formal PAT, increasing the chance of PAT churn, retesting, and extended downstream schedule impact.",
+            "riskChain": {
+              "rootCause": "Feedback is still being absorbed from prior sprint reviews while current and upcoming sprint scope remains active; closure throughput lags elapsed time, and defect patterns indicate usability and in-flight functionality quality debt.",
+              "trigger": "Work item closure rate remains materially below readiness threshold entering PAT",
+              "primaryRisk": "Late Feedback and Defect Backlog May Reduce PAT Pass Readiness",
+              "downstreamRisk": "PAT may require additional cycles, delaying code freeze and regression start.",
+              "impact": "High"
+            },
+            "category": "Quality",
+            "riskType": "Future Delivery Risk",
+            "severity": "High",
+            "likelihood": "High",
+            "confidenceScore": "89",
+            "businessImpact": "PAT may require additional cycles, delaying code freeze and regression start. Additional QA, defect triage, and extended team effort may increase cost exposure. Unresolved usability and functional defects may lower acceptance quality and increase production risk. Poor user experience or repeated defect discovery may reduce stakeholder confidence at demo and PAT stages. Stabilization burden may shift into regression or post-go-live support.",
+            "currentProjectEvidence": "53 total work items with only 20 closed (37.7% closure rate); good percentage of bugs are UI-related; some bugs created for in-flight functionalities; Sprint 3 Early Access Review still in progress as of August 13; PAT feedback is actively being assessed and fixed.",
+            "currentContextReasoning": "This risk is supported by multiple current indicators: 53 work items with only 20 closed, UI-heavy defects, enhancement noise, delayed Sprint 3 review closure, and active PAT feedback integration. Historical evidence reinforces that feedback latency and compressed validation windows recur in this client environment.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Historical R03: customer feedback delay threatened validation and implementation timing; Historical R01: schedule slip reduced customer validation window",
+              "historicalSupportLevel": "High",
+              "historicalReasoning": "Historical client feedback timing directly affected validation sequencing; historical sprint slip reduced validation window; current project is already showing delayed review closure and active PAT feedback remediation."
+            },
+            "futureRiskProjection": "Likely to materialize during Sprint 5 / Formal PAT and affect PAT, Code Freeze, and Regression.",
+            "recurrenceJustification": "Historical feedback latency and compressed validation windows align directly with current early access review and backlog conditions.",
+            "leadingIndicators": "Closure rate versus PAT readiness threshold; count of critical/high open defects; UI/UX defect aging; spillover items from Sprint 3/4 into Sprint 5; integrated demo outcome and retest cycle length.",
+            "predictiveInsight": "Current indicators suggest incomplete stabilization before formal PAT, increasing likelihood of PAT churn and retesting.",
+            "mitigation": "Establish a PAT readiness gate with minimum closure thresholds for critical and high defects; run focused triage on UI/UX and in-flight functionality defects to separate go-live blockers from deferrable items; conduct pre-PAT validation checkpoint using integrated workflow scenarios; secure rapid client review turnaround for retest and clarification cycles.",
+            "recommendations": "Do not allow enhancement items to compete with critical defect closure in Sprint 5. Track defect aging and reopen rate daily through PAT start. Use integrated demo as a readiness checkpoint, not only a showcase event. Agree acceptance severity thresholds before PAT begins."
+          },
+          {
+            "riskID": "R04",
+            "riskTitle": "Sprint 5 Scope Compression May Force Trade-Offs Between Critical Fixes, Security/Access Work, and Technical Change Activities",
+            "riskDescription": "The compressed Sprint 5 timeline contains substantial delivery scope, including bug fixes, enhancements, escalation workflow, RBAC/MSAL, DevOps IaC sign-off, and GPT-5 Mini migration. This creates a material risk that critical-path items will compete for limited capacity, leading to rushed validation, deferred controls, or schedule spillover into PAT.",
+            "riskChain": {
+              "rootCause": "Sprint 5 has less development time than prior sprints while carrying both stabilization and new/technical transition work, under increasing schedule pressure and unresolved dependencies.",
+              "trigger": "Sprint 5 scope is not reduced or reprioritized before start",
+              "primaryRisk": "Sprint 5 Scope Compression May Force Trade-Offs Between Critical Fixes, Security/Access Work, and Technical Change Activities",
+              "downstreamRisk": "Sprint 5 may overrun or push unresolved work into PAT, reducing acceptance readiness.",
+              "impact": "High"
+            },
+            "category": "Execution",
+            "riskType": "Future Delivery Risk",
+            "severity": "High",
+            "likelihood": "Medium-High",
+            "confidenceScore": "84",
+            "businessImpact": "Sprint 5 may overrun or push unresolved work into PAT, reducing acceptance readiness. Late rework and additional support effort may increase resource consumption. Rushed implementation or insufficient regression coverage may introduce regressions or security/access defects. Integrated demo and acceptance confidence may be weakened if key journeys are unstable. Incomplete DevOps/IaC or access control readiness may delay deployment preparation.",
+            "currentProjectEvidence": "Sprint 5 has 8-day development versus 10 days in prior sprints; Sprint 5 includes bug fixes, enhancements, escalation workflow, admin access restrictions, MSAL/RBAC, unit/integration testing, DevOps IaC sign-off, and GPT-5 Mini migration; overall schedule pressure assessed as high; overlapping critical activities and low closure rate increase capacity stress.",
+            "currentContextReasoning": "This risk is not generic; it is driven by the specific Sprint 5 content and compressed timeline documented in the current delivery intelligence. Historical evidence shows scope breadth and incomplete planning have previously caused schedule and governance issues. With limited buffer remaining, Sprint 5 trade-off failure is a plausible near-term predictor.",
+            "historicalCorrelation": {
+              "similarHistoricalPattern": "Historical R01: broader scope contributed to sprint delay",
+              "historicalSupportLevel": "High",
+              "historicalReasoning": "Historical broader-than-expected scope contributed to sprint slippage; historical planning incompleteness led to unplanned effort outside baseline; current execution complexity is explicitly assessed as higher than anticipated."
+            },
+            "futureRiskProjection": "Likely to materialize during Sprint 5 and affect PAT and Code Freeze if not reprioritized early.",
+            "recurrenceJustification": "Historical scope breadth and planning incompleteness align with current compressed high-complexity Sprint 5 content.",
+            "leadingIndicators": "Sprint 5 scope changes after sprint start; unplanned carryover from Sprint 4; critical-path item burn-down; GPT migration validation defects; RBAC/MSAL test failure rate.",
+            "predictiveInsight": "Specific Sprint 5 trade-offs may force rushed validation, deferred controls, or schedule spillover into PAT.",
+            "mitigation": "Re-baseline Sprint 5 into must-have, should-have, and defer categories tied to PAT readiness; isolate technical-change items such as GPT migration behind explicit rollback and validation plans; protect capacity for critical defect closure, RBAC, monitoring, and deployment-readiness essentials; use daily critical-path review during Sprint 5.",
+            "recommendations": "Defer non-essential enhancements to post-go-live backlog unless they are acceptance blockers. Require explicit sign-off before introducing any new sprint scope after Sprint 5 starts. Validate RBAC/MSAL and GPT migration via targeted regression suites before PAT. Link Sprint 5 completion to measurable readiness criteria rather than feature-complete assertions."
+          }
+        ]
+      },
+      "projectForecastInsights": {
+        "majorBottlenecks": [],
+        "riskPropagationPatterns": [],
+        "emergingConcerns": [],
+        "highRiskDependencies": [],
+        "rootCauseConcentration": [],
+        "mostLikelyFailureTriggers": [],
+        "overallOutlook": ""
+      }
+    }
+  ],
+  "summaryStatistics": {
+    "totalProjects": 0,
+    "projectsWithCurrentRisks": 0,
+    "projectsWithNoCurrentRisks": 0,
+    "totalCurrentRisks": 0,
+    "risksByProject": []
+  }
+}
