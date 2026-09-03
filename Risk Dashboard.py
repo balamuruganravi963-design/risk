@@ -149,31 +149,19 @@ else:
 
 st.divider()
 
-# ---------------- MITIGATION BY RISK RATING (table) ---------------- #
-st.subheader("Mitigation Plan by Risk Rating")
+# ---------------- MITIGATION PLAN (plain paragraph, no grouping) ---------------- #
+st.subheader("Mitigation Plan")
 
 if risks:
-    mitigation_by_rating = {}
+    all_mitigations = []
     for r in risks:
-        rating = r.get("overallRiskRating", "Unknown")
-        for item in r.get("mitigationPlan", []):
-            mitigation_by_rating.setdefault(rating, []).append(item)
+        all_mitigations.extend(r.get("mitigationPlan", []))
 
-    if mitigation_by_rating:
-        rating_order = ["Critical", "High", "Medium", "Low"]
-        ordered_ratings = [lvl for lvl in rating_order if lvl in mitigation_by_rating]
-        ordered_ratings += [lvl for lvl in mitigation_by_rating if lvl not in rating_order]
-
-        df_mitigation = pd.DataFrame(
-            [
-                {
-                    "Rating": rating,
-                    "Mitigation Actions": "\n".join(f"- {item}" for item in mitigation_by_rating[rating]),
-                }
-                for rating in ordered_ratings
-            ]
+    if all_mitigations:
+        paragraph = " ".join(
+            item if item.rstrip().endswith(".") else f"{item}." for item in all_mitigations
         )
-        st.table(df_mitigation.set_index("Rating"))
+        st.write(paragraph)
     else:
         st.write("No mitigation plan data available.")
 else:
