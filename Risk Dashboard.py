@@ -127,9 +127,9 @@ st.divider()
 # ---------------- CATEGORY DISTRIBUTION (table, not chart) ---------------- #
 st.subheader("Risk Category Distribution")
 
-severity_levels = ["Critical", "High", "Medium", "Low"]
+severity_order = {"Critical": 0, "High": 1, "Medium": 2, "Low": 3}
 if risks:
-    df_risk_cat = pd.DataFrame(
+    df_cat_dist = pd.DataFrame(
         [
             {
                 "Category": r.get("riskCategory", "Unknown"),
@@ -138,41 +138,42 @@ if risks:
             for r in risks
         ]
     )
-    df_cat_pivot = (
-        df_risk_cat.groupby(["Category", "Rating"])
-        .size()
-        .unstack(fill_value=0)
+    df_cat_dist = (
+        df_cat_dist.groupby(["Category", "Rating"]).size().reset_index(name="Count")
     )
-    for level in severity_levels:
-        if level not in df_cat_pivot.columns:
-            df_cat_pivot[level] = 0
-    other_levels = [c for c in df_cat_pivot.columns if c not in severity_levels]
-    df_cat_pivot = df_cat_pivot[severity_levels + other_levels]
-    df_cat_pivot["Total"] = df_cat_pivot.sum(axis=1)
-    st.table(df_cat_pivot)
+    df_cat_dist["__order"] = df_cat_dist["Rating"].map(severity_order).fillna(4)
+    df_cat_dist = df_cat_dist.sort_values(["Category", "__order"]).drop(columns="__order")
+    st.table(df_cat_dist.set_index("Category"))
 else:
     st.write("No category distribution data available.")
 
 st.divider()
 
-# ---------------- MITIGATION BY CATEGORY (table) ---------------- #
-st.subheader("Mitigation Plan by Category")
+# ---------------- MITIGATION BY RISK RATING (table) ---------------- #
+st.subheader("Mitigation Plan by Risk Rating")
 
 if risks:
-    mitigation_by_category = {}
+    mitigation_by_rating = {}
     for r in risks:
-        category = r.get("riskCategory", "Unknown")
+        rating = r.get("overallRiskRating", "Unknown")
         for item in r.get("mitigationPlan", []):
-            mitigation_by_category.setdefault(category, []).append(item)
+            mitigation_by_rating.setdefault(rating, []).append(item)
 
-    if mitigation_by_category:
+    if mitigation_by_rating:
+        rating_order = ["Critical", "High", "Medium", "Low"]
+        ordered_ratings = [lvl for lvl in rating_order if lvl in mitigation_by_rating]
+        ordered_ratings += [lvl for lvl in mitigation_by_rating if lvl not in rating_order]
+
         df_mitigation = pd.DataFrame(
             [
-                {"Category": category, "Mitigation Actions": "\n".join(f"- {item}" for item in items)}
-                for category, items in mitigation_by_category.items()
+                {
+                    "Rating": rating,
+                    "Mitigation Actions": "\n".join(f"- {item}" for item in mitigation_by_rating[rating]),
+                }
+                for rating in ordered_ratings
             ]
         )
-        st.table(df_mitigation.set_index("Category"))
+        st.table(df_mitigation.set_index("Rating"))
     else:
         st.write("No mitigation plan data available.")
 else:
