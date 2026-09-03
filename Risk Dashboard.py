@@ -127,14 +127,56 @@ st.divider()
 # ---------------- CATEGORY DISTRIBUTION (table, not chart) ---------------- #
 st.subheader("Risk Category Distribution")
 
-category_counts = Counter(r.get("riskCategory", "Unknown") for r in risks)
-if category_counts:
-    df_cat = pd.DataFrame(
-        {"Category": list(category_counts.keys()), "Count": list(category_counts.values())}
-    ).set_index("Category")
-    st.table(df_cat)
+severity_levels = ["Critical", "High", "Medium", "Low"]
+if risks:
+    df_risk_cat = pd.DataFrame(
+        [
+            {
+                "Category": r.get("riskCategory", "Unknown"),
+                "Rating": r.get("overallRiskRating", "Unknown"),
+            }
+            for r in risks
+        ]
+    )
+    df_cat_pivot = (
+        df_risk_cat.groupby(["Category", "Rating"])
+        .size()
+        .unstack(fill_value=0)
+    )
+    for level in severity_levels:
+        if level not in df_cat_pivot.columns:
+            df_cat_pivot[level] = 0
+    other_levels = [c for c in df_cat_pivot.columns if c not in severity_levels]
+    df_cat_pivot = df_cat_pivot[severity_levels + other_levels]
+    df_cat_pivot["Total"] = df_cat_pivot.sum(axis=1)
+    st.table(df_cat_pivot)
 else:
     st.write("No category distribution data available.")
+
+st.divider()
+
+# ---------------- MITIGATION BY CATEGORY (table) ---------------- #
+st.subheader("Mitigation Plan by Category")
+
+if risks:
+    mitigation_by_category = {}
+    for r in risks:
+        category = r.get("riskCategory", "Unknown")
+        for item in r.get("mitigationPlan", []):
+            mitigation_by_category.setdefault(category, []).append(item)
+
+    if mitigation_by_category:
+        df_mitigation = pd.DataFrame(
+            [
+                {"Category": category, "Mitigation Actions": "\n".join(f"- {item}" for item in items)}
+                for category, items in mitigation_by_category.items()
+            ]
+        )
+        st.table(df_mitigation.set_index("Category"))
+    else:
+        st.write("No mitigation plan data available.")
+else:
+    st.write("No mitigation plan data available.")
 
 st.divider()
 
@@ -223,21 +265,7 @@ else:
                 ).set_index("Dimension")
                 st.table(df_impact)
 
-            # Historical Relevance
-            hist_rel = r.get("historicalRelevance", {})
-            if hist_rel:
-                st.write("**Historical Relevance**")
-                matched_ids = hist_rel.get("matchedHistoricalRiskIds", [])
-                st.write(f"**Matched Historical Risk IDs:** {', '.join(matched_ids) if matched_ids else '-'}")
-                st.write(f"**Recurrence Likelihood:** {hist_rel.get('recurrenceLikelihood', '-')}")
-                supporting_patterns = hist_rel.get("supportingPatterns", [])
-                if supporting_patterns:
-                    st.write("**Supporting Patterns**")
-                    for item in supporting_patterns:
-                        st.write(f"- {item}")
-
-            st.write(f"**Reasoning:** {r.get('reasoning', '-')}")
-
+            # Mitigation Plan
             mitigation_plan = r.get("mitigationPlan", [])
             if mitigation_plan:
                 st.write("**Mitigation Plan**")
@@ -249,24 +277,3 @@ else:
                 st.write("**Recommendations**")
                 for item in recommendations:
                     st.write(f"- {item}")
-
-            monitoring_indicators = r.get("monitoringIndicators", [])
-            if monitoring_indicators:
-                st.write("**Monitoring Indicators**")
-                for item in monitoring_indicators:
-                    st.write(f"- {item}")
-
-            # Evidence
-            evidence = r.get("evidence", {})
-            if evidence:
-                st.write("**Evidence**")
-                project_indicators = evidence.get("projectIndicators", [])
-                if project_indicators:
-                    st.write("*Project Indicators*")
-                    for item in project_indicators:
-                        st.write(f"- {item}")
-                historical_references = evidence.get("historicalReferences", [])
-                if historical_references:
-                    st.write("*Historical References*")
-                    for item in historical_references:
-                        st.write(f"- {item}")
