@@ -1,0 +1,445 @@
+{
+  "clientName": "Premera Blue Cross",
+  "projects": [
+    {
+      "projectId": "Work Assignment 030126",
+      "projectName": "Producer Portal Implementation",
+      "projectStatus": "CONTRACT EXECUTION / PRE-DISCOVERY",
+      "riskPredictionDate": "2026-03-05",
+      "inputValidation": {
+        "projectDeliveryIntelligenceAccepted": true,
+        "historicalRiskIntelligenceAccepted": true,
+        "rejectedDocuments": [],
+        "projectConsistencyCheck": {},
+        "missingDataHandling": {}
+      },
+      "eligibilityAssessment": {
+        "eligibleForPrediction": false,
+        "reason": ""
+      },
+      "predictedRisks": [
+        {
+          "riskId": "R01",
+          "riskTitle": "Discovery-Phase Scope Redefinition Causes Downstream Schedule and Cost Pressure",
+          "riskDescription": "Because deliverables, acceptance criteria, and features may be re-defined during Discovery, the project is exposed to downstream rework, timeline slippage, and change-control pressure once architecture, design, and development begin.",
+          "riskCategory": "Scope",
+          "currentProjectPhase": "CONTRACT EXECUTION / PRE-DISCOVERY",
+          "expectedOccurrencePhase": "Discovery",
+          "likelyImpactPhase": "Architecture / Design / Development",
+          "rootCause": "Requirements and feature baseline are not yet fixed, and the SOW explicitly allows redefinition during Discovery.",
+          "triggerConditions": [
+            "Discovery outputs materially change feature definitions or acceptance criteria",
+            "Additional business scenarios or line-of-business needs emerge during Discovery",
+            "Integration or security requirements are identified after initial baseline discussions",
+            "Change requests increase before architecture is finalized"
+          ],
+          "potentialImpact": {
+            "schedule": "Architecture and development start may be delayed; downstream milestones may compress",
+            "cost": "Additional effort may require change requests or consume contingency implicitly",
+            "quality": "Late changes may increase rework and reduce design stability",
+            "customer": "Stakeholder confidence may reduce if baseline shifts repeatedly",
+            "operations": "Operational readiness planning may be delayed due to unstable scope"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "High",
+            "supportingPatterns": [
+              "Discovery-phase scope fluidity tends to increase downstream change risk",
+              "Features and acceptance criteria may be updated during Discovery",
+              "Material scope changes may invoke formal change management"
+            ]
+          },
+          "estimatedResolutionTime": "Medium (2-6 weeks)",
+          "mitigationPlan": [
+            "Lock a signed Discovery baseline for scope, integrations, and acceptance criteria before detailed build planning",
+            "Create a prioritized feature inventory by line of business with explicit in-scope/out-of-scope decisions",
+            "Use formal change control immediately after Discovery baseline approval",
+            "Track unresolved requirements and architectural assumptions as named decisions with due dates"
+          ],
+          "recommendations": [
+            "Establish a Discovery exit gate requiring approved requirements, integration inventory, and acceptance criteria",
+            "Limit late feature additions unless business-critical and commercially approved",
+            "Publish a decision log for open scope items and dependency assumptions"
+          ],
+          "reasoning": "This risk is directly supported by the SOW language that deliverables and acceptance criteria may be re-defined during Discovery, combined with an aggressive six-month timeline that leaves limited tolerance for downstream rework.",
+          "confidenceScore": 86,
+          "riskPriority": "High",
+          "riskType": "Predictive",
+          "timeToMaterialization": "<30 Days",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Number of open requirements decisions",
+            "Count of features updated during Discovery",
+            "Unapproved acceptance criteria at Discovery exit",
+            "Volume of change requests before design sign-off"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "Timeline is indicative and finalized after Discovery",
+              "Deliverables and acceptance criteria may be re-defined during Discovery",
+              "Features may be updated during Discovery phase"
+            ],
+            "historicalReferences": [
+              "No historical risk register IDs provided; pattern derived from baseline historical intelligence only"
+            ]
+          }
+        },
+        {
+          "riskId": "R02",
+          "riskTitle": "Environment and Access Readiness Delays Push Development Start",
+          "riskDescription": "If required environments, cloud infrastructure access, security clearances, and system connectivity are not provisioned on time by the client and dependent parties, development mobilization and early sprint execution may be delayed.",
+          "riskCategory": "Dependency",
+          "currentProjectPhase": "CONTRACT EXECUTION / PRE-DISCOVERY",
+          "expectedOccurrencePhase": "Discovery / Architecture",
+          "likelyImpactPhase": "Development",
+          "rootCause": "Critical-path delivery prerequisites are dependent on Company provisioning of environments, access, and approvals before development can start.",
+          "triggerConditions": [
+            "Development, staging, or production environments are not provisioned as planned",
+            "System access or security approvals are pending",
+            "Third-party/API access is delayed",
+            "Cloud setup dependencies remain unresolved at architecture completion"
+          ],
+          "potentialImpact": {
+            "schedule": "Development start and sprint cadence may slip by multiple weeks",
+            "cost": "Team idle time or replanning may increase delivery cost pressure",
+            "quality": "Compressed downstream build and test windows may reduce quality assurance depth",
+            "customer": "Go-live confidence may reduce due to missed early milestones",
+            "operations": "Operational setup and release planning may become reactive"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "High",
+            "supportingPatterns": [
+              "Complex multi-dependency projects create early-phase delivery fragility",
+              "Dependency delays are inherently elevated in the current project structure",
+              "Environment readiness is an explicit upstream dependency"
+            ]
+          },
+          "estimatedResolutionTime": "Medium (2-6 weeks)",
+          "mitigationPlan": [
+            "Create a dependency tracker for environments, access, approvals, and API onboarding with owners and due dates",
+            "Escalate unresolved provisioning items through monthly and sprint governance",
+            "Confirm minimum viable non-production environments and fallback access paths",
+            "Sequence build work to start with components not blocked by external access where feasible"
+          ],
+          "recommendations": [
+            "Run a readiness review before Development kickoff",
+            "Set RAG status for each environment and access dependency",
+            "Secure named approvers for security/access decisions"
+          ],
+          "reasoning": "The SOW explicitly states that cloud infrastructure, environments, access, and approvals are Company dependencies. At pre-Discovery stage there is no evidence these prerequisites are ready, so this is a near-term and actionable future risk.",
+          "confidenceScore": 89,
+          "riskPriority": "High",
+          "riskType": "Predictive",
+          "timeToMaterialization": "<30 Days",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Environment provisioning status",
+            "Security clearance completion rate",
+            "System access request aging",
+            "API onboarding completion status"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "Cloud infrastructure and necessary environments must be provided before development",
+              "Company dependencies include environment provisioning, system access, security clearances, and timely approvals",
+              "Operational progress cannot be confirmed because no WSR is available"
+            ],
+            "historicalReferences": [
+              "No historical risk register IDs provided; baseline pattern indicates high dependency-delay recurrence exposure"
+            ]
+          }
+        },
+        {
+          "riskId": "R03",
+          "riskTitle": "Incomplete Integration Inventory During Discovery Leads to Rework or Change Requests",
+          "riskDescription": "Because third-party system links and integrations are identified during Discovery and integrations not identified then are out of scope, late discovery of integration needs may create rework, delivery gaps, or formal scope change requests.",
+          "riskCategory": "Integration",
+          "currentProjectPhase": "CONTRACT EXECUTION / PRE-DISCOVERY",
+          "expectedOccurrencePhase": "Discovery",
+          "likelyImpactPhase": "Architecture / Development / Testing",
+          "rootCause": "Integration scope is not fully fixed at project start, while multiple business capabilities depend on OKTA and third-party systems across several lines of business.",
+          "triggerConditions": [
+            "New integration endpoints or systems are identified after Discovery",
+            "Business workflows require data or services not included in initial architecture",
+            "API documentation or vendor onboarding reveals unplanned complexity",
+            "LOB-specific portal functions require additional external dependencies"
+          ],
+          "potentialImpact": {
+            "schedule": "Architecture revisions and build rework may delay planned sprints and testing",
+            "cost": "Additional integration effort may require change requests and vendor coordination",
+            "quality": "Late integration design may increase defects and interface instability",
+            "customer": "Portal functionality may not meet expected business workflows at UAT",
+            "operations": "Support model and operational monitoring may be incomplete for newly discovered interfaces"
+          },
+          "likelihood": "Medium-High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "High",
+            "supportingPatterns": [
+              "Integration scope unknowns discovered late can trigger rework or change requests",
+              "Third-party system links are 'as identified'",
+              "Integrations not identified during Discovery are out of scope"
+            ]
+          },
+          "estimatedResolutionTime": "Medium (2-6 weeks)",
+          "mitigationPlan": [
+            "Produce a complete integration inventory during Discovery including owners, interfaces, authentication, SLAs, and test dependencies",
+            "Validate each line-of-business workflow against required external systems",
+            "Obtain vendor/API documentation and access early",
+            "Baseline interface scope and send unresolved integrations through formal change control"
+          ],
+          "recommendations": [
+            "Conduct integration workshops with business, architecture, security, and external system owners",
+            "Map every key feature to required upstream/downstream systems",
+            "Track unidentified integrations as top-tier Discovery risks until closed"
+          ],
+          "reasoning": "This risk is strongly supported by the SOW\u2019s explicit language that integrations are identified during Discovery and that unidentified integrations are out of scope, creating a predictable exposure to late discovery and rework.",
+          "confidenceScore": 84,
+          "riskPriority": "High",
+          "riskType": "Predictive",
+          "timeToMaterialization": "30-60 Days",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Count of unresolved integrations",
+            "Number of features lacking mapped system dependencies",
+            "API documentation received vs required",
+            "Late integration discoveries after Discovery sign-off"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "Third-party system integration is included 'as identified'",
+              "Integrations not identified during Discovery are out of scope",
+              "Key features depend on OKTA, Insight Reporter, Benefitfocus, and other third-party links"
+            ],
+            "historicalReferences": [
+              "No historical risk register IDs provided; enterprise baseline pattern indicates high relevance"
+            ]
+          }
+        },
+        {
+          "riskId": "R04",
+          "riskTitle": "Compressed End-to-End Timeline Creates Testing, UAT, and Go-Live Compression",
+          "riskDescription": "The six-month term covers Discovery, Architecture, Design, Development, multiple testing types, UAT, deployment, and hypercare. Any early-phase slippage is likely to compress later quality, UAT, and release activities.",
+          "riskCategory": "Schedule",
+          "currentProjectPhase": "CONTRACT EXECUTION / PRE-DISCOVERY",
+          "expectedOccurrencePhase": "Development",
+          "likelyImpactPhase": "Testing / UAT / Deployment",
+          "rootCause": "The project scope is broad relative to the available duration, and the schedule is still indicative until Discovery completion.",
+          "triggerConditions": [
+            "Discovery or architecture takes longer than planned",
+            "Development sprints slip due to dependencies or scope change",
+            "Testing environments or test data are not ready when needed",
+            "Defect remediation continues into planned UAT window"
+          ],
+          "potentialImpact": {
+            "schedule": "Testing, UAT, and go-live dates may compress or slip beyond baseline end date",
+            "cost": "Extended effort or additional support may increase budget pressure",
+            "quality": "Reduced regression, performance, security, or accessibility coverage may occur under time pressure",
+            "customer": "Business readiness and stakeholder confidence may be affected by unstable release timing",
+            "operations": "Hypercare may overlap contract end or require extension planning"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Medium-High",
+            "supportingPatterns": [
+              "Aggressive end-to-end timelines increase probability of testing, UAT, and go-live compression",
+              "Full lifecycle including hypercare must fit within Mar 1 to Aug 31, 2026 baseline",
+              "Hypercare may extend beyond contract term if go-live is late August"
+            ]
+          },
+          "estimatedResolutionTime": "Long (6+ weeks)",
+          "mitigationPlan": [
+            "Establish milestone buffer management from Discovery onward",
+            "Track earned progress against phase exit criteria weekly once execution begins",
+            "Start test planning, environment readiness, and UAT preparation early rather than sequentially",
+            "Define minimum acceptable quality gates that cannot be waived without executive approval"
+          ],
+          "recommendations": [
+            "Rebaseline timeline immediately after Discovery with explicit contingency",
+            "Protect testing and UAT windows from upstream scope leakage",
+            "Escalate any milestone drift as soon as critical path impact appears"
+          ],
+          "reasoning": "The current baseline shows a complex multi-LOB implementation in a short delivery window with no confirmed operational progress data. This makes schedule compression risk one of the most material future risks.",
+          "confidenceScore": 87,
+          "riskPriority": "High",
+          "riskType": "Predictive",
+          "timeToMaterialization": "60-90 Days",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Phase completion variance",
+            "Sprint milestone attainment",
+            "Defect backlog near test exit",
+            "UAT start-date readiness",
+            "Remaining work vs remaining time"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "6-month duration for full lifecycle delivery",
+              "Timeline is indicative until Discovery completes",
+              "Hypercare may extend beyond contract end if go-live is late August"
+            ],
+            "historicalReferences": [
+              "No historical risk register IDs provided; baseline historical intelligence highlights schedule compression as highly relevant"
+            ]
+          }
+        },
+        {
+          "riskId": "R05",
+          "riskTitle": "Business SME and UAT Stakeholder Availability Becomes a Critical Path Constraint",
+          "riskDescription": "The project depends on timely participation from Company SMEs, Product Owner/Business Lead, approvers, and UAT stakeholders. If those stakeholders are not consistently available, requirements clarification, approvals, and acceptance may be delayed.",
+          "riskCategory": "Resource",
+          "currentProjectPhase": "CONTRACT EXECUTION / PRE-DISCOVERY",
+          "expectedOccurrencePhase": "Discovery / Testing",
+          "likelyImpactPhase": "Discovery / UAT / Deployment",
+          "rootCause": "Key client-side roles are required for decision-making, reviews, and testing, but availability is an external dependency rather than a controlled delivery resource.",
+          "triggerConditions": [
+            "SME workshops are repeatedly rescheduled",
+            "Product Owner decisions are delayed",
+            "Deliverable approvals exceed review periods",
+            "UAT participants are not named or not available when testing begins"
+          ],
+          "potentialImpact": {
+            "schedule": "Discovery decisions, design approvals, and UAT completion may slip",
+            "cost": "Project team may incur inefficiency from waiting or repeated walkthroughs",
+            "quality": "Unresolved business decisions may lead to assumptions and rework",
+            "customer": "Acceptance disputes may rise if stakeholders engage too late",
+            "operations": "Operational readiness and training may be delayed due to late business sign-off"
+          },
+          "likelihood": "Medium-High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Medium-High",
+            "supportingPatterns": [
+              "Dependency delays are inherently elevated due to client-side approvals and SME needs",
+              "Testing and UAT readiness remain externally dependent",
+              "Multi-stakeholder enterprise programs commonly experience approval bottlenecks"
+            ]
+          },
+          "estimatedResolutionTime": "Medium (2-6 weeks)",
+          "mitigationPlan": [
+            "Nominate named SMEs, Product Owner, approvers, and UAT leads with capacity commitments",
+            "Publish a decision calendar aligned to Discovery, design, and UAT gates",
+            "Escalate missed stakeholder commitments through governance forums",
+            "Prepare pre-read materials and rapid decision logs to reduce meeting burden"
+          ],
+          "recommendations": [
+            "Secure executive confirmation of stakeholder availability before Discovery begins",
+            "Track approval aging and workshop attendance as formal delivery KPIs",
+            "Define backup approvers and alternate UAT participants"
+          ],
+          "reasoning": "The SOW repeatedly identifies stakeholder availability, approvals, and UAT participation as client responsibilities. In a compressed timeline, these dependencies are highly material and phase-specific.",
+          "confidenceScore": 82,
+          "riskPriority": "High",
+          "riskType": "Predictive",
+          "timeToMaterialization": "<30 Days",
+          "preventability": "Medium-High",
+          "monitoringIndicators": [
+            "Workshop attendance rate",
+            "Approval turnaround time",
+            "Open decision aging",
+            "UAT participant nomination status"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "Company must provide SME access, approvals, Product Owner/Business Lead, and UAT stakeholders",
+              "Deliverable reviews and sign-offs are client dependencies",
+              "No WSR evidence exists to confirm current stakeholder mobilization"
+            ],
+            "historicalReferences": [
+              "No historical risk register IDs provided; baseline historical intelligence identifies resource availability as a relevant risk theme"
+            ]
+          }
+        },
+        {
+          "riskId": "R06",
+          "riskTitle": "Late Security, Compliance, and Data Governance Inputs Cause Design Rework",
+          "riskDescription": "If security policies, compliance requirements, RBAC rules, or data governance constraints are provided late or incompletely during Discovery, architecture and design decisions may need rework and downstream testing effort may increase.",
+          "riskCategory": "Compliance",
+          "currentProjectPhase": "CONTRACT EXECUTION / PRE-DISCOVERY",
+          "expectedOccurrencePhase": "Discovery / Architecture",
+          "likelyImpactPhase": "Design / Development / Security Testing",
+          "rootCause": "Critical control requirements are expected to be shared during Discovery rather than already fixed at project initiation.",
+          "triggerConditions": [
+            "Security requirements are incomplete at architecture review",
+            "RBAC or identity-management rules change after design sign-off",
+            "Compliance controls emerge after development has started",
+            "Data handling constraints affect integration or database design late"
+          ],
+          "potentialImpact": {
+            "schedule": "Architecture, development, and security testing may be delayed by redesign and remediation",
+            "cost": "Additional implementation and retesting effort may be required",
+            "quality": "Late control changes can increase defect density and weaken early design cohesion",
+            "customer": "User experience or access model may change late in the cycle",
+            "operations": "Production readiness and auditability may be affected"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "Medium-High",
+          "overallRiskRating": "Medium-High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Medium",
+            "supportingPatterns": [
+              "Requirements and scope ambiguity early in lifecycle create downstream rework",
+              "Identity and access dependencies are central to this portal implementation",
+              "Compliance and data governance are explicitly expected during Discovery"
+            ]
+          },
+          "estimatedResolutionTime": "Medium (2-6 weeks)",
+          "mitigationPlan": [
+            "Engage security, compliance, and IAM stakeholders in Discovery workshops from project start",
+            "Baseline RBAC, SSO, data handling, and audit requirements before detailed design",
+            "Include security acceptance criteria in phase exit gates",
+            "Trace each major feature to applicable control requirements"
+          ],
+          "recommendations": [
+            "Run early architecture and control reviews with security stakeholders",
+            "Do not finalize solution design without approved security/compliance inputs",
+            "Plan security testing scenarios during design, not after build completion"
+          ],
+          "reasoning": "This risk is supported by the SOW statement that security policies, compliance requirements, and data governance rules will be shared during Discovery, creating exposure if these are delayed or incomplete.",
+          "confidenceScore": 76,
+          "riskPriority": "Medium-High",
+          "riskType": "Predictive",
+          "timeToMaterialization": "30-60 Days",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Completion of security requirement baseline",
+            "RBAC decision closure rate",
+            "Open compliance decisions",
+            "Architecture review findings related to controls"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "Security policies, compliance requirements, and data governance rules are to be shared during Discovery",
+              "Portal includes SSO, RBAC, and producer data features",
+              "Testing strategy includes security and NFR validation"
+            ],
+            "historicalReferences": [
+              "No historical risk register IDs provided; risk enriched from baseline historical themes only"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
