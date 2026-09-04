@@ -100,14 +100,6 @@ pc1, pc2 = st.columns(2)
 pc1.write(f"**Project Status:** {project.get('projectStatus', '-')}")
 pc2.write(f"**Risk Prediction Date:** {project.get('riskPredictionDate', '-')}")
 
-eligibility = project.get("eligibilityAssessment", {})
-if eligibility:
-    eligible = eligibility.get("eligibleForPrediction", False)
-    st.write(f"**Eligible For Prediction:** {'Yes' if eligible else 'No'}")
-    reason = eligibility.get("reason", "")
-    if reason:
-        st.caption(reason)
-
 risks = project.get("predictedRisks", [])
 
 st.divider()
@@ -153,13 +145,14 @@ st.divider()
 st.subheader("Mitigation Plan")
 
 if risks:
-    all_mitigations = []
+    all_mitigation_actions = []
     for r in risks:
-        all_mitigations.extend(r.get("mitigationPlan", []))
+        for stage_entry in r.get("mitigationPlan", []):
+            all_mitigation_actions.extend(stage_entry.get("actions", []))
 
-    if all_mitigations:
+    if all_mitigation_actions:
         paragraph = " ".join(
-            item if item.rstrip().endswith(".") else f"{item}." for item in all_mitigations
+            item if item.rstrip().endswith(".") else f"{item}." for item in all_mitigation_actions
         )
         st.write(paragraph)
     else:
@@ -254,15 +247,38 @@ else:
                 ).set_index("Dimension")
                 st.table(df_impact)
 
-            # Mitigation Plan
+            # Mitigation Plan (this risk's own stages/actions)
             mitigation_plan = r.get("mitigationPlan", [])
             if mitigation_plan:
                 st.write("**Mitigation Plan**")
-                for item in mitigation_plan:
-                    st.write(f"- {item}")
+                df_mitigation_stages = pd.DataFrame(
+                    [
+                        {
+                            "Stage": stage_entry.get("stage", "-"),
+                            "Actions": "\n".join(f"- {a}" for a in stage_entry.get("actions", [])),
+                        }
+                        for stage_entry in mitigation_plan
+                    ]
+                ).set_index("Stage")
+                st.table(df_mitigation_stages)
 
-            recommendations = r.get("recommendations", [])
+            # Recommendations
+            recommendations = r.get("recommendations", {})
             if recommendations:
                 st.write("**Recommendations**")
-                for item in recommendations:
-                    st.write(f"- {item}")
+                df_recommendations = pd.DataFrame(
+                    {
+                        "Type": ["Preventive", "Monitoring", "Contingency", "Strategic"],
+                        "Detail": [
+                            recommendations.get("preventive", "-"),
+                            recommendations.get("monitoring", "-"),
+                            recommendations.get("contingency", "-"),
+                            recommendations.get("strategic", "-"),
+                        ],
+                    }
+                ).set_index("Type")
+                st.table(df_recommendations)
+
+            response_rationale = r.get("responseRationale", "")
+            if response_rationale:
+                st.write(f"**Response Rationale:** {response_rationale}")
