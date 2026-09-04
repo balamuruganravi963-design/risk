@@ -141,25 +141,6 @@ else:
 
 st.divider()
 
-# ---------------- MITIGATION PLAN (plain paragraph, no grouping) ---------------- #
-st.subheader("Mitigation Plan")
-
-if risks:
-    all_mitigation_actions = []
-    for r in risks:
-        for stage_entry in r.get("mitigationPlan", []):
-            all_mitigation_actions.extend(stage_entry.get("actions", []))
-
-    if all_mitigation_actions:
-        paragraph = " ".join(
-            item if item.rstrip().endswith(".") else f"{item}." for item in all_mitigation_actions
-        )
-        st.write(paragraph)
-    else:
-        st.write("No mitigation plan data available.")
-else:
-    st.write("No mitigation plan data available.")
-
 st.divider()
 
 # ---------------- RISK TABLE ---------------- #
@@ -278,7 +259,3 @@ else:
                     }
                 ).set_index("Type")
                 st.table(df_recommendations)
-
-            response_rationale = r.get("responseRationale", "")
-            if response_rationale:
-                st.write(f"**Response Rationale:** {response_rationale}")
