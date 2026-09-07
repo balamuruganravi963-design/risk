@@ -1,0 +1,989 @@
+{
+  "clientName": "Premera Blue Cross",
+  "projects": [
+    {
+      "projectId": "119972",
+      "projectName": "Premera Blue Cross - AI Platform Build: Customer Service and Claims PODs Transformation",
+      "projectStatus": "Active - Mid-Project Execution (PI 06 Sprint 3)",
+      "riskPredictionDate": "2026-09-04",
+      "predictedRisks": [
+        {
+          "riskId": "R001",
+          "riskTitle": "Contract Completion Infeasibility Due to Capacity-Demand Imbalance",
+          "riskDescription": "The project faces significant delivery risk as identified work volume substantially exceeds remaining capacity. With 15-23 sprints of work identified against 8.35 sprints remaining (1.8-2.8x overcapacity), combined with unfrozen MVP scope, pending architecture decisions, and declining delivery momentum, the December 31, 2026 contract end date cannot accommodate planned scope without extension or substantial reduction.",
+          "riskCategory": "Schedule",
+          "currentProjectPhase": "Execution - Mid-Project (PI 06 Sprint 3)",
+          "expectedOccurrencePhase": "Final Quarter Execution (Oct-Dec 2026)",
+          "likelyImpactPhase": "Contract Closure and Transition",
+          "rootCause": "Combination of unfrozen MVP scope at 57% timeline completion, accumulation of post-MVP and pipeline work, pending architecture decisions consuming capacity, increasing rework (31.6% PR abandonment), and fixed contract end date with no documented extension mechanism.",
+          "triggerConditions": [
+            "MVP scope remains unfrozen beyond September 2026",
+            "Architecture decisions (Snowflake write, integration testing, test data strategy) remain unresolved into October 2026",
+            "Sprint velocity continues declining due to production support and rework",
+            "Post-MVP scope planning continues without formal scope reduction or extension approval",
+            "Work-to-capacity ratio exceeds 2.0x by mid-October 2026"
+          ],
+          "potentialImpact": {
+            "schedule": "Incomplete delivery by December 31, 2026; critical features deferred or cancelled; rushed final sprint execution compromising quality",
+            "cost": "Potential cost overrun if emergency extension negotiated; write-off of incomplete work; additional rework costs in subsequent contracts",
+            "quality": "Compressed delivery window forcing quality compromises; inadequate testing; technical debt accumulation; production stability risk",
+            "customer": "Unmet transformation objectives; stakeholder dissatisfaction; erosion of confidence in AI delivery capability; reluctance to approve future work",
+            "operations": "Incomplete operational readiness; inadequate documentation and knowledge transfer; support burden from rushed deployment; business continuity risk"
+          },
+          "likelihood": "High",
+          "impactSeverity": "Critical",
+          "overallRiskRating": "Critical",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R03",
+              "R07"
+            ],
+            "recurrenceLikelihood": "Very High",
+            "supportingHistoricalPatterns": [
+              "Historical Claims project experienced resource utilization risk when leadership decisions on FACETS integration were pending, blocking sprint readiness and creating capacity waste",
+              "Historical Producer Portal absorbed 14 scope changes equivalent to 0.75-1 sprint of effort with weak mitigation, demonstrating scope control failure pattern",
+              "Current project exhibits identical triggers: unfrozen MVP scope (risk opened 06/22/2026, ETA missed), multiple pending decisions, and work accumulation beyond available capacity"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "This risk is highly likely because the project has already consumed 57% of contract duration while critical scope and architecture decisions remain unresolved, creating a compounding delivery bottleneck. Historical evidence from the same client shows that decision latency and scope instability directly convert to utilization loss and schedule slippage. Current WSR metrics confirm declining momentum (increasing PR abandonment 1\u21924\u21926, declining contribution, 4 spilled PBIs) while work identification continues (pipeline items, post-MVP scope). The mathematical impossibility of fitting 15-23 sprints into 8.35 remaining sprints, combined with no documented extension mechanism and a hard December 31 end date, makes incomplete delivery the most probable outcome without immediate corrective action.",
+          "confidenceScore": 92,
+          "riskPriority": "Critical",
+          "riskType": "Schedule",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Weekly work-to-capacity ratio tracking (target: maintain below 1.2x)",
+            "MVP scope freeze status and change request volume",
+            "Sprint velocity trend and PBI throughput rate",
+            "Architecture decision closure rate (Snowflake, integration testing, test data, auth)",
+            "Cumulative spilled PBI count and carry-forward work volume",
+            "Contract extension negotiation status and approval timeline",
+            "Formal scope reduction decisions and stakeholder sign-off"
+          ],
+          "businessCriticality": "Critical",
+          "evidence": {
+            "projectIndicators": [
+              "WSR: 15-23 sprints of identified work vs 8.35 sprints remaining (1.8-2.8x overcapacity)",
+              "WSR: MVP scope not fully frozen; risk opened 06/22/2026, ETA 07/03/2026 missed, status In Progress",
+              "WSR: 4 PBIs spilled from PI06 S03; PBIs taken up mid-sprint due to blockers",
+              "WSR: Member contribution declining due to changing priorities and production issues",
+              "WSR: Post-MVP scope items (downstream integration, auth spike, architecture KT) not started with only 3.9 months remaining",
+              "WSR: Pipeline work being scoped (AI Trust Office, Claims Use Case 8) suggesting expectation of continuation",
+              "SOW: Contract end date December 31, 2026 with five business days termination clause; no extension mentioned"
+            ],
+            "historicalReferences": [
+              "Historical Risk R03: Claims project resource utilization threatened when FACETS integration decision pending; sprint readiness blocked",
+              "Historical Risk R07: Producer Portal absorbed ~14 scope changes (0.75-1 sprint effort) with delivery timeline impact",
+              "Historical pattern: Decision latency causes delivery drag across Premera AI projects"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Freeze MVP scope with formal stakeholder sign-off and enforce change control requiring executive approval for any additions",
+                "Negotiate 3-month contract extension to Q1 2027 or execute formal scope reduction reducing identified work to 8 sprints maximum"
+              ]
+            },
+            {
+              "stage": "CURRENT SPRINT (PI06 S04)",
+              "actions": [
+                "Re-baseline sprint commitments to 80% of demonstrated velocity to improve reliability and reduce spillover",
+                "Prioritize and sequence remaining work into must-have (MVP completion), should-have (critical post-MVP), and defer categories with client approval"
+              ]
+            },
+            {
+              "stage": "BEFORE CONTRACT END",
+              "actions": [
+                "Defer all pipeline work (AI Trust Office, Claims Use Case 8) to future contract or extension scope",
+                "Complete operational readiness activities (documentation, runbooks, KT) by December 15 to enable controlled closure"
+              ]
+            }
+          ],
+          "recommendations": {
+            "preventive": "Establish weekly work-to-capacity tracking with executive visibility and enforce scope freeze through formal change control requiring impact assessment and trade-off decisions for any new requests.",
+            "monitoring": "",
+            "contingency": "",
+            "strategic": "Implement rolling 3-sprint lookahead planning with dependency mapping to identify capacity bottlenecks early and enable proactive mitigation."
+          },
+          "responseRationale": "Historical Claims project demonstrated that decision escalation combined with alternate work preparation successfully resolved utilization risk when leadership decisions were pending, proving that proactive scope control and extension negotiation can prevent delivery failure under capacity constraints."
+        },
+        {
+          "riskId": "R002",
+          "riskTitle": "Stakeholder Confidence Erosion in Offshore AI Delivery Capability",
+          "riskDescription": "Client confidence in the offshore team's AI expertise and delivery capability may deteriorate due to visible execution challenges including persistent production issues, high rework rates, unresolved architecture decisions, and insufficient proactive AI-driven recommendations. This perception risk threatens contract extension approval, future work opportunities, and account relationship stability.",
+          "riskCategory": "Organizational",
+          "currentProjectPhase": "Execution - Mid-Project (PI 06 Sprint 3)",
+          "expectedOccurrencePhase": "Ongoing through Final Quarter (Sep-Dec 2026)",
+          "likelyImpactPhase": "Contract Renewal and Extension Decisions",
+          "rootCause": "Combination of unresolved production quality issues (Genesys failures), high PR abandonment rate (31.6%) indicating rework, multiple pending architecture decisions demonstrating delayed technical leadership, declining team contribution, and insufficient visible demonstration of proactive AI value-add beyond core task execution.",
+          "triggerConditions": [
+            "Genesys failure path issues remain unresolved beyond September 2026",
+            "PR abandonment rate remains above 25% for consecutive sprints",
+            "Architecture decisions (Snowflake write, integration testing, test data) remain pending beyond 3 months from opening",
+            "Production incidents increase or recur without root cause resolution",
+            "Client escalation occurs regarding delivery quality or offshore contribution effectiveness",
+            "Contract extension discussions delayed or stakeholder reluctance expressed"
+          ],
+          "potentialImpact": {
+            "schedule": "Increased scrutiny and approval delays for sprint commitments; additional governance overhead reducing delivery capacity",
+            "cost": "Potential resource changes or onshore augmentation requirements; reduced billing approval; contract value reduction",
+            "quality": "Heightened review rigor increasing cycle times; reduced autonomy requiring more validation cycles",
+            "customer": "Stakeholder escalations; reluctance to approve contract extension or future work; reduced scope of engagement; account relationship damage",
+            "operations": "Reduced offshore autonomy; increased onshore oversight burden; potential team morale impact affecting retention and productivity"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R01",
+              "R02"
+            ],
+            "recurrenceLikelihood": "Very High",
+            "supportingHistoricalPatterns": [
+              "Historical Risk R01: Same client, same AI Platform Build - Servicing project experienced client confidence risk due to delivered outcomes not reflecting expected AI expertise and communication gaps; risk opened 06/04/2026 and remained open with status Assessed",
+              "Historical Risk R02: Code quality concerns raised on same Servicing project due to PR comments from McKinsey; resolved through stronger review process but underlying dependency and design issues persisted",
+              "Historical mitigation for R01 required proactive demonstrations, code walkthroughs, architectural contributions, and improved stakeholder communication\u2014actions not yet evidenced in current WSR",
+              "Current project operates in identical context: same client, same AI platform domain, same McKinsey program management, same staff augmentation model"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "This risk has very high recurrence likelihood because an identical confidence issue occurred on the same client's AI Platform Build - Servicing project just three months prior and remained unresolved historically. Current execution metrics show the same triggering conditions: production issues (Genesys failures unresolved), quality friction (31.6% PR abandonment, extended cycle times), and technical leadership gaps (multiple architecture decisions pending 2.5+ months). The historical risk explicitly warned that client perception affects extension approval and future work\u2014directly relevant as current project approaches contract end with pipeline work being scoped. Without visible corrective action demonstrating AI expertise and proactive value delivery, confidence erosion is highly probable.",
+          "confidenceScore": 90,
+          "riskPriority": "High",
+          "riskType": "Organizational",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Client satisfaction feedback from governance meetings and sprint reviews",
+            "Escalation frequency and severity from Premera or McKinsey stakeholders",
+            "Production incident resolution time and recurrence rate for Genesys and other issues",
+            "PR review comment sentiment and approval cycle time trends",
+            "Architecture decision closure rate and stakeholder approval velocity",
+            "Contract extension discussion status and stakeholder engagement tone",
+            "Proactive AI solution proposals and innovation contributions from offshore team",
+            "Stakeholder participation and engagement level in demos and technical reviews"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "WSR: Overall health YELLOW with scope concerns; declining member contribution",
+              "WSR: Genesys failure path issues still being worked on with no fix yet",
+              "WSR: PR abandonment rate 31.6% in PI06 S03, increasing trend from 1\u21924\u21926 abandoned PRs",
+              "WSR: Average PR cycle time 6.19 days; some PRs 17.5 and 25.8 days due to dependencies",
+              "WSR: Architecture decisions pending since 06/22-06/25/2026 with TBD or missed ETAs",
+              "WSR: PR review comments tied to unvalidated assumptions across system boundaries and insufficient documentation",
+              "WSR: Pipeline work (AI Trust Office, Claims Use Case 8) being scoped, indicating extension expectation but no formal approval"
+            ],
+            "historicalReferences": [
+              "Historical Risk R01: Client Confidence in AI Delivery Capability opened 06/04/2026 on Servicing project; cited delivered outcomes not reflecting expected AI expertise; communication gaps reducing confidence; risk remained open with Assessed status",
+              "Historical Risk R01 consequence: Client perception impact, increased scrutiny, escalations, reluctance to approve future work, account growth risk",
+              "Historical Risk R02: Code quality concerns on Servicing project; resolved through process hardening but current metrics show similar patterns recurring",
+              "Historical mitigation effectiveness: Confidence risks require sustained proof through outcomes, not one-off actions"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Assign senior AI leads to resolve Genesys failure path and document root cause analysis with permanent fix by September 20",
+                "Schedule bi-weekly architecture showcase sessions demonstrating proactive AI solutions, design decisions, and innovation contributions to Premera and McKinsey stakeholders"
+              ]
+            },
+            {
+              "stage": "ONGOING THROUGH Q4",
+              "actions": [
+                "Reduce PR abandonment below 15% through mandatory story refinement and internal draft PR review before submission",
+                "Include AI-focused achievements, architectural contributions, and realized business value in weekly governance reporting"
+              ]
+            }
+          ],
+          "recommendations": {
+            "preventive": "Strengthen internal quality gates with mandatory architecture review and design validation before PBI pickup to reduce rework and demonstrate technical rigor.",
+            "monitoring": "",
+            "contingency": "",
+            "strategic": "Establish offshore AI Center of Excellence showcasing reusable patterns, innovation proposals, and thought leadership to rebuild perception of proactive AI expertise."
+          },
+          "responseRationale": "Historical Servicing project confidence risk remained open because perception issues require sustained proof through visible outcomes and proactive contributions, not one-time corrective actions, making continuous demonstration of AI value essential."
+        },
+        {
+          "riskId": "R003",
+          "riskTitle": "Architecture Decision Debt Triggering Downstream Rework and Integration Failures",
+          "riskDescription": "Multiple foundational architecture decisions remain unresolved for 2.5+ months (Snowflake write approach, integration testing strategy, test data strategy, downstream auth approach), creating accumulating technical debt. Delayed resolution increases probability of late-stage rework, integration failures, incompatible design choices, and compressed validation windows as contract end approaches.",
+          "riskCategory": "Technical Debt",
+          "currentProjectPhase": "Execution - Mid-Project (PI 06 Sprint 3)",
+          "expectedOccurrencePhase": "Late Execution and Testing (Oct-Dec 2026)",
+          "likelyImpactPhase": "Integration, Testing, and Production Deployment",
+          "rootCause": "Deferred architecture decision-making due to competing priorities, unclear decision ownership between Premera/McKinsey/Ascendion, insufficient upfront architecture runway, and pressure to deliver features before foundational patterns are established. Staff augmentation model places decision authority with client, creating dependency on external decision velocity.",
+          "triggerConditions": [
+            "Snowflake write approach remains unresolved beyond October 2026",
+            "Integration testing strategy not finalized before post-MVP integration work begins",
+            "Test data strategy undefined when downstream system integration starts",
+            "Downstream auth spike not completed before Voice Bot and call deflection integration",
+            "Architecture decisions made under time pressure in final quarter without adequate validation",
+            "Incompatible design choices discovered during late-stage integration"
+          ],
+          "potentialImpact": {
+            "schedule": "Significant rework effort (estimated 2-4 sprints) if decisions change direction; delayed integration milestones; compressed testing windows; potential go-live delay",
+            "cost": "Rework costs for code already developed under assumed architecture; additional effort for refactoring and re-testing; potential contract extension costs",
+            "quality": "Suboptimal architecture implemented under time pressure; inadequate validation of non-functional requirements; integration defects; production stability risk",
+            "customer": "Delayed feature delivery; incomplete integration capabilities; reduced confidence in technical leadership; stakeholder frustration",
+            "operations": "Operational readiness gaps; inadequate monitoring and observability; support complexity; potential production incidents from rushed architecture"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R03",
+              "R05"
+            ],
+            "recurrenceLikelihood": "Very High",
+            "supportingHistoricalPatterns": [
+              "Historical Risk R03: Claims project resource utilization and sprint readiness blocked when FACETS integration approach decision pending after workshop; leadership decision latency created task availability gap",
+              "Historical Risk R05: Producer Portal integration with live Data Hub APIs pending; performance and NFR issues only visible after integration, demonstrating late discovery risk from deferred integration decisions",
+              "Historical pattern: Decision latency causes delivery drag\u2014when architecture or integration decisions are deferred, task readiness drops and schedule pressure increases",
+              "Historical mitigation success: Claims risk closed after expediting decisions and preparing alternate sprint-ready work, proving decision acceleration is effective"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "This risk is highly likely because current evidence shows four critical architecture decisions have been pending for 2.5+ months with TBD or missed ETAs, and the project is now at 57% timeline completion with only 3.9 months remaining. Historical evidence from the same client demonstrates that decision latency directly blocks sprint readiness and creates rework. The current dependency-driven PR delays (17.5 and 25.8 days) and spilled PBIs indicate that unresolved decisions are already impacting execution. As contract end approaches, time pressure will force architecture decisions without adequate validation, increasing rework probability when incompatibilities are discovered during integration.",
+          "confidenceScore": 88,
+          "riskPriority": "High",
+          "riskType": "Technical Debt",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Architecture decision closure status and aging (target: close within 2 weeks of opening)",
+            "Number of open architecture decisions and trend",
+            "Dependency-blocked PBI count and duration",
+            "PR cycle time for integration-related work",
+            "Rework effort tracking (abandoned PRs, refactoring tasks)",
+            "Integration testing environment readiness and test execution rate",
+            "Downstream system integration milestone status",
+            "Technical debt backlog size and priority"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Risk Register: Snowflake write approach pending since 06/25/2026, ETA TBD, status In Progress",
+              "WSR Risk Register: Integration testing approach not finalized since 06/22/2026, ETA TBD, status In Progress",
+              "WSR Risk Register: Test data strategy under discussion since 06/22/2026, ETA TBD, status In Progress",
+              "WSR Post-MVP Items: Downstream auth spike pending, status In Progress",
+              "WSR Post-MVP Items: Downstream integration approach not finalized, status In Progress",
+              "WSR: PR #77796 took 17.5 days due to dependency on observability PR; PR #77138 open 25.8 days with Redis dependency",
+              "WSR: 4 PBIs spilled from sprint due to blockers/dependencies",
+              "WSR Monitoring: Design gaps risk closed 07/10/2026 but architecture decisions still pending, indicating incomplete resolution"
+            ],
+            "historicalReferences": [
+              "Historical Risk R03: Claims utilization risk when FACETS integration decision pending; mitigation required expediting decisions and alternate work preparation",
+              "Historical Risk R05: Producer Portal integration pending; NFR issues only visible after integration, demonstrating late discovery risk",
+              "Historical pattern: Decision latency causes delivery drag across Premera AI projects; task readiness drops when decisions deferred"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Escalate Snowflake write, integration testing, and test data strategy decisions to Premera/McKinsey leadership with hard deadline of September 20 and decision-forcing options",
+                "Isolate architecture-dependent work as spikes and prepare alternate sprint-ready PBIs to maintain team utilization during decision resolution"
+              ]
+            },
+            {
+              "stage": "POST-DECISION (LATE SEPTEMBER)",
+              "actions": [
+                "Validate architecture decisions through proof-of-concept implementations before full-scale development to reduce rework risk",
+                "Document architecture patterns and integration contracts to enable parallel development across squads"
+              ]
+            }
+          ],
+          "recommendations": {
+            "preventive": "Implement 2-week maximum aging limit for architecture decisions with automatic executive escalation to prevent decision latency from blocking delivery.",
+            "monitoring": "",
+            "contingency": "Maintain 2-sprint buffer of architecture-independent work to absorb decision delays without impacting team utilization.",
+            "strategic": "Conduct upfront architecture runway planning for future phases to establish foundational patterns before feature development begins."
+          },
+          "responseRationale": "Historical Claims project successfully closed utilization risk by expediting pending FACETS integration decisions and preparing alternate sprint-ready work, proving that decision acceleration combined with work buffering prevents architecture debt from blocking delivery."
+        },
+        {
+          "riskId": "R004",
+          "riskTitle": "MVP Scope Creep Amplifying Schedule Pressure and Delivery Unpredictability",
+          "riskDescription": "MVP scope remains unfrozen at 57% timeline completion despite risk opened June 22 with missed July 3 ETA, enabling continued scope additions and changes. Unfrozen scope combined with changing priorities drives increasing PR abandonment (31.6%), spilled PBIs, and declining velocity, making December 31 delivery commitments increasingly uncertain and forcing quality compromises.",
+          "riskCategory": "Scope",
+          "currentProjectPhase": "Execution - Mid-Project (PI 06 Sprint 3)",
+          "expectedOccurrencePhase": "Ongoing through Contract End",
+          "likelyImpactPhase": "Final Quarter Execution and Contract Closure",
+          "rootCause": "Weak scope governance and change control in staff augmentation model where client retains priority-setting authority; competing stakeholder demands; insufficient release boundary definition; pressure to accommodate emerging requirements; lack of formal scope freeze enforcement mechanism.",
+          "triggerConditions": [
+            "MVP scope freeze not achieved by end of September 2026",
+            "Change request volume continues without formal approval and impact assessment",
+            "Sprint commitments continue changing mid-sprint due to reprioritization",
+            "PR abandonment rate remains above 25% indicating continued rework from scope changes",
+            "Post-MVP scope planning proceeds without MVP completion and validation",
+            "Stakeholder requests continue being accepted without formal scope trade-off decisions"
+          ],
+          "potentialImpact": {
+            "schedule": "Continued sprint instability and spilled PBIs; unpredictable delivery timelines; inability to commit to release dates; potential incomplete MVP by contract end",
+            "cost": "Wasted effort from abandoned work (currently 31.6% of PRs); rework costs; potential contract extension costs; reduced ROI from scope churn",
+            "quality": "Rushed implementation of late additions; inadequate testing of changed scope; technical debt from shortcuts; production defects",
+            "customer": "Unclear release boundaries and feature availability; unmet expectations from incomplete MVP; stakeholder frustration from delivery unpredictability",
+            "operations": "Operational readiness uncertainty; incomplete documentation; inadequate training and knowledge transfer; support burden from unstable features"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R07",
+              "R02"
+            ],
+            "recurrenceLikelihood": "Very High",
+            "supportingHistoricalPatterns": [
+              "Historical Risk R07: Producer Portal absorbed approximately 14 scope changes equivalent to 0.75-1 sprint of additional effort; further additions threatened delivery timelines; mitigation was only placeholder with no concrete action",
+              "Historical Risk R02: Code quality concerns on Servicing project linked to dependency mappings and changes mid-sprint, demonstrating that scope instability drives quality friction",
+              "Historical pattern: Scope instability drives rework and predictability loss\u2014uncontrolled changes lead to rework, mid-sprint churn, and reduced commitment reliability",
+              "Current project shows identical pattern: MVP scope not frozen, changing priorities noted, 31.6% PR abandonment, 4 spilled PBIs"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "This risk is highly likely because the MVP scope freeze risk has been open for 2.5 months with a missed ETA and no resolution, while current metrics show scope instability is actively damaging delivery: PR abandonment increased from 1 to 4 to 6 across three sprints, member contribution is declining due to changing priorities, and 4 PBIs spilled from the current sprint. Historical evidence from the same client shows that scope changes accumulate delivery burden and threaten timelines. With only 3.9 months remaining and work-to-capacity already at 1.8-2.8x, continued scope additions make contract completion infeasible without immediate freeze enforcement.",
+          "confidenceScore": 90,
+          "riskPriority": "High",
+          "riskType": "Scope",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "MVP scope freeze status and formal approval date",
+            "Change request volume and approval rate per sprint",
+            "PR abandonment rate trend (target: below 15%)",
+            "Spilled PBI count and reasons per sprint",
+            "Mid-sprint scope change frequency",
+            "Sprint commitment reliability (planned vs completed PBIs)",
+            "Rework effort as percentage of total capacity",
+            "Stakeholder alignment on release scope and boundaries"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Risk Register: MVP scope not fully frozen; risk opened 06/22/2026, ETA 07/03/2026 missed, status In Progress as of 09/04/2026",
+              "WSR: PR abandonment rate 31.6% in PI06 S03; trend increasing from 1 (PI06 S01) \u2192 4 (PI06 S02) \u2192 6 (PI06 S03)",
+              "WSR: 6 PRs abandoned due to reprioritization, breakdown to smaller PRs, and changing requirements",
+              "WSR: 4 PBIs spilled from PI06 S03; PBIs taken up mid-sprint due to blockers/dependencies",
+              "WSR: Member contribution declined due to changing priorities and CSR production issues",
+              "WSR: Overall health YELLOW with scope flagged as YELLOW concern",
+              "WSR: Post-MVP scope items being planned while MVP not frozen, indicating premature scope expansion"
+            ],
+            "historicalReferences": [
+              "Historical Risk R07: Producer Portal absorbed ~14 scope changes (0.75-1 sprint effort); delivery timeline impact; mitigation was placeholder only",
+              "Historical Risk R02: Code quality concerns tied to changes mid-sprint and dependency mappings",
+              "Historical pattern: Scope instability drives rework and predictability loss across Premera projects"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Freeze MVP scope by September 15 with formal acceptance criteria, release boundaries, and stakeholder sign-off documented in governance",
+                "Implement mandatory change control requiring executive approval, impact assessment, and explicit scope trade-offs for any post-freeze additions"
+              ]
+            },
+            {
+              "stage": "CURRENT PHASE",
+              "actions": [
+                "Reduce PR abandonment below 15% by enforcing story refinement with clear acceptance criteria and dependency identification before sprint commitment",
+                "Defer all post-MVP scope planning until MVP completion and validation to prevent premature scope expansion"
+              ]
+            }
+          ],
+          "recommendations": {
+            "preventive": "Establish release boundary definition with clear in-scope and out-of-scope features communicated to all stakeholders to prevent scope drift.",
+            "monitoring": "Monitor PR abandonment rate and spilled PBI count as leading indicators of scope instability requiring corrective action.",
+            "contingency": "",
+            "strategic": "Implement formal scope governance framework with change impact assessment and capacity-based acceptance criteria for future releases."
+          },
+          "responseRationale": "Historical Producer Portal absorbed 14 scope changes with only placeholder mitigation and delivery timeline impact, demonstrating that weak scope control directly threatens delivery predictability, making immediate freeze enforcement critical."
+        },
+        {
+          "riskId": "R005",
+          "riskTitle": "Production Quality Degradation from Unresolved Integration Defects",
+          "riskDescription": "Persistent production issues including unresolved Genesys failure path defects and recurring integration errors threaten user experience quality and operational stability. Continued production support demands divert capacity from new development while unresolved root causes increase probability of additional production incidents and customer impact.",
+          "riskCategory": "Quality",
+          "currentProjectPhase": "Execution - Mid-Project (PI 06 Sprint 3)",
+          "expectedOccurrencePhase": "Ongoing Production Support and Future Deployments",
+          "likelyImpactPhase": "Production Operations and User Experience",
+          "rootCause": "Complex integration dependencies with Genesys platform; insufficient integration testing strategy (still not finalized per risk register); late discovery of integration issues in production; competing priorities between production support and new development; inadequate root cause analysis and permanent fix implementation.",
+          "triggerConditions": [
+            "Genesys failure path issues remain unresolved beyond September 2026",
+            "Additional production incidents occur with similar integration failure patterns",
+            "Integration testing strategy remains undefined when new integrations deploy",
+            "Production support effort exceeds 20% of team capacity for consecutive sprints",
+            "User-reported defects increase or recur after attempted fixes",
+            "Pilot feedback indicates quality concerns or feature instability"
+          ],
+          "potentialImpact": {
+            "schedule": "Production support diverts capacity from planned development; delayed feature delivery; extended stabilization periods",
+            "cost": "Increased support costs; potential SLA penalties; rework costs for defect fixes; opportunity cost of diverted capacity",
+            "quality": "User experience degradation; reduced feature reliability; increased technical debt; quality reputation damage",
+            "customer": "Member and provider dissatisfaction; reduced adoption of AI features; escalations; confidence erosion in AI transformation value",
+            "operations": "Increased support burden; operational instability; potential rollback requirements; business continuity risk; training and documentation gaps"
+          },
+          "likelihood": "High",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R02",
+              "R05"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": [
+              "Historical Risk R02: Code quality concerns on Servicing project; resolved through stronger review process but underlying dependency and design issues persisted, suggesting process fixes alone insufficient",
+              "Historical Risk R05: Producer Portal integration with live Data Hub APIs pending; performance and NFR issues only visible after integration, demonstrating late integration discovery pattern",
+              "Historical monitoring item: Design gaps increased PR review comments and rework; closed 07/10/2026 but current production issues suggest incomplete resolution",
+              "Current project shows integration testing approach still not finalized since 06/22/2026, repeating late-integration-validation pattern"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "This risk is highly likely because Genesys failure path issues have been under investigation with no fix yet, indicating complex integration challenges without clear resolution path. The WSR explicitly notes production issues are causing declining member contribution, demonstrating capacity impact. Historical evidence shows that integration issues discovered late in production are difficult to resolve, and the current integration testing strategy remains undefined after 2.5 months. With continued production deployments planned and integration testing approach still pending, additional production defects are probable.",
+          "confidenceScore": 85,
+          "riskPriority": "High",
+          "riskType": "Quality",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Production incident count and severity trend",
+            "Genesys failure path issue resolution status and timeline",
+            "Mean time to resolution (MTTR) for production defects",
+            "Production support effort as percentage of total capacity",
+            "Integration testing strategy finalization and implementation status",
+            "Defect recurrence rate after fix deployment",
+            "User-reported issue volume from pilot and production",
+            "Integration test coverage and pass rate for new deployments"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Challenges: Genesys failure path issues still being worked on with no fix yet",
+              "WSR: After 3rd message, no match error in progress with Genesys team",
+              "WSR: Member contribution declined due to CSR production issues",
+              "WSR: Production support listed as ongoing activity consuming capacity",
+              "WSR: Feedback implementation from Prod and bug fixing in ACPT environment ongoing",
+              "WSR Risk Register: Integration testing approach not finalized since 06/22/2026, ETA TBD",
+              "WSR: Vulnerability fixes ongoing for Voice Bot, indicating security/quality remediation burden"
+            ],
+            "historicalReferences": [
+              "Historical Risk R02: Code quality concerns resolved through process but underlying issues persisted",
+              "Historical Risk R05: Integration with live APIs pending; NFR issues only visible after integration",
+              "Historical monitoring: Design gaps closed 07/10/2026 but production issues continue, suggesting incomplete resolution"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Assign dedicated senior engineer to resolve Genesys failure path with root cause analysis and permanent fix by September 20",
+                "Finalize integration testing strategy by September 15 with test scope, environments, tools, and coverage criteria documented"
+              ]
+            },
+            {
+              "stage": "BEFORE NEW DEPLOYMENTS",
+              "actions": [
+                "Execute end-to-end integration testing for all new deployments with mandatory sign-off before production release",
+                "Implement integration monitoring and alerting to detect failure patterns early and enable proactive resolution"
+              ]
+            }
+          ],
+          "recommendations": {
+            "preventive": "Strengthen integration testing with mandatory end-to-end validation before production deployment to prevent late defect discovery.",
+            "monitoring": "Track production incident count, MTTR, and recurrence rate to measure quality stability and identify systemic issues.",
+            "contingency": "Limit production support effort to 15% of capacity by establishing on-call rotation and escalation to prevent development capacity drain.",
+            "strategic": "Implement integration test automation and continuous validation to detect integration issues early in development cycle."
+          },
+          "responseRationale": "Historical Producer Portal integration risk demonstrated that performance and NFR issues only become visible after live integration, proving that early integration testing strategy finalization prevents late production defect discovery."
+        },
+        {
+          "riskId": "R006",
+          "riskTitle": "Dependency-Driven Execution Bottlenecks Reducing Delivery Throughput",
+          "riskDescription": "Extended PR cycle times driven by cross-team dependencies and sequential work patterns create delivery bottlenecks and reduce sprint throughput. With average cycle time of 6.19 days and individual PRs taking 17.5 to 25.8 days due to dependencies, integration velocity cannot support the remaining work volume within contract timeline.",
+          "riskCategory": "Dependency",
+          "currentProjectPhase": "Execution - Mid-Project (PI 06 Sprint 3)",
+          "expectedOccurrencePhase": "Ongoing through Contract End",
+          "likelyImpactPhase": "Sprint Execution and Integration Milestones",
+          "rootCause": "Insufficient upfront dependency planning and sequencing; cross-squad dependencies not identified during sprint planning; sequential rather than parallel work execution; architecture decisions blocking multiple work streams; inadequate work breakdown to isolate dependencies; limited work-in-progress management.",
+          "triggerConditions": [
+            "Average PR cycle time exceeds 7 days for consecutive sprints",
+            "Dependency-blocked PRs exceed 20% of active PRs",
+            "Architecture decisions remain unresolved, blocking dependent work streams",
+            "Cross-squad dependencies increase as integration work intensifies",
+            "Work breakdown continues creating sequential dependencies rather than parallel streams",
+            "Sprint planning fails to identify and sequence dependencies upfront"
+          ],
+          "potentialImpact": {
+            "schedule": "Reduced sprint throughput and velocity; delayed integration milestones; cascading delays across dependent work streams; extended delivery timelines",
+            "cost": "Idle capacity while waiting for dependencies; reduced utilization efficiency; potential overtime or extension costs",
+            "quality": "Rushed integration when dependencies finally resolve; inadequate testing due to compressed timelines; integration defects",
+            "customer": "Delayed feature delivery; reduced predictability; stakeholder frustration from missed commitments",
+            "operations": "Reduced team productivity; frustration from blocked work; coordination overhead; potential morale impact"
+          },
+          "likelihood": "High",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R03",
+              "R06"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": [
+              "Historical Risk R03: Claims project sprint readiness blocked when FACETS integration decision pending; task availability limited by external dependency",
+              "Historical Risk R06: Producer Portal delivery timelines dependent on Data Hub API availability by 6/30; delay would impact project timelines",
+              "Historical Risk R02: Code quality concerns tied to dependency mappings and changes mid-sprint",
+              "Historical mitigation success: Claims risk resolved by expediting decisions and preparing alternate sprint-ready work to buffer dependency delays"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "This risk is highly likely because current metrics show dependency-driven delays are already impacting delivery: PR #77796 took 17.5 days due to observability PR dependency, PR #77138 open 25.8 days with Redis dependency, and 4 PBIs spilled due to blockers/dependencies. Historical evidence from the same client shows that external dependencies and pending decisions directly block sprint readiness. As integration work intensifies in the final quarter with downstream system integration and post-MVP scope, cross-squad dependencies will increase, further extending cycle times and reducing throughput when capacity is most constrained.",
+          "confidenceScore": 87,
+          "riskPriority": "High",
+          "riskType": "Dependency",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Average PR cycle time trend (target: below 5 days)",
+            "Percentage of PRs blocked by dependencies",
+            "Dependency resolution time from identification to closure",
+            "Cross-squad dependency count and aging",
+            "Architecture decision closure rate for blocking decisions",
+            "Sprint planning dependency identification completeness",
+            "Work-in-progress (WIP) limits and adherence",
+            "Parallel work stream count vs sequential dependency chains"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "WSR: Average PR cycle time 6.19 days in PI06 S03",
+              "WSR: PR #77796 ran 17.5 days due to dependency on Rohit's observability PR",
+              "WSR: PR #77138 open 25.8 days with dependency on Redis PR and production issues",
+              "WSR: 4 PBIs spilled from sprint; PBIs taken up mid-sprint due to blockers/dependencies",
+              "WSR Risk Register: Intent model integration delayed; Suraj helping accelerate, indicating dependency bottleneck",
+              "WSR: Multiple architecture decisions pending (Snowflake, integration testing, test data) blocking dependent work",
+              "WSR: Squad breakout reorganizing teams mid-PI, potentially increasing cross-squad coordination needs"
+            ],
+            "historicalReferences": [
+              "Historical Risk R03: Claims sprint readiness blocked by pending FACETS integration decision; mitigation required alternate work preparation",
+              "Historical Risk R06: Producer Portal dependent on Data Hub API availability; delay would impact timelines",
+              "Historical pattern: Dependency-driven execution flow causes PR churn and slower integration"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Accelerate pending architecture decisions (Snowflake, integration testing, auth) by September 20 to unblock dependent work streams",
+                "Implement dependency mapping in sprint planning with explicit sequencing and parallel work stream identification"
+              ]
+            },
+            {
+              "stage": "ONGOING SPRINT EXECUTION",
+              "actions": [
+                "Maintain 2-sprint buffer of dependency-free work to enable parallel execution when blockers occur",
+                "Reduce average PR cycle time below 5 days through daily dependency resolution standups and WIP limits"
+              ]
+            }
+          ],
+          "recommendations": {
+            "preventive": "Break down work to isolate dependencies and enable parallel execution across squads, reducing sequential bottlenecks.",
+            "monitoring": "Track dependency-blocked PR percentage and resolution time to identify systemic bottlenecks requiring architectural intervention.",
+            "contingency": "Prepare alternate work items for team members when dependencies block primary assignments to maintain utilization.",
+            "strategic": "Implement dependency management framework with upfront identification, sequencing, and cross-squad coordination in sprint planning."
+          },
+          "responseRationale": "Historical Claims project resolved sprint readiness risk by expediting decisions and preparing alternate work, demonstrating that dependency buffering and decision acceleration prevent execution bottlenecks from reducing throughput."
+        },
+        {
+          "riskId": "R007",
+          "riskTitle": "Knowledge Transfer Gaps from Squad Reorganization and New Member Onboarding",
+          "riskDescription": "Squad breakout reorganization mid-PI combined with onboarding of new members (Muang started 08/31, Deeksha starts 09/07) without completed architecture knowledge transfer creates context gaps. New team members lack full understanding of system architecture, design decisions, and integration patterns, increasing rework risk and reducing execution effectiveness.",
+          "riskCategory": "Resource",
+          "currentProjectPhase": "Execution - Mid-Project (PI 06 Sprint 3)",
+          "expectedOccurrencePhase": "Ongoing through Q4 2026",
+          "likelyImpactPhase": "Sprint Execution and Code Quality",
+          "rootCause": "Mid-project organizational change (squad breakout) without adequate transition planning; architecture knowledge transfer not started despite being identified as post-MVP open item; competing priorities preventing dedicated KT time; assumption that new members can learn through osmosis rather than structured transfer; staff augmentation model limiting offshore team's access to full design context.",
+          "triggerConditions": [
+            "Architecture KT sessions not scheduled by end of September 2026",
+            "New members assigned to complex integration or architecture work without adequate context",
+            "PR review comments increase for new members indicating knowledge gaps",
+            "Rework or abandoned PRs increase due to misaligned implementation approaches",
+            "Cross-squad coordination issues arise from inconsistent architecture understanding",
+            "Design decisions made without awareness of existing patterns or constraints"
+          ],
+          "potentialImpact": {
+            "schedule": "Extended onboarding time reducing effective capacity; rework from misaligned implementations; slower PR reviews requiring more explanation",
+            "cost": "Reduced productivity during learning curve; rework costs; additional senior engineer time for mentoring and correction",
+            "quality": "Implementation inconsistencies; architectural pattern violations; increased defects from incomplete understanding; technical debt accumulation",
+            "customer": "Reduced delivery predictability; potential quality concerns; delayed feature delivery during transition period",
+            "operations": "Team velocity reduction during transition; coordination overhead; potential frustration and morale impact; knowledge concentration risk"
+          },
+          "likelihood": "High",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R04"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": [
+              "Historical Risk R04: Claims project offshore team lacked visibility into overall scope, design, priorities, and decision-making; inconsistent inclusion in key Scrum meetings caused work allocation issues and quality concerns",
+              "Historical mitigation: Established daily connects with single POC and access to design call recordings; closed after process streamlining",
+              "Historical monitoring item: Org structure/roles not clearly published in newly set up offshore team; closed 07/03/2026 after documentation",
+              "Current project shows similar pattern: Architecture KT not started, squad breakout reorganizing teams, new members onboarding without structured transfer"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "This risk is highly likely because the architecture KT is explicitly listed as not started in post-MVP open items, yet squad reorganization has already occurred and two new members are being onboarded in late August and early September. Historical evidence from the same client shows that offshore teams lacking full context experience work allocation issues and quality concerns. The current squad breakout risk notes inconsistent velocity and KT concerns for new members. With only 3.9 months remaining and increasing integration complexity, knowledge gaps will amplify rework and reduce the effectiveness of new capacity additions.",
+          "confidenceScore": 85,
+          "riskPriority": "Medium",
+          "riskType": "Resource",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Architecture KT session completion status and attendance",
+            "New member onboarding checklist completion and timeline",
+            "PR review comment volume and nature for new team members",
+            "Rework rate and abandoned PR count for new members",
+            "Time to first merged PR for new members",
+            "Architecture documentation completeness and accessibility",
+            "Cross-squad coordination meeting effectiveness",
+            "Team member self-assessment of architecture understanding"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Post-MVP Open Items: Architecture KT from CSR Assist team to other squads has not happened; status Not Started",
+              "WSR: Muang started 08/31 in CSR Assist & Shared Services squad",
+              "WSR: Deeksha starts September 7",
+              "WSR Risk Register: Squad breakout reorganizing teams mid-PI; consequence includes KT for new members seems not there",
+              "WSR: Squad breakout risk notes inconsistent velocity and skewed sprint reporting across squads",
+              "WSR Monitoring: Org structure/roles risk closed 07/03/2026 but KT gaps persist"
+            ],
+            "historicalReferences": [
+              "Historical Risk R04: Claims offshore team lacked visibility into scope, design, priorities; inconsistent Scrum meeting inclusion caused quality concerns",
+              "Historical mitigation: Daily connects with single POC and access to recordings improved context flow",
+              "Historical monitoring: Org structure/roles not clearly published in newly set up offshore team; closed after documentation"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Schedule architecture KT sessions by September 15 covering system design, integration patterns, and technical decisions with recorded sessions for reference",
+                "Assign experienced squad members as onboarding buddies for Muang and Deeksha with structured 2-week ramp-up plan"
+              ]
+            },
+            {
+              "stage": "SEPTEMBER-OCTOBER",
+              "actions": [
+                "Document architecture patterns, design decisions, and integration contracts in accessible wiki before assigning new members to complex work",
+                "Limit new member assignments to well-defined, low-dependency work for first 3 weeks to enable learning without blocking critical path"
+              ]
+            }
+          ],
+          "recommendations": {
+            "preventive": "Establish structured onboarding checklist with architecture overview, codebase walkthrough, and tool access before work assignment.",
+            "monitoring": "Track new member PR review comments and rework rate to identify knowledge gaps requiring additional support.",
+            "contingency": "",
+            "strategic": "Maintain architecture documentation and decision logs as living artifacts to enable self-service context access for current and future team members."
+          },
+          "responseRationale": "Historical Claims project closed visibility risk by establishing daily connects with single POC and access to design recordings, proving that systematic context access improves offshore execution quality and reduces rework."
+        },
+        {
+          "riskId": "R008",
+          "riskTitle": "Infrastructure Performance Degradation Reducing Developer Productivity",
+          "riskDescription": "Recurring VDI performance issues causing 5-10 minute non-responsive periods, particularly when using Teams calls and VSCode in parallel, create cumulative productivity loss. Frequent disruptions during critical development and collaboration activities reduce effective capacity and increase developer frustration during high-pressure final quarter execution.",
+          "riskCategory": "Infrastructure",
+          "currentProjectPhase": "Execution - Mid-Project (PI 06 Sprint 3)",
+          "expectedOccurrencePhase": "Ongoing through Contract End",
+          "likelyImpactPhase": "Daily Development Operations",
+          "rootCause": "VDI infrastructure capacity or configuration limitations; resource contention when running multiple applications; network latency or bandwidth constraints; insufficient VDI performance monitoring and optimization; competing IT priorities delaying infrastructure improvements.",
+          "triggerConditions": [
+            "VDI performance issues continue occurring multiple times per week",
+            "Recovery time remains at 5-10 minutes per incident",
+            "Issue frequency increases as team collaboration intensifies",
+            "IT escalation does not result in permanent resolution",
+            "Additional team members onboarded increasing VDI load",
+            "Critical sprint activities (planning, reviews, demos) disrupted by VDI failures"
+          ],
+          "potentialImpact": {
+            "schedule": "Cumulative productivity loss estimated at 5-10% of development capacity; delayed PR completion; extended cycle times",
+            "cost": "Reduced utilization efficiency; potential need for alternative infrastructure solutions; opportunity cost of lost development time",
+            "quality": "Disrupted focus and context switching reducing code quality; incomplete testing due to time pressure; rushed work to compensate for lost time",
+            "customer": "Indirect impact through reduced delivery velocity and potential quality issues",
+            "operations": "Developer frustration and morale impact; reduced collaboration effectiveness; potential retention risk; workaround overhead"
+          },
+          "likelihood": "High",
+          "impactSeverity": "Low",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": [
+              "Historical monitoring item: VDI connectivity risk for offshore team with recurring disruptions during sprint execution; consequence was loss of productive development hours; closed without clear permanent resolution",
+              "Historical mitigation: Log incidents, offset productivity loss via extra effort, escalate to IT\u2014reactive rather than preventive approach",
+              "Current project shows issue persists despite historical closure, indicating incomplete resolution"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "This risk is highly likely to continue because VDI performance issues are explicitly noted as ongoing challenges in the current WSR, occurring frequently when Teams and VSCode are used in parallel\u2014a common development scenario. Historical evidence shows a similar VDI connectivity risk was closed previously, yet the issue persists, indicating the root cause was not permanently resolved. With two new team members onboarding and increasing collaboration needs in the final quarter, VDI load will increase, potentially worsening performance. The cumulative 5-10 minute disruptions multiple times per week represent meaningful capacity loss when the project is already overcapacity.",
+          "confidenceScore": 82,
+          "riskPriority": "Medium",
+          "riskType": "Infrastructure",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "VDI incident frequency and duration per week",
+            "Mean time to recovery (MTTR) for VDI performance issues",
+            "Developer-reported productivity impact surveys",
+            "IT escalation status and resolution timeline",
+            "VDI resource utilization metrics (CPU, memory, network)",
+            "Alternative infrastructure solution evaluation status",
+            "Workaround effectiveness and adoption rate"
+          ],
+          "businessCriticality": "Low",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Challenges: VDI sometimes becomes non-responsive and takes around 5-10 minutes for recovery",
+              "WSR: Issue happens frequently if Teams call and VSCode used in parallel",
+              "WSR: Challenge explicitly listed as ongoing concern requiring attention"
+            ],
+            "historicalReferences": [
+              "Historical monitoring: VDI connectivity risk for offshore team with recurring disruptions; consequence was loss of productive development hours; status closed but issue persists",
+              "Historical mitigation: Log incidents, offset via extra effort, escalate to IT\u2014reactive approach without permanent fix"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Escalate VDI performance issues to Premera IT with business impact quantification and request resolution by September 30",
+                "Implement workaround guidance for parallel Teams and VSCode usage to minimize disruption frequency"
+              ]
+            },
+            {
+              "stage": "IF UNRESOLVED BY OCTOBER",
+              "actions": [
+                "Evaluate alternative development environment options (local development with VPN, cloud-based IDEs) for feasibility and security compliance"
+              ]
+            }
+          ],
+          "recommendations": {
+            "preventive": "",
+            "monitoring": "Log VDI incident frequency, duration, and productivity impact to quantify business case for infrastructure investment.",
+            "contingency": "Schedule critical collaboration activities (planning, reviews, demos) during stable VDI windows to minimize disruption impact.",
+            "strategic": "Include infrastructure performance requirements in future engagement planning to prevent productivity loss from inadequate tooling."
+          },
+          "responseRationale": "Historical VDI connectivity risk was closed previously yet persists in current project, indicating reactive mitigation without permanent resolution, making IT escalation with business impact quantification necessary to drive infrastructure improvement."
+        },
+        {
+          "riskId": "R009",
+          "riskTitle": "Post-MVP Scope Uncertainty Threatening Transition and Continuity Planning",
+          "riskDescription": "Post-MVP scope and integration approach remain undefined with only 3.9 months to contract end, creating uncertainty in transition planning, operational readiness, and contract extension negotiations. Downstream integration with Voice Bot and call deflection, auth approach, and architecture knowledge transfer are not finalized, risking incomplete handover and business continuity gaps.",
+          "riskCategory": "Transition",
+          "currentProjectPhase": "Execution - Mid-Project (PI 06 Sprint 3)",
+          "expectedOccurrencePhase": "Q4 2026 and Contract Closure",
+          "likelyImpactPhase": "Contract Transition and Operational Handover",
+          "rootCause": "Premature post-MVP planning while MVP scope remains unfrozen; competing priorities preventing post-MVP design finalization; unclear contract extension status creating planning ambiguity; insufficient transition planning lead time; assumption that post-MVP work will continue without formal approval.",
+          "triggerConditions": [
+            "Contract extension not approved by end of October 2026",
+            "Downstream integration approach not finalized by November 2026",
+            "Architecture KT not completed before contract end",
+            "Operational readiness activities (documentation, runbooks, training) deferred to final weeks",
+            "Handover planning not initiated by mid-November 2026",
+            "Post-MVP scope expectations misaligned between Premera, McKinsey, and Ascendion"
+          ],
+          "potentialImpact": {
+            "schedule": "Rushed transition activities in final weeks; incomplete handover; delayed operational readiness",
+            "cost": "Emergency extension costs if transition incomplete; additional support costs post-contract; rework costs for incomplete documentation",
+            "quality": "Inadequate documentation and knowledge transfer; operational support gaps; increased post-deployment defects",
+            "customer": "Business continuity risk; operational instability post-transition; reduced confidence in transformation sustainability; unmet transformation objectives",
+            "operations": "Support burden from inadequate handover; operational readiness gaps; increased incident risk; training and documentation deficiencies; potential service disruption"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": [
+              "Historical monitoring: Design gaps and documentation issues closed 07/10/2026 but current post-MVP items show documentation and KT gaps persist",
+              "Current project pattern: Multiple foundational items (downstream integration, auth spike, architecture KT) marked as post-MVP scope but not started with limited time remaining",
+              "Pipeline work being scoped (AI Trust Office, Claims Use Case 8) suggests extension expectation but no formal approval documented"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "This risk has medium-high likelihood because post-MVP scope items are explicitly listed as not started or in progress with no clear completion timeline, yet the contract ends in 3.9 months. The downstream integration approach, auth spike, and architecture KT are foundational for operational continuity but remain undefined. Pipeline work being scoped suggests an expectation of continuation, but no formal extension is documented in the SOW or WSR. If extension is not approved, the project faces rushed transition with incomplete handover; if extension is approved late, planning gaps will create inefficiency. Either scenario threatens business continuity and operational readiness.",
+          "confidenceScore": 80,
+          "riskPriority": "High",
+          "riskType": "Transition",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Contract extension negotiation status and approval timeline",
+            "Post-MVP scope finalization and stakeholder sign-off",
+            "Downstream integration design completion and approval",
+            "Architecture KT session schedule and completion status",
+            "Operational readiness checklist completion percentage",
+            "Documentation and runbook completeness assessment",
+            "Transition planning initiation and milestone tracking",
+            "Handover acceptance criteria definition and agreement"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Post-MVP Open Items: Downstream integration approach not finalized; status In Progress",
+              "WSR Post-MVP Open Items: Auth spike pending; status In Progress",
+              "WSR Post-MVP Open Items: Architecture KT not started; status Not Started",
+              "WSR: Only 3.9 months (117 days, 16.7 weeks) remaining to contract end December 31, 2026",
+              "WSR Pipeline: AI Trust Office and Claims Use Case 8 being scoped, suggesting extension expectation",
+              "SOW: Contract ends December 31, 2026 with five business days termination clause; no extension mentioned",
+              "WSR: Post-MVP northstar understanding completed but implementation path unclear"
+            ],
+            "historicalReferences": [
+              "Historical monitoring: Design gaps and documentation issues closed but gaps persist in current state",
+              "Historical pattern: Premera projects show transition planning gaps when scope and timeline uncertainty exists"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Clarify contract extension status and post-MVP scope approval by September 30 through executive stakeholder engagement",
+                "Initiate transition planning by October 1 with operational readiness checklist, handover criteria, and completion timeline"
+              ]
+            },
+            {
+              "stage": "NOVEMBER-DECEMBER",
+              "actions": [
+                "Complete architecture KT, documentation, and runbooks by December 15 to enable controlled handover regardless of extension decision",
+                "Finalize downstream integration and auth approach by November 15 if extension approved, or defer to future contract if not approved"
+              ]
+            }
+          ],
+          "recommendations": {
+            "preventive": "Establish operational readiness criteria and transition acceptance checklist by October 15 to guide final quarter activities.",
+            "monitoring": "",
+            "contingency": "Prepare two transition scenarios (with extension and without extension) to enable rapid execution once decision is made.",
+            "strategic": "Implement 8-week transition planning lead time as standard practice for future engagements to prevent rushed handover."
+          },
+          "responseRationale": "Historical monitoring showed design gaps and documentation issues closed but persisting in current state, demonstrating that deferred transition planning creates operational readiness gaps requiring early initiation to ensure business continuity."
+        },
+        {
+          "riskId": "R010",
+          "riskTitle": "Compounding Delivery Momentum Decline from Multiple Converging Pressures",
+          "riskDescription": "Delivery momentum is declining due to converging negative trends including increasing PR abandonment (1\u21924\u21926), declining member contribution, persistent production issues, unresolved architecture decisions, and rising schedule pressure. Without intervention, momentum decline will accelerate in final quarter, creating cascading failures across quality, schedule, and stakeholder confidence.",
+          "riskCategory": "Delivery Momentum",
+          "currentProjectPhase": "Execution - Mid-Project (PI 06 Sprint 3)",
+          "expectedOccurrencePhase": "Q4 2026 Final Quarter",
+          "likelyImpactPhase": "Contract Closure and Delivery Outcomes",
+          "rootCause": "Accumulation of unresolved systemic issues creating compounding negative effects: unfrozen scope driving rework, pending decisions blocking progress, production issues consuming capacity, dependency delays extending cycle times, and schedule pressure reducing quality focus. Staff augmentation model limits team's ability to independently resolve structural issues.",
+          "triggerConditions": [
+            "PR abandonment rate exceeds 35% in consecutive sprints",
+            "Sprint velocity declines by more than 20% from baseline",
+            "Multiple team members report declining morale or productivity",
+            "Production support effort exceeds 25% of capacity",
+            "Architecture decisions remain unresolved into November 2026",
+            "Stakeholder escalations increase in frequency or severity",
+            "Team attrition or resource changes occur"
+          ],
+          "potentialImpact": {
+            "schedule": "Accelerating velocity decline making contract completion infeasible; cascading delays across all work streams; potential project failure",
+            "cost": "Increased rework and waste; reduced ROI from declining productivity; potential write-off of incomplete work; emergency intervention costs",
+            "quality": "Quality compromises from rushed work and declining focus; increased defect rates; technical debt accumulation; production stability risk",
+            "customer": "Severe stakeholder dissatisfaction; loss of confidence in delivery capability; account relationship damage; reluctance to approve future work; potential contract termination",
+            "operations": "Team morale deterioration; potential attrition; reduced collaboration effectiveness; operational instability; support burden increase"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "Critical",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R01",
+              "R02"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": [
+              "Historical Risk R01: Client confidence risk on Servicing project remained open because confidence issues require sustained proof through outcomes, not one-off actions",
+              "Historical Risk R02: Code quality concerns resolved through process but underlying drivers (dependency churn, design ambiguity) persisted",
+              "Historical pattern: Multiple execution issues (scope instability, decision delays, quality friction) create compounding negative effects on delivery momentum",
+              "Current project shows identical converging pressures: scope unfrozen, decisions pending, quality issues, rework increasing, contribution declining"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "This risk has medium-high likelihood because multiple independent negative trends are converging and reinforcing each other: PR abandonment is increasing (1\u21924\u21926), member contribution is declining, production issues persist, architecture decisions remain unresolved for 2.5+ months, and schedule pressure is high with 1.8-2.8x overcapacity. Historical evidence shows that when multiple execution issues compound, they create momentum decline that is difficult to reverse without structural intervention. The current YELLOW health status and declining trend indicators suggest the project is approaching a tipping point where momentum decline could accelerate rapidly in the final quarter under increasing schedule pressure.",
+          "confidenceScore": 83,
+          "riskPriority": "High",
+          "riskType": "Delivery Momentum",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Sprint velocity trend and burn-down completion rate",
+            "PR abandonment rate and rework percentage",
+            "Team member contribution trend and capacity utilization",
+            "Production support effort as percentage of capacity",
+            "Architecture decision aging and closure rate",
+            "Stakeholder satisfaction and escalation frequency",
+            "Team morale indicators and retention signals",
+            "Overall project health trend (GREEN/YELLOW/RED progression)"
+          ],
+          "businessCriticality": "Critical",
+          "evidence": {
+            "projectIndicators": [
+              "WSR: Overall health YELLOW; delivery health assessment shows declining trend",
+              "WSR: PR abandonment increasing: 1 (PI06 S01) \u2192 4 (PI06 S02) \u2192 6 (PI06 S03); current rate 31.6%",
+              "WSR: Member contribution declined due to changing priorities and CSR production issues",
+              "WSR: 4 PBIs spilled from current sprint; sprint commitments not being met",
+              "WSR: Architecture decisions pending 2.5+ months with TBD or missed ETAs",
+              "WSR: Genesys production issues unresolved; ongoing investigation",
+              "WSR: Work-to-capacity ratio 1.8-2.8x indicating severe schedule pressure",
+              "WSR: Average PR cycle time 6.19 days with some PRs 17.5-25.8 days"
+            ],
+            "historicalReferences": [
+              "Historical Risk R01: Client confidence risk remained open; confidence requires sustained proof through outcomes",
+              "Historical Risk R02: Quality concerns resolved but underlying drivers persisted",
+              "Historical pattern: Multiple execution issues create compounding momentum decline"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Execute integrated recovery plan addressing top 3 momentum drivers: freeze MVP scope by September 15, resolve architecture decisions by September 20, and close Genesys production issues by September 20",
+                "Re-baseline sprint commitments to 80% of demonstrated velocity and implement strict WIP limits to improve completion rate"
+              ]
+            },
+            {
+              "stage": "SEPTEMBER-OCTOBER",
+              "actions": [
+                "Reduce PR abandonment below 15% through mandatory story refinement and internal draft review before submission",
+                "Limit production support to 15% of capacity through on-call rotation to protect development capacity"
+              ]
+            },
+            {
+              "stage": "ONGOING THROUGH CONTRACT END",
+              "actions": [
+                "Monitor momentum indicators (velocity, PR abandonment, contribution, cycle time) weekly with corrective action triggers to prevent further decline"
+              ]
+            }
+          ],
+          "recommendations": {
+            "preventive": "Address root causes (scope instability, decision delays, quality issues) systematically rather than treating symptoms to prevent momentum decline recurrence.",
+            "monitoring": "Establish momentum dashboard tracking velocity, rework, cycle time, and team health with red/yellow/green thresholds for early intervention.",
+            "contingency": "",
+            "strategic": "Conduct retrospective on momentum decline root causes to identify systemic improvements for future project phases and engagements."
+          },
+          "responseRationale": "Historical Servicing project confidence risk remained open because multiple execution issues created compounding effects requiring sustained structural intervention, not one-time fixes, making integrated recovery plan addressing root causes essential to reverse momentum decline."
+        }
+      ]
+    }
+  ]
+}
