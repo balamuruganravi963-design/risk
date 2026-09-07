@@ -16,6 +16,33 @@ GITHUB_BRANCH = "main"
 #   GITHUB_READ_TOKEN = "ghp_xxxxxxxxxxxx"
 GITHUB_READ_TOKEN = st.secrets.get("GITHUB_READ_TOKEN", "")
 
+# Severity/priority color coding, reused for both Overall Rating and Risk Priority.
+rating_icon = {"Critical": "🔴", "High": "🟠", "Medium": "🟡", "Low": "🟢"}
+
+
+def has_value(value):
+    """
+    Dashboard-only rendering rule: a field 'has a value' if it isn't None,
+    isn't an empty/whitespace-only string, and isn't an empty list/dict.
+    Numbers (including 0) and booleans always count as present, since a
+    real 0 (e.g. confidenceScore) can't be distinguished from a default 0.
+    """
+    if value is None:
+        return False
+    if isinstance(value, str):
+        return value.strip() != ""
+    if isinstance(value, (list, dict)):
+        return len(value) > 0
+    return True
+
+
+def priority_display(value):
+    """Color-coded Risk Priority label, or '-' if not present."""
+    if not has_value(value):
+        return "-"
+    return f"{rating_icon.get(value, '⚪')} {value}"
+
+
 # ---------------- GET DATA ---------------- #
 # st.query_params automatically URL-decodes the value, so "path" arrives
 # as a normal string like "dashboard-data/a1b2c3d4.json"
@@ -147,19 +174,16 @@ st.subheader("Predicted Risks")
 if not risks:
     st.write("No risks recorded for this project.")
 else:
-    rating_icon = {"Critical": "🔴", "High": "🟠", "Medium": "🟡", "Low": "🟢"}
-
+    # Summary table: Risk ID, Risk Title, Category, Risk Priority (color-coded).
+    # Overall Rating, Risk Type, Likelihood, and Impact Severity are intentionally
+    # left out of this table — they're still available in each risk's detail panel.
     df_risks = pd.DataFrame(
         [
             {
                 "Risk ID": r.get("riskId", "-"),
                 "Risk Title": r.get("riskTitle", "-"),
-                "Category": r.get("riskCategory", "-"),
-                "Risk Type": r.get("riskType", "-"),
-                "Overall Rating": f"{rating_icon.get(r.get('overallRiskRating', 'Unknown'), '⚪')} {r.get('overallRiskRating', '-')}",
-                "Likelihood": r.get("likelihood", "-"),
-                "Impact Severity": r.get("impactSeverity", "-"),
-                "Priority": r.get("riskPriority", "-"),
+                "Category": r.get("riskCategory") or "-",
+                "Risk Priority": priority_display(r.get("riskPriority", "")),
             }
             for r in risks
         ]
@@ -176,57 +200,73 @@ else:
         icon = rating_icon.get(overall_rating, "⚪")
 
         with st.expander(f"➕ [{risk_id}] {title} — {icon} {overall_rating}"):
-            c1, c2, c3, c4 = st.columns(4)
-            c1.write(f"**Category:** {r.get('riskCategory', '-')}")
-            c2.write(f"**Risk Type:** {r.get('riskType', '-')}")
-            c3.write(f"**Likelihood:** {r.get('likelihood', '-')}")
-            c4.write(f"**Confidence Score:** {r.get('confidenceScore', '-')}")
+            # ---- Key attributes (dynamic: only fields with a value are shown) ---- #
+            attribute_rows = [
+                ("Category", r.get("riskCategory", "")),
+                ("Risk Type", r.get("riskType", "")),
+                ("Likelihood", r.get("likelihood", "")),
+                ("Impact Severity", r.get("impactSeverity", "")),
+                ("Risk Priority", priority_display(r.get("riskPriority", "")) if has_value(r.get("riskPriority")) else ""),
+                ("Confidence Score", r.get("confidenceScore", None)),
+                ("Time To Materialization", r.get("timeToMaterialization", "")),
+                ("Preventability", r.get("preventability", "")),
+                ("Business Criticality", r.get("businessCriticality", "")),
+                ("Estimated Resolution Time", r.get("estimatedResolutionTime", "")),
+            ]
+            visible_attrs = [(label, val) for label, val in attribute_rows if has_value(val)]
+            if visible_attrs:
+                df_attrs = pd.DataFrame(visible_attrs, columns=["Field", "Value"]).set_index("Field")
+                st.table(df_attrs)
 
-            c5, c6, c7 = st.columns(3)
-            c5.write(f"**Impact Severity:** {r.get('impactSeverity', '-')}")
-            c6.write(f"**Risk Priority:** {r.get('riskPriority', '-')}")
-            c7.write(f"**Time To Materialization:** {r.get('timeToMaterialization', '-')}")
+            # ---- Description / Root cause (dynamic) ---- #
+            if has_value(r.get("riskDescription")):
+                st.write(f"**Description:** {r.get('riskDescription')}")
+            if has_value(r.get("rootCause")):
+                st.write(f"**Root Cause:** {r.get('rootCause')}")
 
-            c8, c9, c10 = st.columns(3)
-            c8.write(f"**Preventability:** {r.get('preventability', '-')}")
-            c9.write(f"**Business Criticality:** {r.get('businessCriticality', '-')}")
-            c10.write(f"**Estimated Resolution Time:** {r.get('estimatedResolutionTime', '-')}")
+            # ---- Phases (dynamic) ---- #
+            phase_rows = [
+                ("Current Project Phase", r.get("currentProjectPhase", "")),
+                ("Expected Occurrence Phase", r.get("expectedOccurrencePhase", "")),
+                ("Likely Impact Phase", r.get("likelyImpactPhase", "")),
+            ]
+            visible_phases = [(label, val) for label, val in phase_rows if has_value(val)]
+            if visible_phases:
+                df_phases = pd.DataFrame(visible_phases, columns=["Field", "Value"]).set_index("Field")
+                st.table(df_phases)
 
-            st.write(f"**Description:** {r.get('riskDescription', '-')}")
-            st.write(f"**Root Cause:** {r.get('rootCause', '-')}")
-
-            p1, p2, p3 = st.columns(3)
-            p1.write(f"**Current Project Phase:** {r.get('currentProjectPhase', '-')}")
-            p2.write(f"**Expected Occurrence Phase:** {r.get('expectedOccurrencePhase', '-')}")
-            p3.write(f"**Likely Impact Phase:** {r.get('likelyImpactPhase', '-')}")
-
+            # ---- Trigger Conditions (dynamic) ---- #
             trigger_conditions = r.get("triggerConditions", [])
-            if trigger_conditions:
+            if has_value(trigger_conditions):
                 st.write("**Trigger Conditions**")
                 for item in trigger_conditions:
                     st.write(f"- {item}")
 
-            # Potential Impact
-            potential_impact = r.get("potentialImpact", {})
-            if potential_impact:
+            # ---- Potential Impact (dynamic per dimension) ---- #
+            potential_impact = r.get("potentialImpact", {}) or {}
+            impact_rows = [
+                (label, potential_impact.get(key, ""))
+                for label, key in [
+                    ("Schedule", "schedule"),
+                    ("Cost", "cost"),
+                    ("Quality", "quality"),
+                    ("Customer", "customer"),
+                    ("Operations", "operations"),
+                ]
+            ]
+            visible_impact = [(label, val) for label, val in impact_rows if has_value(val)]
+            if visible_impact:
                 st.write("**Potential Impact**")
-                df_impact = pd.DataFrame(
-                    {
-                        "Dimension": ["Schedule", "Cost", "Quality", "Customer", "Operations"],
-                        "Detail": [
-                            potential_impact.get("schedule", "-"),
-                            potential_impact.get("cost", "-"),
-                            potential_impact.get("quality", "-"),
-                            potential_impact.get("customer", "-"),
-                            potential_impact.get("operations", "-"),
-                        ],
-                    }
-                ).set_index("Dimension")
+                df_impact = pd.DataFrame(visible_impact, columns=["Dimension", "Detail"]).set_index("Dimension")
                 st.table(df_impact)
 
-            # Mitigation Plan (this risk's own stages/actions)
-            mitigation_plan = r.get("mitigationPlan", [])
-            if mitigation_plan:
+            # ---- Mitigation Plan (dynamic: only stages with content) ---- #
+            mitigation_plan = r.get("mitigationPlan", []) or []
+            visible_stages = [
+                stage_entry for stage_entry in mitigation_plan
+                if has_value(stage_entry.get("stage")) or has_value(stage_entry.get("actions"))
+            ]
+            if visible_stages:
                 st.write("**Mitigation Plan**")
                 df_mitigation_stages = pd.DataFrame(
                     [
@@ -234,26 +274,26 @@ else:
                             "Stage": stage_entry.get("stage", "-"),
                             "Actions": "\n".join(f"- {a}" for a in stage_entry.get("actions", [])),
                         }
-                        for stage_entry in mitigation_plan
+                        for stage_entry in visible_stages
                     ]
                 ).set_index("Stage")
                 st.table(df_mitigation_stages)
 
-            # Recommendations
-            recommendations = r.get("recommendations", {})
-            if recommendations:
+            # ---- Recommendations (dynamic per sub-field) ---- #
+            recommendations = r.get("recommendations", {}) or {}
+            rec_rows = [
+                (label, recommendations.get(key, ""))
+                for label, key in [
+                    ("Preventive", "preventive"),
+                    ("Monitoring", "monitoring"),
+                    ("Contingency", "contingency"),
+                    ("Strategic", "strategic"),
+                ]
+            ]
+            visible_rec = [(label, val) for label, val in rec_rows if has_value(val)]
+            if visible_rec:
                 st.write("**Recommendations**")
-                df_recommendations = pd.DataFrame(
-                    {
-                        "Type": ["Preventive", "Monitoring", "Contingency", "Strategic"],
-                        "Detail": [
-                            recommendations.get("preventive", "-"),
-                            recommendations.get("monitoring", "-"),
-                            recommendations.get("contingency", "-"),
-                            recommendations.get("strategic", "-"),
-                        ],
-                    }
-                ).set_index("Type")
+                df_recommendations = pd.DataFrame(visible_rec, columns=["Type", "Detail"]).set_index("Type")
                 st.table(df_recommendations)
 
 st.divider()
