@@ -43,6 +43,22 @@ def priority_display(value):
     return f"{rating_icon.get(value, '⚪')} {value}"
 
 
+def render_dynamic_grid(pairs, cols_per_row=4):
+    """
+    Render (label, value) pairs as inline '**Label:** value' text laid out
+    across a row of columns — NOT a data table. Pairs whose value is empty
+    are dropped first, then the remaining pairs are chunked into rows of
+    cols_per_row, so the grid always reflects only the fields that actually
+    have data for this risk.
+    """
+    visible = [(label, val) for label, val in pairs if has_value(val)]
+    for i in range(0, len(visible), cols_per_row):
+        chunk = visible[i:i + cols_per_row]
+        cols = st.columns(len(chunk))
+        for col, (label, val) in zip(cols, chunk):
+            col.write(f"**{label}:** {val}")
+
+
 # ---------------- GET DATA ---------------- #
 # st.query_params automatically URL-decodes the value, so "path" arrives
 # as a normal string like "dashboard-data/a1b2c3d4.json"
@@ -200,23 +216,21 @@ else:
         icon = rating_icon.get(overall_rating, "⚪")
 
         with st.expander(f"➕ [{risk_id}] {title} — {icon} {overall_rating}"):
-            # ---- Key attributes (dynamic: only fields with a value are shown) ---- #
+            # ---- Key attributes (dynamic: only fields with a value are shown, ---- #
+            # ---- rendered inline as bold Label: value text, not a table)     ---- #
             attribute_rows = [
                 ("Category", r.get("riskCategory", "")),
                 ("Risk Type", r.get("riskType", "")),
                 ("Likelihood", r.get("likelihood", "")),
+                ("Confidence Score", r.get("confidenceScore", None)),
                 ("Impact Severity", r.get("impactSeverity", "")),
                 ("Risk Priority", priority_display(r.get("riskPriority", "")) if has_value(r.get("riskPriority")) else ""),
-                ("Confidence Score", r.get("confidenceScore", None)),
                 ("Time To Materialization", r.get("timeToMaterialization", "")),
                 ("Preventability", r.get("preventability", "")),
                 ("Business Criticality", r.get("businessCriticality", "")),
                 ("Estimated Resolution Time", r.get("estimatedResolutionTime", "")),
             ]
-            visible_attrs = [(label, val) for label, val in attribute_rows if has_value(val)]
-            if visible_attrs:
-                df_attrs = pd.DataFrame(visible_attrs, columns=["Field", "Value"]).set_index("Field")
-                st.table(df_attrs)
+            render_dynamic_grid(attribute_rows, cols_per_row=4)
 
             # ---- Description / Root cause (dynamic) ---- #
             if has_value(r.get("riskDescription")):
@@ -224,16 +238,13 @@ else:
             if has_value(r.get("rootCause")):
                 st.write(f"**Root Cause:** {r.get('rootCause')}")
 
-            # ---- Phases (dynamic) ---- #
+            # ---- Phases (dynamic, inline grid) ---- #
             phase_rows = [
                 ("Current Project Phase", r.get("currentProjectPhase", "")),
                 ("Expected Occurrence Phase", r.get("expectedOccurrencePhase", "")),
                 ("Likely Impact Phase", r.get("likelyImpactPhase", "")),
             ]
-            visible_phases = [(label, val) for label, val in phase_rows if has_value(val)]
-            if visible_phases:
-                df_phases = pd.DataFrame(visible_phases, columns=["Field", "Value"]).set_index("Field")
-                st.table(df_phases)
+            render_dynamic_grid(phase_rows, cols_per_row=3)
 
             # ---- Trigger Conditions (dynamic) ---- #
             trigger_conditions = r.get("triggerConditions", [])
