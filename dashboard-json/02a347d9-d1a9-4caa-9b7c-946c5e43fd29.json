@@ -1,0 +1,1768 @@
+{
+  "clientName": "Premera Blue Cross",
+  "projects": [
+    {
+      "projectId": "CID1024551",
+      "projectName": "AI Platform Build - Customer Service and Claims PODs",
+      "projectStatus": "Active",
+      "riskPredictionDate": "2026-08-14",
+      "predictedRisks": [
+        {
+          "riskId": "R001",
+          "riskTitle": "Evaluation Framework Decision Paralysis Blocking Development Progress",
+          "riskDescription": "The absence of an agreed evaluation framework for AI model performance assessment is causing design decisions to stall, resulting in abandoned pull requests and delayed feature implementation across multiple sprint cycles.",
+          "riskCategory": "Technical",
+          "currentProjectPhase": "PI 06 Sprint 1 - Development",
+          "expectedOccurrencePhase": "PI 06 Sprint 2-3 - Development",
+          "likelyImpactPhase": "Testing and Integration",
+          "rootCause": "Lack of consensus among stakeholders on evaluation methodology, metrics, and acceptance criteria for AI model outputs; insufficient forcing functions to drive timely architectural decisions.",
+          "triggerConditions": [
+            "Evaluation approach remains unresolved beyond current sprint",
+            "Additional PRs abandoned due to evaluation design uncertainty",
+            "Sprint planning continues to be impacted by lack of evaluation clarity",
+            "Design decisions for downstream components blocked pending evaluation framework"
+          ],
+          "potentialImpact": {
+            "schedule": "2-4 week delay in dependent feature delivery; cumulative sprint velocity reduction of 15-25%",
+            "cost": "Increased rework effort; potential resource underutilization in T&M model",
+            "quality": "Inconsistent AI model validation; risk of production deployment without adequate quality gates",
+            "customer": "Reduced stakeholder confidence in AI capability; potential escalation to executive leadership",
+            "operations": "Delayed operationalization of AI features; incomplete monitoring and evaluation capabilities"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R04"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": [
+              "Historical AI Platform Claims project experienced resource utilization loss due to pending FACETS integration decisions",
+              "Decision latency on architecture and integration approaches has recurred across multiple AI Platform workstreams",
+              "Mitigation through alternate work preparation proved only partially effective without resolving root decision bottleneck"
+            ]
+          },
+          "estimatedResolutionTime": "4-6 weeks",
+          "reasoning": "Four PRs have already been abandoned due to unresolved evaluation design, and the WSR explicitly states the eval approach remains open after multiple sprints. Historical evidence from the same AI Platform program shows that architecture decision delays caused resource utilization issues and required escalation. With 50% of the contract term remaining and multiple critical path items dependent on evaluation framework clarity, this risk will materially impact delivery momentum and quality assurance capabilities unless resolved immediately.",
+          "confidenceScore": 88,
+          "riskPriority": "Critical",
+          "riskType": "Architecture Decision",
+          "timeToMaterialization": "Immediate (already materializing)",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Number of PRs abandoned or blocked due to evaluation uncertainty",
+            "Sprint planning effectiveness and backlog readiness metrics",
+            "Stakeholder decision meeting outcomes and action item closure rate",
+            "Developer productivity metrics and merge rate trends",
+            "Escalation frequency to program leadership on evaluation topics"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "WSR states: 'Eval approach is still open'",
+              "4 PRs abandoned due to eval-related design disagreements",
+              "Merge rate declined slightly due to abandoned PRs",
+              "Open risk item since 06/22/2026 with status 'In Progress' and TBD ETA",
+              "Sprint planning affected by unclear architecture understanding"
+            ],
+            "historicalReferences": [
+              "AI Platform Claims project: Lack of work/resource utilization due to pending FACETS integration decisions (R04)",
+              "Historical mitigation through alternate work proved only partially effective",
+              "Decision latency pattern identified as primary root cause across enterprise"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Escalate evaluation framework decision to program leadership and McKinsey stakeholders with forcing function deadline of 48 hours",
+                "Convene emergency decision-making session with all three teams, architecture leads, and Premera stakeholders to resolve evaluation approach",
+                "Document evaluation framework options with pros/cons and recommend default approach if consensus cannot be reached",
+                "Establish interim evaluation criteria to unblock the 4 abandoned PRs and enable immediate progress on dependent design decisions"
+              ]
+            },
+            {
+              "stage": "BEFORE CURRENT PHASE (PI 06 SPRINT 1) EXIT",
+              "actions": [
+                "Finalize and formally approve evaluation framework with documented acceptance criteria, metrics, and tooling approach",
+                "Communicate approved evaluation framework across all three squads with architecture decision record (ADR)",
+                "Resurrect and complete the 4 abandoned PRs using the approved evaluation framework",
+                "Update sprint backlog to reflect unblocked work items and re-baseline sprint velocity expectations",
+                "Conduct joint architecture alignment workshop to ensure all teams understand evaluation implementation approach"
+              ]
+            },
+            {
+              "stage": "PI 06 SPRINT 2-3 (DEVELOPMENT AND INTEGRATION)",
+              "actions": [
+                "Implement evaluation framework infrastructure including monitoring, logging, and metrics collection capabilities",
+                "Validate evaluation framework against CSR Assist, Voice Bot, and Shared Services components",
+                "Establish evaluation quality gates for integration testing phase to prevent downstream quality issues",
+                "Train all squad members on evaluation framework usage and interpretation of results"
+              ]
+            },
+            {
+              "stage": "ONGOING",
+              "actions": [
+                "Track evaluation framework adoption and effectiveness metrics weekly in governance reviews",
+                "Monitor PR abandonment rate and merge cycle time to confirm evaluation clarity is maintained",
+                "Escalate any evaluation-related design disagreements within 24 hours to prevent recurrence of paralysis pattern",
+                "Review and refine evaluation criteria based on production feedback and model performance data"
+              ]
+            }
+          ],
+          "recommendations": {
+            "preventive": "Establish architecture decision-making protocol with defined escalation paths, decision deadlines, and forcing functions to prevent future decision paralysis on critical technical approaches",
+            "monitoring": "Track daily: number of PRs blocked by evaluation uncertainty, sprint planning effectiveness metrics, stakeholder decision meeting outcomes, and developer productivity indicators including merge rate and cycle time",
+            "contingency": "If evaluation framework cannot be agreed within 72 hours, implement tiered evaluation approach where basic quality gates are enforced immediately while advanced evaluation capabilities are developed iteratively",
+            "strategic": "Institutionalize architecture decision log with mandatory closure timelines and executive escalation triggers; establish evaluation framework as foundational sprint-zero deliverable for all future AI workstreams to prevent recurrence"
+          },
+          "responseRationale": "Historical evidence from the same AI Platform program shows that architecture decision delays caused resource utilization loss and required escalation, and with 4 PRs already abandoned and multiple sprints impacted, immediate executive intervention with forcing functions is essential to prevent further velocity erosion and protect the remaining 4.5-month delivery window."
+        },
+        {
+          "riskId": "R002",
+          "riskTitle": "Multiple Pending Architecture Decisions Creating Integration Bottleneck",
+          "riskDescription": "Critical architecture decisions remain unresolved across Snowflake write approach, integration testing strategy, downstream authentication, and test data provisioning, creating cascading delays and preventing end-to-end validation.",
+          "riskCategory": "Integration",
+          "currentProjectPhase": "PI 06 Sprint 1 - Development",
+          "expectedOccurrencePhase": "PI 06 Sprint 2-4 - Integration and Testing",
+          "likelyImpactPhase": "Integration Testing and UAT Preparation",
+          "rootCause": "Fragmented decision-making across multiple technical domains; insufficient architecture governance to enforce decision deadlines; dependency on external teams for integration approach validation.",
+          "triggerConditions": [
+            "Snowflake write architecture decision extends beyond current sprint",
+            "Integration testing approach not finalized before integration phase begins",
+            "Test data strategy remains undefined as testing phase approaches",
+            "Downstream authentication spike completion delayed beyond planned timeline"
+          ],
+          "potentialImpact": {
+            "schedule": "3-5 week delay in integration testing start; compressed UAT window; potential contract end date pressure",
+            "cost": "Rework effort if late architecture changes required; extended resource engagement",
+            "quality": "Late defect detection; inadequate integration test coverage; production readiness risk",
+            "customer": "Stakeholder escalation due to milestone slippage; reduced confidence in delivery capability",
+            "operations": "Incomplete data pipeline validation; operational readiness gaps"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R04"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": [
+              "Historical AI Platform Claims project experienced similar decision-driven readiness constraints",
+              "Dependency-driven delays identified as persistent delivery pattern across current project",
+              "Multiple pending decisions have accumulated rather than being systematically resolved"
+            ]
+          },
+          "estimatedResolutionTime": "6-8 weeks",
+          "reasoning": "The WSR documents six open risk items including Snowflake write approach, intent model integration, integration testing approach, and test data strategy\u2014all with 'In Progress' status and undefined ETAs. Historical evidence shows decision latency has repeatedly caused resource utilization and delivery issues in related AI Platform work. With 4.5 months remaining and integration/testing phases approaching, the accumulation of unresolved architecture decisions creates a critical bottleneck that will compress downstream activities and increase late-stage rework risk.",
+          "confidenceScore": 86,
+          "riskPriority": "Critical",
+          "riskType": "Architecture Decision",
+          "timeToMaterialization": "<30 Days",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Architecture decision log closure rate and aging",
+            "Number of open risk items with TBD ETA",
+            "Integration testing readiness assessment status",
+            "Test data provisioning progress and environment readiness",
+            "Dependency resolution velocity across external teams"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "Open risk: Snowflake write approach pending architecture decision (status: In Progress, ETA: TBD)",
+              "Open risk: Integration testing approach not finalized (status: In Progress, ETA: TBD)",
+              "Open risk: Test data strategy under discussion (status: In Progress, ETA: TBD)",
+              "Open item: Downstream auth spike pending (post-MVP scope)",
+              "Delivery pattern: Dependency-driven delays identified as persistent and high impact"
+            ],
+            "historicalReferences": [
+              "AI Platform Claims: Resource utilization loss from pending FACETS integration decisions (R04)",
+              "Enterprise pattern: External dependency timing repeatedly becomes critical near integration/testing phases"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Establish architecture decision war room with daily standup for Snowflake write approach, integration testing strategy, downstream authentication, and test data provisioning",
+                "Assign single decision owner (Designated Architect) with authority to make binding decisions if consensus cannot be reached within defined timeboxes",
+                "Create architecture decision backlog with priority ranking, dependencies, and hard deadlines aligned to integration phase start date",
+                "Escalate to Premera and McKinsey leadership the cumulative schedule impact of pending decisions with request for expedited resolution support"
+              ]
+            },
+            {
+              "stage": "BEFORE CURRENT PHASE (PI 06 SPRINT 1) EXIT",
+              "actions": [
+                "Finalize and document Snowflake write architecture approach with data contract, access patterns, and proof-of-concept validation",
+                "Complete downstream authentication spike and select implementation approach with security review approval",
+                "Define integration testing strategy including scope, tools, environments, test data requirements, and execution timeline",
+                "Establish test data strategy with ownership model, provisioning process, data refresh cadence, and compliance validation"
+              ]
+            },
+            {
+              "stage": "PI 06 SPRINT 2-4 (INTEGRATION AND TESTING PREPARATION)",
+              "actions": [
+                "Implement Snowflake write capability and validate with representative data volumes and access patterns",
+                "Execute downstream authentication implementation and conduct security validation testing",
+                "Provision integration testing environments and establish CI/CD pipeline for automated integration validation",
+                "Generate and validate representative compliant test data across all integration scenarios",
+                "Conduct end-to-end integration dry run to identify and resolve connectivity, authentication, and data flow issues before formal testing phase"
+              ]
+            },
+            {
+              "stage": "ONGOING",
+              "actions": [
+                "Monitor architecture decision log closure rate and aging metrics weekly in governance reviews",
+                "Track integration readiness indicators including environment availability, test data completeness, and dependency resolution velocity",
+                "Escalate any new architecture decisions that remain open beyond 5 business days to prevent accumulation pattern",
+                "Conduct bi-weekly architecture alignment checkpoints across all three teams to prevent coordination gaps"
+              ]
+            }
+          ],
+          "recommendations": {
+            "preventive": "Implement architecture governance model with mandatory decision timelines, escalation triggers at 5-day aging, and executive forcing functions to prevent decision accumulation; establish integration testing readiness as formal gate before development phase exit",
+            "monitoring": "Track daily: architecture decision log status and aging, integration testing environment readiness, test data provisioning progress, dependency resolution velocity, and sprint backlog readiness metrics to detect bottleneck formation early",
+            "contingency": "If critical architecture decisions cannot be finalized before integration phase, implement phased integration approach where components with resolved architecture proceed while blocked items are isolated and integrated in subsequent iteration with schedule buffer",
+            "strategic": "Establish architecture decision framework with pre-approved patterns, reference architectures, and default approaches to accelerate future decisions; create integration testing center of excellence to standardize approach across all AI Platform workstreams"
+          },
+          "responseRationale": "Historical AI Platform Claims project experienced resource utilization loss from pending FACETS integration decisions, and with six open risk items showing 'In Progress' status with undefined ETAs and only 4.5 months remaining before contract end, immediate decision forcing functions and war room coordination are essential to prevent integration phase compression and late-stage rework."
+        },
+        {
+          "riskId": "R003",
+          "riskTitle": "Voice Bot Scope Volatility Causing Rework and Team Productivity Loss",
+          "riskDescription": "Frequent mid-sprint scope changes in the voice bot component are invalidating completed work, reducing team efficiency, and creating unpredictability in sprint commitments.",
+          "riskCategory": "Scope",
+          "currentProjectPhase": "PI 06 Sprint 1 - Development",
+          "expectedOccurrencePhase": "PI 06 Sprint 2-3 - Development",
+          "likelyImpactPhase": "Development and Integration",
+          "rootCause": "Insufficient upfront design clarity for voice bot integration; evolving understanding of context service reuse requirements; weak change control enforcement during active sprints.",
+          "triggerConditions": [
+            "Additional voice bot scope changes introduced mid-sprint",
+            "Voice bot integration approach revised after development work initiated",
+            "Context service reuse design changes impacting voice bot implementation",
+            "Unplanned work continues to exceed 15-20 story points per sprint"
+          ],
+          "potentialImpact": {
+            "schedule": "1-2 sprint delay in voice bot feature completion; spillover impact to dependent features",
+            "cost": "Wasted effort on abandoned work; reduced billable productivity in T&M model",
+            "quality": "Increased technical debt from rushed rework; incomplete testing of changed functionality",
+            "customer": "Team morale impact; stakeholder frustration with changing requirements",
+            "operations": "Delayed voice bot operationalization; incomplete integration with CSR assist"
+          },
+          "likelihood": "High",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium-High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R01"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": [
+              "Producer Portal historical scope changes absorbed 0.75-1 sprint of additional effort",
+              "Current Producer Portal shows 19 documented scope changes with cumulative medium impact",
+              "Scope volatility pattern identified across both active Premera projects"
+            ]
+          },
+          "estimatedResolutionTime": "3-4 weeks",
+          "reasoning": "The WSR explicitly calls out frequent voice bot scope changes with a specific example of Vijay's work becoming unnecessary due to architecture revision. Current sprint shows 19 story points of unplanned work, and the operational weaknesses section identifies scope management as a key concern. Historical evidence from Producer Portal demonstrates that scope change accumulation creates material schedule and effort impact even when individual changes appear manageable. Without immediate scope freeze and change control enforcement, this pattern will continue to erode sprint predictability and team productivity.",
+          "confidenceScore": 84,
+          "riskPriority": "High",
+          "riskType": "Scope Management",
+          "timeToMaterialization": "<30 Days",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Number of mid-sprint scope changes by component",
+            "Story points of unplanned work added per sprint",
+            "Rework effort tracking and abandoned work metrics",
+            "Sprint commitment vs. delivery variance",
+            "Team velocity stability and predictability trends"
+          ],
+          "businessCriticality": "Medium-High",
+          "evidence": {
+            "projectIndicators": [
+              "WSR challenge: 'There is frequent change of scope in voice bot'",
+              "Example: Vijay's work for injecting metadata no longer required due to architecture change",
+              "19 story points of unplanned work in current sprint",
+              "Operational weakness: Scope management and change control identified as key gap",
+              "Voice bot will directly send summary to executor agent instead of writing to common redis stream"
+            ],
+            "historicalReferences": [
+              "Producer Portal: 19 scope changes documented with cumulative medium impact (R01)",
+              "Enterprise pattern: Scope volatility/change accumulation identified as recurring root cause"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Implement immediate scope freeze for voice bot component for remainder of current PI with all change requests deferred to post-MVP backlog",
+                "Document and communicate frozen voice bot scope baseline to all stakeholders with change control process for any exceptions requiring executive approval",
+                "Conduct impact assessment of recent scope changes including Vijay's abandoned work to quantify cumulative rework effort and schedule impact",
+                "Establish single point of accountability for voice bot scope decisions to prevent mid-sprint requirement changes"
+              ]
+            },
+            {
+              "stage": "BEFORE CURRENT PHASE (PI 06 SPRINT 1) EXIT",
+              "actions": [
+                "Complete voice bot services cleanup activity to remove abandoned integration approaches and consolidate to approved architecture",
+                "Finalize voice bot context service reuse design with CSR Assist team and document integration contract",
+                "Validate voice bot integration approach with end-to-end scenario testing to confirm architecture stability",
+                "Re-baseline voice bot sprint capacity accounting for absorbed rework effort and establish realistic velocity expectations"
+              ]
+            },
+            {
+              "stage": "PI 06 SPRINT 2-3 (DEVELOPMENT AND INTEGRATION)",
+              "actions": [
+                "Complete voice bot integration with CSR Assist context service using frozen scope and approved architecture",
+                "Conduct voice bot integration testing with downstream executor agent to validate direct summary transmission approach",
+                "Implement voice bot monitoring and logging capabilities to support production operations",
+                "Prepare voice bot for integration testing phase with documented test scenarios and acceptance criteria"
+              ]
+            },
+            {
+              "stage": "ONGOING",
+              "actions": [
+                "Monitor mid-sprint scope change requests and unplanned work volume weekly to detect volatility pattern recurrence",
+                "Track sprint commitment vs delivery variance and rework effort metrics to measure scope stability improvement",
+                "Enforce formal change control process requiring impact assessment and executive approval for any scope additions during active sprints",
+                "Conduct sprint retrospectives focused on scope management effectiveness and team productivity restoration"
+              ]
+            }
+          ],
+          "recommendations": {
+            "preventive": "Establish formal change control board with impact assessment requirements, approval thresholds, and mid-sprint change prohibition policy; implement architecture review gate before sprint commitment to ensure design clarity and prevent mid-execution changes",
+            "monitoring": "Track weekly: number of mid-sprint scope changes by component, story points of unplanned work added, rework effort, sprint commitment vs delivery variance, and team velocity stability to detect scope volatility early and measure improvement",
+            "contingency": "If voice bot scope changes cannot be prevented, establish dedicated rework buffer of 15-20% sprint capacity and implement two-track approach where stable components proceed on committed timeline while volatile components are isolated with extended delivery window",
+            "strategic": "Conduct upfront architecture and design validation workshops before sprint commitment to ensure requirement clarity; implement scope change impact dashboard visible to all stakeholders to create transparency and accountability for change decisions"
+          },
+          "responseRationale": "Historical Producer Portal project absorbed 0.75-1 sprint of effort from scope changes and current project shows 19 story points of unplanned work with explicit WSR callout of frequent voice bot scope changes causing abandoned work, demonstrating that immediate scope freeze and change control enforcement are essential to restore sprint predictability and protect remaining delivery timeline."
+        },
+        {
+          "riskId": "R004",
+          "riskTitle": "Architecture Knowledge Transfer Gap Across Three Teams",
+          "riskDescription": "Architecture knowledge from the CSR Assist team has not been transferred to other squads, creating coordination friction, duplicated effort, and increased risk of architectural inconsistency across integrated components.",
+          "riskCategory": "Knowledge Management",
+          "currentProjectPhase": "PI 06 Sprint 1 - Development",
+          "expectedOccurrencePhase": "PI 06 Sprint 2-4 - Integration",
+          "likelyImpactPhase": "Integration and Testing",
+          "rootCause": "Post-MVP architecture knowledge transfer not prioritized or scheduled; distributed team model without structured knowledge sharing mechanisms; rapid squad reorganization without transition planning.",
+          "triggerConditions": [
+            "New squad members begin work on integrated components without architecture context",
+            "PR overlap and miscommunication incidents increase",
+            "Sprint planning continues to be affected by unclear architecture understanding",
+            "Integration issues emerge due to inconsistent architectural assumptions"
+          ],
+          "potentialImpact": {
+            "schedule": "1-3 week delay from rework and coordination overhead; extended integration troubleshooting",
+            "cost": "Duplicated effort; extended review cycles; increased onboarding time for new resources",
+            "quality": "Architectural inconsistency; integration defects; technical debt accumulation",
+            "customer": "Reduced stakeholder confidence in team coordination; potential escalation",
+            "operations": "Operational complexity from inconsistent implementation patterns"
+          },
+          "likelihood": "High",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium-High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R05"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": [
+              "Historical AI Platform Claims project experienced lack of scope visibility and design context for offshore team",
+              "Historical mitigation through daily connects improved immediate visibility but did not resolve structural architecture alignment",
+              "Current project shows same coordination gaps persist despite earlier interventions"
+            ]
+          },
+          "estimatedResolutionTime": "4-6 weeks",
+          "reasoning": "The WSR documents that architecture KT from CSR Assist team has not happened (post-MVP open item), and sprint planning/grooming is affected by unclear architecture understanding between three teams. Historical evidence shows similar visibility and coordination issues occurred earlier in AI Platform work and were only partially resolved. With new resource onboarding planned (Maung on 8/20) and offshore resource identification in progress, the knowledge gap will widen unless systematic KT sessions and documentation are immediately established.",
+          "confidenceScore": 82,
+          "riskPriority": "High",
+          "riskType": "Knowledge Transfer",
+          "timeToMaterialization": "30-60 Days",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Architecture KT session completion status",
+            "New team member onboarding effectiveness metrics",
+            "PR review cycle time and comment volume trends",
+            "Sprint planning efficiency and backlog readiness",
+            "Cross-team coordination incident frequency"
+          ],
+          "businessCriticality": "Medium-High",
+          "evidence": {
+            "projectIndicators": [
+              "Open item: Architecture KT from CSR Assist team to other squads has not happened",
+              "WSR challenge: Sprint planning & grooming affected due to unclear architecture understanding between 3 teams",
+              "Delivery pattern: PR overlap due to miscommunication (Redis-related PR worked by multiple engineers)",
+              "New resource (Maung) to be onboarded 8/20 without completed architecture KT",
+              "Operational weakness: Insufficient architecture knowledge transfer identified"
+            ],
+            "historicalReferences": [
+              "AI Platform Claims: Lack of visibility into scope and design context for offshore team (R05)",
+              "Historical mitigation through daily connects and single POC improved immediate visibility but structural gaps remained"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Schedule mandatory architecture knowledge transfer sessions from CSR Assist team to other squads within next 5 business days",
+                "Create architecture documentation covering CSR Assist design patterns, integration contracts, context service implementation, and key design decisions",
+                "Establish architecture office hours with CSR Assist technical leads available for consultation during sprint planning and design discussions",
+                "Assign architecture buddy system pairing experienced CSR Assist team members with new squad members for knowledge transfer"
+              ]
+            },
+            {
+              "stage": "BEFORE CURRENT PHASE (PI 06 SPRINT 1) EXIT",
+              "actions": [
+                "Complete architecture knowledge transfer sessions covering CSR Assist architecture, voice bot integration patterns, shared services design, and call deflection approach",
+                "Document architecture decision records (ADRs) for all major design choices including evaluation framework, context service reuse, and downstream integration patterns",
+                "Conduct architecture alignment workshop with all three teams to establish shared understanding and resolve coordination gaps",
+                "Onboard new resource (Maung scheduled for 8/20) with structured architecture training and documentation access before active development assignment"
+              ]
+            },
+            {
+              "stage": "PI 06 SPRINT 2-4 (INTEGRATION AND TESTING)",
+              "actions": [
+                "Establish cross-team code review practice to share knowledge and ensure architectural consistency across integrated components",
+                "Conduct weekly architecture sync meetings across all three teams to coordinate integration work and resolve design questions proactively",
+                "Create architecture reference implementation repository with reusable patterns, utilities, and integration examples",
+                "Validate architecture knowledge transfer effectiveness through integration testing success rate and cross-team coordination metrics"
+              ]
+            },
+            {
+              "stage": "ONGOING",
+              "actions": [
+                "Monitor PR review cycle time and comment volume trends to detect coordination friction and knowledge gaps",
+                "Track sprint planning efficiency and backlog readiness metrics to measure architecture understanding improvement",
+                "Maintain living architecture documentation with updates after each major design decision or integration milestone",
+                "Conduct monthly architecture retrospectives to identify knowledge gaps and improve cross-team collaboration practices"
+              ]
+            }
+          ],
+          "recommendations": {
+            "preventive": "Establish architecture knowledge management practice with mandatory documentation, regular cross-team knowledge sharing sessions, and structured onboarding program for new team members; implement architecture review board to ensure consistency and knowledge distribution across squads",
+            "monitoring": "Track weekly: architecture KT session completion status, new team member onboarding effectiveness, PR review cycle time and comment volume, sprint planning efficiency, and cross-team coordination incident frequency to measure knowledge transfer effectiveness",
+            "contingency": "If architecture knowledge transfer cannot be completed before new resource onboarding or integration phase, assign dedicated architecture mentor to each squad and implement pair programming approach for all integration work to accelerate knowledge transfer through hands-on collaboration",
+            "strategic": "Create architecture center of excellence with documented patterns, reference implementations, and reusable components; establish architecture guild with representatives from all squads to maintain shared understanding and coordinate design decisions across workstreams"
+          },
+          "responseRationale": "Historical AI Platform Claims project experienced lack of scope visibility and design context for offshore team requiring daily connects and single POC alignment, and with current WSR documenting that architecture KT has not happened while sprint planning is affected by unclear understanding across three teams, immediate structured knowledge transfer is essential to prevent integration friction and support new resource onboarding on 8/20."
+        },
+        {
+          "riskId": "R005",
+          "riskTitle": "CSR Assist Sprint Spillover Pattern Indicating Capacity Misalignment",
+          "riskDescription": "The CSR Assist track is experiencing consistent sprint spillover with 4 PBIs and 5 tasks incomplete in the current sprint, indicating systematic capacity underestimation or priority management issues.",
+          "riskCategory": "Delivery",
+          "currentProjectPhase": "PI 06 Sprint 1 - Development",
+          "expectedOccurrencePhase": "PI 06 Sprint 2-3 - Development",
+          "likelyImpactPhase": "Development and Integration",
+          "rootCause": "Capacity planning not accounting for mid-sprint priority shifts; resource absence impact not adequately buffered; CSR Assist roadmap ambiguity affecting planning accuracy.",
+          "triggerConditions": [
+            "CSR Assist track continues to spill work in subsequent sprints",
+            "Mid-sprint priority changes continue to disrupt committed work",
+            "Resource availability gaps not covered by team capacity buffer",
+            "CSR Assist roadmap clarity not improved"
+          ],
+          "potentialImpact": {
+            "schedule": "Cumulative 2-3 week delay in CSR Assist feature completion; downstream dependency impact",
+            "cost": "Reduced sprint efficiency; potential resource reallocation costs",
+            "quality": "Compressed testing windows; increased defect leakage risk",
+            "customer": "Stakeholder concern about delivery predictability; milestone confidence erosion",
+            "operations": "Delayed CSR Assist operationalization; incomplete feature sets"
+          },
+          "likelihood": "High",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": [
+              "Current project delivery pattern identifies CSR Assist spillover as recurring",
+              "66.7% story burndown indicates systematic completion challenges",
+              "Resource absence (Antara on leave) contributed but does not fully explain pattern"
+            ]
+          },
+          "estimatedResolutionTime": "2-3 weeks",
+          "reasoning": "The WSR shows 66.7% story burndown with 4 PBIs spilled over (1 Committed, 2 Approved, 1 New) and 5 tasks incomplete in CSR Assist track. While resource absence contributed, the operational weakness section identifies unclear CSR Assist roadmap as a structural issue. The spillover pattern suggests either capacity is systematically overcommitted or mid-sprint priority changes are disrupting planned work. Without re-baselining capacity and protecting sprint commitments, this pattern will continue to create velocity variance and schedule pressure.",
+          "confidenceScore": 78,
+          "riskPriority": "Medium",
+          "riskType": "Capacity Planning",
+          "timeToMaterialization": "<30 Days",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "CSR Assist track story and task completion rates",
+            "Sprint commitment vs. delivery variance by track",
+            "Mid-sprint priority change frequency and impact",
+            "Resource availability and capacity utilization metrics",
+            "Spillover work volume and aging trends"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "Story burndown: 66.7% (4 PBIs spilled over)",
+              "Task burndown: 83% (5 tasks not completed in CSR Assist track)",
+              "Spillover attributed to other priority items and absence of 1 resource",
+              "Operational weakness: CSR assist roadmap is not clear",
+              "Delivery pattern: Sprint spillover in CSR Assist track identified as recurring"
+            ],
+            "historicalReferences": []
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Conduct capacity analysis for CSR Assist track accounting for resource absence (Antara), mid-sprint priority changes, and unclear roadmap impact",
+                "Re-baseline CSR Assist sprint capacity with realistic velocity expectations based on historical 66.7% story completion rate",
+                "Establish sprint commitment protection policy prohibiting mid-sprint priority changes unless critical production issues require immediate attention",
+                "Clarify CSR Assist post-MVP roadmap with Premera and McKinsey stakeholders to enable accurate planning and capacity allocation"
+              ]
+            },
+            {
+              "stage": "BEFORE CURRENT PHASE (PI 06 SPRINT 1) EXIT",
+              "actions": [
+                "Complete spilled PBIs from current sprint (1 Committed, 2 Approved, 1 New) with focused effort and minimal new work intake",
+                "Establish backup coverage plan for resource absences to prevent capacity gaps from disrupting sprint commitments",
+                "Implement sprint planning discipline where only work matching available capacity is committed with 15-20% buffer for unplanned items",
+                "Document CSR Assist roadmap clarity requirements and escalate to stakeholders for resolution before next PI planning"
+              ]
+            },
+            {
+              "stage": "PI 06 SPRINT 2-3 (DEVELOPMENT)",
+              "actions": [
+                "Monitor CSR Assist track completion rates and spillover volume to validate capacity re-baselining effectiveness",
+                "Protect CSR Assist sprint commitments from mid-sprint priority changes by routing urgent requests through formal triage process",
+                "Maintain CSR Assist capacity buffer to absorb resource availability fluctuations and prevent commitment failures",
+                "Conduct mid-sprint checkpoint to identify at-risk work items early and take corrective action before sprint end"
+              ]
+            },
+            {
+              "stage": "ONGOING",
+              "actions": [
+                "Track CSR Assist story and task completion rates, sprint commitment vs delivery variance, and spillover work volume weekly",
+                "Monitor mid-sprint priority change frequency and impact on committed work to enforce protection policy",
+                "Review resource availability and capacity utilization metrics to proactively identify and address capacity constraints",
+                "Conduct sprint retrospectives focused on capacity planning accuracy and commitment protection effectiveness"
+              ]
+            }
+          ],
+          "recommendations": {
+            "preventive": "Establish capacity planning discipline with realistic velocity baselines, mandatory sprint commitment buffers, and mid-sprint change prohibition policy; clarify CSR Assist roadmap to enable accurate long-term planning and prevent scope ambiguity from eroding capacity",
+            "monitoring": "Track weekly: CSR Assist track story and task completion rates, sprint commitment vs delivery variance by track, mid-sprint priority change frequency and impact, resource availability and capacity utilization, and spillover work volume and aging trends",
+            "contingency": "If CSR Assist spillover pattern continues despite capacity re-baselining, implement two-sprint planning horizon where current sprint is protected from changes while next sprint absorbs new priorities, and establish dedicated CSR Assist capacity reserve for urgent production support",
+            "strategic": "Conduct comprehensive CSR Assist roadmap planning session with Premera and McKinsey to establish clear feature priorities, milestone targets, and capacity allocation for remaining contract term; implement predictive velocity tracking to detect capacity misalignment early"
+          },
+          "responseRationale": "Current project shows 66.7% story burndown with 4 PBIs spilled and operational weakness identified as unclear CSR Assist roadmap, and while resource absence contributed, the pattern suggests systematic capacity overcommitment that requires immediate re-baselining and sprint commitment protection to restore delivery predictability."
+        },
+        {
+          "riskId": "R006",
+          "riskTitle": "Offshore Resource Identification Delay and Onboarding Gap",
+          "riskDescription": "Offshore resource identification remains in progress while new resource onboarding is delayed to August 20, creating capacity constraints during a critical development phase with 4.5 months remaining.",
+          "riskCategory": "Resource",
+          "currentProjectPhase": "PI 06 Sprint 1 - Development",
+          "expectedOccurrencePhase": "PI 06 Sprint 2-3 - Development",
+          "likelyImpactPhase": "Development and Integration",
+          "rootCause": "Delayed offshore resource hiring process; onboarding timeline not aligned with project critical path; resource absence (Antara) not covered by backup capacity.",
+          "triggerConditions": [
+            "Offshore resource identification extends beyond current sprint",
+            "Maung onboarding on 8/20 encounters delays or readiness issues",
+            "Additional resource absences occur without coverage plan",
+            "Capacity constraints impact sprint commitments"
+          ],
+          "potentialImpact": {
+            "schedule": "1-2 week productivity loss during onboarding; potential sprint velocity reduction of 10-15%",
+            "cost": "Extended onshore resource utilization; potential overtime or expedited hiring costs",
+            "quality": "Compressed code review and testing time; knowledge transfer gaps",
+            "customer": "Reduced delivery confidence; potential milestone pressure",
+            "operations": "Team stability concerns; continuity risk"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R04"
+            ],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": [
+              "Historical AI Platform Claims project experienced resource utilization issues",
+              "Resource gaps have historically created capacity and productivity constraints",
+              "Current project shows resource-related operational weaknesses"
+            ]
+          },
+          "estimatedResolutionTime": "3-4 weeks",
+          "reasoning": "The WSR documents that offshore resource identification is in progress, Maung is scheduled for onboarding on 8/20, and Antara is on leave for a week. With 4.5 months remaining and multiple critical path items pending, resource capacity constraints will impact sprint velocity and delivery momentum. Historical evidence shows resource gaps have created utilization and productivity issues in related AI Platform work. Accelerating offshore hiring and establishing backup coverage is essential to maintain delivery pace.",
+          "confidenceScore": 76,
+          "riskPriority": "Medium",
+          "riskType": "Resource Availability",
+          "timeToMaterialization": "30-60 Days",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Offshore resource identification and hiring progress",
+            "Maung onboarding completion status and productivity ramp",
+            "Team capacity utilization and availability metrics",
+            "Sprint velocity trends and capacity variance",
+            "Resource absence frequency and coverage effectiveness"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "Offshore resource identification in Progress",
+              "New resource (Maung) to be onboarded 8/20",
+              "Antara on leave for a week",
+              "Operational weakness: Resource allocation and onboarding gaps",
+              "Spillover partially attributed to absence of 1 resource"
+            ],
+            "historicalReferences": [
+              "AI Platform Claims: Lack of work/resource utilization due to capacity constraints (R04)"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Escalate offshore resource identification to Ascendion delivery leadership with request for expedited hiring and candidate presentation within 5 business days",
+                "Prepare comprehensive onboarding package for Maung (scheduled 8/20) including architecture documentation, development environment setup guide, and training materials",
+                "Establish backup coverage plan for Antara's absence and future resource availability gaps to prevent sprint disruption",
+                "Assess current team capacity constraints and identify critical path work items at risk from resource gaps"
+              ]
+            },
+            {
+              "stage": "BEFORE CURRENT PHASE (PI 06 SPRINT 1) EXIT",
+              "actions": [
+                "Complete offshore resource identification and initiate hiring process with target start date within 3-4 weeks",
+                "Finalize Maung onboarding plan with assigned mentor, training schedule, and initial work assignments aligned to skill level",
+                "Implement resource absence notification and coverage protocol to ensure sprint commitments are protected",
+                "Adjust sprint capacity planning to account for onboarding productivity ramp and resource availability fluctuations"
+              ]
+            },
+            {
+              "stage": "PI 06 SPRINT 2-3 (DEVELOPMENT AND INTEGRATION)",
+              "actions": [
+                "Execute Maung onboarding on 8/20 with structured training, architecture knowledge transfer, and pair programming assignments",
+                "Monitor Maung productivity ramp and provide additional support to accelerate contribution to sprint velocity",
+                "Complete offshore resource hiring and initiate onboarding process for new team members",
+                "Validate team capacity is sufficient to support integration testing and remaining development work without overtime or schedule pressure"
+              ]
+            },
+            {
+              "stage": "ONGOING",
+              "actions": [
+                "Track offshore resource identification and hiring progress weekly until positions are filled",
+                "Monitor team capacity utilization and availability metrics to proactively identify and address resource constraints",
+                "Review sprint velocity trends to confirm resource additions are delivering expected capacity improvements",
+                "Maintain resource pipeline and succession planning to prevent future capacity gaps from disrupting delivery"
+              ]
+            }
+          ],
+          "recommendations": {
+            "preventive": "Establish resource pipeline management with advance identification of capacity needs, proactive hiring initiation, and structured onboarding program to minimize productivity loss; implement resource absence coverage protocol and cross-training to reduce single-point-of-failure risks",
+            "monitoring": "Track weekly: offshore resource identification and hiring progress, Maung onboarding completion and productivity ramp, team capacity utilization and availability, sprint velocity trends and capacity variance, and resource absence frequency and coverage effectiveness",
+            "contingency": "If offshore resource hiring extends beyond 4 weeks or Maung onboarding encounters delays, temporarily increase onshore resource utilization, defer non-critical work items, or negotiate sprint scope reduction to match available capacity and prevent commitment failures",
+            "strategic": "Implement capacity planning with 3-month forward visibility and proactive resource requisition process; establish offshore resource bench with pre-qualified candidates to accelerate hiring when needs arise; create comprehensive onboarding program to minimize productivity ramp time"
+          },
+          "responseRationale": "Historical AI Platform Claims project experienced resource utilization issues from capacity constraints, and with offshore resource identification still in progress, Maung onboarding delayed to 8/20, and Antara on leave during critical development phase with 4.5 months remaining, accelerated hiring and structured onboarding are essential to maintain sprint velocity and delivery momentum."
+        },
+        {
+          "riskId": "R007",
+          "riskTitle": "Stakeholder Confidence Risk from Perceived AI Capability Gap",
+          "riskDescription": "Client expectations for proactive AI-driven recommendations and visible technical leadership are not being consistently met, creating potential confidence erosion and relationship risk despite acceptable code delivery metrics.",
+          "riskCategory": "Stakeholder Management",
+          "currentProjectPhase": "PI 06 Sprint 1 - Development",
+          "expectedOccurrencePhase": "PI 06 Sprint 2-4 - Development and Integration",
+          "likelyImpactPhase": "Governance and Stakeholder Reviews",
+          "rootCause": "Gap between client expectations for advanced AI thought leadership and perceived demonstration of proactive solutioning; communication effectiveness not matching technical delivery quality; insufficient stakeholder-facing innovation narratives.",
+          "triggerConditions": [
+            "Continued stakeholder feedback on lack of proactive AI recommendations",
+            "Governance reviews reveal confidence concerns",
+            "Escalation frequency increases on technical approach topics",
+            "Future work approval hesitancy emerges"
+          ],
+          "potentialImpact": {
+            "schedule": "Indirect impact through increased scrutiny and governance overhead",
+            "cost": "Risk to account growth and future work opportunities; potential contract scope reduction",
+            "quality": "Increased review rigor and approval cycles",
+            "customer": "Stakeholder confidence erosion; executive escalation; relationship strain",
+            "operations": "Team morale impact; increased governance burden"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "Medium-High",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R06"
+            ],
+            "recurrenceLikelihood": "Medium-High",
+            "supportingHistoricalPatterns": [
+              "Historical AI Platform Servicing project documented client confidence risk in AI delivery capability",
+              "Historical risk remained open/assessed without closure evidence",
+              "Current project shows operational weaknesses in strategic work allocation and roadmap clarity"
+            ]
+          },
+          "estimatedResolutionTime": "6-8 weeks",
+          "reasoning": "Historical evidence from AI Platform Servicing work shows a documented confidence risk where delivered outcomes and communication did not consistently demonstrate expected AI expertise. Current project indicators show unclear CSR Assist roadmap, need for more strategic work allocation, and operational friction around architecture understanding. While current code quality metrics are strong (95.7% merge rate), the combination of historical confidence concerns and current strategic clarity gaps suggests this risk remains plausible. Proactive stakeholder engagement, visible architecture contributions, and innovation demonstrations are needed to maintain confidence.",
+          "confidenceScore": 72,
+          "riskPriority": "Medium",
+          "riskType": "Relationship",
+          "timeToMaterialization": "60-90 Days",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Stakeholder feedback sentiment and confidence indicators",
+            "Governance meeting tone and escalation frequency",
+            "Innovation contribution visibility and recognition",
+            "Future work approval and scope expansion discussions",
+            "Executive engagement frequency and nature"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "Operational weakness: CSR assist roadmap is not clear",
+              "Operational weakness: More strategic work allocation/distribution will help with efficiency",
+              "Delivery confidence: MODERATE",
+              "Multiple unresolved architecture and evaluation decisions",
+              "Strong code metrics (95.7% merge rate) but moderate overall delivery health"
+            ],
+            "historicalReferences": [
+              "AI Platform Servicing: Client confidence in AI delivery capability at risk (R06)",
+              "Historical risk status: Assessed with mitigation focused on enablement and demonstrations but no closure evidence",
+              "Historical concern: Delivered code and outcomes not consistently reflecting expected AI expertise"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Conduct stakeholder perception assessment through one-on-one conversations with key Premera and McKinsey stakeholders to understand specific confidence concerns",
+                "Prepare AI capability showcase highlighting technical achievements, innovation contributions, and value-added solutions delivered to date",
+                "Establish proactive communication cadence with stakeholders including weekly technical updates, architecture insights, and innovation demonstrations",
+                "Identify opportunities for offshore team to lead technical presentations, architecture discussions, and solution demonstrations in upcoming governance meetings"
+              ]
+            },
+            {
+              "stage": "BEFORE CURRENT PHASE (PI 06 SPRINT 1) EXIT",
+              "actions": [
+                "Deliver comprehensive architecture presentation covering CSR Assist design, voice bot integration approach, shared services framework, and call deflection strategy",
+                "Showcase AI-specific innovations including RAG pipeline optimization, agent framework implementation, LLM evaluation approach, and performance tuning achievements",
+                "Clarify CSR Assist roadmap with proactive recommendations for post-MVP features, architectural enhancements, and operational improvements",
+                "Establish regular innovation sharing sessions where team presents AI research, experimentation results, and proactive solution recommendations"
+              ]
+            },
+            {
+              "stage": "PI 06 SPRINT 2-4 (DEVELOPMENT AND INTEGRATION)",
+              "actions": [
+                "Increase visibility of AI technical leadership through architecture decision leadership, design review facilitation, and cross-team technical coordination",
+                "Document and communicate AI-specific value contributions including performance improvements, quality enhancements, and operational efficiencies achieved",
+                "Proactively identify and propose AI-driven solutions for emerging challenges and optimization opportunities",
+                "Conduct stakeholder feedback sessions to validate confidence improvement and address any remaining perception gaps"
+              ]
+            },
+            {
+              "stage": "ONGOING",
+              "actions": [
+                "Monitor stakeholder feedback sentiment and confidence indicators through governance meeting tone, escalation frequency, and future work discussions",
+                "Track innovation contribution visibility and recognition through stakeholder acknowledgments and positive feedback",
+                "Maintain proactive technical communication including architecture insights, performance analysis, and solution recommendations",
+                "Conduct quarterly stakeholder relationship reviews to assess confidence levels and address concerns proactively"
+              ]
+            }
+          ],
+          "recommendations": {
+            "preventive": "Establish AI technical leadership visibility program with regular architecture presentations, innovation showcases, and proactive solution recommendations; implement stakeholder engagement protocol ensuring offshore team leads technical discussions and demonstrates thought leadership consistently",
+            "monitoring": "Track monthly: stakeholder feedback sentiment and confidence indicators, governance meeting tone and escalation frequency, innovation contribution visibility and recognition, future work approval and scope expansion discussions, and executive engagement frequency and nature",
+            "contingency": "If stakeholder confidence concerns escalate despite visibility improvements, conduct executive-level stakeholder engagement with Ascendion leadership participation to reaffirm commitment, showcase broader organizational AI capabilities, and establish confidence restoration roadmap with measurable milestones",
+            "strategic": "Institutionalize AI thought leadership through regular innovation forums, technical blog contributions, architecture guild leadership, and proactive solution ideation; establish AI center of excellence reputation through consistent delivery excellence, technical innovation, and stakeholder value creation"
+          },
+          "responseRationale": "Historical AI Platform Servicing project documented client confidence risk where delivered outcomes did not consistently demonstrate expected AI expertise, and while current code metrics are strong (95.7% merge rate), operational weaknesses around unclear roadmap and strategic work allocation combined with moderate delivery confidence suggest proactive stakeholder engagement and visible technical leadership are essential to maintain relationship health and protect future work opportunities."
+        }
+      ]
+    },
+    {
+      "projectId": "Work Assignment 030126",
+      "projectName": "Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "2026-07-22",
+      "predictedRisks": [
+        {
+          "riskId": "R001",
+          "riskTitle": "Critical Data Hub Dependency Delay Compressing UAT Timeline",
+          "riskDescription": "Four total premium fields and NPN search functionality from Data Hub are delayed until July 30, leaving only 8 business days before UAT start on August 14, creating extreme schedule compression and integration risk.",
+          "riskCategory": "Schedule",
+          "currentProjectPhase": "PI5 Sprint 3 - Build & Test",
+          "expectedOccurrencePhase": "Integration Testing",
+          "likelyImpactPhase": "UAT and Deployment",
+          "rootCause": "External Data Hub team delivery delays; insufficient schedule buffer between dependency delivery and UAT start; integration complexity requiring orchestration and data stitching.",
+          "triggerConditions": [
+            "Data Hub delivery slips beyond July 30",
+            "Integration issues discovered after July 30 delivery",
+            "Insufficient time for integration testing before August 14 UAT start",
+            "Upstream data setup for testing not completed by UAT start"
+          ],
+          "potentialImpact": {
+            "schedule": "UAT start delay of 1-2 weeks; production deployment delay beyond September 2; potential contract extension required",
+            "cost": "Milestone payment delays in fixed-price engagement; potential resource extension costs; expedited testing costs",
+            "quality": "Compressed integration testing window; inadequate defect detection; production stability risk",
+            "customer": "UAT stakeholder availability conflicts; go-live date confidence erosion; executive escalation",
+            "operations": "Incomplete production readiness validation; operational support gaps"
+          },
+          "likelihood": "High",
+          "impactSeverity": "Critical",
+          "overallRiskRating": "Critical",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R02"
+            ],
+            "recurrenceLikelihood": "Very High",
+            "supportingHistoricalPatterns": [
+              "Historical risk documented on 2026-06-29 for Data Hub API delivery by 6/30",
+              "Current WSR shows same dependency family still active with July 30 ETA",
+              "Historical mitigation was not defined and risk persisted into current state",
+              "Enterprise pattern: External dependency timing repeatedly becomes critical near integration/testing phases"
+            ]
+          },
+          "estimatedResolutionTime": "2-3 weeks",
+          "reasoning": "Historical evidence shows Data Hub delivery risk was documented on June 29 with mitigation still undefined, and the current WSR confirms the dependency persisted with 4 premium fields and NPN search delayed to July 30. With only 40 days remaining to complete integration, testing, UAT, penetration testing, and deployment, an 8-day buffer between dependency delivery and UAT start is critically insufficient. Any integration issues discovered after July 30 will directly impact the UAT schedule and cascade to production deployment. This represents the highest schedule risk to the project.",
+          "confidenceScore": 94,
+          "riskPriority": "Critical",
+          "riskType": "External Dependency",
+          "timeToMaterialization": "<15 Days",
+          "preventability": "Low",
+          "monitoringIndicators": [
+            "Data Hub delivery status and completion confirmation by July 30",
+            "Integration testing progress and defect discovery rate post-July 30",
+            "Upstream data setup completion status for integration scenarios",
+            "UAT readiness assessment and stakeholder availability confirmation",
+            "Daily coordination meeting outcomes with Data Hub and Edge teams"
+          ],
+          "businessCriticality": "Critical",
+          "evidence": {
+            "projectIndicators": [
+              "WSR challenge: Awaiting 4 new fields for total premium on BoB. ETA 30th July",
+              "WSR challenge: Awaiting DH support for search by NPN. ETA 30th July",
+              "Only 40 days remaining to complete integration, testing, UAT, and deployment",
+              "UAT scheduled August 14-25 (8 business days after DH delivery)",
+              "Critical path item: Data Hub BoB integration (4 new total premium fields - ETA July 30)",
+              "Support required: Need support for upstream Data setup of integration & E2E scenarios"
+            ],
+            "historicalReferences": [
+              "Historical risk R02: Availability on Data Hub API delivery by 6/30 posed timeline risk",
+              "Historical mitigation marked unresolved with 'needs to be arrived'",
+              "Current WSR still shows DH-related open dependencies with only 8-day buffer to UAT"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Escalate Data Hub delivery risk to executive level with Premera and Data Hub leadership highlighting 8-day buffer insufficiency and UAT schedule threat",
+                "Establish daily checkpoint meeting with Data Hub team (Deba) to monitor 4 premium fields and NPN search delivery progress with hard July 30 deadline",
+                "Prepare integration rollback plan if Data Hub delivery slips beyond July 30, including synthetic data continuation strategy and UAT scope adjustment options",
+                "Pre-stage integration testing resources and environment to commence validation immediately upon July 30 Data Hub delivery"
+              ]
+            },
+            {
+              "stage": "BEFORE UAT START (AUGUST 14)",
+              "actions": [
+                "Complete integration of 4 total premium fields and NPN search functionality immediately upon July 30 Data Hub delivery with dedicated team focus",
+                "Execute accelerated integration testing during August 1-13 window with daily defect triage and resolution to identify and fix issues before UAT",
+                "Validate upstream data setup for integration and E2E scenarios with Edge and Data Hub teams to ensure UAT environment readiness",
+                "Conduct integration readiness assessment on August 10 with go/no-go decision for August 14 UAT start based on defect severity and test coverage",
+                "Prepare UAT stakeholders for potential compressed schedule or phased UAT approach if integration issues require extended resolution time"
+              ]
+            },
+            {
+              "stage": "UAT (AUGUST 14-25)",
+              "actions": [
+                "Execute UAT with risk-based testing approach prioritizing critical business scenarios if integration delays compress testing window",
+                "Maintain war room support during UAT with Data Hub, Edge, and Producer Portal teams available for rapid issue resolution",
+                "Track UAT defect discovery rate and severity to assess production readiness and identify any Data Hub integration stability issues",
+                "Prepare contingency plan for UAT extension or phased production deployment if critical defects require additional resolution time beyond August 25"
+              ]
+            },
+            {
+              "stage": "ONGOING",
+              "actions": [
+                "Monitor Data Hub delivery status daily until July 30 completion with immediate escalation if slippage indicators emerge",
+                "Track integration testing progress and defect discovery rate daily during August 1-13 window to detect schedule pressure early",
+                "Maintain daily coordination with Edge and Data Hub teams for upstream data setup support throughout integration and UAT phases",
+                "Review production deployment readiness weekly to ensure all dependencies are resolved and approvals are secured before September 2 target"
+              ]
+            }
+          ],
+          "recommendations": {
+            "preventive": "Establish external dependency governance with contractual delivery commitments, schedule buffers of minimum 3-4 weeks between dependency delivery and dependent milestone, and executive escalation triggers at first slippage indication to prevent critical path compression",
+            "monitoring": "Track daily: Data Hub delivery status and completion confirmation by July 30, integration testing progress and defect discovery rate post-July 30, upstream data setup completion status, UAT readiness assessment and stakeholder availability, and daily coordination meeting outcomes with Data Hub and Edge teams",
+            "contingency": "If Data Hub delivery slips beyond July 30 or integration issues prevent August 14 UAT start, implement phased UAT approach testing non-Data-Hub-dependent functionality first while Data Hub integration is stabilized, and negotiate 1-2 week UAT extension with production deployment delay to September 9-16 to preserve quality and avoid production stability risk",
+            "strategic": "Implement dependency risk management framework with early warning systems, schedule buffer requirements, and mock/synthetic data strategies for all future projects; establish Data Hub integration center of excellence to standardize approach and prevent recurrence of late integration risk"
+          },
+          "responseRationale": "Historical risk documented on June 29 for Data Hub API delivery by 6/30 remained unresolved with mitigation undefined, and current WSR confirms dependency persisted to July 30 with only 8 business days before UAT start, creating extreme schedule compression that requires immediate executive escalation and war room coordination to protect production deployment date."
+        },
+        {
+          "riskId": "R002",
+          "riskTitle": "ACPT Deployment Blockers Preventing Integration Testing Start",
+          "riskDescription": "Auth0 database connection configuration update and Azure Front Door/DNS configuration remain incomplete in ACPT environment, blocking full deployment and preventing integration testing from commencing.",
+          "riskCategory": "Infrastructure",
+          "currentProjectPhase": "PI5 Sprint 3 - Build & Test",
+          "expectedOccurrencePhase": "Integration Testing",
+          "likelyImpactPhase": "Integration Testing and UAT",
+          "rootCause": "Dependency on Premera infrastructure team for ACPT configuration; access permission constraints; coordination delays with Drew and Ganesh for Auth0 configuration.",
+          "triggerConditions": [
+            "Auth0 DB connection configuration not updated by July 24",
+            "Azure Front Door and DNS configuration delayed beyond current sprint",
+            "Integration testing cannot commence without complete ACPT deployment",
+            "UAT environment readiness delayed"
+          ],
+          "potentialImpact": {
+            "schedule": "Integration testing start delay of 1-2 weeks; compressed testing window; UAT start delay risk",
+            "cost": "Resource idle time; potential milestone payment delays",
+            "quality": "Inadequate integration testing coverage; late defect discovery; production deployment risk",
+            "customer": "UAT schedule confidence erosion; stakeholder escalation",
+            "operations": "Incomplete environment validation; production readiness gaps"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": [
+              "Historical infrastructure and access delays documented (Citrix access delayed to March 30, App access delayed to April 24)",
+              "Current project shows recurring infrastructure provisioning and access delays",
+              "Citrix server slowness continues to impact offshore team"
+            ]
+          },
+          "estimatedResolutionTime": "1-2 weeks",
+          "reasoning": "The WSR documents that Auth0 DB connection configuration needs to be updated by Premera team in ACPT, and the team is working with Ganesh to get time from Drew. Historical evidence shows infrastructure and access delays have been a recurring pattern (Citrix, App, Repo access all delayed). With only 40 days remaining and integration testing dependent on complete ACPT deployment, any delay in resolving these blockers will directly compress the testing timeline and increase UAT risk. Immediate escalation and dedicated support are required.",
+          "confidenceScore": 88,
+          "riskPriority": "Critical",
+          "riskType": "Infrastructure",
+          "timeToMaterialization": "<15 Days",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Auth0 DB connection configuration completion status",
+            "Azure Front Door and DNS configuration progress",
+            "ACPT deployment completion and validation status",
+            "Drew and Ganesh availability and support commitment",
+            "Integration testing environment readiness assessment"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "Open risk: Auth0 Change propagation - DB connection config needs to be updated by Premera team",
+              "Working with Ganesh to get time from Drew for Auth0 configuration",
+              "Key activity: Complete ACPT Azure Front Door & DNS",
+              "Critical path item: ACPT deployment and Azure Front Door configuration",
+              "Frontend, Account Management API, and Wrapper API deployed to ACPT but integration incomplete"
+            ],
+            "historicalReferences": [
+              "Citrix access delayed to March 30",
+              "App access delayed to April 24",
+              "Repo access delayed to April 14",
+              "Delivery pattern: Infrastructure and access delays identified as recurring"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Escalate Auth0 DB connection configuration and Azure Front Door/DNS configuration to Ganesh and Drew with request for dedicated time slot by July 24",
+                "Establish daily standup with Premera infrastructure team to monitor ACPT deployment blocker resolution progress and remove impediments",
+                "Prepare detailed configuration change request documentation for Auth0 DB connection update to accelerate Premera team execution",
+                "Identify alternative connectivity options or workarounds if Auth0 configuration cannot be completed by July 24 to prevent integration testing delay"
+              ]
+            },
+            {
+              "stage": "BEFORE INTEGRATION TESTING START (LATE JULY)",
+              "actions": [
+                "Complete Auth0 DB connection configuration update in ACPT by July 24 with Premera team support (Drew) to unblock authentication testing",
+                "Finalize Azure Front Door and DNS configuration to enable complete ACPT deployment and external access for integration testing",
+                "Validate ACPT deployment completeness including Frontend, Account Management API, Wrapper API, and all infrastructure components",
+                "Execute ACPT environment smoke testing to confirm all services are operational and integrated before formal integration testing begins",
+                "Obtain ACPT environment sign-off from infrastructure team confirming readiness for integration and E2E testing"
+              ]
+            },
+            {
+              "stage": "INTEGRATION TESTING (LATE JULY - EARLY AUGUST)",
+              "actions": [
+                "Execute integration testing in ACPT environment with upstream data setup support from Edge and Data Hub teams",
+                "Validate end-to-end authentication flows including Auth0 integration, RBAC enforcement, and SSO functionality",
+                "Test Azure Front Door routing, load balancing, and WAF functionality to confirm production-like configuration",
+                "Conduct integration testing across all LOBs (Individual & Family, Small Group, Large Group, Medicare Supplement) with representative data scenarios"
+              ]
+            },
+            {
+              "stage": "ONGOING",
+              "actions": [
+                "Monitor Auth0 configuration status and Azure Front Door setup progress daily until completion with immediate escalation if delays occur",
+                "Track ACPT deployment completion and validation status to ensure integration testing can commence on schedule",
+                "Maintain daily coordination with Ganesh and Drew for infrastructure support throughout integration and UAT phases",
+                "Review integration testing environment readiness weekly to proactively identify and resolve any infrastructure or access issues"
+              ]
+            }
+          ],
+          "recommendations": {
+            "preventive": "Establish infrastructure readiness gates with mandatory completion deadlines 2-3 weeks before dependent testing phases; implement infrastructure dependency tracking with daily status updates and executive escalation at first delay indication to prevent testing schedule compression",
+            "monitoring": "Track daily: Auth0 DB connection configuration completion status, Azure Front Door and DNS configuration progress, ACPT deployment completion and validation status, Drew and Ganesh availability and support commitment, and integration testing environment readiness assessment",
+            "contingency": "If Auth0 configuration or Azure Front Door setup cannot be completed by July 24, implement partial integration testing in DEV environment for non-authentication scenarios while ACPT blockers are resolved, and prepare compressed integration testing plan focusing on critical path scenarios to preserve UAT start date",
+            "strategic": "Implement infrastructure provisioning and configuration management with Infrastructure-as-Code automation, self-service capabilities, and dedicated DevOps support to eliminate manual configuration dependencies; establish infrastructure readiness SLAs for all testing phases"
+          },
+          "responseRationale": "Historical infrastructure and access delays documented throughout project (Citrix access delayed to March 30, App access to April 24) demonstrate recurring pattern, and with Auth0 DB connection configuration pending and only 40 days remaining for integration testing, UAT, and deployment, immediate escalation to Ganesh and Drew with dedicated support commitment is essential to prevent integration testing delay and UAT schedule compression."
+        },
+        {
+          "riskId": "R003",
+          "riskTitle": "UAT Preparation Gaps Threatening August 14 Start Date",
+          "riskDescription": "UAT test cases are not yet available and upstream data setup for integration and E2E scenarios requires continued support, creating readiness risk for the August 14 UAT start date.",
+          "riskCategory": "Testing",
+          "currentProjectPhase": "PI5 Sprint 3 - Build & Test",
+          "expectedOccurrencePhase": "UAT Preparation",
+          "likelyImpactPhase": "UAT Execution",
+          "rootCause": "UAT test case development not prioritized early enough; upstream data setup coordination complexity across Edge and Data Hub teams; insufficient UAT preparation lead time.",
+          "triggerConditions": [
+            "UAT test cases not delivered by July 25",
+            "Upstream data setup not completed by August 10",
+            "UAT environment not fully validated before August 14",
+            "UAT stakeholder availability not confirmed"
+          ],
+          "potentialImpact": {
+            "schedule": "UAT start delay of 3-7 days; compressed UAT execution window; production deployment delay risk",
+            "cost": "Extended resource engagement; milestone payment delays",
+            "quality": "Incomplete UAT test coverage; critical scenarios not validated; production defect risk",
+            "customer": "UAT stakeholder schedule conflicts; reduced UAT effectiveness; go-live confidence erosion",
+            "operations": "Incomplete business validation; operational readiness gaps"
+          },
+          "likelihood": "Medium-High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": [
+              "Current project shows test data strategy and upstream data setup as ongoing coordination challenges",
+              "Multiple dependencies on Edge and Data Hub teams for data provisioning",
+              "UAT preparation typically requires 2-3 weeks of lead time"
+            ]
+          },
+          "estimatedResolutionTime": "2-3 weeks",
+          "reasoning": "The WSR explicitly states 'Need support for getting UAT test cases early' and 'Need support for upstream Data setup of integration & E2E scenarios.' With UAT scheduled to start August 14 and only 23 days remaining, the absence of UAT test cases and incomplete upstream data setup creates significant readiness risk. Historical evidence shows test data strategy has been under discussion, and coordination with Edge and Data Hub teams requires ongoing support. Without immediate action to obtain test cases and complete data setup, UAT effectiveness will be compromised.",
+          "confidenceScore": 86,
+          "riskPriority": "High",
+          "riskType": "Test Readiness",
+          "timeToMaterialization": "<30 Days",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "UAT test case delivery status and completeness",
+            "Upstream data setup progress with Edge and Data Hub teams",
+            "UAT environment validation and readiness assessment",
+            "UAT stakeholder availability confirmation",
+            "Daily coordination meeting outcomes for data setup"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "Support required: Need support for getting UAT test cases early",
+              "Support required: Need support for upstream Data setup of integration & E2E scenarios",
+              "UAT scheduled August 14-25 (23 days from current WSR date)",
+              "Working with Edge & DH for creating test data",
+              "Operational weakness: UAT preparation gaps identified"
+            ],
+            "historicalReferences": []
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Request UAT test cases from business stakeholders with hard deadline of July 25 to enable test environment preparation and data setup",
+                "Establish dedicated daily coordination meeting with Edge and Data Hub teams for upstream data setup of integration and E2E scenarios",
+                "Prepare UAT environment readiness checklist including test data, user access, system availability, and stakeholder training requirements",
+                "Assess UAT stakeholder availability and confirm August 14-25 schedule commitment with backup resources identified for coverage"
+              ]
+            },
+            {
+              "stage": "BEFORE UAT START (AUGUST 14)",
+              "actions": [
+                "Obtain UAT test cases by July 25 and conduct test case review to ensure coverage of critical business scenarios across all LOBs and roles",
+                "Complete upstream data setup for all UAT scenarios by August 10 with validation that test data supports planned test case execution",
+                "Provision and validate UAT environment including user access, data availability, system performance, and integration connectivity",
+                "Conduct UAT readiness dry run on August 12-13 to validate environment, data, and test case execution approach before stakeholder engagement",
+                "Deliver UAT training to business stakeholders covering test approach, environment access, defect reporting process, and schedule expectations"
+              ]
+            },
+            {
+              "stage": "UAT (AUGUST 14-25)",
+              "actions": [
+                "Execute UAT with daily standup to monitor test execution progress, defect discovery rate, and stakeholder feedback",
+                "Maintain war room support for rapid defect triage and resolution to prevent UAT schedule extension",
+                "Track UAT test case execution coverage and defect severity to assess production readiness and identify any critical gaps",
+                "Conduct UAT mid-point checkpoint on August 19-20 to assess progress and adjust execution approach if needed to meet August 25 sign-off target",
+                "Prepare UAT sign-off documentation and obtain formal approval by August 25 to enable production deployment preparation"
+              ]
+            },
+            {
+              "stage": "ONGOING",
+              "actions": [
+                "Monitor UAT test case delivery status daily until July 25 completion with escalation if business stakeholders cannot meet deadline",
+                "Track upstream data setup progress daily with Edge and Data Hub teams to ensure August 10 completion target is met",
+                "Review UAT environment readiness and stakeholder availability weekly to proactively identify and resolve any preparation gaps",
+                "Maintain daily coordination with business stakeholders during UAT to ensure effective test execution and timely defect resolution"
+              ]
+            }
+          ],
+          "recommendations": {
+            "preventive": "Establish UAT preparation protocol with test case delivery deadlines 3-4 weeks before UAT start, mandatory test data provisioning completion 1 week before UAT, and UAT readiness gate with formal sign-off before stakeholder engagement to prevent execution delays",
+            "monitoring": "Track daily: UAT test case delivery status and completeness, upstream data setup progress with Edge and Data Hub teams, UAT environment validation and readiness assessment, UAT stakeholder availability confirmation, and daily coordination meeting outcomes for data setup",
+            "contingency": "If UAT test cases are not available by July 25 or upstream data setup is incomplete by August 10, implement phased UAT approach starting with available test scenarios on August 14 while remaining test cases and data are finalized, and prepare 3-5 day UAT extension plan with production deployment delay to September 5-9 if needed to ensure adequate test coverage",
+            "strategic": "Implement UAT preparation framework with standardized test case templates, automated test data provisioning, and self-service UAT environment access to eliminate manual coordination dependencies; establish UAT center of excellence to standardize approach across all projects"
+          },
+          "responseRationale": "WSR explicitly states need for UAT test cases early and continued support for upstream data setup, and with UAT scheduled to start August 14 (23 days away) and only 40 days remaining for all testing and deployment activities, immediate action to obtain test cases by July 25 and complete data setup by August 10 is essential to prevent UAT effectiveness compromise and production deployment delay."
+        },
+        {
+          "riskId": "R004",
+          "riskTitle": "Cumulative Scope Change Impact Exceeding Absorption Capacity",
+          "riskDescription": "Nineteen documented scope changes have accumulated with cumulative medium impact, exceeding the historical warning threshold and creating schedule pressure in a compressed 40-day delivery window.",
+          "riskCategory": "Scope",
+          "currentProjectPhase": "PI5 Sprint 3 - Build & Test",
+          "expectedOccurrencePhase": "Integration Testing and UAT",
+          "likelyImpactPhase": "UAT and Deployment",
+          "rootCause": "Incremental scope additions without formal schedule re-baselining; ownership shifts (Auth0, CCS APIs, Infrastructure) expanding Ascendion responsibilities; evolving understanding of integration complexity.",
+          "triggerConditions": [
+            "Additional scope changes introduced during integration or UAT phases",
+            "Cumulative scope change effort exceeds 1.5-2 sprint equivalents",
+            "Schedule buffer consumed by scope change absorption",
+            "Milestone timing pressure increases"
+          ],
+          "potentialImpact": {
+            "schedule": "1-2 week delay in production deployment; potential contract extension required",
+            "cost": "Fixed-price commercial pressure; potential change order negotiation",
+            "quality": "Compressed testing time; increased defect leakage risk",
+            "customer": "Milestone confidence erosion; change control friction; escalation risk",
+            "operations": "Incomplete feature stabilization; operational readiness gaps"
+          },
+          "likelihood": "High",
+          "impactSeverity": "Medium-High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R01"
+            ],
+            "recurrenceLikelihood": "Very High",
+            "supportingHistoricalPatterns": [
+              "Historical risk documented on 2026-06-29 showing ~14 scope changes absorbed 0.75-1 sprint of effort",
+              "Current WSR shows scope changes increased to 19 with cumulative medium impact",
+              "Historical mitigation was undefined ('needs to be arrived') and pattern continued",
+              "Enterprise pattern: Scope volatility/change accumulation identified as recurring root cause"
+            ]
+          },
+          "estimatedResolutionTime": "Ongoing",
+          "reasoning": "Historical evidence shows that by June 29, approximately 14 scope changes had absorbed 0.75-1 sprint of additional effort. Current WSR documents 19 scope changes including ownership shifts (Auth0, CCS APIs, Infrastructure), integration complexity (multiple DH calls requiring orchestration), and design modifications (export, dual role, dashboard). With only 40 days remaining and the scope change count exceeding the historical warning level, the cumulative impact is creating material schedule pressure. Any additional scope changes during integration or UAT will directly threaten the September 2 production deployment date.",
+          "confidenceScore": 90,
+          "riskPriority": "High",
+          "riskType": "Scope Management",
+          "timeToMaterialization": "Immediate (already materializing)",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Scope change request volume and approval rate",
+            "Cumulative scope change effort tracking",
+            "Schedule buffer consumption rate",
+            "Milestone timing confidence assessment",
+            "Change control process adherence and effectiveness"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "19 scope changes documented in Scope Change Tracker",
+              "Scope changes include: Identity setup ownership, CCS API ownership, Infra provisioning, Agent use refactoring, API integration with synthetic data, User hierarchy complexity, Export design changes, Super user login approach, DR strategy, BoB API orchestration, Dual role handling",
+              "Multiple changes marked as 'Medium' effort size",
+              "Only 40 days remaining to complete integration, testing, UAT, and deployment",
+              "Operational weakness: Scope management and change control identified"
+            ],
+            "historicalReferences": [
+              "Historical risk R01: Scope changes absorbed approximately 0.75-1 sprint of additional effort by June 29",
+              "Historical scope change count: ~14; Current count: 19",
+              "Historical mitigation: 'needs to be arrived' - undefined and ineffective"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Conduct comprehensive scope change impact assessment quantifying cumulative effort, schedule impact, and remaining buffer consumption",
+                "Implement immediate scope freeze for remainder of project with all new change requests deferred to Phase 2 or post-production backlog",
+                "Communicate scope freeze policy to all stakeholders with change control process requiring executive approval and schedule impact acceptance for any exceptions",
+                "Re-baseline project schedule accounting for absorbed scope changes and validate September 2 production deployment date remains achievable"
+              ]
+            },
+            {
+              "stage": "BEFORE UAT START (AUGUST 14)",
+              "actions": [
+                "Complete all committed scope including 19 documented scope changes with focused execution and minimal new work intake",
+                "Resolve pending scope decisions including dual role handling (Decision #37) to prevent UAT disruption from functional gaps",
+                "Validate all scope changes are fully integrated and tested before UAT to prevent late defect discovery",
+                "Establish UAT scope baseline with clear acceptance criteria and change control process for any UAT-driven scope additions"
+              ]
+            },
+            {
+              "stage": "UAT (AUGUST 14-25)",
+              "actions": [
+                "Enforce strict scope control during UAT with all new requirements captured as Phase 2 backlog items unless critical for production launch",
+                "Assess UAT feedback for scope change implications and conduct impact analysis before accepting any changes into production deployment scope",
+                "Maintain scope change log with effort estimates and schedule impact to provide transparency on cumulative effect of any UAT-driven changes",
+                "Prepare Phase 2 backlog with prioritized enhancements and deferred scope items for post-production implementation"
+              ]
+            },
+            {
+              "stage": "ONGOING",
+              "actions": [
+                "Monitor scope change request volume and approval rate weekly to enforce freeze policy and prevent scope creep recurrence",
+                "Track cumulative scope change effort and schedule buffer consumption to maintain visibility on project timeline health",
+                "Review milestone timing confidence weekly to detect any schedule pressure from scope changes and take corrective action",
+                "Conduct change control board meetings to evaluate any exception requests with rigorous impact assessment and approval criteria"
+              ]
+            }
+          ],
+          "recommendations": {
+            "preventive": "Establish formal change control board with impact assessment requirements, executive approval thresholds for all scope changes, and mandatory schedule re-baselining when cumulative changes exceed 0.5 sprint effort to prevent scope creep from consuming schedule buffer",
+            "monitoring": "Track weekly: scope change request volume and approval rate, cumulative scope change effort tracking, schedule buffer consumption rate, milestone timing confidence assessment, and change control process adherence and effectiveness",
+            "contingency": "If additional scope changes are required during UAT or final testing phases despite freeze policy, implement scope trade-off approach where new requirements are offset by deferring lower-priority features to Phase 2, and prepare production deployment delay contingency of 1-2 weeks (September 9-16) if critical scope changes cannot be absorbed within remaining timeline",
+            "strategic": "Implement scope management framework with phase-gated requirements freeze points, change impact dashboard visible to all stakeholders, and scope change cost/schedule transparency to create accountability; establish Phase 2 planning process to provide outlet for enhancement requests without disrupting current delivery"
+          },
+          "responseRationale": "Historical risk documented on June 29 showed ~14 scope changes absorbed 0.75-1 sprint effort, and current WSR documents 19 scope changes with cumulative medium impact including ownership shifts, integration complexity, and design modifications, demonstrating scope change volume has exceeded historical warning level and requires immediate freeze to protect remaining 40-day delivery window and September 2 production deployment date."
+        },
+        {
+          "riskId": "R005",
+          "riskTitle": "Live Integration and NFR Validation Deferred to Late Lifecycle",
+          "riskDescription": "Integration with live Data Hub APIs and NFR validation have been deferred using mock APIs and synthetic data, creating risk that performance issues and integration defects will be discovered late in the testing cycle.",
+          "riskCategory": "Quality",
+          "currentProjectPhase": "PI5 Sprint 3 - Build & Test",
+          "expectedOccurrencePhase": "Integration Testing",
+          "likelyImpactPhase": "Integration Testing and UAT",
+          "rootCause": "Data Hub API availability delays necessitated mock API strategy; NFR validation dependent on live integration; integration complexity underestimated requiring orchestration and stitching.",
+          "triggerConditions": [
+            "Live Data Hub integration reveals performance degradation",
+            "NFR issues discovered during integration testing",
+            "Data mapping discrepancies emerge with live data",
+            "Orchestration and stitching logic requires rework"
+          ],
+          "potentialImpact": {
+            "schedule": "1-3 week delay for performance tuning and integration fixes; UAT start delay risk",
+            "cost": "Rework effort; potential performance optimization costs; extended resource engagement",
+            "quality": "Late defect discovery; production stability risk; incomplete NFR validation",
+            "customer": "UAT effectiveness compromised; go-live confidence erosion; potential escalation",
+            "operations": "Production performance risk; operational support complexity"
+          },
+          "likelihood": "Medium-High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R03"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": [
+              "Historical risk documented on 2026-06-29: Integration with live DH APIs pending, NFR issues would only become visible after integration",
+              "Historical mitigation was not defined and risk persisted into current state",
+              "Current WSR confirms integration and E2E testing still pending with upstream data support required",
+              "Enterprise pattern: Late live-integration/NFR exposure identified as recurring risk"
+            ]
+          },
+          "estimatedResolutionTime": "3-4 weeks",
+          "reasoning": "Historical evidence shows live integration risk was documented on June 29 with mitigation undefined, and the current WSR confirms integration testing and E2E testing are still pending with upstream data setup required. The project used mock APIs, synthetic data, and schema mapping to preserve development momentum, but NFR exposure remains late-stage. With only 40 days remaining and integration testing scheduled to begin immediately after July 30 Data Hub delivery, any performance or integration issues discovered will directly compress the UAT timeline and threaten production deployment readiness.",
+          "confidenceScore": 88,
+          "riskPriority": "High",
+          "riskType": "Integration Quality",
+          "timeToMaterialization": "<30 Days",
+          "preventability": "Low",
+          "monitoringIndicators": [
+            "Live Data Hub integration completion and validation status",
+            "Performance testing results and NFR compliance metrics",
+            "Integration defect discovery rate and severity",
+            "Data mapping validation outcomes with live data",
+            "Orchestration and stitching logic stability"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "Integration testing planned for upcoming phase",
+              "E2E testing support needed",
+              "Support required: Need support for upstream Data setup of integration & E2E scenarios",
+              "Scope change #8: DH APIs not available before development start, requiring mock APIs and synthetic data",
+              "Scope change #13: Multiple DH calls needed with orchestration and data stitching",
+              "Decision #19: Created schema mapping based on UI to mitigate DH dependency delays"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Prepare comprehensive integration testing plan covering all Data Hub integration points, orchestration logic, data mapping validation, and NFR scenarios",
+                "Establish performance testing baseline and acceptance criteria for response times, throughput, concurrent users, and data volume handling",
+                "Pre-stage performance testing tools, scripts, and monitoring infrastructure to commence NFR validation immediately after live integration",
+                "Identify high-risk integration areas including orchestration/stitching logic, batch API calls, and data mapping for focused testing attention"
+              ]
+            },
+            {
+              "stage": "INTEGRATION TESTING (LATE JULY - EARLY AUGUST)",
+              "actions": [
+                "Execute live Data Hub integration testing immediately upon July 30 delivery with focus on data mapping accuracy, orchestration logic, and API performance",
+                "Conduct performance testing with representative data volumes across all LOBs to validate NFR compliance and identify any degradation issues",
+                "Validate data mapping with live Data Hub data to confirm schema assumptions and identify any discrepancies requiring resolution",
+                "Test orchestration and stitching logic for multiple DH calls (Commercial Group, Individual Member, Provider entities) to ensure data consistency and completeness",
+                "Execute end-to-end testing with upstream data setup to validate complete user journeys across all roles and LOBs"
+              ]
+            },
+            {
+              "stage": "BEFORE UAT START (AUGUST 14)",
+              "actions": [
+                "Complete integration defect resolution with priority focus on critical and high severity issues affecting UAT execution",
+                "Conduct integration readiness assessment validating all Data Hub integration points are stable and NFR criteria are met",
+                "Perform UAT environment validation with live Data Hub integration to confirm production-like configuration and performance",
+                "Document any known integration limitations or performance constraints for UAT stakeholder awareness and production planning"
+              ]
+            },
+            {
+              "stage": "ONGOING",
+              "actions": [
+                "Monitor live Data Hub integration stability and performance throughout UAT and production deployment phases",
+                "Track integration defect discovery rate and severity to assess production readiness and identify any late-stage stability issues",
+                "Review NFR compliance metrics weekly to ensure performance, scalability, and reliability targets are maintained",
+                "Maintain close coordination with Data Hub team for any integration issues requiring upstream resolution or optimization"
+              ]
+            }
+          ],
+          "recommendations": {
+            "preventive": "Establish integration testing strategy with live API validation at least 4-6 weeks before UAT, mandatory NFR testing before production deployment, and performance baseline establishment early in development to prevent late-stage discovery of integration or performance issues",
+            "monitoring": "Track daily: live Data Hub integration completion and validation status, performance testing results and NFR compliance metrics, integration defect discovery rate and severity, data mapping validation outcomes with live data, and orchestration and stitching logic stability",
+            "contingency": "If live integration reveals critical performance issues or data mapping discrepancies, implement performance optimization sprint with Data Hub team collaboration, consider phased production rollout starting with limited user population to validate stability, and prepare production deployment delay of 1-2 weeks if critical issues require extended resolution time",
+            "strategic": "Implement integration testing framework with early live API validation, continuous performance monitoring, and automated NFR testing to detect issues early; establish Data Hub integration patterns and reference implementations to accelerate future integrations and reduce late-stage risk"
+          },
+          "responseRationale": "Historical risk documented on June 29 stated integration with live DH APIs was pending and NFR issues would only become visible after integration, and current WSR confirms integration testing and E2E testing are still pending with upstream data support required, demonstrating that mock APIs preserved development momentum but NFR exposure remains late-stage and requires immediate focused validation upon July 30 Data Hub delivery to prevent UAT disruption or production stability risk."
+        },
+        {
+          "riskId": "R006",
+          "riskTitle": "Dual Role Complexity Unresolved Near UAT Start",
+          "riskDescription": "The handling of users with dual roles (Producer and Agency Admin) remains unresolved with decision status 'Pending,' creating functional gap risk that may surface during UAT execution.",
+          "riskCategory": "Functional",
+          "currentProjectPhase": "PI5 Sprint 3 - Build & Test",
+          "expectedOccurrencePhase": "UAT",
+          "likelyImpactPhase": "UAT and Production",
+          "rootCause": "Complex entitlement logic for dual-role users not fully defined; business rules for role-based access per agency not finalized; decision deferred during development.",
+          "triggerConditions": [
+            "Dual role logic not finalized by July 25",
+            "UAT test scenarios reveal dual role handling gaps",
+            "Business stakeholders identify unacceptable dual role behavior during UAT",
+            "Production deployment blocked pending dual role resolution"
+          ],
+          "potentialImpact": {
+            "schedule": "UAT cycle extension of 3-7 days; potential production deployment delay",
+            "cost": "Rework effort during UAT; extended testing costs",
+            "quality": "Functional gap in production; user experience inconsistency",
+            "customer": "UAT stakeholder frustration; go-live confidence impact; potential escalation",
+            "operations": "Operational workaround requirements; support complexity"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": [
+              "Scope change #19 documents dual role complexity as medium effort",
+              "Decision #37 shows dual role handling pending with complex entitlement logic",
+              "User hierarchy complexity was underestimated (Scope change #9)"
+            ]
+          },
+          "estimatedResolutionTime": "1-2 weeks",
+          "reasoning": "Decision #37 documents that logged in users with dual role entitlement logic is pending, with the requirement that role should be specific to agency and not simply the highest role. Scope change #19 identifies this as medium effort. With UAT starting August 14 (23 days away), unresolved dual role logic creates risk that UAT test scenarios will reveal functional gaps requiring rework. Finalizing the dual role logic by July 25 and conducting focused testing before UAT is essential to prevent UAT disruption.",
+          "confidenceScore": 82,
+          "riskPriority": "Medium-High",
+          "riskType": "Functional Gap",
+          "timeToMaterialization": "<30 Days",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Decision #37 closure status and business rule finalization",
+            "Dual role implementation completion and testing status",
+            "UAT test case coverage for dual role scenarios",
+            "Business stakeholder review and approval of dual role behavior",
+            "Production deployment readiness assessment"
+          ],
+          "businessCriticality": "Medium-High",
+          "evidence": {
+            "projectIndicators": [
+              "Decision #37 status 'Pending': Logged in users with dual role should get entitlement based on the role played for an agency",
+              "Scope change #19: Dual role complexity marked as medium effort",
+              "Requirement: User role is specific to agency; producer can cease to be active but continue as agency admin",
+              "UAT scheduled August 14-25 (23 days from current WSR date)",
+              "Operational weakness: Dual role complexity unresolved"
+            ],
+            "historicalReferences": []
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Escalate Decision #37 (dual role handling) to Harish and business stakeholders with request for resolution by July 25 to prevent UAT disruption",
+                "Document dual role entitlement logic options with pros/cons and recommend approach based on technical feasibility and business requirements",
+                "Conduct business stakeholder workshop to clarify dual role requirements including agency-specific role assignment and entitlement logic",
+                "Assess implementation effort and schedule impact of dual role logic to determine if resolution can be completed before August 14 UAT start"
+              ]
+            },
+            {
+              "stage": "BEFORE UAT START (AUGUST 14)",
+              "actions": [
+                "Finalize dual role entitlement logic by July 25 with business rule documentation covering role assignment per agency and access control behavior",
+                "Implement dual role handling functionality with focus on agency-specific role assignment and entitlement determination",
+                "Conduct focused testing of dual role scenarios including producer/agency admin combinations across multiple agencies and LOBs",
+                "Prepare UAT test cases covering dual role scenarios to ensure business stakeholders validate behavior during UAT execution",
+                "Document any dual role limitations or known issues for UAT stakeholder awareness and production planning"
+              ]
+            },
+            {
+              "stage": "UAT (AUGUST 14-25)",
+              "actions": [
+                "Execute UAT test cases covering dual role scenarios with business stakeholder validation of entitlement logic and access control behavior",
+                "Monitor UAT feedback on dual role functionality and conduct rapid defect triage and resolution for any issues discovered",
+                "Validate dual role handling meets business requirements and regulatory compliance expectations before production deployment",
+                "Prepare production deployment plan accounting for any dual role complexity or edge cases requiring operational support"
+              ]
+            },
+            {
+              "stage": "ONGOING",
+              "actions": [
+                "Monitor Decision #37 closure status daily until July 25 resolution with escalation if business stakeholders cannot finalize requirements",
+                "Track dual role implementation and testing progress to ensure August 14 UAT readiness",
+                "Review UAT feedback on dual role functionality to identify any production deployment risks or operational support requirements",
+                "Maintain close coordination with business stakeholders during UAT to ensure dual role behavior meets expectations"
+              ]
+            }
+          ],
+          "recommendations": {
+            "preventive": "Establish requirements clarification protocol with mandatory resolution deadlines for complex business logic decisions at least 4-6 weeks before UAT to prevent late-stage functional gaps; implement business rule validation workshops early in development to ensure shared understanding",
+            "monitoring": "Track daily: Decision #37 closure status and business rule finalization, dual role implementation completion and testing status, UAT test case coverage for dual role scenarios, business stakeholder review and approval of dual role behavior, and production deployment readiness assessment",
+            "contingency": "If dual role logic cannot be finalized by July 25 or implementation cannot be completed before August 14, document dual role as known limitation for UAT with workaround approach (manual role selection or single-role enforcement), and plan post-UAT sprint to implement full dual role functionality before production deployment with 1-week deployment delay to September 9 if needed",
+            "strategic": "Implement complex business logic validation framework with early stakeholder workshops, prototype demonstrations, and iterative refinement to ensure requirements clarity before development commitment; establish business rule repository with documented decisions and approval tracking"
+          },
+          "responseRationale": "Decision #37 shows dual role handling pending with requirement that role should be agency-specific rather than highest role, and Scope change #19 identifies this as medium effort, and with UAT starting August 14 (23 days away) and only 40 days remaining, immediate business stakeholder engagement to finalize requirements by July 25 and focused implementation is essential to prevent UAT disruption from functional gaps."
+        },
+        {
+          "riskId": "R007",
+          "riskTitle": "Production Deployment Approval Process Not Yet Initiated",
+          "riskDescription": "Production deployment requires approvals from Engineering team (John's team) which have not yet been obtained, creating risk of deployment delay even if all technical readiness criteria are met.",
+          "riskCategory": "Governance",
+          "currentProjectPhase": "PI5 Sprint 3 - Build & Test",
+          "expectedOccurrencePhase": "Production Deployment",
+          "likelyImpactPhase": "Production Deployment",
+          "rootCause": "Approval process not initiated early enough; approval requirements and timeline not clearly defined; dependency on Engineering team availability and review capacity.",
+          "triggerConditions": [
+            "Approval process not initiated by August 10",
+            "Engineering team review capacity not available",
+            "Approval requirements not fully understood or documented",
+            "UAT sign-off on August 25 leaves insufficient time for approval process"
+          ],
+          "potentialImpact": {
+            "schedule": "Production deployment delay of 3-7 days beyond September 2; contract end date pressure",
+            "cost": "Milestone payment delays; potential resource extension costs",
+            "quality": "Rushed approval process; incomplete review",
+            "customer": "Go-live date confidence erosion; stakeholder escalation; business impact from delayed launch",
+            "operations": "Delayed operational readiness; business continuity impact"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "High",
+          "overallRiskRating": "Medium-High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": [
+              "Decision #33 documents that approvals from John's team are needed for production deployment",
+              "ACPT deployment pending with help needed from Premera",
+              "Historical infrastructure and approval delays have been recurring"
+            ]
+          },
+          "estimatedResolutionTime": "2-3 weeks",
+          "reasoning": "Decision #33 documents that production deployment requires approvals from John's Engineering team, and these approvals have not yet been secured. With UAT sign-off scheduled for August 25 and production deployment targeted for September 2, only 5 business days remain for the approval process. Historical evidence shows infrastructure and access coordination has been challenging. Initiating the approval process immediately, identifying all required approvers, and preparing the deployment package by August 10 is essential to prevent deployment delay.",
+          "confidenceScore": 80,
+          "riskPriority": "Medium-High",
+          "riskType": "Approval Process",
+          "timeToMaterialization": "30-45 Days",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Approval process initiation status",
+            "Engineering team (John's team) availability and review capacity",
+            "Deployment package and runbook preparation status",
+            "Approval requirements documentation and validation",
+            "Production deployment readiness gate status"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "Decision #33: Deploy to ACPT needs to be completed first and this is pending with help needed from Premera. Also needed approvals from Johns team",
+              "Production deployment scheduled September 2 (42 days from current WSR date)",
+              "UAT sign-off scheduled August 25 (5 business days before production deployment)",
+              "Critical path item: Production deployment requires approvals from Engineering team",
+              "Operational weakness: Production deployment approvals not yet secured"
+            ],
+            "historicalReferences": []
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Initiate production deployment approval process with Engineering team (John's team) immediately with request for approval requirements documentation and timeline",
+                "Prepare production deployment package including architecture documentation, security review results, NFR validation, and operational runbook",
+                "Identify all required approvers and establish approval workflow with target completion date of August 25 to enable September 2 deployment",
+                "Escalate to Ganesh and program leadership the need for expedited approval process given compressed timeline and September 2 deployment target"
+              ]
+            },
+            {
+              "stage": "BEFORE UAT SIGN-OFF (AUGUST 25)",
+              "actions": [
+                "Complete production deployment package preparation by August 10 including all required documentation, test results, and approval materials",
+                "Submit production deployment approval request to Engineering team (John's team) by August 15 to allow 10 business days for review and approval",
+                "Conduct production readiness review with Engineering team covering architecture, security, performance, operational support, and deployment approach",
+                "Obtain all required approvals by August 25 to enable September 2 production deployment without delay",
+                "Prepare deployment rollback plan and operational support model for Engineering team review and approval"
+              ]
+            },
+            {
+              "stage": "PRODUCTION DEPLOYMENT (SEPTEMBER 2)",
+              "actions": [
+                "Execute production deployment on September 2 with Engineering team coordination and approval confirmation",
+                "Conduct production deployment validation including smoke testing, integration verification, and performance monitoring",
+                "Activate operational support and monitoring with Engineering team handoff and escalation procedures",
+                "Initiate 4-week hypercare period with dedicated support team and daily health monitoring"
+              ]
+            },
+            {
+              "stage": "ONGOING",
+              "actions": [
+                "Monitor approval process progress daily until August 25 completion with immediate escalation if delays or additional requirements emerge",
+                "Track production deployment package preparation status to ensure August 10 completion target is met",
+                "Review Engineering team availability and review capacity weekly to ensure approval process can be completed on schedule",
+                "Maintain daily coordination with John's team during approval process to address questions and expedite review"
+              ]
+            }
+          ],
+          "recommendations": {
+            "preventive": "Establish production deployment approval protocol with early initiation (6-8 weeks before deployment), documented approval requirements and timeline, and executive escalation path to prevent last-minute approval delays; implement deployment readiness gates with mandatory completion deadlines",
+            "monitoring": "Track daily: approval process initiation status, Engineering team (John's team) availability and review capacity, deployment package and runbook preparation status, approval requirements documentation and validation, and production deployment readiness gate status",
+            "contingency": "If production deployment approvals cannot be secured by August 25 or Engineering team review requires additional time, prepare production deployment delay contingency to September 9-16 with stakeholder communication and hypercare period adjustment, and implement phased deployment approach if partial approval can be obtained for limited production rollout",
+            "strategic": "Implement deployment governance framework with standardized approval requirements, automated deployment package generation, and self-service approval workflow to eliminate manual coordination dependencies; establish deployment center of excellence to standardize approach across all projects"
+          },
+          "responseRationale": "Decision #33 documents that production deployment requires approvals from John's Engineering team which have not yet been secured, and with UAT sign-off scheduled for August 25 and production deployment targeted for September 2 (only 5 business days), immediate approval process initiation and deployment package preparation by August 10 are essential to prevent production deployment delay beyond contract end date of August 31."
+        },
+        {
+          "riskId": "R008",
+          "riskTitle": "Penetration Testing Schedule Compression Risk",
+          "riskDescription": "Penetration testing can only commence after UAT completion, creating schedule compression risk if UAT extends or reveals issues requiring remediation before security testing.",
+          "riskCategory": "Security",
+          "currentProjectPhase": "PI5 Sprint 3 - Build & Test",
+          "expectedOccurrencePhase": "Penetration Testing",
+          "likelyImpactPhase": "Production Deployment",
+          "rootCause": "Sequential dependency of penetration testing on UAT completion; insufficient parallel execution planning; penetration testing timeline not buffered for UAT variability.",
+          "triggerConditions": [
+            "UAT completion delayed beyond August 25",
+            "UAT reveals issues requiring remediation before penetration testing",
+            "Penetration testing discovers critical vulnerabilities requiring fixes",
+            "Insufficient time for penetration testing before September 2 deployment"
+          ],
+          "potentialImpact": {
+            "schedule": "Production deployment delay of 3-7 days; potential contract extension",
+            "cost": "Extended resource engagement; expedited security remediation costs",
+            "quality": "Compressed security validation; potential production security gaps",
+            "customer": "Go-live date confidence erosion; security compliance concerns",
+            "operations": "Production security risk; compliance validation gaps"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": [
+              "Decision #26 documents penetration testing dependency on UAT completion",
+              "Historical testing phase compression has been a recurring pattern",
+              "Only 40 days remaining creates minimal buffer for sequential activities"
+            ]
+          },
+          "estimatedResolutionTime": "1-2 weeks",
+          "reasoning": "Decision #26 states that penetration testing can only commence once all application components are deployed to ACPT and UAT testing has been completed. With UAT scheduled for August 14-25 and production deployment on September 2, only 5 business days remain for penetration testing execution and any required remediation. Any UAT extension or issues discovered will directly compress the penetration testing timeline. Exploring parallel execution of penetration testing with UAT tail (August 20-25) and pre-staging the penetration test team and scope is essential to maintain the September 2 deployment date.",
+          "confidenceScore": 78,
+          "riskPriority": "Medium",
+          "riskType": "Security Testing",
+          "timeToMaterialization": "30-45 Days",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "UAT completion status and timeline adherence",
+            "Penetration testing team availability and readiness",
+            "Security remediation capacity and response time",
+            "Production deployment gate criteria and approval status",
+            "Parallel testing opportunity assessment"
+          ],
+          "businessCriticality": "Medium-High",
+          "evidence": {
+            "projectIndicators": [
+              "Decision #26: Penetration testing can commence once all application components defined within the approved trust boundary are deployed to ACPT and UAT testing has been completed",
+              "UAT scheduled August 14-25",
+              "Production deployment scheduled September 2 (5 business days after UAT completion)",
+              "Penetration testing listed as upcoming milestone",
+              "Only 40 days remaining for all remaining activities"
+            ],
+            "historicalReferences": []
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Coordinate with security/penetration testing team to pre-stage testing resources, scope, and schedule for rapid execution after UAT completion",
+                "Explore opportunity for parallel penetration testing execution during UAT tail (August 20-25) to reduce schedule compression",
+                "Prepare penetration testing scope documentation covering all application components within approved trust boundary deployed to ACPT",
+                "Establish penetration testing defect triage and resolution process with priority focus on critical and high severity vulnerabilities"
+              ]
+            },
+            {
+              "stage": "UAT (AUGUST 14-25)",
+              "actions": [
+                "Monitor UAT progress to confirm August 25 completion target is achievable and penetration testing can commence on schedule",
+                "Initiate penetration testing during UAT tail (August 20-25) if parallel execution is approved and ACPT environment is stable",
+                "Prepare penetration testing environment validation to ensure all components are deployed and accessible for security testing",
+                "Establish war room support for rapid penetration testing defect resolution to prevent production deployment delay"
+              ]
+            },
+            {
+              "stage": "PENETRATION TESTING (AUGUST 25 - SEPTEMBER 1)",
+              "actions": [
+                "Execute penetration testing immediately upon UAT completion (or during UAT tail if parallel approach approved) with focus on critical security vulnerabilities",
+                "Conduct daily penetration testing defect triage with priority resolution of critical and high severity findings before production deployment",
+                "Validate security remediation effectiveness through re-testing to confirm vulnerabilities are fully resolved",
+                "Obtain penetration testing sign-off by September 1 to enable September 2 production deployment",
+                "Document any accepted security risks or deferred remediation items for production deployment approval and operational awareness"
+              ]
+            },
+            {
+              "stage": "ONGOING",
+              "actions": [
+                "Monitor UAT completion status to confirm penetration testing can commence on August 25 as planned",
+                "Track penetration testing execution progress and defect discovery rate to assess production deployment readiness",
+                "Review security remediation capacity and response time to ensure critical vulnerabilities can be resolved within compressed timeline",
+                "Maintain daily coordination with security team during penetration testing to expedite defect resolution and sign-off"
+              ]
+            }
+          ],
+          "recommendations": {
+            "preventive": "Establish security testing strategy with penetration testing scheduled in parallel with UAT tail or with minimum 2-week buffer after UAT completion to prevent production deployment delay; implement continuous security scanning throughout development to detect and resolve vulnerabilities early",
+            "monitoring": "Track daily: UAT completion status and timeline adherence, penetration testing team availability and readiness, security remediation capacity and response time, production deployment gate criteria and approval status, and parallel testing opportunity assessment",
+            "contingency": "If UAT extends beyond August 25 or penetration testing discovers critical vulnerabilities requiring extended remediation time, prepare production deployment delay contingency to September 5-9 with stakeholder communication and hypercare period adjustment, and implement risk-based deployment approach where non-critical vulnerabilities are accepted with remediation plan for post-production resolution",
+            "strategic": "Implement security testing framework with continuous vulnerability scanning, automated security testing in CI/CD pipeline, and early penetration testing during development to detect issues before final testing phase; establish security center of excellence to standardize approach and accelerate remediation"
+          },
+          "responseRationale": "Decision #26 states penetration testing can only commence after UAT completion, and with UAT scheduled for August 14-25 and production deployment on September 2 (only 5 business days after UAT), exploring parallel penetration testing during UAT tail (August 20-25) and pre-staging security testing resources are essential to prevent production deployment delay from compressed security validation timeline."
+        },
+        {
+          "riskId": "R009",
+          "riskTitle": "Offshore Team Productivity Impact from Citrix Performance Issues",
+          "riskDescription": "Citrix server slowness and timeouts continue to impact offshore team productivity during a critical delivery phase with compressed timelines.",
+          "riskCategory": "Infrastructure",
+          "currentProjectPhase": "PI5 Sprint 3 - Build & Test",
+          "expectedOccurrencePhase": "Integration Testing and UAT Support",
+          "likelyImpactPhase": "Integration Testing and UAT",
+          "rootCause": "Citrix infrastructure performance degradation; insufficient bandwidth or server capacity; network connectivity issues.",
+          "triggerConditions": [
+            "Citrix performance issues persist beyond current sprint",
+            "Offshore team productivity continues to be impacted",
+            "Critical integration or UAT support activities delayed",
+            "Alternative connectivity options not implemented"
+          ],
+          "potentialImpact": {
+            "schedule": "Cumulative productivity loss of 5-10%; potential activity delays of 2-5 days",
+            "cost": "Reduced offshore team efficiency; potential onshore resource reallocation",
+            "quality": "Compressed testing time; reduced defect detection effectiveness",
+            "customer": "Delivery confidence impact; potential escalation",
+            "operations": "Team morale impact; continuity risk"
+          },
+          "likelihood": "Medium-High",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": [
+              "Historical Citrix access delayed to March 30",
+              "Citrix performance issues have been recurring throughout project",
+              "Infrastructure performance identified as operational weakness"
+            ]
+          },
+          "estimatedResolutionTime": "2-4 weeks",
+          "reasoning": "The WSR explicitly states 'Citrix server slowness and timeouts impacting offshore team efforts.' Historical evidence shows Citrix access was delayed to March 30, and infrastructure performance has been a recurring challenge. With only 40 days remaining and offshore team support critical for integration testing and UAT, continued Citrix performance issues will create cumulative productivity loss. Escalating to Premera IT, exploring alternative connectivity options, and shifting critical work to onshore if issues persist are necessary mitigation actions.",
+          "confidenceScore": 76,
+          "riskPriority": "Medium",
+          "riskType": "Infrastructure Performance",
+          "timeToMaterialization": "Immediate (already materializing)",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Citrix performance metrics and incident frequency",
+            "Offshore team productivity and velocity metrics",
+            "Alternative connectivity option implementation status",
+            "IT escalation and resolution progress",
+            "Work allocation between onshore and offshore teams"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "WSR challenge: Citrix server slowness and timeouts impacting offshore team efforts",
+              "Only 40 days remaining for integration, testing, UAT, and deployment",
+              "Offshore team support critical for integration and UAT phases",
+              "Operational weakness: Infrastructure access and performance issues"
+            ],
+            "historicalReferences": [
+              "Citrix access delayed to March 30",
+              "Historical infrastructure and access delays documented",
+              "Delivery pattern: Infrastructure and access delays identified as recurring"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Escalate Citrix performance issues to Premera IT with detailed incident documentation including frequency, duration, and productivity impact quantification",
+                "Request dedicated IT support to diagnose and resolve Citrix server slowness and timeout issues with target resolution within 5 business days",
+                "Explore alternative connectivity options including direct VPN access, Azure Virtual Desktop, or local development environment setup to reduce Citrix dependency",
+                "Assess critical integration and UAT support activities at risk from offshore team productivity loss and prepare onshore backup coverage if needed"
+              ]
+            },
+            {
+              "stage": "BEFORE UAT START (AUGUST 14)",
+              "actions": [
+                "Implement Citrix performance improvements or alternative connectivity solution by August 1 to restore offshore team productivity before critical UAT support phase",
+                "Validate offshore team connectivity and productivity restoration through monitoring of development velocity and incident frequency",
+                "Establish Citrix performance monitoring and incident tracking to detect recurrence and enable rapid IT response",
+                "Prepare onshore/offshore work allocation strategy to shift critical UAT support activities to onshore team if Citrix issues persist"
+              ]
+            },
+            {
+              "stage": "UAT AND DEPLOYMENT SUPPORT (AUGUST 14 - SEPTEMBER 2)",
+              "actions": [
+                "Monitor offshore team productivity and Citrix performance throughout UAT and deployment phases with daily incident tracking",
+                "Shift critical UAT defect resolution and deployment support activities to onshore team if Citrix performance issues impact offshore team effectiveness",
+                "Maintain IT escalation path for rapid Citrix issue resolution during critical UAT and deployment phases",
+                "Document offshore team productivity impact and Citrix incident frequency for lessons learned and future project planning"
+              ]
+            },
+            {
+              "stage": "ONGOING",
+              "actions": [
+                "Track Citrix performance metrics and incident frequency weekly to measure improvement and detect recurrence",
+                "Monitor offshore team productivity and velocity metrics to assess Citrix impact and validate restoration",
+                "Review alternative connectivity option implementation status to reduce Citrix dependency for future work",
+                "Maintain IT coordination for ongoing Citrix performance monitoring and proactive issue prevention"
+              ]
+            }
+          ],
+          "recommendations": {
+            "preventive": "Establish infrastructure performance SLAs with proactive monitoring, rapid incident response, and alternative connectivity options to prevent productivity loss; implement local development environment capability to reduce VDI dependency for offshore teams",
+            "monitoring": "Track daily: Citrix performance metrics and incident frequency, offshore team productivity and velocity metrics, alternative connectivity option implementation status, IT escalation and resolution progress, and work allocation between onshore and offshore teams",
+            "contingency": "If Citrix performance issues cannot be resolved before UAT or continue to impact offshore team productivity, shift critical UAT support and deployment activities to onshore team with extended onshore hours or weekend coverage, and prepare budget adjustment for increased onshore resource utilization",
+            "strategic": "Implement infrastructure resilience framework with redundant connectivity options, local development environment capability, and proactive performance monitoring to eliminate single-point-of-failure infrastructure dependencies; establish infrastructure support SLAs with guaranteed response times for critical project phases"
+          },
+          "responseRationale": "WSR explicitly states Citrix server slowness and timeouts are impacting offshore team efforts, and historical evidence shows Citrix access was delayed to March 30 with recurring infrastructure performance issues, and with only 40 days remaining for integration testing, UAT, and deployment requiring offshore team support, immediate IT escalation and alternative connectivity exploration are essential to prevent cumulative productivity loss from compromising delivery schedule."
+        }
+      ]
+    }
+  ]
+}
