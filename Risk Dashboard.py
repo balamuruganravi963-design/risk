@@ -141,8 +141,6 @@ else:
 
 st.divider()
 
-st.divider()
-
 # ---------------- RISK TABLE ---------------- #
 st.subheader("Predicted Risks")
 
@@ -162,8 +160,6 @@ else:
                 "Likelihood": r.get("likelihood", "-"),
                 "Impact Severity": r.get("impactSeverity", "-"),
                 "Priority": r.get("riskPriority", "-"),
-                "Confidence Score": r.get("confidenceScore", "-"),
-                "Time To Materialization": r.get("timeToMaterialization", "-"),
             }
             for r in risks
         ]
@@ -259,3 +255,31 @@ else:
                     }
                 ).set_index("Type")
                 st.table(df_recommendations)
+
+st.divider()
+
+# ---------------- OVERALL SUMMARY (computed) ---------------- #
+st.subheader("Overall Summary")
+
+if risks:
+    total_risks = len(risks)
+    rating_counts_summary = Counter(r.get("overallRiskRating", "Unknown") for r in risks)
+    category_counts_summary = Counter(r.get("riskCategory", "Unknown") for r in risks)
+    top_category, top_category_count = category_counts_summary.most_common(1)[0]
+    critical_priority_count = sum(1 for r in risks if r.get("riskPriority") == "Critical")
+
+    summary_text = (
+        f"**{project.get('projectName', 'This project')}** carries **{total_risks}** predicted risk"
+        f"{'s' if total_risks != 1 else ''}: "
+        f"{rating_counts_summary.get('Critical', 0)} Critical, "
+        f"{rating_counts_summary.get('High', 0)} High, "
+        f"{rating_counts_summary.get('Medium', 0)} Medium, and "
+        f"{rating_counts_summary.get('Low', 0)} Low. "
+        f"The most frequent risk category is **{top_category}** ({top_category_count} risk"
+        f"{'s' if top_category_count != 1 else ''}), and "
+        f"**{critical_priority_count}** risk{'s are' if critical_priority_count != 1 else ' is'} "
+        f"flagged as Critical priority."
+    )
+    st.write(summary_text)
+else:
+    st.write("No risks recorded for this project.")
