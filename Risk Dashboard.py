@@ -2,6 +2,7 @@ import streamlit as st
 import requests
 import base64
 import json
+import re
 import pandas as pd
 from collections import Counter
 
@@ -15,49 +16,6 @@ GITHUB_BRANCH = "main"
 # If set, add this in Streamlit Cloud -> App settings -> Secrets:
 #   GITHUB_READ_TOKEN = "ghp_xxxxxxxxxxxx"
 GITHUB_READ_TOKEN = st.secrets.get("GITHUB_READ_TOKEN", "")
-
-# Severity/priority color coding, reused for both Overall Rating and Risk Priority.
-rating_icon = {"Critical": "🔴", "High": "🟠", "Medium": "🟡", "Low": "🟢"}
-
-
-def has_value(value):
-    """
-    Dashboard-only rendering rule: a field 'has a value' if it isn't None,
-    isn't an empty/whitespace-only string, and isn't an empty list/dict.
-    Numbers (including 0) and booleans always count as present, since a
-    real 0 (e.g. confidenceScore) can't be distinguished from a default 0.
-    """
-    if value is None:
-        return False
-    if isinstance(value, str):
-        return value.strip() != ""
-    if isinstance(value, (list, dict)):
-        return len(value) > 0
-    return True
-
-
-def priority_display(value):
-    """Color-coded Risk Priority label, or '-' if not present."""
-    if not has_value(value):
-        return "-"
-    return f"{rating_icon.get(value, '⚪')} {value}"
-
-
-def render_dynamic_grid(pairs, cols_per_row=4):
-    """
-    Render (label, value) pairs as inline '**Label:** value' text laid out
-    across a row of columns — NOT a data table. Pairs whose value is empty
-    are dropped first, then the remaining pairs are chunked into rows of
-    cols_per_row, so the grid always reflects only the fields that actually
-    have data for this risk.
-    """
-    visible = [(label, val) for label, val in pairs if has_value(val)]
-    for i in range(0, len(visible), cols_per_row):
-        chunk = visible[i:i + cols_per_row]
-        cols = st.columns(len(chunk))
-        for col, (label, val) in zip(cols, chunk):
-            col.write(f"**{label}:** {val}")
-
 
 # ---------------- GET DATA ---------------- #
 # st.query_params automatically URL-decodes the value, so "path" arrives
@@ -190,16 +148,15 @@ st.subheader("Predicted Risks")
 if not risks:
     st.write("No risks recorded for this project.")
 else:
-    # Summary table: Risk ID, Risk Title, Category, Risk Priority (color-coded).
-    # Overall Rating, Risk Type, Likelihood, and Impact Severity are intentionally
-    # left out of this table — they're still available in each risk's detail panel.
+    rating_icon = {"Critical": "🔴", "High": "🟠", "Medium": "🟡", "Low": "🟢"}
+
     df_risks = pd.DataFrame(
         [
             {
                 "Risk ID": r.get("riskId", "-"),
                 "Risk Title": r.get("riskTitle", "-"),
-                "Category": r.get("riskCategory") or "-",
-                "Risk Priority": priority_display(r.get("riskPriority", "")),
+                "Category": r.get("riskCategory", "-"),
+                "Risk Priority": f"{rating_icon.get(r.get('riskPriority', 'Unknown'), '⚪')} {r.get('riskPriority', '-')}",
             }
             for r in risks
         ]
@@ -209,6 +166,24 @@ else:
     st.write("**Risk Details**")
     st.caption("Expand the ➕ next to a risk title for its full breakdown.")
 
+    def has_value(value):
+        """A field is considered present only if it has real, non-empty content."""
+        return value not in (None, "", [], {})
+
+    def humanize_key(key):
+        """
+        Turn a raw JSON key into a readable label: 'schedule' -> 'Schedule',
+        'regulatoryImpact' -> 'Regulatory Impact'. Keys that already look
+        human-written (contain a space or underscore, e.g. recommendation
+        category names like 'Vendor Management') are left as-is aside from
+        title-casing, since they're already meant to be displayed verbatim.
+        """
+        s = str(key)
+        if " " not in s and "_" not in s:
+            s = re.sub(r"(?<!^)(?=[A-Z])", " ", s)
+        s = s.replace("_", " ")
+        return s.strip().title()
+
     for r in risks:
         risk_id = r.get("riskId", "-")
         title = r.get("riskTitle", "Untitled Risk")
@@ -216,95 +191,97 @@ else:
         icon = rating_icon.get(overall_rating, "⚪")
 
         with st.expander(f"➕ [{risk_id}] {title} — {icon} {overall_rating}"):
-            # ---- Key attributes (dynamic: only fields with a value are shown, ---- #
-            # ---- rendered inline as bold Label: value text, not a table)     ---- #
-            attribute_rows = [
-                ("Category", r.get("riskCategory", "")),
-                ("Risk Type", r.get("riskType", "")),
-                ("Likelihood", r.get("likelihood", "")),
-                ("Impact Severity", r.get("impactSeverity", "")),
-                ("Risk Priority", priority_display(r.get("riskPriority", "")) if has_value(r.get("riskPriority")) else ""),
-                ("Time To Materialization", r.get("timeToMaterialization", "")),
-                ("Preventability", r.get("preventability", "")),
-                ("Business Criticality", r.get("businessCriticality", "")),
-                ("Estimated Resolution Time", r.get("estimatedResolutionTime", "")),
+            # Quick facts: only include fields the upstream JSON actually supplied.
+            quick_fact_fields = [
+                ("Category", "riskCategory", None),
+                ("Risk Type", "riskType", None),
+                ("Likelihood", "likelihood", None),
+                ("Impact Severity", "impactSeverity", None),
+                ("Risk Priority", "riskPriority", "priority"),
+                ("Confidence Score", "confidenceScore", None),
+                ("Time To Materialization", "timeToMaterialization", None),
+                ("Preventability", "preventability", None),
+                ("Business Criticality", "businessCriticality", None),
+                ("Estimated Resolution Time", "estimatedResolutionTime", None),
             ]
-            render_dynamic_grid(attribute_rows, cols_per_row=4)
+            quick_facts = []
+            for label, key, kind in quick_fact_fields:
+                value = r.get(key)
+                if has_value(value):
+                    if kind == "priority":
+                        value = f"{rating_icon.get(value, '⚪')} {value}"
+                    quick_facts.append({"Field": label, "Detail": value})
+            if quick_facts:
+                st.table(pd.DataFrame(quick_facts).set_index("Field"))
 
-            # ---- Description / Root cause (dynamic) ---- #
-            if has_value(r.get("riskDescription")):
-                st.write(f"**Description:** {r.get('riskDescription')}")
-            if has_value(r.get("rootCause")):
-                st.write(f"**Root Cause:** {r.get('rootCause')}")
+            description = r.get("riskDescription")
+            if has_value(description):
+                st.write(f"**Description:** {description}")
 
-            # ---- Phases (dynamic, inline grid) ---- #
-            phase_rows = [
-                ("Current Project Phase", r.get("currentProjectPhase", "")),
-                ("Expected Occurrence Phase", r.get("expectedOccurrencePhase", "")),
-                ("Likely Impact Phase", r.get("likelyImpactPhase", "")),
+            root_cause = r.get("rootCause")
+            if has_value(root_cause):
+                st.write(f"**Root Cause:** {root_cause}")
+
+            phase_fields = [
+                ("Current Project Phase", "currentProjectPhase"),
+                ("Expected Occurrence Phase", "expectedOccurrencePhase"),
+                ("Likely Impact Phase", "likelyImpactPhase"),
             ]
-            render_dynamic_grid(phase_rows, cols_per_row=3)
+            phase_facts = [
+                {"Field": label, "Detail": r.get(key)}
+                for label, key in phase_fields
+                if has_value(r.get(key))
+            ]
+            if phase_facts:
+                st.table(pd.DataFrame(phase_facts).set_index("Field"))
 
-            # ---- Trigger Conditions (dynamic) ---- #
             trigger_conditions = r.get("triggerConditions", [])
             if has_value(trigger_conditions):
                 st.write("**Trigger Conditions**")
                 for item in trigger_conditions:
                     st.write(f"- {item}")
 
-            # ---- Potential Impact (dynamic per dimension) ---- #
-            potential_impact = r.get("potentialImpact", {}) or {}
+            # Potential Impact — dynamic: the Risk Forecasting Agent's impact
+            # dimensions are not guaranteed to be a fixed schedule/cost/quality/
+            # customer/operations set, so render whichever dimension keys are
+            # actually present on this risk, in the order the source gave them.
+            potential_impact = r.get("potentialImpact") or {}
             impact_rows = [
-                (label, potential_impact.get(key, ""))
-                for label, key in [
-                    ("Schedule", "schedule"),
-                    ("Cost", "cost"),
-                    ("Quality", "quality"),
-                    ("Customer", "customer"),
-                    ("Operations", "operations"),
-                ]
+                {"Dimension": humanize_key(key), "Detail": value}
+                for key, value in potential_impact.items()
+                if has_value(value)
             ]
-            visible_impact = [(label, val) for label, val in impact_rows if has_value(val)]
-            if visible_impact:
+            if impact_rows:
                 st.write("**Potential Impact**")
-                df_impact = pd.DataFrame(visible_impact, columns=["Dimension", "Detail"]).set_index("Dimension")
-                st.table(df_impact)
+                st.table(pd.DataFrame(impact_rows).set_index("Dimension"))
 
-            # ---- Mitigation Plan (dynamic: only stages with content) ---- #
-            mitigation_plan = r.get("mitigationPlan", []) or []
-            visible_stages = [
-                stage_entry for stage_entry in mitigation_plan
-                if has_value(stage_entry.get("stage")) or has_value(stage_entry.get("actions"))
+            # Mitigation Plan (this risk's own stages/actions) — only stages with actions.
+            mitigation_plan = r.get("mitigationPlan") or []
+            mitigation_rows = [
+                {
+                    "Stage": stage_entry.get("stage", "-"),
+                    "Actions": "\n".join(f"- {a}" for a in stage_entry.get("actions", [])),
+                }
+                for stage_entry in mitigation_plan
+                if has_value(stage_entry.get("actions"))
             ]
-            if visible_stages:
+            if mitigation_rows:
                 st.write("**Mitigation Plan**")
-                df_mitigation_stages = pd.DataFrame(
-                    [
-                        {
-                            "Stage": stage_entry.get("stage", "-"),
-                            "Actions": "\n".join(f"- {a}" for a in stage_entry.get("actions", [])),
-                        }
-                        for stage_entry in visible_stages
-                    ]
-                ).set_index("Stage")
-                st.table(df_mitigation_stages)
+                st.table(pd.DataFrame(mitigation_rows).set_index("Stage"))
 
-            # ---- Recommendations (dynamic per sub-field) ---- #
-            recommendations = r.get("recommendations", {}) or {}
-            rec_rows = [
-                (label, recommendations.get(key, ""))
-                for label, key in [
-                    ("Preventive", "preventive"),
-                    ("Monitoring", "monitoring"),
-                    ("Contingency", "contingency"),
-                    ("Strategic", "strategic"),
-                ]
+            # Recommendations — dynamic: the Mitigation Agent's recommendation
+            # categories vary per risk (e.g. "Governance", "Planning", "Vendor
+            # Management"), not a fixed preventive/monitoring/contingency/strategic
+            # set, so render whichever category keys are actually present.
+            recommendations = r.get("recommendations") or {}
+            recommendation_rows = [
+                {"Type": str(key), "Detail": value}
+                for key, value in recommendations.items()
+                if has_value(value)
             ]
-            visible_rec = [(label, val) for label, val in rec_rows if has_value(val)]
-            if visible_rec:
+            if recommendation_rows:
                 st.write("**Recommendations**")
-                df_recommendations = pd.DataFrame(visible_rec, columns=["Type", "Detail"]).set_index("Type")
-                st.table(df_recommendations)
+                st.table(pd.DataFrame(recommendation_rows).set_index("Type"))
 
 st.divider()
 
