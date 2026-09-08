@@ -214,7 +214,6 @@ else:
                 ("Likelihood", r.get("likelihood")),
                 ("Impact Severity", r.get("impactSeverity")),
                 ("Risk Priority", f"{rating_icon.get(priority_value, '⚪')} {priority_value}" if has_value(priority_value) else ""),
-              
                 ("Time To Materialization", r.get("timeToMaterialization")),
                 ("Preventability", r.get("preventability")),
                 ("Business Criticality", r.get("businessCriticality")),
