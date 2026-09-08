@@ -108,25 +108,28 @@ st.divider()
 # ---------------- RISK SUMMARY (computed) ---------------- #
 st.subheader("Risk Summary")
 
-rating_counts = Counter(r.get("overallRiskRating", "Unknown") for r in risks)
+# Uses riskPriority (not overallRiskRating) so these counts always agree with
+# the color-coded Risk Priority column shown in the Predicted Risks table below.
+priority_counts = Counter(r.get("riskPriority", "Unknown") for r in risks)
 rc1, rc2, rc3, rc4 = st.columns(4)
-rc1.metric("Critical", rating_counts.get("Critical", 0))
-rc2.metric("High", rating_counts.get("High", 0))
-rc3.metric("Medium", rating_counts.get("Medium", 0))
-rc4.metric("Low", rating_counts.get("Low", 0))
+rc1.metric("Critical", priority_counts.get("Critical", 0))
+rc2.metric("High", priority_counts.get("High", 0))
+rc3.metric("Medium", priority_counts.get("Medium", 0))
+rc4.metric("Low", priority_counts.get("Low", 0))
 
 st.divider()
 
 # ---------------- CATEGORY DISTRIBUTION (table, not chart) ---------------- #
 st.subheader("Risk Category Distribution")
 
+# Also keyed on riskPriority, for the same reason as Risk Summary above.
 severity_order = {"Critical": 0, "High": 1, "Medium": 2, "Low": 3}
 if risks:
     df_cat_dist = pd.DataFrame(
         [
             {
                 "Category": r.get("riskCategory", "Unknown"),
-                "Rating": r.get("overallRiskRating", "Unknown"),
+                "Rating": r.get("riskPriority", "Unknown"),
             }
             for r in risks
         ]
@@ -202,10 +205,12 @@ else:
     for r in risks:
         risk_id = r.get("riskId", "-")
         title = r.get("riskTitle", "Untitled Risk")
-        overall_rating = r.get("overallRiskRating", "Unknown")
-        icon = rating_icon.get(overall_rating, "⚪")
+        # Uses riskPriority (not overallRiskRating), consistent with the Risk
+        # Summary, Category Distribution, and Predicted Risks table above.
+        priority_for_header = r.get("riskPriority", "Unknown")
+        icon = rating_icon.get(priority_for_header, "⚪")
 
-        with st.expander(f"➕ [{risk_id}] {title} — {icon} {overall_rating}"):
+        with st.expander(f"➕ [{risk_id}] {title} — {icon} {priority_for_header}"):
             # Key attributes: inline grid, only fields the upstream JSON actually supplied.
             priority_value = r.get("riskPriority")
             attribute_rows = [
@@ -292,22 +297,21 @@ st.subheader("Overall Summary")
 
 if risks:
     total_risks = len(risks)
-    rating_counts_summary = Counter(r.get("overallRiskRating", "Unknown") for r in risks)
+    # Uses riskPriority (not overallRiskRating), consistent with Risk Summary,
+    # Category Distribution, and the Predicted Risks table above.
+    priority_counts_summary = Counter(r.get("riskPriority", "Unknown") for r in risks)
     category_counts_summary = Counter(r.get("riskCategory", "Unknown") for r in risks)
     top_category, top_category_count = category_counts_summary.most_common(1)[0]
-    critical_priority_count = sum(1 for r in risks if r.get("riskPriority") == "Critical")
 
     summary_text = (
         f"**{project.get('projectName', 'This project')}** carries **{total_risks}** predicted risk"
         f"{'s' if total_risks != 1 else ''}: "
-        f"{rating_counts_summary.get('Critical', 0)} Critical, "
-        f"{rating_counts_summary.get('High', 0)} High, "
-        f"{rating_counts_summary.get('Medium', 0)} Medium, and "
-        f"{rating_counts_summary.get('Low', 0)} Low. "
+        f"{priority_counts_summary.get('Critical', 0)} Critical, "
+        f"{priority_counts_summary.get('High', 0)} High, "
+        f"{priority_counts_summary.get('Medium', 0)} Medium, and "
+        f"{priority_counts_summary.get('Low', 0)} Low. "
         f"The most frequent risk category is **{top_category}** ({top_category_count} risk"
-        f"{'s' if top_category_count != 1 else ''}), and "
-        f"**{critical_priority_count}** risk{'s are' if critical_priority_count != 1 else ' is'} "
-        f"flagged as Critical priority."
+        f"{'s' if top_category_count != 1 else ''})."
     )
     st.write(summary_text)
 else:
