@@ -184,6 +184,21 @@ else:
         s = s.replace("_", " ")
         return s.strip().title()
 
+    def render_dynamic_grid(pairs, cols_per_row=4):
+        """
+        Render (label, value) pairs as inline '**Label:** value' text laid out
+        across a row of columns — NOT a data table. Pairs whose value is empty
+        are dropped first, then the remaining pairs are chunked into rows of
+        cols_per_row, so the grid always reflects only the fields that
+        actually have data for this risk.
+        """
+        visible = [(label, val) for label, val in pairs if has_value(val)]
+        for i in range(0, len(visible), cols_per_row):
+            chunk = visible[i:i + cols_per_row]
+            cols = st.columns(len(chunk))
+            for col, (label, val) in zip(cols, chunk):
+                col.write(f"**{label}:** {val}")
+
     for r in risks:
         risk_id = r.get("riskId", "-")
         title = r.get("riskTitle", "Untitled Risk")
@@ -191,28 +206,21 @@ else:
         icon = rating_icon.get(overall_rating, "⚪")
 
         with st.expander(f"➕ [{risk_id}] {title} — {icon} {overall_rating}"):
-            # Quick facts: only include fields the upstream JSON actually supplied.
-            quick_fact_fields = [
-                ("Category", "riskCategory", None),
-                ("Risk Type", "riskType", None),
-                ("Likelihood", "likelihood", None),
-                ("Impact Severity", "impactSeverity", None),
-                ("Risk Priority", "riskPriority", "priority"),
-                ("Confidence Score", "confidenceScore", None),
-                ("Time To Materialization", "timeToMaterialization", None),
-                ("Preventability", "preventability", None),
-                ("Business Criticality", "businessCriticality", None),
-                ("Estimated Resolution Time", "estimatedResolutionTime", None),
+            # Key attributes: inline grid, only fields the upstream JSON actually supplied.
+            priority_value = r.get("riskPriority")
+            attribute_rows = [
+                ("Category", r.get("riskCategory")),
+                ("Risk Type", r.get("riskType")),
+                ("Likelihood", r.get("likelihood")),
+                ("Impact Severity", r.get("impactSeverity")),
+                ("Risk Priority", f"{rating_icon.get(priority_value, '⚪')} {priority_value}" if has_value(priority_value) else ""),
+                ("Confidence Score", r.get("confidenceScore")),
+                ("Time To Materialization", r.get("timeToMaterialization")),
+                ("Preventability", r.get("preventability")),
+                ("Business Criticality", r.get("businessCriticality")),
+                ("Estimated Resolution Time", r.get("estimatedResolutionTime")),
             ]
-            quick_facts = []
-            for label, key, kind in quick_fact_fields:
-                value = r.get(key)
-                if has_value(value):
-                    if kind == "priority":
-                        value = f"{rating_icon.get(value, '⚪')} {value}"
-                    quick_facts.append({"Field": label, "Detail": value})
-            if quick_facts:
-                st.table(pd.DataFrame(quick_facts).set_index("Field"))
+            render_dynamic_grid(attribute_rows, cols_per_row=4)
 
             description = r.get("riskDescription")
             if has_value(description):
@@ -222,18 +230,13 @@ else:
             if has_value(root_cause):
                 st.write(f"**Root Cause:** {root_cause}")
 
-            phase_fields = [
-                ("Current Project Phase", "currentProjectPhase"),
-                ("Expected Occurrence Phase", "expectedOccurrencePhase"),
-                ("Likely Impact Phase", "likelyImpactPhase"),
+            # Phases: inline grid, same dynamic-only-if-present behavior.
+            phase_rows = [
+                ("Current Project Phase", r.get("currentProjectPhase")),
+                ("Expected Occurrence Phase", r.get("expectedOccurrencePhase")),
+                ("Likely Impact Phase", r.get("likelyImpactPhase")),
             ]
-            phase_facts = [
-                {"Field": label, "Detail": r.get(key)}
-                for label, key in phase_fields
-                if has_value(r.get(key))
-            ]
-            if phase_facts:
-                st.table(pd.DataFrame(phase_facts).set_index("Field"))
+            render_dynamic_grid(phase_rows, cols_per_row=3)
 
             trigger_conditions = r.get("triggerConditions", [])
             if has_value(trigger_conditions):
