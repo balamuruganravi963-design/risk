@@ -222,7 +222,6 @@ else:
                 ("Category", r.get("riskCategory", "")),
                 ("Risk Type", r.get("riskType", "")),
                 ("Likelihood", r.get("likelihood", "")),
-                ("Confidence Score", r.get("confidenceScore", None)),
                 ("Impact Severity", r.get("impactSeverity", "")),
                 ("Risk Priority", priority_display(r.get("riskPriority", "")) if has_value(r.get("riskPriority")) else ""),
                 ("Time To Materialization", r.get("timeToMaterialization", "")),
