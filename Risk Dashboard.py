@@ -3,6 +3,7 @@ import requests
 import base64
 import json
 import re
+import html
 import pandas as pd
 from collections import Counter
 
@@ -267,9 +268,10 @@ else:
                 )
 
             # Mitigation Plan (this risk's own stages/actions) — only stages with actions.
-            # Rendered as a stage heading followed by one bullet per action (not a table
-            # cell with actions joined together) so every action reliably starts on its
-            # own line instead of running together.
+            # Rendered as a real Stage/Actions table (st.dataframe's grid widget can't
+            # show bulleted, multi-line cell content — text just runs together), so
+            # this builds an HTML table where each stage's Actions cell contains an
+            # actual <ul><li> bullet list, guaranteeing one action per line.
             mitigation_plan = r.get("mitigationPlan") or []
             visible_stages = [
                 stage_entry for stage_entry in mitigation_plan
@@ -277,11 +279,31 @@ else:
             ]
             if visible_stages:
                 st.write("**Mitigation Plan**")
+                rows_html = ""
                 for stage_entry in visible_stages:
-                    stage_label = stage_entry.get("stage", "-")
-                    st.markdown(f"**{stage_label}**")
-                    for action in stage_entry.get("actions", []):
-                        st.write(f"- {action}")
+                    stage_label = html.escape(str(stage_entry.get("stage", "-")))
+                    actions_html = "".join(
+                        f"<li style='margin-bottom:4px;'>{html.escape(str(a))}</li>"
+                        for a in stage_entry.get("actions", [])
+                    )
+                    rows_html += (
+                        "<tr>"
+                        f"<td style='vertical-align:top; padding:10px 12px; border-bottom:1px solid #eee; width:22%; color:#555;'>{stage_label}</td>"
+                        f"<td style='padding:10px 12px; border-bottom:1px solid #eee;'>"
+                        f"<ul style='margin:0; padding-left:1.2em;'>{actions_html}</ul>"
+                        "</td>"
+                        "</tr>"
+                    )
+                table_html = (
+                    "<table style='width:100%; border-collapse:collapse; font-size:0.9rem;'>"
+                    "<thead><tr>"
+                    "<th style='text-align:left; padding:8px 12px; border-bottom:1px solid #ccc; color:#888; font-weight:400;'>Stage</th>"
+                    "<th style='text-align:left; padding:8px 12px; border-bottom:1px solid #ccc; color:#888; font-weight:400;'>Actions</th>"
+                    "</tr></thead>"
+                    f"<tbody>{rows_html}</tbody>"
+                    "</table>"
+                )
+                st.markdown(table_html, unsafe_allow_html=True)
 
             # Recommendations — dynamic: the Mitigation Agent's recommendation
             # categories vary per risk (e.g. "Governance", "Planning", "Vendor
