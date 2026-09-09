@@ -78,7 +78,7 @@ risks_by_project = [
 if risks_by_project:
     st.write("**Risks by Project**")
     df_rbp = pd.DataFrame(risks_by_project)
-    st.table(df_rbp.set_index("Project"))
+    st.dataframe(df_rbp.set_index("Project"), use_container_width=True)
 
 st.divider()
 
@@ -139,7 +139,7 @@ if risks:
     )
     df_cat_dist["__order"] = df_cat_dist["Rating"].map(severity_order).fillna(4)
     df_cat_dist = df_cat_dist.sort_values(["Category", "__order"]).drop(columns="__order")
-    st.table(df_cat_dist.set_index("Category"))
+    st.dataframe(df_cat_dist.set_index("Category"), use_container_width=True)
 else:
     st.write("No category distribution data available.")
 
@@ -164,7 +164,7 @@ else:
             for r in risks
         ]
     )
-    st.table(df_risks.set_index("Risk ID"))
+    st.dataframe(df_risks.set_index("Risk ID"), use_container_width=True)
 
     st.write("**Risk Details**")
     st.caption("Expand the ➕ next to a risk title for its full breakdown.")
@@ -260,7 +260,11 @@ else:
             ]
             if impact_rows:
                 st.write("**Potential Impact**")
-                st.table(pd.DataFrame(impact_rows).set_index("Dimension"))
+                st.dataframe(
+                    pd.DataFrame(impact_rows).set_index("Dimension"),
+                    use_container_width=True,
+                    column_config={"Detail": st.column_config.TextColumn(width="large")},
+                )
 
             # Mitigation Plan (this risk's own stages/actions) — only stages with actions.
             mitigation_plan = r.get("mitigationPlan") or []
@@ -274,7 +278,11 @@ else:
             ]
             if mitigation_rows:
                 st.write("**Mitigation Plan**")
-                st.table(pd.DataFrame(mitigation_rows).set_index("Stage"))
+                st.dataframe(
+                    pd.DataFrame(mitigation_rows).set_index("Stage"),
+                    use_container_width=True,
+                    column_config={"Actions": st.column_config.TextColumn(width="large")},
+                )
 
             # Recommendations — dynamic: the Mitigation Agent's recommendation
             # categories vary per risk (e.g. "Governance", "Planning", "Vendor
@@ -288,7 +296,11 @@ else:
             ]
             if recommendation_rows:
                 st.write("**Recommendations**")
-                st.table(pd.DataFrame(recommendation_rows).set_index("Type"))
+                st.dataframe(
+                    pd.DataFrame(recommendation_rows).set_index("Type"),
+                    use_container_width=True,
+                    column_config={"Detail": st.column_config.TextColumn(width="large")},
+                )
 
 st.divider()
 
