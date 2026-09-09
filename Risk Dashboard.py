@@ -267,22 +267,21 @@ else:
                 )
 
             # Mitigation Plan (this risk's own stages/actions) — only stages with actions.
+            # Rendered as a stage heading followed by one bullet per action (not a table
+            # cell with actions joined together) so every action reliably starts on its
+            # own line instead of running together.
             mitigation_plan = r.get("mitigationPlan") or []
-            mitigation_rows = [
-                {
-                    "Stage": stage_entry.get("stage", "-"),
-                    "Actions": "\n".join(f"- {a}" for a in stage_entry.get("actions", [])),
-                }
-                for stage_entry in mitigation_plan
+            visible_stages = [
+                stage_entry for stage_entry in mitigation_plan
                 if has_value(stage_entry.get("actions"))
             ]
-            if mitigation_rows:
+            if visible_stages:
                 st.write("**Mitigation Plan**")
-                st.dataframe(
-                    pd.DataFrame(mitigation_rows).set_index("Stage"),
-                    use_container_width=True,
-                    column_config={"Actions": st.column_config.TextColumn(width="large")},
-                )
+                for stage_entry in visible_stages:
+                    stage_label = stage_entry.get("stage", "-")
+                    st.markdown(f"**{stage_label}**")
+                    for action in stage_entry.get("actions", []):
+                        st.write(f"- {action}")
 
             # Recommendations — dynamic: the Mitigation Agent's recommendation
             # categories vary per risk (e.g. "Governance", "Planning", "Vendor
