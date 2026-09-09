@@ -79,7 +79,15 @@ risks_by_project = [
 if risks_by_project:
     st.write("**Risks by Project**")
     df_rbp = pd.DataFrame(risks_by_project)
-    st.dataframe(df_rbp.set_index("Project"), use_container_width=True)
+    st.dataframe(
+        df_rbp,
+        use_container_width=True,
+        hide_index=True,
+        column_config={
+            "Project": st.column_config.TextColumn(width="large"),
+            "Predicted Risks Count": st.column_config.NumberColumn(width="small"),
+        },
+    )
 
 st.divider()
 
