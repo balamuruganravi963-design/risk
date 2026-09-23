@@ -1,0 +1,667 @@
+{
+  "clientName": "Vivli Inc",
+  "projects": [
+    {
+      "projectId": "P-VIV-2026-001",
+      "projectName": "Vivli AI Form Check Validation & Agentic Chat Automation",
+      "projectStatus": "Active - Build & Test Phase 2",
+      "riskPredictionDate": "2026-08-13",
+      "predictedRisks": [
+        {
+          "riskId": "R001",
+          "riskTitle": "Undocumented contract extension may trigger payment disputes and resource unavailability",
+          "riskDescription": "The project timeline extends through October 30, 2026, seven weeks beyond the September 11, 2026 contractual end date, without formal amendment or documented extension approval. This creates contractual ambiguity for $36,300 in milestone payments scheduled post-contract and exposes both parties to enforcement disputes, resource commitment gaps, and financial uncertainty.",
+          "riskCategory": "Contractual & Governance",
+          "currentProjectPhase": "Build & Test - Phase 2",
+          "expectedOccurrencePhase": "UAT Sign Off / Deployment",
+          "likelyImpactPhase": "Deployment / Hypercare",
+          "rootCause": "Implicit timeline extension without formal change control or contract amendment process; historical pattern of testing scope expansion beyond original SOW baseline without timely governance formalization.",
+          "triggerConditions": [
+            "PAT completion date reaches September 18, 2026 without extension approval",
+            "Deployment milestone invoice submitted after September 11, 2026",
+            "Resource allocation requests beyond contracted period without formal commitment",
+            "Client or vendor legal review identifies contractual gap"
+          ],
+          "potentialImpact": {
+            "contractual": "Breach of contract terms; unenforceable payment milestones totaling $36,300 (Deployment: $12,100, Hypercare: $24,200); potential legal dispute over scope vs. timeline obligations",
+            "financial": "Payment delays or disputes affecting vendor cash flow; client exposure to unbudgeted extension costs; potential renegotiation of rates or terms under duress",
+            "operational": "Resource unavailability beyond September 11 if team members are reassigned; knowledge loss and delivery disruption; inability to execute deployment and hypercare phases as planned"
+          },
+          "likelihood": "Critical",
+          "impactSeverity": "Critical",
+          "overallRiskRating": "Critical",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R01"
+            ],
+            "recurrenceLikelihood": "Very High",
+            "supportingHistoricalPatterns": [
+              "Historical risk R01: Regression testing and extended PAT added after initiation without SOW amendment, creating scope creep and contractual ambiguity",
+              "Historical mitigation was marked resolved without documented action or formal contract change",
+              "Current project exhibits identical pattern with PAT, regression, deployment, and hypercare extending beyond contract end",
+              "Same client context with weak change control governance observed historically"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The project is operating 49 days beyond its contractual end date without formal extension documentation, directly mirroring historical risk R01 where testing scope expansion occurred without SOW amendment. With 71.4% of time elapsed and critical phases (PAT, regression, deployment, hypercare) scheduled entirely post-contract, the risk of payment disputes and resource gaps is imminent. Historical evidence shows this pattern was marked resolved without effective mitigation, and it has now recurred at critical severity. The absence of stakeholder communication regarding timeline misalignment increases the likelihood of escalation when milestone invoices are submitted or resource commitments are challenged.",
+          "confidenceScore": 95,
+          "riskPriority": "Critical",
+          "riskType": "Contractual",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Extension approval status and contract amendment execution date",
+            "Resource commitment confirmations beyond September 11, 2026",
+            "Payment milestone submission and approval status for Deployment and Hypercare phases"
+          ],
+          "businessCriticality": "Critical",
+          "evidence": {
+            "projectIndicators": [
+              "SOW contract end date: September 11, 2026",
+              "WSR timeline end date: October 30, 2026 (49 days beyond contract)",
+              "No extension mentioned in WSR or documented in SOW amendments",
+              "Deployment milestone ($12,100) scheduled October 10-16, 2026",
+              "Hypercare milestone ($24,200) scheduled October 19-30, 2026",
+              "Schedule status downgraded to 'Under Review' without explanation"
+            ],
+            "historicalReferences": [
+              "Historical risk R01: Regression and extended PAT added post-initiation without SOW amendment",
+              "Historical mitigation status marked resolved without documented action or contract change",
+              "Same client and project category with recurring governance weakness"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Execute formal contract amendment extending term to October 30, 2026 with revised payment milestone dates and resource commitment confirmations"
+              ]
+            },
+            {
+              "stage": "SPRINT 5",
+              "actions": [
+                "Obtain executive sponsor sign-off on extension terms and secure written resource availability confirmations through hypercare completion"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Governance": "Establish change control protocol requiring formal baseline adjustment and contract amendment for any timeline extension exceeding 5 business days beyond original end date",
+            "Stakeholder Communication": "Conduct immediate briefing with client executive sponsor and vendor leadership on timeline reality, extension rationale, and revised payment schedule",
+            "Financial": "Document revised payment terms with milestone dates aligned to extended timeline; obtain finance and legal approval before September 1, 2026"
+          },
+          "responseRationale": "Historical risk R01 showed regression and extended PAT added post-initiation without SOW amendment created contractual ambiguity; marked resolved without documented mitigation. Current project exhibits identical pattern at critical severity with $36,300 at risk and 49-day extension undocumented. Immediate formalization prevents payment disputes and resource gaps that derailed historical closure effectiveness."
+        },
+        {
+          "riskId": "R002",
+          "riskTitle": "Unresolved high-severity dependencies may block UAT readiness and delay acceptance sign-off",
+          "riskDescription": "Four high-severity client dependencies remain unresolved with only 4.5 weeks until contract end and 18 days until PAT commencement. These include pending chat escalation requirements, unconfirmed Azure monitoring processes, automation testing environment provisioning, and Guru Card fit assessment. Without resolution, UAT execution and production readiness will be blocked, forcing PAT delays or incomplete testing scenarios.",
+          "riskCategory": "Dependency & Stakeholder",
+          "currentProjectPhase": "Build & Test - Phase 2",
+          "expectedOccurrencePhase": "Sprint 5 / User Demo",
+          "likelyImpactPhase": "UAT Sign Off / Deployment",
+          "rootCause": "Client dependency fulfillment latency compounded by insufficient escalation and follow-up discipline; historical pattern of environment and requirements clarification delays affecting sprint execution and validation windows.",
+          "triggerConditions": [
+            "Sprint 5 start date (August 17) reached without escalation requirements finalized",
+            "User Demo date (August 28) approached without Azure monitoring confirmation",
+            "PAT start date (August 31) reached without automation testing environment available",
+            "Dependency owners do not respond to escalation by August 20, 2026"
+          ],
+          "potentialImpact": {
+            "schedule": "PAT start delayed by 1-2 weeks; User Demo postponed or conducted with incomplete functionality; deployment timeline pushed further beyond contract end",
+            "quality": "Incomplete test coverage due to missing automation environment; escalation workflow untested; production monitoring gaps creating post-deployment operational risk",
+            "acceptance": "UAT sign-off withheld pending dependency resolution; client acceptance criteria not fully demonstrable; potential scope dispute over incomplete deliverables"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R02"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": [
+              "Historical risk R02: Sprint 1 slipped one week due to broader scope and client cloud environment dependencies",
+              "Historical impact: Reduced validation window and cascading effect on subsequent sprint timelines",
+              "Historical mitigation undefined; risk marked resolved without documented dependency management improvement",
+              "Current project shows same dependency-driven schedule pressure with four unresolved high-severity items"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "Historical evidence shows client environment and requirements dependencies caused sprint delays that cascaded into validation window compression. The current project exhibits the same pattern with four high-severity dependencies still in progress at 71.4% project completion. With Sprint 5 starting in four days and PAT in 18 days, the window for dependency resolution is critically narrow. The historical mitigation was ineffective, and no structured dependency management protocol is evident in current WSR reporting. Given the aggressive timeline with zero buffer and the criticality of these dependencies for demo, testing, and production readiness, the likelihood of UAT delays is high.",
+          "confidenceScore": 90,
+          "riskPriority": "High",
+          "riskType": "Dependency",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Dependency closure status for all four high-severity items by August 20, 2026",
+            "Escalation meeting outcomes and action item completion dates",
+            "Sprint 5 scope adjustment decisions if dependencies remain unresolved"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "Four high-severity dependencies in progress: chat escalation requirements, Azure monitoring confirmation, automation testing environment, Guru Card assessment",
+              "Sprint 5 starts August 17 with dependencies still pending",
+              "User Demo scheduled August 28; PAT scheduled August 31",
+              "No documented escalation timeline or resolution deadline in WSR",
+              "Schedule status under review indicating emerging delivery concerns"
+            ],
+            "historicalReferences": [
+              "Historical risk R02: Sprint 1 delay due to client cloud environment dependencies",
+              "Historical impact: Reduced customer validation window and subsequent sprint timeline pressure",
+              "No documented mitigation or contingency plan in historical record"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Escalate all four high-severity dependencies to client executive sponsor with resolution deadline of August 20, 2026"
+              ]
+            },
+            {
+              "stage": "SPRINT 5",
+              "actions": [
+                "Implement daily dependency status tracking with client service manager; activate contingency scope for any unresolved items by August 22"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Dependency Management": "Establish dependency closure SLA requiring client response within 3 business days and executive escalation trigger at 5 days for high-severity items",
+            "Scope Management": "Prepare contingency scope scenarios for Sprint 5 and User Demo if chat escalation requirements or Azure monitoring remain unresolved by August 22",
+            "Risk Monitoring": "Track dependency age and escalation velocity daily; flag any item exceeding 7 days in pending status for steering committee review"
+          },
+          "responseRationale": "Historical risk R02 showed Sprint 1 slipped one week due to client cloud environment dependencies, reducing validation window and cascading to later sprints. Current project has four unresolved high-severity dependencies with only 18 days to PAT start. Historical mitigation was undefined and risk recurred. Immediate escalation with dated resolution deadline prevents validation window compression that historically impacted acceptance readiness."
+        },
+        {
+          "riskId": "R003",
+          "riskTitle": "Overloaded Sprint 5 scope may result in incomplete feature delivery and regression defects before UAT",
+          "riskDescription": "Sprint 5 is scheduled for only 10 days (August 17-26) but includes bug fixes from prior PAT feedback, enhancement requests, escalation workflow integration, MSAL/RBAC implementation, test coverage expansion, DevOps IaC sign-off, and GPT-5 Mini migration. This scope overload creates high probability of incomplete delivery, rushed implementation quality, and introduction of regression defects immediately before the 15-day PAT phase with no remediation buffer.",
+          "riskCategory": "Schedule & Quality",
+          "currentProjectPhase": "Build & Test - Phase 2",
+          "expectedOccurrencePhase": "Sprint 5",
+          "likelyImpactPhase": "UAT Sign Off",
+          "rootCause": "Accumulation of technical debt (53 work items), PAT feedback rework cycles, and late-stage architectural changes compressed into final sprint without capacity assessment or scope prioritization; historical pattern of optimistic planning without sufficient buffer for complexity and rework.",
+          "triggerConditions": [
+            "Sprint 5 velocity assessment shows capacity insufficient for planned scope",
+            "GPT-5 Mini migration introduces compatibility or performance issues requiring remediation",
+            "MSAL/RBAC implementation encounters integration complexity",
+            "Bug fixes from Sprint 3 PAT feedback consume more than 30% of sprint capacity"
+          ],
+          "potentialImpact": {
+            "schedule": "Sprint 5 extends beyond August 26, delaying User Demo and PAT start; code freeze date (September 18) at risk if PAT uncovers major defects from incomplete Sprint 5 work",
+            "quality": "Rushed implementation increases defect injection rate; regression defects from GPT-5 migration surface during PAT; incomplete test coverage reduces confidence in production readiness",
+            "scope": "Non-critical features deferred to post-deployment; escalation workflow or RBAC functionality delivered with reduced capability; potential client dissatisfaction with incomplete deliverables"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R02"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": [
+              "Historical risk R02: Sprint delay due to broader scope than planned",
+              "Historical pattern: Scope breadth and dependency complexity exceeded sprint capacity",
+              "Current project shows progressive quality debt accumulation with 53 work items and PAT feedback rework cycles",
+              "Current Sprint 5 scope includes technical debt, enhancements, and architectural changes without documented capacity validation"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "Sprint 5 contains an unusually high volume of diverse work types\u2014bug remediation, feature enhancements, security implementation, infrastructure sign-off, and platform migration\u2014within a 10-day window immediately preceding UAT. Historical evidence shows sprint scope underestimation led to delays and validation window compression. Current project intelligence identifies this as a critical weakness with Sprint 5 overload explicitly flagged. The introduction of GPT-5 Mini migration in the final sprint creates regression risk with no validation buffer before PAT. With 53 existing work items and ongoing PAT feedback integration, sprint capacity is likely exceeded, increasing the probability of incomplete delivery or quality compromise.",
+          "confidenceScore": 88,
+          "riskPriority": "High",
+          "riskType": "Schedule",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Sprint 5 velocity tracking against planned scope by August 20, 2026",
+            "Scope prioritization decisions and deferral approvals for non-critical items",
+            "GPT-5 Mini migration validation results and regression test outcomes"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "Sprint 5 scope: bug fixes, enhancements, escalation workflow, MSAL/RBAC, test coverage, DevOps sign-off, GPT-5 migration",
+              "Sprint 5 duration: 10 days (August 17-26)",
+              "53 total work items in backlog including UI bugs and in-flight functionality issues",
+              "PAT early access feedback from Sprints 1-3 created rework in subsequent sprints",
+              "User Demo scheduled August 28 (2 days after Sprint 5 end); PAT starts August 31 (5 days after Sprint 5 end)"
+            ],
+            "historicalReferences": [
+              "Historical risk R02: Sprint 1 delivery slipped due to broader scope",
+              "Historical impact: Reduced validation window and subsequent sprint timeline pressure",
+              "Current delivery pattern: Progressive quality debt accumulation consuming sprint capacity"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Conduct Sprint 5 scope prioritization session with client; defer GPT-5 Mini migration and non-critical enhancements to post-deployment phase"
+              ]
+            },
+            {
+              "stage": "SPRINT 5",
+              "actions": [
+                "Limit Sprint 5 to critical path items: priority bug fixes, escalation workflow core functionality, and MSAL/RBAC essentials; establish daily velocity tracking against reduced scope"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Scope Prioritization": "Classify all Sprint 5 items as critical path, UAT-required, or deferrable; obtain client approval to defer items not essential for acceptance sign-off",
+            "Technical Risk": "Defer GPT-5 Mini migration to post-deployment validation sprint; migration introduces regression risk with insufficient validation window before PAT",
+            "Capacity Management": "Allocate 40% of Sprint 5 capacity to technical debt reduction from backlog; reserve 60% for UAT-critical functionality and integration testing"
+          },
+          "responseRationale": "Historical risk R02 showed sprint delay due to broader scope than planned. Current Sprint 5 contains bug fixes, enhancements, MSAL/RBAC, DevOps sign-off, and GPT-5 migration in 10 days before PAT with zero buffer. Historical pattern of scope underestimation caused validation window compression. Immediate scope reduction to critical path items prevents incomplete delivery and regression defects that would cascade into PAT delays."
+        },
+        {
+          "riskId": "R004",
+          "riskTitle": "Zero-buffer PAT phase may fail to accommodate defect remediation, forcing acceptance delays or production deployment with known issues",
+          "riskDescription": "The 15-day PAT phase (August 31 - September 18) is scheduled with no contingency buffer, immediately followed by code freeze on September 18. With 53 known work items, overloaded Sprint 5, and historical pattern of PAT feedback generating rework, the probability of discovering significant defects requiring remediation is high. The compressed timeline provides no window for defect fixes without delaying code freeze, regression testing, and deployment milestones already scheduled beyond contract end.",
+          "riskCategory": "Acceptance & Quality",
+          "currentProjectPhase": "Build & Test - Phase 2",
+          "expectedOccurrencePhase": "UAT Sign Off",
+          "likelyImpactPhase": "UAT Sign Off / Code Freeze / Deployment",
+          "rootCause": "Optimistic PAT timeline planning without buffer allocation; accumulating technical debt and quality feedback cycles not factored into acceptance phase duration; historical pattern of testing scope expansion and validation window compression.",
+          "triggerConditions": [
+            "PAT execution identifies critical or high-severity defects requiring remediation",
+            "Defect remediation effort exceeds 3-5 days, consuming code freeze buffer",
+            "Client withholds UAT sign-off pending defect resolution",
+            "Regression testing uncovers additional defects from Sprint 5 changes"
+          ],
+          "potentialImpact": {
+            "schedule": "Code freeze delayed beyond September 18; regression testing start delayed beyond September 21; deployment pushed into November; hypercare phase delayed or compressed",
+            "acceptance": "UAT sign-off withheld pending critical defect resolution; client acceptance criteria not met; potential scope negotiation or partial acceptance with waiver",
+            "quality": "Pressure to accept known defects to meet timeline; production deployment with unresolved issues; increased post-deployment support burden and client dissatisfaction"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R01",
+              "R03"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": [
+              "Historical risk R01: Extended PAT duration added after initiation, indicating original PAT timeline was insufficient",
+              "Historical risk R03: Customer feedback timing delays impacted validation and implementation",
+              "Current project: PAT early access reviews consistently generate feedback requiring subsequent sprint rework",
+              "Current project: 53 work items in backlog may surface additional defects during formal PAT"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "Historical evidence shows PAT duration was extended beyond original SOW, indicating acceptance testing timelines are chronically underestimated for this client and project type. Current project has adopted early PAT access reviews that consistently generate rework, demonstrating active quality feedback loops. With 53 known work items, overloaded Sprint 5, and late-stage technical changes (GPT-5 migration, MSAL/RBAC), the probability of PAT uncovering significant defects is high. The 15-day PAT window with immediate code freeze provides no remediation buffer, creating a binary choice between timeline adherence and quality acceptance. Historical customer feedback timing risk (R03) further increases the likelihood of acceptance delays if client review cycles extend beyond planned windows.",
+          "confidenceScore": 87,
+          "riskPriority": "High",
+          "riskType": "Acceptance",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "PAT defect discovery rate and severity distribution during first week (August 31 - September 6)",
+            "Defect remediation velocity and backlog burn-down rate",
+            "Client UAT sign-off decision timeline and conditional acceptance criteria"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "PAT scheduled August 31 - September 18 (15 days) with code freeze immediately following",
+              "53 total work items in current backlog",
+              "Sprint 5 includes bug fixes, enhancements, and architectural changes increasing regression risk",
+              "PAT early access reviews for Sprints 1-3 generated feedback requiring subsequent sprint rework",
+              "No documented PAT contingency plan or defect remediation buffer in WSR timeline"
+            ],
+            "historicalReferences": [
+              "Historical risk R01: Extended PAT duration added after initiation, indicating original timeline insufficient",
+              "Historical risk R03: Customer feedback timing delays impacted validation and implementation sequencing",
+              "Historical pattern: Testing scope expansion beyond original SOW baseline"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "SPRINT 5",
+              "actions": [
+                "Negotiate 2-week PAT extension to October 2, 2026 with client; establish defect remediation protocol with severity-based response SLAs"
+              ]
+            },
+            {
+              "stage": "UAT",
+              "actions": [
+                "Implement daily defect triage with client during first week of PAT; prioritize critical and high-severity items for immediate remediation within 48-hour turnaround"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Acceptance Planning": "Extend PAT phase by 2 weeks to October 2, 2026 to provide defect remediation buffer; adjust code freeze date accordingly",
+            "Quality Management": "Conduct pre-PAT bug triage to address critical and high-severity items from 53-item backlog before formal acceptance testing begins",
+            "Defect Protocol": "Establish defect severity classification and remediation SLA with client: Critical 24 hours, High 48 hours, Medium 5 days; obtain sign-off before PAT start"
+          },
+          "responseRationale": "Historical risk R01 showed extended PAT duration was added after initiation, indicating original timeline was insufficient. Current project has 53 work items, overloaded Sprint 5, and PAT early access pattern generating rework. Zero buffer before code freeze creates binary choice between timeline and quality. Historical testing expansion pattern validates need for explicit buffer allocation to prevent acceptance delays or deployment with known issues."
+        },
+        {
+          "riskId": "R005",
+          "riskTitle": "Late-stage GPT-5 Mini migration may introduce performance or compatibility defects immediately before UAT",
+          "riskDescription": "The migration from current LLM to GPT-5 Mini is scheduled for Sprint 5 (August 17-26), only five days before PAT commencement. Platform migrations of this nature carry inherent risk of performance degradation, response quality changes, integration compatibility issues, and unexpected behavior requiring validation and tuning. Introducing this change in the final sprint before formal acceptance testing creates high probability of regression defects with insufficient time for remediation.",
+          "riskCategory": "Technical & Quality",
+          "currentProjectPhase": "Build & Test - Phase 2",
+          "expectedOccurrencePhase": "Sprint 5",
+          "likelyImpactPhase": "UAT Sign Off",
+          "rootCause": "Late-stage architectural change introduced in final sprint without dedicated validation window; insufficient risk assessment of platform migration timing and regression impact; scope addition without corresponding schedule buffer adjustment.",
+          "triggerConditions": [
+            "GPT-5 Mini migration completed but post-migration validation identifies response quality degradation",
+            "Integration testing reveals compatibility issues with existing form validation or chat escalation logic",
+            "Performance benchmarking shows latency or throughput regression",
+            "PAT scenarios fail due to unexpected LLM behavior changes"
+          ],
+          "potentialImpact": {
+            "quality": "Regression defects in AI agent validation accuracy or chatbot response quality; unexpected behavior in edge cases not covered by unit tests; production deployment with untested platform configuration",
+            "schedule": "Sprint 5 extended for migration remediation; User Demo delayed or conducted on prior LLM version; PAT start delayed pending migration validation completion",
+            "technical": "Rollback to previous LLM version required, consuming additional sprint capacity; dual-platform support complexity introduced; production deployment risk increased"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": [
+              "Current project pattern: Late-stage technical complexity introduction flagged as operational weakness",
+              "Current project pattern: Sprint 5 overload with multiple technical changes increases regression risk",
+              "No direct historical precedent, but aligns with broader pattern of scope additions without timeline adjustment"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "Platform migrations, particularly for AI/ML models, require validation of functional behavior, performance characteristics, and integration compatibility. Scheduling this migration in Sprint 5\u2014the final sprint before UAT\u2014leaves only five days before PAT and no dedicated validation window. Current project intelligence explicitly identifies late-stage technical complexity introduction as a high-impact weakness. With Sprint 5 already overloaded and PAT having zero buffer, any migration issues will directly impact acceptance readiness. While no direct historical precedent exists, the pattern of introducing technical changes without corresponding schedule adjustment aligns with historical scope management weaknesses.",
+          "confidenceScore": 82,
+          "riskPriority": "High",
+          "riskType": "Technical",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "GPT-5 Mini migration completion and validation test results by August 22, 2026",
+            "Post-migration regression test pass rate and defect severity",
+            "Performance benchmark comparison (latency, throughput, accuracy) against baseline"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "Sprint 5 scope includes 'Migrate services to GPT-5 Mini and validate functionality post-transition'",
+              "Sprint 5 scheduled August 17-26; PAT starts August 31 (5 days after sprint end)",
+              "Current project weakness: Late-stage technical complexity introduction in final sprint before UAT",
+              "Sprint 5 already overloaded with bug fixes, enhancements, MSAL/RBAC, and DevOps sign-off"
+            ],
+            "historicalReferences": [
+              "No direct historical precedent for LLM migration risk",
+              "Historical pattern: Scope additions without timeline adjustment create delivery pressure"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Defer GPT-5 Mini migration to post-deployment validation phase; obtain client approval for migration timing change"
+              ]
+            },
+            {
+              "stage": "POST DEPLOYMENT VALIDATION",
+              "actions": [
+                "Execute GPT-5 Mini migration in dedicated 5-day validation sprint post-hypercare with full regression testing and performance benchmarking"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Technical Risk": "Defer GPT-5 Mini migration to post-deployment phase; platform migrations require dedicated validation window not available in current Sprint 5 timeline",
+            "Regression Testing": "If migration must proceed in Sprint 5, allocate dedicated 3-day validation window with full regression test suite execution before User Demo",
+            "Rollback Planning": "Prepare rollback procedure to previous LLM version if migration validation identifies critical defects; document rollback decision criteria and approval authority"
+          },
+          "responseRationale": "Late-stage architectural changes in final sprint before UAT introduce regression risk with insufficient validation time. Sprint 5 is already overloaded with technical debt and new features. Platform migrations require performance benchmarking, integration validation, and edge case testing not feasible in 5 days before PAT. Deferral to post-deployment eliminates regression risk during critical acceptance phase while preserving migration objective in controlled validation environment."
+        },
+        {
+          "riskId": "R006",
+          "riskTitle": "Delayed stakeholder feedback on PAT findings may compress defect remediation window and delay UAT sign-off",
+          "riskDescription": "Client review and feedback turnaround time during the 15-day PAT phase is critical for defect prioritization and remediation planning. Historical evidence shows customer feedback timing delays impacted validation and implementation sequencing. If client feedback on PAT findings is delayed beyond 3-5 business days, the remaining window for defect remediation before code freeze (September 18) will be insufficient, forcing either acceptance delays or deployment with known issues.",
+          "riskCategory": "Stakeholder & Acceptance",
+          "currentProjectPhase": "Build & Test - Phase 2",
+          "expectedOccurrencePhase": "UAT Sign Off",
+          "likelyImpactPhase": "UAT Sign Off / Code Freeze",
+          "rootCause": "Client review cycle dependency without defined SLAs or escalation thresholds; historical pattern of feedback timing delays affecting validation windows; no documented stakeholder availability commitment during PAT phase.",
+          "triggerConditions": [
+            "Client feedback on PAT findings delayed beyond 5 business days from submission",
+            "Defect prioritization decisions pending client input consume remediation window",
+            "Client stakeholder availability gaps during PAT execution period (August 31 - September 18)",
+            "Feedback cycles require multiple iterations due to unclear acceptance criteria"
+          ],
+          "potentialImpact": {
+            "schedule": "Code freeze delayed beyond September 18 pending client feedback and defect remediation; regression testing start delayed; deployment timeline pushed further into October",
+            "acceptance": "UAT sign-off delayed pending feedback resolution; conditional acceptance with open items; potential dispute over defect severity classification and remediation priority",
+            "stakeholder": "Client dissatisfaction with feedback responsiveness expectations; vendor frustration with blocked remediation decisions; escalation to executive sponsors"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R03"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": [
+              "Historical risk R03: Customer feedback expected by July 20; delay may impact subsequent sprint validation and implementation",
+              "Historical mitigation undefined; risk marked resolved without documented feedback management improvement",
+              "Current project: PAT early access reviews generate feedback requiring subsequent sprint rework, indicating active feedback dependency",
+              "Current project: Unresolved business clarifications (chat escalation requirements) still pending stakeholder discussion"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "Historical risk R03 explicitly identified customer feedback timing as a validation and implementation risk. The historical mitigation was undefined, and the risk was marked resolved without documented improvement in feedback management protocols. Current project exhibits the same dependency pattern through PAT early access reviews and pending stakeholder clarifications. With PAT scheduled for 15 days and code freeze immediately following, any feedback delay beyond 5 business days will materially compress the remediation window. The absence of documented stakeholder availability commitments or feedback SLAs in the WSR increases the likelihood of timing delays during the critical acceptance phase.",
+          "confidenceScore": 85,
+          "riskPriority": "Medium",
+          "riskType": "Stakeholder",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Client feedback turnaround time for PAT findings (target: 3 business days)",
+            "Stakeholder availability confirmation for PAT review sessions",
+            "Defect prioritization decision velocity and backlog of pending client input"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "PAT scheduled August 31 - September 18 with code freeze immediately following",
+              "No documented client feedback SLA or stakeholder availability commitment in WSR",
+              "PAT early access reviews for Sprints 1-3 generated feedback requiring subsequent sprint rework",
+              "Unresolved business clarifications: chat escalation requirements pending Amruta-Sarah discussion",
+              "SOW acceptance criteria: Client reviews deliverables within 3 business days; deemed accepted if no response"
+            ],
+            "historicalReferences": [
+              "Historical risk R03: Customer feedback expected by July 20; delay may impact validation and implementation",
+              "Historical mitigation and contingency undefined in risk register",
+              "Historical status marked resolved without documented feedback management protocol"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "SPRINT 5",
+              "actions": [
+                "Establish PAT feedback SLA with client: 3 business days for defect review and prioritization; obtain stakeholder availability commitments for PAT review sessions"
+              ]
+            },
+            {
+              "stage": "UAT",
+              "actions": [
+                "Implement daily PAT status review with client service manager; escalate any feedback delays exceeding 3 business days to executive sponsor immediately"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Stakeholder Management": "Obtain written stakeholder availability commitments for PAT review sessions; schedule dedicated review windows at 3-day intervals throughout PAT phase",
+            "Feedback Protocol": "Establish feedback turnaround SLA of 3 business days with escalation trigger at 4 days; document in PAT execution plan with client sign-off",
+            "Escalation Path": "Define escalation path for feedback delays: Day 4 to service manager, Day 5 to executive sponsor; activate contingency acceptance criteria if delays persist"
+          },
+          "responseRationale": "Historical risk R03 showed customer feedback timing delays impacted validation and implementation sequencing; mitigation was undefined and risk marked resolved without documented protocol. Current project exhibits same dependency through PAT early access reviews and pending stakeholder clarifications. With 15-day PAT and immediate code freeze, any feedback delay beyond 3 days materially compresses remediation window. Explicit SLA with escalation triggers prevents acceptance delays from stakeholder response latency."
+        },
+        {
+          "riskId": "R007",
+          "riskTitle": "Accumulating technical debt may surface critical defects during PAT, requiring extensive remediation beyond planned capacity",
+          "riskDescription": "The project currently has 53 work items in backlog, with a significant percentage being UI-related bugs and issues in in-flight functionalities. This technical debt accumulation, combined with PAT early access feedback cycles creating rework in subsequent sprints, indicates quality issues are being deferred rather than resolved. During formal PAT execution, this accumulated debt may surface as critical defects requiring extensive remediation that exceeds planned capacity and available timeline.",
+          "riskCategory": "Quality & Schedule",
+          "currentProjectPhase": "Build & Test - Phase 2",
+          "expectedOccurrencePhase": "UAT Sign Off",
+          "likelyImpactPhase": "UAT Sign Off / Code Freeze / Deployment",
+          "rootCause": "Progressive quality debt accumulation through iterative feedback cycles; insufficient defect triage and prioritization discipline; sprint capacity consumed by new features and enhancements rather than technical debt reduction; historical pattern of validation feedback generating cascading rework.",
+          "triggerConditions": [
+            "PAT execution identifies critical defects related to known backlog items",
+            "UI bugs in backlog manifest as user acceptance failures during PAT scenarios",
+            "Integration testing reveals compounding issues from multiple in-flight functionality bugs",
+            "Defect remediation effort estimate exceeds remaining sprint capacity and PAT buffer"
+          ],
+          "potentialImpact": {
+            "quality": "Critical defects discovered during PAT requiring immediate remediation; user acceptance criteria not met due to accumulated quality issues; production deployment risk elevated",
+            "schedule": "PAT phase extended beyond September 18 for defect remediation; code freeze delayed; regression testing and deployment timelines pushed further beyond contract end",
+            "financial": "Unplanned remediation effort consuming budget reserves; potential penalty exposure if SLA commitments exist; extended timeline increasing project cost"
+          },
+          "likelihood": "High",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": [
+              "Current project pattern: Progressive quality debt accumulation with 90% confidence",
+              "Current project pattern: PAT early access reviews generate feedback requiring fixes in subsequent sprints",
+              "Current project weakness: Accumulating technical debt and bug backlog flagged as high-impact operational weakness",
+              "No direct historical precedent, but aligns with feedback-driven rework pattern"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "Current project intelligence explicitly identifies progressive quality debt accumulation as a high-confidence delivery pattern (0.90). The 53 work items in backlog, combined with the pattern of PAT feedback creating rework cycles, indicate quality issues are accumulating faster than resolution capacity. With Sprint 5 overloaded and PAT having zero buffer, the probability of accumulated debt surfacing as critical defects during formal acceptance testing is high. While no direct historical precedent exists, the current evidence is strong and the pattern aligns with broader feedback-driven rework cycles observed in both historical and current project execution.",
+          "confidenceScore": 85,
+          "riskPriority": "High",
+          "riskType": "Quality",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Backlog work item count and severity distribution trend (target: reduction to <30 items before PAT)",
+            "Critical and high-severity bug closure rate during Sprint 5",
+            "PAT defect discovery rate correlation with known backlog items"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "53 total work items in backlog with significant UI bugs and in-flight functionality issues",
+              "PAT early access reviews for Sprints 1-3 generated feedback requiring subsequent sprint rework",
+              "Delivery pattern identified: Progressive quality debt accumulation (confidence 0.90)",
+              "Operational weakness: Accumulating technical debt and bug backlog (impact: High, severity: Medium)",
+              "Bug status: Dev Validation 21, Closed 20, New 3, Ready for test 7, Removed 2"
+            ],
+            "historicalReferences": [
+              "No direct historical precedent for technical debt accumulation risk",
+              "Current project pattern aligns with historical feedback-driven rework cycles"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "SPRINT 5",
+              "actions": [
+                "Conduct pre-PAT bug triage; prioritize and resolve all critical and high-severity items from 53-item backlog before August 28 User Demo"
+              ]
+            },
+            {
+              "stage": "UAT",
+              "actions": [
+                "Allocate dedicated remediation capacity during PAT for backlog-related defects; establish daily defect closure tracking with target of 5 items per day"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Technical Debt Management": "Reduce backlog to under 30 items before PAT start; defer low-priority UI enhancements to post-deployment; focus Sprint 5 capacity on critical and high-severity bug resolution",
+            "Quality Assurance": "Execute comprehensive regression testing on all backlog fixes before User Demo; validate that remediation does not introduce new defects",
+            "Capacity Planning": "Reserve 30% of PAT phase capacity for defect remediation from accumulated technical debt; adjust acceptance timeline if remediation exceeds planned capacity"
+          },
+          "responseRationale": "Current project pattern shows progressive quality debt accumulation with 90% confidence; 53 work items with significant UI bugs and PAT feedback creating rework cycles. Historical feedback-driven rework pattern validates risk of accumulated debt surfacing during formal acceptance. Pre-PAT triage and prioritized resolution of critical items reduces defect discovery rate during PAT and prevents remediation effort from exceeding available capacity and timeline buffer."
+        },
+        {
+          "riskId": "R008",
+          "riskTitle": "Resource unavailability beyond September 11 may disrupt deployment and hypercare execution",
+          "riskDescription": "The SOW specifies a 16-week engagement ending September 11, 2026, but the WSR timeline schedules deployment (October 10-16) and hypercare (October 19-30) entirely beyond the contracted period. Without formal extension and resource commitment documentation, team members may be reassigned to other projects after September 11, creating knowledge loss, delivery disruption, and inability to execute critical deployment and post-go-live support phases.",
+          "riskCategory": "Resource & Operational",
+          "currentProjectPhase": "Build & Test - Phase 2",
+          "expectedOccurrencePhase": "Code Freeze / Deployment",
+          "likelyImpactPhase": "Deployment / Hypercare",
+          "rootCause": "Implicit timeline extension without formal resource commitment beyond contracted period; resource planning misalignment with actual delivery timeline; lack of documented resource availability confirmation for post-contract phases.",
+          "triggerConditions": [
+            "Key team members receive reassignment notices for projects starting after September 11",
+            "Resource management identifies allocation conflicts for October timeframe",
+            "Deployment or hypercare phases commence without confirmed team availability",
+            "Knowledge transfer gaps emerge due to team member transitions"
+          ],
+          "potentialImpact": {
+            "operational": "Deployment execution disrupted by team member unavailability; hypercare support inadequate due to knowledge loss; production issues unresolved due to missing subject matter expertise",
+            "schedule": "Deployment delayed pending resource reallocation; hypercare phase compressed or eliminated; transition to steady-state operations delayed",
+            "quality": "Deployment quality compromised by unfamiliar resources; post-go-live defects unresolved due to knowledge gaps; client dissatisfaction with support responsiveness"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": [
+              "Current project risk: Resource commitment beyond contracted period without formal extension",
+              "Current extension impact: Resource availability beyond September 11 not formalized",
+              "No direct historical precedent, but aligns with contractual extension risk pattern"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The project timeline extends 49 days beyond the contracted end date, with deployment and hypercare phases scheduled entirely post-contract. Resource planning typically aligns with contractual commitments, and without formal extension documentation, resource managers may reassign team members to other projects starting after September 11. The deployment phase requires specific technical knowledge of the implemented solution, and hypercare requires deep understanding of business workflows and system behavior. Loss of key resources during these critical phases would materially impact execution quality and timeline. While no direct historical precedent exists, this risk is a direct consequence of the undocumented contract extension identified as a critical risk.",
+          "confidenceScore": 80,
+          "riskPriority": "High",
+          "riskType": "Resource",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Resource commitment confirmations for all team members through October 30, 2026",
+            "Resource allocation conflict identification and resolution status",
+            "Knowledge transfer plan execution for any anticipated team member transitions"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "SOW contract end date: September 11, 2026",
+              "Deployment scheduled October 10-16, 2026 (29-35 days post-contract)",
+              "Hypercare scheduled October 19-30, 2026 (38-49 days post-contract)",
+              "No documented resource extension or availability confirmation in WSR",
+              "Extension impact assessment: Resource commitment beyond contracted period without formal extension"
+            ],
+            "historicalReferences": [
+              "No direct historical precedent",
+              "Aligns with current contractual extension risk pattern"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Obtain written resource commitment confirmations from all team members through October 30, 2026 as part of contract extension formalization"
+              ]
+            },
+            {
+              "stage": "PRE-DEPLOYMENT",
+              "actions": [
+                "Execute knowledge transfer sessions for deployment and hypercare procedures; document runbooks and escalation protocols before September 30"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Resource Management": "Secure resource allocation confirmations through October 30 from resource managers; identify and mitigate any allocation conflicts before September 1",
+            "Knowledge Transfer": "Document deployment procedures, hypercare runbooks, and escalation protocols; conduct knowledge transfer sessions if any team member transitions are anticipated",
+            "Contingency Planning": "Identify backup resources with equivalent technical expertise; brief backup resources on solution architecture and business workflows before deployment phase"
+          },
+          "responseRationale": "Project timeline extends 49 days beyond contracted end date with deployment and hypercare entirely post-contract. Resource planning typically aligns with contractual commitments; without formal extension, resource managers may reassign team members after September 11. Deployment and hypercare require specific technical knowledge and business workflow understanding. Explicit resource commitment confirmations tied to contract extension prevent knowledge loss and delivery disruption during critical go-live and stabilization phases."
+        }
+      ]
+    }
+  ]
+}
