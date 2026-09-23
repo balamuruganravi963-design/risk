@@ -1,0 +1,1004 @@
+{
+  "clientName": "Premera Blue Cross",
+  "projects": [
+    {
+      "projectId": "119971",
+      "projectName": "AI Platform Build - Customer Service and Claims PODs",
+      "projectStatus": "Active",
+      "riskPredictionDate": "2026-09-23",
+      "predictedRisks": [
+        {
+          "riskId": "R001",
+          "riskTitle": "Persistent Genesys Integration Failure May Delay Production Stabilization and Erode Stakeholder Confidence",
+          "riskDescription": "The Genesys failure path issue remains unresolved after multiple sprints despite active collaboration with the Genesys team. This integration defect blocks production stability for the Voice Bot and Chat Bot, creating downstream risks to operational readiness, user experience quality, and stakeholder perception of offshore AI delivery capability.",
+          "riskCategory": "Integration",
+          "currentProjectPhase": "Implementation & Production Support",
+          "expectedOccurrencePhase": "Production Support",
+          "likelyImpactPhase": "Production Support",
+          "rootCause": "External vendor dependency on Genesys team resolution combined with complex multi-message conversation flow handling that triggers no-match errors after the third message exchange.",
+          "triggerConditions": [
+            "Genesys failure path issue remains unresolved beyond current sprint cycle",
+            "Third message no-match error continues to occur in production environment",
+            "Genesys team unable to provide definitive fix within agreed timeline"
+          ],
+          "potentialImpact": {
+            "Production Stability": "Voice Bot and Chat Bot production operations disrupted by conversation flow failures, requiring manual intervention and degrading member experience",
+            "Stakeholder Confidence": "Unresolved integration issue reinforces historical concerns about offshore AI delivery capability and technical problem-solving effectiveness",
+            "Operational Continuity": "Production support team unable to achieve stable operational state, increasing on-call burden and delaying transition to enhancement work"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R04",
+              "R06"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The Genesys integration failure has persisted across multiple sprints without resolution despite active vendor collaboration, indicating a complex technical dependency beyond team control. Historical intelligence shows that unresolved technical issues combined with communication gaps previously triggered stakeholder confidence erosion in AI delivery capability. The current project context confirms production systems are operational but unstable, and the WSR explicitly flags this as an ongoing challenge requiring Genesys team resolution. With 3.9 months remaining and production support as the primary focus, continued failure to resolve this issue will compound operational risk and reinforce negative perceptions.",
+          "confidenceScore": 88,
+          "riskPriority": "High",
+          "riskType": "Integration",
+          "timeToMaterialization": "",
+          "preventability": "Low",
+          "monitoringIndicators": [
+            "Genesys team response time and fix delivery commitment dates",
+            "Production incident frequency for third-message no-match errors",
+            "Stakeholder feedback on Voice Bot and Chat Bot operational stability"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "WSR states: 'Genesys failure path issues are still being worked upon. Team is working with Genesys team to resolve this.'",
+              "WSR challenges section: 'After 3rd message, no match error, no fix yet, in progress'",
+              "Project health overall status: YELLOW - Minor Deviation"
+            ],
+            "historicalReferences": [
+              "Historical R04: Client confidence in AI delivery capability at risk due to perceived lack of proactive problem-solving",
+              "Historical R06: External dependency decisions delayed sprint-ready work and threatened sprint progress"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Escalate Genesys failure path issue to executive level with Genesys vendor leadership, establish dedicated daily troubleshooting sessions with joint technical teams, and define resolution deadline with contractual accountability"
+              ]
+            },
+            {
+              "stage": "CURRENT SPRINT",
+              "actions": [
+                "Implement fallback conversation flow handling for third-message no-match scenarios to maintain production stability while permanent fix is developed and deployed"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Vendor Management": "Establish executive-level escalation with Genesys including committed resolution timeline, daily status updates, and contractual remediation terms if resolution extends beyond two sprint cycles",
+            "Technical Resilience": "Design and implement graceful degradation patterns for Voice Bot and Chat Bot conversation flows to maintain operational continuity during vendor dependency resolution periods",
+            "Stakeholder Communication": "Proactively communicate Genesys integration status, mitigation progress, and operational impact to business stakeholders through weekly governance updates to maintain confidence in offshore AI delivery capability"
+          },
+          "responseRationale": "Historical intelligence shows unresolved technical issues combined with communication gaps previously triggered stakeholder confidence erosion in AI delivery capability. The Genesys integration failure has persisted across multiple sprints despite vendor collaboration, indicating external dependency beyond team control requiring immediate executive escalation and fallback implementation to protect production stability and stakeholder confidence."
+        },
+        {
+          "riskId": "R002",
+          "riskTitle": "VDI Infrastructure Instability May Reduce Offshore Team Productivity During Critical Delivery Period",
+          "riskDescription": "VDI connectivity disruptions occur frequently during Teams calls and VS Code usage, causing 5-10 minute recovery delays. With 3.9 months remaining and ongoing production support plus enhancement work, cumulative productivity loss from infrastructure instability may delay feature delivery and increase operational friction.",
+          "riskCategory": "Infrastructure",
+          "currentProjectPhase": "Implementation & Production Support",
+          "expectedOccurrencePhase": "Production Support",
+          "likelyImpactPhase": "Production Support",
+          "rootCause": "VDI infrastructure capacity or configuration issues causing non-responsive sessions during concurrent Teams calls and development tool usage, impacting offshore team members who rely on VDI for all development activities.",
+          "triggerConditions": [
+            "VDI non-responsive incidents continue at current frequency during remaining project term",
+            "Offshore team members experience 5-10 minute recovery delays multiple times per day",
+            "IT infrastructure team unable to resolve root cause within 2-4 weeks"
+          ],
+          "potentialImpact": {
+            "Team Productivity": "Cumulative loss of 30-60 minutes per engineer per day reduces effective capacity by 10-15% across offshore team",
+            "Sprint Velocity": "Reduced effective capacity may cause sprint commitment slippage and delay enhancement feature delivery",
+            "Team Morale": "Persistent infrastructure friction increases frustration and reduces engagement during critical production support period"
+          },
+          "likelihood": "High",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R07"
+            ],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The WSR explicitly documents VDI infrastructure instability causing frequent 5-10 minute recovery delays during Teams calls and VS Code usage. Historical intelligence confirms this same infrastructure risk previously impacted offshore team productivity and was escalated to IT. With 3.9 months remaining in the contract and production support as the primary workstream, cumulative productivity loss will compound over time. The current project context shows strong AI-assisted productivity metrics, but infrastructure friction undermines this advantage and creates operational inefficiency.",
+          "confidenceScore": 82,
+          "riskPriority": "Medium",
+          "riskType": "Infrastructure",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "VDI incident frequency and duration tracked in daily standups",
+            "Offshore team member reported productivity impact in sprint retrospectives",
+            "IT infrastructure team progress on root cause resolution"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "WSR states: 'VDI sometimes becomes non-responsive and takes around 5-10 minutes for recovering. Happens frequently if teams call and using Vscode used in parallel.'",
+              "Offshore team size: 11 of 15 total resources (73% of team capacity)"
+            ],
+            "historicalReferences": [
+              "Historical R07: VDI connectivity disruptions during sprint execution caused loss of productive development hours"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Escalate VDI infrastructure issues to IT leadership with documented productivity impact metrics, request root cause analysis and resolution timeline within two weeks"
+              ]
+            },
+            {
+              "stage": "CURRENT PHASE",
+              "actions": [
+                "Provide local development environment alternatives for offshore team members where feasible to reduce VDI dependency during critical production support and enhancement delivery period"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Infrastructure Resilience": "Explore alternative connectivity solutions including local development environments, cloud-based development workspaces, or VDI capacity upgrades to eliminate productivity friction",
+            "Capacity Planning": "Adjust sprint capacity planning to account for 10-15% productivity loss until VDI infrastructure is stabilized, ensuring realistic sprint commitments"
+          },
+          "responseRationale": "Historical intelligence confirms VDI connectivity disruptions previously impacted offshore team productivity during sprint execution. With 3.9 months remaining and production support as primary workstream, cumulative productivity loss will compound operational inefficiency and delay enhancement delivery without immediate infrastructure resolution."
+        },
+        {
+          "riskId": "R003",
+          "riskTitle": "PR Process Inefficiency May Delay Enhancement Delivery and Increase Rework Effort",
+          "riskDescription": "High PR abandon rate (31.6%), extended cycle times (average 6.19 days, some 17.5-25.8 days), and documentation gaps indicate structural process inefficiency. With 3.9 months remaining and ongoing enhancement work, continued PR friction may delay feature delivery, increase rework effort, and compound schedule pressure.",
+          "riskCategory": "Delivery Process",
+          "currentProjectPhase": "Implementation & Production Support",
+          "expectedOccurrencePhase": "Production Support",
+          "likelyImpactPhase": "Production Support",
+          "rootCause": "Combination of dependency-driven delays, mid-sprint reprioritization, insufficient documentation standards, and complex cross-PR dependencies causing extended review cycles and high abandonment.",
+          "triggerConditions": [
+            "PR abandon rate remains above 25% in subsequent sprints",
+            "Average PR cycle time exceeds 5 days consistently",
+            "Documentation gaps continue to generate 5+ review comments per PR"
+          ],
+          "potentialImpact": {
+            "Feature Delivery": "Extended PR cycle times delay enhancement feature completion and reduce sprint throughput by 15-20%",
+            "Rework Effort": "High abandon rate (31.6%) represents wasted development effort requiring reprioritization and potential rework",
+            "Team Efficiency": "Review friction and dependency delays increase lead overhead and reduce effective development capacity"
+          },
+          "likelihood": "High",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R05"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "Current WSR metrics show 31.6% PR abandon rate, 6.19 day average cycle time, and specific examples of dependency-driven delays (17.5-25.8 days). Historical intelligence confirms this same PR process friction previously triggered code quality concerns and required mitigation through stricter review controls. The current project context shows 4 PBIs spilled from the sprint and multiple PRs abandoned due to reprioritization and dependency issues. With production support and enhancement work ongoing, continued process inefficiency will delay feature delivery and increase operational friction.",
+          "confidenceScore": 85,
+          "riskPriority": "Medium",
+          "riskType": "Delivery Process",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "PR abandon rate tracked per sprint (target: below 20%)",
+            "Average PR cycle time tracked per sprint (target: below 4 days)",
+            "Review comment count per PR indicating documentation quality"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "WSR PR metrics: 31.6% abandon rate, 6.19 day average cycle time",
+              "WSR PR examples: PR #77796 ran 17.5 days due to dependency, PR #77138 ran 25.8 days due to Redis PR dependency",
+              "WSR PR #78936 drew 9 review comments for unvalidated assumptions and insufficient documentation",
+              "4 PBIs spilled from PI06 S03 sprint"
+            ],
+            "historicalReferences": [
+              "Historical R05: Code quality concerns attributed to PR conversations, dependency mappings, and mid-sprint changes"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "CURRENT SPRINT",
+              "actions": [
+                "Implement PR readiness checklist including documentation standards, dependency validation, and internal draft review before external submission to reduce abandon rate and review friction"
+              ]
+            },
+            {
+              "stage": "PRODUCTION SUPPORT",
+              "actions": [
+                "Strengthen dependency identification and parallel work planning during sprint planning to reduce cross-PR wait times and cycle duration"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Process Improvement": "Establish documentation standards and pre-review validation checklist to reduce review comments and abandon rate below 20% target",
+            "Dependency Management": "Improve dependency identification during sprint planning and enable parallel work streams where possible to reduce PR cycle time below 4-day target",
+            "Scope Discipline": "Reduce mid-sprint reprioritization and scope changes to minimize PR abandonment and wasted development effort"
+          },
+          "responseRationale": "Historical intelligence shows code quality concerns linked to PR conversations, dependency mappings, and mid-sprint changes required mitigation through stricter review controls. Current metrics show 31.6% abandon rate and 6.19-day average cycle time with dependency-driven delays up to 25.8 days, indicating the same process friction pattern persists and requires immediate control strengthening."
+        },
+        {
+          "riskId": "R004",
+          "riskTitle": "Dependency-Driven Sprint Slippage May Reduce Delivery Predictability and Stakeholder Confidence",
+          "riskDescription": "Multiple PRs delayed due to cross-team dependencies (observability, Redis, D365) and 4 PBIs spilled from the current sprint indicate dependency management challenges. With ongoing enhancement work and external system dependencies, continued sprint slippage may reduce delivery predictability and reinforce stakeholder concerns about offshore execution capability.",
+          "riskCategory": "Dependency Management",
+          "currentProjectPhase": "Implementation & Production Support",
+          "expectedOccurrencePhase": "Production Support",
+          "likelyImpactPhase": "Production Support",
+          "rootCause": "Insufficient dependency identification during sprint planning, parallel work on interdependent features, and external system readiness delays causing cascading impacts on dependent PRs and PBIs.",
+          "triggerConditions": [
+            "More than 3 PBIs spilled per sprint due to dependency blockage",
+            "Average PR cycle time exceeds 5 days due to dependency waits",
+            "D365 inquiry mapping or other external dependencies delay sprint commitments"
+          ],
+          "potentialImpact": {
+            "Sprint Predictability": "Continued sprint slippage reduces say-do ratio and undermines stakeholder confidence in delivery commitments",
+            "Feature Delivery": "Dependency delays compound across sprints, deferring enhancement features and operational improvements",
+            "Stakeholder Perception": "Sprint commitment variance reinforces historical concerns about offshore execution capability and proactive problem-solving"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R06"
+            ],
+            "recurrenceLikelihood": "Medium-High",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The WSR documents specific dependency-driven delays: PR #77796 delayed 17.5 days waiting for observability PR, PR #77138 delayed 25.8 days for Redis PR dependency, and 4 PBIs spilled including D365 integration work. Historical intelligence shows this same dependency pattern previously caused resource utilization issues and sprint progress threats. With 3.9 months remaining and ongoing D365 inquiry mapping work, continued dependency management challenges will reduce sprint predictability and compound stakeholder confidence concerns.",
+          "confidenceScore": 80,
+          "riskPriority": "Medium",
+          "riskType": "Dependency Management",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Number of PBIs spilled per sprint due to dependency blockage",
+            "PR cycle time attributed to dependency waits",
+            "Dependency identification completeness during sprint planning"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "WSR: PR #77796 delayed 17.5 days dependent on Rohit's observability PR",
+              "WSR: PR #77138 delayed 25.8 days due to Redis PR dependency and prod issues",
+              "WSR: 4 PBIs spilled including D365 summary update and VoiceBot inquiry integration",
+              "WSR Next Week: 'D365 inquiry mapping' still in progress"
+            ],
+            "historicalReferences": [
+              "Historical R06: FACETS integration approach decisions delayed sprint-ready work and threatened sprint progress"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "SPRINT PLANNING",
+              "actions": [
+                "Enhance dependency identification completeness during sprint planning, establish dependency resolution commitments before sprint start, and maintain alternate ready backlog for blocked work periods"
+              ]
+            },
+            {
+              "stage": "PRODUCTION SUPPORT",
+              "actions": [
+                "Implement parallel work stream planning to reduce dependency wait times and enable concurrent progress on independent features"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Sprint Planning": "Strengthen dependency identification and validation during sprint planning, obtain dependency resolution commitments before sprint start",
+            "Backlog Management": "Maintain alternate sprint-ready work items to absorb capacity during dependency blockage periods, preventing idle time and utilization loss",
+            "Execution Discipline": "Limit PBI spillage to maximum 2 items per sprint through improved story sizing and dependency management"
+          },
+          "responseRationale": "Historical intelligence shows dependency-driven task readiness issues when external integration decisions delayed sprint-ready work, requiring expedited decisions and alternate backlog preparation. Current evidence shows multiple PRs delayed 17.5-25.8 days due to dependencies and 4 PBIs spilled, indicating the same dependency management challenge persists and threatens sprint predictability."
+        },
+        {
+          "riskId": "R005",
+          "riskTitle": "Key Resource PTO During Final Quarter May Temporarily Reduce Capacity and Delay Critical Work",
+          "riskDescription": "Vipin (AI Architect) scheduled PTO from 09/09 to 09/18 during the final quarter of the project when production support, vulnerability fixes, and D365 integration work are ongoing. Temporary capacity reduction may delay critical technical decisions and create knowledge bottlenecks.",
+          "riskCategory": "Resource",
+          "currentProjectPhase": "Implementation & Production Support",
+          "expectedOccurrencePhase": "Production Support",
+          "likelyImpactPhase": "Production Support",
+          "rootCause": "Planned absence of key technical resource (AI Architect) during active production support and enhancement delivery period without documented knowledge transfer or coverage plan.",
+          "triggerConditions": [
+            "Vipin PTO occurs as scheduled (09/09 - 09/18)",
+            "Critical technical decisions or architecture guidance required during PTO period",
+            "No alternate AI Architect coverage identified before PTO start"
+          ],
+          "potentialImpact": {
+            "Technical Decisions": "Architecture and design decisions delayed during 10-day PTO period, blocking dependent development work",
+            "Knowledge Continuity": "Temporary loss of context on ongoing D365 integration, vulnerability fixes, and executive agent work",
+            "Sprint Velocity": "Reduced capacity may cause sprint commitment adjustment or work deferral during PTO period"
+          },
+          "likelihood": "High",
+          "impactSeverity": "Low",
+          "overallRiskRating": "Low",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Low",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The WSR explicitly documents Vipin PTO from 09/09 to 09/18, representing a 10-day absence during the final quarter when production support, vulnerability fixes, D365 inquiry mapping, and executive agent integration are ongoing. As an AI Architect, Vipin likely provides technical guidance and architecture decisions. While this is a planned and time-limited absence, the lack of documented coverage or knowledge transfer creates temporary capacity risk. The impact is assessed as Low because the absence is short-term and the team has other technical leads (Antara, Vijay), but monitoring is warranted to ensure critical work is not blocked.",
+          "confidenceScore": 75,
+          "riskPriority": "Low",
+          "riskType": "Resource",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Critical technical decisions or architecture guidance needs identified before PTO start",
+            "Knowledge transfer sessions completed before 09/09",
+            "Alternate coverage assigned for architecture and design questions during PTO period"
+          ],
+          "businessCriticality": "Low",
+          "evidence": {
+            "projectIndicators": [
+              "WSR PTO section: 'Vipin (09/09 - 09/18)'",
+              "Vipin role: AI Architect (onshore lead)",
+              "Remaining work includes D365 inquiry mapping, vulnerability fixes, executive agent integration"
+            ],
+            "historicalReferences": []
+          },
+          "mitigationPlan": [
+            {
+              "stage": "PRE-PTO",
+              "actions": [
+                "Complete knowledge transfer sessions for ongoing D365 integration, vulnerability fixes, and executive agent work before September 9, assign alternate AI Architect coverage for architecture decisions during PTO period"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Knowledge Continuity": "Document critical technical decisions and architecture guidance for D365 inquiry mapping, vulnerability remediation, and executive agent integration before PTO start",
+            "Coverage Planning": "Assign alternate AI Architect or technical lead to provide architecture guidance and design decisions during September 9-18 PTO period"
+          },
+          "responseRationale": "Vipin PTO occurs during final quarter when production support, vulnerability fixes, D365 integration, and executive agent work are ongoing. While impact is limited by short duration and presence of other technical leads, proactive knowledge transfer and coverage assignment will prevent architecture decision delays during the 10-day absence."
+        }
+      ]
+    },
+    {
+      "projectId": "11987",
+      "projectName": "Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "2026-09-23",
+      "predictedRisks": [
+        {
+          "riskId": "R001",
+          "riskTitle": "Critical Data Hub Dependency May Delay UAT Start and Threaten Go-Live Date",
+          "riskDescription": "Four new total premium fields required from Data Hub are delayed until July 30, leaving only 8 days before UAT sign-off deadline (August 14) and 40 days before go-live (September 2). This critical dependency blocks integration testing completion, E2E testing execution, and UAT preparation, creating extreme schedule compression with insufficient time for defect resolution.",
+          "riskCategory": "Schedule",
+          "currentProjectPhase": "Implementation & Integration Testing",
+          "expectedOccurrencePhase": "Integration Testing",
+          "likelyImpactPhase": "UAT",
+          "rootCause": "External Data Hub team delivery delay for 4 total premium fields combined with insufficient contingency planning and late-stage dependency on external system readiness for critical BoB functionality.",
+          "triggerConditions": [
+            "Data Hub 4 total premium fields not delivered by July 30 as committed",
+            "Integration testing cannot complete without live Data Hub fields",
+            "UAT cannot start on schedule due to incomplete integration testing"
+          ],
+          "potentialImpact": {
+            "Schedule": "UAT start delayed by 1-2 weeks, compressing UAT execution window and threatening August 14 sign-off deadline and September 2 go-live date",
+            "Testing": "Integration testing and E2E testing compressed or executed in parallel with UAT, increasing defect leakage risk to production",
+            "Go-Live": "September 2 go-live date at high risk of 2-4 week slip without immediate Data Hub escalation and contingency execution"
+          },
+          "likelihood": "High",
+          "impactSeverity": "Critical",
+          "overallRiskRating": "Critical",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R01",
+              "R02"
+            ],
+            "recurrenceLikelihood": "Very High",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "This risk represents direct recurrence of historical Data Hub dependency issues (R01, R02) that were administratively closed without operational resolution. The WSR explicitly states 4 new total premium fields are needed with ETA July 30, only 8 days before UAT sign-off deadline. Historical intelligence shows this same dependency pattern previously threatened delivery timelines and was never effectively mitigated. With UAT at 0%, E2E at 0%, and only 40 days to go-live, any delay in Data Hub delivery will cascade through all remaining testing phases and make September 2 go-live infeasible.",
+          "confidenceScore": 97,
+          "riskPriority": "Critical",
+          "riskType": "Schedule",
+          "timeToMaterialization": "",
+          "preventability": "Low",
+          "monitoringIndicators": [
+            "Data Hub team delivery commitment status for July 30 deadline",
+            "Integration testing completion status dependent on Data Hub fields",
+            "UAT start date readiness assessment by August 1"
+          ],
+          "businessCriticality": "Critical",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Challenges: 'Awaiting 4 new fields for total premium on BoB. ETA 30th July from DH.'",
+              "WSR Open Items: 'DH \u2013 Availability of 4 total premium fields' with ETA 7/30",
+              "WSR Progress: UAT Support 0%, E2E Testing 0%, Integration testing 95% but blocked",
+              "Timeline: UAT sign-off target 8/14, go-live target 9/2 (40 days remaining)"
+            ],
+            "historicalReferences": [
+              "Historical R01: 'Availability on Data Hub API delivery by 6/30. Any delay may impact delivery timelines' - marked Resolved without evidence",
+              "Historical R02: 'Integration with live Data Hub APIs is still pending. Performance and NFR issues will only become visible after integration' - marked Resolved without closure evidence",
+              "Historical mitigation: 'Identified part of PMR, mitigation needs to be arrived' - incomplete planning"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Escalate Data Hub 4 total premium fields delivery to executive leadership, establish daily sync with Data Hub team through July 30 deadline, prepare contingency for partial UAT execution if fields are delayed"
+              ]
+            },
+            {
+              "stage": "INTEGRATION TESTING",
+              "actions": [
+                "Complete all non-Data-Hub-dependent integration testing scenarios immediately, prepare UAT test cases and stakeholder mobilization in parallel to enable immediate UAT start upon Data Hub field delivery"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Executive Escalation": "Escalate Data Hub dependency to executive level immediately with committed delivery date, daily status tracking, and contractual accountability for delays beyond July 30",
+            "Contingency Planning": "Prepare phased UAT approach executing non-BoB scenarios first while Data Hub fields are integrated, enabling partial progress if delivery is delayed",
+            "Go-Live Assessment": "Conduct go-live feasibility assessment by August 1 based on Data Hub delivery status, prepare stakeholder communication for potential 2-4 week go-live delay if fields are not delivered on schedule"
+          },
+          "responseRationale": "Historical intelligence shows this exact Data Hub dependency was identified in June and marked resolved without operational evidence, while current status confirms the same dependency remains active with only 8 days between delivery and UAT sign-off deadline. This represents direct recurrence of unresolved dependency management requiring immediate executive intervention to protect September 2 go-live date."
+        },
+        {
+          "riskId": "R002",
+          "riskTitle": "UAT Not Started with 23 Days to Sign-Off May Cause Insufficient Defect Resolution Time and Go-Live Delay",
+          "riskDescription": "UAT remains at 0% complete with UAT sign-off deadline of August 14 (23 days away) and go-live September 2 (40 days away). Insufficient time for UAT execution, defect discovery, resolution, regression testing, and sign-off creates extreme risk of go-live delay or production defect leakage.",
+          "riskCategory": "Testing",
+          "currentProjectPhase": "Implementation & Integration Testing",
+          "expectedOccurrencePhase": "UAT",
+          "likelyImpactPhase": "UAT",
+          "rootCause": "Late-stage testing compression caused by upstream Data Hub dependency delays, scope changes consuming schedule buffer, and insufficient parallel test preparation during development phase.",
+          "triggerConditions": [
+            "UAT does not start by August 1 (13 days before sign-off deadline)",
+            "UAT test cases not prepared and stakeholders not mobilized by July 25",
+            "Integration testing and E2E testing not complete before UAT start"
+          ],
+          "potentialImpact": {
+            "Testing Quality": "Compressed UAT window (10-15 days maximum) insufficient for thorough business validation, defect discovery, and resolution",
+            "Go-Live": "September 2 go-live date highly uncertain - likely 2-4 week slip required for adequate UAT and defect resolution",
+            "Production Risk": "Inadequate UAT may force acceptance of known defects or defer critical functionality to post-production fixes"
+          },
+          "likelihood": "Critical",
+          "impactSeverity": "Critical",
+          "overallRiskRating": "Critical",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R01",
+              "R02",
+              "R03"
+            ],
+            "recurrenceLikelihood": "Very High",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The WSR shows UAT at 0% complete with sign-off deadline August 14 (23 days away) and go-live September 2 (40 days away). Historical intelligence confirms this testing compression pattern resulted from upstream Data Hub delays and scope changes consuming buffer. With integration testing incomplete due to Data Hub dependency and E2E testing not started, UAT cannot begin on schedule. Even if UAT starts immediately, 23 days is insufficient for business stakeholder execution, defect discovery, resolution, regression testing, and formal sign-off in a fixed-price milestone-based contract.",
+          "confidenceScore": 95,
+          "riskPriority": "Critical",
+          "riskType": "Testing",
+          "timeToMaterialization": "",
+          "preventability": "Low",
+          "monitoringIndicators": [
+            "UAT test case preparation completion status",
+            "UAT stakeholder mobilization and availability confirmation",
+            "Integration testing and E2E testing completion enabling UAT start"
+          ],
+          "businessCriticality": "Critical",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Progress: UAT Support 0% complete",
+              "Timeline: UAT sign-off target 8/14 (23 days from 7/22 WSR date)",
+              "Timeline: Go-live target 9/2 (40 days from 7/22 WSR date)",
+              "WSR: Integration testing 95% but blocked by Data Hub dependency",
+              "WSR: E2E Testing Support 0% complete"
+            ],
+            "historicalReferences": [
+              "Historical R01/R02: Data Hub dependency delays compressed downstream testing",
+              "Historical R03: 14 scope changes consumed schedule buffer equivalent to 0.75-1 sprint"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Mobilize UAT resources immediately, finalize UAT test cases and data preparation by July 25, establish daily UAT governance with dedicated defect triage and resolution team"
+              ]
+            },
+            {
+              "stage": "UAT",
+              "actions": [
+                "Execute UAT with parallel defect resolution and regression testing, prioritize critical path scenarios for early execution, establish go or no-go decision gate by August 10 based on defect severity and resolution progress"
+              ]
+            }
+          ],
+          "recommendations": {
+            "UAT Mobilization": "Mobilize UAT stakeholders immediately with confirmed availability through August 14, finalize test cases and test data by July 25 to enable immediate execution",
+            "Defect Management": "Establish dedicated defect triage team with daily resolution prioritization, parallel regression testing, and clear severity-based acceptance criteria",
+            "Schedule Realism": "Conduct go-live feasibility assessment by August 10 based on UAT defect discovery rate and resolution progress, prepare stakeholder communication for potential go-live delay if critical defects remain unresolved",
+            "Governance Intensity": "Implement daily UAT governance with executive visibility into defect status, resolution progress, and go-live readiness through August 14 sign-off deadline"
+          },
+          "responseRationale": "Historical intelligence shows testing compression resulted from upstream Data Hub delays and scope changes consuming schedule buffer. With UAT at 0% and only 23 days to sign-off deadline, insufficient time remains for thorough business validation, defect resolution, and regression testing in a fixed-price milestone-based contract, creating extreme risk of go-live delay or production defect leakage."
+        },
+        {
+          "riskId": "R003",
+          "riskTitle": "E2E Testing Not Started May Cause Late Integration Defect Discovery and Production Stability Risk",
+          "riskDescription": "End-to-end testing remains at 0% complete with 40 days to go-live. Without comprehensive E2E validation of integrated workflows across Auth0, Data Hub, BoB, Dashboard, and Admin modules, critical integration defects may be discovered late in UAT or post-production, threatening go-live quality and operational stability.",
+          "riskCategory": "Quality",
+          "currentProjectPhase": "Implementation & Integration Testing",
+          "expectedOccurrencePhase": "E2E Testing",
+          "likelyImpactPhase": "UAT",
+          "rootCause": "E2E testing delayed by upstream Data Hub integration dependency, insufficient upstream data setup for test scenarios, and schedule compression forcing parallel execution of integration, E2E, and UAT testing phases.",
+          "triggerConditions": [
+            "E2E testing does not start by July 25",
+            "Upstream data setup for E2E scenarios not complete by July 30",
+            "E2E testing executed in parallel with UAT due to schedule pressure"
+          ],
+          "potentialImpact": {
+            "Quality": "Integration defects across Auth0, Data Hub, BoB, and Admin workflows discovered late in UAT or production, requiring emergency fixes",
+            "Go-Live": "Critical integration defects discovered in UAT may delay go-live by 2-4 weeks for resolution and regression testing",
+            "Production Stability": "Inadequate E2E validation increases risk of production incidents affecting user experience and business operations"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R02"
+            ],
+            "recurrenceLikelihood": "Very High",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The WSR shows E2E Testing Support at 0% complete with 40 days to go-live and explicitly requests 'support for upstream Data setup of integration & E2E scenarios.' Historical intelligence (R02) warned that performance and NFR issues would only become visible after live integration. With Data Hub integration incomplete and upstream data setup pending, E2E testing cannot execute comprehensive scenarios. The 40-day window requires parallel execution of integration completion, E2E testing, UAT, and penetration testing, creating extreme quality risk.",
+          "confidenceScore": 92,
+          "riskPriority": "High",
+          "riskType": "Quality",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "E2E test case preparation and scenario coverage completeness",
+            "Upstream data setup completion status for E2E scenarios",
+            "E2E test execution start date and defect discovery rate"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Progress: E2E Testing Support 0% complete",
+              "WSR Support Required: 'Need support for upstream Data setup of integration & E2E scenarios. Daily calls enabled, need continued support.'",
+              "WSR: Integration testing 95% but blocked by Data Hub dependency",
+              "Timeline: 40 days to go-live (9/2) with E2E, UAT, and pen test all pending"
+            ],
+            "historicalReferences": [
+              "Historical R02: 'Integration with live Data Hub APIs is still pending. Performance and NFR issues will only become visible after integration'"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Initiate E2E test planning and scenario prioritization immediately, establish daily collaboration with Edge and Data Hub teams for upstream data setup completion by July 30"
+              ]
+            },
+            {
+              "stage": "E2E TESTING",
+              "actions": [
+                "Execute E2E testing in parallel with UAT where feasible, prioritize critical integrated workflows across Auth0, Data Hub, BoB, and Admin modules, leverage 30 automation scripts for regression coverage"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Test Prioritization": "Prioritize critical path E2E scenarios covering Auth0 authentication, Data Hub integration, BoB workflows, and Admin functions for early execution",
+            "Data Setup Acceleration": "Establish daily collaboration with Edge and Data Hub teams to complete upstream data setup for E2E scenarios by July 30, enabling comprehensive test execution",
+            "Automation Leverage": "Utilize 30 existing Playwright automation scripts for regression coverage, enabling parallel E2E and UAT execution with continuous validation",
+            "Parallel Execution": "Execute E2E testing in parallel with UAT where scenarios are independent, maximizing test coverage within compressed 40-day window"
+          },
+          "responseRationale": "Historical intelligence warned that performance and NFR issues would only become visible after live Data Hub integration. With E2E testing at 0% and upstream data setup incomplete, comprehensive integration validation cannot occur, deferring critical defect discovery to UAT or production and threatening go-live quality and operational stability."
+        },
+        {
+          "riskId": "R004",
+          "riskTitle": "Penetration Testing Not Scheduled May Block Production Deployment and Delay Go-Live",
+          "riskDescription": "Penetration testing shows 0% complete with no clear schedule and is required before production deployment. With production deployment scheduled for August 25 and go-live September 2, insufficient time remains for penetration testing execution, vulnerability remediation, and security sign-off.",
+          "riskCategory": "Security",
+          "currentProjectPhase": "Implementation & Integration Testing",
+          "expectedOccurrencePhase": "Security Testing",
+          "likelyImpactPhase": "Production Deployment",
+          "rootCause": "Penetration testing not scheduled due to upstream dependencies on UAT completion and all application components deployed to ACPT, combined with schedule compression and insufficient security testing planning.",
+          "triggerConditions": [
+            "Penetration testing not scheduled by August 1",
+            "UAT not complete before penetration testing can begin",
+            "Security vulnerabilities discovered requiring remediation before production deployment"
+          ],
+          "potentialImpact": {
+            "Production Deployment": "Production deployment blocked until penetration testing complete and security vulnerabilities remediated",
+            "Go-Live": "September 2 go-live date at risk of 2-3 week slip if penetration testing reveals critical vulnerabilities requiring fixes",
+            "Compliance": "Production deployment without penetration testing sign-off may violate security governance and compliance requirements"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The WSR shows Pen Test at 0% complete with production deployment scheduled for August 25 (34 days away) and go-live September 2 (40 days away). Decision log item #26 states penetration testing can commence once all components are deployed to ACPT and UAT is complete. With UAT at 0% and ACPT deployment issues (Auth0 DB connection configuration blocked), penetration testing cannot start on schedule. Even if testing starts by August 5, only 20 days remain for execution, vulnerability remediation, regression testing, and security sign-off before production deployment.",
+          "confidenceScore": 88,
+          "riskPriority": "High",
+          "riskType": "Security",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Penetration testing schedule confirmation and start date",
+            "ACPT deployment completion and UAT readiness for pen test prerequisites",
+            "Security vulnerability discovery rate and remediation timeline"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Progress: Pen Test 0% complete",
+              "Timeline: Production deployment target 8/25 (34 days from 7/22)",
+              "Timeline: Go-live target 9/2 (40 days from 7/22)",
+              "Decision Log #26: 'Penetration testing can commence once all application components defined within the approved trust boundary are deployed to ACPT and UAT testing has been completed.'"
+            ],
+            "historicalReferences": []
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Schedule penetration testing for week of August 5 contingent on ACPT deployment completion and UAT progress, establish security vulnerability remediation team and regression testing plan"
+              ]
+            },
+            {
+              "stage": "SECURITY TESTING",
+              "actions": [
+                "Execute penetration testing in parallel with final UAT phase where feasible, prioritize critical vulnerability remediation with parallel regression testing to meet August 25 production deployment deadline"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Immediate Scheduling": "Schedule penetration testing for week of August 5 with confirmed security testing team availability and ACPT environment readiness",
+            "Parallel Execution": "Execute penetration testing in parallel with final UAT phase where feasible to maximize schedule efficiency within 40-day window",
+            "Remediation Planning": "Pre-identify security vulnerability remediation team with daily triage, establish severity-based acceptance criteria and regression testing plan",
+            "Production Gate": "Treat penetration testing sign-off as mandatory production deployment gate, prepare go-live delay communication if critical vulnerabilities require extended remediation"
+          },
+          "responseRationale": "Penetration testing shows 0% complete with production deployment scheduled August 25 and no clear schedule. Decision log states testing can commence once ACPT deployment and UAT are complete, but with UAT at 0% and ACPT issues unresolved, testing cannot start on schedule. Even with August 5 start, only 20 days remain for execution, remediation, and security sign-off before production deployment."
+        },
+        {
+          "riskId": "R005",
+          "riskTitle": "Auth0 ACPT Configuration Blocked May Delay ACPT Testing and UAT Preparation",
+          "riskDescription": "Auth0 DB connection configuration in ACPT environment requires Premera team (Drew) update but remains blocked. This prevents ACPT deployment validation, authentication testing, and UAT preparation, creating downstream delays to UAT start and go-live readiness.",
+          "riskCategory": "Dependency",
+          "currentProjectPhase": "Implementation & Integration Testing",
+          "expectedOccurrencePhase": "Integration Testing",
+          "likelyImpactPhase": "UAT",
+          "rootCause": "External dependency on Premera team member (Drew) to update Auth0 DB connection configuration in ACPT environment, combined with competing priorities and insufficient escalation to unblock configuration update.",
+          "triggerConditions": [
+            "Auth0 DB connection configuration not updated in ACPT by July 25",
+            "ACPT deployment and authentication testing blocked beyond July 30",
+            "UAT preparation delayed due to ACPT environment not ready"
+          ],
+          "potentialImpact": {
+            "ACPT Testing": "ACPT deployment validation and authentication testing blocked, preventing environment readiness confirmation",
+            "UAT Preparation": "UAT cannot start without validated ACPT environment and working authentication flows",
+            "Schedule": "UAT start delayed by 1-2 weeks if Auth0 configuration not resolved immediately, compounding go-live risk"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The WSR explicitly identifies Auth0 DB connection configuration as a critical open dependency requiring Premera team help to update in ACPT. The Open Items risk register shows this dependency with target date July 8 (already past) and status not updated. With ACPT deployment needed for UAT preparation and only 23 days to UAT sign-off, any delay in Auth0 configuration will cascade to UAT start and compress the already insufficient testing window. This represents a blocking technical dependency requiring immediate escalation.",
+          "confidenceScore": 85,
+          "riskPriority": "High",
+          "riskType": "Dependency",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Auth0 DB connection configuration completion status in ACPT",
+            "Drew/Ganesh availability and commitment to complete configuration update",
+            "ACPT deployment validation and authentication testing completion"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Dependencies: 'Need Premera team help to update the DB connection configuration on Auth0' - Critical priority, target 7/8",
+              "WSR Challenges: Auth0 integration with Entra listed as schedule risk",
+              "WSR: Front End, Account Management API & Wrapper API deployed to ACPT but resolving connectivity and service integration issues"
+            ],
+            "historicalReferences": []
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Escalate Auth0 DB connection configuration to Ganesh and Drew immediately with detailed configuration requirements, establish commitment for completion by July 25 to enable ACPT deployment validation"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Immediate Escalation": "Escalate Auth0 ACPT configuration to Ganesh and Drew immediately with detailed technical requirements and July 25 completion commitment",
+            "Backup Planning": "Prepare backup authentication testing approach using Dev environment if ACPT configuration is delayed beyond July 28, enabling partial UAT preparation"
+          },
+          "responseRationale": "Auth0 DB connection configuration in ACPT requires Premera team update but remains blocked with target date July 8 already past. This prevents ACPT deployment validation and authentication testing, blocking UAT preparation with only 23 days to sign-off deadline. Immediate escalation is required to unblock this critical dependency."
+        },
+        {
+          "riskId": "R006",
+          "riskTitle": "Scope Changes Consumed Schedule Buffer May Eliminate Contingency for Testing Delays or Defects",
+          "riskDescription": "Project absorbed 14 scope changes equivalent to 0.75-1 sprint of additional effort, consuming all schedule buffer. With UAT, E2E testing, and penetration testing compressed into 40 days and no remaining contingency, any testing delays or defect resolution needs will directly delay go-live.",
+          "riskCategory": "Scope",
+          "currentProjectPhase": "Implementation & Integration Testing",
+          "expectedOccurrencePhase": "UAT",
+          "likelyImpactPhase": "Go-Live",
+          "rootCause": "Incremental scope expansion through 14 documented changes (Auth0 ownership, CCS API implementation, infrastructure provisioning, design modifications) absorbed without proportional schedule relief, eliminating contingency buffer.",
+          "triggerConditions": [
+            "Any additional scope changes requested during UAT or testing phases",
+            "UAT or E2E testing discovers defects requiring more than 5 days to resolve",
+            "Penetration testing reveals vulnerabilities requiring remediation and regression testing"
+          ],
+          "potentialImpact": {
+            "Schedule": "Zero contingency remaining means any testing delay or defect resolution directly delays go-live by equivalent duration",
+            "Go-Live": "September 2 go-live date at high risk of 2-4 week slip if testing phases encounter any issues",
+            "Scope Management": "Additional scope changes during testing phases will require immediate go-live date adjustment or scope deferral"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R03"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The WSR Scope Change Tracker documents 14 scope changes including Auth0 ownership (Medium effort), CCS API implementation, infrastructure provisioning (Medium), agent approach refactoring (Medium), and multiple design changes. Historical intelligence (R03) identified this same scope expansion pattern as a delivery risk. With UAT at 0%, E2E at 0%, pen test not scheduled, and only 40 days to go-live, the consumed schedule buffer eliminates all contingency for testing delays, defect resolution, or additional scope changes. Any issue in remaining phases will directly delay go-live.",
+          "confidenceScore": 90,
+          "riskPriority": "High",
+          "riskType": "Scope",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Scope freeze enforcement - no new changes accepted during testing phases",
+            "Testing phase duration tracking against planned schedule",
+            "Defect resolution time tracking to identify schedule impact"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Scope Change Tracker: 14 changes documented including Auth0 ownership (Medium), CCS APIs, Infra provisioning (Medium), Agent refactoring (Medium)",
+              "Drift analysis: 'Scope drift 15-20%, schedule buffer consumed'",
+              "Timeline: 40 days to go-live with UAT 0%, E2E 0%, Pen Test 0%"
+            ],
+            "historicalReferences": [
+              "Historical R03: 'The project has already absorbed approximately 14 scope changes (equivalent to 0.75\u20131 sprint of additional effort). Further scope additions may impact delivery timelines.'"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Freeze scope immediately with no new changes accepted during testing phases, defer all non-critical items to Phase 2, establish strict change control requiring executive approval for any additions"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Scope Freeze": "Implement immediate scope freeze with no new changes accepted during UAT, E2E testing, penetration testing, or deployment phases",
+            "Change Control": "Require executive-level approval for any scope changes during testing phases with mandatory impact assessment on go-live date",
+            "Phase 2 Deferral": "Defer all non-critical enhancements and nice-to-have features to Phase 2 to protect testing schedule and go-live date"
+          },
+          "responseRationale": "Historical intelligence shows 14 scope changes absorbed equivalent to 0.75-1 sprint effort, consuming all schedule buffer. With UAT at 0%, E2E at 0%, pen test not scheduled, and only 40 days to go-live, zero contingency remains for testing delays or defect resolution. Any additional scope changes will directly delay go-live date."
+        },
+        {
+          "riskId": "R007",
+          "riskTitle": "Upstream Data Setup Dependency May Block Integration and E2E Testing Execution",
+          "riskDescription": "Integration and E2E testing require upstream data setup support from Edge and Data Hub teams. Daily calls enabled but continued support needed. Without complete upstream data setup, comprehensive testing scenarios cannot execute, deferring defect discovery to UAT or production.",
+          "riskCategory": "Dependency",
+          "currentProjectPhase": "Implementation & Integration Testing",
+          "expectedOccurrencePhase": "Integration Testing",
+          "likelyImpactPhase": "E2E Testing",
+          "rootCause": "Complex data dependencies across multiple upstream systems (Edge, Data Hub) requiring coordinated data setup for integrated test scenarios, combined with competing priorities and insufficient dedicated support.",
+          "triggerConditions": [
+            "Upstream data setup not complete for integration scenarios by July 30",
+            "E2E test scenarios cannot execute due to missing or incomplete upstream data",
+            "Daily collaboration calls insufficient to resolve data setup blockers"
+          ],
+          "potentialImpact": {
+            "Testing Coverage": "Integration and E2E testing limited to partial scenarios without complete upstream data, reducing defect detection effectiveness",
+            "Defect Discovery": "Integration defects deferred to UAT or production due to incomplete testing, increasing production risk",
+            "Schedule": "Testing delays while waiting for upstream data setup compound schedule pressure on UAT and go-live"
+          },
+          "likelihood": "High",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The WSR explicitly requests 'support for upstream Data setup of integration & E2E scenarios' and notes that daily calls are enabled but continued support is needed. This indicates ongoing dependency on Edge and Data Hub teams to provision test data for integrated scenarios. With integration testing at 95% but blocked by Data Hub fields and E2E testing at 0%, upstream data setup is a critical path dependency. Without complete data setup, testing coverage will be incomplete and defects will be discovered late.",
+          "confidenceScore": 82,
+          "riskPriority": "Medium",
+          "riskType": "Dependency",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Upstream data setup completion status tracked in daily collaboration calls",
+            "Integration and E2E test scenario coverage enabled by available data",
+            "Edge and Data Hub team commitment and delivery timeline for data setup"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Support Required: 'Need support for upstream Data setup of integration & E2E scenarios. Daily calls enabled, need continued support.'",
+              "WSR: Integration testing 95% but blocked by Data Hub dependency",
+              "WSR: E2E Testing Support 0% complete",
+              "Decision Log #30: 'Integration testing: Test cases that validate that integration points are enabled and working to cover integration testing. Need support for upstream systems to help setup data to validate integration and E2E scenarios'"
+            ],
+            "historicalReferences": []
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Establish daily collaboration with Edge and Data Hub teams to complete upstream data setup for integration and E2E scenarios by July 30, prioritize critical test scenarios for early data provisioning"
+              ]
+            },
+            {
+              "stage": "INTEGRATION TESTING",
+              "actions": [
+                "Prepare synthetic data as backup for E2E scenarios if upstream data setup is incomplete, enabling partial test execution while data provisioning continues"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Daily Collaboration": "Maintain daily collaboration with Edge and Data Hub teams through July 30 to complete upstream data setup for all integration and E2E scenarios",
+            "Scenario Prioritization": "Prioritize critical path test scenarios for early data provisioning, enabling progressive test execution as data becomes available",
+            "Synthetic Data Backup": "Prepare synthetic data as backup for E2E scenarios if upstream data setup is incomplete by July 30, enabling partial test coverage"
+          },
+          "responseRationale": "Integration and E2E testing require upstream data setup from Edge and Data Hub teams. Daily calls are enabled but continued support is needed. Without complete upstream data setup, comprehensive testing scenarios cannot execute, deferring defect discovery to UAT or production and reducing test coverage effectiveness."
+        },
+        {
+          "riskId": "R008",
+          "riskTitle": "Contract Timeline Misalignment May Create Ambiguity Around Final Milestone Payment and Resource Commitment",
+          "riskDescription": "Contract ends August 31 but go-live is planned for September 2 with 4-week hypercare extending to approximately October 1. This creates contractual ambiguity around Milestone 6 (Go-Live) and Milestone 7 (Hypercare completion) payment terms and resource commitment beyond contract end date.",
+          "riskCategory": "Contract",
+          "currentProjectPhase": "Implementation & Integration Testing",
+          "expectedOccurrencePhase": "Go-Live",
+          "likelyImpactPhase": "Hypercare",
+          "rootCause": "Original contract term (March 1 - August 31) did not account for go-live date (September 2) and 4-week hypercare period extending beyond contract end, creating misalignment between contractual obligations and planned delivery timeline.",
+          "triggerConditions": [
+            "Contract end date (August 31) reached without amendment",
+            "Go-live occurs on September 2 (2 days after contract end)",
+            "Hypercare period extends to October 1 (1 month after contract end)"
+          ],
+          "potentialImpact": {
+            "Contract": "Ambiguity around Milestone 6 ($130,000) and Milestone 7 ($130,000) payment terms for work performed after contract end date",
+            "Resource Commitment": "Team commitment uncertain beyond August 31 without contract amendment, risking go-live support and hypercare delivery",
+            "Financial": "Potential payment disputes or delays for final milestones totaling $260,000 (40% of total contract value)"
+          },
+          "likelihood": "High",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Low",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The SOW explicitly states contract term is 'March 1, 2026 to August 31, 2026' while the WSR timeline shows 'Rollout 2nd Sept' and hypercare is defined as 4 weeks post go-live. This creates a 1-month misalignment between contractual term and planned delivery timeline. Milestone 6 (Go-Live - $130,000) and Milestone 7 (Hypercare - $130,000) represent 40% of total contract value ($650,000) and are scheduled for delivery after contract end date. This requires immediate contract amendment to clarify payment terms and resource commitment through October 1.",
+          "confidenceScore": 92,
+          "riskPriority": "Medium",
+          "riskType": "Contract",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Contract amendment execution status",
+            "Milestone 6 and 7 payment terms clarification",
+            "Resource commitment confirmation through October 1"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "SOW Term: 'The Term of this Work Assignment will be from March 1, 2026 to August 31, 2026'",
+              "WSR Timeline: 'Rollout 2nd Sept' (September 2, 2026)",
+              "SOW Milestone 6: 'Go LIVE - $130,000'",
+              "SOW Milestone 7: 'Completion of Hypercare - $130,000' (4 weeks post go-live = ~October 1)",
+              "Extension analysis: 'Contract ends 8/31 but go-live planned 9/2 with 4-week hypercare extending to ~10/1'"
+            ],
+            "historicalReferences": []
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Execute contract amendment immediately to extend term through October 1, 2026 and clarify Milestone 6 and Milestone 7 payment terms for work performed after August 31 contract end date"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Contract Amendment": "Execute contract amendment immediately extending term through October 1, 2026 to align with planned go-live date September 2 and 4-week hypercare period",
+            "Milestone Clarification": "Clarify Milestone 6 (Go-Live - $130,000) and Milestone 7 (Hypercare - $130,000) payment terms and acceptance criteria for work performed after August 31 contract end date",
+            "Resource Commitment": "Confirm team resource commitment through October 1 to ensure go-live support and hypercare delivery continuity"
+          },
+          "responseRationale": "Contract ends August 31 but go-live is planned September 2 with 4-week hypercare extending to approximately October 1. This creates 1-month misalignment between contractual term and planned delivery timeline, creating ambiguity around Milestone 6 and 7 payment terms totaling $260,000 (40% of contract value) and resource commitment beyond contract end date."
+        },
+        {
+          "riskId": "R009",
+          "riskTitle": "Citrix Infrastructure Issues May Continue to Reduce Offshore Team Productivity During Critical Testing Period",
+          "riskDescription": "Citrix server slowness and timeouts impact offshore team efforts during the critical final 40 days when integration testing, E2E testing, UAT support, and deployment activities require maximum productivity. Cumulative productivity loss may delay testing execution and defect resolution.",
+          "riskCategory": "Infrastructure",
+          "currentProjectPhase": "Implementation & Integration Testing",
+          "expectedOccurrencePhase": "Integration Testing",
+          "likelyImpactPhase": "UAT",
+          "rootCause": "Citrix infrastructure capacity or configuration issues causing server slowness and timeouts, impacting offshore team members who rely on Citrix for development and testing activities.",
+          "triggerConditions": [
+            "Citrix slowness and timeout incidents continue at current frequency",
+            "Offshore team productivity reduced by 10-15% during critical testing period",
+            "IT infrastructure team unable to resolve root cause within 2 weeks"
+          ],
+          "potentialImpact": {
+            "Team Productivity": "Cumulative productivity loss of 10-15% across offshore team reduces effective testing and defect resolution capacity",
+            "Testing Execution": "Integration testing, E2E testing, and UAT support delayed by infrastructure friction during critical 40-day window",
+            "Schedule": "Productivity loss compounds schedule pressure and may contribute to go-live delay"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The WSR explicitly identifies 'Citrix server slowness and timeouts impacting offshore team efforts' as a current challenge. With 40 days remaining to go-live and critical testing phases (integration, E2E, UAT) requiring maximum productivity, infrastructure friction will compound schedule pressure. The offshore team likely represents significant portion of testing and development capacity, so cumulative productivity loss will delay testing execution and defect resolution during the most critical project period.",
+          "confidenceScore": 78,
+          "riskPriority": "Medium",
+          "riskType": "Infrastructure",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Citrix incident frequency and duration tracked in daily standups",
+            "Offshore team productivity impact reported in sprint retrospectives",
+            "IT infrastructure team progress on root cause resolution"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Challenges: 'Citrix server slowness and timeouts impacting offshore team efforts.'",
+              "Timeline: 40 days to go-live with UAT 0%, E2E 0%, Pen Test 0% requiring maximum productivity"
+            ],
+            "historicalReferences": []
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Escalate Citrix infrastructure issues to IT leadership with documented productivity impact, request root cause resolution within two weeks to protect critical testing phase productivity"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Infrastructure Escalation": "Escalate Citrix server slowness and timeout issues to IT leadership immediately with documented productivity impact metrics",
+            "Alternative Solutions": "Explore alternative connectivity solutions including local development environments or cloud-based workspaces to reduce Citrix dependency during critical testing period"
+          },
+          "responseRationale": "Citrix server slowness and timeouts impact offshore team efforts during critical final 40 days when integration testing, E2E testing, UAT support, and deployment activities require maximum productivity. Cumulative productivity loss will compound schedule pressure and may delay testing execution and defect resolution during the most critical project period."
+        }
+      ]
+    }
+  ]
+}
