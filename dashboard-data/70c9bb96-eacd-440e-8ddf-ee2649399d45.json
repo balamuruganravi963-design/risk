@@ -1,0 +1,1022 @@
+{
+  "clientName": "Premera Blue Cross",
+  "projects": [
+    {
+      "projectId": "119972",
+      "projectName": "AI Platform Build - Customer Service and Claims PODs",
+      "projectStatus": "Active",
+      "riskPredictionDate": "2026-09-04",
+      "predictedRisks": [
+        {
+          "riskId": "R001",
+          "riskTitle": "Unresolved Genesys Integration Issues May Delay Production Stabilization and Feature Delivery",
+          "riskDescription": "Ongoing Genesys failure path issues requiring vendor coordination may extend beyond current resolution efforts, impacting production stability and delaying downstream feature integration dependent on reliable Genesys communication channels.",
+          "riskCategory": "Technical Integration",
+          "currentProjectPhase": "Implementation and Stabilization",
+          "expectedOccurrencePhase": "Implementation and Stabilization",
+          "likelyImpactPhase": "Production Support and Enhancement",
+          "rootCause": "Complex third-party vendor integration requiring cross-team coordination and dependency on external vendor (Genesys) technical resolution timeline outside direct project control.",
+          "triggerConditions": [
+            "Genesys vendor unable to resolve failure path issues within current sprint cycle",
+            "Production incidents related to Genesys communication failures increase in frequency or severity",
+            "Dependent features requiring stable Genesys integration cannot proceed to production"
+          ],
+          "potentialImpact": {
+            "Production Stability": "Recurring production incidents affecting CSR Assist and Voice Bot operational reliability, requiring manual intervention and workarounds",
+            "Schedule": "Delay in releasing Genesys-dependent features including D365 inquiry integration and voice bot enhancements, potentially extending stabilization timeline by 2-3 weeks",
+            "Customer Experience": "Degraded member and provider experience due to call handling failures and incomplete automation workflows"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R07"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "Genesys failure path issues have persisted across multiple sprints and remain unresolved per the current WSR, requiring active coordination with the Genesys vendor team. Historical evidence shows external vendor dependencies have previously caused task readiness delays and sprint disruption in AI Platform projects. With 117 days remaining in a post-MVP stabilization phase, unresolved integration issues directly threaten production reliability and the delivery of dependent features such as D365 inquiry integration for Voice Bot. The risk is heightened because resolution depends on external vendor response time and technical complexity outside Ascendion's direct control.",
+          "confidenceScore": 88,
+          "riskPriority": "High",
+          "riskType": "Integration",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Genesys vendor response time and issue resolution progress tracked in daily standups",
+            "Production incident frequency and severity related to Genesys communication failures",
+            "Number of PBIs blocked or spilled due to Genesys dependency"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "WSR 09/04/2026: 'Genesys failure path issues are still being worked upon. Team is working with Genesys team to resolve this'",
+              "WSR Challenge: Debugging genesys failure path fixes listed as ongoing work",
+              "Risk register documents Genesys integration as open dependency"
+            ],
+            "historicalReferences": [
+              "Historical Risk R07: External dependency decisions (FACETS) caused limited task readiness and resource underutilization",
+              "Delivery pattern: Dependency-driven execution risk remains visible in current AI Platform project"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Escalate Genesys failure path resolution to executive vendor management with daily status tracking and commitment to resolution timeline by September 15"
+              ]
+            },
+            {
+              "stage": "CURRENT SPRINT (PI 06 Sprint 3)",
+              "actions": [
+                "Establish daily technical sync with Genesys vendor team to track debugging progress and document all failure scenarios with reproduction steps and system logs"
+              ]
+            },
+            {
+              "stage": "NEXT SPRINT (PI 06 Sprint 4)",
+              "actions": [
+                "Implement fallback communication path for Voice Bot and D365 inquiry integration to enable feature release independent of Genesys resolution"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Vendor Management": "Engage Premera procurement and vendor management to enforce contractual SLAs with Genesys and secure dedicated engineering support until resolution",
+            "Technical Contingency": "Design and validate alternative integration approach using direct API calls or message queue bypass to reduce dependency on Genesys communication layer",
+            "Risk Communication": "Include Genesys dependency status in weekly governance reporting with clear impact assessment on production stability and feature delivery timelines"
+          },
+          "responseRationale": "Historical evidence shows external vendor dependencies have previously caused task readiness delays and sprint disruption in AI Platform projects. The current WSR confirms Genesys issues remain unresolved across multiple sprints despite active vendor coordination. With 117 days remaining and production stability directly dependent on reliable Genesys integration, executive escalation and technical fallback options are essential to prevent further delay to Voice Bot enhancements and D365 inquiry integration."
+        },
+        {
+          "riskId": "R002",
+          "riskTitle": "VDI Infrastructure Instability May Reduce Team Productivity and Extend Delivery Timelines",
+          "riskDescription": "Recurring VDI connectivity issues causing 5-10 minute recovery delays when using Teams and VSCode in parallel may accumulate into material productivity loss, particularly affecting offshore team execution velocity and sprint throughput.",
+          "riskCategory": "Infrastructure",
+          "currentProjectPhase": "Implementation and Stabilization",
+          "expectedOccurrencePhase": "Implementation and Stabilization",
+          "likelyImpactPhase": "Implementation and Stabilization",
+          "rootCause": "VDI infrastructure capacity or configuration limitations unable to support concurrent use of collaboration tools (Teams) and development environments (VSCode), causing system non-responsiveness.",
+          "triggerConditions": [
+            "VDI incidents increase in frequency beyond current levels",
+            "Offshore team productivity metrics show measurable decline in PR throughput or cycle time",
+            "Critical sprint deliverables delayed due to accumulated VDI downtime"
+          ],
+          "potentialImpact": {
+            "Team Productivity": "Cumulative loss of 5-10 minutes per incident across 6 offshore resources over 117 remaining days could result in 50-100 hours of lost productive time",
+            "Schedule": "Reduced sprint velocity may cause additional PBI spillage beyond current 4 spilled items, extending feature delivery by 1-2 weeks",
+            "Resource Utilization": "Offshore team unable to maintain expected throughput, reducing T&M billing efficiency and delivery capacity"
+          },
+          "likelihood": "High",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R06"
+            ],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "VDI infrastructure issues are explicitly documented in the current WSR as causing frequent 5-10 minute recovery delays, particularly when Teams calls and VSCode are used in parallel. This directly affects the offshore team's ability to maintain consistent development velocity. Historical evidence from the AI Platform Claims project shows VDI connectivity issues previously caused productivity loss and were escalated but not fully resolved. With 117 days remaining and ongoing production support competing with feature development, any reduction in team productivity directly threatens sprint commitments and delivery timelines. The risk is elevated because infrastructure issues require Premera IT intervention and may not be quickly resolved.",
+          "confidenceScore": 85,
+          "riskPriority": "High",
+          "riskType": "Infrastructure",
+          "timeToMaterialization": "",
+          "preventability": "Low",
+          "monitoringIndicators": [
+            "VDI incident frequency and duration tracked weekly",
+            "Offshore team PR throughput and cycle time trends compared to baseline",
+            "Sprint velocity and PBI completion rate monitored for decline"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "WSR 09/04/2026: 'VDI sometimes becomes non-responsive and takes around 5-10 minutes for recovering. Happens frequently if teams call and using VScode used in parallel'",
+              "Operational weakness: VDI infrastructure instability causing productivity loss",
+              "6 offshore resources affected by recurring VDI issues"
+            ],
+            "historicalReferences": [
+              "Historical Risk R06: VDI connectivity issues documented in AI Platform Claims project with mitigation requiring IT escalation",
+              "Risk register closed item: VDI connectivity disruptions during sprint execution caused loss of productive development hours"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Escalate VDI performance issues to Premera IT leadership with quantified productivity impact analysis showing cumulative loss of 50-100 hours over remaining project term"
+              ]
+            },
+            {
+              "stage": "CURRENT SPRINT (PI 06 Sprint 3)",
+              "actions": [
+                "Implement VDI incident logging process to capture frequency, duration, and affected resources for each connectivity failure, and establish priority support channel with Premera IT"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Infrastructure Support": "Request dedicated IT support resource assigned to Producer Portal and AI Platform teams to provide rapid response to VDI incidents and proactive monitoring",
+            "Alternative Access": "Evaluate and pilot alternative development environment options including local development with secure VPN access or cloud-based development workspaces to reduce VDI dependency",
+            "Capacity Planning": "Adjust sprint capacity planning to account for 10% productivity loss due to infrastructure issues until VDI stability is restored"
+          },
+          "responseRationale": "VDI connectivity issues causing 5-10 minute recovery delays are explicitly documented in the current WSR and affect offshore team productivity during critical stabilization work. Historical evidence from AI Platform Claims project shows similar VDI issues required escalation but were not fully resolved. With 117 days remaining and ongoing production support competing with feature development, any reduction in team velocity directly threatens delivery commitments."
+        },
+        {
+          "riskId": "R003",
+          "riskTitle": "Sprint Execution Inefficiency May Cause Continued PBI Spillage and Delivery Delays",
+          "riskDescription": "Recurring sprint spillage (4 PBIs in current sprint) driven by mid-sprint scope changes, dependency mapping issues, and production priority shifts may continue to disrupt sprint predictability and extend feature delivery timelines through the remaining project term.",
+          "riskCategory": "Project Management",
+          "currentProjectPhase": "Implementation and Stabilization",
+          "expectedOccurrencePhase": "Implementation and Stabilization",
+          "likelyImpactPhase": "Implementation and Stabilization",
+          "rootCause": "Combination of changing priorities due to production issues, mid-sprint dependency discovery, insufficient upfront story breakdown, and competing demands between production support and feature development.",
+          "triggerConditions": [
+            "Production issues continue to divert team capacity from planned sprint work",
+            "Additional mid-sprint scope or dependency changes introduced without sprint adjustment",
+            "PBI spillage rate exceeds 20% for two consecutive sprints"
+          ],
+          "potentialImpact": {
+            "Schedule": "Continued spillage may delay planned feature delivery by 2-3 sprints over remaining 117 days, pushing enhancements into unplanned extension period",
+            "Stakeholder Confidence": "Repeated sprint commitment misses may erode client confidence in delivery predictability and team execution capability",
+            "Resource Planning": "Unpredictable sprint outcomes complicate capacity planning and resource allocation for new opportunities in pipeline"
+          },
+          "likelihood": "High",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R04",
+              "R06"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The current sprint shows 4 spilled PBIs (encounter-summary rewrite, wrap-up summary detail retention, D365 summary update, VoiceBot inquiry integration) and a 31.6% PR abandon rate, indicating significant sprint execution challenges. Historical evidence shows similar patterns in earlier AI Platform projects where changing priorities, dependency issues, and insufficient upfront planning caused sprint disruption. The WSR notes that member contribution declined due to changing priorities and CSR production issues, confirming that production support is competing with planned feature work. With 117 days remaining and ongoing production support demands, this pattern is likely to continue unless process improvements are implemented. The risk is material because continued spillage directly delays feature delivery and may impact contract completion within the planned timeline.",
+          "confidenceScore": 87,
+          "riskPriority": "High",
+          "riskType": "Execution",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "PBI spillage rate tracked per sprint with root cause analysis",
+            "Ratio of production support hours to planned feature development hours",
+            "PR abandon rate and reasons for abandonment documented and reviewed"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "WSR 09/04/2026: 4 PBIs spilled from current sprint",
+              "WSR: 31.6% PR abandon rate (6 of 19 PRs abandoned)",
+              "WSR: 'Member contribution slightly declined due to changing priorities and CSR production issues'",
+              "Delivery pattern: Sprint spillage indicating scope or estimation challenges"
+            ],
+            "historicalReferences": [
+              "Historical Risk R04: Code quality concerns linked to dependency mappings and mid-sprint changes",
+              "Historical Risk R06: Lack of scope visibility caused execution inefficiency and quality concerns",
+              "Delivery pattern: High PR abandon rate due to scope refinement and changing priorities"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Conduct root cause analysis of 4 spilled PBIs and 31.6% PR abandon rate to identify systemic issues in story breakdown, dependency management, and production support allocation"
+              ]
+            },
+            {
+              "stage": "CURRENT SPRINT (PI 06 Sprint 3)",
+              "actions": [
+                "Implement dedicated production support rotation separating production capacity from planned feature development to prevent unplanned work from disrupting sprint commitments"
+              ]
+            },
+            {
+              "stage": "NEXT SPRINT (PI 06 Sprint 4)",
+              "actions": [
+                "Strengthen sprint planning with mandatory dependency identification, draft PR review for complex stories, and production support capacity buffer of 20% to absorb unplanned work"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Process Improvement": "Introduce definition of ready checklist requiring dependency mapping, design validation, and production impact assessment before PBIs enter sprint",
+            "Capacity Management": "Formalize production support capacity allocation with clear escalation criteria for when production issues require feature work deferral",
+            "Quality Gates": "Implement internal draft PR process for stories with cross-team dependencies or architectural complexity to reduce review cycles and abandonment"
+          },
+          "responseRationale": "Current sprint shows 4 spilled PBIs and 31.6% PR abandon rate driven by changing priorities, dependency issues, and production support competing with planned work. Historical evidence shows similar patterns in earlier AI Platform projects where insufficient upfront planning and competing demands caused sprint disruption. With 117 days remaining and multiple enhancement streams in flight, continued spillage will delay feature delivery and may impact contract completion within planned timeline."
+        },
+        {
+          "riskId": "R004",
+          "riskTitle": "Extended PR Cycle Times May Reduce Development Velocity and Delay Feature Releases",
+          "riskDescription": "Long PR cycle times driven by cross-team dependencies, production issues, and design documentation gaps may continue to slow development velocity, reducing the team's ability to deliver planned enhancements within the remaining project timeline.",
+          "riskCategory": "Development Process",
+          "currentProjectPhase": "Implementation and Stabilization",
+          "expectedOccurrencePhase": "Implementation and Stabilization",
+          "likelyImpactPhase": "Implementation and Stabilization",
+          "rootCause": "Cross-team dependencies requiring sequential PR approvals, production issues blocking PR progression, insufficient upfront design documentation leading to high review comment counts, and draft PR status extending cycle time.",
+          "triggerConditions": [
+            "Average PR cycle time exceeds 7 days for two consecutive sprints",
+            "Number of PRs with 10+ review comments increases beyond current levels",
+            "PRs blocked by external dependencies exceed 20% of active PRs"
+          ],
+          "potentialImpact": {
+            "Development Velocity": "Extended cycle times reduce throughput, limiting the number of features that can be delivered in remaining 117 days",
+            "Quality": "Rushed PRs to meet sprint deadlines may bypass thorough review, introducing technical debt or defects",
+            "Team Morale": "Prolonged PR review cycles and high comment counts may impact developer motivation and engagement"
+          },
+          "likelihood": "High",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R04"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "Current WSR shows average PR cycle time of 6.19 days with the longest PR (executor recovery) open for 25.8 days due to draft status, Redis PR dependency, and production issues. PR #77796 ran 17.5 days due to dependency on Rohit's observability PR. Some PRs drew high review comment counts (9 comments on #78936) due to unvalidated assumptions and insufficient documentation. Historical evidence shows code quality concerns in AI Platform projects were often linked to dependency churn and review friction rather than pure engineering capability. With 117 days remaining and ongoing production support demands, these patterns are likely to persist unless process improvements are implemented. The risk is material because extended cycle times directly reduce the team's ability to deliver planned features within the remaining timeline.",
+          "confidenceScore": 84,
+          "riskPriority": "Medium",
+          "riskType": "Process",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Average PR cycle time tracked weekly with trend analysis",
+            "Number of PRs blocked by external dependencies monitored daily",
+            "Review comment count per PR tracked with root cause analysis for high-comment PRs"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "WSR 09/04/2026: Average cycle time 6.19 days, longest PR 25.8 days",
+              "WSR: PR #77796 ran 17.5 days dependent on Rohit's observability PR",
+              "WSR: PR #78936 drew 9 review comments due to unvalidated assumptions and insufficient documentation",
+              "Delivery pattern: Extended PR cycle times with dependencies"
+            ],
+            "historicalReferences": [
+              "Historical Risk R04: Code quality concerns traced to dependency mappings and mid-sprint changes causing PR friction",
+              "Mitigation assessment: Review rigor improved quality perception but dependency and scope volatility must also be controlled"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "CURRENT SPRINT (PI 06 Sprint 3)",
+              "actions": [
+                "Implement dependency tracking dashboard in sprint planning to identify and sequence PRs with cross-team dependencies, and establish clear handoff protocols with target review SLAs"
+              ]
+            },
+            {
+              "stage": "NEXT SPRINT (PI 06 Sprint 4)",
+              "actions": [
+                "Introduce design documentation template requiring upfront architecture validation for complex PRs to reduce review comment counts and cycle time"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Process Optimization": "Establish PR size guidelines limiting PRs to 400 lines of code or 2-day development effort to reduce review complexity and cycle time",
+            "Dependency Management": "Create cross-team dependency board visible in daily standups to proactively identify and resolve blocking dependencies before PRs are raised",
+            "Review Efficiency": "Implement automated code quality checks and documentation validation in PR pipeline to reduce manual review burden and accelerate approval"
+          },
+          "responseRationale": "Current WSR shows average PR cycle time of 6.19 days with longest PR at 25.8 days due to dependencies, draft status, and production issues. Historical evidence shows code quality concerns in AI Platform projects were often linked to dependency churn and review friction. With 117 days remaining and ongoing production support demands, extended cycle times directly reduce capacity to deliver planned enhancements within remaining timeline."
+        },
+        {
+          "riskId": "R005",
+          "riskTitle": "Key Resource PTO During Critical Period May Disrupt Architecture Decisions and Sprint Execution",
+          "riskDescription": "Vipin's planned PTO (September 9-18) during a critical stabilization period may delay architecture decisions, block dependent work, and reduce the team's ability to resolve complex technical issues, particularly for executive agent integration and downstream authentication design.",
+          "riskCategory": "Resource Management",
+          "currentProjectPhase": "Implementation and Stabilization",
+          "expectedOccurrencePhase": "Implementation and Stabilization",
+          "likelyImpactPhase": "Implementation and Stabilization",
+          "rootCause": "Single point of dependency on AI Architect for critical architecture decisions, design approvals, and complex technical issue resolution during a period when executive agent integration and downstream auth spike are planned.",
+          "triggerConditions": [
+            "Architecture decisions or design approvals required during Vipin's PTO period (Sep 9-18)",
+            "Complex technical issues arise that require AI Architect expertise during PTO period",
+            "Dependent PBIs blocked due to lack of architecture guidance during PTO"
+          ],
+          "potentialImpact": {
+            "Schedule": "Potential 1-2 week delay in architecture-dependent work including executive agent integration and downstream auth spike",
+            "Decision Quality": "Architecture decisions made without AI Architect input may require rework or fail to align with enterprise standards",
+            "Team Productivity": "Team members blocked on architecture questions may experience reduced utilization during PTO period"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Low",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "Vipin serves as the AI Architect and is a critical resource for architecture decisions, design approvals, and complex technical issue resolution. The WSR shows upcoming work includes executive agent eval planning and downstream integration/auth design, both requiring architecture expertise. Vipin's PTO from September 9-18 coincides with this critical work. While two new resources are onboarding (Muang started 08/31, Deeksha starts Sep 7), they will not have sufficient context to substitute for Vipin's architecture role during this period. With 117 days remaining and multiple architecture-dependent items in the backlog, any delay in architecture decisions could cascade into broader schedule impact. The risk is moderate because the PTO is known in advance, allowing for mitigation planning, but the single point of dependency on the AI Architect role creates vulnerability.",
+          "confidenceScore": 78,
+          "riskPriority": "Medium",
+          "riskType": "Resource",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Architecture-dependent PBIs identified and prioritized before PTO period",
+            "Knowledge transfer sessions completed before Vipin's PTO",
+            "Escalation path established for urgent architecture decisions during PTO"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "WSR 09/04/2026: Vipin PTO 09/09-09/18",
+              "WSR Next Week: 'Eval planning for executive agent' requiring architecture input",
+              "Risk register: Downstream integration and auth spike pending (post-MVP scope)",
+              "Vipin identified as AI Architect in team structure"
+            ],
+            "historicalReferences": []
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE (Before September 9)",
+              "actions": [
+                "Complete knowledge transfer sessions for executive agent integration and downstream auth spike with documented architecture decisions, design patterns, and escalation contacts before Vipin PTO begins September 9"
+              ]
+            },
+            {
+              "stage": "DURING PTO (September 9-18)",
+              "actions": [
+                "Defer architecture-dependent PBIs requiring AI Architect approval to sprint beginning September 23, and establish escalation path to Atlee or Shankar for urgent technical decisions during PTO period"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Knowledge Transfer": "Document architecture decisions, design rationale, and technical constraints for executive agent and downstream integration work in shared repository accessible to all team members",
+            "Work Sequencing": "Prioritize architecture-independent work including testing, bug fixes, and production support during September 9-18 PTO window",
+            "Backup Coverage": "Designate Antara as backup technical lead for architecture questions during Vipin PTO with pre-approved decision authority for non-critical items"
+          },
+          "responseRationale": "Vipin serves as AI Architect with critical role in architecture decisions and design approvals. Upcoming work includes executive agent eval planning and downstream integration requiring architecture expertise. While PTO is known in advance allowing mitigation planning, single point of dependency on AI Architect role creates vulnerability during critical stabilization period with 117 days remaining."
+        },
+        {
+          "riskId": "R006",
+          "riskTitle": "Production Support Workload May Continue to Compete with Feature Development Capacity",
+          "riskDescription": "Ongoing production support demands, including vulnerability fixes, production issue resolution, and pilot feedback implementation, may continue to consume planned feature development capacity, reducing sprint velocity and delaying enhancement delivery.",
+          "riskCategory": "Capacity Management",
+          "currentProjectPhase": "Implementation and Stabilization",
+          "expectedOccurrencePhase": "Implementation and Stabilization",
+          "likelyImpactPhase": "Implementation and Stabilization",
+          "rootCause": "Post-MVP project phase requires simultaneous production support for deployed pilot while continuing feature development, without dedicated production support rotation or clear capacity allocation between support and development work.",
+          "triggerConditions": [
+            "Production incidents increase in frequency or severity beyond current levels",
+            "Vulnerability fixes or security patches require immediate attention, displacing planned sprint work",
+            "Pilot feedback requires urgent implementation, disrupting sprint commitments"
+          ],
+          "potentialImpact": {
+            "Schedule": "Continued competition between production support and feature development may delay planned enhancements by 2-3 weeks over remaining 117 days",
+            "Sprint Predictability": "Unplanned production work reduces sprint predictability and increases PBI spillage risk",
+            "Team Focus": "Context switching between production support and feature development reduces overall team efficiency"
+          },
+          "likelihood": "High",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The WSR shows the project has transitioned to a post-MVP phase with production support activities including vulnerability fixes for Voice Bot, production issue resolution, and pilot feedback implementation. The WSR notes that member contribution declined due to changing priorities and CSR production issues, confirming that production support is competing with planned feature work. The project context drift analysis identifies a moderate delivery drift where the project has evolved from pure development to production support with ongoing enhancements, a shift not explicitly scoped in the SOW. With 117 days remaining and no evidence of a dedicated production support rotation or clear capacity allocation, this pattern is likely to continue. The risk is material because unplanned production work directly reduces the capacity available for planned feature development.",
+          "confidenceScore": 82,
+          "riskPriority": "Medium",
+          "riskType": "Capacity",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Ratio of production support hours to planned feature development hours tracked weekly",
+            "Production incident frequency and severity monitored with trend analysis",
+            "Sprint capacity allocation between support and development work documented and reviewed"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "WSR 09/04/2026: 'Production support' listed as ongoing work",
+              "WSR: 'Working on Vulnerability fixes for Voice Bot'",
+              "WSR: 'Member contribution slightly declined due to changing priorities and CSR production issues'",
+              "Delivery drift: Project evolved from build-focused to support-focused activities"
+            ],
+            "historicalReferences": []
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Establish dedicated production support rotation with 30% capacity allocation separated from feature development to prevent unplanned production work from disrupting sprint commitments"
+              ]
+            },
+            {
+              "stage": "CURRENT SPRINT (PI 06 Sprint 3)",
+              "actions": [
+                "Implement production support metrics tracking ratio of support hours to feature development hours with weekly review and capacity adjustment triggers"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Capacity Planning": "Formalize production support capacity model with clear allocation percentages and escalation criteria for when production incidents require feature work deferral",
+            "Governance": "Include production support workload and impact analysis in weekly governance reporting to maintain stakeholder visibility and manage expectation on feature delivery velocity",
+            "Scope Management": "Document production support scope and capacity requirements for potential contract amendment discussion to align SOW with evolved delivery model"
+          },
+          "responseRationale": "WSR shows project has transitioned to post-MVP phase with production support including vulnerability fixes, production issue resolution, and pilot feedback competing with planned feature work. Member contribution declined due to changing priorities and CSR production issues. With 117 days remaining and no dedicated support rotation, this pattern will continue to reduce feature development capacity and delay planned enhancements."
+        },
+        {
+          "riskId": "R007",
+          "riskTitle": "Client Confidence in AI Delivery Capability May Erode Due to Execution Friction",
+          "riskDescription": "Persistent execution challenges including PR process inefficiencies, sprint spillage, production issues, and vendor dependency delays may erode client confidence in the offshore team's AI delivery capability, potentially impacting future work opportunities and account growth.",
+          "riskCategory": "Stakeholder Management",
+          "currentProjectPhase": "Implementation and Stabilization",
+          "expectedOccurrencePhase": "Implementation and Stabilization",
+          "likelyImpactPhase": "Post-Project and Account Growth",
+          "rootCause": "Combination of visible execution friction (PR abandonment, sprint spillage, long cycle times), unresolved vendor dependencies, and insufficient proactive value demonstration despite strong AI tooling adoption and technical capability.",
+          "triggerConditions": [
+            "Sprint spillage or PR process issues persist for 3+ consecutive sprints",
+            "Client stakeholders express concerns about delivery predictability or execution quality",
+            "Proposal pipeline opportunities (AI Trust Office, Claims Use Case 8) delayed or deprioritized due to confidence concerns"
+          ],
+          "potentialImpact": {
+            "Account Growth": "Reduced likelihood of securing new opportunities in active proposal pipeline (AI Trust Office, Claims Use Case 8)",
+            "Contract Extension": "Risk to contract extension or follow-on work beyond December 31, 2026 end date",
+            "Reputation": "Negative perception of offshore AI capability may impact broader Premera-Ascendion relationship"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "High",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R05"
+            ],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "Historical Risk R05 documents client confidence concerns in the AI Platform Servicing project due to insufficient demonstration of AI expertise and proactive value-add. While the current WSR shows positive signals including strong AI tooling adoption (131.1K tokens, 4,072 prompts) and an active proposal pipeline (AI Trust Office demo scheduled 9/11, Claims Use Case 8 in progress), persistent execution friction remains visible through 31.6% PR abandon rate, 4 spilled PBIs, unresolved Genesys issues, and production support competing with feature work. The historical risk assessment notes that mitigation is in progress but unproven, and the risk remains open. With 117 days remaining and critical proposal opportunities in the pipeline, continued execution friction without visible improvement could erode client confidence and impact future work opportunities. The risk is material because it affects not just current delivery but future account growth and revenue.",
+          "confidenceScore": 79,
+          "riskPriority": "Medium",
+          "riskType": "Relationship",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Client stakeholder feedback captured in governance meetings and retrospectives",
+            "Proposal pipeline progression tracked with win/loss analysis",
+            "Execution metrics (sprint velocity, PR cycle time, spillage rate) trended and reviewed with client"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "WSR 09/04/2026: Strong AI tooling adoption (131.1K tokens, 4,072 prompts, 63,075 lines added)",
+              "WSR: Active proposal pipeline (AI Trust Office demo 9/11, Claims Use Case 8 in progress)",
+              "WSR: Execution friction visible (31.6% PR abandon rate, 4 PBIs spilled, Genesys issues unresolved)",
+              "Operational weakness: Production issues competing with feature development"
+            ],
+            "historicalReferences": [
+              "Historical Risk R05: Client confidence in AI delivery capability at risk due to insufficient proactive value-add",
+              "Risk status: Open with mitigation in progress but unproven",
+              "Business impact: High impact on future work, account growth, and continuity"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "CURRENT SPRINT (PI 06 Sprint 3)",
+              "actions": [
+                "Prepare and deliver proactive value demonstration showcasing AI tooling adoption metrics, proposal pipeline progress, and technical innovations to rebuild stakeholder confidence in offshore AI capability"
+              ]
+            },
+            {
+              "stage": "NEXT SPRINT (PI 06 Sprint 4)",
+              "actions": [
+                "Implement execution improvement plan addressing PR process inefficiencies, sprint spillage, and dependency management with measurable targets and weekly progress tracking"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Stakeholder Communication": "Increase governance frequency with client stakeholders to proactively communicate execution improvements, demonstrate AI value delivery, and address concerns before they escalate",
+            "Value Demonstration": "Document and showcase AI-driven efficiency gains including 131K tokens usage, 70% agent-generated test cases, and active proposal pipeline wins in executive governance forums",
+            "Process Excellence": "Accelerate implementation of process improvements from historical Risk R04 and R05 mitigation plans to visibly reduce execution friction and improve delivery predictability"
+          },
+          "responseRationale": "Historical Risk R05 documents client confidence concerns due to insufficient demonstration of AI expertise and proactive value-add. While current WSR shows positive signals including strong AI tooling adoption and active proposal pipeline, persistent execution friction through PR abandonment, sprint spillage, and unresolved dependencies remains visible. With critical proposal opportunities in pipeline and 117 days remaining, continued execution friction without visible improvement could erode confidence and impact future account growth."
+        }
+      ]
+    },
+    {
+      "projectId": "11987",
+      "projectName": "Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "2026-07-22",
+      "predictedRisks": [
+        {
+          "riskId": "R001",
+          "riskTitle": "Data Hub Field Delivery Delays May Cause Critical Path Failure and UAT Schedule Collapse",
+          "riskDescription": "Delayed availability of four critical Data Hub total premium fields (ETA July 30) and search by NPN functionality compresses the remaining integration testing, E2E testing, and UAT timeline to an infeasible 26 days before UAT signoff target of August 25, creating high probability of go-live delay beyond September 2.",
+          "riskCategory": "Schedule",
+          "currentProjectPhase": "Implementation & Build - Late Stage",
+          "expectedOccurrencePhase": "Integration Testing",
+          "likelyImpactPhase": "UAT and Go-Live",
+          "rootCause": "Critical dependency on Data Hub team delivery of required API fields and functionality, with delivery date (July 30) occurring only 8 days after current WSR date (July 22), leaving insufficient time for integration, testing, and UAT completion before contract end (August 31) and go-live (September 2).",
+          "triggerConditions": [
+            "Data Hub fields not delivered by July 30 as committed",
+            "Integration issues discovered after July 30 field delivery requiring rework",
+            "Integration testing cannot complete by August 10 due to field availability delay"
+          ],
+          "potentialImpact": {
+            "Schedule": "Go-live date of September 2 at high risk of 2-4 week delay; UAT signoff target of August 25 likely missed; contract end date of August 31 will be exceeded without formal extension",
+            "Testing": "Integration testing, E2E testing, and UAT compressed into 26-day window (July 30 - August 25) with all three phases currently at 0% completion, creating high defect leakage risk",
+            "Financial": "Fixed-price milestone payments at risk; potential cost overrun for extended timeline; milestone 5 (UAT completion $130K) and milestone 6 (Go-Live $130K) delayed"
+          },
+          "likelihood": "Critical",
+          "impactSeverity": "Critical",
+          "overallRiskRating": "Critical",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R01"
+            ],
+            "recurrenceLikelihood": "Very High",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "This is the single highest-priority risk for Producer Portal. Historical Risk R01 documented Data Hub API availability as a delivery risk on June 29, was marked resolved, but the current WSR dated July 22 confirms the dependency remains unresolved with four critical fields still pending (ETA July 30). This represents only 8 days from the WSR date, and even if delivered on time, leaves only 26 days to complete integration testing (currently 0%), E2E testing, UAT (currently 0%), and penetration testing (currently 0%) before the UAT signoff target of August 25. The historical evidence shows this dependency has already caused delays and was prematurely closed. With contract end on August 31 and go-live on September 2, any further delay in Data Hub delivery or integration issues discovered after July 30 will cause critical path failure. The risk is elevated to Critical because it sits on the absolute critical path with no buffer and affects multiple downstream milestones.",
+          "confidenceScore": 96,
+          "riskPriority": "Critical",
+          "riskType": "Dependency",
+          "timeToMaterialization": "",
+          "preventability": "Low",
+          "monitoringIndicators": [
+            "Data Hub field delivery status confirmed daily with DH team starting July 23",
+            "Integration testing start date tracked against July 30 dependency resolution",
+            "UAT signoff date (August 25) monitored with weekly countdown and risk assessment"
+          ],
+          "businessCriticality": "Critical",
+          "evidence": {
+            "projectIndicators": [
+              "WSR 07/22/2026: 'Awaiting 4 new fields for total premium on BoB. ETA 30th July from DH'",
+              "WSR 07/22/2026: 'Awaiting DH support for search by NPN on producer entity. ETA 30th July from DH'",
+              "WSR Progress Chart: Integration testing 0%, UAT 0%, Pen Test 0%",
+              "WSR: Integration with Data Hub 95% complete (not 100%)",
+              "Timeline: Only 40 days remaining to contract end, 26 days to UAT signoff target"
+            ],
+            "historicalReferences": [
+              "Historical Risk R01: 'Availability on Data Hub API delivery by 6/30. Any delay may impact delivery timelines' - opened 6/29/2026, marked resolved but condition persists",
+              "Historical assessment: Mitigation ineffective, risk remained materially active after being labeled resolved",
+              "Recurrence likelihood: Very High - same dependency active in current WSR"
+            ]
+          },
+          "mitigationPlan": [],
+          "recommendations": {},
+          "responseRationale": ""
+        },
+        {
+          "riskId": "R002",
+          "riskTitle": "Zero-Progress Testing Phases May Cause Late Defect Discovery and Go-Live Failure",
+          "riskDescription": "Integration testing, E2E testing, UAT, and penetration testing all remain at 0% completion with only 40 days to contract end and 34 days to UAT signoff target, creating extreme risk of late-stage defect discovery, inadequate test coverage, and go-live readiness failure.",
+          "riskCategory": "Quality",
+          "currentProjectPhase": "Implementation & Build - Late Stage",
+          "expectedOccurrencePhase": "Integration Testing and UAT",
+          "likelyImpactPhase": "UAT and Go-Live",
+          "rootCause": "Testing phases blocked by incomplete Data Hub integration (95%) and unavailable test data, combined with compressed timeline that requires all testing phases to execute in parallel rather than sequentially, increasing coordination complexity and defect leakage risk.",
+          "triggerConditions": [
+            "Integration testing cannot start by August 1 due to Data Hub dependency",
+            "Test data for integration and E2E scenarios not available by August 5",
+            "UAT test cases not finalized by August 1, preventing UAT planning and execution"
+          ],
+          "potentialImpact": {
+            "Quality": "Compressed testing window increases probability of critical defects escaping to production; inadequate NFR validation may cause performance or security issues post-go-live",
+            "Go-Live": "High probability of go-live delay beyond September 2 if critical defects discovered late in UAT or penetration testing; potential production incidents if testing inadequate",
+            "Compliance": "Penetration testing required before production deployment may be rushed or incomplete, creating security compliance risk"
+          },
+          "likelihood": "Critical",
+          "impactSeverity": "Critical",
+          "overallRiskRating": "Critical",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R02"
+            ],
+            "recurrenceLikelihood": "Very High",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "Historical Risk R02 documented that integration with live Data Hub APIs was pending and that performance and NFR issues would only become visible after integration. This risk was marked resolved, but the current WSR shows integration is still only 95% complete and all testing phases remain at 0%. With only 34 days to UAT signoff (August 25) and 40 days to contract end (August 31), there is insufficient time to execute integration testing, E2E testing, UAT, and penetration testing sequentially. The WSR explicitly requests support for getting UAT test cases early and for upstream data setup for integration and E2E scenarios, confirming that testing readiness is at risk. Historical evidence shows that late validation exposure is a recurring pattern in Premera projects, and the current situation represents an extreme case where multiple testing phases must compress into a 3-4 week window. The risk is Critical because inadequate testing directly threatens go-live readiness and production stability.",
+          "confidenceScore": 94,
+          "riskPriority": "Critical",
+          "riskType": "Quality",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Integration testing start date tracked daily against Data Hub dependency resolution",
+            "Test data availability for integration and E2E scenarios confirmed by August 5",
+            "UAT test case finalization tracked with target completion by August 1"
+          ],
+          "businessCriticality": "Critical",
+          "evidence": {
+            "projectIndicators": [
+              "WSR 07/22/2026 Progress Chart: Integration testing 0%, UAT 0%, Pen Test 0%",
+              "WSR: 'Need support for getting UAT test cases early'",
+              "WSR: 'Need support for upstream Data setup of integration & E2E scenarios'",
+              "WSR: Integration with Data Hub 95% complete (not 100%)",
+              "Timeline: 34 days to UAT signoff target (August 25), 40 days to contract end"
+            ],
+            "historicalReferences": [
+              "Historical Risk R02: 'Integration with live Data Hub APIs is still pending. Performance and NFR issues will only become visible after integration' - marked resolved but condition persists",
+              "Historical assessment: Mitigation failed, unresolved integration state carried forward into current delivery risk",
+              "Enterprise pattern: Late validation exposure creates acute risk when dependencies delayed"
+            ]
+          },
+          "mitigationPlan": [],
+          "recommendations": {},
+          "responseRationale": ""
+        },
+        {
+          "riskId": "R003",
+          "riskTitle": "Contractual Timeline Misalignment May Cause Legal and Commercial Risk at Project Closure",
+          "riskDescription": "Contract term ends August 31, 2026 but go-live is scheduled for September 2, 2026 with 4-week hypercare extending through approximately October 2, 2026, creating a 32-day gap where work is required but not covered by the current contract term, exposing both parties to legal and commercial risk.",
+          "riskCategory": "Contractual",
+          "currentProjectPhase": "Implementation & Build - Late Stage",
+          "expectedOccurrencePhase": "Go-Live and Hypercare",
+          "likelyImpactPhase": "Go-Live and Hypercare",
+          "rootCause": "SOW contract term defined as March 1 - August 31, 2026 but milestone structure includes go-live (September 2) and hypercare (4 weeks post go-live through ~October 2) extending beyond contract end date, creating inherent misalignment between contract term and milestone delivery dates.",
+          "triggerConditions": [
+            "Contract end date (August 31) reached without formal amendment or extension",
+            "Go-live activities commence on September 2 without contractual coverage",
+            "Hypercare period (September 2 - October 2) executed without contract in force"
+          ],
+          "potentialImpact": {
+            "Legal": "Work performed after August 31 without contract coverage creates legal risk for both parties; resource commitments and liability unclear for post-contract period",
+            "Financial": "Milestone payments for Go-Live ($130K) and Hypercare ($130K) totaling $260K may be delayed or disputed due to contractual ambiguity",
+            "Resource": "Resource availability and rates for September-October period unclear without contract extension; potential resource reallocation or loss"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Low",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The SOW explicitly states the contract term runs from March 1, 2026 to August 31, 2026, but the WSR timeline graphic shows go-live scheduled for September 2, 2026 (2 days after contract end) and hypercare extending into October 2026. The SOW milestone structure includes Milestone 6 (Go-Live, $130K) and Milestone 7 (Completion of Hypercare, $130K) which by definition occur after the contract end date. This creates a 32-day gap (September 1 - October 2) where work is required but not covered by the current contract. With only 40 days remaining to contract end and no evidence of a contract amendment or extension in progress, this misalignment will become acute as the August 31 date approaches. The risk is High because it affects legal coverage, financial terms, and resource commitments for a significant portion of the project (go-live and hypercare), and requires immediate executive action to resolve.",
+          "confidenceScore": 92,
+          "riskPriority": "High",
+          "riskType": "Contractual",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Contract amendment execution status tracked weekly with legal and procurement teams",
+            "Resource commitment confirmations for September-October period obtained by August 1",
+            "Milestone payment terms for Go-Live and Hypercare clarified in contract amendment"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "SOW: 'The Term of this Work Assignment will be from March 1, 2026 to August 31, 2026'",
+              "WSR Timeline Graphic: 'Rollout 2nd Sept' (go-live date)",
+              "WSR Timeline Graphic: Hypercare extending into October 2026",
+              "SOW Milestone 6: Go-Live $130,000",
+              "SOW Milestone 7: Completion of Hypercare $130,000 (4 weeks post go-live)"
+            ],
+            "historicalReferences": []
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Execute contract amendment extending term through October 2, 2026 to align with go-live date of September 2 and 4-week hypercare period, and clarify resource commitments and billing rates for post-August 31 period"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Legal Review": "Engage Premera legal and procurement teams to expedite contract amendment execution by August 1 to ensure legal coverage for go-live and hypercare activities",
+            "Financial Clarity": "Confirm milestone payment terms for Go-Live (Milestone 6, $130K) and Hypercare (Milestone 7, $130K) are preserved in contract amendment with clear payment triggers and acceptance criteria",
+            "Resource Commitment": "Obtain written confirmation from all team members of availability and commitment through October 2 to prevent resource reallocation during critical go-live and hypercare period"
+          },
+          "responseRationale": "SOW contract term ends August 31, 2026 but go-live scheduled September 2 with 4-week hypercare extending through approximately October 2, creating 32-day gap where work is required but not covered by current contract. This creates legal risk for both parties and uncertainty around resource commitments and milestone payments totaling $260K. With only 40 days to contract end and no evidence of amendment in progress, immediate executive action required to resolve contractual misalignment."
+        },
+        {
+          "riskId": "R004",
+          "riskTitle": "Scope Change Accumulation May Trigger Additional Timeline Extension Beyond Current Delay",
+          "riskDescription": "Absorption of 14-19 scope changes equivalent to 0.75-1 sprint of effort has already compressed the timeline, and any additional scope changes in the final 40 days may trigger further delays beyond the already-extended go-live date, particularly if changes affect integration, testing, or UAT phases.",
+          "riskCategory": "Scope",
+          "currentProjectPhase": "Implementation & Build - Late Stage",
+          "expectedOccurrencePhase": "Integration Testing and UAT",
+          "likelyImpactPhase": "UAT and Go-Live",
+          "rootCause": "Evolving requirements and responsibility shifts (identity setup, infrastructure provisioning, CCS APIs, QA tech stack, frontend repo, agent approach, API integration, user hierarchy, export, super user login, DR strategy, dashboard, dual role) absorbed incrementally without formal change control or schedule adjustment.",
+          "triggerConditions": [
+            "Additional scope changes introduced during integration testing or UAT phases",
+            "Dual role requirement (Decision #37, status pending) finalized with material scope impact",
+            "Data mapping discrepancies discovered during integration requiring design changes"
+          ],
+          "potentialImpact": {
+            "Schedule": "Additional scope changes may extend go-live beyond September 2 by 2-4 weeks, pushing into October and requiring further contract extension",
+            "Cost": "Fixed-price model absorbs scope changes within $650K NTE, but additional changes may trigger change order and cost increase",
+            "Quality": "Late-stage scope changes increase rework risk and reduce testing adequacy, elevating defect leakage probability"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R03"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "Historical Risk R03 documents that the project has absorbed approximately 14 scope changes equivalent to 0.75-1 sprint of additional effort, and warns that further scope additions may impact delivery timelines. The current WSR scope change tracker shows 19 documented changes across identity, APIs, infrastructure, requirements, design, and architecture. The risk remains open in the historical register with no evidence of effective mitigation or scope freeze. With only 40 days remaining to contract end and critical testing phases at 0%, any additional scope changes will directly impact the already-compressed timeline. Decision log item #37 (dual role requirement) remains pending with potential medium impact. The WSR notes that data mapping issues may lead to design changes with time impact. The risk is High because late-stage scope changes in a fixed-price project with compressed timeline create compounding schedule and quality risk.",
+          "confidenceScore": 91,
+          "riskPriority": "High",
+          "riskType": "Scope",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Scope freeze implemented immediately with executive approval required for any new changes",
+            "Pending decision items (dual role, data mapping) resolved by July 30 with impact assessment",
+            "Change control process enforced with schedule and cost impact analysis for any new requests"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "WSR 07/22/2026: 'The project has already absorbed approximately 14 scope changes (equivalent to 0.75\u20131 sprint of additional effort)'",
+              "WSR Scope Change Tracker: 19 documented changes",
+              "WSR Decision Log: Decision #37 (dual role) status pending with potential medium impact",
+              "WSR: 'If any issues with data mappings come and they lead back to design it might have some time impact'"
+            ],
+            "historicalReferences": [
+              "Historical Risk R03: 'The project has already absorbed approximately 14 scope changes... Further scope additions may impact delivery timelines'",
+              "Risk status: Identified with no effective mitigation",
+              "Historical assessment: Scope/change accumulation creates latent schedule debt"
+            ]
+          },
+          "mitigationPlan": [],
+          "recommendations": {},
+          "responseRationale": ""
+        },
+        {
+          "riskId": "R005",
+          "riskTitle": "Infrastructure Instability May Disrupt Final Integration and Deployment Activities",
+          "riskDescription": "Citrix server slowness and ACPT environment connectivity issues affecting offshore team productivity may intensify during critical integration, deployment, and testing phases, causing delays in environment readiness and deployment execution.",
+          "riskCategory": "Infrastructure",
+          "currentProjectPhase": "Implementation & Build - Late Stage",
+          "expectedOccurrencePhase": "Integration Testing and Deployment",
+          "likelyImpactPhase": "Integration Testing and Go-Live",
+          "rootCause": "Citrix VDI performance issues causing timeouts and slowness for offshore team, combined with ACPT environment connectivity and service integration issues requiring resolution before integration testing can commence.",
+          "triggerConditions": [
+            "Citrix issues persist or worsen during integration testing phase",
+            "ACPT environment connectivity issues delay deployment of remaining components (Azure Front Door, DNS)",
+            "Infrastructure issues cause deployment failures or rollback during go-live"
+          ],
+          "potentialImpact": {
+            "Team Productivity": "Offshore team productivity loss during critical integration and testing phases may extend timeline by 1-2 weeks",
+            "Deployment": "ACPT environment issues may delay final deployment readiness and production deployment execution",
+            "Testing": "Infrastructure instability may cause test execution failures or invalid test results, requiring re-testing"
+          },
+          "likelihood": "High",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The WSR explicitly documents Citrix server slowness and timeouts impacting offshore team efforts, and notes that the team is resolving issues of connectivity and service integration in the ACPT environment. The WSR also shows that Azure Front Door and DNS completion spilled to the next sprint, indicating infrastructure-related delays. With only 40 days remaining and critical integration testing, E2E testing, and deployment activities ahead, infrastructure instability during this period could cause material delays. The offshore team is a significant portion of the project resources, and productivity loss during the critical final phases directly impacts timeline. The risk is High because infrastructure issues require Premera IT intervention and may not be quickly resolved, and the timing coincides with the most critical project phases.",
+          "confidenceScore": 87,
+          "riskPriority": "High",
+          "riskType": "Infrastructure",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Citrix incident frequency and duration tracked daily with escalation to Premera IT if issues persist",
+            "ACPT environment connectivity status confirmed daily with infrastructure team",
+            "Deployment readiness checklist maintained with infrastructure dependencies tracked"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "WSR 07/22/2026: 'Citrix server slowness and timeouts impacting offshore team efforts'",
+              "WSR: 'Resolving issues of connectivity and service integration' in ACPT environment",
+              "WSR: 'Azure Front Door & DNS' completion spilled to next sprint",
+              "Operational weakness: Infrastructure issues impacting productivity and deployment"
+            ],
+            "historicalReferences": []
+          },
+          "mitigationPlan": [],
+          "recommendations": {},
+          "responseRationale": ""
+        },
+        {
+          "riskId": "R006",
+          "riskTitle": "Auth0-Entra Integration Complexity May Delay Authentication Readiness for UAT",
+          "riskDescription": "Pending Auth0 integration with Entra (Azure AD) for super user authentication may encounter technical complexity or configuration issues, delaying authentication readiness and blocking UAT execution for super user personas.",
+          "riskCategory": "Technical Integration",
+          "currentProjectPhase": "Implementation & Build - Late Stage",
+          "expectedOccurrencePhase": "Integration Testing",
+          "likelyImpactPhase": "UAT",
+          "rootCause": "Auth0-Entra federation integration requires configuration and testing across multiple identity systems, with potential for authentication flow issues, token handling complexity, or configuration misalignment between Auth0 and Azure AD.",
+          "triggerConditions": [
+            "Auth0-Entra integration not completed by August 5",
+            "Authentication flow issues discovered during integration testing requiring rework",
+            "Super user UAT scenarios blocked due to incomplete authentication integration"
+          ],
+          "potentialImpact": {
+            "UAT": "Super user UAT scenarios cannot execute without working Auth0-Entra integration, potentially delaying UAT signoff",
+            "Schedule": "Integration issues may delay UAT start or require partial UAT execution, extending timeline by 1-2 weeks",
+            "Security": "Rushed authentication integration may introduce security vulnerabilities or compliance issues"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Low",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The WSR health summary explicitly lists 'Auth0- Integration with Entra' under schedule delays, indicating this is a known issue affecting the timeline. The decision log shows that Auth0 DB connection configuration is maintained outside Auth0 and requires Premera team support to update in ACPT, indicating configuration complexity. Super user authentication via Azure AD SSO is a key requirement for multiple user personas (Agency Admin, Business Admin users), and UAT cannot be fully executed without working authentication for all user types. With only 40 days remaining and UAT at 0%, any delay in Auth0-Entra integration directly impacts UAT readiness. The risk is Medium because while the integration is complex, it is a known requirement with active work in progress, but the tight timeline elevates the impact of any integration issues.",
+          "confidenceScore": 83,
+          "riskPriority": "Medium",
+          "riskType": "Integration",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Auth0-Entra integration completion status tracked daily with target completion by August 5",
+            "Authentication flow testing for all user personas completed before UAT start",
+            "Auth0 vendor support engaged if integration issues arise"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "WSR 07/22/2026 Health Summary: 'Auth0- Integration with Entra' listed under Schedule delays",
+              "WSR Decision Log: Auth0 DB connection configuration requires Premera team support",
+              "WSR Open Items: 'Auth0 Change propagation: The DB connection configuration is maintained outside Auth0... If this gets delayed this will impact our move to ACPT'",
+              "SOW: Super user authentication via Azure AD SSO is in scope"
+            ],
+            "historicalReferences": []
+          },
+          "mitigationPlan": [],
+          "recommendations": {},
+          "responseRationale": ""
+        },
+        {
+          "riskId": "R007",
+          "riskTitle": "Test Data Unavailability May Block Integration and E2E Testing Execution",
+          "riskDescription": "Incomplete test data setup for integration and E2E scenarios across upstream systems (Data Hub, Edge) may delay testing start dates and reduce test coverage, increasing the probability of defects escaping to UAT and production.",
+          "riskCategory": "Testing",
+          "currentProjectPhase": "Implementation & Build - Late Stage",
+          "expectedOccurrencePhase": "Integration Testing",
+          "likelyImpactPhase": "Integration Testing and E2E Testing",
+          "rootCause": "Test data setup requires coordination with multiple upstream teams (Data Hub, Edge) and depends on data availability in ACPT environment, with setup complexity for multi-system integration scenarios.",
+          "triggerConditions": [
+            "Test data for integration scenarios not available by August 5",
+            "E2E test data setup not completed by August 10",
+            "Data quality issues discovered during testing requiring data refresh or correction"
+          ],
+          "potentialImpact": {
+            "Testing": "Integration and E2E testing cannot execute without proper test data, delaying testing start and reducing coverage",
+            "Schedule": "Test data delays may push integration testing start by 1-2 weeks, cascading into UAT delay",
+            "Quality": "Incomplete test data coverage may result in untested scenarios and higher defect leakage to production"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The WSR explicitly requests 'Need support for upstream Data setup of integration & E2E scenarios' and notes that daily calls have been enabled but continued support is needed. The WSR also shows the team is 'Working with Edge & DH for creating test data', indicating active coordination but incomplete readiness. With integration testing at 0% and only 40 days remaining, test data must be available by early August to allow testing to commence. The dependency on multiple upstream teams (Data Hub, Edge) for data setup creates coordination complexity and potential for delays. The risk is Medium because while test data issues are common and manageable, the compressed timeline means any delay in data availability directly impacts the critical path.",
+          "confidenceScore": 81,
+          "riskPriority": "Medium",
+          "riskType": "Testing",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Test data availability status confirmed daily with Data Hub and Edge teams",
+            "Test data requirements documented and shared with upstream teams by July 25",
+            "Test data validation completed before integration testing start"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "WSR 07/22/2026: 'Need support for upstream Data setup of integration & E2E scenarios. Daily calls enabled, need continued support'",
+              "WSR: 'Working with Edge & DH for creating test data'",
+              "WSR Progress Chart: Integration testing 0%, E2E testing not started",
+              "Timeline: Only 40 days remaining to contract end"
+            ],
+            "historicalReferences": []
+          },
+          "mitigationPlan": [],
+          "recommendations": {},
+          "responseRationale": ""
+        },
+        {
+          "riskId": "R008",
+          "riskTitle": "Penetration Testing Schedule Compression May Result in Inadequate Security Validation",
+          "riskDescription": "Penetration testing currently at 0% with compressed timeline before go-live may result in rushed security testing, incomplete vulnerability remediation, or insufficient time to address critical security findings before production deployment.",
+          "riskCategory": "Security",
+          "currentProjectPhase": "Implementation & Build - Late Stage",
+          "expectedOccurrencePhase": "Penetration Testing",
+          "likelyImpactPhase": "Go-Live",
+          "rootCause": "Penetration testing depends on completion of integration testing and application deployment to ACPT/UAT environments, but with integration testing at 0% and only 40 days remaining, penetration testing window is severely compressed.",
+          "triggerConditions": [
+            "Penetration testing cannot start until mid-August due to integration testing delays",
+            "Critical or high-severity security findings discovered during penetration testing",
+            "Insufficient time to remediate security findings before go-live date"
+          ],
+          "potentialImpact": {
+            "Security": "Inadequate penetration testing may allow security vulnerabilities to reach production, creating compliance and data protection risks",
+            "Go-Live": "Critical security findings discovered late may block go-live or require emergency remediation",
+            "Compliance": "Incomplete security validation may violate security governance requirements and prevent production deployment approval"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "High",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Low",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The WSR progress chart shows penetration testing at 0% completion with only 40 days remaining to contract end and 43 days to go-live. The decision log (Decision #26) discusses the possibility of advancing the penetration testing schedule, indicating awareness that the timeline is at risk. Penetration testing can only commence once all application components are deployed to ACPT and UAT testing has been completed, but with integration testing at 0% and UAT at 0%, these prerequisites are not yet met. If penetration testing cannot start until mid-August, there may be insufficient time to complete testing, analyze findings, remediate critical vulnerabilities, and re-test before the September 2 go-live. The risk is Medium-High because security testing is a mandatory gate for production deployment, and inadequate security validation creates both compliance risk and potential production security incidents.",
+          "confidenceScore": 79,
+          "riskPriority": "Medium",
+          "riskType": "Security",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Penetration testing start date confirmed with security team by July 30",
+            "Application deployment to UAT environment tracked as prerequisite for penetration testing",
+            "Remediation capacity reserved for security findings with target completion 1 week before go-live"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "WSR 07/22/2026 Progress Chart: Pen Test 0%",
+              "WSR Decision Log Decision #26: 'Advance Pen-Test: Possibility of advancing the penetration testing schedule as discussed with Premera'",
+              "Timeline: 40 days to contract end, 43 days to go-live",
+              "SOW: Security Testing is in scope and required before production deployment"
+            ],
+            "historicalReferences": []
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Engage Premera security team to schedule penetration testing for August 15-22 window, and reserve remediation capacity for security findings with target completion one week before go-live"
+              ]
+            },
+            {
+              "stage": "PENETRATION TESTING (August 15-22)",
+              "actions": [
+                "Execute penetration testing immediately upon UAT environment deployment and allocate dedicated engineering capacity for rapid remediation of critical and high-severity security findings"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Security Planning": "Confirm penetration testing scope, methodology, and acceptance criteria with security team by July 30 to ensure alignment and prevent scope expansion during execution",
+            "Remediation Capacity": "Reserve 50% of engineering capacity during August 15-25 period for security finding remediation to ensure rapid response without delaying go-live",
+            "Go-Live Gate": "Establish clear security gate criteria for go-live approval including zero critical security findings and documented remediation plan for all high-severity findings"
+          },
+          "responseRationale": "WSR shows penetration testing at 0% with only 40 days to contract end and 43 days to go-live. Decision log discusses advancing penetration testing schedule indicating awareness of timeline risk. Penetration testing can only commence once application deployed to UAT and testing completed, but with integration testing at 0% and UAT at 0%, prerequisites not yet met. If penetration testing cannot start until mid-August, insufficient time exists to complete testing, remediate vulnerabilities, and re-test before September 2 go-live."
+        }
+      ]
+    }
+  ]
+}
