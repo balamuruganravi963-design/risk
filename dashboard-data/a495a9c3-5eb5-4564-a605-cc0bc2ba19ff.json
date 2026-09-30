@@ -1,0 +1,681 @@
+{
+  "clientName": "Vivli Inc",
+  "projects": [
+    {
+      "projectId": "12077",
+      "projectName": "Vivli - AI Form Check Validation & Agentic Chat Automation",
+      "projectStatus": "Active - Build & Test Phase (Sprint 4 of 5)",
+      "riskPredictionDate": "2026-08-13",
+      "predictedRisks": [
+        {
+          "riskId": "R001",
+          "riskTitle": "Unresolved critical dependencies may delay PAT execution and production deployment",
+          "riskDescription": "Multiple high-severity dependencies remain unresolved in Week 12, including chat-based escalation requirements, Azure monitoring and email failure alert processes, and automation testing environment provisioning. These dependencies are critical for integration validation and production readiness. Continued delay in resolving these dependencies could block formal Product Acceptance Testing, extend the regression period, and postpone the production deployment window currently scheduled for October 10-16, 2026.",
+          "riskCategory": "Dependency",
+          "currentProjectPhase": "Build & Test - Sprint 4",
+          "expectedOccurrencePhase": "UAT / PAT Execution",
+          "likelyImpactPhase": "Deployment",
+          "rootCause": "Client-side dependency resolution velocity has not kept pace with development progress; critical integration prerequisites and operational process confirmations remain pending despite approaching formal acceptance testing phase.",
+          "triggerConditions": [
+            "Chat-based escalation requirements not finalized by Sprint 5 start (August 17)",
+            "Azure monitoring and escalation email failure alert process not confirmed by PAT start (August 31)",
+            "Automation testing environment not provisioned by Sprint 5 QA phase (August 19-21)",
+            "Guru Card fit assessment not completed by integrated workflow demo (August 28)"
+          ],
+          "potentialImpact": {
+            "schedule": "PAT start delayed by 1-2 weeks; production deployment postponed beyond October 16; potential 2-3 week extension to hypercare end date",
+            "deployment": "Integration smoke testing cannot be completed; production cutover blocked; rollback risk increases due to incomplete validation",
+            "customer": "Go-live commitment at risk; business readiness compromised; stakeholder confidence eroded; potential operational disruption if deployment proceeds with unvalidated dependencies"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R02"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": [
+              "Historical Sprint 1 delivery slipped by one week due to broader scope and client cloud environment dependencies",
+              "Same client context with dependency-driven schedule pressure",
+              "Historical pattern of client environment and prerequisite dependencies delaying sprint completion and compressing downstream validation windows"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "Four high-severity dependencies remain unresolved with only 18 days until formal PAT begins and 58 days until planned production deployment. Historical evidence from the same client shows dependency-driven sprint slippage and validation window compression. Current project momentum indicators show schedule status moved to 'Under Review' and a 7-week extension already absorbed. The convergence of unresolved dependencies, approaching PAT deadline, and historical recurrence pattern creates high likelihood of further schedule impact.",
+          "confidenceScore": 88,
+          "riskPriority": "High",
+          "riskType": "Dependency / Schedule",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Dependency resolution status tracked daily with hard deadlines established by August 17",
+            "Client stakeholder engagement frequency and decision velocity monitored through weekly governance",
+            "PAT readiness checklist completion percentage tracked against August 31 start gate"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "Chat-based escalation requirements still being refined as of August 10, 2026",
+              "Azure monitoring and escalation email failure alert process not confirmed (identified July 29, 2026)",
+              "Automation testing environment provisioning still in progress (identified July 29, 2026)",
+              "Guru Card fit assessment still in progress (identified August 1, 2026)",
+              "All four dependencies marked as 'High' severity and 'In Progress' status",
+              "Schedule status changed to 'Under Review' with warning indicator",
+              "Only 18 days remaining until PAT start date (August 31)"
+            ],
+            "historicalReferences": [
+              "Historical Risk R02: Sprint 1 delivery slipped by one week due to broader scope and client cloud environment dependencies",
+              "Same client (Vivli) with similar modernization/automation project category",
+              "Historical pattern of dependency lag causing validation window compression"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Escalate all four high-severity dependencies to executive leadership with hard resolution deadlines: chat-based escalation requirements finalized by August 15, Azure monitoring process confirmed by August 16, automation environment provisioned by August 17, Guru Card assessment completed by August 17"
+              ]
+            },
+            {
+              "stage": "Sprint 5",
+              "actions": [
+                "Establish daily dependency resolution stand-ups with client stakeholders to track progress and remove blockers; implement contingency integration approach for any unresolved dependencies by August 24"
+              ]
+            },
+            {
+              "stage": "PRE-PAT",
+              "actions": [
+                "Execute PAT readiness gate review on August 28 with strict entry criteria: all high-severity dependencies resolved and validated through integrated workflow demo; defer PAT start if criteria not met"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Governance": "Formalize dependency escalation protocol with executive sponsor involvement and binding resolution commitments from client stakeholders",
+            "Contractual": "Document dependency resolution delays and establish mutual accountability framework to protect schedule commitments",
+            "Risk Monitoring": "Track dependency age and client decision velocity daily; escalate immediately if any dependency remains unresolved beyond August 20"
+          },
+          "responseRationale": "Historical evidence from the same client shows dependency-driven sprint slippage and validation window compression. Current project has four high-severity dependencies unresolved with only 18 days until PAT, creating critical path risk. Immediate executive escalation with hard deadlines is essential to prevent PAT delay and deployment postponement."
+        },
+        {
+          "riskId": "R002",
+          "riskTitle": "Late-stage GPT-5 Mini migration in Sprint 5 may introduce regression defects and extend validation timeline",
+          "riskDescription": "The project plans to migrate AI services from the current GPT model to GPT-5 Mini during Sprint 5 (August 17-31), which is the final development sprint before formal Product Acceptance Testing. This technology migration introduces technical risk late in the project lifecycle, including potential regression defects, performance degradation, validation rework, and functional inconsistencies. If the migration encounters issues, it could delay PAT start, extend the regression testing period, or require emergency rollback procedures that would further compress the deployment timeline.",
+          "riskCategory": "Technical",
+          "currentProjectPhase": "Build & Test - Sprint 4",
+          "expectedOccurrencePhase": "Build & Test - Sprint 5",
+          "likelyImpactPhase": "UAT / PAT and Regression Testing",
+          "rootCause": "Technology evolution decision made during active development phase rather than during design or early build; insufficient lead time for comprehensive migration validation before formal acceptance testing.",
+          "triggerConditions": [
+            "GPT-5 Mini migration initiated in Sprint 5 (August 17-26)",
+            "Post-migration validation reveals functional inconsistencies or performance degradation",
+            "Regression defects discovered during Sprint 5 QA (August 19-21) or Early Access Review (August 24-28)",
+            "LLM evaluation metrics show degraded accuracy or response quality compared to baseline"
+          ],
+          "potentialImpact": {
+            "schedule": "Sprint 5 completion delayed by 1-2 weeks; PAT start postponed; regression period extended by 5-10 days; code freeze date pushed beyond September 18",
+            "quality": "Regression defects introduced affecting AI form validation accuracy and chatbot response quality; increased defect density during PAT requiring additional fix cycles",
+            "technical": "Potential rollback to previous GPT version required; rework of AI agent logic and validation rules; performance tuning required under schedule pressure"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Low",
+            "supportingHistoricalPatterns": [
+              "No direct historical precedent in available intelligence, but late-stage technical changes are a known enterprise risk pattern"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "Migrating core AI technology in the final sprint before formal acceptance testing creates significant technical risk. The migration affects both primary use cases (AI Form Check and Agentic Chat) and requires comprehensive validation across all integration points. With only 2 weeks allocated for migration, validation, and Sprint 5 QA, any issues discovered will directly impact PAT readiness. The project already has 21 work items in dev validation and 7 ready for test, indicating capacity pressure that could be exacerbated by migration-related rework.",
+          "confidenceScore": 82,
+          "riskPriority": "High",
+          "riskType": "Technical / Schedule",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "LLM evaluation metrics tracked daily during migration showing accuracy, response quality, and performance against baseline",
+            "Post-migration regression test pass rate monitored with threshold of 95% by August 28",
+            "Sprint 5 defect injection rate compared to Sprint 3-4 baseline to detect migration-induced issues"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "Sprint 5 scope explicitly includes 'Migrate services to GPT-5 Mini and validate functionality post-transition'",
+              "LLM evaluation based on metrics from dataset currently in progress",
+              "Migration scheduled for final sprint before PAT (August 17-31)",
+              "Only 2 weeks allocated for migration, validation, and Sprint 5 QA",
+              "PAT starts immediately after Sprint 5 completion (August 31)",
+              "Current work item backlog shows 37.7% closure rate with 33 items still open",
+              "Project already under schedule pressure with 7-week extension"
+            ],
+            "historicalReferences": [
+              "No direct historical match, but enterprise pattern of late-stage technical changes creating validation risk"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "Sprint 4 Completion",
+              "actions": [
+                "Establish go or no-go decision criteria for GPT-5 Mini migration by August 14, including baseline performance metrics, rollback procedures, and risk tolerance thresholds"
+              ]
+            },
+            {
+              "stage": "Sprint 5",
+              "actions": [
+                "Execute migration in controlled phases with daily LLM evaluation tracking against baseline accuracy, response quality, and performance metrics; implement immediate rollback if degradation exceeds 5% threshold",
+                "Conduct comprehensive regression testing of both AI Form Check and Agentic Chat use cases post-migration with validation completion by August 28"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Technical": "Consider deferring GPT-5 Mini migration to post-deployment Phase 2 if Sprint 5 validation reveals any material risk to PAT readiness",
+            "Quality Assurance": "Extend regression testing period by 3-5 days if migration introduces defects, with corresponding adjustment to code freeze date",
+            "Decision Authority": "Empower technical leadership to execute rollback decision without escalation delay if migration quality gates are not met"
+          },
+          "responseRationale": "Late-stage technology migration in the final sprint before formal acceptance testing introduces significant regression risk with minimal validation buffer. Establishing clear go or no-go criteria and rollback procedures protects PAT timeline and production quality while allowing controlled migration attempt."
+        },
+        {
+          "riskId": "R003",
+          "riskTitle": "Compressed PAT and regression timeline may result in insufficient defect detection and production quality issues",
+          "riskDescription": "The project has allocated 15 days for formal Product Acceptance Testing (August 31 - September 18) and 15 days for regression testing (September 21 - October 9), totaling 30 days of validation before production deployment. However, the project faces multiple quality pressure factors: 53 total work items with only 37.7% closure rate, front-end testing coverage concerns, late automation resource mobilization, ongoing PAT feedback incorporation, and a late-stage GPT-5 Mini migration. These factors increase the likelihood that the allocated testing windows will be insufficient to detect and resolve critical defects, potentially resulting in production deployment with latent quality issues or requiring PAT/regression extension that further delays go-live.",
+          "riskCategory": "Quality",
+          "currentProjectPhase": "Build & Test - Sprint 4",
+          "expectedOccurrencePhase": "UAT / PAT Execution",
+          "likelyImpactPhase": "Deployment and Hypercare",
+          "rootCause": "Testing timeline compressed due to earlier development phase extension; quality validation scope expanded (PAT Early Access, formal PAT, regression) without proportional schedule buffer; late automation resource mobilization reduces test coverage maturity.",
+          "triggerConditions": [
+            "Critical or high-severity defects discovered during PAT requiring fix cycles beyond September 18 code freeze",
+            "Front-end UI/UX defects emerge during PAT that were not caught by manual validation",
+            "GPT-5 Mini migration introduces regression defects discovered during formal PAT",
+            "Regression testing reveals integration issues requiring additional fix and retest cycles"
+          ],
+          "potentialImpact": {
+            "quality": "Production deployment with latent defects affecting AI form validation accuracy, chatbot response quality, or user experience; increased post-go-live support burden during hypercare",
+            "schedule": "PAT extended by 1-2 weeks beyond September 18; regression period extended by 5-7 days; production deployment postponed beyond October 16",
+            "customer": "User confidence eroded by production quality issues; increased support escalations; potential business process disruption; reputational impact"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R02"
+            ],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": [
+              "Historical Sprint 1 slippage reduced customer validation window and created downstream timeline pressure",
+              "Historical pattern of compressed validation windows following earlier schedule delays"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The project has already extended 7 weeks beyond the original timeline, absorbing earlier delays into later phases. Current quality indicators show pressure: 37.7% work item closure rate, front-end testing coverage concerns explicitly identified as a high-severity risk, and automation resource only mobilized in Sprint 4. The convergence of compressed testing timeline, late-stage technology migration, and existing quality coverage gaps creates medium-to-high likelihood that the allocated 30 days of PAT and regression will be insufficient. Historical evidence shows validation window compression following earlier delays in the same client context.",
+          "confidenceScore": 85,
+          "riskPriority": "High",
+          "riskType": "Quality / Schedule",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "PAT defect discovery rate tracked daily with severity distribution; threshold of no more than 5 critical defects by September 10",
+            "Test case execution progress monitored against planned coverage with target of 90% completion by September 15",
+            "Defect aging and fix cycle time tracked to identify bottlenecks requiring schedule adjustment"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "High-severity risk explicitly identified: 'Regarding front-end testing coverage and highlighted the risk of relying heavily on manual validation given the growing number of form validation rules'",
+              "53 total work items with only 20 closed (37.7% closure rate); 21 in dev validation; 7 ready for test",
+              "Automation resource mobilized only in Sprint 4 (late in project lifecycle)",
+              "Multiple UI/UX bugs noted in current bug list",
+              "PAT allocated 15 days (August 31 - September 18) immediately following Sprint 5 and GPT-5 migration",
+              "Regression allocated 15 days (September 21 - October 9) with production deployment 1 day after regression end",
+              "Schedule already extended 7 weeks beyond original baseline"
+            ],
+            "historicalReferences": [
+              "Historical Risk R02: Sprint 1 delivery slipped by one week, reducing customer validation window and creating potential impact to subsequent sprint timelines",
+              "Historical pattern of validation window compression following earlier delays"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "Sprint 5",
+              "actions": [
+                "Accelerate front-end automation coverage to achieve 80% test coverage by August 28; prioritize UI and UX validation scenarios based on PAT feedback patterns from Sprints 1-3"
+              ]
+            },
+            {
+              "stage": "PAT",
+              "actions": [
+                "Implement daily defect triage with severity-based resolution SLAs: critical defects within 24 hours, high-severity within 48 hours; establish PAT extension trigger if more than 5 critical defects remain unresolved by September 10"
+              ]
+            },
+            {
+              "stage": "Regression",
+              "actions": [
+                "Execute comprehensive end-to-end integration testing with production-like data and load conditions; validate all critical workflows and escalation paths before deployment approval"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Schedule Management": "Protect the 30-day PAT and regression window with no compression; extend code freeze date if necessary to maintain quality validation integrity",
+            "Resource Augmentation": "Consider additional QA capacity for PAT period if defect discovery rate exceeds Sprint 3-4 baseline by more than 20%",
+            "Quality Gate": "Establish mandatory go or no-go review on October 9 before production deployment approval; defer deployment if critical defects remain or regression pass rate is below 95%"
+          },
+          "responseRationale": "Project exhibits quality pressure indicators including 37.7% work item closure rate, front-end testing coverage concerns, and late automation mobilization. Historical pattern shows validation window compression following earlier delays. Protecting the allocated testing timeline and establishing strict quality gates prevents production deployment with latent defects."
+        },
+        {
+          "riskId": "R004",
+          "riskTitle": "Informal contract extension without formal amendment may create payment, scope, and liability disputes",
+          "riskDescription": "The project timeline has been extended from the original contractual end date of September 11, 2026 to a projected end date of October 30, 2026\u2014a 7-week (49-day) extension representing a 43.75% increase over the original 16-week contract. However, no formal contract amendment has been referenced in project documentation. This informal extension creates contractual ambiguity regarding payment milestones, scope boundaries, resource commitments, acceptance criteria, and liability allocation for the extended period. Without formal amendment, disputes may arise over payment triggers, change control authority, service level commitments, or responsibility for delays, potentially damaging the client-vendor relationship and creating financial or legal exposure.",
+          "riskCategory": "Contractual / Governance",
+          "currentProjectPhase": "Build & Test - Sprint 4",
+          "expectedOccurrencePhase": "UAT / Deployment",
+          "likelyImpactPhase": "Deployment and Hypercare",
+          "rootCause": "Delivery approach shifted from milestone-based to sprint-based execution with expanded testing phases (PAT Early Access, formal PAT, regression) not explicitly defined in original SOW; extension absorbed informally without triggering formal change control and contract amendment process.",
+          "triggerConditions": [
+            "Payment milestone dispute arises when original SOW milestones do not align with actual sprint-based delivery checkpoints",
+            "Scope disagreement emerges over whether PAT Early Access Reviews, extended PAT, or regression testing constitute in-scope or out-of-scope activities",
+            "Client questions resource commitment or service level expectations for the extended period beyond September 11",
+            "Delay responsibility dispute arises regarding whether extension is due to vendor execution or client dependency delays"
+          ],
+          "potentialImpact": {
+            "financial": "Payment delays or disputes over milestone completion and invoice approval; potential withholding of final payments pending contract clarification; vendor margin erosion if extension costs are not recovered",
+            "governance": "Breakdown in change control discipline; scope creep without formal approval; weakened contractual enforceability for remaining deliverables",
+            "customer": "Client-vendor relationship strain; trust erosion; escalation to executive or legal review; potential impact to future engagement opportunities"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R01"
+            ],
+            "recurrenceLikelihood": "Very High",
+            "supportingHistoricalPatterns": [
+              "Historical Risk R01: Regression testing and extended PAT duration were added after project initiation but are not part of the original SOW, creating potential scope creep, contractual ambiguity, and unplanned effort",
+              "Same client context with testing expansion outside original SOW baseline",
+              "Historical pattern of governance drift and contractual ambiguity when delivery model evolves during execution"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The project has extended 7 weeks beyond the original contractual end date with no formal amendment referenced. Historical evidence from the same client shows a directly comparable pattern: regression testing and extended PAT were added after initiation and outside the original SOW, creating contractual ambiguity and unplanned effort. The current project exhibits the same pattern at a larger scale. The SOW defines milestone-based payment triggers (Team Mobilization 15%, Requirements & Design 30%, Build & Test Phase 1 15%, Build & Test Phase 2 15%, UAT Sign Off 10%, Deployment 5%, Hypercare 10%), but actual delivery is sprint-based with different checkpoints. This misalignment creates medium likelihood of payment or scope disputes, particularly as the project approaches final payment milestones.",
+          "confidenceScore": 87,
+          "riskPriority": "Medium",
+          "riskType": "Contractual / Governance",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Contract amendment execution status tracked with target completion by September 1",
+            "Payment milestone alignment reviewed weekly between vendor and client finance teams",
+            "Scope change log maintained with formal approval signatures for any additions beyond original SOW"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "SOW Section 2 states 'end date Sept 11, 2026'; WSR timeline shows 'Hyper Care 19-Oct-26 to 30-Oct-26'",
+              "7-week extension (49 days) representing 43.75% increase over original 16-week contract",
+              "No formal contract amendment referenced in WSR or project documentation",
+              "SOW defines milestone-based payment structure; actual delivery is sprint-based with different checkpoints",
+              "PAT Early Access Reviews, formal PAT (15 days), and regression (15 days) not explicitly defined in original SOW phases",
+              "Schedule status marked as 'Under Review' with warning indicator",
+              "Delivery approach drift documented as HIGH severity"
+            ],
+            "historicalReferences": [
+              "Historical Risk R01: Regression testing and extended PAT duration were added after project initiation but are not part of the original SOW. Potential scope creep, contractual ambiguity, and unplanned effort.",
+              "Historical risk marked as 'Major' severity with 'Financial Impact' as organizational impact",
+              "Same client (Vivli) with directly comparable governance drift pattern"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Initiate formal contract amendment process by August 15 to document the 7-week extension, revised milestone schedule, payment triggers aligned to sprint completions, and scope boundaries for PAT Early Access, formal PAT, and regression activities"
+              ]
+            },
+            {
+              "stage": "PRE-PAT",
+              "actions": [
+                "Execute contract amendment with mutual signatures by September 1; align payment milestones to actual delivery checkpoints and clarify acceptance criteria for extended testing phases"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Contractual Governance": "Document all scope additions beyond original SOW baseline through formal change control with client approval signatures",
+            "Payment Alignment": "Reconcile milestone-based payment structure with sprint-based delivery model to prevent invoice disputes during final payment phases",
+            "Lessons Learned": "Establish contract amendment trigger protocol for future projects when delivery approach or timeline deviates materially from baseline SOW"
+          },
+          "responseRationale": "Historical evidence from the same client shows regression testing and extended PAT added after initiation outside original SOW, creating contractual ambiguity and unplanned effort. Current project exhibits the same pattern at larger scale with 7-week extension and no formal amendment. Immediate formalization prevents payment disputes and protects client-vendor relationship."
+        },
+        {
+          "riskId": "R005",
+          "riskTitle": "Requirements refinement during Sprint 5 may introduce scope creep and delay code freeze",
+          "riskDescription": "Critical requirements are still being refined in Week 12 of 16, including chat-based escalation workflow, MSAL/RBAC authorization requirements, and integration specifications. Sprint 5 scope includes 'Restrict and streamline Vivli admin access based on authorization requirements' and 'Integrate escalation workflow through chat-based notifications,' indicating active requirements evolution during the final development sprint. Additionally, some work items are marked as enhancements rather than baseline scope. Continued requirements refinement during Sprint 5 increases the risk of scope expansion, rework, and schedule pressure that could delay the September 18 code freeze and extend the PAT timeline.",
+          "riskCategory": "Scope",
+          "currentProjectPhase": "Build & Test - Sprint 4",
+          "expectedOccurrencePhase": "Build & Test - Sprint 5",
+          "likelyImpactPhase": "UAT / PAT Execution",
+          "rootCause": "Requirements not fully stabilized during Requirements & Design phase (Weeks 2-6); iterative feedback-driven approach allowing requirements evolution during build phase; insufficient requirements freeze discipline as project approaches acceptance testing.",
+          "triggerConditions": [
+            "Chat-based escalation requirements finalized during Sprint 5 with implementation changes required",
+            "MSAL/RBAC authorization requirements streamlined during Sprint 5 requiring rework of existing authentication logic",
+            "Enhancement requests from PAT Early Access Reviews accepted into Sprint 5 scope",
+            "New integration requirements emerge during integrated workflow demo (August 28)"
+          ],
+          "potentialImpact": {
+            "scope": "Uncontrolled scope expansion beyond original SOW deliverables; enhancement backlog grows without formal change control; baseline scope boundaries eroded",
+            "schedule": "Sprint 5 completion delayed beyond August 31; code freeze postponed beyond September 18; PAT start delayed by 1-2 weeks",
+            "quality": "Late requirements changes introduce defects; insufficient testing time for new functionality; regression risk increases"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R02"
+            ],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": [
+              "Historical Risk R02: Sprint 1 delivery slipped by one week due to broader scope and client cloud environment dependencies",
+              "Historical pattern of scope breadth contributing to sprint delays"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "Requirements are still being refined in Week 12 despite the project being in the final development sprint before formal acceptance testing. Chat-based escalation requirements were still under discussion as of August 10, and Sprint 5 scope includes authorization requirement streamlining and escalation workflow integration\u2014both indicating active requirements evolution. Some work items are marked as enhancements, suggesting potential scope creep. Historical evidence shows broader scope contributed to Sprint 1 slippage in the same client context. The convergence of late requirements refinement, final sprint timing, and historical scope pressure pattern creates medium likelihood of scope-driven schedule impact.",
+          "confidenceScore": 80,
+          "riskPriority": "Medium",
+          "riskType": "Scope / Schedule",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Requirements change request count tracked daily during Sprint 5 with threshold of zero new requirements after August 20",
+            "Enhancement backlog size monitored with formal deferral decision for any items not critical to go-live",
+            "Sprint 5 scope stability measured by story point volatility compared to Sprint 3-4 baseline"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "Chat-based escalation requirements still being refined as of August 10, 2026",
+              "Sprint 5 scope includes 'Restrict and streamline Vivli admin access based on authorization requirements'",
+              "Sprint 5 scope includes 'Integrate escalation workflow through chat-based notifications'",
+              "Some work items marked as enhancements in bug list",
+              "Bugs created for in-flight functionalities suggesting evolving requirements",
+              "Requirements & Design phase completed Weeks 2-6, but requirements still being refined in Week 12",
+              "Only 2 weeks remaining until code freeze (September 18)"
+            ],
+            "historicalReferences": [
+              "Historical Risk R02: Sprint 1 delivery slipped by one week due to broader scope and client cloud environment dependencies",
+              "Historical pattern of scope breadth contributing to sprint delays in same client context"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Implement requirements freeze effective August 17: no new requirements or enhancements accepted into Sprint 5 scope beyond chat escalation workflow and MSAL/RBAC authorization already committed"
+              ]
+            },
+            {
+              "stage": "Sprint 5",
+              "actions": [
+                "Defer all enhancement requests from PAT Early Access Reviews to post-deployment Phase 2 backlog; maintain Sprint 5 focus exclusively on committed scope, bug fixes, and GPT-5 Mini migration"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Change Control": "Establish formal change request process for any scope additions with executive approval requirement and explicit schedule and cost impact assessment",
+            "Stakeholder Communication": "Communicate requirements freeze decision to all stakeholders by August 15 with clear rationale tied to code freeze protection and deployment timeline",
+            "Backlog Management": "Maintain prioritized Phase 2 enhancement backlog for post-deployment implementation to demonstrate responsiveness while protecting current timeline"
+          },
+          "responseRationale": "Requirements are still being refined in Week 12 despite approaching code freeze on September 18. Historical evidence shows broader scope contributed to sprint slippage in same client context. Immediate requirements freeze prevents uncontrolled scope expansion and protects Sprint 5 completion and PAT start date."
+        },
+        {
+          "riskId": "R006",
+          "riskTitle": "Delayed stakeholder feedback during PAT may extend acceptance timeline and postpone deployment",
+          "riskDescription": "The project's iterative delivery model relies on timely stakeholder feedback during PAT Early Access Reviews and formal Product Acceptance Testing. The SOW defines a 3-business-day review window with deemed acceptance if no response is received, but actual execution shows ongoing feedback incorporation during active sprints and requirements refinement in Week 12. Historical evidence from the same client shows customer feedback timing directly impacted sprint validation and implementation cadence. If stakeholder feedback during the 15-day formal PAT period (August 31 - September 18) is delayed or requires multiple review cycles, it could extend the acceptance timeline, delay the September 18 code freeze, and postpone the October 10-16 production deployment window.",
+          "riskCategory": "Stakeholder / Governance",
+          "currentProjectPhase": "Build & Test - Sprint 4",
+          "expectedOccurrencePhase": "UAT / PAT Execution",
+          "likelyImpactPhase": "Deployment",
+          "rootCause": "Stakeholder availability and decision velocity not aligned with compressed PAT timeline; iterative feedback model creates dependency on timely client review cycles; 3-business-day deemed acceptance assumption not operationally enforced.",
+          "triggerConditions": [
+            "Stakeholder feedback during PAT delayed beyond 3-business-day review window",
+            "Multiple PAT review cycles required due to evolving acceptance criteria or new findings",
+            "Critical stakeholder unavailable during PAT period (August 31 - September 18)",
+            "Feedback from integrated workflow demo (August 28) requires significant changes affecting PAT scope"
+          ],
+          "potentialImpact": {
+            "schedule": "PAT extended by 1-2 weeks beyond September 18; code freeze postponed; regression start delayed; production deployment postponed beyond October 16",
+            "governance": "Deemed acceptance assumption not operationally effective; acceptance criteria ambiguity; sign-off authority unclear",
+            "customer": "Stakeholder expectation misalignment; business readiness concerns; potential operational impact if deployment proceeds without clear acceptance"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R03"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": [
+              "Historical Risk R03: Customer feedback was expected by July 20; any delay could impact subsequent sprint validation and implementation",
+              "Same client context with stakeholder feedback timing affecting delivery cadence",
+              "Historical pattern of customer review timing as delivery bottleneck"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "Historical evidence from the same client shows customer feedback timing directly impacted sprint validation and implementation. The current project exhibits ongoing stakeholder feedback dependency through PAT Early Access Reviews and requirements refinement in Week 12. The formal PAT period is compressed (15 days) with immediate transition to code freeze and regression, leaving minimal buffer for delayed feedback. The SOW's 3-business-day deemed acceptance assumption has not been operationally validated in the current iterative model. The convergence of compressed PAT timeline, historical feedback delay pattern, and active stakeholder dependency creates medium likelihood of acceptance timeline extension.",
+          "confidenceScore": 78,
+          "riskPriority": "Medium",
+          "riskType": "Stakeholder / Schedule",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Stakeholder feedback turnaround time tracked daily during PAT with escalation trigger if exceeds 3 business days",
+            "PAT review cycle count monitored with target of single-pass acceptance by September 15",
+            "Stakeholder availability calendar confirmed for entire PAT period (August 31 - September 18) by August 25"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "SOW defines 3-business-day review window with deemed acceptance if no response received",
+              "Actual execution shows ongoing feedback incorporation during active sprints",
+              "Requirements still being refined in Week 12 indicating active stakeholder engagement",
+              "PAT allocated 15 days (August 31 - September 18) with immediate code freeze transition",
+              "Integrated workflow demo scheduled for August 28 (3 days before PAT start) may generate late feedback",
+              "No buffer between PAT end (September 18) and code freeze date"
+            ],
+            "historicalReferences": [
+              "Historical Risk R03: Customer feedback is expected by 20 July. Any delay may impact subsequent sprint validation and implementation.",
+              "Same client (Vivli) with historical pattern of customer review timing affecting delivery cadence",
+              "Historical risk marked as 'Moderate' severity with 'Client Relationship' organizational impact"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "PRE-PAT",
+              "actions": [
+                "Confirm stakeholder availability for entire PAT period (August 31 - September 18) by August 25; establish backup reviewers and escalation path for feedback delays exceeding 3 business days"
+              ]
+            },
+            {
+              "stage": "PAT",
+              "actions": [
+                "Implement daily stakeholder feedback tracking with escalation to executive sponsor if turnaround exceeds 3 business days; target single-pass acceptance by September 15 to protect code freeze date"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Governance": "Operationalize the SOW's 3-business-day deemed acceptance provision with formal notification and escalation protocol",
+            "Stakeholder Engagement": "Conduct PAT kickoff session on August 31 to align acceptance criteria, review process, and feedback expectations",
+            "Schedule Protection": "Establish PAT extension trigger and corresponding deployment date adjustment if stakeholder feedback delays exceed 5 business days cumulative"
+          },
+          "responseRationale": "Historical evidence from the same client shows customer feedback timing directly impacted sprint validation and implementation. Current project exhibits ongoing stakeholder feedback dependency through PAT Early Access Reviews. Compressed 15-day PAT window with immediate code freeze transition requires proactive stakeholder engagement and feedback velocity management."
+        },
+        {
+          "riskId": "R007",
+          "riskTitle": "Insufficient hypercare planning may result in post-deployment support gaps and operational disruption",
+          "riskDescription": "The project has allocated 10 days for hypercare (October 19-30, 2026) following production deployment, but detailed hypercare planning is not evident in current project documentation. The SOW defines hypercare activities at a high level (post-go-live support, issue triage and resolution, user adoption support, system stabilization, transition to steady-state support), but operational details such as support coverage model, escalation procedures, issue response SLAs, knowledge transfer completeness, and operational runbook readiness are not documented. Additionally, user training is allocated only 1 day (October 14), which may be insufficient for complex AI-driven workflows. Inadequate hypercare preparation could result in post-deployment support gaps, delayed issue resolution, user adoption challenges, and operational disruption during the critical stabilization period.",
+          "riskCategory": "Operational / Transition",
+          "currentProjectPhase": "Build & Test - Sprint 4",
+          "expectedOccurrencePhase": "Deployment",
+          "likelyImpactPhase": "Hypercare",
+          "rootCause": "Hypercare planning deferred to later project phases; focus on development and testing activities with insufficient attention to operational readiness and transition planning; compressed timeline limits preparation window.",
+          "triggerConditions": [
+            "Hypercare support model not defined by deployment start (October 10)",
+            "Operational runbooks and knowledge transfer not completed by go-live (October 16)",
+            "User training (1 day on October 14) proves insufficient for AI form validation and chatbot workflows",
+            "Post-deployment issues arise requiring support escalation, but escalation procedures are unclear or support coverage is inadequate"
+          ],
+          "potentialImpact": {
+            "operations": "Post-deployment support gaps; delayed issue resolution; user adoption challenges; operational disruption during stabilization period",
+            "customer": "User frustration with AI form validation or chatbot functionality; increased support escalations; business process disruption; reputational impact",
+            "transition": "Incomplete knowledge transfer to client operations team; unclear steady-state support handoff; potential need for extended vendor support beyond October 30"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Low",
+            "supportingHistoricalPatterns": [
+              "No direct historical precedent in available intelligence, but operational readiness is a common enterprise risk pattern in AI/ML deployments"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The project has allocated only 10 days for hypercare and 1 day for user training, which may be insufficient for a complex AI/ML solution with two primary use cases (AI Form Check and Agentic Chat) and multiple integration points. Current project documentation does not detail hypercare support coverage, escalation procedures, operational runbooks, or knowledge transfer plans. The compressed timeline (already extended 7 weeks) limits preparation window for operational readiness activities. AI/ML solutions typically require more extensive user training and post-deployment support due to the probabilistic nature of AI outputs and the need for user confidence building. The convergence of limited hypercare duration, minimal user training allocation, and lack of detailed operational planning creates medium likelihood of post-deployment support gaps.",
+          "confidenceScore": 75,
+          "riskPriority": "Medium",
+          "riskType": "Operational / Transition",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Hypercare plan completion status tracked with target of 100% by October 1, including support coverage model, escalation procedures, and issue response SLAs",
+            "Operational runbook and knowledge transfer completion tracked with target of 100% by October 10",
+            "User training effectiveness measured through post-training assessment and early hypercare issue volume"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "Hypercare allocated 10 days (October 19-30, 2026)",
+              "User training allocated 1 day (October 14, 2026)",
+              "SOW defines hypercare activities at high level but operational details not documented in WSR",
+              "No detailed hypercare plan, operational runbooks, or knowledge transfer plan referenced in current documentation",
+              "Complex AI/ML solution with two primary use cases and multiple integration points",
+              "AI form validation and chatbot workflows require user confidence building and adoption support",
+              "Project already under schedule pressure with 7-week extension"
+            ],
+            "historicalReferences": [
+              "No direct historical match, but operational readiness is a common enterprise risk pattern in AI/ML deployments"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "Sprint 5",
+              "actions": [
+                "Develop comprehensive hypercare plan by August 31 including support coverage model, escalation procedures, issue response SLAs, and operational runbooks for AI form validation and chatbot workflows"
+              ]
+            },
+            {
+              "stage": "Regression",
+              "actions": [
+                "Complete knowledge transfer sessions with client operations team by October 5; validate operational runbook completeness and support team readiness through tabletop exercises"
+              ]
+            },
+            {
+              "stage": "PRE-DEPLOYMENT",
+              "actions": [
+                "Extend user training from 1 day to 2-3 days (October 13-15) to ensure adequate coverage of AI-driven workflows, escalation procedures, and troubleshooting guidance"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Operational Readiness": "Establish hypercare support coverage with defined on-call rotation, response time commitments, and escalation paths before deployment approval",
+            "Knowledge Transfer": "Conduct multiple knowledge transfer sessions covering technical architecture, operational procedures, troubleshooting guides, and support escalation workflows",
+            "User Adoption": "Develop user training materials, quick reference guides, and FAQ documentation to support post-deployment adoption and reduce support burden"
+          },
+          "responseRationale": "Complex AI/ML solution with two primary use cases and multiple integration points requires more extensive user training and post-deployment support than the allocated 1 day and 10-day hypercare period. Proactive operational readiness planning prevents post-deployment support gaps and user adoption challenges."
+        },
+        {
+          "riskId": "R008",
+          "riskTitle": "Integration complexity with existing Vivli platform may surface late-stage defects during regression or deployment",
+          "riskDescription": "The solution requires integration with multiple components of the existing Vivli platform, including the UI dashboard, chat interface, knowledge base, authentication systems (MSAL/RBAC), and operational workflows. While development and unit testing have progressed, comprehensive end-to-end integration validation in a production-like environment has not been fully demonstrated. The integrated workflow demo is scheduled for August 28, only 3 days before formal PAT begins. Integration issues such as data inconsistencies, authentication failures, workflow breaks, or performance degradation under production load may not surface until late-stage regression testing or production deployment, requiring emergency fixes under schedule pressure or resulting in deployment delays.",
+          "riskCategory": "Integration / Technical",
+          "currentProjectPhase": "Build & Test - Sprint 4",
+          "expectedOccurrencePhase": "Regression Testing",
+          "likelyImpactPhase": "Deployment",
+          "rootCause": "Integration complexity underestimated in original SOW; comprehensive end-to-end integration testing deferred to late project phases; production-like environment validation not completed early; integrated workflow demo scheduled only 3 days before PAT.",
+          "triggerConditions": [
+            "Integration issues discovered during integrated workflow demo (August 28) requiring rework",
+            "Authentication or authorization failures emerge during regression testing (September 21 - October 9)",
+            "Data inconsistencies between AI services and Vivli platform discovered during end-to-end testing",
+            "Performance degradation under production load discovered during smoke testing (October 10-16)"
+          ],
+          "potentialImpact": {
+            "technical": "Integration failures affecting AI form validation workflow, chatbot functionality, or user authentication; data inconsistencies requiring emergency fixes; performance issues under production load",
+            "schedule": "Regression period extended by 5-10 days; production deployment postponed beyond October 16; additional fix and retest cycles required",
+            "deployment": "Production cutover blocked or rolled back; emergency hotfixes required post-deployment; operational disruption"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Low",
+            "supportingHistoricalPatterns": [
+              "No direct historical precedent in available intelligence, but integration complexity is a common enterprise risk pattern in platform modernization projects"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The solution requires integration with multiple existing Vivli platform components, and comprehensive end-to-end validation is scheduled late in the project lifecycle. The integrated workflow demo on August 28 is only 3 days before formal PAT begins, leaving minimal time to address any integration issues discovered. The project has focused on sprint-based development and unit testing, but production-like environment validation has not been fully demonstrated. Integration issues often surface during regression testing or production deployment when all components operate together under realistic conditions. The convergence of integration complexity, late validation timing, and compressed schedule creates medium likelihood of late-stage integration defects.",
+          "confidenceScore": 77,
+          "riskPriority": "Medium",
+          "riskType": "Integration / Technical",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Integration test pass rate tracked daily during regression with threshold of 95% by October 5",
+            "End-to-end workflow validation completion tracked with target of 100% by September 25",
+            "Production-like environment smoke test results monitored during deployment window (October 10-16)"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "Solution requires integration with UI dashboard, chat interface, knowledge base, authentication systems (MSAL/RBAC), and operational workflows",
+              "Integrated workflow demo scheduled for August 28 (only 3 days before PAT start)",
+              "MSAL/RBAC implementation and authorization requirements being refined in Sprint 5",
+              "Chat-based escalation workflow integration in Sprint 5 scope",
+              "Comprehensive end-to-end integration testing not explicitly documented in completed sprints",
+              "Regression period allocated 15 days (September 21 - October 9) for integration validation",
+              "Production deployment scheduled immediately after regression (October 10-16)"
+            ],
+            "historicalReferences": [
+              "No direct historical match, but integration complexity is a common enterprise risk pattern in platform modernization projects"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "Sprint 5",
+              "actions": [
+                "Execute comprehensive end-to-end integration testing in production-like environment by August 28, validating all workflows across UI dashboard, chat interface, authentication systems, and operational processes"
+              ]
+            },
+            {
+              "stage": "Regression",
+              "actions": [
+                "Conduct integration smoke tests with production data volumes and realistic user load patterns; validate authentication, authorization, data consistency, and performance under production conditions by October 5"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Integration Validation": "Prioritize end-to-end workflow testing over isolated component testing during regression period to detect integration issues before deployment",
+            "Environment Parity": "Ensure regression environment mirrors production configuration, data volumes, and integration endpoints to maximize defect detection",
+            "Deployment Readiness": "Establish integration validation gate on October 9 with mandatory sign-off from technical architecture and client platform teams before deployment approval"
+          },
+          "responseRationale": "Solution requires integration with multiple existing Vivli platform components, and comprehensive end-to-end validation is scheduled late in project lifecycle. Integrated workflow demo on August 28 is only 3 days before PAT, leaving minimal time to address integration issues. Proactive integration validation in production-like environment reduces late-stage defect risk."
+        }
+      ]
+    }
+  ]
+}
