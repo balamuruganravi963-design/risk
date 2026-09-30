@@ -1,0 +1,806 @@
+{
+  "clientName": "Vivli Inc",
+  "projects": [
+    {
+      "projectId": "P-12077",
+      "projectName": "Vivli AI Form Check Validation & Agentic Chat Automation",
+      "projectStatus": "Active - Build & Test Phase (Sprint 4 In Progress)",
+      "riskPredictionDate": "2026-08-13",
+      "predictedRisks": [
+        {
+          "riskId": "R001",
+          "riskTitle": "Undocumented 7-week extension may trigger commercial disputes and payment milestone misalignment",
+          "riskDescription": "The project timeline has implicitly extended from the September 11, 2026 contract end date to October 30, 2026 (Hypercare completion), representing a 43.75% duration increase without formal contract amendment. All critical delivery phases\u2014PAT, code freeze, regression, deployment, and hypercare\u2014are scheduled partially or entirely beyond the original contract baseline. This creates significant commercial ambiguity regarding payment milestone alignment, acceptance criteria, resource commitments, warranty periods, and governance authority for post-contract activities.",
+          "riskCategory": "Commercial & Governance",
+          "currentProjectPhase": "Build & Test - Sprint 4",
+          "expectedOccurrencePhase": "PAT / Regression / Deployment",
+          "likelyImpactPhase": "UAT / Deployment / Hypercare",
+          "rootCause": "Implicit timeline extension introduced through expanded quality gates (15-day PAT, 15-day regression) and sprint-based delivery model without corresponding contract amendment or change order execution.",
+          "triggerConditions": [
+            "PAT phase commences on August 31 without formal extension approval",
+            "Payment milestone invoice submitted for post-contract activities without amended payment schedule",
+            "Acceptance criteria dispute arises during PAT or regression phases",
+            "Resource availability conflicts emerge in October timeframe due to lack of formal commitment"
+          ],
+          "potentialImpact": {
+            "commercial": "Payment disputes, invoice rejection, or delayed payment for 40% of contract value ($96,800) tied to post-contract milestones; potential vendor margin erosion from uncompensated extended resource commitment",
+            "governance": "Acceptance criteria ambiguity, warranty period confusion, and unclear escalation authority for post-contract period; risk of contractual disputes requiring legal intervention",
+            "schedule": "Resource unavailability in October may force further delays or quality compromises; lack of formal commitment creates execution uncertainty for final 7 weeks"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "Critical",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R02"
+            ],
+            "recurrenceLikelihood": "Very High",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "This risk is highly likely because the current project timeline explicitly shows all critical phases extending beyond the September 11 contract end date, with 40% of payment milestones tied to post-contract activities. Historical intelligence confirms this exact pattern occurred previously (R02) and was never effectively resolved through formal baseline control. The combination of implicit extension, lack of documented amendment, and historical recurrence creates critical commercial and governance exposure.",
+          "confidenceScore": 95,
+          "riskPriority": "Critical",
+          "riskType": "Commercial",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Contract amendment execution status and approval timeline",
+            "Payment milestone schedule revision and stakeholder sign-off",
+            "Resource commitment confirmation for October 2026 timeframe"
+          ],
+          "businessCriticality": "Critical",
+          "evidence": {
+            "projectIndicators": [
+              "SOW contract end date: September 11, 2026",
+              "WSR Hypercare completion: October 30, 2026 (49-day extension)",
+              "WSR PAT phase: August 31 - September 18 (extends 7 days post-contract)",
+              "WSR Regression: September 21 - October 9 (entirely post-contract)",
+              "WSR Deployment: October 10-16 (entirely post-contract)",
+              "WSR Hypercare: October 19-30 (entirely post-contract)",
+              "No reference to contract amendment or change order in WSR",
+              "Cost status reported as 'ON TRACK' despite 43.75% duration increase",
+              "40% of payment milestones ($96,800) tied to post-contract activities"
+            ],
+            "historicalReferences": [
+              "Historical R02: 'Regression testing and extended PAT duration were added after project initiation but are not part of the original SOW. Potential scope creep, contractual ambiguity, and unplanned effort.'",
+              "Historical R02 Status: 'Mitigated' but Mitigation Plan: 'Identified part of PMR, mitigation needs to be arrived' with no closure date or resolution evidence",
+              "Historical R02 Impact: Financial Impact, Major Severity, Likely Likelihood"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Escalate contract amendment requirement to Steering Committee with commercial risk briefing and draft amendment scope covering timeline extension, revised payment schedule, acceptance criteria, resource commitments, and warranty periods"
+              ]
+            },
+            {
+              "stage": "SPRINT 5",
+              "actions": [
+                "Execute formal contract amendment with legal and procurement sign-off, incorporating revised milestone dates aligned to PAT, regression, deployment, and hypercare phases with corresponding payment schedule adjustments"
+              ]
+            },
+            {
+              "stage": "PAT",
+              "actions": [
+                "Validate acceptance criteria and sign-off authority documented in amendment are operationalized in PAT governance framework and stakeholder engagement model"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Governance": "Establish monthly commercial review cadence with legal, finance, and program leadership to monitor amendment compliance and payment milestone achievement through October 30.",
+            "Stakeholder Management": "Conduct joint Vivli-Ascendion executive briefing on extension rationale, commercial terms, and delivery commitment to ensure alignment and prevent downstream disputes.",
+            "Risk Transfer": "Include explicit liability limitation and warranty period definition in amendment to mitigate post-deployment commercial exposure."
+          },
+          "responseRationale": "Historical R02 demonstrates that testing scope expansion without formal baseline control created contractual ambiguity and financial impact. The current project exhibits identical commercial risk with 49-day extension and 40% payment milestones post-contract. Immediate amendment execution is the only effective control to prevent payment disputes and governance breakdown during critical PAT and deployment phases."
+        },
+        {
+          "riskId": "R002",
+          "riskTitle": "Open high-severity client dependencies may delay Sprint 5 and PAT commencement",
+          "riskDescription": "Four high-severity dependencies on the Vivli team remain open as of August 13, including chat escalation requirements refinement, Azure monitoring and email alert process confirmation, dedicated automation testing environment provisioning, and Guru Card fit assessment. These dependencies are critical for Sprint 5 execution (August 17-31) and PAT readiness (commencing August 31). Delayed resolution will compress Sprint 5 development and QA windows, force scope deferral, or push PAT start date, further extending the already-delayed project timeline.",
+          "riskCategory": "Dependency & Schedule",
+          "currentProjectPhase": "Build & Test - Sprint 4",
+          "expectedOccurrencePhase": "Sprint 5 / PAT Preparation",
+          "likelyImpactPhase": "Sprint 5 / PAT / Regression",
+          "rootCause": "Extensive client-side dependencies defined in SOW (11 major items) combined with client resource constraints, decision-making latency, and environment provisioning complexity. Historical pattern shows client dependency delays caused Sprint 1 slippage and feedback cycle disruptions.",
+          "triggerConditions": [
+            "Chat escalation requirements not finalized by August 17 (Sprint 5 start)",
+            "Automation testing environment not provisioned by August 20",
+            "Azure monitoring and alert process not confirmed by August 24",
+            "Guru Card fit assessment not completed by August 28"
+          ],
+          "potentialImpact": {
+            "schedule": "Sprint 5 start delayed by 3-5 days, compressing already-reduced 8-day development window; PAT commencement delayed from August 31 to September 7-10, pushing code freeze and regression into mid-October",
+            "quality": "Compressed Sprint 5 QA window (currently 3 days vs. 5 days in earlier sprints) may be further reduced, increasing defect leakage risk and extending PAT duration",
+            "deployment": "Cascading delays push deployment from October 10-16 to late October, impacting Vivli's business objectives and downstream roadmap dependencies"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R01",
+              "R03"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "This risk is highly likely because the current project has four open high-severity dependencies with Sprint 5 starting in 4 days and PAT in 18 days. Historical intelligence confirms client dependency delays caused sprint slippage (R01) and validation disruptions (R03) in the same client context. The compressed Sprint 5 timeline (8-day development, 3-day QA) provides minimal buffer for dependency resolution delays, and the SOW baseline includes 11 major client dependencies that remain execution-critical.",
+          "confidenceScore": 90,
+          "riskPriority": "High",
+          "riskType": "Schedule",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Daily dependency resolution status tracking with Vivli stakeholders",
+            "Automation environment provisioning completion date",
+            "Chat escalation requirements finalization and sign-off status"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Open Dependencies: 4 high-severity items as of August 13",
+              "Dependency 1: Refine chat-based escalation requirements (pending Amruta-Sarah discussion)",
+              "Dependency 2: Confirm Azure monitoring and escalation email failure alert process",
+              "Dependency 3: Provision dedicated automation testing environment (In Progress)",
+              "Dependency 4: Get Guru Card fit assessment (In Progress)",
+              "Sprint 5 start date: August 17 (4 days from reporting date)",
+              "PAT start date: August 31 (18 days from reporting date)",
+              "Sprint 5 compressed timeline: 8-day development vs. 10 days in earlier sprints, 3-day QA vs. 5 days",
+              "SOW Client Responsibilities: 11 major dependency items including sample DRFs, knowledge base, sandbox environment, review rules, domain expert availability, labelled historical data"
+            ],
+            "historicalReferences": [
+              "Historical R01: Sprint 1 slipped one week due to client cloud environment dependencies",
+              "Historical R03: Customer feedback delay risk impacting sprint validation",
+              "Historical R01 Status: 'Resolved' but Mitigation Plan: 'mitigation needs to be arrived' with no closure date",
+              "Current delivery intelligence: 'Dependency-Driven Delays' pattern identified with high confidence"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Escalate four open high-severity dependencies to Steering Committee with impact assessment on Sprint 5 start date and PAT readiness, establishing 48-hour resolution SLA for chat escalation requirements and Azure monitoring confirmation"
+              ]
+            },
+            {
+              "stage": "SPRINT 5 PREPARATION",
+              "actions": [
+                "Confirm automation testing environment provisioning completion and Guru Card fit assessment closure by August 16, enabling Sprint 5 grooming and scope finalization without dependency constraints"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Dependency Management": "Implement daily dependency status tracking with named Vivli owners and escalation triggers for items open beyond 48 hours, maintaining visibility through Sprint 5 and PAT phases.",
+            "Contingency Planning": "Identify scope deferral options for Sprint 5 if dependencies remain unresolved by August 17, prioritizing core validation and chatbot functionality over enhancement features.",
+            "Client Engagement": "Establish dedicated Vivli dependency resolution working session for August 14-16 to accelerate closure of open items before Sprint 5 commencement."
+          },
+          "responseRationale": "Historical R01 and R03 confirm client dependency delays caused sprint slippage and validation window erosion in the same project context. Current evidence shows four high-severity dependencies open with Sprint 5 starting in 4 days. Immediate escalation with SLA enforcement is essential to prevent cascading delays into PAT and regression phases."
+        },
+        {
+          "riskId": "R003",
+          "riskTitle": "Compressed Sprint 5 QA window and front-end testing gaps may increase defect leakage into PAT",
+          "riskDescription": "Sprint 5 QA duration has been compressed to 3 days (August 19-21) compared to 5 days in earlier sprints, while front-end testing coverage remains a concern despite automation resource mobilization in Sprint 4. The growing number of form validation rules, UI/UX bug percentage in the current bug list, and PAT feedback requiring additional development cycles indicate elevated quality risk. Compressed QA combined with incomplete front-end automation may result in significant defect leakage into the 15-day PAT phase, extending PAT duration, increasing regression scope, and delaying deployment.",
+          "riskCategory": "Quality & Testing",
+          "currentProjectPhase": "Build & Test - Sprint 4",
+          "expectedOccurrencePhase": "Sprint 5 QA / PAT",
+          "likelyImpactPhase": "PAT / Regression / Deployment",
+          "rootCause": "Schedule compression forcing reduced QA duration in Sprint 5; front-end testing automation not yet fully mature despite resource mobilization; growing validation rule complexity increasing test coverage requirements; PAT feedback from earlier sprints revealing UI/UX issues and enhancements.",
+          "triggerConditions": [
+            "Sprint 5 QA completes on August 21 with open defects or incomplete test coverage",
+            "Front-end automation scripts not fully operational by August 19",
+            "PAT early access review identifies critical UI/UX defects requiring Sprint 5 rework",
+            "Form validation rule changes introduced during Sprint 5 without adequate regression testing"
+          ],
+          "potentialImpact": {
+            "quality": "Elevated defect leakage into PAT phase requiring extended defect triage and resolution cycles; potential for critical defects discovered late in PAT requiring emergency fixes and additional regression",
+            "schedule": "PAT duration extends from planned 15 days to 20-25 days, pushing code freeze from September 18 to late September; regression start delayed to early October, deployment delayed to late October",
+            "customer": "User dissatisfaction with UI/UX quality; extended hypercare period required to address post-deployment issues; potential reputational impact for Vivli's researcher and member community"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R01",
+              "R03"
+            ],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "This risk is highly likely because Sprint 5 QA has been compressed to 3 days (40% reduction from 5 days), front-end testing coverage was explicitly identified as a risk in the WSR, and the bug list shows significant UI/UX issues. The automation resource was mobilized in Sprint 4 but may not be fully effective by Sprint 5 QA start (August 19). Historical intelligence shows validation window compression and feedback delays created quality pressure in earlier phases. The combination of compressed QA, incomplete automation maturity, and growing validation complexity creates elevated defect leakage risk.",
+          "confidenceScore": 85,
+          "riskPriority": "High",
+          "riskType": "Quality",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Front-end automation script completion and test coverage metrics by August 18",
+            "Sprint 5 QA defect discovery rate and severity distribution",
+            "PAT early access review feedback volume and criticality for Sprint 4"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Sprint 5 Timeline: QA August 19-21 (3 days) vs. 5 days in Sprints 1-4",
+              "WSR Project Risks: 'Regarding front-end testing coverage and highlighted the risk of relying heavily on manual validation given the growing number of form validation rules'",
+              "WSR Bug List: 'Some issues have been marked as enhancements. UI-related bugs (from usability standpoint). Note: this makes for a good percent of the bugs.'",
+              "WSR: 'Received feedback from the PAT early verification testing. The team prioritized the identified defects and enhancement requests, implemented the necessary fixes, and plans to deliver them as part of the current sprint.'",
+              "WSR: Automation resource mobilized in Sprint 4 but front-end automation maturity uncertain",
+              "WSR: Sprint 3 PAT Early Access Review still in progress as of August 13 (13 days after Sprint 3 completion)"
+            ],
+            "historicalReferences": [
+              "Historical R01: Sprint slippage reduced customer validation window",
+              "Historical R03: Delayed feedback impacted sprint validation and implementation",
+              "Current delivery intelligence: 'Testing Coverage Escalation' pattern identified; 'Front-End Testing Coverage Gaps' weakness documented"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "SPRINT 4 COMPLETION",
+              "actions": [
+                "Validate front-end automation scripts are operational and integrated into Sprint 5 QA plan, with test coverage metrics confirming UI validation rule coverage meets acceptance threshold"
+              ]
+            },
+            {
+              "stage": "SPRINT 5",
+              "actions": [
+                "Extend Sprint 5 QA duration from 3 days to 5 days (August 19-23) through parallel development and testing execution, allocating additional QA resource to maintain coverage without compressing validation cycles"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Quality Assurance": "Conduct pre-PAT quality gate review on August 28 with defect severity analysis and test coverage validation before formal PAT commencement on August 31.",
+            "Testing Strategy": "Prioritize automated regression test execution for form validation rules and chatbot response accuracy during Sprint 5 QA to reduce manual validation dependency.",
+            "Resource Augmentation": "Maintain automation resource allocation through PAT phase to support defect triage and re-testing cycles if PAT uncovers front-end issues."
+          },
+          "responseRationale": "Historical R01 demonstrates sprint slippage reduced validation windows and created downstream quality pressure. Current evidence shows Sprint 5 QA compressed to 3 days with front-end testing gaps explicitly identified as risk. Extending QA duration to 5 days and confirming automation readiness are essential to prevent defect leakage into the 15-day PAT phase."
+        },
+        {
+          "riskId": "R004",
+          "riskTitle": "PAT feedback-driven enhancements may trigger scope creep and extend acceptance timeline",
+          "riskDescription": "The current bug list includes items marked as enhancements, and UI-related bugs from a usability standpoint comprise a significant percentage of defects. PAT early access reviews are generating feedback requiring prioritization, fixes, and delivery in subsequent sprints. The formal 15-day PAT phase (August 31 - September 18) may uncover additional enhancement requests, usability refinements, and edge case handling requirements that expand scope beyond the original SOW baseline. Without rigorous change control, these enhancements may be incorporated into the delivery, extending PAT duration, increasing regression scope, and delaying deployment.",
+          "riskCategory": "Scope & Governance",
+          "currentProjectPhase": "Build & Test - Sprint 4",
+          "expectedOccurrencePhase": "PAT",
+          "likelyImpactPhase": "PAT / Regression / Deployment",
+          "rootCause": "Iterative PAT early access review process generating continuous feedback; lack of formal change control process to distinguish defects from enhancements; client expectations evolving through hands-on validation; UI/UX refinement requirements emerging through user interaction.",
+          "triggerConditions": [
+            "PAT phase commences on August 31 with open enhancement requests from earlier sprints",
+            "Vivli stakeholders identify additional usability improvements during PAT",
+            "Edge case scenarios discovered during PAT require new validation rules or workflow changes",
+            "Enhancement requests are accepted into scope without formal change order or timeline impact assessment"
+          ],
+          "potentialImpact": {
+            "scope": "Uncontrolled scope expansion through enhancement incorporation; baseline erosion and acceptance criteria ambiguity; potential for 'Phase 2' scope pulled into current delivery",
+            "schedule": "PAT duration extends from 15 days to 20-25 days to accommodate enhancement development and re-testing; code freeze delayed from September 18 to late September; deployment delayed to late October",
+            "commercial": "Additional development effort without corresponding contract value adjustment; vendor margin erosion; potential disputes over what constitutes 'defect' vs. 'enhancement'"
+          },
+          "likelihood": "High",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R02"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "This risk is highly likely because the current bug list explicitly includes enhancements, UI/UX issues comprise a significant percentage of defects, and PAT early access reviews are generating continuous feedback requiring prioritization and fixes. Historical intelligence confirms scope expansion through testing phase additions (R02) occurred previously without effective control. The 15-day PAT phase provides extended opportunity for enhancement identification, and the lack of documented change control process increases acceptance risk.",
+          "confidenceScore": 80,
+          "riskPriority": "High",
+          "riskType": "Scope",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Enhancement vs. defect classification and change control process enforcement",
+            "PAT feedback volume, categorization, and scope impact assessment",
+            "Formal change order execution for any scope additions during PAT"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Bug List: 'Some issues have been marked as enhancements'",
+              "WSR Bug List: 'UI-related bugs (from usability standpoint). Note: this makes for a good percent of the bugs'",
+              "WSR: 'Received feedback from the PAT early verification testing. The team prioritized the identified defects and enhancement requests, implemented the necessary fixes, and plans to deliver them as part of the current sprint.'",
+              "WSR Sprint 5 Scope: Includes 'bug fixes and enhancement feedback' without clear scope boundary",
+              "No documented change control process or enhancement deferral criteria in available evidence"
+            ],
+            "historicalReferences": [
+              "Historical R02: Regression testing and extended PAT added after project initiation, not in original SOW",
+              "Historical R02 Status: 'Mitigated' but with no closure evidence or baseline control implementation",
+              "Current delivery intelligence: 'Scope Creep via Enhancement Requests' pattern identified as operational weakness"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "SPRINT 5",
+              "actions": [
+                "Establish formal change control process with defect vs. enhancement classification criteria, approval authority matrix, and Phase 2 deferral guidelines before PAT commencement on August 31"
+              ]
+            },
+            {
+              "stage": "PAT",
+              "actions": [
+                "Enforce change control governance for all PAT feedback items, requiring Steering Committee approval for any enhancement incorporation with timeline and cost impact assessment before development authorization"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Scope Management": "Define PAT success criteria and acceptance threshold upfront with Vivli stakeholders, establishing clear boundary between critical defects requiring immediate resolution and enhancements deferrable to Phase 2.",
+            "Stakeholder Alignment": "Conduct PAT kickoff session on August 31 with Vivli team to review change control process, enhancement deferral criteria, and timeline constraints to set expectations.",
+            "Commercial Protection": "Document all approved enhancements in change order with corresponding timeline and cost adjustments to prevent uncompensated scope expansion."
+          },
+          "responseRationale": "Historical R02 confirms testing scope expansion without baseline control created contractual ambiguity and unplanned effort. Current evidence shows bug list includes enhancements and UI/UX issues comprise significant defect percentage. Formal change control with Phase 2 deferral criteria is essential to prevent PAT duration extension and deployment delays."
+        },
+        {
+          "riskId": "R005",
+          "riskTitle": "GPT-5 Mini migration in compressed Sprint 5 may introduce functionality regression or performance issues",
+          "riskDescription": "Sprint 5 scope includes migrating services to GPT-5 Mini and validating functionality post-transition. This technology migration is occurring in a compressed 8-day sprint with only 3 days allocated for QA, immediately preceding the critical PAT phase. LLM model migrations carry inherent risk of functionality regression, response quality degradation, performance variance, and integration issues. Insufficient validation time may result in migration-related defects leaking into PAT, requiring emergency rollback or extended remediation cycles.",
+          "riskCategory": "Technology & Quality",
+          "currentProjectPhase": "Build & Test - Sprint 4",
+          "expectedOccurrencePhase": "Sprint 5",
+          "likelyImpactPhase": "Sprint 5 / PAT / Deployment",
+          "rootCause": "Technology migration scheduled in compressed sprint with reduced QA duration; LLM model transition inherently carries response quality and integration risk; limited time for comprehensive validation of AI agent behavior, chatbot responses, and knowledge base integration post-migration.",
+          "triggerConditions": [
+            "GPT-5 Mini migration executed during August 17-26 Sprint 5 window",
+            "Post-migration validation identifies response quality degradation or functionality regression",
+            "Integration issues emerge with Azure OpenAI, LangGraph, or Cosmos DB components",
+            "Performance variance impacts form validation accuracy or chatbot response time"
+          ],
+          "potentialImpact": {
+            "quality": "Functionality regression in AI form validation logic or chatbot response accuracy; response quality degradation requiring model fine-tuning or rollback; integration issues with existing Azure services",
+            "schedule": "Emergency rollback to previous model version extends Sprint 5 by 3-5 days; PAT start delayed from August 31 to early September; additional validation cycles required during PAT",
+            "technology": "Model performance variance impacts user experience; potential need for additional training data or prompt engineering; risk of production deployment with suboptimal model configuration"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Low",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "This risk is moderately likely because LLM model migrations inherently carry functionality and performance risk, and the migration is scheduled in a compressed sprint with only 3 days for QA validation. While no direct historical precedent exists, the compressed timeline pattern and validation window erosion documented historically increase the probability of insufficient migration validation. The migration occurs immediately before PAT, creating cascading risk if issues are discovered late.",
+          "confidenceScore": 75,
+          "riskPriority": "High",
+          "riskType": "Technology",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Pre-migration baseline testing completion and results documentation",
+            "Post-migration validation test pass rate and defect severity",
+            "Rollback criteria definition and rollback readiness confirmation"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Sprint 5 Scope: 'Migrate services to GPT-5 Mini and validate functionality post-transition'",
+              "WSR Sprint 5 Timeline: 8-day development (August 17-26) and 3-day QA (August 19-21)",
+              "PAT start date: August 31 (5 days after Sprint 5 completion)",
+              "No explicit rollback plan or migration validation criteria documented in WSR",
+              "Technology stack includes Azure OpenAI, LangGraph, Cosmos DB requiring integration validation post-migration"
+            ],
+            "historicalReferences": [
+              "Historical R01: Sprint slippage reduced validation window",
+              "Historical R03: Delayed feedback impacted sprint validation",
+              "Current delivery intelligence: 'Compressed Sprint Execution' pattern identified; Sprint 5 QA reduced to 3 days"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "SPRINT 4 COMPLETION",
+              "actions": [
+                "Execute pre-migration baseline testing for AI form validation accuracy and chatbot response quality, documenting performance metrics and functional benchmarks as rollback criteria"
+              ]
+            },
+            {
+              "stage": "SPRINT 5",
+              "actions": [
+                "Conduct post-migration validation testing on August 24-26 with automated regression suite covering form validation rules, chatbot knowledge base queries, and Azure service integration, maintaining rollback readiness through PAT phase"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Technology Risk Management": "Define explicit rollback criteria including response accuracy threshold, performance degradation limits, and integration failure scenarios, with rollback execution plan approved before migration.",
+            "Testing Strategy": "Allocate dedicated 2-day post-migration validation window within Sprint 5 timeline, prioritizing AI agent behavior verification and LLM response quality assessment.",
+            "Contingency Planning": "Maintain previous model version deployment capability through PAT phase to enable emergency rollback if critical issues emerge during acceptance testing."
+          },
+          "responseRationale": "LLM model migrations inherently carry functionality and performance risk, and the migration occurs in compressed Sprint 5 with only 3-day QA window immediately before PAT. Pre-migration baseline testing and explicit rollback criteria are essential to prevent migration-related defects from cascading into PAT and delaying deployment."
+        },
+        {
+          "riskId": "R006",
+          "riskTitle": "Delayed Sprint 3 PAT review completion may create feedback backlog impacting Sprint 5 planning",
+          "riskDescription": "Sprint 3 PAT Early Access Review commenced on August 3 and remains in progress as of August 13, indicating a 10+ day review cycle while Sprint 4 is already in progress. This review delay creates a feedback backlog where Sprint 3 findings may not be fully incorporated into Sprint 4 or 5 planning. Critical defects or enhancement requests from Sprint 3 PAT may emerge late in Sprint 5 or during formal PAT, requiring emergency fixes, scope adjustments, or extended validation cycles.",
+          "riskCategory": "Quality & Schedule",
+          "currentProjectPhase": "Build & Test - Sprint 4",
+          "expectedOccurrencePhase": "Sprint 5 / PAT",
+          "likelyImpactPhase": "Sprint 5 / PAT / Regression",
+          "rootCause": "Client review cycle latency; Vivli stakeholder availability constraints; complexity of Sprint 3 deliverables requiring extended validation; feedback prioritization and triage process taking longer than anticipated.",
+          "triggerConditions": [
+            "Sprint 3 PAT review not completed by August 17 (Sprint 5 start)",
+            "Critical defects identified in Sprint 3 PAT review requiring Sprint 5 rework",
+            "Sprint 5 planning proceeds without complete Sprint 3 feedback incorporation",
+            "Formal PAT phase uncovers issues that should have been addressed in Sprint 3 review"
+          ],
+          "potentialImpact": {
+            "quality": "Late discovery of Sprint 3 defects during formal PAT requiring emergency fixes; incomplete feedback incorporation creating technical debt and rework",
+            "schedule": "Sprint 5 scope expansion to address late Sprint 3 feedback; PAT duration extension to re-validate Sprint 3 fixes; potential for cascading delays into regression and deployment",
+            "customer": "Stakeholder frustration with iterative rework; perception of inadequate quality control; extended validation burden on Vivli team"
+          },
+          "likelihood": "High",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R03"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "This risk is highly likely because Sprint 3 PAT review has been in progress for 10+ days with no completion date, Sprint 5 starts in 4 days, and historical intelligence confirms client feedback delays impacted sprint validation (R03). The compressed Sprint 5 timeline provides minimal buffer for late Sprint 3 feedback incorporation, and the formal PAT phase may uncover issues that should have been addressed earlier.",
+          "confidenceScore": 85,
+          "riskPriority": "Medium",
+          "riskType": "Schedule",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Sprint 3 PAT review completion date and feedback closure status",
+            "Sprint 5 scope finalization and Sprint 3 feedback incorporation confirmation",
+            "Vivli stakeholder availability and review cycle SLA establishment"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Timeline: Sprint 3 PAT Early Access Review started August 3, status 'In Progress' as of August 13",
+              "Sprint 3 completed July 31, but PAT review not completed 13 days later",
+              "Sprint 4 in progress (August 3-14) while Sprint 3 review still open",
+              "Sprint 5 starts August 17 (4 days from reporting date)",
+              "WSR: 'Received feedback from the PAT early verification testing. The team prioritized the identified defects and enhancement requests' indicating active feedback management"
+            ],
+            "historicalReferences": [
+              "Historical R03: Customer feedback delay risk impacting sprint validation and implementation",
+              "Historical R03 Status: 'Resolved' but with no closure date or resolution mechanics documented",
+              "Current delivery intelligence: 'Validation window erosion' pattern identified in historical analysis"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Escalate Sprint 3 PAT review completion to Vivli stakeholders with target closure date of August 15, enabling Sprint 5 scope finalization with complete feedback incorporation"
+              ]
+            },
+            {
+              "stage": "SPRINT 5 PREPARATION",
+              "actions": [
+                "Conduct Sprint 5 grooming session on August 16 incorporating all Sprint 3 PAT feedback, prioritizing critical defects for Sprint 5 resolution and deferring lower-priority items to PAT phase"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Feedback Management": "Establish Vivli review cycle SLA of 5 business days for PAT early access reviews, with escalation to program leadership for items exceeding SLA through formal PAT phase.",
+            "Sprint Planning": "Allocate 20% Sprint 5 capacity buffer for late Sprint 3 feedback incorporation, maintaining flexibility to address critical findings without scope overflow.",
+            "Stakeholder Engagement": "Schedule dedicated Vivli availability for Sprint 4 PAT early access review (August 17-20) to prevent feedback backlog recurrence in Sprint 5 planning."
+          },
+          "responseRationale": "Historical R03 confirms customer feedback delays impacted sprint validation and implementation. Current evidence shows Sprint 3 PAT review in progress for 10+ days while Sprint 4 is active. Immediate escalation with target closure date is essential to prevent late feedback from disrupting Sprint 5 execution and PAT readiness."
+        },
+        {
+          "riskId": "R007",
+          "riskTitle": "Resource availability constraints in October may impact deployment and hypercare execution",
+          "riskDescription": "The project timeline extends through October 30, 2026 (Hypercare completion), representing a 7-week extension beyond the September 11 contract end date. No formal resource commitment documentation exists for the October timeframe, creating risk that key team members may be allocated to other projects or unavailable during critical deployment (October 10-16) and hypercare (October 19-30) phases. Resource unavailability during these phases could force deployment delays, compromise hypercare support quality, or require emergency resource backfill with knowledge transfer overhead.",
+          "riskCategory": "Resource & Schedule",
+          "currentProjectPhase": "Build & Test - Sprint 4",
+          "expectedOccurrencePhase": "Deployment / Hypercare",
+          "likelyImpactPhase": "Deployment / Hypercare / Post-Deployment",
+          "rootCause": "Implicit timeline extension without formal resource commitment; lack of documented resource allocation for post-contract period; potential competing priorities for team members in October timeframe; vendor resource planning based on original September 11 end date.",
+          "triggerConditions": [
+            "Key team members (developers, QA, DevOps, architects) allocated to other projects starting September or October",
+            "Deployment phase commences October 10 without confirmed resource availability",
+            "Hypercare support requests exceed available team capacity due to partial team allocation",
+            "Knowledge transfer required for backfill resources during critical deployment phase"
+          ],
+          "potentialImpact": {
+            "schedule": "Deployment delayed from October 10-16 to late October or early November due to resource unavailability; hypercare period extended beyond October 30 to compensate for reduced support capacity",
+            "quality": "Hypercare support quality degraded due to partial team availability or backfill resources with limited project knowledge; post-deployment issues not resolved within SLA",
+            "customer": "Vivli stakeholder frustration with deployment delays or inadequate hypercare support; business value realization delayed; potential reputational impact"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Low",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "This risk is moderately likely because the project extends 7 weeks beyond the original contract end date with no documented resource commitment for October. While no direct historical precedent exists, the implicit extension pattern creates resource planning uncertainty. Vendor resource allocation typically aligns to contract timelines, and the lack of formal extension documentation increases the probability of resource conflicts in October.",
+          "confidenceScore": 70,
+          "riskPriority": "Medium",
+          "riskType": "Resource",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Resource allocation confirmation for October 2026 timeframe by role",
+            "Deployment and hypercare staffing plan with named resources and availability confirmation",
+            "Backfill resource identification and knowledge transfer plan if primary resources unavailable"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "SOW contract end date: September 11, 2026",
+              "WSR Deployment: October 10-16 (5 weeks post-contract)",
+              "WSR Hypercare: October 19-30 (7 weeks post-contract)",
+              "No formal contract amendment or resource commitment documentation for October",
+              "No explicit resource allocation plan for post-contract phases in WSR"
+            ],
+            "historicalReferences": [
+              "Historical R02: Implicit extension pattern without formal baseline control",
+              "Current delivery intelligence: 'Extended timeline may create resource availability conflicts in October timeframe' identified as resource risk"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "SPRINT 5",
+              "actions": [
+                "Confirm resource allocation for deployment and hypercare phases through October 30 by named role, documenting commitments in contract amendment and resource management plan"
+              ]
+            },
+            {
+              "stage": "REGRESSION",
+              "actions": [
+                "Validate deployment and hypercare staffing plan with confirmed resource availability, establishing backfill resource identification and knowledge transfer protocol if primary resources unavailable"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Resource Management": "Execute formal resource commitment documentation in contract amendment covering deployment team composition, hypercare support model, and escalation contacts through October 30.",
+            "Knowledge Transfer": "Conduct deployment readiness knowledge transfer sessions during regression phase for any backfill resources joining deployment or hypercare teams.",
+            "Contingency Planning": "Identify backup resources for critical roles (DevOps, architects, lead developers) with availability confirmation and knowledge transfer plan if primary resources allocated to competing priorities."
+          },
+          "responseRationale": "The project extends 7 weeks beyond contract end date with no documented resource commitment for October. Vendor resource allocation typically aligns to contract timelines, creating risk of resource conflicts during critical deployment and hypercare phases. Formal resource commitment in amendment is essential to ensure team continuity."
+        },
+        {
+          "riskId": "R008",
+          "riskTitle": "15-day regression period may uncover integration or stability issues requiring extended remediation",
+          "riskDescription": "The 15-day regression testing period (September 21 - October 9) is scheduled entirely post-contract and follows a compressed sprint cycle, PAT phase with potential enhancement incorporation, and GPT-5 Mini migration. This extended regression window suggests anticipation of significant validation requirements. If regression testing uncovers integration issues, performance degradation, or stability concerns\u2014particularly related to the LLM migration, Azure service integration, or form validation rule complexity\u2014remediation cycles may extend beyond the planned regression window, delaying code freeze, deployment, and go-live.",
+          "riskCategory": "Quality & Schedule",
+          "currentProjectPhase": "Build & Test - Sprint 4",
+          "expectedOccurrencePhase": "Regression",
+          "likelyImpactPhase": "Regression / Deployment / Hypercare",
+          "rootCause": "Compressed sprint execution with reduced QA windows; GPT-5 Mini migration introducing technology transition risk; growing form validation rule complexity; PAT feedback potentially incorporating enhancements; integration complexity across Azure OpenAI, LangGraph, Cosmos DB, Container Apps, and Entra ID.",
+          "triggerConditions": [
+            "Regression testing commences September 21 and uncovers critical integration defects",
+            "Performance issues identified with GPT-5 Mini model or Azure service integration",
+            "Form validation rule interactions create unexpected edge case failures",
+            "Stability issues emerge under load or with concurrent user scenarios"
+          ],
+          "potentialImpact": {
+            "quality": "Critical defects discovered during regression requiring emergency fixes and re-regression; integration issues requiring architecture or configuration changes; performance degradation requiring optimization or infrastructure scaling",
+            "schedule": "Regression period extends from 15 days to 20-25 days; code freeze delayed from September 18 to late September or early October; deployment delayed from October 10-16 to late October or early November",
+            "deployment": "Go-live delayed impacting Vivli's business objectives and researcher/member community value realization; potential for phased deployment or limited release to manage risk"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "High",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R02"
+            ],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "This risk is moderately likely because the 15-day regression period is unusually long, suggesting anticipation of significant validation requirements. The compressed sprint cycle, GPT-5 Mini migration, PAT enhancement incorporation, and integration complexity across multiple Azure services increase the probability of regression findings. Historical intelligence confirms regression testing was added post-initiation (R02), indicating scope expansion and elevated validation needs.",
+          "confidenceScore": 75,
+          "riskPriority": "Medium",
+          "riskType": "Quality",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Regression test plan scope, coverage, and pass/fail criteria definition",
+            "Regression defect discovery rate, severity distribution, and remediation timeline",
+            "Code freeze readiness assessment and regression exit criteria confirmation"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Regression Period: September 21 - October 9 (15 days)",
+              "Regression scheduled entirely post-contract (SOW end date September 11)",
+              "Sprint 5 includes GPT-5 Mini migration requiring post-migration validation",
+              "Technology stack integration complexity: Azure OpenAI, LangGraph, Cosmos DB, Container Apps, Entra ID",
+              "Growing form validation rule complexity increasing test coverage requirements",
+              "PAT feedback potentially incorporating enhancements requiring regression validation"
+            ],
+            "historicalReferences": [
+              "Historical R02: Regression testing added after project initiation, not in original SOW",
+              "Current delivery intelligence: 'Post-Contract Delivery Model' pattern identified; regression entirely post-contract"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "PAT",
+              "actions": [
+                "Define regression test plan scope, coverage, and exit criteria during PAT phase, prioritizing integration validation across Azure OpenAI, LangGraph, Cosmos DB, Container Apps, and Entra ID components"
+              ]
+            },
+            {
+              "stage": "REGRESSION",
+              "actions": [
+                "Execute regression testing with daily defect triage and severity-based remediation prioritization, maintaining code freeze discipline and re-regression protocol for critical fixes"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Testing Strategy": "Allocate first 5 days of regression period to automated test execution and defect discovery, middle 5 days to remediation and re-testing, final 5 days to stability validation and code freeze confirmation.",
+            "Quality Gate": "Establish regression exit criteria including zero critical defects, integration test pass rate above 95%, and performance benchmarks met before deployment approval.",
+            "Contingency Planning": "Define regression extension trigger criteria and deployment delay protocol if critical defects require extended remediation beyond 15-day window."
+          },
+          "responseRationale": "Historical R02 confirms regression testing was added post-initiation, suggesting elevated validation requirements. The 15-day regression period is unusually long, indicating anticipation of significant findings. Structured test plan with exit criteria and contingency protocol is essential to manage regression findings without uncontrolled deployment delays."
+        },
+        {
+          "riskId": "R009",
+          "riskTitle": "Production environment readiness and deployment approval delays may push go-live beyond October 16",
+          "riskDescription": "Production deployment is scheduled for October 10-16, requiring production environment provisioning, security approvals, role-based access configuration, smoke testing, and go-live approval from Vivli stakeholders. The SOW identifies client responsibility for environment provisioning and third-party licenses, and current evidence shows open dependencies on Azure monitoring and automation environment provisioning. If production environment is not ready, security approvals are delayed, or go-live approval is not obtained by October 10, deployment will be delayed, extending the project timeline further and impacting Vivli's business objectives.",
+          "riskCategory": "Deployment & Infrastructure",
+          "currentProjectPhase": "Build & Test - Sprint 4",
+          "expectedOccurrencePhase": "Deployment Preparation / Deployment",
+          "likelyImpactPhase": "Deployment / Hypercare / Post-Deployment",
+          "rootCause": "Client responsibility for production environment provisioning and security approvals; historical pattern of client dependency delays; production readiness activities not explicitly tracked in current WSR; deployment scheduled 8 weeks from reporting date with limited visibility into environment readiness.",
+          "triggerConditions": [
+            "Production environment not provisioned by October 1 (9 days before deployment start)",
+            "Security approvals or role-based access configuration not completed by October 5",
+            "Go-live approval not obtained from Vivli stakeholders by October 10",
+            "Smoke testing identifies environment configuration issues requiring remediation"
+          ],
+          "potentialImpact": {
+            "schedule": "Deployment delayed from October 10-16 to late October or early November; hypercare start delayed from October 19 to late October; project completion delayed beyond October 30",
+            "deployment": "Go-live delayed impacting Vivli's business value realization and researcher/member community; potential for emergency environment provisioning creating configuration risk",
+            "customer": "Stakeholder frustration with deployment delays; business objectives not achieved within expected timeframe; potential reputational impact for Vivli"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R01"
+            ],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "This risk is moderately likely because production environment provisioning is a client responsibility, historical intelligence confirms client environment dependencies caused delays (R01), and current evidence shows open dependencies on Azure monitoring and automation environment. Deployment is scheduled 8 weeks from reporting date with limited visibility into production readiness activities. The pattern of client dependency delays increases the probability of production environment readiness issues.",
+          "confidenceScore": 70,
+          "riskPriority": "Medium",
+          "riskType": "Deployment",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Production environment provisioning status and completion date",
+            "Security approval and role-based access configuration completion status",
+            "Go-live approval process and stakeholder sign-off timeline"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Deployment: October 10-16 (8 weeks from reporting date)",
+              "SOW Client Responsibilities: Environment provisioning and third-party licenses",
+              "WSR Open Dependencies: Azure monitoring and automation environment provisioning",
+              "No explicit production readiness tracking or environment provisioning status in WSR",
+              "Deployment scheduled entirely post-contract with limited governance visibility"
+            ],
+            "historicalReferences": [
+              "Historical R01: Sprint 1 slipped due to client cloud environment dependencies",
+              "Current delivery intelligence: 'High Dependency on Client Deliverables' identified as operational weakness"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "REGRESSION",
+              "actions": [
+                "Validate production environment provisioning completion, security approvals, and role-based access configuration by October 1, conducting smoke testing in production environment during regression phase"
+              ]
+            },
+            {
+              "stage": "PRE-DEPLOYMENT",
+              "actions": [
+                "Obtain formal go-live approval from Vivli Steering Committee by October 8 with deployment readiness checklist sign-off covering environment, security, testing, and operational readiness"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Environment Management": "Establish production environment readiness tracking with weekly status reviews during PAT and regression phases, escalating provisioning delays to Steering Committee immediately.",
+            "Deployment Governance": "Define go-live approval process and decision authority upfront, conducting deployment readiness review on October 8 with Steering Committee to confirm approval before October 10 deployment start.",
+            "Contingency Planning": "Identify deployment delay trigger criteria and communication protocol if production environment or approvals not ready by October 10, maintaining stakeholder alignment on revised timeline."
+          },
+          "responseRationale": "Historical R01 confirms client cloud environment dependencies caused sprint slippage. Current evidence shows open dependencies on Azure monitoring and automation environment provisioning. Production environment readiness validation during regression phase with formal go-live approval process is essential to prevent last-minute deployment delays."
+        },
+        {
+          "riskId": "R010",
+          "riskTitle": "Acceptance criteria ambiguity for post-contract phases may create sign-off disputes",
+          "riskDescription": "The SOW defines acceptance criteria as 'Client reviews deliverables within 3 business days; deemed accepted if no response,' but this applies to the original 16-week contract period ending September 11. PAT (August 31 - September 18), regression (September 21 - October 9), deployment (October 10-16), and hypercare (October 19-30) all occur partially or entirely post-contract. Acceptance criteria, success metrics, and sign-off authority for these post-contract phases are not explicitly documented in available evidence. This ambiguity may create disputes over what constitutes successful completion, when payment milestones are earned, and who has authority to approve go-live or project closure.",
+          "riskCategory": "Governance & Commercial",
+          "currentProjectPhase": "Build & Test - Sprint 4",
+          "expectedOccurrencePhase": "PAT / Deployment / Hypercare",
+          "likelyImpactPhase": "PAT / Deployment / Hypercare / Project Closure",
+          "rootCause": "Implicit timeline extension without formal contract amendment defining acceptance criteria for post-contract phases; SOW acceptance criteria designed for original 16-week timeline; lack of documented success metrics, sign-off authority, and payment milestone alignment for extended phases.",
+          "triggerConditions": [
+            "PAT completion disputed due to unclear acceptance criteria or success metrics",
+            "Deployment approval withheld due to ambiguous go-live criteria",
+            "Hypercare completion disputed due to undefined closure criteria",
+            "Payment milestone invoice disputed due to acceptance criteria ambiguity"
+          ],
+          "potentialImpact": {
+            "governance": "Sign-off disputes delaying project closure and final payment; unclear escalation authority for post-contract acceptance decisions; potential for legal intervention to resolve disputes",
+            "commercial": "Payment milestone delays or disputes for 40% of contract value ($96,800) tied to post-contract activities; vendor cash flow impact; potential for commercial relationship damage",
+            "customer": "Stakeholder frustration with ambiguous acceptance process; delayed project closure and value realization; potential for extended negotiation cycles"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R02"
+            ],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "This risk is moderately likely because the SOW acceptance criteria were designed for the original 16-week timeline, and all critical phases now occur post-contract without documented acceptance criteria. Historical intelligence confirms testing scope expansion created contractual ambiguity (R02), and the current project exhibits the same pattern. The lack of formal extension documentation and acceptance criteria definition increases the probability of sign-off disputes.",
+          "confidenceScore": 75,
+          "riskPriority": "Medium",
+          "riskType": "Governance",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Contract amendment execution with explicit acceptance criteria for PAT, regression, deployment, and hypercare",
+            "Success metrics and sign-off authority documentation for each post-contract phase",
+            "Payment milestone alignment confirmation with revised acceptance criteria"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "SOW Acceptance Criteria: 'Client reviews deliverables within 3 business days; deemed accepted if no response'",
+              "SOW Contract Period: May 25 - September 11, 2026",
+              "WSR PAT: August 31 - September 18 (extends 7 days post-contract)",
+              "WSR Regression: September 21 - October 9 (entirely post-contract)",
+              "WSR Deployment: October 10-16 (entirely post-contract)",
+              "WSR Hypercare: October 19-30 (entirely post-contract)",
+              "No documented acceptance criteria for post-contract phases in available evidence"
+            ],
+            "historicalReferences": [
+              "Historical R02: Testing scope expansion created contractual ambiguity",
+              "Current delivery intelligence: 'Acceptance criteria ambiguity' identified as commercial risk"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "SPRINT 5",
+              "actions": [
+                "Document explicit acceptance criteria for PAT, regression, deployment, and hypercare phases in contract amendment, defining success metrics, sign-off authority, and payment milestone alignment"
+              ]
+            },
+            {
+              "stage": "PAT",
+              "actions": [
+                "Operationalize acceptance criteria in PAT governance framework with stakeholder sign-off on success metrics and acceptance threshold before formal PAT commencement"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Governance": "Establish phase-specific acceptance criteria including PAT defect severity thresholds, regression exit criteria, deployment smoke test pass rates, and hypercare closure metrics with Steering Committee approval.",
+            "Commercial Alignment": "Align payment milestone achievement to documented acceptance criteria in amendment, ensuring invoice submission tied to objective success metrics rather than subjective stakeholder approval.",
+            "Stakeholder Management": "Conduct acceptance criteria review session with Vivli stakeholders during Sprint 5 to ensure alignment on success metrics and sign-off process before PAT commencement."
+          },
+          "responseRationale": "Historical R02 confirms testing scope expansion created contractual ambiguity. SOW acceptance criteria were designed for original 16-week timeline, and all critical phases now occur post-contract without documented criteria. Explicit acceptance criteria in amendment with stakeholder alignment is essential to prevent sign-off disputes and payment delays."
+        }
+      ]
+    }
+  ]
+}
