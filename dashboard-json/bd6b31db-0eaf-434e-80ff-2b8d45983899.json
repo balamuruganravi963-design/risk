@@ -1,0 +1,762 @@
+{
+  "clientName": "Premera Blue Cross",
+  "projects": [
+    {
+      "projectId": "P-040126-CID1024551",
+      "projectName": "AI Build Customer Service and Claims PODs - Producer Portal",
+      "projectStatus": "PI5 - Implement & Build (Phase 2) - In Progress",
+      "riskPredictionDate": "2026-07-22",
+      "predictedRisks": [
+        {
+          "riskId": "R001",
+          "riskTitle": "Data Hub field delivery delay may compress UAT execution and threaten go-live schedule",
+          "riskDescription": "The delayed availability of 4 total premium fields from Data Hub until July 30 leaves minimal time for integration validation, testing, and defect resolution before UAT signoff on August 14, creating cascading schedule pressure that could jeopardize the September 2 production deployment.",
+          "riskCategory": "Schedule",
+          "currentProjectPhase": "PI5 - Implement & Build",
+          "expectedOccurrencePhase": "PI5 - Implement & Build / PI6 - UAT",
+          "likelyImpactPhase": "PI6 - UAT & Roll-out",
+          "rootCause": "External dependency on Data Hub team for critical BoB API fields, compounded by prior 33-day delay history and compressed 19-day window between UAT signoff and production deployment.",
+          "triggerConditions": [
+            "Data Hub fails to deliver 4 total premium fields by July 30, 2026",
+            "Integration testing reveals data mapping or schema mismatches requiring rework",
+            "Insufficient time allocated for defect resolution before UAT signoff on August 14"
+          ],
+          "potentialImpact": {
+            "schedule": "UAT start delayed by 1-2 weeks; production go-live slips by 2-4 weeks beyond September 2 target",
+            "testing": "Compressed UAT window reduces test coverage and defect detection effectiveness, increasing production risk",
+            "customer": "Go-live delay impacts business readiness, producer onboarding timelines, and stakeholder confidence"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "Critical",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The project has already experienced a 33-day Data Hub integration delay and is now awaiting 4 critical total premium fields with an ETA of July 30\u2014only 15 days before UAT signoff. With only 19 days between UAT signoff and production deployment, any further delay eliminates recovery buffer. The compressed timeline, combined with ongoing data mapping discussions and integration testing just starting, creates high probability of schedule slippage. Historical intelligence shows no prior closed risks for comparison, but current delivery patterns strongly indicate dependency-driven delays are a recurring project characteristic.",
+          "confidenceScore": 88,
+          "riskPriority": "Critical",
+          "riskType": "Schedule",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Data Hub field delivery status tracked daily against July 30 deadline",
+            "Integration test failure rate for BoB total premium calculations",
+            "Number of open defects and data mapping issues identified post-integration"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Challenge: 'Awaiting 4 new fields for total premium on BoB. ETA 30th July from DH'",
+              "Risk Register: 'Total Premium: the 4 additional fields needed for total premium calculation would be provided by DH on 30th of July. If this is made available on 30th July then we can only make the changes by 5th August'",
+              "Timeline: UAT signoff August 14, production deployment September 2 (19-day buffer)",
+              "Dependencies Tracker #26: 'Confirmation from DH on the total premium fields shared by business - Priority High, Status Open, ETA 6th July'",
+              "Prior DH delay: BoB API delayed from May 20 to June 22 (33 days)"
+            ],
+            "historicalReferences": [
+              "No historical closed-risk data available for this client/project combination",
+              "Current project context indicates high recurrence likelihood for dependency-driven schedule delays based on observed patterns"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Establish daily Data Hub field delivery status tracking with escalation to program leadership if July 30 deadline at risk"
+              ]
+            },
+            {
+              "stage": "PI5 Sprint 3",
+              "actions": [
+                "Complete integration testing for all available BoB fields and validate data mapping logic to isolate remaining work to total premium fields only"
+              ]
+            },
+            {
+              "stage": "PRE-UAT",
+              "actions": [
+                "Coordinate with E2E testing team to prioritize non-premium-dependent scenarios first, enabling parallel UAT preparation while awaiting final field delivery"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Schedule Management": "Negotiate UAT signoff date flexibility of 3-5 days with business stakeholders to accommodate potential integration delays without impacting production deployment.",
+            "Dependency Escalation": "Establish executive-level escalation protocol with Data Hub leadership to ensure July 30 commitment is protected and any slippage triggers immediate mitigation response.",
+            "Testing Strategy": "Implement risk-based testing approach prioritizing critical business scenarios and high-value workflows to maximize UAT coverage within compressed timeline."
+          },
+          "responseRationale": "Data Hub has demonstrated a pattern of delivery delays (33-day BoB API delay) and the current 4-field dependency represents a critical path item with only 15 days until UAT signoff. Daily tracking and parallel work streams are essential to maintain schedule integrity while preserving quality gates."
+        },
+        {
+          "riskId": "R002",
+          "riskTitle": "Late-stage integration defects may emerge from mock-data development approach",
+          "riskDescription": "Development proceeded with synthetic mock data while awaiting Data Hub API readiness, deferring integration validation to late build and early UAT phases. Schema mismatches, data mapping errors, or API contract changes discovered during integration could require significant rework and delay UAT execution.",
+          "riskCategory": "Integration",
+          "currentProjectPhase": "PI5 - Implement & Build",
+          "expectedOccurrencePhase": "PI5 - Implement & Build / PI6 - UAT",
+          "likelyImpactPhase": "PI6 - UAT & Roll-out",
+          "rootCause": "Deferred integration approach using locally maintained mock JSONs and synthetic data to maintain development velocity while Data Hub APIs were unavailable, creating risk of late-cycle integration issues.",
+          "triggerConditions": [
+            "Data Hub API schemas or field mappings differ from mock data contracts",
+            "Integration testing reveals data transformation or stitching logic errors",
+            "Real data from Data Hub exposes edge cases or validation issues not covered by synthetic data"
+          ],
+          "potentialImpact": {
+            "quality": "Integration defects require rework of wrapper services, data mapping logic, and UI components, increasing technical debt",
+            "schedule": "Defect resolution extends integration testing phase by 1-2 weeks, compressing UAT window and threatening go-live date",
+            "testing": "Late defect discovery reduces confidence in E2E testing and UAT readiness, potentially requiring additional test cycles"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The project explicitly adopted a mock-data-first development strategy to maintain momentum during Data Hub delays, but this approach defers integration risk to late phases. With integration testing at 0% as of recent progress reports and Data Hub integration just starting in PI5 Sprint 3, the project is entering a high-risk period where schema mismatches or data mapping errors could surface. The decision log and scope tracker explicitly acknowledge this risk, and ongoing data mapping value discussions indicate requirements are not fully stabilized. No historical closed-risk data is available, but current project evidence strongly supports high likelihood of late-stage integration issues.",
+          "confidenceScore": 85,
+          "riskPriority": "High",
+          "riskType": "Integration",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Integration test failure rate and defect severity trends",
+            "Number of schema or data mapping discrepancies identified between mock and real Data Hub APIs",
+            "Percentage of E2E test scenarios passing with live Data Hub integration"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "WSR: 'Team worked with locally maintained mock Json's. Integration with Agents and Agencies DH APIs planned for the upcoming sprint'",
+              "Scope Change #8: 'Develop with Synthetic data basis the contract schema. Integrate later when the APIs are made available. This leads to effort for creating mock APIs and data synthesis and has a risk of integration issues later in the cycle'",
+              "Decision #7: 'Base implementation on contracts with data synthesis. Integrate later when APIs are available. Need to mock the data covering all scenarios. Keep time later for integration issues (if any)'",
+              "Decision #31: 'While data mappings are mostly closed, possible values for the data are still being discussed. There could be possible issues coming during E2E testing or UAT'",
+              "Progress Tracking: Integration testing at 0% as of detailed progress snapshot",
+              "Risk Register: 'DH Integration: Team going forward with the data mappings provided. If any issues with the values from these mappings come and they lead back to design (Entity stitching) it might have some time impact'"
+            ],
+            "historicalReferences": [
+              "No historical closed-risk data available",
+              "Current project explicitly documents integration risk in decision log and scope tracker"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Execute contract validation testing comparing mock data schemas against live Data Hub API responses to identify discrepancies before full integration"
+              ]
+            },
+            {
+              "stage": "INTEGRATION TESTING",
+              "actions": [
+                "Implement automated schema validation and data mapping verification tests to detect API contract deviations early in integration cycle"
+              ]
+            },
+            {
+              "stage": "PRE-UAT",
+              "actions": [
+                "Conduct focused integration defect triage with Data Hub and business teams to resolve schema or mapping issues before UAT execution begins"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Quality Assurance": "Allocate dedicated integration testing capacity (2-3 days) specifically for schema validation and edge case testing with live Data Hub data before UAT start.",
+            "Technical Debt Management": "Document all mock-to-real data mapping assumptions and deviations in technical debt register for post-production remediation if needed.",
+            "Collaboration Protocol": "Maintain daily integration status reviews with Data Hub and Edge teams through UAT to enable rapid resolution of data-related issues."
+          },
+          "responseRationale": "The project explicitly documented integration risk when adopting mock-data development (Scope Change #8, Decision #7). Early contract validation and automated schema testing provide the most effective defense against late-cycle integration defects given the compressed timeline."
+        },
+        {
+          "riskId": "R003",
+          "riskTitle": "Unscheduled penetration testing may block production deployment",
+          "riskDescription": "Penetration testing remains unscheduled with only 6 weeks until the September 2 production deployment. Delays in scheduling, test execution, or remediation of critical security findings could block go-live or force deployment with unresolved security vulnerabilities.",
+          "riskCategory": "Security",
+          "currentProjectPhase": "PI5 - Implement & Build",
+          "expectedOccurrencePhase": "PI6 - UAT & Roll-out",
+          "likelyImpactPhase": "PI6 - UAT & Roll-out",
+          "rootCause": "Penetration testing not yet scheduled despite proximity to production deployment, compounded by dependency on ACPT environment readiness and completion of all application components within approved trust boundary.",
+          "triggerConditions": [
+            "Penetration testing not scheduled by August 1, 2026",
+            "Pen test execution delayed due to environment or application readiness issues",
+            "Critical or high-severity security findings require remediation before production approval"
+          ],
+          "potentialImpact": {
+            "security": "Production deployment proceeds with unvalidated security posture, exposing HIPAA-regulated member and provider data to potential vulnerabilities",
+            "schedule": "Go-live delayed by 2-4 weeks to complete penetration testing and remediate findings",
+            "compliance": "Failure to complete mandatory security validation before production deployment creates audit and regulatory risk"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "With production deployment scheduled for September 2 and penetration testing still unscheduled, the project faces a critical security gate risk. Decision #20 proposed a phased pen test approach but remains pending, and Decision #26 acknowledged the possibility of advancing the schedule but noted prerequisites (ACPT deployment, UAT completion) are not yet met. The compressed timeline between UAT signoff (August 14) and production (September 2) leaves minimal buffer for pen test execution and remediation. Given the HIPAA-regulated nature of the application and enterprise security requirements, this represents a high-likelihood, high-impact risk to the go-live date.",
+          "confidenceScore": 82,
+          "riskPriority": "High",
+          "riskType": "Security",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Penetration testing scheduled date confirmed by August 1",
+            "ACPT environment readiness and UAT completion status",
+            "Number and severity of security findings identified during pen test execution"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "Timeline: Production deployment September 2, pen test not yet scheduled",
+              "Decision #20: 'Split penetration testing into two phases... Status Pending'",
+              "Decision #26: 'Advance Pen-Test: Possibility of advancing the penetration testing schedule... Status Pending'",
+              "Dependencies Tracker: Pen Test listed as dependency but no confirmed ETA",
+              "WSR: 'Penetration testing not yet scheduled' noted in challenges and timeline risk"
+            ],
+            "historicalReferences": [
+              "No historical closed-risk data available for security gate timing patterns"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Secure penetration testing schedule commitment from security team with confirmed start date no later than August 10 to protect September 2 go-live"
+              ]
+            },
+            {
+              "stage": "PRE-PENETRATION TEST",
+              "actions": [
+                "Complete ACPT deployment and UAT execution to meet penetration testing prerequisites and enable security validation to proceed on schedule"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Security Gate Planning": "Finalize Decision #20 (phased penetration testing approach) immediately to enable early security validation and reduce go-live risk.",
+            "Remediation Buffer": "Reserve 5-7 days post-penetration test for critical finding remediation before final production signoff to avoid deployment delays.",
+            "Compliance Validation": "Ensure all HIPAA-required security controls are documented and validated before penetration testing to minimize likelihood of critical findings."
+          },
+          "responseRationale": "Penetration testing is a mandatory security gate for HIPAA-regulated applications and remains unscheduled with only 6 weeks until production deployment. Immediate scheduling and phased approach (Decision #20) are critical to protect go-live date."
+        },
+        {
+          "riskId": "R004",
+          "riskTitle": "Auth0 configuration propagation delays may impact ACPT deployment and UAT readiness",
+          "riskDescription": "Auth0 database connection configuration requires Premera team support to propagate changes to ACPT environment, and delays in this process could block ACPT deployment, integration testing, and UAT readiness, creating cascading schedule impacts.",
+          "riskCategory": "Deployment",
+          "currentProjectPhase": "PI5 - Implement & Build",
+          "expectedOccurrencePhase": "PI5 - Implement & Build",
+          "likelyImpactPhase": "PI5 - Implement & Build / PI6 - UAT",
+          "rootCause": "Ascendion team lacks direct access to ACPT Auth0 tenant configuration; dependency on Premera team (Drew) for DB connection updates and terraform pipeline execution.",
+          "triggerConditions": [
+            "Premera team unavailable or delayed in updating Auth0 ACPT tenant configuration",
+            "Auth0 terraform release pipeline issues prevent configuration propagation",
+            "Access or permission constraints block timely environment updates"
+          ],
+          "potentialImpact": {
+            "deployment": "ACPT deployment blocked or delayed, preventing integration testing and E2E validation",
+            "schedule": "UAT start delayed by 1-2 weeks if ACPT environment not ready for testing",
+            "testing": "Integration and E2E testing cannot proceed without functional Auth0 configuration in ACPT"
+          },
+          "likelihood": "High",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The project has experienced multiple environment and access-related delays, and Auth0 configuration propagation to ACPT is explicitly called out as a current challenge requiring Premera team support. With ACPT deployment critical for integration testing and UAT readiness, and only 3 weeks until UAT signoff, any delay in Auth0 configuration propagation creates cascading schedule risk. The risk register explicitly documents this issue, and the support required section notes ongoing need for Auth0 terraform pipeline assistance. The pattern of environment and access constraints throughout the project increases confidence in this risk prediction.",
+          "confidenceScore": 80,
+          "riskPriority": "High",
+          "riskType": "Deployment",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Auth0 ACPT tenant configuration update completion status",
+            "ACPT deployment readiness and integration testing start date",
+            "Number of open environment or access blockers preventing ACPT validation"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "Risk Register: 'Auth0 Change propagation: The DB connection configuration is maintained outside Auth0. We were able to promote other changes but the DB connection config needs to be updated by Premera team as we don't have access to ACPT tenant. If this gets delayed this will impact our move to ACPT'",
+              "Dependencies Tracker #27: 'Need Premera team help to update the DB connection configuration on Auth0 - Priority Critical, Status Closed, ETA 8th July'",
+              "WSR Support Required: 'Auth0 terraform release pipeline. need continued support if any issue arises'",
+              "WSR Challenge: 'Auth0- Integration with Entra' noted as schedule risk",
+              "Scope Change #1: Auth0 configuration moved from Premera to Ascendion for dev, but higher environment propagation remains Premera responsibility"
+            ],
+            "historicalReferences": [
+              "No historical closed-risk data available",
+              "Current project demonstrates recurring pattern of environment and access delays"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Coordinate with Premera Auth0 team to complete ACPT database connection configuration update and validate terraform pipeline execution"
+              ]
+            },
+            {
+              "stage": "ACPT DEPLOYMENT",
+              "actions": [
+                "Execute end-to-end authentication validation in ACPT environment to confirm Auth0 integration before declaring environment ready for UAT"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Access Management": "Establish backup contact within Premera infrastructure team for Auth0 ACPT access to reduce single-point-of-failure dependency on primary contact.",
+            "Environment Readiness": "Implement Auth0 configuration smoke tests as part of ACPT deployment validation to detect propagation issues immediately.",
+            "Escalation Protocol": "Define 24-hour escalation threshold for Auth0 configuration issues to program leadership given criticality to UAT readiness."
+          },
+          "responseRationale": "Auth0 configuration propagation is explicitly documented as a current blocker (Risk Register) and requires Premera team support. Given ACPT deployment is prerequisite for UAT, immediate resolution and validation are essential to maintain schedule."
+        },
+        {
+          "riskId": "R005",
+          "riskTitle": "Compressed UAT-to-production window may prevent adequate defect resolution",
+          "riskDescription": "The 19-day window between UAT signoff (August 14) and production deployment (September 2) provides minimal buffer for defect resolution, final signoff activities, penetration testing, and deployment preparation. Critical or high-severity UAT defects could force go-live delay or deployment with known issues.",
+          "riskCategory": "Schedule",
+          "currentProjectPhase": "PI5 - Implement & Build",
+          "expectedOccurrencePhase": "PI6 - UAT & Roll-out",
+          "likelyImpactPhase": "PI6 - UAT & Roll-out",
+          "rootCause": "Aggressive timeline with only 19 days between UAT signoff and production deployment, compounded by multiple critical dependencies (Data Hub fields, pen test, Auth0 configuration) still pending resolution.",
+          "triggerConditions": [
+            "UAT execution identifies critical or high-severity defects requiring extensive rework",
+            "Penetration testing reveals security vulnerabilities requiring remediation",
+            "Final signoff activities (August 25) delayed due to unresolved issues"
+          ],
+          "potentialImpact": {
+            "schedule": "Production go-live delayed by 2-4 weeks to complete defect resolution and final validation",
+            "quality": "Pressure to meet go-live date may result in deployment with known defects or incomplete testing",
+            "customer": "Go-live delay impacts producer onboarding, business readiness, and stakeholder confidence in delivery capability"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The project timeline shows only 19 days between UAT signoff (August 14) and production deployment (September 2), with final signoff on August 25. This compressed window must accommodate UAT defect resolution, penetration testing execution and remediation, final signoff activities, and production deployment preparation. Given the late-stage integration approach, ongoing data mapping discussions, and multiple pending dependencies, the likelihood of UAT identifying issues requiring resolution is high. The schedule pressure assessment explicitly identifies this compressed timeline as a high-risk factor, and the operational weaknesses analysis notes insufficient time for issue resolution.",
+          "confidenceScore": 87,
+          "riskPriority": "High",
+          "riskType": "Schedule",
+          "timeToMaterialization": "",
+          "preventability": "Low",
+          "monitoringIndicators": [
+            "UAT defect count, severity distribution, and resolution velocity",
+            "Number of days remaining between UAT signoff and production deployment",
+            "Percentage of critical and high-severity defects resolved before final signoff"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "Timeline: UAT signoff August 14, final signoff August 25, production deployment September 2 (19-day total window)",
+              "Schedule Pressure Assessment: 'Only 19 days between UAT signoff (Aug 14) and production go-live (Sep 2)' identified as HIGH pressure factor",
+              "Operational Weakness: 'Compressed Testing Timeline - Only 19 days between UAT signoff and go-live; Risk of quality issues, insufficient time for issue resolution'",
+              "Delivery Feasibility: 'Limited buffer time for issue resolution' noted as challenging factor",
+              "Current project progress: Integration testing at 0%, E2E testing just starting, UAT not yet begun"
+            ],
+            "historicalReferences": [
+              "No historical closed-risk data available",
+              "Compressed timeline represents objectively measurable schedule risk independent of historical patterns"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "PRE-UAT",
+              "actions": [
+                "Establish UAT defect triage protocol with business stakeholders defining critical vs. deferrable issues to enable rapid go or no-go decisions"
+              ]
+            },
+            {
+              "stage": "UAT",
+              "actions": [
+                "Implement daily defect resolution stand-ups with development, testing, and business teams to accelerate issue closure and maintain production deployment schedule"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Defect Management": "Pre-negotiate acceptance criteria for production deployment with business stakeholders, defining severity thresholds for go-live approval to avoid last-minute scope debates.",
+            "Contingency Planning": "Prepare phased rollout or MVP deployment plan as fallback if critical UAT defects cannot be resolved within 19-day window.",
+            "Resource Allocation": "Reserve dedicated defect resolution capacity during UAT period to ensure rapid turnaround on critical and high-severity issues."
+          },
+          "responseRationale": "The 19-day window between UAT signoff and production deployment is objectively constrained and provides minimal buffer for unexpected issues. Proactive defect triage and daily resolution cadence are essential to protect go-live date."
+        },
+        {
+          "riskId": "R006",
+          "riskTitle": "Requirements instability may cause late-cycle rework and scope expansion",
+          "riskDescription": "Ongoing requirements discussions (dual role behavior, data mapping values) and 19 documented scope changes indicate requirements instability that could continue into UAT and deployment phases, causing rework, technical debt, and schedule delays.",
+          "riskCategory": "Scope",
+          "currentProjectPhase": "PI5 - Implement & Build",
+          "expectedOccurrencePhase": "PI5 - Implement & Build / PI6 - UAT",
+          "likelyImpactPhase": "PI6 - UAT & Roll-out",
+          "rootCause": "Requirements clarification and business alignment occurring during late build and UAT phases rather than during discovery and design, compounded by 19 documented scope changes indicating ongoing requirements evolution.",
+          "triggerConditions": [
+            "Decision #37 (dual role requirements) finalized with material changes to current implementation",
+            "Data mapping value discussions result in design changes during UAT",
+            "Additional scope changes or requirement clarifications emerge during UAT execution"
+          ],
+          "potentialImpact": {
+            "scope": "Late-stage requirement changes require rework of UI components, business logic, and data integration layers",
+            "schedule": "Rework extends UAT phase by 1-2 weeks or forces deferral of functionality to post-production release",
+            "quality": "Late changes increase technical debt and reduce test coverage for modified functionality"
+          },
+          "likelihood": "High",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The project has documented 19 scope changes, indicating ongoing requirements evolution and instability. Decision #37 regarding dual role behavior remains pending as of July 22 with 'Medium' impact noted, and Decision #31 explicitly acknowledges that data mapping values are still being discussed with potential for issues during E2E testing or UAT. The scope change tracker shows multiple UX changes, functional requirement clarifications, and design modifications occurring throughout the build phase. With UAT starting in approximately 2 weeks, the risk of additional requirement changes or clarifications causing late-cycle rework is high. The operational weaknesses analysis explicitly identifies requirements instability as a project concern.",
+          "confidenceScore": 83,
+          "riskPriority": "High",
+          "riskType": "Scope",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Number of new scope change requests or requirement clarifications after July 31",
+            "Decision #37 (dual role) finalization date and implementation impact",
+            "UAT feedback requiring design or functional changes versus defect fixes"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "Scope Change Tracker: 19 documented scope changes including infrastructure, Auth0, CCS APIs, dual role, UX modifications",
+              "Decision #37: 'Logged in users with dual role should get entitlement based on the role played for an agency... Status Pending' as of July 16",
+              "Decision #31: 'While data mappings are mostly closed, possible values for the data are still being discussed. There could be possible issues coming during E2E testing or UAT'",
+              "Operational Weakness: 'Requirements Instability - 19 scope changes documented; Dual role requirements still being finalized; Data mapping values still under discussion'",
+              "Delivery Pattern: 'Scope Creep Through Incremental Changes - 19 scope changes documented; Infrastructure and Auth0 moved from out-of-scope to in-scope'"
+            ],
+            "historicalReferences": [
+              "No historical closed-risk data available",
+              "Current project demonstrates clear pattern of ongoing requirements evolution"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Finalize Decision #37 (dual role requirements) and close all pending data mapping value discussions by July 31 to establish hard requirements baseline"
+              ]
+            },
+            {
+              "stage": "UAT",
+              "actions": [
+                "Implement scope change freeze for UAT period, deferring all non-critical requirement changes to post-production release"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Change Control": "Establish executive approval requirement for any scope changes after July 31 to prevent late-cycle requirements churn.",
+            "Stakeholder Alignment": "Conduct requirements validation workshop with business stakeholders before UAT to confirm functional expectations and reduce feedback-driven rework.",
+            "Technical Debt Tracking": "Document all deferred requirements and design changes in backlog for post-production prioritization to maintain delivery momentum."
+          },
+          "responseRationale": "The project has absorbed 19 scope changes indicating ongoing requirements evolution. A hard requirements freeze before UAT is essential to prevent late-cycle rework that could threaten the compressed go-live timeline."
+        },
+        {
+          "riskId": "R007",
+          "riskTitle": "Citrix infrastructure performance issues may reduce offshore team productivity",
+          "riskDescription": "Ongoing Citrix server slowness and timeouts are impacting offshore team productivity and could continue to degrade development, testing, and support activities during critical integration and UAT phases.",
+          "riskCategory": "Resource",
+          "currentProjectPhase": "PI5 - Implement & Build",
+          "expectedOccurrencePhase": "PI5 - Implement & Build / PI6 - UAT",
+          "likelyImpactPhase": "PI5 - Implement & Build / PI6 - UAT",
+          "rootCause": "Citrix server performance degradation affecting offshore team access to development and testing environments, with no clear resolution timeline or mitigation plan.",
+          "triggerConditions": [
+            "Citrix server performance continues to degrade or experiences outages",
+            "Offshore team productivity metrics decline during critical integration and UAT phases",
+            "Infrastructure support unable to resolve performance issues before UAT"
+          ],
+          "potentialImpact": {
+            "resource": "Offshore team productivity reduced by 15-25%, impacting development velocity and testing execution",
+            "schedule": "Integration testing and UAT activities delayed by 3-5 days due to infrastructure constraints",
+            "quality": "Reduced testing time and coverage due to environment access limitations"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The WSR explicitly identifies Citrix server slowness and timeouts as an ongoing challenge impacting offshore team efforts. With 11 of 15 resources located offshore, infrastructure performance issues have material impact on project velocity. The operational weaknesses analysis identifies infrastructure and environment challenges as a concern, and the risk-relevant intelligence section notes Citrix slowness as a productivity risk. While the team has maintained strong sprint velocity despite this constraint, continued or worsening performance issues during critical integration and UAT phases could create schedule pressure. The risk is assessed as Medium likelihood and impact given the team's demonstrated ability to work around constraints, but warrants monitoring.",
+          "confidenceScore": 75,
+          "riskPriority": "Medium",
+          "riskType": "Resource",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Citrix server performance metrics and incident frequency",
+            "Offshore team productivity trends and sprint velocity",
+            "Number of work hours lost due to infrastructure access issues"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Challenge: 'Citrix server slowness and timeouts impacting offshore team efforts'",
+              "Operational Weakness: 'Citrix server slowness impacting offshore team; Infrastructure and Environment Challenges'",
+              "Risk-Relevant Intelligence: 'Citrix server slowness impacting offshore team productivity'",
+              "Resource distribution: 11 of 15 resources offshore, dependent on Citrix access",
+              "Dependencies Tracker #1: Citrix access initially delayed to March 30"
+            ],
+            "historicalReferences": [
+              "No historical closed-risk data available",
+              "Current project demonstrates recurring infrastructure constraint pattern"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "CURRENT PHASE",
+              "actions": [
+                "Escalate Citrix performance issues to Premera infrastructure team with quantified productivity impact data to prioritize resolution"
+              ]
+            },
+            {
+              "stage": "INTEGRATION TESTING",
+              "actions": [
+                "Implement offshore team schedule optimization to concentrate critical testing activities during Citrix performance windows with lowest latency"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Infrastructure Support": "Request dedicated infrastructure support contact for Citrix issues during critical integration and UAT phases to enable rapid incident resolution.",
+            "Productivity Monitoring": "Track offshore team velocity and Citrix incident frequency weekly to quantify impact and support escalation if performance degrades further.",
+            "Workaround Planning": "Identify alternative access methods or work distribution strategies to maintain productivity if Citrix performance issues persist."
+          },
+          "responseRationale": "Citrix slowness is documented as an ongoing challenge impacting 11 of 15 offshore resources. While the team has maintained velocity to date, proactive escalation and schedule optimization are prudent given upcoming critical integration and UAT phases."
+        },
+        {
+          "riskId": "R008",
+          "riskTitle": "Upstream data setup delays may prevent comprehensive integration and E2E testing",
+          "riskDescription": "Integration and E2E testing require upstream data setup support from Data Hub and Edge teams. Delays in test data provisioning or incomplete scenario coverage could prevent thorough validation before UAT, increasing risk of production defects.",
+          "riskCategory": "Testing",
+          "currentProjectPhase": "PI5 - Implement & Build",
+          "expectedOccurrencePhase": "PI5 - Implement & Build / PI6 - UAT",
+          "likelyImpactPhase": "PI6 - UAT & Roll-out",
+          "rootCause": "Dependency on Data Hub and Edge teams to provision test data covering all integration and E2E scenarios, with limited time remaining before UAT signoff.",
+          "triggerConditions": [
+            "Data Hub team unable to provision test data for all BoB, Agent, and Agency scenarios",
+            "Test data setup delayed beyond integration testing window",
+            "Incomplete test data coverage prevents validation of critical business scenarios"
+          ],
+          "potentialImpact": {
+            "testing": "Integration and E2E testing coverage reduced by 20-30%, leaving critical scenarios unvalidated before UAT",
+            "quality": "Production defects emerge for scenarios not covered by test data, requiring post-deployment fixes",
+            "schedule": "UAT delayed by 3-5 days to complete test data setup and execute missed scenarios"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The WSR support required section explicitly requests 'Need support for upstream Data setup of integration & E2E scenarios. Daily calls enabled, need continued support.' Decision #30 documents that integration testing requires upstream system support to help setup data to validate integration and E2E scenarios. With integration testing just starting and E2E testing at 0% as of recent progress reports, the project is entering a critical phase where comprehensive test data coverage is essential. The dependency on external teams (Data Hub, Edge) for test data provisioning, combined with the compressed timeline before UAT, creates moderate risk of incomplete test coverage. Daily collaboration calls are in place as mitigation, but the risk warrants monitoring.",
+          "confidenceScore": 78,
+          "riskPriority": "Medium",
+          "riskType": "Testing",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Percentage of integration and E2E test scenarios with required test data provisioned",
+            "Number of test data setup requests pending with Data Hub and Edge teams",
+            "Integration and E2E test execution progress against planned schedule"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Support Required: 'Need support for upstream Data setup of integration & E2E scenarios. Daily calls enabled, need continued support'",
+              "Decision #30: 'Integration testing: Test cases that validate that integration points are enabled and working to cover integration testing. Need support for upstream systems to help setup data to validate integration and E2E scenarios'",
+              "Dependencies Tracker #23: 'Data Availability on the Dev / ACPT for related DH entities \u2013 Agent, Agency - Priority Critical, Status Closed, ETA 22nd June'",
+              "WSR: 'Working with Edge & DH for creating test data'",
+              "Progress Tracking: Integration testing at 0%, E2E testing at 0% as of detailed progress snapshot"
+            ],
+            "historicalReferences": [
+              "No historical closed-risk data available",
+              "Current project demonstrates dependency on external teams for test data provisioning"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "INTEGRATION TESTING",
+              "actions": [
+                "Prioritize test data provisioning requests with Data Hub and Edge teams based on critical business scenario coverage to maximize validation within available timeline"
+              ]
+            },
+            {
+              "stage": "E2E TESTING",
+              "actions": [
+                "Implement risk-based testing approach focusing on high-value workflows and critical integration points where test data is available, deferring lower-priority scenarios if needed"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Test Data Management": "Document all test data setup requests and provisioning status in shared tracker with Data Hub and Edge teams to maintain visibility and accountability.",
+            "Scenario Prioritization": "Collaborate with business stakeholders to rank E2E test scenarios by business criticality to guide test data provisioning priorities.",
+            "Daily Collaboration": "Continue daily coordination calls with Data Hub and Edge teams through E2E testing to resolve data setup blockers rapidly."
+          },
+          "responseRationale": "The project explicitly requests upstream data setup support (WSR, Decision #30) and daily collaboration is already established. Prioritization and risk-based testing provide the most effective approach to maximize validation coverage within compressed timeline."
+        },
+        {
+          "riskId": "R009",
+          "riskTitle": "Disaster recovery strategy finalization delay may create operational risk post-deployment",
+          "riskDescription": "The disaster recovery strategy for the Producer Portal remains unfinalized, and delays in defining and implementing DR capabilities could result in production deployment without adequate business continuity protection, creating operational and compliance risk.",
+          "riskCategory": "Operational",
+          "currentProjectPhase": "PI5 - Implement & Build",
+          "expectedOccurrencePhase": "PI6 - UAT & Roll-out",
+          "likelyImpactPhase": "Post-Production / Operations",
+          "rootCause": "DR strategy decision (Decision #13) remains pending with no clear resolution timeline, and implementation complexity (potential multi-region deployment, Azure Front Door) not yet scoped or scheduled.",
+          "triggerConditions": [
+            "DR strategy not finalized before production deployment",
+            "Production deployment proceeds without DR capabilities in place",
+            "Post-deployment incident reveals inadequate business continuity protection"
+          ],
+          "potentialImpact": {
+            "operational": "Production outage or data loss event without DR capabilities could result in extended downtime and business disruption",
+            "compliance": "Deployment without documented and tested DR strategy may violate enterprise risk management and compliance requirements",
+            "financial": "Emergency DR implementation post-incident incurs higher cost and effort than planned implementation"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Low",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "Decision #13 documents that the DR strategy for the Producer Portal needs to be defined, noting it may not be implicitly handled by the platform and could require multi-region deployment and Azure Front Door. This decision remains pending as of the July 22 WSR. Scope Change #12 identifies DR strategy as a Small-Medium effort depending on the approach finalized. With production deployment scheduled for September 2 and DR strategy still undefined, there is moderate risk that the application will deploy without adequate business continuity protection. While this does not directly threaten the go-live date, it creates operational and compliance risk post-deployment. The risk is assessed as Medium given the potential for post-deployment operational issues and the need for DR capabilities in a HIPAA-regulated environment.",
+          "confidenceScore": 72,
+          "riskPriority": "Medium",
+          "riskType": "Operational",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "DR strategy decision finalization date",
+            "DR implementation plan and schedule defined",
+            "DR testing and validation completion before production deployment"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "Decision #13: 'Architecture: DR Strategy - Need to take care of DR. Would be a single region/zone deployment. Exploring DR strategy for PPOR. Will not be implicitly handled by platform. May need multi region deployment and Azure front door. Status Pending'",
+              "Scope Change #12: 'Architecture: DR Strategy - Exploring DR strategy for PPOR. Will not be implicitly handled by platform. May need multi region deployment and Azure front door. Effort Size: Small-Medium (depending on approach finalized)'",
+              "Operational Weakness: 'DR strategy not yet finalized' noted in infrastructure and environment challenges",
+              "Risk-Relevant Intelligence: 'DR strategy not yet finalized' identified as technical risk"
+            ],
+            "historicalReferences": [
+              "No historical closed-risk data available"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "PRE-UAT",
+              "actions": [
+                "Finalize Decision #13 (DR strategy) and document approved approach including multi-region deployment requirements and Azure Front Door configuration"
+              ]
+            },
+            {
+              "stage": "POST-DEPLOYMENT",
+              "actions": [
+                "Implement and validate disaster recovery capabilities within 30 days of production deployment to establish business continuity protection"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Architecture Validation": "Engage Premera enterprise architecture and platform teams to confirm DR requirements and approve implementation approach before UAT.",
+            "Operational Readiness": "Include DR testing and validation in post-production hypercare plan to ensure capabilities are functional before operational handoff.",
+            "Compliance Documentation": "Document DR strategy, recovery time objectives, and recovery point objectives in operational runbook to support audit and compliance requirements."
+          },
+          "responseRationale": "DR strategy remains undefined (Decision #13 pending) but does not directly threaten go-live date. Post-production implementation within 30 days balances operational risk with delivery schedule priorities while ensuring HIPAA-regulated application has adequate business continuity protection."
+        },
+        {
+          "riskId": "R010",
+          "riskTitle": "Contract budget overrun risk from scope expansion and extended timeline",
+          "riskDescription": "The project has absorbed 19 scope changes including infrastructure provisioning, Auth0 configuration, and CCS API ownership that were originally out-of-scope. Continued scope expansion or schedule delays requiring additional effort could exceed the $1,772,253 not-to-exceed contract limit without formal change order.",
+          "riskCategory": "Financial",
+          "currentProjectPhase": "PI5 - Implement & Build",
+          "expectedOccurrencePhase": "PI6 - UAT & Roll-out / Post-Production",
+          "likelyImpactPhase": "Contract Closeout",
+          "rootCause": "Significant scope expansion from original SOW (infrastructure, Auth0, CCS APIs moved from out-of-scope to in-scope) absorbed within original contract budget, combined with potential schedule delays requiring extended resource commitment.",
+          "triggerConditions": [
+            "Go-live delay extends resource commitment beyond December 31, 2026 contract end date",
+            "Additional scope changes or rework require effort beyond planned capacity",
+            "Hypercare or post-production support requirements exceed budgeted hours"
+          ],
+          "potentialImpact": {
+            "financial": "Contract budget exceeded by 5-15% ($88,000-$265,000) without formal change order or budget adjustment",
+            "contractual": "Budget overrun creates contract dispute or requires emergency change order negotiation",
+            "vendor": "Ascendion absorbs cost overrun or reduces resource commitment, impacting delivery quality"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Low",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The SOW establishes a not-to-exceed contract value of $1,772,253 for 24,759 estimated hours. The project has absorbed 19 scope changes, including infrastructure provisioning (Medium effort), Auth0 configuration (Medium effort), and CCS API ownership (Large effort) that were explicitly out-of-scope in the original SOW. While the team has maintained strong velocity and absorbed these changes to date, the risk-relevant intelligence section identifies contractual risk noting '19 scope changes may impact budget' and 'Infrastructure and Auth0 work added to scope.' If schedule delays extend the project beyond the December 31 contract end date, or if additional rework or scope changes emerge during UAT and deployment, the project could exceed the contract budget. The risk is assessed as Medium likelihood and impact given the scope expansion already absorbed and potential for further delays.",
+          "confidenceScore": 70,
+          "riskPriority": "Medium",
+          "riskType": "Financial",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Actual hours burned versus planned hours by resource category",
+            "Projected hours to completion including UAT, deployment, and hypercare",
+            "Scope change requests and effort estimates after July 31"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "SOW: 'Total compensation payable to Contractor under this Work Assignment shall not exceed $1,772,253 without Company's prior written approval and a duly executed Change Order'",
+              "Scope Change Tracker: 19 documented scope changes including infrastructure (Medium), Auth0 (Medium), CCS APIs (Large effort)",
+              "SOW vs WSR Correlation: 'SOW excluded infrastructure and Auth0 work; WSR shows these moved to in-scope'",
+              "Risk-Relevant Intelligence: 'Contractual Risk - 19 scope changes may impact budget; Infrastructure and Auth0 work added to scope'",
+              "Contract end date: December 31, 2026 (5.3 months remaining)"
+            ],
+            "historicalReferences": [
+              "No historical closed-risk data available"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "CURRENT PHASE",
+              "actions": [
+                "Conduct budget burn rate analysis comparing actual hours consumed against planned capacity to project remaining budget through contract end date"
+              ]
+            },
+            {
+              "stage": "UAT",
+              "actions": [
+                "Implement scope change freeze and resource allocation controls to prevent unplanned effort consumption during final delivery phases"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Financial Management": "Prepare change order request documentation if burn rate analysis indicates budget overrun risk exceeding 5% of contract value.",
+            "Scope Control": "Defer all non-critical scope changes and enhancements to post-production release to protect remaining budget for UAT, deployment, and hypercare.",
+            "Contract Extension Planning": "Evaluate need for contract extension or budget adjustment if go-live delay extends resource commitment beyond December 31, 2026."
+          },
+          "responseRationale": "The project has absorbed 19 scope changes including infrastructure, Auth0, and CCS API work originally out-of-scope. Proactive budget monitoring and scope freeze are essential to prevent contract overrun given the $1,772,253 not-to-exceed limit and potential schedule delays."
+        }
+      ]
+    }
+  ]
+}
