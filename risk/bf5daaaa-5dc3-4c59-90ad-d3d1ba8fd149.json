@@ -1,0 +1,968 @@
+{
+  "clientName": "Premera Blue Cross",
+  "projects": [
+    {
+      "projectId": "P-PPOR-2026",
+      "projectName": "Producer Portal Phase 1 (PPOR) \u2014 AI Build Customer Service and Claims PODs",
+      "projectStatus": "Active \u2014 PI5 Sprint 3 (Late Build / Pre-UAT Transition)",
+      "riskPredictionDate": "2026-07-22",
+      "predictedRisks": [
+        {
+          "riskId": "R001",
+          "riskTitle": "Unresolved Data Hub dependencies and environment readiness gaps may delay UAT commencement beyond planned schedule",
+          "riskDescription": "UAT commencement is at risk of delay due to unresolved Data Hub data dependencies (4 total premium fields ETA July 30), incomplete ACPT Azure Front Door and DNS configuration, pending Auth0 Entra federation design for Super User login, and insufficient upstream data setup for integration and E2E test scenarios. With UAT sign-off required by August 14 and only 23 days remaining from the WSR date, any further delay in dependency resolution will compress the UAT window and threaten sign-off dates.",
+          "riskCategory": "Schedule",
+          "currentProjectPhase": "PI5 Sprint 3 \u2014 Late Build / Pre-UAT Transition",
+          "expectedOccurrencePhase": "UAT Preparation / Early UAT",
+          "likelyImpactPhase": "UAT and Sign-off",
+          "rootCause": "Persistent upstream Data Hub data delivery delays, incomplete ACPT environment configuration, pending client-side design decisions for Super User authentication, and insufficient test data setup for integration and E2E scenarios.",
+          "triggerConditions": [
+            "DH 4 total premium fields not delivered by July 30, 2026",
+            "ACPT Azure Front Door and DNS configuration not completed by end of PI5 Sprint 3",
+            "Auth0 Entra federation design for Super User login not finalized by early August",
+            "Integration and E2E test data not available by UAT commencement target date",
+            "UAT test cases not received early enough to support UAT planning"
+          ],
+          "potentialImpact": {
+            "schedule": "UAT commencement delayed by 1-2 weeks, compressing UAT window from planned 3-4 weeks to 1-2 weeks and threatening August 14 UAT sign-off deadline",
+            "quality": "Compressed UAT window reduces test coverage, increases risk of undetected defects, and limits time for defect remediation cycles",
+            "customer": "Business stakeholder confidence eroded due to repeated dependency delays; user acceptance validation may be rushed or incomplete"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "Critical",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R01",
+              "R02",
+              "R05"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": [
+              "Persistent DH dependency delays across Dependencies #9, #11, #22, #23, #26 with 45-46 day historical delays",
+              "Auth0 ACPT DB connection configuration delay (Risk R02) requiring Premera-side access",
+              "DH data mapping ambiguity (Risk R05) creating late-cycle design change risk",
+              "Historical pattern of testing bottlenecks emerging after strong build progress (96% confidence)"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "UAT has not commenced as of July 22, 2026, with only 23 days to UAT sign-off (August 14). Current project indicators show Dependency #26 (4 total premium fields from DH) remains open with ETA July 30, ACPT Azure Front Door and DNS configuration incomplete, and Auth0 Entra federation for Super User login pending. Historical intelligence shows a persistent DH dependency delay pattern (R01, R05) with 45-46 day delays on prior dependencies, and a recent Auth0 environment configuration delay (R02) requiring Premera-side access. The project is in the exact lifecycle phase where historical testing compression patterns (96% confidence) have materialized. With integration testing and E2E testing also at 0% complete, any further dependency delay will cascade into UAT readiness.",
+          "confidenceScore": 92,
+          "riskPriority": "Critical",
+          "riskType": "Schedule",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "DH 4 total premium fields delivery status tracked daily with confirmed delivery date",
+            "ACPT Azure Front Door and DNS configuration completion status tracked in current sprint",
+            "UAT test case receipt date and UAT environment readiness checklist completion status"
+          ],
+          "businessCriticality": "Critical",
+          "evidence": {
+            "projectIndicators": [
+              "UAT at 0% complete as of July 22, 2026",
+              "Integration testing at 0% complete",
+              "E2E testing in early stages, July 15 target missed",
+              "Dependency #26 open: 4 total premium fields from DH needed July 6, ETA July 30",
+              "ACPT Azure Front Door and DNS configuration incomplete (current sprint focus)",
+              "Auth0 Entra federation for Super User login pending (Decision #9)",
+              "WSR Support Required: 'Need support for getting UAT test cases early'",
+              "WSR Support Required: 'Need support for upstream Data setup of integration & E2E scenarios'",
+              "Only 23 days from WSR date to UAT sign-off deadline (August 14)"
+            ],
+            "historicalReferences": [
+              "R01: DH delivery delay for 4 total premium fields \u2014 open risk threatening UAT readiness",
+              "R02: Auth0 DB connection configuration in ACPT delayed due to Premera-side access requirement",
+              "R05: DH data mapping ambiguity may cause design changes during E2E/UAT",
+              "Dependency #9: Schema for DH API for BoB delayed 45 days (needed April 24, closed June 8)",
+              "Dependency #22: DH API for BoB Availability delayed 46 days (needed May 1, closed June 16)",
+              "Historical pattern: Testing bottlenecks emerge after strong build progress (96% confidence)"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Escalate DH 4 total premium fields delivery to executive leadership with daily status tracking and confirmed delivery commitment by July 30, 2026",
+                "Establish daily dependency resolution war room with DH, Edge, Auth0, and ACPT infrastructure teams to accelerate environment configuration and data setup completion"
+              ]
+            },
+            {
+              "stage": "CURRENT PHASE (PI5 Sprint 3)",
+              "actions": [
+                "Complete ACPT Azure Front Door and DNS configuration with mandatory sign-off before sprint end; escalate blockers to Premera Engineering leadership immediately",
+                "Finalize Auth0 Entra federation design for Super User login with Premera Security team and obtain design approval by August 1, 2026"
+              ]
+            },
+            {
+              "stage": "UAT PREPARATION",
+              "actions": [
+                "Secure UAT test cases and upstream data setup for integration and E2E scenarios by August 5, 2026; implement test data creation support from DH and Edge teams",
+                "Validate integration test scenarios using sequenced approach\u2014execute non-DH-dependent scenarios first while awaiting total premium fields delivery"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Governance": "Formalize DH dependency as critical path item with executive sponsorship and escalation protocol; require daily status updates until closure",
+            "Schedule Management": "Establish UAT commencement gate with mandatory readiness criteria: DH fields delivered, ACPT environment validated, Auth0 Entra design approved, and test data available",
+            "Risk Mitigation": "Prepare contingency plan for UAT window extension consuming post-rollout buffer if DH delivery slips beyond July 30 or environment issues persist"
+          },
+          "responseRationale": "Historical evidence shows DH dependencies delayed 45-46 days on prior milestones (Dependencies #9, #22), and Auth0 environment configuration required Premera-side access escalation (Risk R02). Immediate executive escalation and daily war room coordination are essential to prevent UAT commencement delay cascading into sign-off and rollout dates."
+        },
+        {
+          "riskId": "R002",
+          "riskTitle": "Compressed testing and sign-off window may cause rollout date slip to late September or October 2026",
+          "riskDescription": "The planned rollout date of September 2, 2026 is at high risk of slipping by 4-6 weeks to late September or October 2026 due to extreme schedule compression in the final 6 weeks. With UAT (0%), integration testing (0%), and penetration testing (0%) not commenced as of July 22, and UAT sign-off required by August 14 and final sign-off by August 25, the project faces a critical path bottleneck. Any delay in UAT commencement, defect discovery during UAT, or unresolved penetration testing findings will cascade into sign-off delays and rollout postponement.",
+          "riskCategory": "Schedule",
+          "currentProjectPhase": "PI5 Sprint 3 \u2014 Late Build / Pre-UAT Transition",
+          "expectedOccurrencePhase": "UAT and Sign-off",
+          "likelyImpactPhase": "Rollout and Hypercare",
+          "rootCause": "Cumulative upstream dependency delays (DH data, environment configuration, client-side approvals) have consumed build phase buffer, compressing all testing phases (integration, E2E, UAT, penetration testing) into a 6-week window with insufficient time for defect remediation cycles and sign-off governance.",
+          "triggerConditions": [
+            "UAT commencement delayed beyond early August 2026",
+            "Medium or high severity defects discovered during UAT requiring remediation cycles",
+            "Penetration testing findings requiring remediation and retest",
+            "UAT sign-off not achieved by August 14, 2026",
+            "Final sign-off not achieved by August 25, 2026",
+            "Dark deploy to Production approval delayed beyond late August"
+          ],
+          "potentialImpact": {
+            "schedule": "Rollout date slips by 4-6 weeks to late September or October 2026, consuming 35-40% of post-rollout contract buffer (to December 31, 2026)",
+            "customer": "Business stakeholder expectations not met; planned producer onboarding and go-live communications require rescheduling; potential reputational impact",
+            "operations": "Hypercare and stabilization window compressed from 4 months to 2-2.5 months, reducing post-production support runway and increasing operational risk"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "Critical",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R01",
+              "R05"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": [
+              "Late-stage testing compression pattern (96% confidence) \u2014 testing phases compressed after strong build progress",
+              "Workaround-driven risk deferral pattern (95% confidence) \u2014 synthetic data and UI-based mapping deferred validation risk into E2E/UAT",
+              "DH dependency delays (97% confidence) creating cascading schedule impacts",
+              "E2E testing target of July 15 missed, indicating testing phase already behind schedule"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "Only 42 days remain from WSR date (July 22) to planned rollout (September 2), with UAT, integration testing, and penetration testing all at 0% complete. UAT sign-off is required by August 14 (23 days) and final sign-off by August 25 (34 days). Historical intelligence shows a persistent pattern of testing bottlenecks emerging after strong build progress (96% confidence), and the current project has already missed the E2E testing target of July 15. The project's workaround-based development approach (synthetic data, UI-based mapping) has deferred validation risk into the testing phases, increasing the likelihood of late-cycle defect discovery and rework. With extreme schedule compression and multiple unresolved dependencies, the probability of achieving September 2 rollout is low.",
+          "confidenceScore": 94,
+          "riskPriority": "Critical",
+          "riskType": "Schedule",
+          "timeToMaterialization": "",
+          "preventability": "Low",
+          "monitoringIndicators": [
+            "UAT commencement date confirmed and tracked against August 1-5 target window",
+            "UAT defect discovery rate and severity distribution tracked daily during UAT execution",
+            "UAT sign-off status tracked against August 14 deadline with escalation trigger if at risk 5 days prior"
+          ],
+          "businessCriticality": "Critical",
+          "evidence": {
+            "projectIndicators": [
+              "Only 42 days from WSR date to planned rollout (September 2, 2026)",
+              "UAT at 0% complete; UAT sign-off required August 14 (23 days from WSR)",
+              "Integration testing at 0% complete",
+              "Penetration testing at 0% complete",
+              "Final sign-off required August 25 (34 days from WSR)",
+              "E2E testing target of July 15 missed or incomplete",
+              "Dark deploy to Production approval pending (Decision #33)",
+              "Schedule Health rated RED in WSR",
+              "Overall Delivery Health rated AMBER-RED",
+              "Critical Path Observation: 'Only 6 weeks remain between WSR date and planned rollout with UAT not commenced'"
+            ],
+            "historicalReferences": [
+              "R01: DH delivery delay threatening UAT readiness and rollout timing",
+              "R05: DH data mapping ambiguity may surface design changes during E2E/UAT, causing rework",
+              "Historical pattern: Late-stage testing compression (96% confidence)",
+              "Historical pattern: Workaround-driven risk deferral (95% confidence) \u2014 synthetic data and UI-based mapping deferred validation",
+              "Historical pattern: Testing bottlenecks emerge after strong build progress",
+              "Lesson learned: 'Late-stage testing compression is a predictable consequence of external dependency delays'"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Conduct rollout date feasibility assessment with stakeholders; communicate revised rollout target if UAT commencement delays beyond August 5, 2026",
+                "Activate compressed testing protocol: prioritize critical path test scenarios, implement parallel integration and UAT execution where feasible, and pre-stage penetration testing readiness"
+              ]
+            },
+            {
+              "stage": "UAT",
+              "actions": [
+                "Execute UAT with daily defect triage and expedited remediation cycles; establish defect severity-based escalation with mandatory executive review for high/critical defects blocking sign-off",
+                "Implement phased UAT sign-off approach: obtain functional sign-off by August 14 and security/compliance sign-off post-penetration testing completion"
+              ]
+            },
+            {
+              "stage": "SIGN-OFF AND DEPLOYMENT",
+              "actions": [
+                "Secure final sign-off by August 25, 2026 with documented acceptance criteria and risk acknowledgment for any deferred non-critical items",
+                "Execute dark deploy to Production immediately post-sign-off with validation window before September 2 rollout; escalate production deployment approval to Engineering leadership if delayed"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Stakeholder Communication": "Proactively communicate rollout date risk to business stakeholders by July 30, 2026; provide revised timeline scenarios based on UAT commencement date",
+            "Testing Strategy": "Adopt risk-based testing approach prioritizing business-critical scenarios (Producer BoB access, registration, authentication) over lower-priority features",
+            "Contract Management": "Document rollout slip impact on hypercare window and contract buffer consumption; prepare Change Order justification if timeline extension beyond December 31, 2026 becomes necessary"
+          },
+          "responseRationale": "With UAT, integration testing, and penetration testing all at 0% complete and only 42 days to rollout, historical testing compression pattern (96% confidence) strongly predicts September 2 rollout is unachievable without immediate schedule mitigation and stakeholder expectation reset."
+        },
+        {
+          "riskId": "R003",
+          "riskTitle": "Compressed UAT window and insufficient test coverage may cause defect leakage to production environment",
+          "riskDescription": "The extreme compression of the UAT window (potentially 1-2 weeks instead of planned 3-4 weeks) combined with deferred validation risk from workaround-based development (synthetic data, UI-based schema mapping) creates high probability of defects escaping UAT and reaching production. With integration testing at 0%, E2E testing incomplete, and UAT not commenced, the project lacks sufficient validation cycles to detect and remediate defects before rollout. Late-cycle discovery of DH data mapping discrepancies or integration issues during UAT may force rushed remediation without adequate regression testing.",
+          "riskCategory": "Quality",
+          "currentProjectPhase": "PI5 Sprint 3 \u2014 Late Build / Pre-UAT Transition",
+          "expectedOccurrencePhase": "UAT and Production Deployment",
+          "likelyImpactPhase": "Production and Hypercare",
+          "rootCause": "Compressed testing window due to upstream dependency delays, workaround-based development creating deferred validation risk, insufficient time for defect remediation cycles and regression testing, and late-cycle integration of DH data and environment configurations.",
+          "triggerConditions": [
+            "UAT window compressed to 1-2 weeks instead of planned 3-4 weeks",
+            "DH data mapping discrepancies discovered during UAT requiring late-cycle changes",
+            "Integration defects discovered during E2E or UAT with insufficient time for full regression testing",
+            "Penetration testing findings requiring remediation with compressed retest window",
+            "UAT test coverage reduced due to time constraints",
+            "Regression testing compressed or skipped due to schedule pressure"
+          ],
+          "potentialImpact": {
+            "quality": "Medium to high severity defects reach production, requiring emergency hotfixes, rollback, or extended hypercare support",
+            "customer": "Producer and Agency Admin user experience degraded; potential data integrity issues affecting Book of Business accuracy; reputational risk",
+            "operations": "Increased hypercare support burden; potential service disruptions; extended stabilization period consuming contract buffer"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R05",
+              "R01"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": [
+              "Workaround-driven risk deferral pattern (95% confidence) \u2014 synthetic data and UI-based mapping accepted deferred validation risk",
+              "DH data mapping ambiguity (Risk R05) may surface design changes during E2E/UAT",
+              "Decision #19: UI-based schema mapping approved to mitigate timeline risk, accepting potential rework",
+              "Decision #31: Possible issues during E2E/UAT from still-discussed DH possible values",
+              "Historical lesson: 'Fallback approaches preserve momentum but create hidden rework debt'"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The project has used workaround-based development (synthetic data, UI-based schema mapping) to maintain build momentum while DH dependencies were delayed. This approach deferred validation risk into the testing phases. With UAT now compressed to potentially 1-2 weeks and integration testing at 0%, the project lacks sufficient validation cycles to detect and remediate defects. Historical intelligence (R05) shows DH data mapping ambiguity may surface design changes during E2E/UAT, and Decision #31 explicitly warned of possible issues during E2E/UAT from still-discussed DH possible values. The combination of compressed testing, deferred validation risk, and late-cycle integration creates high probability of defect leakage.",
+          "confidenceScore": 88,
+          "riskPriority": "High",
+          "riskType": "Quality",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "UAT defect discovery rate and severity distribution tracked daily with escalation trigger for high-severity defects",
+            "Test coverage metrics tracked against planned coverage baseline with gap analysis",
+            "Regression test execution status tracked with mandatory regression cycles for any UAT defect fix"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "UAT at 0% complete with potential 1-2 week compressed window",
+              "Integration testing at 0% complete",
+              "E2E testing incomplete (July 15 target missed)",
+              "Workaround-based development: synthetic data, UI-based schema mapping (Scope Changes #7, #8; Decision #19)",
+              "DH data mapping ambiguity: Dependency #26 open, Decision #31 warns of possible E2E/UAT issues",
+              "Schedule pressure: only 42 days to rollout with all testing phases outstanding",
+              "Quality Health: not explicitly rated but implied risk from schedule compression"
+            ],
+            "historicalReferences": [
+              "R05: DH data mapping ambiguity may cause design changes during E2E/UAT (96% confidence)",
+              "R01: DH delivery delay threatens completion of total premium calculation changes and E2E validation",
+              "Decision #19: UI-based schema mapping approved to mitigate timeline risk, accepting rework risk",
+              "Decision #31: Possible issues during E2E/UAT from still-discussed DH possible values",
+              "Historical pattern: Workaround-driven risk deferral (95% confidence)",
+              "Lesson learned: 'Fallback approaches preserve momentum but create hidden rework debt'"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "INTEGRATION TESTING",
+              "actions": [
+                "Execute integration testing with focus on DH data mapping validation, entity stitching logic, and total premium calculation accuracy; document and remediate discrepancies before UAT entry",
+                "Implement mandatory regression testing cycle for all DH integration changes and defect fixes with automated regression suite execution"
+              ]
+            },
+            {
+              "stage": "UAT",
+              "actions": [
+                "Enforce test coverage baseline: minimum 80% coverage of critical business scenarios with documented traceability to requirements and acceptance criteria",
+                "Establish defect remediation quality gate: require regression testing and business validation for all medium/high severity defect fixes before UAT sign-off"
+              ]
+            },
+            {
+              "stage": "PRE-PRODUCTION VALIDATION",
+              "actions": [
+                "Conduct pre-production smoke testing in ACPT environment with production-equivalent data and configuration to detect environment-specific issues before rollout"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Quality Assurance": "Implement risk-based test prioritization matrix focusing on high-impact, high-likelihood defect areas: DH data accuracy, authentication flows, and BoB retrieval logic",
+            "Defect Management": "Establish defect severity-based remediation SLAs: Critical (24 hours), High (48 hours), Medium (5 days); defer low-severity defects to post-rollout backlog",
+            "Hypercare Planning": "Prepare enhanced hypercare support plan with dedicated defect triage team, expedited hotfix deployment process, and rollback readiness for critical production issues"
+          },
+          "responseRationale": "Historical intelligence (Risk R05, 96% confidence) shows workaround-based development (synthetic data, UI-based mapping) deferred validation risk into testing phases. Compressed UAT window increases probability of defects escaping to production; mandatory regression testing and coverage enforcement are essential quality controls."
+        },
+        {
+          "riskId": "R004",
+          "riskTitle": "Penetration testing not commenced may result in undetected security vulnerabilities reaching production",
+          "riskDescription": "Penetration testing has not commenced as of July 22, 2026, with only 42 days to planned rollout. The compressed timeline creates risk that penetration testing will be rushed, incomplete, or conducted too late to allow sufficient time for remediation and retest of security findings. Given the application handles sensitive producer and agency data integrated with Premera's Data Hub and Auth0 authentication, undetected security vulnerabilities could create HIPAA compliance risk, data breach exposure, and reputational damage.",
+          "riskCategory": "Security",
+          "currentProjectPhase": "PI5 Sprint 3 \u2014 Late Build / Pre-UAT Transition",
+          "expectedOccurrencePhase": "Pre-Production and Production Deployment",
+          "likelyImpactPhase": "Production and Post-Rollout",
+          "rootCause": "Penetration testing phase not commenced due to upstream dependency delays and environment readiness issues, compressed timeline leaving insufficient window for security validation, remediation, and retest cycles.",
+          "triggerConditions": [
+            "Penetration testing not commenced by early August 2026",
+            "Penetration testing findings requiring remediation discovered late in August with insufficient time for retest",
+            "Production deployment proceeding without completed penetration testing sign-off",
+            "Security vulnerabilities discovered post-rollout requiring emergency patching"
+          ],
+          "potentialImpact": {
+            "security": "Undetected security vulnerabilities reach production, creating data breach risk, unauthorized access risk, and potential HIPAA compliance violations",
+            "compliance": "Regulatory compliance risk if security validation is incomplete or inadequately documented before production deployment",
+            "customer": "Reputational damage and loss of stakeholder trust if security incident occurs post-rollout; potential legal and financial liability"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": [
+              "Late-stage testing compression pattern (96% confidence) affecting all testing phases including security validation",
+              "Decision #20: Penetration testing phasing decision pending, indicating unresolved planning",
+              "Historical pattern: Testing bottlenecks emerge after strong build progress"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "Penetration testing is at 0% complete as of July 22, 2026, with only 42 days to planned rollout. The application handles sensitive producer and agency data with integrations to Premera's Data Hub and Auth0 authentication, creating material security risk if vulnerabilities are undetected. Historical intelligence shows a persistent pattern of testing compression (96% confidence), and Decision #20 indicates penetration testing phasing remains unresolved. With UAT and integration testing also at 0%, penetration testing is likely to be compressed or conducted too late to allow adequate remediation cycles. The SOW emphasizes HIPAA compliance alignment, making security validation business-critical.",
+          "confidenceScore": 82,
+          "riskPriority": "High",
+          "riskType": "Security",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Penetration testing commencement date confirmed and tracked against early August target",
+            "Penetration testing findings severity and remediation status tracked with mandatory retest for high/critical findings",
+            "Production deployment approval gated on completed penetration testing sign-off"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "Penetration testing at 0% complete as of July 22, 2026",
+              "Only 42 days to planned rollout (September 2, 2026)",
+              "Decision #20: Penetration testing phasing decision pending",
+              "Application handles sensitive producer and agency data with DH and Auth0 integrations",
+              "SOW emphasizes HIPAA compliance alignment for AI Lead role",
+              "Schedule compression affecting all testing phases"
+            ],
+            "historicalReferences": [
+              "Historical pattern: Late-stage testing compression (96% confidence)",
+              "Historical pattern: Testing bottlenecks emerge after strong build progress",
+              "Decision #20: Penetration testing phasing decision pending (unresolved planning)"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Finalize penetration testing phasing decision (Decision #20) and schedule penetration testing commencement by August 10, 2026 with confirmed security testing vendor engagement"
+              ]
+            },
+            {
+              "stage": "PRE-PRODUCTION",
+              "actions": [
+                "Execute penetration testing in ACPT environment covering authentication (Auth0, Entra federation), API security (APIM policies, DH integration), and data protection (BoB access controls)",
+                "Implement mandatory remediation and retest cycle for all high/critical security findings before production deployment approval"
+              ]
+            },
+            {
+              "stage": "PRODUCTION DEPLOYMENT",
+              "actions": [
+                "Gate production deployment on completed penetration testing sign-off with documented security acceptance and residual risk acknowledgment for any deferred low-severity findings"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Security Governance": "Escalate penetration testing schedule to Premera Cyber Security leadership; require executive approval if production deployment proceeds with incomplete security validation",
+            "Compliance": "Document HIPAA compliance validation activities including penetration testing scope, findings, remediation, and sign-off for audit trail and regulatory readiness",
+            "Deployment Controls": "Implement production deployment checklist with mandatory security validation gate; require Cyber Security team sign-off before rollout"
+          },
+          "responseRationale": "Application handles sensitive producer and agency data with DH and Auth0 integrations, creating material security risk if vulnerabilities are undetected. SOW emphasizes HIPAA compliance alignment, making security validation business-critical and non-negotiable before production deployment."
+        },
+        {
+          "riskId": "R005",
+          "riskTitle": "DH data mapping discrepancies discovered during E2E or UAT may require late-cycle design changes and rework",
+          "riskDescription": "The project proceeded with UI-based schema mapping and synthetic data development to maintain build momentum while DH API schemas and possible values remained under discussion. With DH data mapping ambiguity still unresolved (Dependency #26 open, Decision #31 warns of possible E2E/UAT issues), there is risk that integration testing and UAT will expose design-affecting discrepancies in data mappings, entity stitching logic, or total premium calculations. Late-cycle discovery would require design changes, code rework, and retesting during the already compressed UAT window.",
+          "riskCategory": "Scope",
+          "currentProjectPhase": "PI5 Sprint 3 \u2014 Late Build / Pre-UAT Transition",
+          "expectedOccurrencePhase": "Integration Testing and UAT",
+          "likelyImpactPhase": "UAT and Sign-off",
+          "rootCause": "Development proceeded based on UI-based schema mapping and synthetic data while DH API schemas, possible values, and entity stitching logic remained under discussion, deferring validation risk into integration and UAT phases.",
+          "triggerConditions": [
+            "DH 4 total premium fields delivered July 30 with unexpected schema or value semantics",
+            "Integration testing exposes data mapping discrepancies between PPOR and DH",
+            "UAT scenarios fail due to incorrect entity stitching logic or total premium calculations",
+            "DH possible values differ from assumptions used in UI-based schema mapping",
+            "Business stakeholders identify data accuracy issues during UAT"
+          ],
+          "potentialImpact": {
+            "schedule": "Late-cycle design changes and rework consume 1-2 weeks of UAT window, threatening UAT sign-off deadline",
+            "scope": "Unplanned rework effort may approach or exceed contract NTE cap if extensive code changes required",
+            "quality": "Rushed rework increases risk of regression defects and incomplete testing"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R05",
+              "R01"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": [
+              "Risk R05: DH data mapping ambiguity may cause design changes during E2E/UAT (96% confidence)",
+              "Decision #19: UI-based schema mapping approved to mitigate timeline risk, accepting rework risk",
+              "Decision #31: Possible issues during E2E/UAT from still-discussed DH possible values",
+              "Decision #14: Warned of possible integration data issues later",
+              "Scope Change #15: Additional DH entities required for BoB stitching (Commercial Group, Individual Member, Provider)",
+              "Historical pattern: Workaround-driven risk deferral (95% confidence)"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The project used UI-based schema mapping (Decision #19) and synthetic data (Scope Change #8) to maintain build momentum while DH dependencies were delayed. Decision #31 explicitly warns of possible issues during E2E/UAT from still-discussed DH possible values, and Risk R05 (96% confidence) predicts design changes may be required during E2E/UAT. With Dependency #26 (4 total premium fields) still open and integration testing at 0%, the project has not yet validated actual DH data against implemented logic. Historical intelligence shows this is part of a persistent DH dependency and workaround-driven risk deferral pattern (95% confidence). The risk is lifecycle-relevant because the project is entering the exact phase where deferred validation risk materializes.",
+          "confidenceScore": 89,
+          "riskPriority": "High",
+          "riskType": "Scope",
+          "timeToMaterialization": "",
+          "preventability": "Low",
+          "monitoringIndicators": [
+            "DH 4 total premium fields delivery tracked with immediate schema and value validation upon receipt",
+            "Integration testing defect rate and root cause analysis tracked for data mapping issues",
+            "UAT scenario pass/fail rate tracked with escalation trigger for data accuracy failures"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "Dependency #26 open: 4 total premium fields from DH needed July 6, ETA July 30",
+              "Decision #19: UI-based schema mapping approved to mitigate timeline risk, accepting rework risk",
+              "Decision #31: Possible issues during E2E/UAT from still-discussed DH possible values",
+              "Scope Change #8: DH APIs not available before PPOR development start \u2014 required synthetic data development",
+              "Scope Change #15: Additional DH entities required for BoB stitching",
+              "Integration testing at 0% complete \u2014 no validation of actual DH data yet",
+              "WSR Support Required: 'Need support for upstream Data setup of integration & E2E scenarios'"
+            ],
+            "historicalReferences": [
+              "R05: DH data mapping ambiguity may cause design changes during E2E/UAT (96% confidence)",
+              "R01: DH delivery delay threatens completion of total premium calculation changes",
+              "Decision #19: UI-based schema mapping approved, accepting rework risk",
+              "Decision #31: Possible issues during E2E/UAT from still-discussed DH possible values",
+              "Decision #14: Warned of possible integration data issues later",
+              "Historical pattern: Workaround-driven risk deferral (95% confidence)",
+              "Lesson learned: 'Treat contract/schema-based development as temporary acceleration tactic, not substitute for early real-data validation'"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Conduct DH data mapping validation workshop with DH team, business stakeholders, and PPOR technical team upon receipt of 4 total premium fields (July 30); document and resolve schema or value discrepancies before integration testing"
+              ]
+            },
+            {
+              "stage": "INTEGRATION TESTING",
+              "actions": [
+                "Execute integration testing with real DH data focusing on entity stitching logic (Commercial Group, Individual Member, Provider), total premium calculations, and BoB retrieval accuracy",
+                "Implement design change control process: require business and technical impact assessment, effort estimation, and schedule impact analysis before approving any late-cycle design changes"
+              ]
+            },
+            {
+              "stage": "UAT",
+              "actions": [
+                "Validate data accuracy and business logic with business stakeholders during UAT; prioritize remediation of data mapping issues over feature enhancements to preserve UAT schedule"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Change Management": "Establish late-cycle change approval gate requiring executive sign-off for any design changes discovered during UAT that impact schedule or scope",
+            "Scope Control": "Document all DH data mapping rework as unplanned effort; track cumulative hours against contract NTE cap and escalate if rework consumption approaches budget threshold",
+            "Risk Acceptance": "Prepare risk acceptance documentation for business stakeholders acknowledging potential data accuracy issues if design changes cannot be completed within UAT window"
+          },
+          "responseRationale": "Historical intelligence (Risk R05, 96% confidence; Decision #31) explicitly warned that proceeding with UI-based schema mapping while DH possible values remained under discussion creates risk of design changes during E2E/UAT. Immediate validation upon DH field delivery is critical to contain rework scope."
+        },
+        {
+          "riskId": "R006",
+          "riskTitle": "Dark deploy approval delays and insufficient pre-production validation may cause production deployment failure",
+          "riskDescription": "Production deployment readiness is at risk due to pending dark deploy approval from Premera Engineering team (Decision #33), incomplete ACPT environment validation, and compressed pre-production testing window. With only 34 days from WSR date to final sign-off (August 25) and production deployment planned post-August 25, any delay in obtaining dark deploy approval or discovery of environment-specific issues during pre-production validation could block or delay production deployment, threatening the September 2 rollout.",
+          "riskCategory": "Deployment",
+          "currentProjectPhase": "PI5 Sprint 3 \u2014 Late Build / Pre-UAT Transition",
+          "expectedOccurrencePhase": "Pre-Production and Production Deployment",
+          "likelyImpactPhase": "Production Deployment and Rollout",
+          "rootCause": "Dark deploy to Production approval pending from Premera Engineering team, ACPT environment configuration issues delaying higher-environment validation, compressed pre-production testing window leaving insufficient time to detect and remediate environment-specific issues.",
+          "triggerConditions": [
+            "Dark deploy approval not obtained by mid-August 2026",
+            "ACPT environment issues (Azure Front Door, DNS, Auth0 configuration) not fully resolved before pre-production deployment",
+            "Environment-specific defects discovered during pre-production validation requiring remediation",
+            "Production deployment blocked due to incomplete sign-offs or unresolved findings",
+            "Infrastructure or configuration drift between ACPT and Production environments"
+          ],
+          "potentialImpact": {
+            "schedule": "Production deployment delayed by 1-2 weeks, causing rollout date slip to mid-to-late September 2026",
+            "deployment": "Rollout failure or rollback due to environment-specific issues not detected in pre-production validation",
+            "customer": "Business stakeholder expectations not met; producer onboarding and go-live communications require rescheduling"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R02"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": [
+              "Risk R02: Auth0 DB connection configuration in ACPT delayed due to Premera-side access requirement",
+              "Client-side access/approval bottleneck pattern (93% confidence)",
+              "ACPT Azure Front Door and DNS configuration incomplete (current sprint focus)",
+              "Historical pattern: Premera-side decision and access delays on critical path"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "Decision #33 shows dark deploy to Production approval is pending from Premera Engineering team, representing a client-side approval bottleneck on the critical path. Historical intelligence (R02, 93% confidence) shows a persistent pattern of client-side access and approval delays, including the recent Auth0 ACPT DB connection configuration delay. Current project indicators show ACPT Azure Front Door and DNS configuration remain incomplete, and the WSR notes ongoing resolution of connectivity and service integration issues in ACPT. With only 34 days to final sign-off and production deployment planned post-August 25, any delay in approval or discovery of environment issues will threaten rollout. The risk is lifecycle-relevant because the project is entering pre-production validation phase.",
+          "confidenceScore": 84,
+          "riskPriority": "High",
+          "riskType": "Deployment",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Dark deploy approval status tracked weekly with escalation to Premera Engineering leadership if not obtained by August 10",
+            "ACPT environment configuration completion status tracked in current sprint with mandatory sign-off before pre-production deployment",
+            "Pre-production deployment checklist completion status tracked with environment-specific validation test results"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "Decision #33: Dark deploy to Prod pending approvals from Engineering team (John)",
+              "ACPT Azure Front Door and DNS configuration incomplete (current sprint focus)",
+              "WSR Accomplishments: 'Front End, Account Management API & Wrapper API deployed to ACPT (resolving connectivity and service integration issues)'",
+              "Only 34 days from WSR date to final sign-off (August 25)",
+              "Production deployment planned post-August 25 for September 2 rollout",
+              "Schedule Health rated RED"
+            ],
+            "historicalReferences": [
+              "R02: Auth0 DB connection configuration in ACPT delayed due to Premera-side access requirement (93% confidence)",
+              "Historical pattern: Client-side access/approval bottlenecks (93% confidence)",
+              "Historical pattern: Premera-side decision and access delays on critical path",
+              "Dependency #27: Auth0 ACPT DB connection configuration \u2014 closed after Ganesh/Drew support",
+              "Lesson learned: 'Privileged environment/configuration actions owned by client should be identified as formal gating dependencies with escalation paths much earlier'"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Escalate dark deploy to Production approval (Decision #33) to Premera Engineering leadership (John) with target approval date of August 10, 2026; document approval dependencies and escalation path"
+              ]
+            },
+            {
+              "stage": "PRE-PRODUCTION VALIDATION",
+              "actions": [
+                "Complete ACPT environment validation including Azure Front Door, DNS configuration, Auth0 DB connection, and service integration testing before pre-production deployment",
+                "Execute pre-production deployment dry run with production-equivalent configuration, infrastructure validation, and rollback testing to detect environment-specific issues"
+              ]
+            },
+            {
+              "stage": "PRODUCTION DEPLOYMENT",
+              "actions": [
+                "Implement phased production deployment: dark deploy for infrastructure validation, followed by limited pilot rollout, then full rollout on September 2, 2026 if validation successful"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Deployment Governance": "Establish production deployment readiness checklist with mandatory sign-offs from Engineering, Security, and Business stakeholders before rollout",
+            "Infrastructure Validation": "Conduct production environment configuration audit comparing ACPT and Production settings to identify and remediate configuration drift before deployment",
+            "Rollback Planning": "Prepare production rollback plan with documented rollback triggers, procedures, and communication protocol; conduct rollback dry run in ACPT environment"
+          },
+          "responseRationale": "Historical intelligence (Risk R02, 93% confidence) shows client-side access and approval bottlenecks repeatedly delayed critical path activities. Immediate escalation to Engineering leadership with documented approval dependencies is essential to prevent production deployment delay."
+        },
+        {
+          "riskId": "R007",
+          "riskTitle": "Unresolved Dual Role requirement and pending DR strategy decisions may trigger late-cycle scope expansion and Change Order",
+          "riskDescription": "Scope Change Item #19 (Dual Role requirement for Producer and Agency Admin) remains under discussion with medium effort sizing, and Decision #12 (DR Strategy) remains pending. With 19 scope changes already absorbed and the project approaching UAT, any agreement to implement the Dual Role requirement or finalize DR strategy during the UAT or post-UAT phase would constitute late-cycle scope expansion. Combined with potential rework from DH data mapping issues and compressed timeline consuming additional hours, the cumulative effort may approach or exceed the contract NTE cap of $1,772,253, triggering Change Order requirement.",
+          "riskCategory": "Governance",
+          "currentProjectPhase": "PI5 Sprint 3 \u2014 Late Build / Pre-UAT Transition",
+          "expectedOccurrencePhase": "UAT and Post-UAT",
+          "likelyImpactPhase": "Sign-off and Contract Closure",
+          "rootCause": "19 scope changes already absorbed without formal Change Order execution, Dual Role requirement (Item #19) unresolved with medium effort, DR Strategy decision pending, potential rework from DH data mapping issues, compressed timeline creating overtime and extended testing pressure against NTE cap.",
+          "triggerConditions": [
+            "Dual Role requirement (Item #19) agreed and implemented during UAT or post-UAT phase",
+            "DR Strategy (Decision #12) finalized requiring implementation effort",
+            "DH data mapping rework consumes significant unplanned hours",
+            "Extended UAT cycles or hypercare support consume additional hours beyond planned allocation",
+            "Cumulative actual hours approach 24,759 estimated hours or $1,772,253 NTE cap"
+          ],
+          "potentialImpact": {
+            "financial": "Contract NTE cap of $1,772,253 approached or exceeded, requiring formal Change Order execution and potential budget overrun",
+            "governance": "Scope expansion without Change Order creates audit and compliance risk; formal Change Order negotiation may delay sign-off and rollout",
+            "schedule": "Change Order negotiation and approval process may delay final sign-off and rollout by 1-2 weeks"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": [
+              "Scope creep pattern (95% confidence) \u2014 19 scope changes absorbed without formal Change Order",
+              "Scope Change #19: Dual Role requirement \u2014 Medium effort, still under discussion",
+              "Decision #12: DR Strategy \u2014 Small-Medium effort, pending",
+              "SOW Change Order clause: 'Total compensation shall not exceed $1,772,253 without Company's prior written approval and duly executed Change Order'",
+              "Historical pattern: Cumulative scope additions represent material effort beyond original SOW"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The project has absorbed 19 documented scope changes without formal Change Order execution, indicating a pattern of incremental scope expansion (95% confidence). Scope Change Item #19 (Dual Role requirement) remains under discussion with medium effort sizing, and Decision #12 (DR Strategy) remains pending. With the project entering UAT and potential rework from DH data mapping issues (Risk R005), there is risk that cumulative effort will approach the contract NTE cap of $1,772,253. The SOW explicitly requires a Change Order for any compensation exceeding the NTE cap. Historical intelligence shows scope creep as a persistent pattern, and the current unresolved scope items create risk of late-cycle expansion triggering Change Order requirement.",
+          "confidenceScore": 78,
+          "riskPriority": "Medium",
+          "riskType": "Governance",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Cumulative actual hours tracked weekly against 24,759 estimated hours baseline with projection to contract end",
+            "Scope Change Item #19 and Decision #12 resolution status tracked with effort impact assessment before approval",
+            "Monthly burn rate tracked against NTE cap with escalation trigger at 85% consumption"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "19 scope changes logged in Scope Change Tracker",
+              "Scope Change #19: Dual Role requirement \u2014 Medium effort, still under discussion",
+              "Decision #12: DR Strategy \u2014 Small-Medium effort, pending",
+              "Decision #37: Dual Role entitlement logic \u2014 pending",
+              "Contract NTE cap: $1,772,253 for 24,759 estimated hours",
+              "SOW: 'Total compensation shall not exceed $1,772,253 without Company's prior written approval and duly executed Change Order'",
+              "Potential rework from DH data mapping issues (Risk R005)"
+            ],
+            "historicalReferences": [
+              "Historical pattern: Scope creep via incremental requirement changes (95% confidence)",
+              "Historical pattern: 19 scope changes absorbed without formal Change Order execution",
+              "Scope Change Tracker: Items ranging from Extra Small to Medium effort",
+              "Decision Log: 37 decisions logged, many with scope implications",
+              "Lesson learned: 'Cumulative scope additions represent material effort beyond original SOW, increasing delivery risk and potential NTE cap exposure'"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Finalize Dual Role requirement (Scope Change #19, Decision #37) and DR Strategy (Decision #12) with business stakeholders by August 1, 2026; document scope decision (implement, defer to Phase 2, or exclude) with effort and schedule impact assessment"
+              ]
+            },
+            {
+              "stage": "CURRENT PHASE (PI5 Sprint 3)",
+              "actions": [
+                "If Dual Role or DR Strategy approved for current scope, assess cumulative effort impact against contract NTE cap; prepare Change Order justification if combined scope additions and rework exceed budget threshold"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Scope Governance": "Implement scope freeze for all non-critical requirements effective August 1, 2026; require executive approval and Change Order for any scope additions beyond Dual Role and DR Strategy decisions",
+            "Contract Management": "Track cumulative actual hours weekly against 24,759 estimated hours baseline; escalate to program leadership if burn rate projects NTE cap consumption before December 31, 2026",
+            "Phase 2 Planning": "Document deferred scope items (Dual Role, DR Strategy, low-priority enhancements) as Phase 2 backlog with business value and effort estimates for future prioritization"
+          },
+          "responseRationale": "Historical intelligence shows 19 scope changes absorbed without formal Change Order execution (95% confidence scope creep pattern). With potential DH rework and compressed timeline creating additional effort consumption, proactive scope freeze and NTE cap monitoring are essential to prevent unplanned budget overrun."
+        },
+        {
+          "riskId": "R008",
+          "riskTitle": "Repeated milestone slips and late-stage uncertainty may erode stakeholder confidence and create business readiness gaps",
+          "riskDescription": "The project has experienced repeated milestone slips (E2E testing target July 15 missed, UAT not commenced, DH dependencies delayed 45-46 days historically) and faces extreme schedule compression with only 42 days to rollout. Continued delays in UAT commencement, sign-off dates, or rollout may erode business stakeholder confidence in delivery capability and create business readiness gaps. Compressed UAT window limits business user validation time, potentially resulting in incomplete user acceptance, inadequate training, and operational readiness issues at go-live.",
+          "riskCategory": "Customer",
+          "currentProjectPhase": "PI5 Sprint 3 \u2014 Late Build / Pre-UAT Transition",
+          "expectedOccurrencePhase": "UAT and Rollout",
+          "likelyImpactPhase": "Rollout and Post-Rollout",
+          "rootCause": "Repeated milestone slips due to upstream dependency delays, compressed UAT window limiting business user validation time, late-stage uncertainty creating stakeholder confidence erosion, insufficient business readiness preparation time.",
+          "triggerConditions": [
+            "UAT commencement delayed beyond early August 2026",
+            "UAT sign-off deadline (August 14) missed",
+            "Rollout date slips to late September or October 2026",
+            "Business stakeholders express concerns about readiness or quality",
+            "Producer and Agency Admin user training compressed or incomplete",
+            "Operational readiness activities (runbooks, support procedures, communication plans) rushed"
+          ],
+          "potentialImpact": {
+            "customer": "Business stakeholder confidence eroded; producer and agency admin users inadequately prepared for go-live; potential resistance to adoption",
+            "operations": "Operational readiness gaps create post-rollout support burden; increased hypercare incidents due to user confusion or inadequate training",
+            "deployment": "Rollout success criteria not met; potential need for phased rollout or extended hypercare period"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R01"
+            ],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": [
+              "Repeated milestone slips: E2E testing July 15 target missed, UAT not commenced",
+              "Historical DH dependency delays: 45-46 days on Dependencies #9, #22",
+              "Schedule Health rated RED; Overall Delivery Health rated AMBER-RED",
+              "Historical pattern: Testing bottlenecks emerge after strong build progress (96% confidence)"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The project has experienced repeated milestone slips, including E2E testing target of July 15 missed and UAT not commenced as of July 22. Historical intelligence shows DH dependencies delayed 45-46 days (Dependencies #9, #22), and Schedule Health is rated RED. With only 42 days to rollout and UAT potentially compressed to 1-2 weeks, business stakeholders have limited time for user acceptance validation, training, and operational readiness preparation. Compressed UAT window creates risk of incomplete user acceptance and inadequate business readiness, potentially resulting in post-rollout adoption issues or operational support burden. The risk is lifecycle-relevant because the project is entering the phase where business stakeholder engagement and readiness activities are critical.",
+          "confidenceScore": 76,
+          "riskPriority": "Medium",
+          "riskType": "Customer",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Business stakeholder engagement and feedback tracked during UAT with sentiment analysis",
+            "Producer and Agency Admin user training completion rate tracked against rollout date",
+            "Operational readiness checklist completion status tracked with mandatory sign-off before rollout"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "E2E testing target of July 15 missed",
+              "UAT at 0% complete as of July 22, 2026",
+              "Only 42 days to planned rollout (September 2, 2026)",
+              "Schedule Health rated RED",
+              "Overall Delivery Health rated AMBER-RED",
+              "UAT potentially compressed to 1-2 weeks instead of planned 3-4 weeks",
+              "WSR Support Required: 'Need support for getting UAT test cases early'"
+            ],
+            "historicalReferences": [
+              "R01: DH delivery delay threatening UAT readiness and rollout timing",
+              "Historical DH dependency delays: 45-46 days on Dependencies #9, #22",
+              "Historical pattern: Testing bottlenecks emerge after strong build progress (96% confidence)",
+              "Historical pattern: Repeated milestone slips due to external dependency delays"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Conduct stakeholder communication session by July 30, 2026 providing transparent rollout date risk assessment, revised timeline scenarios, and mitigation actions; reset expectations and secure stakeholder alignment on revised plan"
+              ]
+            },
+            {
+              "stage": "UAT",
+              "actions": [
+                "Engage business stakeholders actively during UAT with daily progress updates, defect status, and sign-off readiness tracking; solicit feedback and address concerns proactively to maintain confidence"
+              ]
+            },
+            {
+              "stage": "PRE-ROLLOUT",
+              "actions": [
+                "Execute business readiness activities in parallel with technical validation: Producer and Agency Admin user training, operational runbook preparation, support team readiness, and communication plan execution"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Stakeholder Engagement": "Establish weekly executive steering committee updates with transparent risk reporting, milestone tracking, and decision escalation to maintain leadership visibility and support",
+            "Business Readiness": "Develop comprehensive business readiness plan covering user training, communication, support procedures, and operational handover; track readiness activities against rollout date with mandatory completion gates",
+            "Change Management": "Implement user adoption strategy including Producer and Agency Admin onboarding support, Learning Center content, and hypercare communication plan to ensure smooth transition"
+          },
+          "responseRationale": "Historical milestone slips (E2E testing July 15 missed, UAT not commenced, DH dependencies delayed 45-46 days) create stakeholder confidence risk. Proactive communication, transparent risk reporting, and active business engagement during UAT are essential to maintain trust and ensure business readiness."
+        },
+        {
+          "riskId": "R009",
+          "riskTitle": "Cascading Data Hub and client-side approval delays may create compounding critical path bottleneck",
+          "riskDescription": "The project faces multiple concurrent critical path dependencies: DH 4 total premium fields (ETA July 30), dark deploy Production approval (pending), Auth0 Entra federation design (pending), and ACPT environment configuration (incomplete). If any of these dependencies experience further delay beyond current ETAs, the delays will cascade and compound, creating a critical path bottleneck that makes September 2 rollout mathematically unachievable. The historical pattern shows DH dependencies delayed 45-46 days and client-side approvals requiring extended escalation cycles.",
+          "riskCategory": "Vendor",
+          "currentProjectPhase": "PI5 Sprint 3 \u2014 Late Build / Pre-UAT Transition",
+          "expectedOccurrencePhase": "Integration Testing and UAT Preparation",
+          "likelyImpactPhase": "UAT, Sign-off, and Rollout",
+          "rootCause": "Multiple concurrent critical path dependencies on external parties (Data Hub, Premera Engineering, Premera Security/Access teams), historical pattern of 45-46 day delays on DH dependencies, client-side approval bottlenecks requiring extended escalation cycles, insufficient buffer in remaining 42-day timeline to absorb any further delays.",
+          "triggerConditions": [
+            "DH 4 total premium fields not delivered by July 30, 2026",
+            "Dark deploy Production approval not obtained by mid-August 2026",
+            "Auth0 Entra federation design not finalized by early August 2026",
+            "ACPT Azure Front Door and DNS configuration not completed by end of PI5 Sprint 3",
+            "Any additional DH data or schema issues discovered during integration testing",
+            "Any additional client-side access or approval requirements discovered during pre-production validation"
+          ],
+          "potentialImpact": {
+            "schedule": "Cascading delays create compounding critical path bottleneck, making September 2 rollout unachievable; rollout slips by 6-8 weeks to late September or October 2026",
+            "vendor": "Dependency on external parties creates delivery risk outside team's direct control; requires executive escalation and governance intervention",
+            "financial": "Extended timeline consumes contract buffer and may approach NTE cap; potential Change Order requirement"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "Critical",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R01",
+              "R02"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": [
+              "Persistent DH dependency delays (97% confidence) \u2014 Dependencies #9, #11, #22, #23, #26 with 45-46 day delays",
+              "Client-side access/approval bottlenecks (93% confidence) \u2014 Auth0, tool access, production approvals",
+              "Risk R01: DH delivery delay threatening UAT readiness and rollout timing",
+              "Risk R02: Auth0 ACPT DB connection configuration delayed due to Premera-side access",
+              "Historical pattern: External dependency delays cascade and compound on critical path"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The project faces multiple concurrent critical path dependencies on external parties: DH (Dependency #26), Premera Engineering (Decision #33), Premera Security/Access teams (Auth0 Entra, ACPT configuration). Historical intelligence shows a persistent pattern of DH dependency delays (97% confidence) with 45-46 day delays on prior dependencies, and client-side access/approval bottlenecks (93% confidence). With only 42 days to rollout and zero buffer remaining, any further delay on any of these dependencies will cascade into UAT, sign-off, and rollout dates. The risk is compounding because delays are not independent \u2014 DH data delay blocks integration testing, which blocks UAT, which blocks sign-off, which blocks production deployment. The historical pattern strongly predicts recurrence.",
+          "confidenceScore": 91,
+          "riskPriority": "High",
+          "riskType": "Vendor",
+          "timeToMaterialization": "",
+          "preventability": "Low",
+          "monitoringIndicators": [
+            "DH 4 total premium fields delivery status tracked daily with executive escalation if not delivered by July 30",
+            "Dark deploy Production approval status tracked weekly with executive escalation if not obtained by August 10",
+            "Critical path dependency dashboard maintained with daily updates and escalation triggers for any slippage"
+          ],
+          "businessCriticality": "Critical",
+          "evidence": {
+            "projectIndicators": [
+              "Dependency #26 open: 4 total premium fields from DH needed July 6, ETA July 30",
+              "Decision #33: Dark deploy to Prod pending approvals from Engineering team",
+              "Decision #9: Super Users Azure AD SSO \u2014 pending",
+              "ACPT Azure Front Door and DNS configuration incomplete",
+              "Only 42 days to planned rollout with zero buffer",
+              "UAT, integration testing, pen testing all at 0% complete",
+              "Schedule Health rated RED"
+            ],
+            "historicalReferences": [
+              "R01: DH delivery delay threatening UAT readiness and rollout timing (98% confidence)",
+              "R02: Auth0 ACPT DB connection configuration delayed due to Premera-side access (93% confidence)",
+              "Dependency #9: Schema for DH API for BoB delayed 45 days (needed April 24, closed June 8)",
+              "Dependency #22: DH API for BoB Availability delayed 46 days (needed May 1, closed June 16)",
+              "Historical pattern: Persistent DH dependency delays (97% confidence)",
+              "Historical pattern: Client-side access/approval bottlenecks (93% confidence)",
+              "Lesson learned: 'External dependency delays cascade and compound on critical path'"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Establish executive-level critical path dependency dashboard with daily status updates for DH 4 total premium fields, dark deploy approval, Auth0 Entra federation, and ACPT configuration; escalate any slippage to program leadership within 24 hours",
+                "Activate executive escalation protocol: if any critical path dependency slips beyond committed ETA, escalate to Premera executive sponsors (Ganesh, Srini) and DH leadership for immediate resolution"
+              ]
+            },
+            {
+              "stage": "DEPENDENCY RESOLUTION",
+              "actions": [
+                "Implement parallel dependency resolution workstreams: DH data delivery, Premera Engineering approvals, and environment configuration to minimize sequential dependency delays"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Governance": "Formalize critical path dependencies as executive-level program risks with named executive owners, escalation triggers, and daily status reporting until closure",
+            "Vendor Management": "Engage DH leadership directly to communicate PPOR rollout criticality and secure commitment to July 30 delivery date; document dependency impact on rollout timeline",
+            "Risk Mitigation": "Prepare rollout date contingency plan: if critical path dependencies slip beyond August 5, communicate revised rollout target (late September) to stakeholders and activate contract buffer consumption mitigation"
+          },
+          "responseRationale": "Historical evidence shows persistent DH dependency delays (97% confidence, 45-46 day delays) and client-side approval bottlenecks (93% confidence). With zero buffer remaining in 42-day timeline, any further delay will cascade into rollout date slip. Executive escalation and daily tracking are essential to prevent compounding delays."
+        },
+        {
+          "riskId": "R010",
+          "riskTitle": "Rollout slip consuming post-rollout contract buffer may compromise hypercare and stabilization effectiveness",
+          "riskDescription": "If the rollout date slips by 4-6 weeks to late September or October 2026 due to testing delays and dependency bottlenecks, the post-rollout hypercare and stabilization period will be compressed from the planned 4 months (September 2 to December 31) to approximately 2-2.5 months. This compression creates risk that hypercare support, defect remediation, user onboarding, and operational stabilization activities will be rushed or incomplete before the contract end date of December 31, 2026. Insufficient hypercare runway may result in unresolved production issues, inadequate operational knowledge transfer, and potential need for contract extension.",
+          "riskCategory": "Transition",
+          "currentProjectPhase": "PI5 Sprint 3 \u2014 Late Build / Pre-UAT Transition",
+          "expectedOccurrencePhase": "Rollout and Hypercare",
+          "likelyImpactPhase": "Post-Rollout and Contract Closure",
+          "rootCause": "Rollout date slip consuming post-rollout contract buffer, compressed hypercare window leaving insufficient time for defect remediation and operational stabilization, contract end date of December 31, 2026 creating hard stop for support activities.",
+          "triggerConditions": [
+            "Rollout date slips by 4-6 weeks to late September or October 2026",
+            "Hypercare period compressed from 4 months to 2-2.5 months",
+            "Production defects or operational issues discovered during hypercare requiring extended support",
+            "User onboarding and training activities compressed or incomplete",
+            "Operational knowledge transfer to Premera support teams rushed or incomplete",
+            "Contract end date (December 31, 2026) approaching with unresolved hypercare activities"
+          ],
+          "potentialImpact": {
+            "operations": "Insufficient hypercare runway results in unresolved production issues, inadequate operational knowledge transfer, and increased post-contract support burden on Premera teams",
+            "financial": "Potential need for contract extension beyond December 31, 2026, requiring Change Order and additional budget",
+            "customer": "Producer and Agency Admin user experience degraded due to unresolved production issues or inadequate support during initial adoption period"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": [
+              "Rollout date slip risk (Risk R002) with high likelihood of 4-6 week delay",
+              "Post-rollout contract buffer: 120 days (September 2 to December 31, 2026)",
+              "If rollout slips to late September/October, buffer consumption: 35-40%",
+              "Historical pattern: Testing compression and dependency delays cascade into rollout timing"
+            ]
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "The project faces high risk of rollout date slip (Risk R002) due to testing compression and dependency delays. If rollout slips by 4-6 weeks to late September or October 2026, the post-rollout hypercare period will be compressed from 4 months to 2-2.5 months. The contract ends December 31, 2026, creating a hard stop for support activities. Compressed hypercare window creates risk that defect remediation, user onboarding, operational knowledge transfer, and stabilization activities will be rushed or incomplete. The WSR references a hypercare plan post-go-live, indicating hypercare is a planned contract deliverable. Insufficient hypercare runway may result in unresolved production issues and potential need for contract extension.",
+          "confidenceScore": 74,
+          "riskPriority": "Medium",
+          "riskType": "Transition",
+          "timeToMaterialization": "",
+          "preventability": "Low",
+          "monitoringIndicators": [
+            "Rollout date tracked with hypercare period duration calculated and escalated if compressed below 10 weeks",
+            "Hypercare defect backlog and resolution rate tracked with escalation trigger for unresolved critical/high defects approaching contract end",
+            "Operational knowledge transfer checklist completion status tracked with mandatory sign-off before contract end"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "Planned rollout: September 2, 2026",
+              "Contract end: December 31, 2026",
+              "Post-rollout buffer: 120 days (4 months)",
+              "High risk of rollout slip by 4-6 weeks (Risk R002)",
+              "If rollout slips to late September/October, hypercare compressed to 2-2.5 months",
+              "WSR references hypercare plan post-go-live",
+              "Contract buffer consumption risk: 35-40% if rollout slips"
+            ],
+            "historicalReferences": [
+              "Risk R002: Rollout date slip risk with high likelihood",
+              "Extension Analysis: 'If rollout slips by 4\u20136 weeks, hypercare and stabilization period would be compressed within December 31 contract end'",
+              "Extension Impact: 'Compressing UAT, pen testing, and E2E testing into 6-week window significantly increases risk'",
+              "Historical pattern: Testing compression cascades into rollout timing"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "ROLLOUT PLANNING",
+              "actions": [
+                "Develop hypercare plan with resource allocation, defect triage procedures, escalation protocol, and operational handover activities; adjust hypercare duration based on actual rollout date to preserve minimum 10-week stabilization window"
+              ]
+            },
+            {
+              "stage": "HYPERCARE",
+              "actions": [
+                "Execute hypercare with daily defect triage, expedited hotfix deployment, and operational knowledge transfer to Premera support teams; prioritize critical production issues and operational readiness over feature enhancements"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Contract Management": "Monitor rollout date slip impact on hypercare window; if rollout slips beyond September 15, 2026, assess contract extension requirement and prepare Change Order justification",
+            "Operational Transition": "Accelerate operational knowledge transfer activities during UAT and pre-rollout phases to reduce dependency on Ascendion resources during compressed hypercare window",
+            "Hypercare Prioritization": "Establish hypercare prioritization framework: focus on production stability, defect remediation, and operational enablement; defer non-critical enhancements to post-contract backlog"
+          },
+          "responseRationale": "If rollout slips by 4-6 weeks to late September or October 2026, hypercare window compresses from 4 months to 2-2.5 months. Proactive hypercare planning and operational knowledge transfer acceleration are essential to preserve stabilization effectiveness within contract end date of December 31, 2026."
+        }
+      ]
+    },
+    {
+      "projectId": "",
+      "projectName": "",
+      "projectStatus": "",
+      "riskPredictionDate": "",
+      "predictedRisks": []
+    }
+  ]
+}
