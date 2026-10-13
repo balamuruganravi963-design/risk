@@ -1,0 +1,619 @@
+{
+  "clientName": "Premera Blue Cross",
+  "projects": [
+    {
+      "projectId": "P030126",
+      "projectName": "Producer Portal \u2013 Phase 1",
+      "projectStatus": "Active - PI5 Sprint 2 (Late Development / Pre-Integration Testing)",
+      "riskPredictionDate": "July 23, 2026",
+      "predictedRisks": [
+        {
+          "riskId": "R001",
+          "riskTitle": "Integration Testing, UAT, and Penetration Testing Compression May Cause Release Quality and Schedule Overrun",
+          "riskDescription": "With Integration Testing, End-to-End Testing, UAT, and Penetration Testing all at 0% completion and only 39 days remaining to contract end, the project faces severe testing phase compression that could result in inadequate validation, late defect discovery, acceptance criteria failure, and Go-Live delay beyond the already-extended September 2, 2026 target.",
+          "riskCategory": "Schedule",
+          "currentProjectPhase": "PI5 Sprint 2 \u2013 Late Development",
+          "expectedOccurrencePhase": "Integration Testing / UAT / Pre-Production",
+          "likelyImpactPhase": "UAT / Go-Live / Hypercare",
+          "rootCause": "Critical testing phases were not initiated while development continued, creating a compressed validation window. Historical dependency delays (Data Hub API, Auth0 configuration, test data setup) pushed integration readiness beyond planned dates. SOW acceptance criteria require documented testing, NFR validation, security testing, and UAT sign-off, all of which remain unexecuted with insufficient time buffer.",
+          "triggerConditions": [
+            "Integration Testing start delayed beyond July 25, 2026",
+            "UAT sign-off dates (August 14 and August 25) approached without completed integration testing",
+            "Data Hub premium fields or Auth0 ACPT configuration not resolved by July 30, 2026",
+            "Penetration testing prerequisites (ACPT deployment, UAT completion) not met by August 10, 2026",
+            "Defect discovery rate during compressed testing exceeds team resolution capacity"
+          ],
+          "potentialImpact": {
+            "schedule": "Go-Live delay beyond September 2, 2026; Hypercare start pushed into October with no contractual coverage; Milestone 6 (Go-Live \u2013 $130,000) and Milestone 7 (Hypercare \u2013 $130,000) payment at risk",
+            "quality": "Inadequate test coverage leading to production defects; NFR and performance issues undiscovered until post-deployment; Security vulnerabilities not identified before Go-Live",
+            "compliance": "SOW acceptance criteria for testing, security validation, and UAT sign-off not met; Risk of contractual non-compliance and customer acceptance rejection"
+          },
+          "likelihood": "High",
+          "impactSeverity": "Critical",
+          "overallRiskRating": "Critical",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R01",
+              "R02"
+            ],
+            "recurrenceLikelihood": "Very High",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "This risk is highly likely because the project has consumed 78.1% of its timeline with all critical testing phases still at 0% completion, and historical evidence shows identical dependency-driven testing delays on this same project. The WSR explicitly flagged overrun risk if Data Hub APIs were delayed beyond June 15, and current evidence confirms those delays occurred. With only 39 days to contract end and UAT sign-off required by August 14-25, the mathematical compression of Integration Testing, E2E Testing, UAT, and Penetration Testing into a 3-4 week window is not feasible without significant quality trade-offs or schedule extension. Historical Risk R01 and R02 demonstrate this exact pattern resulted in testing compression and overrun risk, and current project indicators show the same conditions are active.",
+          "confidenceScore": 95,
+          "riskPriority": "Critical",
+          "riskType": "Schedule",
+          "timeToMaterialization": "",
+          "preventability": "Low",
+          "monitoringIndicators": [
+            "Integration Testing start date and daily defect discovery rate",
+            "Data Hub premium fields delivery confirmation by July 30, 2026",
+            "Auth0 ACPT DB connection configuration completion status",
+            "UAT test case readiness and stakeholder availability confirmation",
+            "Penetration testing scheduling and prerequisite environment readiness"
+          ],
+          "businessCriticality": "Critical",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Progress Tracker: Integration Testing 0%, E2E Testing 0%, UAT 0%, Penetration Testing 0% as of July 22, 2026",
+              "WSR Timeline: Go-Live September 2, 2026 is 2 days after contract end August 31, 2026",
+              "WSR Timeline: UAT sign-off dates August 14 and August 25 leave no buffer for defect resolution or Pen Test",
+              "WSR Challenges: 'Awaiting 4 new fields for total premium on BoB. ETA 30th July from DH'",
+              "WSR Challenges: 'Auth0 DB connection configuration update in ACPT (Premera/Drew)'",
+              "WSR Open Items: DH Integration data mapping risk; upstream data setup for integration and E2E testing",
+              "SOW Milestone Schedule: Milestone 5 (UAT Completion \u2013 $130,000) and Milestone 6 (Go-Live \u2013 $130,000) at risk",
+              "Contract End Date: August 31, 2026 with 39 days remaining and no formal extension documented"
+            ],
+            "historicalReferences": [
+              "Historical Risk R01: 'Availability on Data Hub API delivery by 6/30. Any delay may impact delivery timelines' \u2014 Resolved status but WSR shows delays persisted",
+              "Historical Risk R02: 'Integration with live Data Hub APIs is still pending. Performance and NFR issues will only become visible after integration' \u2014 Resolved status but integration testing still 0%",
+              "Historical Intelligence: 'Dependency-Driven Schedule Slippage' pattern with 0.95 confidence and HIGH impact",
+              "Historical Intelligence: 'Testing Phases Not Started with 40 Days to Contract End' identified as CRITICAL operational weakness",
+              "Historical Intelligence: 'Go-Live Date Exceeds Contract End Date' identified as CRITICAL operational weakness",
+              "Historical Lessons Learned: 'Testing phases at 0% late in the term are a leading indicator of compounded schedule and acceptance risk'"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Escalate Data Hub premium fields delivery (July 30 ETA) and Auth0 ACPT configuration as critical-path blockers with daily executive status tracking until resolution",
+                "Establish compressed testing plan with risk-based test case prioritization, parallel Integration Testing and UAT preparation, and clear go or no-go criteria for UAT entry and Go-Live approval"
+              ]
+            },
+            {
+              "stage": "INTEGRATION TESTING",
+              "actions": [
+                "Execute Integration Testing with live Data Hub APIs using production-like data volumes and concurrency patterns to surface NFR and performance issues early",
+                "Implement defect triage process with severity-based resolution SLAs and daily defect burn-down tracking to maintain UAT readiness"
+              ]
+            },
+            {
+              "stage": "UAT",
+              "actions": [
+                "Conduct UAT with Premera stakeholders using production-equivalent scenarios and acceptance criteria validation, with contingency for limited regression cycles if critical defects surface"
+              ]
+            },
+            {
+              "stage": "PRE GO-LIVE",
+              "actions": [
+                "Complete Penetration Testing with remediation of critical and high-severity findings before Go-Live approval, and validate dark deployment to production with smoke testing and rollback readiness"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Schedule Management": "Negotiate formal UAT window compression with Premera stakeholders, establishing minimum acceptance criteria for Go-Live approval and deferring non-critical enhancements to post-Hypercare releases",
+            "Dependency Governance": "Implement daily dependency status calls with Data Hub, Auth0, and infrastructure teams until all critical-path blockers are resolved, with executive escalation for delays beyond 24 hours",
+            "Testing Strategy": "Adopt risk-based testing approach prioritizing Book of Business, Authentication, and Dashboard modules with production-like data, deferring lower-priority scenarios to Hypercare validation",
+            "Contractual Alignment": "Execute formal Change Order extending contract through October 31, 2026 to provide contractual coverage for compressed testing timeline and extended Hypercare period"
+          },
+          "responseRationale": "Historical Risk R01 and R02 demonstrate that Data Hub dependency delays and deferred NFR validation caused testing compression and overrun risk on this same project. Current evidence shows identical conditions with all testing phases at 0% and 39 days remaining. Mitigation must prioritize dependency resolution, risk-based testing, and formal schedule extension to avoid acceptance criteria failure and milestone payment risk."
+        },
+        {
+          "riskId": "R002",
+          "riskTitle": "Unresolved Pending Decisions May Trigger Late-Stage Rework and UAT Readiness Delays",
+          "riskDescription": "Nine critical architectural and requirements decisions remain pending (DR strategy, Super User login design, Dashboard caching approach, Dual-role entitlement, Advance Pen Test scheduling, BoB field mapping) with medium to large effort impact. Resolution of these decisions during the compressed UAT preparation window could trigger design changes, development rework, and additional testing cycles, further delaying UAT readiness and Go-Live.",
+          "riskCategory": "Scope",
+          "currentProjectPhase": "PI5 Sprint 2 \u2013 Late Development",
+          "expectedOccurrencePhase": "UAT Preparation / UAT Execution",
+          "likelyImpactPhase": "UAT / Go-Live",
+          "rootCause": "Architectural and requirements decisions were deferred during Discovery and Design phases and accumulated through build sprints without resolution. Decision Log shows 9 items in 'Pending' status including medium-large impact items. Historical pattern shows 'Execution Before Design/Scope Stabilization' with High impact. SOW change management clause requires formal approval for scope changes, but pending decisions create ambiguity on baseline scope vs. change.",
+          "triggerConditions": [
+            "Pending decisions resolved unfavorably requiring design or implementation changes",
+            "DR strategy decision (Decision #13 \u2013 medium-large impact) finalized requiring infrastructure or code changes",
+            "Dual-role entitlement decision (Decision #37 \u2013 medium effort) requiring RBAC or UI changes",
+            "Dashboard caching approach (Decision #25) requiring data architecture or API changes",
+            "Super User login design (Decision #9) requiring authentication flow changes",
+            "BoB field mapping uncertainty requiring Data Hub integration rework"
+          ],
+          "potentialImpact": {
+            "scope": "Late-stage scope additions or changes requiring development rework and re-testing; Potential for additional scope change items beyond the 19 already logged",
+            "schedule": "UAT start delayed while rework is completed; UAT cycles extended to validate changes; Go-Live delay beyond September 2, 2026",
+            "quality": "Rushed implementation of late decisions increases defect risk; Inadequate testing of changed functionality before UAT"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R03",
+              "R04"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "This risk is highly likely because the project has reached 78.1% elapsed time with 9 pending decisions still unresolved, and historical evidence shows pending decisions late in the lifecycle trigger rework and readiness delays. The Decision Log shows items with medium to large effort impact, meaning resolution could require non-trivial implementation changes. Historical Risk R03 demonstrates how pending architecture decisions (FACETS integration) caused work readiness issues and sprint disruption. With UAT preparation beginning in the next 2-3 weeks, any decision requiring implementation changes will compress an already-critical testing timeline. The historical pattern 'Pending Decision Accumulation' has 0.90 confidence and HIGH impact, and the current project exhibits the exact same condition.",
+          "confidenceScore": 88,
+          "riskPriority": "High",
+          "riskType": "Scope",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Decision Log closure rate for pending items (target: all resolved by August 1, 2026)",
+            "Effort estimation for each pending decision resolution",
+            "Scope Change Tracker for new items triggered by decision resolution",
+            "Development sprint capacity allocation for decision-driven rework"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Decision Log: 9 decisions marked 'Pending' including Items 9, 12, 13, 20, 24, 25, 26, 33, 37",
+              "Decision #13: DR strategy \u2013 medium-large impact \u2013 Pending",
+              "Decision #37: Dual Role \u2013 Producer & Agency Admin discussion \u2013 medium effort \u2013 Pending",
+              "Decision #25: Dashboard design with local caching \u2013 Pending",
+              "Decision #26: Advance pen test scheduling \u2013 Pending",
+              "Decision #9: Super User login design \u2013 Pending",
+              "WSR Open Items: DH Integration data mapping risk \u2013 field mapping and value uncertainty",
+              "WSR Scope Change Tracker: 19 scope changes already logged; 3 medium-effort scope additions absorbed without cost adjustment",
+              "SOW Section 5.2: Change management requires written approval for scope changes; pending decisions create baseline ambiguity"
+            ],
+            "historicalReferences": [
+              "Historical Risk R03: 'Pending architecture and leadership decisions on FACETS integration reduced work readiness'",
+              "Historical Risk R04: 'Limited visibility into overall scope, design, and sprint governance reduced delivery clarity'",
+              "Historical Intelligence: 'Pending Decision Accumulation' pattern \u2013 0.90 confidence, HIGH impact",
+              "Historical Intelligence: 'Execution Before Design/Scope Stabilization' \u2013 High impact enterprise pattern",
+              "Historical Root Cause Analysis: 'Incomplete scope/design decisions entering execution' as primary root cause",
+              "Historical Lessons Learned: 'Pending decisions become materially more dangerous after build exceeds ~70% term elapsed' \u2014 current project at 78.1%"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Convene decision closure workshop with Premera stakeholders to resolve all 9 pending decisions by August 1, 2026, with effort estimation and scope-change assessment for each decision outcome",
+                "Establish decision escalation protocol for items requiring leadership approval, with 48-hour turnaround SLA to prevent UAT preparation delays"
+              ]
+            },
+            {
+              "stage": "CURRENT PHASE",
+              "actions": [
+                "Implement design changes from resolved decisions using time-boxed sprints with regression testing to validate no impact to completed modules before UAT entry"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Decision Governance": "Require all pending decisions with medium or large effort impact to include implementation plan, test strategy, and UAT impact assessment before approval",
+            "Scope Management": "Log any decision-driven scope additions in Scope Change Tracker with effort estimation and formal Change Order if cumulative effort exceeds contingency buffer",
+            "UAT Readiness": "Establish UAT entry criteria including completion of all pending decisions, regression testing of decision-driven changes, and stakeholder sign-off on updated acceptance criteria"
+          },
+          "responseRationale": "Historical Risk R03 shows pending architecture decisions (FACETS integration) caused work readiness issues and sprint disruption. Historical pattern 'Pending Decision Accumulation' has 0.90 confidence and HIGH impact. With 9 pending decisions and UAT starting in 3 weeks, immediate closure is required to prevent rework during the most time-critical phase."
+        },
+        {
+          "riskId": "R003",
+          "riskTitle": "Data Hub Integration Uncertainty May Cause Late Defect Discovery and UAT Failure",
+          "riskDescription": "Live Data Hub integration remains incomplete with 4 total premium fields delayed until July 30, 2026, field mapping and value uncertainty unresolved, and NPN search support pending. Historical evidence shows NFR and performance issues are only visible after live integration. With Integration Testing at 0% and UAT starting in 3 weeks, late discovery of data mapping errors, performance degradation, or API contract mismatches could cause UAT failure and require emergency rework during the most time-critical project phase.",
+          "riskCategory": "Technology",
+          "currentProjectPhase": "PI5 Sprint 2 \u2013 Late Development",
+          "expectedOccurrencePhase": "Integration Testing / UAT",
+          "likelyImpactPhase": "UAT / Go-Live",
+          "rootCause": "Development proceeded using synthetic data and contract-based schema assumptions while live Data Hub API readiness lagged. Historical Risk R02 explicitly states 'Performance and NFR issues will only become visible after integration.' WSR shows DH BoB API availability was flagged as overrun risk if not available by June 15, and delays persisted. Current open items show mapping/value uncertainty, missing premium fields until July 30, and NPN search support pending. SOW acceptance criteria require integration testing, performance validation, and security testing, all dependent on live DH integration.",
+          "triggerConditions": [
+            "Data Hub premium fields delivered July 30 contain unexpected schema or value differences from contract assumptions",
+            "Live DH API performance degrades under load during integration testing",
+            "Field mapping errors discovered during E2E or UAT scenarios",
+            "NPN search by producer entity not supported as expected",
+            "Data Hub entity stitching logic produces incorrect or incomplete Book of Business data",
+            "Caching strategy for Dashboard (Decision #25) incompatible with live DH data refresh patterns"
+          ],
+          "potentialImpact": {
+            "quality": "Late defect discovery during UAT requiring emergency fixes; Data integrity issues in Book of Business, Dashboard, or Producer/Agency Admin views",
+            "schedule": "UAT cycles extended to validate DH integration fixes; Integration Testing and E2E Testing timelines further compressed",
+            "customer": "UAT stakeholder confidence eroded by data accuracy or performance issues; Risk of UAT sign-off rejection"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R01",
+              "R02"
+            ],
+            "recurrenceLikelihood": "Very High",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "This risk is highly likely because the project built core functionality using synthetic data while live Data Hub integration remained incomplete, and historical evidence explicitly warns that NFR and performance issues only surface after live integration. The WSR shows 4 premium fields delayed until July 30 (8 days from WSR date), field mapping uncertainty, and NPN search support pending. Historical Risk R02 describes the exact same condition and was marked Resolved, yet integration testing remains at 0%, indicating the underlying risk was not eliminated. With Integration Testing and UAT compressed into a 3-4 week window, any data mapping errors or performance issues discovered during live integration will have immediate schedule and quality impact. Historical lessons learned explicitly state that proceeding on mock data without reserving integration hardening capacity concentrates defect risk near release.",
+          "confidenceScore": 90,
+          "riskPriority": "High",
+          "riskType": "Technology",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Data Hub premium fields delivery confirmation and schema validation by July 30, 2026",
+            "Integration Testing defect discovery rate and severity distribution",
+            "Live DH API response time and throughput metrics during integration testing",
+            "Field mapping validation results for Book of Business, Dashboard, and Admin modules",
+            "NPN search by producer entity functional validation status"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Challenges: 'Awaiting 4 new fields for total premium on BoB. ETA 30th July from DH'",
+              "WSR Challenges: 'Awaiting DH support for search by NPN on producer entity. ETA 30th July'",
+              "WSR Open Items: 'DH Integration data mapping risk \u2013 field mapping and value uncertainty'",
+              "WSR Open Items: 'Upstream data setup for integration and E2E testing'",
+              "WSR Progress: Integration Testing 0%, E2E Testing 0% as of July 22, 2026",
+              "WSR Timeline: 'RISK OF OVERRUN if DH BoB API not made available before 15th June' \u2014 delay materialized",
+              "WSR Dependencies: DH BoB availability, premium field confirmation, NPN search support",
+              "Decision Log: Decision #25 \u2013 Dashboard design with local caching \u2013 Pending (may conflict with DH data refresh)"
+            ],
+            "historicalReferences": [
+              "Historical Risk R01: Data Hub API delivery delay impacted timelines \u2014 Resolved but delays persisted",
+              "Historical Risk R02: 'Performance and NFR issues will only become visible after integration' \u2014 Resolved but integration testing still 0%",
+              "Historical Intelligence: 'Late validation of quality/NFR conditions' as primary root cause",
+              "Historical Mitigation Assessment: 'Fallback execution using mock/synthetic data' created late integration/NFR risk",
+              "Historical Lessons Learned: 'If development proceeds on mock/synthetic data, explicitly reserve integration hardening capacity and rework budget'",
+              "Historical Pattern: 'Dependency-Driven Schedule Slippage' \u2013 0.95 confidence, HIGH impact"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Validate Data Hub premium fields delivery by July 30, 2026 with schema comparison against contract assumptions and immediate regression testing if differences are identified",
+                "Execute live Data Hub integration validation for Book of Business, Dashboard, and Admin modules using production-like data volumes and entity stitching scenarios to surface mapping errors before UAT"
+              ]
+            },
+            {
+              "stage": "INTEGRATION TESTING",
+              "actions": [
+                "Conduct performance and load testing of live Data Hub APIs with production-equivalent concurrency and data volumes, establishing baseline response times and throughput metrics for UAT validation"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Integration Validation": "Establish Data Hub integration test suite covering all API endpoints, field mappings, entity stitching logic, and error handling scenarios with automated regression capability",
+            "Performance Baseline": "Define and validate NFR acceptance criteria for Data Hub API response times, throughput, and error rates before UAT entry to prevent late performance issues",
+            "Data Quality": "Implement data validation framework for Book of Business, Dashboard, and Producer/Agency Admin views with automated reconciliation against Data Hub source data"
+          },
+          "responseRationale": "Historical Risk R02 explicitly states 'Performance and NFR issues will only become visible after integration' and was marked Resolved yet integration testing remains at 0%. Historical lesson learned warns that proceeding on mock data without reserving integration hardening capacity concentrates defect risk near release. Immediate live integration validation is required to prevent UAT failure."
+        },
+        {
+          "riskId": "R004",
+          "riskTitle": "Contractual Ambiguity from Undocumented Extension May Cause Payment Disputes and Termination Risk",
+          "riskDescription": "The target Go-Live date of September 2, 2026 is 2 days after the contract end date of August 31, 2026, and the mandatory 4-week Hypercare period extends into October 2026, yet no formal contract extension or Change Order is documented. This creates contractual ambiguity for Milestone 6 (Go-Live \u2013 $130,000) and Milestone 7 (Hypercare \u2013 $130,000) invoicing, exposes the project to Company's 5-business-day termination right, and creates commercial risk for $260,000 in milestone payments.",
+          "riskCategory": "Governance",
+          "currentProjectPhase": "PI5 Sprint 2 \u2013 Late Development",
+          "expectedOccurrencePhase": "Go-Live / Hypercare",
+          "likelyImpactPhase": "Post-Contract Period (September \u2013 October 2026)",
+          "rootCause": "The WSR Timeline shows Go-Live on September 2, 2026 and Hypercare extending into October 2026, but the SOW contract end date is August 31, 2026. No formal Change Order, contract amendment, or extension agreement is evidenced in the WSR or SOW documents. SOW Section 3 states the term is March 1 \u2013 August 31, 2026, and Section 8 gives Company the right to terminate with 5 business days written notice. Historical extension analysis shows this is an inferred extension without formal documentation.",
+          "triggerConditions": [
+            "Go-Live occurs on or after September 2, 2026 (after contract end)",
+            "Hypercare activities continue beyond August 31, 2026",
+            "Milestone 6 (Go-Live) or Milestone 7 (Hypercare) invoicing attempted after contract end date",
+            "Company exercises termination right on or before August 31, 2026",
+            "Dispute arises over scope, payment, or deliverable acceptance during post-contract period"
+          ],
+          "potentialImpact": {
+            "financial": "At-risk invoicing of $260,000 (Milestone 6 + Milestone 7) without contractual coverage; Potential payment dispute or non-payment",
+            "governance": "Contractual ambiguity on liability, acceptance criteria, and termination rights during post-contract period; Exposure to Company's 5-business-day termination clause",
+            "customer": "Relationship risk if payment or scope disputes arise during critical Go-Live and Hypercare phases"
+          },
+          "likelihood": "High",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "This risk is highly likely because the WSR Timeline explicitly shows Go-Live on September 2, 2026 (2 days after contract end) and Hypercare extending into October 2026, yet no formal extension or Change Order is documented. The SOW clearly states the contract term ends August 31, 2026, and the milestone schedule ties Milestone 6 (Go-Live) and Milestone 7 (Hypercare) to post-contract dates. Historical extension analysis confirms this is an inferred extension without formal documentation, creating $260,000 in at-risk invoicing. The SOW gives Company the right to terminate with 5 business days notice, and without a formal extension, this right remains active during the critical Go-Live and Hypercare period. Historical lessons learned explicitly state that formal change-order discipline is needed when delivery extends beyond contract term.",
+          "confidenceScore": 92,
+          "riskPriority": "High",
+          "riskType": "Governance",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Formal Change Order or contract amendment execution status",
+            "Written confirmation from Company of extension terms and milestone payment authorization",
+            "Legal review of contractual coverage for post-August 31 activities",
+            "Milestone 6 and Milestone 7 invoicing approval and payment status"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Timeline: Go-Live marked as September 2, 2026 \u2013 2 days after contract end August 31, 2026",
+              "WSR Timeline: Hypercare phase shown extending into October 2026 on timeline chart",
+              "SOW Section 3: Contract term is March 1, 2026 \u2013 August 31, 2026",
+              "SOW Milestone Schedule: Milestone 6 (Go-Live \u2013 $130,000) and Milestone 7 (Hypercare \u2013 $130,000) tied to post-contract dates",
+              "SOW Section 8: Company may terminate with 5 business days written notice",
+              "No Change Order or contract amendment documented in WSR or SOW"
+            ],
+            "historicalReferences": [
+              "Historical Extension Analysis: 'Inferred extension; Go-Live Sep 2 is 2 days after contract end Aug 31; Hypercare extends to ~Oct 2026'",
+              "Historical Extension Impact: 'Total at-risk invoicing: $130,000 (Hypercare) + potentially $130,000 (Go-Live) if Go-Live slips further'",
+              "Historical Extension Impact: 'Absence of a formal Change Order creates contractual ambiguity. Company retains 5-business-day termination right.'",
+              "Historical Lessons Learned: 'When go-live or hypercare extends beyond contract term, formal change-order discipline is needed to contain commercial and delivery ambiguity'"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Execute formal Change Order extending contract term through October 31, 2026 with explicit coverage for Go-Live (September 2) and Hypercare (4 weeks post-Go-Live), including Milestone 6 and Milestone 7 payment terms and acceptance criteria",
+                "Obtain written confirmation from Premera of extension approval, milestone payment authorization, and waiver of 5-business-day termination right during Go-Live and Hypercare period"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Contractual Governance": "Require legal review of Change Order to ensure coverage for all post-August 31 activities, liability terms, acceptance criteria, and termination provisions",
+            "Financial Protection": "Establish milestone invoicing schedule aligned to extended contract term with clear payment triggers and acceptance sign-off requirements",
+            "Risk Transfer": "Document all post-contract-end activities in Change Order with explicit scope, deliverables, and acceptance criteria to prevent scope or payment disputes"
+          },
+          "responseRationale": "Historical extension analysis confirms Go-Live (September 2) and Hypercare (through October) extend beyond August 31 contract end without formal Change Order, creating $260,000 in at-risk milestone payments. Historical lesson learned states formal change-order discipline is needed when delivery extends beyond contract term. Immediate Change Order execution is required to eliminate commercial ambiguity."
+        },
+        {
+          "riskId": "R005",
+          "riskTitle": "Scope Creep from Uncompensated Medium-Effort Additions May Cause Cost Overrun Against Fixed-Price Baseline",
+          "riskDescription": "Three medium-effort scope additions (Auth0 configuration, CCS/GraphQL API ownership, Infrastructure IaC) were agreed and absorbed by Ascendion without documented cost adjustment against the $650,000 Not-to-Exceed contract value. With 19 total scope changes logged and 9 pending decisions that could trigger additional scope, the cumulative effort of uncompensated scope additions may cause cost overrun, resource strain, or quality trade-offs as the project approaches the compressed testing and Go-Live phases.",
+          "riskCategory": "Scope",
+          "currentProjectPhase": "PI5 Sprint 2 \u2013 Late Development",
+          "expectedOccurrencePhase": "UAT / Go-Live / Hypercare",
+          "likelyImpactPhase": "Project Closure / Financial Reconciliation",
+          "rootCause": "The Scope Change Tracker shows 19 scope changes logged, including 3 medium-effort additions (Items 1, 2, 3) that were agreed without evidence of contract amendment or cost adjustment. SOW Section 5.2 requires written approval for scope changes, but the Scope Change Tracker does not show corresponding Change Orders or cost adjustments. Historical intelligence identifies 'Scope Creep via Informal Scope Changes' as a delivery pattern with 0.95 confidence and HIGH impact. With 9 pending decisions and additional scope changes possible, the cumulative effort may exceed the $650,000 NTE baseline.",
+          "triggerConditions": [
+            "Pending decisions (DR strategy, Dual-role, Dashboard caching) resolved requiring additional development effort",
+            "Additional scope changes logged beyond the current 19 items",
+            "Cumulative effort of uncompensated scope additions exceeds contingency buffer",
+            "Resource capacity diverted to scope additions causes delays in baseline deliverables",
+            "Financial reconciliation at project closure reveals cost overrun against $650,000 NTE"
+          ],
+          "potentialImpact": {
+            "financial": "Cost overrun against $650,000 NTE contract value; Uncompensated effort reducing project margin",
+            "schedule": "Resource capacity diverted to scope additions delays baseline deliverables and testing phases",
+            "quality": "Quality trade-offs made to absorb scope additions within fixed budget and timeline"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "This risk has medium likelihood because the Scope Change Tracker documents 19 scope changes including 3 medium-effort additions without cost adjustment, and 9 pending decisions could trigger additional scope. Historical intelligence identifies 'Scope Creep via Informal Scope Changes' as a delivery pattern with 0.95 confidence and HIGH impact, and the current project exhibits the same condition. The SOW is fixed-price with a $650,000 NTE, and the cumulative effort of uncompensated scope additions may exceed contingency buffer, especially if pending decisions require additional work. However, the impact is medium rather than high because the project is 78.1% complete and the remaining scope additions are likely bounded by the compressed timeline. The primary risk is financial (cost overrun) rather than schedule or quality, though resource diversion to scope additions could indirectly impact testing phases.",
+          "confidenceScore": 82,
+          "riskPriority": "Medium",
+          "riskType": "Scope",
+          "timeToMaterialization": "",
+          "preventability": "High",
+          "monitoringIndicators": [
+            "Scope Change Tracker updates and effort estimation for new items",
+            "Cumulative effort hours for all 19 scope changes vs. original budget baseline",
+            "Pending decision resolution and associated effort impact",
+            "Resource capacity allocation to scope additions vs. baseline deliverables",
+            "Financial burn rate and forecast-to-complete vs. $650,000 NTE"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Scope Change Tracker: 19 scope changes logged",
+              "Scope Change Item 1: Auth0 configuration \u2013 Medium effort \u2013 Agreed \u2013 No cost adjustment documented",
+              "Scope Change Item 2: CCS/GraphQL API ownership \u2013 Medium effort \u2013 Agreed \u2013 No cost adjustment documented",
+              "Scope Change Item 3: Infrastructure IaC \u2013 Medium effort \u2013 Agreed \u2013 No cost adjustment documented",
+              "Decision Log: 9 pending decisions including medium-large impact items (DR strategy, Dual-role)",
+              "SOW Section 3: Total contract value $650,000 USD (Not to Exceed)",
+              "SOW Section 5.2: Change management requires written approval for scope changes"
+            ],
+            "historicalReferences": [
+              "Historical Intelligence: 'Scope Creep via Informal Scope Changes' \u2013 0.95 confidence, HIGH impact",
+              "Historical Operational Weakness: 'Multiple Scope Additions Without Documented Cost Adjustment' \u2013 HIGH severity",
+              "Historical Extension Impact: 'Three medium-effort scope additions added work without documented cost adjustment \u2013 potential cost overrun against $650,000 NTE'",
+              "Historical Enterprise Pattern: 'Execution Before Design/Scope Stabilization' \u2013 High impact"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Conduct financial reconciliation of all 19 scope changes with cumulative effort estimation against $650,000 NTE baseline, identifying cost overrun exposure and required contingency allocation"
+              ]
+            },
+            {
+              "stage": "CURRENT PHASE",
+              "actions": [
+                "Implement scope change freeze for all non-critical additions until UAT completion, with formal Change Order required for any pending decision resolution requiring medium or large effort"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Scope Governance": "Require all future scope changes to include effort estimation, cost impact assessment, and formal Change Order approval before implementation",
+            "Financial Monitoring": "Establish weekly financial burn rate tracking against $650,000 NTE with forecast-to-complete analysis and early warning if overrun risk exceeds 10 percent",
+            "Pending Decision Management": "Assess all 9 pending decisions for scope-change potential and pre-approve contingency budget allocation if resolution requires additional effort"
+          },
+          "responseRationale": "Historical intelligence identifies 'Scope Creep via Informal Scope Changes' pattern with 0.95 confidence and HIGH impact. Three medium-effort scope additions were absorbed without cost adjustment. With 9 pending decisions and compressed timeline, scope change freeze and financial reconciliation are required to prevent cost overrun against fixed-price baseline."
+        },
+        {
+          "riskId": "R006",
+          "riskTitle": "Infrastructure and DevOps Incompletion May Delay Production Deployment and Hypercare Readiness",
+          "riskDescription": "Infrastructure and DevOps work is 70% complete with 39 days to contract end, and critical production readiness items remain open: ACPT Azure Front Door & DNS configuration, Auth0 Terraform release pipeline support, and production deployment approvals from engineering team. With Go-Live targeted for September 2 and dark deployment to production required before Go-Live, incomplete infrastructure and DevOps work could delay production deployment, block Go-Live, or cause operational instability during Hypercare.",
+          "riskCategory": "Infrastructure",
+          "currentProjectPhase": "PI5 Sprint 2 \u2013 Late Development",
+          "expectedOccurrencePhase": "Pre-Production Deployment / Go-Live",
+          "likelyImpactPhase": "Go-Live / Hypercare",
+          "rootCause": "Infrastructure setup was originally out-of-scope (SOW Section 4.2) but was scope-changed to Ascendion responsibility (Scope Change Item 3 \u2013 Medium effort). WSR Progress shows Infrastructure & DevOps at 70% completion. Open items include ACPT Azure Front Door & DNS, Auth0 Terraform pipeline support, and production deployment approvals. SOW acceptance criteria require deployment support and post-deployment hypercare, both dependent on complete infrastructure readiness. Historical intelligence shows infrastructure scope-change absorbed without cost adjustment, potentially under-resourced.",
+          "triggerConditions": [
+            "ACPT Azure Front Door & DNS configuration not completed by August 10, 2026",
+            "Auth0 Terraform release pipeline support not available for production deployment",
+            "Production deployment approvals from John's engineering team delayed",
+            "Dark deployment to production encounters infrastructure or configuration issues",
+            "Production environment not fully validated before Go-Live September 2, 2026"
+          ],
+          "potentialImpact": {
+            "schedule": "Production deployment delayed; Go-Live date pushed beyond September 2, 2026; Hypercare start delayed",
+            "deployment": "Incomplete infrastructure causes production deployment failures or rollback; Dark deployment validation incomplete",
+            "operations": "Operational instability during Hypercare due to incomplete infrastructure; Increased incident rate post-Go-Live"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "High",
+          "overallRiskRating": "High",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [],
+            "recurrenceLikelihood": "Medium",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "This risk has medium likelihood because Infrastructure & DevOps is 70% complete with 39 days remaining, and critical production readiness items are still open. The 30% remaining work includes complex items (Azure Front Door, DNS, Auth0 Terraform pipeline, production approvals) that are on the critical path to Go-Live. Historical intelligence shows infrastructure work was scope-changed to Ascendion without cost adjustment, suggesting potential under-resourcing. However, the likelihood is medium rather than high because 70% completion indicates progress, and the remaining work is bounded and well-defined. The impact is high because incomplete infrastructure directly blocks production deployment and Go-Live, and could cause operational instability during Hypercare. The compressed timeline (39 days to contract end, 41 days to Go-Live) leaves little buffer for infrastructure delays.",
+          "confidenceScore": 80,
+          "riskPriority": "High",
+          "riskType": "Infrastructure",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "Infrastructure & DevOps completion percentage and remaining work backlog",
+            "ACPT Azure Front Door & DNS configuration completion status",
+            "Auth0 Terraform release pipeline support availability confirmation",
+            "Production deployment approval status from John's engineering team",
+            "Dark deployment to production execution and validation results"
+          ],
+          "businessCriticality": "High",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Progress: Infrastructure & DevOps 70% complete as of July 22, 2026",
+              "WSR Open Items: 'ACPT Azure Front Door & DNS'",
+              "WSR Open Items: 'Auth0 Terraform release pipeline support'",
+              "WSR Open Items: 'Prod deployment approvals from John's engineering team'",
+              "WSR Timeline: Dark deploy to Production required before Go-Live September 2, 2026",
+              "SOW Section 4.2: Infrastructure setup originally out-of-scope",
+              "Scope Change Item 3: Infrastructure provisioning scope-changed to Ascendion \u2013 Medium effort \u2013 Agreed"
+            ],
+            "historicalReferences": [
+              "Historical Intelligence: Scope Change Item 3 \u2013 Infrastructure provisioning \u2013 Medium effort \u2013 No cost adjustment",
+              "Historical Operational Weakness: 'Infrastructure setup scope-changed from Premera to Ascendion (medium effort, no cost adjustment documented)'",
+              "Historical Extension Impact: 'Scope-changed infrastructure work added medium-effort without cost adjustment'"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "IMMEDIATE",
+              "actions": [
+                "Accelerate Infrastructure and DevOps completion with dedicated resource allocation to ACPT Azure Front Door and DNS configuration, Auth0 Terraform release pipeline, and production deployment approvals, targeting completion by August 10, 2026"
+              ]
+            },
+            {
+              "stage": "PRE GO-LIVE",
+              "actions": [
+                "Execute dark deployment to production with smoke testing, rollback validation, and infrastructure readiness sign-off before Go-Live approval on September 2, 2026"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Infrastructure Prioritization": "Establish infrastructure completion as critical-path dependency for Go-Live with daily progress tracking and executive escalation for delays beyond 24 hours",
+            "Deployment Validation": "Conduct production deployment dry-run in ACPT environment to validate infrastructure configuration, deployment automation, and rollback procedures before production deployment",
+            "Operational Readiness": "Complete infrastructure runbook, incident response procedures, and monitoring configuration before Hypercare start to ensure operational stability"
+          },
+          "responseRationale": "Infrastructure work is 70 percent complete with 39 days remaining, and critical production readiness items (ACPT Azure Front Door, Auth0 Terraform, production approvals) are on the critical path to Go-Live. Historical intelligence shows infrastructure was scope-changed to Ascendion without cost adjustment, suggesting potential under-resourcing. Immediate acceleration and dark deployment validation are required to prevent Go-Live delay."
+        },
+        {
+          "riskId": "R007",
+          "riskTitle": "Accelerating Velocity with Quality Trade-offs May Cause Post-Go-Live Defects and Hypercare Escalation",
+          "riskDescription": "Sprint velocity is strong (88 SP completed vs 85 planned in PI4 Sprint 3), but PR abandon rates are increasing (1 \u2192 4 \u2192 6 across equivalent sprints), cycle times are elevated for some contributors (25.8 days for one PR), and PRs are being broken into smaller units suggesting rework. This pattern indicates quality pressure and potential technical debt accumulation that could surface as production defects during Go-Live or Hypercare, requiring emergency fixes and escalation.",
+          "riskCategory": "Quality",
+          "currentProjectPhase": "PI5 Sprint 2 \u2013 Late Development",
+          "expectedOccurrencePhase": "Go-Live / Hypercare",
+          "likelyImpactPhase": "Hypercare / Post-Production",
+          "rootCause": "The project is under schedule pressure with testing phases compressed and Go-Live approaching. Historical intelligence identifies 'Accelerating Velocity with Quality Trade-offs' as a delivery pattern with 0.85 confidence and MEDIUM impact. WSR metrics from AI Platform Build (same engagement, similar team structure) show PR abandon rate increasing to 31.6%, average cycle time 6.19 days with one PR at 25.8 days, and PRs being broken into smaller units. Historical Risk R05 (Code Quality Concerns) shows similar pattern of quality issues under dependency churn and mid-sprint changes. With testing phases at 0% and compressed timeline, quality issues may not be discovered until production.",
+          "triggerConditions": [
+            "Production defects discovered during Go-Live or early Hypercare",
+            "Performance or stability issues surface under production load",
+            "Technical debt from rushed implementation requires emergency fixes",
+            "Defect rate during Hypercare exceeds team resolution capacity",
+            "Customer-facing issues require escalation and emergency patches"
+          ],
+          "potentialImpact": {
+            "quality": "Production defects requiring emergency fixes during Hypercare; Technical debt accumulation requiring post-Hypercare remediation",
+            "operations": "Increased incident rate during Hypercare; Operational instability affecting producer experience",
+            "customer": "Customer confidence eroded by production issues; Hypercare escalation and relationship risk"
+          },
+          "likelihood": "Medium",
+          "impactSeverity": "Medium",
+          "overallRiskRating": "Medium",
+          "historicalRelevance": {
+            "matchedHistoricalRiskIds": [
+              "R05"
+            ],
+            "recurrenceLikelihood": "High",
+            "supportingHistoricalPatterns": []
+          },
+          "estimatedResolutionTime": "",
+          "reasoning": "This risk has medium likelihood because the project exhibits the same quality pressure signals identified in historical intelligence: strong velocity but increasing PR abandon rates, elevated cycle times, and PR rework. Historical Risk R05 shows code quality concerns arose under similar conditions (dependency churn, mid-sprint changes), and the mitigation (strengthened code review) did not fully address upstream causes. With testing phases at 0% and only 39 days to contract end, the compressed timeline creates pressure to maintain velocity, potentially at the expense of quality. However, the likelihood is medium rather than high because the project has strong quality controls (SAST, SCA, unit tests, automation, regression pipeline) and positive stakeholder feedback. The impact is medium because quality issues are more likely to surface during Hypercare (when mitigation is possible) rather than causing Go-Live failure.",
+          "confidenceScore": 78,
+          "riskPriority": "Medium",
+          "riskType": "Quality",
+          "timeToMaterialization": "",
+          "preventability": "Medium",
+          "monitoringIndicators": [
+            "PR abandon rate trend and root cause analysis",
+            "Average PR cycle time and outlier PR investigation",
+            "Defect discovery rate during Integration Testing and UAT",
+            "Code review feedback themes and rework patterns",
+            "Production incident rate during first 2 weeks of Hypercare"
+          ],
+          "businessCriticality": "Medium",
+          "evidence": {
+            "projectIndicators": [
+              "WSR Sprint Metrics: 88 SP completed vs 85 SP planned in PI4 Sprint 3",
+              "WSR AI Platform Build (same engagement): PR abandon rate 31.6% in PI06 S03",
+              "WSR AI Platform Build: Average cycle time 6.19 days; one PR open 25.8 days",
+              "WSR AI Platform Build: Abandoned PRs: 1 (S01), 4 (S02), 6 (S03) \u2013 increasing trend",
+              "WSR AI Platform Build: 'Several PRs were abandoned and split into smaller PRs'",
+              "WSR Progress: Integration Testing 0%, UAT 0% \u2013 quality validation deferred",
+              "WSR: 1,005 unit test cases, 71 functional test cases, 30 automation scripts \u2013 strong quality controls in place"
+            ],
+            "historicalReferences": [
+              "Historical Risk R05: 'Code quality concerns surfaced through PR feedback' \u2013 Resolved but recurrence likelihood High",
+              "Historical Intelligence: 'Accelerating Velocity with Quality Trade-offs' \u2013 0.85 confidence, MEDIUM impact",
+              "Historical Intelligence: 'Quality Signals Rise Under Pressure' \u2013 Medium-High impact enterprise pattern",
+              "Historical Mitigation Assessment R05: 'Mitigation addresses review hygiene more than upstream requirement/dependency churn'",
+              "Historical Recurrence Assessment R05: 'Current WSR still shows elevated abandon rate and rework indicators'"
+            ]
+          },
+          "mitigationPlan": [
+            {
+              "stage": "CURRENT PHASE",
+              "actions": [
+                "Strengthen code review rigor with mandatory peer review for all PRs, automated quality gate enforcement (SonarQube, JFrog Xray, Snyk), and root cause analysis for abandoned or long-cycle PRs to prevent technical debt accumulation"
+              ]
+            },
+            {
+              "stage": "HYPERCARE",
+              "actions": [
+                "Establish Hypercare incident response process with severity-based resolution SLAs, daily defect triage, and escalation protocol for customer-facing issues to maintain operational stability"
+              ]
+            }
+          ],
+          "recommendations": {
+            "Quality Monitoring": "Track PR quality metrics (abandon rate, cycle time, rework patterns) as leading indicators of technical debt and quality pressure, with corrective action if abandon rate exceeds 20 percent",
+            "Technical Debt Management": "Reserve 20 percent of Hypercare capacity for technical debt remediation and post-production defect resolution to prevent operational instability",
+            "Defect Prevention": "Conduct pre-Go-Live code quality review of high-risk modules (Book of Business, Dashboard, Authentication) to identify and remediate technical debt before production deployment"
+          },
+          "responseRationale": "Historical Risk R05 shows code quality concerns arose under dependency churn and mid-sprint changes, with mitigation addressing review hygiene but not upstream causes. Historical pattern 'Accelerating Velocity with Quality Trade-offs' has 0.85 confidence and MEDIUM impact. Current evidence shows increasing PR abandon rates and elevated cycle times. Strengthened quality controls and Hypercare capacity reservation are required to prevent post-Go-Live escalation."
+        }
+      ]
+    }
+  ]
+}
