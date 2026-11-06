@@ -1,0 +1,160 @@
+{
+  "clientName": "",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS"
+      ],
+      "sourcesNotAvailable": [
+        "Project Artifacts",
+        "ALT"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "Scope changes are emerging from UX standpoint and business angle, and all scope is being triaged based on available bandwidth (EMS Scope RAG: Amber as of 2026-06-04).",
+            "condition": "Additional scope requests may exceed available team capacity, leading to incomplete prioritization or deferred critical features.",
+            "consequence": "Delivery timeline could slip, or essential functionality may be deprioritized, impacting client satisfaction and project outcomes."
+          },
+          "category": "Scope Management",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish formal scope change evaluation and approval procedure with impact assessment before accepting new UX or business requests.",
+          "contingencyCorrectiveAction": "Upon scope exceeding available bandwidth, rebaseline impacted scope and delivery plan with Premera, prioritizing critical-path functionality and deferring non-essential features.",
+          "owner": "Krithika Aravind",
+          "targetDate": "20-Jun-2026",
+          "status": "Open",
+          "reasoning": "Scope Amber in EMS with ongoing UX and business-driven changes, constrained by bandwidth. Single-source EMS evidence with explicit bandwidth limitation."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "AAVA connectivity from Development instance to Production instance is not established, limiting the capability to use AAVA fully for code and refactoring effort (EMS internal limitation, Timeline RAG: Amber as of 2026-06-04).",
+            "condition": "Code refactoring and quality improvement activities may remain incomplete or delayed until production connectivity is secured.",
+            "consequence": "Technical debt could accumulate, and deployment readiness may be compromised, increasing post-go-live defect risk."
+          },
+          "category": "Infrastructure",
+          "probability": "Very likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Coordinate with Premera infrastructure team weekly to provide all requested details and expedite AAVA production instance connectivity approval.",
+          "contingencyCorrectiveAction": "If AAVA production connectivity is not established by 2026-07-01, escalate to Circle Head and Premera leadership, and implement manual code review checkpoints.",
+          "owner": "Saitej Ballav",
+          "targetDate": "27-Jun-2026",
+          "status": "In Progress",
+          "reasoning": "Active internal limitation documented in EMS with explicit impact on refactoring capability. Go-green plan confirms coordination in progress but no resolution date."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "AAVA deployment does not feature logging and monitoring, and AAVA Team requires support from Premera to establish it (EMS internal gap, Timeline RAG: Amber as of 2026-06-04).",
+            "condition": "Production issues may go undetected or take longer to diagnose without proper logging and monitoring in place.",
+            "consequence": "Incident response time could increase, affecting system stability and client confidence in operational readiness."
+          },
+          "category": "Operations",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Coordinate with Premera operations and AAVA teams bi-weekly to define and implement logging and monitoring setup on AAVA client instance.",
+          "contingencyCorrectiveAction": "If logging and monitoring are not operational by 2026-07-15, deploy manual log collection scripts and establish 24x7 on-call rotation for incident triage.",
+          "owner": "Saitej Ballav",
+          "targetDate": "10-Jul-2026",
+          "status": "In Progress",
+          "reasoning": "Internal gap in EMS requiring external Premera support. Go-green plan shows coordination underway but no confirmed setup date."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Vendor",
+          "riskDescription": {
+            "context": "Dependency with Data Hub exists, and the current Data Model provided by PO as of 2026-06-03 is being used for development (EMS external dependency, Timeline RAG: Amber).",
+            "condition": "Actual Data Hub APIs may differ from the baseline model, requiring rework and refactoring once real APIs are available.",
+            "consequence": "Integration effort could increase late in the cycle, delaying testing and go-live readiness."
+          },
+          "category": "Third-Party",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Baseline Data Model with PO and communicate clearly to Premera, creating new PBI for refactoring once actual Data Hub APIs are ready.",
+          "contingencyCorrectiveAction": "Once Data Hub API changes are confirmed, allocate dedicated sprint capacity for integration rework and notify Premera of revised integration testing timeline.",
+          "owner": "Saitej Ballav",
+          "targetDate": "25-Jun-2026",
+          "status": "In Progress",
+          "reasoning": "External dependency documented in EMS with baseline model in use. Go-green plan confirms new PBI for refactoring once actual APIs are ready, indicating expected rework."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "Metrics are not available from AAVA to track actual progress gains using AAVA (EMS internal limitation as of 2026-06-04).",
+            "condition": "Project leadership may lack visibility into AAVA-driven productivity improvements, making it difficult to assess ROI or adjust delivery plans.",
+            "consequence": "Resource planning and forecasting accuracy could decline, and stakeholder confidence in tooling investment may weaken."
+          },
+          "category": "Governance",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement weekly manual tracking of AAVA usage metrics and productivity gains, documenting in status reports to support data-driven resource planning.",
+          "contingencyCorrectiveAction": "If AAVA metrics remain unavailable by 2026-07-01, establish alternative velocity tracking using sprint burndown and story completion rates, and escalate to AAVA vendor.",
+          "owner": "Krithika Aravind",
+          "targetDate": "28-Jun-2026",
+          "status": "Open",
+          "reasoning": "Internal limitation in EMS affecting progress tracking. Single-source signal with moderate impact on governance and planning."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Citrix environment is experiencing slowness and frequent disconnection, impacting delivery (EMS Go Green Updates as of 2026-06-04).",
+            "condition": "Developer productivity may continue to degrade if Citrix performance issues persist or escalate.",
+            "consequence": "Sprint velocity could drop, and timeline commitments may be at risk despite Quality RAG being Green."
+          },
+          "category": "Infrastructure",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Raise priority ticket with Premera infrastructure team to resolve Citrix slowness and disconnection, tracking resolution progress in weekly status meetings.",
+          "contingencyCorrectiveAction": "If Citrix performance does not improve within two weeks, provide VDI support coverage during offshore hours and request alternative remote access solution from Premera.",
+          "owner": "Krithika Aravind",
+          "targetDate": "18-Jun-2026",
+          "status": "In Progress",
+          "reasoning": "Active infrastructure issue documented in EMS with planned ticket escalation to Premera. Quality RAG is Green, but delivery impact is noted."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Resources",
+          "riskDescription": {
+            "context": "Team size is 11 resources (10 offshore, 1 onshore) with ongoing scope changes and bandwidth constraints noted in EMS (Scope RAG: Amber, Talent RAG: Green as of 2026-06-04).",
+            "condition": "If scope expansion continues or key resources become unavailable, the team may lack sufficient capacity to absorb additional work.",
+            "consequence": "Delivery commitments could be missed, or quality may decline due to overallocation and fatigue."
+          },
+          "category": "People",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Monitor team capacity weekly against sprint commitments and scope changes, adjusting release scope proactively to protect delivery quality and timelines.",
+          "contingencyCorrectiveAction": "Should team capacity fall below 80 percent due to attrition or scope overload, request additional offshore resources from Circle Head within five business days.",
+          "owner": "Krithika Aravind",
+          "targetDate": "21-Jun-2026",
+          "status": "Open",
+          "reasoning": "Bandwidth constraint explicitly mentioned in EMS Scope RAG reason. Talent RAG is Green, but scope pressure and small team size create capacity risk."
+        }
+      ]
+    }
+  ]
+}
