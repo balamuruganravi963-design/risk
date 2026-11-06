@@ -1,11 +1,12 @@
-import streamlit as st
-import requests
 import base64
+import html
 import json
 import re
-import html
-import pandas as pd
 from collections import Counter
+
+import pandas as pd
+import requests
+import streamlit as st
 
 st.set_page_config(layout="wide", page_title="Project Risk Dashboard")
 
@@ -16,7 +17,10 @@ GITHUB_BRANCH = "main"
 # Only needed if the repo is PRIVATE. Leave blank ("") if public.
 # If set, add this in Streamlit Cloud -> App settings -> Secrets:
 #   GITHUB_READ_TOKEN = "ghp_xxxxxxxxxxxx"
-GITHUB_READ_TOKEN = st.secrets.get("GITHUB_READ_TOKEN", "")
+try:
+    GITHUB_READ_TOKEN = st.secrets.get("GITHUB_READ_TOKEN", "")
+except Exception:  # no secrets.toml configured -> treat as public repo
+    GITHUB_READ_TOKEN = ""
 
 # ---------------- GET DATA ---------------- #
 # st.query_params automatically URL-decodes the value, so "path" arrives
@@ -45,13 +49,106 @@ content = base64.b64decode(file_data["content"]).decode("utf-8")
 data = json.loads(content)
 
 # ---------------- TOP-LEVEL DATA ---------------- #
-# Schema: { "clientName": "", "projects": [ { ... "predictedRisks": [...] } ] }
+# Schema: { "clientName": "", "projects": [ { ..., "risks": [...] } ] }
 client_name = data.get("clientName", "")
 projects = data.get("projects", [])
 
 if not projects:
     st.error("No projects found in dashboard data.")
     st.stop()
+
+# ---------------- HELPERS ---------------- #
+RAG_ORDER = ["Red", "Amber", "Green"]
+RAG_ICON = {"Red": "🔴", "Amber": "🟠", "Green": "🟢"}
+
+
+def has_value(value):
+    """A field is considered present only if it has real, non-empty content."""
+    return value not in (None, "", [], {})
+
+
+def display_id(risk_id):
+    """'R - 001' -> 'R-001' (display only; the JSON value is untouched)."""
+    return re.sub(r"\s*-\s*", "-", str(risk_id)).strip() if has_value(risk_id) else "-"
+
+
+def rag_label(rag):
+    return f"{RAG_ICON.get(rag, '⚪')} {rag}" if has_value(rag) else "⚪ -"
+
+
+def risk_parts(r):
+    """Return (context, condition, consequence) whatever shape riskDescription has."""
+    d = r.get("riskDescription")
+    if isinstance(d, dict):
+        return d.get("context", ""), d.get("condition", ""), d.get("consequence", "")
+    return "", d or "", ""
+
+
+def risk_statement(r):
+    """Short text for the table's Risk Description column."""
+    context, condition, _ = risk_parts(r)
+    return condition or context
+
+
+def cell(value):
+    return html.escape(str(value)) if has_value(value) else "—"
+
+
+# (header, value getter, min width in px) — exactly the requested register layout.
+TABLE_COLUMNS = [
+    ("S.No", lambda r, i: r.get("sNo", i), 50),
+    ("Risk ID", lambda r, i: display_id(r.get("riskId")), 70),
+    ("Subject Area", lambda r, i: r.get("subjectArea"), 100),
+    ("Risk Description", lambda r, i: risk_statement(r), 280),
+    ("Category", lambda r, i: r.get("category"), 100),
+    ("Probability", lambda r, i: r.get("probability"), 90),
+    ("Impact", lambda r, i: r.get("impact"), 80),
+    ("RAG", lambda r, i: rag_label(r.get("rag")), 85),
+    ("Mitigation / Preventive Action", lambda r, i: r.get("mitigationPreventiveAction"), 240),
+    ("Contingency / Corrective Action", lambda r, i: r.get("contingencyCorrectiveAction"), 240),
+    ("Owner", lambda r, i: r.get("owner"), 140),
+    ("Target Date", lambda r, i: r.get("targetDate"), 100),
+    ("Status", lambda r, i: r.get("status"), 70),
+]
+
+
+def render_risk_register(risk_list):
+    """HTML table (text wraps; st.dataframe would truncate long cells)."""
+    head = "".join(
+        f"<th style='text-align:left; padding:8px 10px; min-width:{w}px; "
+        f"background:rgba(128,128,128,0.15); border-bottom:1px solid rgba(128,128,128,0.4);'>"
+        f"{html.escape(h)}</th>"
+        for h, _, w in TABLE_COLUMNS
+    )
+    rows = ""
+    for i, r in enumerate(risk_list, start=1):
+        tds = "".join(
+            f"<td style='vertical-align:top; padding:8px 10px; "
+            f"border-bottom:1px solid rgba(128,128,128,0.25);'>{cell(getter(r, i))}</td>"
+            for _, getter, _ in TABLE_COLUMNS
+        )
+        rows += f"<tr>{tds}</tr>"
+    st.markdown(
+        "<div style='overflow-x:auto;'>"
+        "<table style='width:100%; border-collapse:collapse; font-size:0.82rem;'>"
+        f"<thead><tr>{head}</tr></thead><tbody>{rows}</tbody></table></div>",
+        unsafe_allow_html=True,
+    )
+
+
+def render_dynamic_grid(pairs, cols_per_row=4):
+    """Inline '**Label:** value' grid; empty values are dropped first."""
+    visible = [(label, val) for label, val in pairs if has_value(val)]
+    for i in range(0, len(visible), cols_per_row):
+        chunk = visible[i:i + cols_per_row]
+        cols = st.columns(len(chunk))
+        for col, (label, val) in zip(cols, chunk):
+            col.write(f"**{label}:** {val}")
+
+
+def rag_counts_for(risk_list):
+    return Counter(r.get("rag") or "Unknown" for r in risk_list)
+
 
 # ---------------- HEADER ---------------- #
 st.title("📊 Project Risk Dashboard")
@@ -61,9 +158,9 @@ st.text_input("Client Name", value=client_name or "Unknown Client", disabled=Tru
 
 # ---------------- PORTFOLIO SUMMARY (computed) ---------------- #
 total_projects = len(projects)
-projects_with_risks = sum(1 for p in projects if p.get("predictedRisks", []))
+projects_with_risks = sum(1 for p in projects if p.get("risks", []))
 projects_without_risks = total_projects - projects_with_risks
-total_risks = sum(len(p.get("predictedRisks", [])) for p in projects)
+total_risks = sum(len(p.get("risks", [])) for p in projects)
 
 sc1, sc2, sc3, sc4 = st.columns(4)
 sc1.metric("Total Projects", total_projects)
@@ -72,28 +169,24 @@ sc3.metric("Projects With No Predicted Risks", projects_without_risks)
 sc4.metric("Total Predicted Risks", total_risks)
 
 # ---------------- RISKS BY PROJECT (table, not chart) ---------------- #
-risks_by_project = [
-    {"Project": p.get("projectName", ""), "Predicted Risks Count": len(p.get("predictedRisks", []))}
-    for p in projects
-]
-if risks_by_project:
-    st.write("**Risks by Project**")
-    df_rbp = pd.DataFrame(risks_by_project)
-    st.dataframe(
-        df_rbp,
-        use_container_width=True,
-        hide_index=True,
-        column_config={
-            "Project": st.column_config.TextColumn(width="large"),
-            "Predicted Risks Count": st.column_config.NumberColumn(width="small"),
-        },
+rbp_rows = []
+for p in projects:
+    counts = rag_counts_for(p.get("risks", []))
+    rbp_rows.append(
+        {
+            "Project": p.get("projectName", ""),
+            "Total Risks": len(p.get("risks", [])),
+            "🔴 Red": counts.get("Red", 0),
+            "🟠 Amber": counts.get("Amber", 0),
+            "🟢 Green": counts.get("Green", 0),
+        }
     )
+st.write("**Risks by Project**")
+st.dataframe(pd.DataFrame(rbp_rows), width="stretch", hide_index=True)
 
 st.divider()
 
-# ---------------- PROJECT -> RISK SELECTION ---------------- #
-# Two-level selection only: Project, then Risk. There is no client selector
-# because clientName is a single root-level value for the whole file.
+# ---------------- PROJECT SELECTION ---------------- #
 project_names = [
     p.get("projectName", f"Project {i + 1}") for i, p in enumerate(projects)
 ]
@@ -106,230 +199,90 @@ project = next(
 # Project Name as a read-only text-box heading.
 st.text_input("Project Name", value=project.get("projectName", ""), disabled=True)
 
-pc1, pc2 = st.columns(2)
-pc1.write(f"**Project Status:** {project.get('projectStatus', '-')}")
-pc2.write(f"**Risk Prediction Date:** {project.get('riskPredictionDate', '-')}")
+pc1, pc2, pc3 = st.columns(3)
+pc1.write(f"**Project Status:** {project.get('projectStatus') or '-'}")
+pc2.write(f"**Risk Prediction Date:** {project.get('riskPredictionDate') or '-'}")
+pc3.write(f"**Sources Used:** {', '.join(project.get('sourcesUsed', [])) or '-'}")
 
-risks = project.get("predictedRisks", [])
+risks = sorted(project.get("risks", []), key=lambda r: r.get("sNo") or 0)
 
 st.divider()
 
-# ---------------- RISK SUMMARY (computed) ---------------- #
+# ---------------- RISK SUMMARY (computed from RAG) ---------------- #
 st.subheader("Risk Summary")
-
-# Uses riskPriority (not overallRiskRating) so these counts always agree with
-# the color-coded Risk Priority column shown in the Predicted Risks table below.
-priority_counts = Counter(r.get("riskPriority", "Unknown") for r in risks)
+rag_counts = rag_counts_for(risks)
 rc1, rc2, rc3, rc4 = st.columns(4)
-rc1.metric("Critical", priority_counts.get("Critical", 0))
-rc2.metric("High", priority_counts.get("High", 0))
-rc3.metric("Medium", priority_counts.get("Medium", 0))
-rc4.metric("Low", priority_counts.get("Low", 0))
+rc1.metric("🔴 Red", rag_counts.get("Red", 0))
+rc2.metric("🟠 Amber", rag_counts.get("Amber", 0))
+rc3.metric("🟢 Green", rag_counts.get("Green", 0))
+rc4.metric("Total", len(risks))
 
 st.divider()
 
 # ---------------- CATEGORY DISTRIBUTION (table, not chart) ---------------- #
 st.subheader("Risk Category Distribution")
-
-# Also keyed on riskPriority, for the same reason as Risk Summary above.
-severity_order = {"Critical": 0, "High": 1, "Medium": 2, "Low": 3}
 if risks:
-    df_cat_dist = pd.DataFrame(
-        [
-            {
-                "Category": r.get("riskCategory", "Unknown"),
-                "Rating": r.get("riskPriority", "Unknown"),
-            }
-            for r in risks
-        ]
+    ct = pd.crosstab(
+        pd.Series([r.get("category") or "Unknown" for r in risks], name="Category"),
+        pd.Series([r.get("rag") or "Unknown" for r in risks], name="RAG"),
     )
-    df_cat_dist = (
-        df_cat_dist.groupby(["Category", "Rating"]).size().reset_index(name="Count")
-    )
-    df_cat_dist["__order"] = df_cat_dist["Rating"].map(severity_order).fillna(4)
-    df_cat_dist = df_cat_dist.sort_values(["Category", "__order"]).drop(columns="__order")
-    st.dataframe(df_cat_dist.set_index("Category"), use_container_width=True)
+    cols = RAG_ORDER + [c for c in ct.columns if c not in RAG_ORDER]
+    ct = ct.reindex(columns=cols, fill_value=0)
+    ct["Total"] = ct.sum(axis=1)
+    st.dataframe(ct, width="stretch")
 else:
     st.write("No category distribution data available.")
 
 st.divider()
 
-# ---------------- RISK TABLE ---------------- #
-st.subheader("Predicted Risks")
+# ---------------- RISK REGISTER TABLE ---------------- #
+st.subheader("Risk Register")
 
 if not risks:
     st.write("No risks recorded for this project.")
 else:
-    rating_icon = {"Critical": "🔴", "High": "🟠", "Medium": "🟡", "Low": "🟢"}
-
-    df_risks = pd.DataFrame(
-        [
-            {
-                "Risk ID": r.get("riskId", "-"),
-                "Risk Title": r.get("riskTitle", "-"),
-                "Category": r.get("riskCategory", "-"),
-                "Risk Priority": f"{rating_icon.get(r.get('riskPriority', 'Unknown'), '⚪')} {r.get('riskPriority', '-')}",
-            }
-            for r in risks
-        ]
-    )
-    st.dataframe(df_risks.set_index("Risk ID"), use_container_width=True)
+    render_risk_register(risks)
 
     st.write("**Risk Details**")
-    st.caption("Expand the ➕ next to a risk title for its full breakdown.")
-
-    def has_value(value):
-        """A field is considered present only if it has real, non-empty content."""
-        return value not in (None, "", [], {})
-
-    def humanize_key(key):
-        """
-        Turn a raw JSON key into a readable label: 'schedule' -> 'Schedule',
-        'regulatoryImpact' -> 'Regulatory Impact'. Keys that already look
-        human-written (contain a space or underscore, e.g. recommendation
-        category names like 'Vendor Management') are left as-is aside from
-        title-casing, since they're already meant to be displayed verbatim.
-        """
-        s = str(key)
-        if " " not in s and "_" not in s:
-            s = re.sub(r"(?<!^)(?=[A-Z])", " ", s)
-        s = s.replace("_", " ")
-        return s.strip().title()
-
-    def render_dynamic_grid(pairs, cols_per_row=4):
-        """
-        Render (label, value) pairs as inline '**Label:** value' text laid out
-        across a row of columns — NOT a data table. Pairs whose value is empty
-        are dropped first, then the remaining pairs are chunked into rows of
-        cols_per_row, so the grid always reflects only the fields that
-        actually have data for this risk.
-        """
-        visible = [(label, val) for label, val in pairs if has_value(val)]
-        for i in range(0, len(visible), cols_per_row):
-            chunk = visible[i:i + cols_per_row]
-            cols = st.columns(len(chunk))
-            for col, (label, val) in zip(cols, chunk):
-                col.write(f"**{label}:** {val}")
+    st.caption("Expand the ➕ next to a risk for its full breakdown.")
 
     for r in risks:
-        risk_id = r.get("riskId", "-")
-        title = r.get("riskTitle", "Untitled Risk")
-        # Uses riskPriority (not overallRiskRating), consistent with the Risk
-        # Summary, Category Distribution, and Predicted Risks table above.
-        priority_for_header = r.get("riskPriority", "Unknown")
-        icon = rating_icon.get(priority_for_header, "⚪")
+        risk_id = display_id(r.get("riskId"))
+        subject = r.get("subjectArea") or "Risk"
+        rag = r.get("rag")
+        snippet = risk_statement(r)
+        if len(snippet) > 90:
+            snippet = snippet[:87].rstrip() + "..."
+        header = f"➕ [{risk_id}] {subject} — {rag_label(rag)}"
+        if snippet:
+            header += f" · {snippet}"
 
-        with st.expander(f"➕ [{risk_id}] {title} — {icon} {priority_for_header}"):
-            # Key attributes: inline grid, only fields the upstream JSON actually supplied.
-            priority_value = r.get("riskPriority")
-            attribute_rows = [
-                ("Category", r.get("riskCategory")),
-                ("Risk Type", r.get("riskType")),
-                ("Likelihood", r.get("likelihood")),
-                ("Impact Severity", r.get("impactSeverity")),
-                ("Risk Priority", f"{rating_icon.get(priority_value, '⚪')} {priority_value}" if has_value(priority_value) else ""),
-                ("Time To Materialization", r.get("timeToMaterialization")),
-                ("Preventability", r.get("preventability")),
-                ("Business Criticality", r.get("businessCriticality")),
-                ("Estimated Resolution Time", r.get("estimatedResolutionTime")),
-            ]
-            render_dynamic_grid(attribute_rows, cols_per_row=4)
+        with st.expander(header):
+            render_dynamic_grid(
+                [
+                    ("Subject Area", r.get("subjectArea")),
+                    ("Category", r.get("category")),
+                    ("Probability", r.get("probability")),
+                    ("Impact", r.get("impact")),
+                    ("RAG", rag_label(rag) if has_value(rag) else ""),
+                    ("Owner", r.get("owner")),
+                    ("Target Date", r.get("targetDate")),
+                    ("Status", r.get("status")),
+                ],
+                cols_per_row=4,
+            )
 
-            description = r.get("riskDescription")
-            if has_value(description):
-                st.write(f"**Description:** {description}")
-
-            root_cause = r.get("rootCause")
-            if has_value(root_cause):
-                st.write(f"**Root Cause:** {root_cause}")
-
-            # Phases: inline grid, same dynamic-only-if-present behavior.
-            phase_rows = [
-                ("Current Project Phase", r.get("currentProjectPhase")),
-                ("Expected Occurrence Phase", r.get("expectedOccurrencePhase")),
-                ("Likely Impact Phase", r.get("likelyImpactPhase")),
-            ]
-            render_dynamic_grid(phase_rows, cols_per_row=3)
-
-            trigger_conditions = r.get("triggerConditions", [])
-            if has_value(trigger_conditions):
-                st.write("**Trigger Conditions**")
-                for item in trigger_conditions:
-                    st.write(f"- {item}")
-
-            # Potential Impact — dynamic: the Risk Forecasting Agent's impact
-            # dimensions are not guaranteed to be a fixed schedule/cost/quality/
-            # customer/operations set, so render whichever dimension keys are
-            # actually present on this risk, in the order the source gave them.
-            potential_impact = r.get("potentialImpact") or {}
-            impact_rows = [
-                {"Dimension": humanize_key(key), "Detail": value}
-                for key, value in potential_impact.items()
-                if has_value(value)
-            ]
-            if impact_rows:
-                st.write("**Potential Impact**")
-                st.dataframe(
-                    pd.DataFrame(impact_rows).set_index("Dimension"),
-                    use_container_width=True,
-                    column_config={"Detail": st.column_config.TextColumn(width="large")},
-                )
-
-            # Mitigation Plan (this risk's own stages/actions) — only stages with actions.
-            # Rendered as a real Stage/Actions table (st.dataframe's grid widget can't
-            # show bulleted, multi-line cell content — text just runs together), so
-            # this builds an HTML table where each stage's Actions cell contains an
-            # actual <ul><li> bullet list, guaranteeing one action per line.
-            mitigation_plan = r.get("mitigationPlan") or []
-            visible_stages = [
-                stage_entry for stage_entry in mitigation_plan
-                if has_value(stage_entry.get("actions"))
-            ]
-            if visible_stages:
-                st.write("**Mitigation Plan**")
-                rows_html = ""
-                for stage_entry in visible_stages:
-                    stage_label = html.escape(str(stage_entry.get("stage", "-")))
-                    actions_html = "".join(
-                        f"<li style='margin-bottom:4px;'>{html.escape(str(a))}</li>"
-                        for a in stage_entry.get("actions", [])
-                    )
-                    rows_html += (
-                        "<tr>"
-                        f"<td style='vertical-align:top; padding:10px 12px; border-bottom:1px solid #eee; width:22%; color:#555;'>{stage_label}</td>"
-                        f"<td style='padding:10px 12px; border-bottom:1px solid #eee;'>"
-                        f"<ul style='margin:0; padding-left:1.2em;'>{actions_html}</ul>"
-                        "</td>"
-                        "</tr>"
-                    )
-                table_html = (
-                    "<table style='width:100%; border-collapse:collapse; font-size:0.9rem;'>"
-                    "<thead><tr>"
-                    "<th style='text-align:left; padding:8px 12px; border-bottom:1px solid #ccc; color:#888; font-weight:400;'>Stage</th>"
-                    "<th style='text-align:left; padding:8px 12px; border-bottom:1px solid #ccc; color:#888; font-weight:400;'>Actions</th>"
-                    "</tr></thead>"
-                    f"<tbody>{rows_html}</tbody>"
-                    "</table>"
-                )
-                st.markdown(table_html, unsafe_allow_html=True)
-
-            # Recommendations — dynamic: the Mitigation Agent's recommendation
-            # categories vary per risk (e.g. "Governance", "Planning", "Vendor
-            # Management"), not a fixed preventive/monitoring/contingency/strategic
-            # set, so render whichever category keys are actually present.
-            recommendations = r.get("recommendations") or {}
-            recommendation_rows = [
-                {"Type": str(key), "Detail": value}
-                for key, value in recommendations.items()
-                if has_value(value)
-            ]
-            if recommendation_rows:
-                st.write("**Recommendations**")
-                st.dataframe(
-                    pd.DataFrame(recommendation_rows).set_index("Type"),
-                    use_container_width=True,
-                    column_config={"Detail": st.column_config.TextColumn(width="large")},
-                )
+            context, condition, consequence = risk_parts(r)
+            for label, value in [
+                ("Context", context),
+                ("Condition", condition),
+                ("Consequence", consequence),
+                ("Mitigation / Preventive Action", r.get("mitigationPreventiveAction")),
+                ("Contingency / Corrective Action", r.get("contingencyCorrectiveAction")),
+                ("Reasoning", r.get("reasoning")),
+            ]:
+                if has_value(value):
+                    st.write(f"**{label}:** {value}")
 
 st.divider()
 
@@ -337,23 +290,16 @@ st.divider()
 st.subheader("Overall Summary")
 
 if risks:
-    total_risks = len(risks)
-    # Uses riskPriority (not overallRiskRating), consistent with Risk Summary,
-    # Category Distribution, and the Predicted Risks table above.
-    priority_counts_summary = Counter(r.get("riskPriority", "Unknown") for r in risks)
-    category_counts_summary = Counter(r.get("riskCategory", "Unknown") for r in risks)
-    top_category, top_category_count = category_counts_summary.most_common(1)[0]
-
-    summary_text = (
-        f"**{project.get('projectName', 'This project')}** carries **{total_risks}** predicted risk"
-        f"{'s' if total_risks != 1 else ''}: "
-        f"{priority_counts_summary.get('Critical', 0)} Critical, "
-        f"{priority_counts_summary.get('High', 0)} High, "
-        f"{priority_counts_summary.get('Medium', 0)} Medium, and "
-        f"{priority_counts_summary.get('Low', 0)} Low. "
-        f"The most frequent risk category is **{top_category}** ({top_category_count} risk"
-        f"{'s' if top_category_count != 1 else ''})."
+    category_counts = Counter(r.get("category") or "Unknown" for r in risks)
+    top_category, top_category_count = category_counts.most_common(1)[0]
+    n = len(risks)
+    st.write(
+        f"**{project.get('projectName', 'This project')}** carries **{n}** predicted "
+        f"risk{'s' if n != 1 else ''}: "
+        f"{rag_counts.get('Red', 0)} Red, {rag_counts.get('Amber', 0)} Amber, and "
+        f"{rag_counts.get('Green', 0)} Green. "
+        f"The most frequent risk category is **{top_category}** ({top_category_count} "
+        f"risk{'s' if top_category_count != 1 else ''})."
     )
-    st.write(summary_text)
 else:
     st.write("No risks recorded for this project.")
