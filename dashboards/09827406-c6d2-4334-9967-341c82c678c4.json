@@ -1,0 +1,140 @@
+{
+  "clientName": "",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Producer Portal",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS"
+      ],
+      "sourcesNotAvailable": [
+        "Project Artifacts",
+        "ALT"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R-001",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "AAVA connectivity from Development instance to Production instance is blocked, limiting capability to use AAVA fully for code and refactoring effort (EMS RAG reason).",
+            "condition": "Development velocity may remain constrained and agentic workflow benefits may not materialize as planned.",
+            "consequence": "Timeline slippage could occur and the expected productivity gains from AAVA may not be realized, impacting delivery commitments."
+          },
+          "category": "Technology",
+          "probability": "Very likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish weekly technical governance touchpoints with AAVA platform team to prioritize API stabilization and resolve connectivity blockers before July 15.",
+          "contingencyCorrectiveAction": "Upon AAVA outage exceeding 48 hours, activate manual code review workflow and escalate to AAVA DevOps leadership within 24 hours to protect sprint velocity.",
+          "owner": "Engineering Manager - Saitej Ballav",
+          "targetDate": "15-Jul-2026",
+          "status": "Open",
+          "reasoning": "Active internal blocker documented in EMS RAG reason with direct impact on delivery capability; timeline dimension already Amber."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R-002",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "Scope changes from UX standpoint and business angle are emerging and all scope must be triaged based on available bandwidth (EMS RAG reason and Scope dimension Amber).",
+            "condition": "Uncontrolled scope expansion may exceed team capacity and available timeline buffer.",
+            "consequence": "Delivery commitments could be missed or quality may be compromised to meet the August 31 end date."
+          },
+          "category": "Scope Management",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Implement formal change control board with Product Owner to evaluate all UX and business scope changes against bandwidth before approval by June 20.",
+          "contingencyCorrectiveAction": "Rebaseline impacted scope with client, prioritize critical-path functionality, and defer non-essential features to Phase 2 to protect August 31 delivery date.",
+          "owner": "Delivery Manager - Krithika Aravind",
+          "targetDate": "20-Jun-2026",
+          "status": "Open",
+          "reasoning": "Scope dimension Amber in EMS with explicit scope change driver in RAG reason; external dependency on client triage decisions."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R-003",
+          "subjectArea": "Vendor",
+          "riskDescription": {
+            "context": "Dependency with Data Hub exists and the current data model provided by PO on June 3 is being used for development, with expectation that Data Hub will provide data in consumable format (EMS RAG reason).",
+            "condition": "Data Hub may deliver APIs in a format incompatible with the current data model, requiring refactoring.",
+            "consequence": "Rework could delay integration milestones and increase effort beyond budget, impacting margin."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate Data Hub API contract with Product Owner by June 30 and baseline data model assumptions in design documentation to prevent rework.",
+          "contingencyCorrectiveAction": "Once API format mismatch is confirmed, create adapter layer for data transformation and escalate to Product Owner for phased delivery if refactoring exceeds five days.",
+          "owner": "Engineering Manager - Saitej Ballav",
+          "targetDate": "30-Jun-2026",
+          "status": "Open",
+          "reasoning": "External dependency documented in EMS with explicit assumption that format will align; single-source indication with no confirmation of Data Hub commitment."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R-004",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "AAVA deployment does not feature logging and monitoring, and AAVA team needs support from Premera to identify requirements and plan accordingly (EMS RAG reason and Go Green Plan).",
+            "condition": "Production deployment may proceed without adequate observability, leaving defects and performance issues undetected.",
+            "consequence": "Post-deployment incidents could impact client operations and damage client trust in platform stability."
+          },
+          "category": "Infrastructure",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Define logging and monitoring requirements with Premera infrastructure team and deploy Kibana integration for AAVA by July 31 before production release.",
+          "contingencyCorrectiveAction": "Upon production incident without logging visibility, activate manual log collection via AAVA support team and escalate to Premera DevOps within four hours to restore observability.",
+          "owner": "Engineering Manager - Saitej Ballav",
+          "targetDate": "31-Jul-2026",
+          "status": "Open",
+          "reasoning": "Internal gap documented in EMS with dependency on client support; Go Green Plan acknowledges issue but no resolution timeline provided."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R-005",
+          "subjectArea": "Governance",
+          "riskDescription": {
+            "context": "Metrics are not available from AAVA to track actual progress gains using AAVA, and AAVA team must develop metric capture and analytics functionality (EMS RAG reason).",
+            "condition": "Project leadership may lack visibility into true delivery progress and AAVA effectiveness.",
+            "consequence": "Inaccurate status reporting could lead to late discovery of delays or unmet productivity targets, eroding stakeholder confidence."
+          },
+          "category": "Governance",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement sprint story completion, unit testing status, and defect leakage metrics in weekly status reports starting June 15 to ensure progress visibility.",
+          "contingencyCorrectiveAction": "Deploy manual tracking dashboard for AAVA productivity metrics and increase governance frequency with client to bi-weekly if automated metrics remain unavailable by July 1.",
+          "owner": "Delivery Manager - Krithika Aravind",
+          "targetDate": "15-Jun-2026",
+          "status": "Open",
+          "reasoning": "Internal measurement gap documented in EMS; affects transparency and decision-making capability."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R-006",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Citrix environment exhibits slowness and frequent disconnections impacting delivery, and ticket to be raised with Premera to address (EMS Go Green Plan).",
+            "condition": "Developer productivity may continue to degrade if infrastructure issues persist or escalate.",
+            "consequence": "Sprint velocity could decline and timeline pressure could increase, threatening the August 31 delivery date."
+          },
+          "category": "Infrastructure",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Raise priority ticket with Premera IT support by June 10 and track Citrix performance metrics weekly to prevent further productivity degradation.",
+          "contingencyCorrectiveAction": "Upon Citrix downtime exceeding four hours, activate VDI support coverage during offshore hours and escalate to Premera IT leadership to restore developer access within eight hours.",
+          "owner": "Engineering Manager - Saitej Ballav",
+          "targetDate": "10-Jun-2026",
+          "status": "Open",
+          "reasoning": "Infrastructure issue documented in EMS Go Green Plan with external dependency on Premera resolution; no confirmation of ticket status or resolution timeline."
+        }
+      ]
+    }
+  ]
+}
