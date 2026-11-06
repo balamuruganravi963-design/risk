@@ -194,7 +194,6 @@ st.text_input("Project Name", value=project.get("projectName", ""), disabled=Tru
 
 pc1, pc2, pc3 = st.columns(3)
 pc1.write(f"**Project Status:** {project.get('projectStatus') or '-'}")
-pc2.write(f"**Risk Prediction Date:** {project.get('riskPredictionDate') or '-'}")
 pc3.write(f"**Sources Used:** {', '.join(project.get('sourcesUsed', [])) or '-'}")
 
 risks = sorted(project.get("risks", []), key=lambda r: r.get("sNo") or 0)
