@@ -261,9 +261,29 @@ if risks:
     cols = RAG_ORDER + [c for c in ct.columns if c not in RAG_ORDER]
     ct = ct.reindex(columns=cols, fill_value=0)
     ct["Total"] = ct.sum(axis=1)
-    st.dataframe(ct, width="stretch")
+
+    # Toggle: table (default) <-> stacked bar graph
+    show_graph = st.toggle("📊 Show as graph", value=False, key="category_graph_toggle")
+    if show_graph:
+        chart_df = ct.drop(columns="Total")
+        rag_colors = {"Red": "#dc3545", "Amber": "#ff9800", "Green": "#28a745"}
+        st.bar_chart(
+            chart_df,
+            color=[rag_colors.get(c, "#888888") for c in chart_df.columns],
+            stack=True,
+            x_label="Category",
+            y_label="Number of risks",
+        )
+    else:
+        st.dataframe(ct, width="stretch")
 else:
     st.write("No category distribution data available.")
+
+st.divider()
+
+# ---------------- RAG MATRIX (legend) ---------------- #
+st.subheader("RAG Risk Matrix (Legend)")
+render_rag_matrix()
 
 st.divider()
 
@@ -274,12 +294,6 @@ if not risks:
     st.write("No risks recorded for this project.")
 else:
     render_risk_register(risks)
-
-st.divider()
-
-# ---------------- RAG MATRIX (legend) ---------------- #
-st.subheader("RAG Risk Matrix (Legend)")
-render_rag_matrix()
 
 st.divider()
 
