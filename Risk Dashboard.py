@@ -90,34 +90,6 @@ def risk_statement(r):
     return condition or context
 
 
-def split_points(text):
-    """Split a paragraph into separate points: one per sentence, and a
-    'A, B, and C' list inside a sentence is split into its items."""
-    if not isinstance(text, str) or not text.strip():
-        return []
-    points = []
-    for sentence in re.split(r"(?<=[.!?])\s+(?=[A-Z])", text.strip()):
-        sentence = sentence.strip().rstrip(".")
-        if not sentence:
-            continue
-        if ", and " in sentence:
-            parts = [p.strip() for p in re.split(r",\s+(?:and\s+)?", sentence) if p.strip()]
-        else:
-            parts = [sentence]
-        points.extend(p[0].upper() + p[1:] for p in parts)
-    return points
-
-
-def bullets_html(text):
-    points = split_points(text)
-    if not points:
-        return "—"
-    if len(points) == 1:
-        return html.escape(points[0])
-    items = "".join(f"<li style='margin-bottom:3px;'>{html.escape(p)}</li>" for p in points)
-    return f"<ul style='margin:0; padding-left:1.1em;'>{items}</ul>"
-
-
 def cell(value):
     return html.escape(str(value)) if has_value(value) else "—"
 
@@ -140,13 +112,6 @@ TABLE_COLUMNS = [
 ]
 
 
-MULTI_POINT_COLUMNS = {
-    "Risk Description",
-    "Mitigation / Preventive Action",
-    "Contingency / Corrective Action",
-}
-
-
 def render_risk_register(risk_list):
     """HTML table (text wraps; st.dataframe would truncate long cells)."""
     head = "".join(
@@ -160,7 +125,7 @@ def render_risk_register(risk_list):
         tds = ""
         for header, getter, _ in TABLE_COLUMNS:
             value = getter(r, i)
-            body = bullets_html(value) if header in MULTI_POINT_COLUMNS else cell(value)
+            body = cell(value)
             tds += (
                 "<td style='vertical-align:top; padding:8px 10px; "
                 f"border-bottom:1px solid rgba(128,128,128,0.25);'>{body}</td>"
