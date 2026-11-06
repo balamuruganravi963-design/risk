@@ -1,0 +1,259 @@
+{
+  "clientName": "",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "Project Artifacts",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R-001",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "Premera is planning a big-bang rollout to 2,500+ producers on October 22, 2026. End-to-end registration was validated with only 11 users on October 22.",
+            "condition": "",
+            "consequence": "Production rollback would delay producer access, damage client confidence, require remediation effort, and impact the fixed-bid commercial model with potential penalty exposure."
+          },
+          "category": "Deployment",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Conduct phased rollout starting with 100 producers, monitor for 48 hours, then scale incrementally to limit exposure.",
+          "contingencyCorrectiveAction": "Upon detection of critical defects affecting >10% of users, activate immediate rollback to previous stable version and escalate to Premera Business Team within 2 hours.",
+          "owner": "Lakshmi Deepa Brahmapuram (Delivery Manager)",
+          "targetDate": "20-Oct-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 2,
+          "riskId": "R-002",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "AAVA connectivity from Development instance to Premera Production instance is not established as of July 22, 2026. AAVA deployment does not feature logging and monitoring on the client instance.",
+            "condition": "",
+            "consequence": "Incident response time could increase, agent efficiency gains may not materialize in production, and manual rework could erode the 42% development productivity gains reported."
+          },
+          "category": "Technology",
+          "probability": "Very likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Coordinate with AAVA Platform Team and Premera IT to prioritize production connectivity and implement logging/monitoring by October 15, 2026.",
+          "contingencyCorrectiveAction": "If AAVA production connectivity fails, switch to manual code review and testing workflows, and deploy backup diagnostic scripts to Azure App Insights.",
+          "owner": "Srinath Vishwanath (Primary DE POC)",
+          "targetDate": "15-Oct-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 3,
+          "riskId": "R-003",
+          "subjectArea": "Vendor",
+          "riskDescription": {
+            "context": "Data Hub upstream data setup for integration and E2E testing is not yet available as of PI5 Sprint 2. Four additional total premium fields from Data Hub have ETA July 30, 2026; if delivered on that date, changes can only be made by August 5, 2026.",
+            "condition": "",
+            "consequence": "Production defects in Book of Business calculations could surface post-rollout, requiring emergency fixes and undermining producer trust in data accuracy."
+          },
+          "category": "Third-Party",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish daily handshake with Data Hub Team (Deba) to validate data mappings and premium field delivery by July 30, 2026.",
+          "contingencyCorrectiveAction": "Should Data Hub fields miss August 5 deadline, implement feature toggle to disable total premium display and communicate limitation to producers via in-app notice.",
+          "owner": "Deba (Data Hub Team Lead)",
+          "targetDate": "30-Jul-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 4,
+          "riskId": "R-004",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Auth0 DB connection configuration in ACPT is maintained outside Auth0 and requires Premera team (Drew) to update. Ascendion does not have access to the ACPT tenant. This dependency was open with ETA July 10, 2026, but no closure evidence exists.",
+            "condition": "",
+            "consequence": "Rollout delay or production authentication failures could prevent producers from accessing the portal, directly impacting the October 22 rollout timeline."
+          },
+          "category": "Infrastructure",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate to Ganesh and Drew weekly to complete Auth0 ACPT DB connection configuration by July 12, 2026, with documented test validation.",
+          "contingencyCorrectiveAction": "Once ACPT authentication failure is detected, redirect users to Dev environment Auth0 instance temporarily and notify Premera IT to expedite configuration within 24 hours.",
+          "owner": "Drew (Infrastructure Lead)",
+          "targetDate": "12-Jul-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 5,
+          "riskId": "R-005",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "Backend code coverage is 57% as of PI4 Sprint 3. The SOW acceptance criteria require minimum 80% test coverage. Frontend coverage is 98%, indicating the gap is backend-specific.",
+            "condition": "",
+            "consequence": "Late-stage defects could require emergency fixes, delay UAT sign-off, or surface as production incidents during the mass rollout, undermining quality commitments."
+          },
+          "category": "Quality",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement mandatory unit test coverage tracking in Jenkins pipeline and increase backend coverage to 80% by August 1, 2026, through sprint-focused testing sprints.",
+          "contingencyCorrectiveAction": "If 80% coverage is not achieved by UAT start, intensify manual code reviews with mandatory pairing and design reviews for all critical backend paths.",
+          "owner": "TBD (QA Lead)",
+          "targetDate": "01-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 6,
+          "riskId": "R-006",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "Only one LLM is available in PortKey, which may underperform on specific tasks and prevents use of a reviewer-agent. AAVA metrics are not available from the client instance to track actual progress gains.",
+            "condition": "",
+            "consequence": "Agent efficiency gains (42% development tasks, 70% test cases) reported may not sustain in production, increasing manual effort and eroding the AAVA value proposition."
+          },
+          "category": "Technology",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Document LLM limitations per task type, implement prompt-engineering workarounds, and build human review checkpoint for agent outputs by August 10, 2026.",
+          "contingencyCorrectiveAction": "When agent output quality drops below 85% accuracy threshold, activate manual review workflow and escalate to AAVA Platform Team for model tuning within 48 hours.",
+          "owner": "TBD (AAVA Platform Team Lead)",
+          "targetDate": "10-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 7,
+          "riskId": "R-007",
+          "subjectArea": "Vendor",
+          "riskDescription": {
+            "context": "Access to Premera-specific tools (SharePoint, Azure Blob, ADO) for AAVA integration remains open past ETA June 15, 2026. Initial approach was to use tool-integrated agents, but due to delay, development started with atomic agents requiring refactoring effort.",
+            "condition": "",
+            "consequence": "Scope reduction in AAVA capabilities could reduce agent efficiency gains, increase manual effort, and fail to meet client expectations for AI-driven automation."
+          },
+          "category": "Third-Party",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate to Premera IT (Safal) bi-weekly to prioritize SharePoint, Azure Blob, and ADO access by July 15, 2026, and track via Governance.",
+          "contingencyCorrectiveAction": "Should tool access remain blocked past July 31, baseline atomic agent approach as final scope and defer tool-integrated agents to Phase 2 with formal change request.",
+          "owner": "Safal (Premera IT Lead)",
+          "targetDate": "15-Jul-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 8,
+          "riskId": "R-008",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "19+ scope changes have been introduced mid-project without formal change orders. Changes include Auth0 configuration ownership, CCS GraphQL API implementation, Infra provisioning via IaC, Agent use approach change, and API integration with synthetic data. The SOW defines a change management process (Section 14), but no executed change requests are documented.",
+            "condition": "",
+            "consequence": "Fixed-bid commercial model ($650,000) could be strained, margin erosion may occur, and client may dispute additional charges or deliverable completeness at milestone acceptance."
+          },
+          "category": "Scope",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish formal scope change evaluation procedure with Premera PO (Harish/Debbie) and document impact on deliverables and timelines before proceeding with any new changes.",
+          "contingencyCorrectiveAction": "Once scope change impacts milestone acceptance, invoke SOW Section 14 Change Management process and negotiate timeline extension or phased delivery with no additional cost until formal CR is approved.",
+          "owner": "Lakshmi Deepa Brahmapuram (Delivery Manager)",
+          "targetDate": "25-Jul-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 9,
+          "riskId": "R-009",
+          "subjectArea": "Resources",
+          "riskDescription": {
+            "context": "Citrix server slowness and timeouts are impacting offshore team efforts and delivery velocity. The offshore team comprises 139 of 148 total resources, making Citrix performance critical to delivery.",
+            "condition": "",
+            "consequence": "Sprint velocity decline could delay UAT readiness, compress testing cycles, and increase defect leakage to production during the October 22 rollout."
+          },
+          "category": "People",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Raise ticket with Premera IT by July 24, 2026, to address Citrix slowness and implement VDI support coverage during offshore hours to minimize downtime.",
+          "contingencyCorrectiveAction": "If Citrix performance degrades below usable threshold, activate alternative Azure VM access for critical offshore resources and escalate to Premera IT for emergency resolution within 24 hours.",
+          "owner": "TBD (Premera IT)",
+          "targetDate": "24-Jul-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 10,
+          "riskId": "R-010",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "UAT has not started as of July 22, 2026. Integration testing is 0% complete as of the same date, planned for PI5 Sprint 2/3. Penetration testing is 0% complete with no start date. The original rollout target was September 2, 2026, and production deployment occurred in October 2026.",
+            "condition": "",
+            "consequence": "Production defects or security incidents during the 2,500+ producer rollout could trigger emergency rollback, expose Premera to compliance risk, and damage producer trust."
+          },
+          "category": "Quality",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Schedule detailed SIT/UAT strategy review with QE leadership by July 28, 2026, and prioritize integration testing completion before UAT start on August 14, 2026.",
+          "contingencyCorrectiveAction": "Upon detection of critical defects during compressed UAT, extend UAT by 2 weeks and defer non-critical features to Phase 2 to protect core functionality quality.",
+          "owner": "TBD (QA Lead)",
+          "targetDate": "28-Jul-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 11,
+          "riskId": "R-011",
+          "subjectArea": "Security",
+          "riskDescription": {
+            "context": "86 CVEs were detected as of PI4 Sprint 3, including 4 Critical and 82 High, all on the alpine base image. 190 code smells were detected, including 2 Critical and 80 Major. Penetration testing has not started.",
+            "condition": "",
+            "consequence": "Security incidents post-rollout could expose producer data, trigger compliance penalties (HIPAA, PCI-DSS in HCLS context), and require emergency patching during hypercare."
+          },
+          "category": "Compliance",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Upgrade alpine base image to patched version by August 5, 2026, and remediate 4 Critical and 80 Major code smells before UAT start.",
+          "contingencyCorrectiveAction": "If Critical CVEs cannot be patched before rollout, implement runtime application self-protection (RASP) controls and schedule emergency patching window within first week of hypercare.",
+          "owner": "TBD (Security Lead)",
+          "targetDate": "05-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 12,
+          "riskId": "R-012",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "Inadequate agent hardening may cause inconsistent behavior in production. Agent dependency on external tools may result in execution failures impacting automation continuity. Poor coordination between multiple agents may cause workflow delays or incorrect task sequencing.",
+            "condition": "",
+            "consequence": "Agent failures in production could degrade the producer experience, increase support burden during hypercare, and undermine the AAVA value proposition to the client."
+          },
+          "category": "Technology",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Define agent hardening checklist, implement retry logic and timeout handling, and test multi-agent scenarios by August 8, 2026, before production deployment.",
+          "contingencyCorrectiveAction": "When agent execution failure rate exceeds 5%, activate manual workflow fallback and escalate to AAVA Platform Team for orchestration pattern review within 24 hours.",
+          "owner": "TBD (Ascendion AI Team Lead)",
+          "targetDate": "08-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        }
+      ]
+    }
+  ]
+}
