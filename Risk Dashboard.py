@@ -112,6 +112,46 @@ TABLE_COLUMNS = [
 ]
 
 
+RAG_MATRIX_IMPACTS = ["High Impact", "Medium Impact", "Low Impact"]
+RAG_MATRIX = [
+    ("Very Likely", ["Red", "Red", "Amber"]),
+    ("Likely", ["Red", "Amber", "Green"]),
+    ("Possible", ["Amber", "Amber", "Green"]),
+    ("Unlikely", ["Amber", "Green", "Green"]),
+    ("Rare", ["Green", "Green", "Green"]),
+]
+RAG_BG = {
+    "Red": "rgba(220, 53, 69, 0.35)",
+    "Amber": "rgba(255, 152, 0, 0.35)",
+    "Green": "rgba(40, 167, 69, 0.35)",
+}
+
+
+def render_rag_matrix():
+    """Legend: likelihood x impact -> RAG."""
+    th = "padding:8px 14px; text-align:center; background:rgba(128,128,128,0.15); border:1px solid rgba(128,128,128,0.4);"
+    head = f"<th style='{th}'>Likelihood</th>" + "".join(
+        f"<th style='{th}'>{html.escape(i)}</th>" for i in RAG_MATRIX_IMPACTS
+    )
+    rows = ""
+    for likelihood, rags in RAG_MATRIX:
+        cells = "".join(
+            f"<td style='padding:8px 14px; text-align:center; background:{RAG_BG[rag]}; "
+            f"border:1px solid rgba(128,128,128,0.4);'>{RAG_ICON[rag]} {rag}</td>"
+            for rag in rags
+        )
+        rows += (
+            f"<tr><td style='padding:8px 14px; font-weight:600; border:1px solid rgba(128,128,128,0.4);'>"
+            f"{html.escape(likelihood)}</td>{cells}</tr>"
+        )
+    st.markdown(
+        "<div style='overflow-x:auto;'>"
+        "<table style='border-collapse:collapse; font-size:0.85rem;'>"
+        f"<thead><tr>{head}</tr></thead><tbody>{rows}</tbody></table></div>",
+        unsafe_allow_html=True,
+    )
+
+
 def render_risk_register(risk_list):
     """HTML table (text wraps; st.dataframe would truncate long cells)."""
     head = "".join(
@@ -234,6 +274,12 @@ if not risks:
     st.write("No risks recorded for this project.")
 else:
     render_risk_register(risks)
+
+st.divider()
+
+# ---------------- RAG MATRIX (legend) ---------------- #
+st.subheader("RAG Risk Matrix (Legend)")
+render_rag_matrix()
 
 st.divider()
 
