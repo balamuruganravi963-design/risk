@@ -1,0 +1,319 @@
+{
+  "clientName": "",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "Project Artifacts",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "AAVA connectivity from the Development instance to Premera Production instance has not been established since project inception in March 2026, and this remains open with no ETA as of 22-Jul-2026 (EMS, Project Artifacts). The ALT Deck dated 23-Oct-2026 confirms this has been a persistent Amber RAG driver across all biweekly reporting cycles from March through October 2026.",
+            "condition": "Full agentic workflow automation may remain unavailable, forcing the team to continue using atomic agents and manual effort workarounds, which could reduce productivity gains and delay delivery of remaining features.",
+            "consequence": "Reduced velocity may push final delivery beyond the extended timeline, increase manual effort costs, and prevent realization of the AI-driven efficiency benefits promised in the engagement model."
+          },
+          "category": "Technology",
+          "probability": "Very likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Escalate AAVA connectivity issue to Premera executive sponsor and establish dedicated technical bridge with Premera infrastructure team to resolve production instance connectivity by agreed target date. Implement parallel manual workflow optimization to maintain delivery velocity until full automation is available.",
+          "contingencyCorrectiveAction": "Formalize atomic agent and manual workaround processes as the baseline delivery model, adjust resource allocation to compensate for reduced automation efficiency, and reset client expectations on AI-driven productivity gains.",
+          "owner": "TBD - confirm with PM (Project Manager)",
+          "targetDate": "TBD - confirm with PM",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Vendor",
+          "riskDescription": {
+            "context": "Data Hub APIs required for Book of Business integration, including 4 additional total premium fields, are not yet available as of 22-Jul-2026, with ETA 30-Jul-2026 (EMS, Project Artifacts). Development is proceeding with synthetic data based on contract schema.",
+            "condition": "When actual Data Hub APIs are delivered, integration issues or data model mismatches may surface, requiring rework of BoB features and downstream components.",
+            "consequence": "Late-stage rework could delay final delivery, increase cost, and introduce defects into production, weakening client trust in release quality and data accuracy."
+          },
+          "category": "Third-Party",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Conduct joint schema validation session with Data Hub team before 30-Jul-2026 API delivery to confirm contract alignment, and execute integration smoke tests immediately upon API availability to identify mismatches before Integration Testing phase.",
+          "contingencyCorrectiveAction": "Isolate Book of Business module for phased delivery, implement data transformation layer to handle schema discrepancies, and schedule dedicated integration sprint to remediate defects before UAT.",
+          "owner": "TBD - confirm with PM (Technical Lead)",
+          "targetDate": "29-Jul-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "19+ scope changes from UX standpoint and business angle have been introduced mid-project as of 22-Jul-2026, including dual role handling, dashboard access for all roles, BoB export field additions, and repository restructuring (Project Artifacts). EMS shows Scope RAG as Amber with external driver.",
+            "condition": "Additional scope changes may continue to be introduced without formal change control, consuming available bandwidth and pushing must-have features into later sprints.",
+            "consequence": "Timeline overrun and budget erosion could occur, or critical features may be deferred, reducing the value delivered at go-live and impacting client satisfaction."
+          },
+          "category": "Scope",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Implement formal change control freeze effective immediately, requiring executive approval and impact assessment for any new scope requests. Baseline current scope as Phase 1 MVP and defer non-critical enhancements to post-go-live or Phase 2.",
+          "contingencyCorrectiveAction": "Negotiate timeline extension or budget increase through formal change order, prioritize must-have features using MoSCoW method with client stakeholders, and descope lower-priority items to protect go-live date.",
+          "owner": "TBD - confirm with PM (Project Manager)",
+          "targetDate": "26-Jul-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "Premera is planning a big-bang rollout to 2,500+ producers on 22-Oct-2026. ALT Deck dated 23-Oct-2026 places the project on WATCHLIST and flags: 'If an issue is encountered during the mass producer onboarding, the rollout may need to be rolled back and remediated.'",
+            "condition": "A defect, performance bottleneck, or integration failure may surface under production load during the mass onboarding, requiring emergency rollback and remediation.",
+            "consequence": "Rollback could delay producer onboarding, disrupt business operations, damage client confidence, and require unplanned effort to diagnose and fix production issues."
+          },
+          "category": "Deployment",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Execute production-scale load testing with 2,500+ concurrent user simulation before Go-Live, establish go or no-go criteria with performance thresholds, and validate rollback procedures in ACPT environment.",
+          "contingencyCorrectiveAction": "Activate pre-approved phased rollout plan starting with 250 producers in wave 1, monitor system health metrics for 48 hours before each subsequent wave, and maintain rollback-ready deployment configuration throughout the rollout period.",
+          "owner": "TBD - confirm with PM (Deployment Lead)",
+          "targetDate": "15-Oct-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "86 CVEs detected (4 Critical, 82 High) on alpine base image as of 18-Jun-2026 (Project Artifacts). 11 bugs open, 15% test failure rate, and Backend code coverage is 57% (Project Artifacts).",
+            "condition": "Critical and High-severity vulnerabilities may remain unpatched at go-live, and low backend code coverage may allow defects to escape into production.",
+            "consequence": "Security audit findings could delay client sign-off, expose the client to compliance penalties, and production defects could require emergency patches during hypercare."
+          },
+          "category": "Quality",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Remediate all 4 Critical CVEs and prioritize High-severity CVEs by risk score before Integration Testing, upgrade alpine base image to patched version, and increase backend code coverage to 80% minimum through targeted unit test development.",
+          "contingencyCorrectiveAction": "Document accepted risk for non-remediable CVEs with compensating controls, implement runtime application self-protection (RASP) for production environment, and establish dedicated defect triage and hotfix process for Hypercare.",
+          "owner": "TBD - confirm with PM (Quality Lead)",
+          "targetDate": "05-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Citrix server slowness and frequent timeouts have been impacting offshore team productivity since June 2026 (EMS, Project Artifacts). A ticket was to be raised with Premera to address the issue, with ETA 12-Jun-2026, but the issue remains open as of 22-Jul-2026.",
+            "condition": "Continued Citrix performance issues may slow development, testing, and support activities, especially during hypercare when rapid response is critical.",
+            "consequence": "Reduced team velocity could delay final delivery or limit the team's ability to respond quickly to production issues during the 4-week hypercare period."
+          },
+          "category": "Infrastructure",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate Citrix performance ticket to Premera infrastructure management with documented productivity impact metrics, request dedicated bandwidth allocation for project team, and establish alternative VPN access for critical hypercare resources.",
+          "contingencyCorrectiveAction": "Shift time-sensitive development and testing activities to onshore team members with direct network access, schedule offshore work during off-peak Citrix usage hours, and provision local development environments where security policies permit.",
+          "owner": "TBD - confirm with PM (Infrastructure Lead)",
+          "targetDate": "29-Jul-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Security",
+          "riskDescription": {
+            "context": "Auth0 DB connection configuration in ACPT is maintained outside Auth0, and the Ascendion team does not have access to the ACPT tenant to update this configuration (EMS, Project Artifacts). Dependency on Premera (Drew/Ganesh) with ETA 10-Jul-2026 remains open as of 22-Jul-2026.",
+            "condition": "Delay in updating the Auth0 DB connection configuration may prevent the team from moving to the ACPT environment, blocking integration testing and UAT readiness.",
+            "consequence": "Timeline slippage for UAT and go-live could occur, and authentication issues may surface late in the cycle, requiring emergency fixes."
+          },
+          "category": "Security",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Escalate Auth0 ACPT configuration dependency to Premera project sponsor (Drew/Ganesh) with critical path impact analysis, request expedited tenant access or dedicated configuration support, and complete configuration update before Integration Testing.",
+          "contingencyCorrectiveAction": "Establish Premera-led configuration change process with 24-hour SLA for authentication updates, develop authentication test harness to validate configuration independently, and maintain DEV environment as fallback for integration testing if ACPT remains unavailable.",
+          "owner": "TBD - confirm with PM (Security Lead)",
+          "targetDate": "26-Jul-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "Only one LLM is available in AAVA Port Key, which may underperform on specific tasks and prevents use of a reviewer-agent (EMS, Project Artifacts). This limitation has been documented since March 2026 with no resolution ETA.",
+            "condition": "Single-LLM limitation may continue to force manual review and rework of agent-generated code, reducing the expected productivity gains from agentic workflows.",
+            "consequence": "Manual effort overhead could increase cost, reduce velocity, and limit the quality improvements expected from AI-assisted development."
+          },
+          "category": "Technology",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Request AAVA platform team to enable multi-LLM support in Port Key by agreed target date, and implement structured peer review process for AI-generated code to maintain quality standards until reviewer-agent capability is available.",
+          "contingencyCorrectiveAction": "Formalize manual code review as standard practice, adjust productivity baselines to reflect single-LLM performance, and document lessons learned for future AAVA engagements regarding multi-LLM requirements.",
+          "owner": "TBD - confirm with PM (Technical Lead)",
+          "targetDate": "TBD - confirm with PM",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "Inadequate agent hardening may cause inconsistent behavior in production (EMS risk RISK-008). Limited training datasets may delay agent maturity (EMS risk RISK-009). Tool/API invocation failures may result in execution failures (EMS risk RISK-010). Poor coordination between multiple agents may cause workflow delays (EMS risk RISK-011).",
+            "condition": "Multiple AAVA agent risks may compound, causing unpredictable failures, incorrect task sequencing, or incomplete automation during development and hypercare.",
+            "consequence": "Agent instability could force fallback to manual processes, increase defect rates, delay delivery, and reduce the ROI of the AAVA investment."
+          },
+          "category": "Technology",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct AAVA agent stability assessment covering hardening, training data quality, API reliability, and inter-agent coordination before Integration Testing. Implement agent monitoring dashboard with failure alerting and establish manual fallback procedures for critical workflows.",
+          "contingencyCorrectiveAction": "Disable unstable agents and revert to manual processes for affected workflows, engage AAVA platform support for emergency troubleshooting during Hypercare, and document agent performance metrics for post-project ROI analysis.",
+          "owner": "TBD - confirm with PM (Technical Lead)",
+          "targetDate": "05-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Testing",
+          "riskDescription": {
+            "context": "UAT is 0% complete as of 22-Jul-2026 (Project Artifacts). UAT execution support and test data setup are pending with no ETA (Project Artifacts dependency DEP-011). UAT stakeholders have not yet been nominated (SOW assumption ASM-006 status: Pending).",
+            "condition": "UAT may start late or with incomplete test data, preventing thorough validation of end-to-end scenarios and business workflows before go-live.",
+            "consequence": "Critical defects or usability issues may escape into production, requiring emergency fixes during hypercare and damaging client satisfaction."
+          },
+          "category": "Testing",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Secure UAT stakeholder nominations from Premera by 26-Jul-2026, finalize UAT test data setup and environment readiness by 02-Aug-2026, and establish UAT entry criteria including defect closure thresholds before UAT phase begins.",
+          "contingencyCorrectiveAction": "Conduct proxy UAT using internal business analysts if client stakeholders remain unavailable, prioritize smoke testing of critical producer workflows, and extend Hypercare period to 6 weeks to accommodate production validation.",
+          "owner": "TBD - confirm with PM (Test Manager)",
+          "targetDate": "02-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 11,
+          "riskId": "R - 011",
+          "subjectArea": "Data",
+          "riskDescription": {
+            "context": "The team is proceeding with data mappings provided by the Data Hub team. If any issues with values from these mappings arise and lead back to design changes (entity stitching), it might have schedule impact (EMS risk RISK-012, Project Artifacts).",
+            "condition": "Data mapping discrepancies may surface during integration testing or UAT, requiring entity stitching logic changes and re-testing of BoB and Dashboard features.",
+            "consequence": "Late-stage data model rework could delay final delivery, introduce defects, and require additional client approvals, pushing the timeline beyond August 2026."
+          },
+          "category": "Data",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct end-to-end data mapping validation with Data Hub team using production-like data samples before Integration Testing, document entity stitching rules with client approval, and execute data reconciliation testing during integration phase.",
+          "contingencyCorrectiveAction": "Implement configurable data transformation layer to handle mapping adjustments without code changes, establish expedited change approval process for data model updates, and schedule dedicated data remediation sprint if discrepancies are identified during UAT.",
+          "owner": "TBD - confirm with PM (Data Lead)",
+          "targetDate": "05-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 12,
+          "riskId": "R - 012",
+          "subjectArea": "Commercial",
+          "riskDescription": {
+            "context": "19+ scope changes have been logged, including infrastructure provisioning, Auth0 configuration, CCS GraphQL API implementation, and dual role handling (Project Artifacts). Multiple changes are marked as Medium effort. Cost RAG is Green as of 22-Jul-2026 (EMS), but no change order or budget increase is documented.",
+            "condition": "Absorbed scope changes may consume contingency and push effort beyond the $650,000 fixed-bid contract value, especially if additional changes are introduced during UAT or hypercare.",
+            "consequence": "Margin erosion could occur, or the client may contest additional charges, leading to commercial disputes and impacting the engagement relationship."
+          },
+          "category": "Commercial",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct financial health check to quantify scope change impact on budget and margin, present change order proposal to client for out-of-scope items exceeding agreed threshold, and implement strict change control requiring commercial approval for any new requests.",
+          "contingencyCorrectiveAction": "Absorb scope changes within existing budget by optimizing resource allocation and reducing non-critical activities, negotiate performance-based incentive for successful delivery to offset margin impact, and document lessons learned for future fixed-bid engagements.",
+          "owner": "TBD - confirm with PM (Engagement Manager)",
+          "targetDate": "02-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 13,
+          "riskId": "R - 013",
+          "subjectArea": "Transition",
+          "riskDescription": {
+            "context": "The project includes a 4-week hypercare/stabilization period (SOW). Production deployment is complete as of 23-Oct-2026 (ALT), and big-bang rollout to 2,500+ producers is planned for 22-Oct-2026. No knowledge transfer or hypercare readiness activities are documented in the WSR dated 22-Jul-2026 or ALT Deck dated 23-Oct-2026.",
+            "condition": "Hypercare may begin without adequate knowledge transfer, runbook documentation, or incident response procedures, leaving the support team unprepared for production issues.",
+            "consequence": "Slow incident resolution during hypercare could frustrate end users, damage client confidence, and require unplanned extension of support beyond the 4-week period."
+          },
+          "category": "Transition",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Develop hypercare runbook covering incident triage, escalation procedures, and known issue workarounds before Go-Live. Conduct knowledge transfer sessions with Premera support team and establish 24x7 on-call rotation for the Hypercare period.",
+          "contingencyCorrectiveAction": "Extend hypercare support to 6 weeks if incident volume exceeds agreed threshold, maintain development team availability for emergency fixes during first 2 weeks post-rollout, and establish weekly stabilization reviews with client stakeholders.",
+          "owner": "TBD - confirm with PM (Transition Manager)",
+          "targetDate": "15-Oct-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 14,
+          "riskId": "R - 014",
+          "subjectArea": "Compliance",
+          "riskDescription": {
+            "context": "Pen Test is 0% complete as of 22-Jul-2026 (Project Artifacts). 86 CVEs (4 Critical, 82 High) are detected on alpine base image (Project Artifacts). SOW includes accessibility testing compliance with WCAG 2.2AA, and accessibility testing is in progress as of 22-Jul-2026.",
+            "condition": "Penetration testing and accessibility testing may not be completed before go-live, leaving unpatched vulnerabilities and accessibility gaps in production.",
+            "consequence": "Security audit findings or accessibility compliance failures could delay client sign-off, expose the client to regulatory penalties, and require emergency remediation."
+          },
+          "category": "Compliance",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Schedule and complete penetration testing by 15-Aug-2026 with remediation buffer before UAT, remediate all Critical and High CVEs before Pen Test execution, and complete WCAG 2.2AA accessibility validation before UAT sign-off with third-party audit if required.",
+          "contingencyCorrectiveAction": "Obtain client acceptance of residual security risks with documented compensating controls and remediation roadmap, implement accessibility overlay solution for non-compliant components as interim measure, and schedule post-go-live remediation sprint for non-critical findings.",
+          "owner": "TBD - confirm with PM (Compliance Lead)",
+          "targetDate": "15-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 15,
+          "riskId": "R - 015",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "ACPT Azure Front Door and DNS configuration is in progress with no ETA as of 22-Jul-2026 (Project Artifacts dependency DEP-013). Front End, Account Management API, and Wrapper API have been deployed to ACPT, but connectivity and service integration issues are being resolved.",
+            "condition": "Incomplete Azure Front Door and DNS configuration may prevent end-to-end testing in the ACPT environment, blocking UAT readiness and production cutover validation.",
+            "consequence": "Environment readiness delays could push UAT and go-live dates, and untested network configurations may cause production outages or performance issues at launch."
+          },
+          "category": "Infrastructure",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate ACPT Azure Front Door and DNS configuration to Premera infrastructure team with target completion date of 29-Jul-2026, conduct end-to-end connectivity validation immediately upon configuration completion, and establish environment readiness gate before UAT entry.",
+          "contingencyCorrectiveAction": "Conduct UAT in DEV environment with production-equivalent configuration if ACPT remains unavailable, execute abbreviated smoke testing in ACPT once available to validate production cutover readiness, and schedule dedicated production validation window post-deployment.",
+          "owner": "TBD - confirm with PM (Infrastructure Lead)",
+          "targetDate": "29-Jul-2026",
+          "status": "Open",
+          "reasoning": ""
+        }
+      ]
+    }
+  ]
+}
