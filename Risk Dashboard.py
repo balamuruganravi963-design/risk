@@ -49,8 +49,8 @@ content = base64.b64decode(file_data["content"]).decode("utf-8")
 data = json.loads(content)
 
 # ---------------- TOP-LEVEL DATA ---------------- #
-# Schema: { "clientName": "", "projects": [ { ..., "risks": [...] } ] }
-client_name = data.get("clientName", "")
+# Schema: { "client": "", "projects": [ { ..., "risks": [...] } ] }
+client = data.get("client", "")
 projects = data.get("projects", [])
 
 if not projects:
@@ -147,7 +147,7 @@ def rag_counts_for(risk_list):
 st.title("📊 Project Risk Dashboard")
 
 # Client Name as a read-only text-box heading (single client per file).
-st.text_input("Client Name", value=client_name or "Unknown Client", disabled=True)
+st.text_input("Client", value=client or "Unknown Client", disabled=True)
 
 # ---------------- PORTFOLIO SUMMARY (computed) ---------------- #
 total_projects = len(projects)
