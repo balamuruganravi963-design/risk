@@ -1,0 +1,140 @@
+{
+  "client": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS"
+      ],
+      "sourcesNotAvailable": [
+        "Project Artifacts",
+        "ALT"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "AAVA connectivity from Development instance to Production instance is blocked, limiting capability to use AAVA fully for code/refactoring effort (EMS biweekly audit 2026-06-04).",
+            "condition": "Critical development and refactoring workflows may remain constrained if connectivity issues persist beyond planned resolution timeline.",
+            "consequence": "Development velocity could decline, delaying feature delivery and increasing manual effort costs while undermining the value proposition of agentic workflow adoption."
+          },
+          "category": "Technology",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Coordinate with AAVA Platform Team and Premera to resolve production instance connectivity and establish daily status checkpoints until resolved.",
+          "contingencyCorrectiveAction": "Upon connectivity failure exceeding five business days, activate manual code refactoring workflows and escalate to Engineering Manager and AAVA leadership within 24 hours.",
+          "owner": "Saitej Ballav - Engineering Manager",
+          "targetDate": "15-Jun-2026",
+          "status": "In Progress",
+          "reasoning": "Active internal technical barrier documented in EMS with Overall and Timeline RAG at Amber; AAVA Platform Team troubleshooting underway but no resolution date confirmed."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "Scope changes from UX standpoint and business angle are emerging as external requests, with all scope to be triaged based on available bandwidth (EMS biweekly audit 2026-06-04, Scope RAG: Amber).",
+            "condition": "Uncontrolled scope expansion may exceed team capacity if triage and prioritization processes do not keep pace with incoming change requests.",
+            "consequence": "Delivery timelines could slip, or critical baseline features may be deprioritized, eroding client satisfaction and margin."
+          },
+          "category": "Scope",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish formal scope change assessment process with Product Owner to evaluate impact and prioritize requests weekly based on team bandwidth.",
+          "contingencyCorrectiveAction": "Should approved scope changes exceed available capacity, rebaseline delivery plan with Premera and defer non-critical features to Phase 2 within 48 hours.",
+          "owner": "Krithika Aravind - Delivery Manager",
+          "targetDate": "12-Jun-2026",
+          "status": "In Progress",
+          "reasoning": "Scope RAG moved to Amber with active external change pressure documented in EMS; bandwidth-based triage indicates capacity constraint risk."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Vendor",
+          "riskDescription": {
+            "context": "Dependency with Data Hub is external, and the current Data Model provided by Product Owner as of 6/3 will be used for development (EMS biweekly audit 2026-06-04).",
+            "condition": "Data model changes or delays from the external Data Hub team may require rework or stall integration activities.",
+            "consequence": "Integration testing could be delayed, and late-stage schema changes may trigger costly refactoring and timeline extensions."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish weekly Data Hub alignment meetings with Product Owner to validate data model stability and communicate integration requirements proactively.",
+          "contingencyCorrectiveAction": "Once Data Hub schema changes are confirmed, assess integration impact within 24 hours and rebaseline affected sprint deliverables with Premera approval.",
+          "owner": "Krithika Aravind - Delivery Manager",
+          "targetDate": "20-Jun-2026",
+          "status": "Open",
+          "reasoning": "External dependency flagged in EMS with Scope and Timeline at Amber; single-source signal with no confirmation of Data Hub delivery stability."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "AAVA deployment does not feature logging and monitoring, requiring support from Premera, and metrics are not available from AAVA to track actual progress gains (EMS biweekly audit 2026-06-04).",
+            "condition": "Observability gaps may prevent early detection of AAVA performance issues or accurate measurement of productivity improvements.",
+            "consequence": "Undetected defects or inefficiencies could surface late in the cycle, and the business case for AAVA adoption may be difficult to validate, weakening stakeholder confidence."
+          },
+          "category": "Technology",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Coordinate with Premera infrastructure team and AAVA Platform Team to implement logging and monitoring on AAVA client instance by sprint end.",
+          "contingencyCorrectiveAction": "Should logging setup delay beyond two weeks, implement manual AAVA performance tracking via daily developer surveys and escalate observability gap to Delivery Manager.",
+          "owner": "Saitej Ballav - Engineering Manager",
+          "targetDate": "27-Jun-2026",
+          "status": "Open",
+          "reasoning": "Internal gap documented in EMS; go-green plan includes coordination with Premera and AAVA teams, but no setup completion date provided."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Citrix environment is experiencing slowness and frequent disconnection, impacting delivery (EMS biweekly audit 2026-06-04).",
+            "condition": "Persistent Citrix performance issues may reduce developer productivity if client infrastructure support does not resolve the instability promptly.",
+            "consequence": "Sprint velocity could decline, and team morale may suffer, increasing attrition risk and delaying deliverables."
+          },
+          "category": "Infrastructure",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Raise Citrix performance ticket with Premera infrastructure support and track resolution daily until stability is restored to baseline levels.",
+          "contingencyCorrectiveAction": "When Citrix downtime exceeds four hours per day, activate backup VDI restart protocol and notify Delivery Manager to escalate with Premera leadership.",
+          "owner": "Krithika Aravind - Delivery Manager",
+          "targetDate": "18-Jun-2026",
+          "status": "Open",
+          "reasoning": "Infrastructure issue documented in EMS with planned ticket escalation to Premera; Quality and Talent RAG remain Green, suggesting impact is contained but not yet resolved."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "Scope changes in terms of UX and Infra Setup are being discussed, with triage based on available bandwidth (EMS biweekly audit 2026-06-04).",
+            "condition": "Late-stage infrastructure or UX design changes may introduce technical debt or require architecture rework if not fully scoped and resourced.",
+            "consequence": "Post-deployment defects or performance issues could emerge, increasing support costs and delaying production readiness."
+          },
+          "category": "Scope",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Define UX and infrastructure change impact assessment criteria with Product Owner and conduct technical feasibility review before approval each sprint.",
+          "contingencyCorrectiveAction": "Should late-stage UX or infrastructure changes introduce technical debt, document architectural trade-offs and defer non-critical enhancements to post-production support phase.",
+          "owner": "Krithika Aravind - Delivery Manager",
+          "targetDate": "25-Jun-2026",
+          "status": "Open",
+          "reasoning": "Scope discussion ongoing per EMS; combined with Scope and Timeline Amber RAG, indicates active change management pressure with uncertain resource allocation."
+        }
+      ]
+    }
+  ]
+}
