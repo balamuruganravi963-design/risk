@@ -1,0 +1,204 @@
+{
+  "client": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "Project Artifacts"
+      ],
+      "sourcesNotAvailable": [
+        "ALT"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R-001",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "AAVA connectivity from Development instance to Production Instance remains unestablished, limiting full platform capability for code and refactoring effort (EMS RAG Reason, Go-Green 5767).",
+            "condition": "End-to-end AAVA workflows may remain unavailable beyond the 12 June target, preventing the team from leveraging agentic automation for development tasks.",
+            "consequence": "Development velocity could decline, manual effort could increase, and the project may fail to demonstrate the AAVA value proposition to the client."
+          },
+          "category": "Technology",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish weekly technical touchpoints with AAVA and Premera platform teams to coordinate connectivity configuration and validate authentication by 12 June.",
+          "contingencyCorrectiveAction": "Upon failure to establish connectivity by 12 June, activate parallel development on Ascendion environment, escalate to Circle Head within 24 hours, and engage backup vendor for integration support.",
+          "owner": {
+            "role": "Engineering Manager",
+            "name": "Saitej Ballav"
+          },
+          "targetDate": "12-Jun-2026",
+          "status": "In Progress",
+          "reasoning": "Open internal dependency carried forward from EMS and corroborated by Go-Green 5767 (In Progress, ETA 12 Jun). Multiple troubleshooting attempts since 23 Apr with no resolution. Client dissatisfaction noted 23 Apr when builds forced to Ascendion environment (Project Artifacts)."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R-002",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "AAVA deployment does not feature logging and monitoring, and the AAVA Team requires support from Premera to set this up (EMS RAG Reason, Go-Green 5768).",
+            "condition": "Without logging and monitoring, the team may be unable to diagnose AAVA failures, track performance, or demonstrate compliance with operational standards.",
+            "consequence": "Troubleshooting delays could extend, client confidence in the platform could weaken, and production readiness could be questioned during governance reviews."
+          },
+          "category": "Technology",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Coordinate with Premera DevOps and AAVA teams to implement logging and monitoring infrastructure with alerting capabilities by 12 June.",
+          "contingencyCorrectiveAction": "If logging setup is not completed by 12 June, deploy temporary manual log collection scripts and escalate to weekly governance call for Premera leadership intervention.",
+          "owner": {
+            "role": "Engineering Manager",
+            "name": "Saitej Ballav"
+          },
+          "targetDate": "12-Jun-2026",
+          "status": "In Progress",
+          "reasoning": "Open internal dependency from EMS, corroborated by Go-Green 5768 (In Progress, ETA 12 Jun). No logging/monitoring infrastructure in place as of 04 Jun. Dependency on external Premera team coordination (Project Artifacts)."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R-003",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Citrix VDI is experiencing slowness and frequent disconnection, impacting delivery (Go-Green 5770, Project Artifacts Section 7).",
+            "condition": "If Premera infrastructure does not resolve Citrix performance issues by 12 June, developer productivity may continue to degrade.",
+            "consequence": "Sprint velocity could fall, team morale could decline, and timeline pressure could intensify as the 31 August project end date approaches."
+          },
+          "category": "Infrastructure",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Raise priority ticket with Premera infrastructure team, implement VDI restart protocol during offshore hours, and monitor performance metrics daily.",
+          "contingencyCorrectiveAction": "If Citrix issues persist beyond 12 June, request extended VDI support coverage during offshore hours and escalate to Premera IT leadership for infrastructure upgrade.",
+          "owner": {
+            "role": "Offshore VDH",
+            "name": "Magesh Muthuvenkataraman"
+          },
+          "targetDate": "12-Jun-2026",
+          "status": "In Progress",
+          "reasoning": "Open external dependency from EMS Go-Green 5770 (In Progress, ETA 12 Jun). Infrastructure identified as primary bottleneck in Project Categorization (Category 1). Persistent issue affecting delivery as of 04 Jun (Project Artifacts)."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R-004",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "Scope changes from UX standpoint and business angle are emerging, classified as External, and all scope must be triaged against available bandwidth (EMS RAG Reason, Go-Green 5757).",
+            "condition": "If scope changes are not finalized by 05 June or exceed available capacity, the team may be unable to absorb new requirements without extending the timeline or reducing planned features.",
+            "consequence": "Client expectations could misalign with delivery, cost overruns could occur, or the 31 August end date could be at risk."
+          },
+          "category": "Scope",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct formal assessment of UX scope changes with client Product Owner, provide impact estimates, and secure approval before development by 05 June.",
+          "contingencyCorrectiveAction": "Should scope changes exceed available bandwidth by 05 June, escalate to weekly governance call, propose phased delivery approach, and negotiate timeline extension or scope reduction.",
+          "owner": {
+            "role": "Engineering Manager",
+            "name": "Saitej Ballav"
+          },
+          "targetDate": "05-Jun-2026",
+          "status": "In Progress",
+          "reasoning": "Open external dependency from EMS (Scope RAG Amber since 26 Mar). Go-Green 5757 discussions ongoing (ETA 05 Jun). Scope Amber sustained across 36 biweekly snapshots. Limited by missing detail on volume and priority of changes (Project Artifacts)."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R-005",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "Metrics are not available from AAVA to track actual progress gains using the platform (EMS RAG Reason).",
+            "condition": "Without quantifiable AAVA productivity metrics, the team may be unable to validate ROI, adjust workflows, or report value to the client and leadership.",
+            "consequence": "Client and internal stakeholders could question the AAVA investment, and the project may fail to build a reusable business case for future AAVA engagements."
+          },
+          "category": "Technology",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Define AAVA productivity metrics framework with Platform AI team, implement manual tracking in weekly status reports, and automate collection by sprint end.",
+          "contingencyCorrectiveAction": "If automated metrics remain unavailable, establish manual reporting of story point velocity, defect leakage, and lead time, and communicate limitations to client in governance reviews.",
+          "owner": {
+            "role": "Primary DE POC",
+            "name": "Ashwin Murugan"
+          },
+          "targetDate": "20-Jun-2026",
+          "status": "Open",
+          "reasoning": "Open internal issue from EMS RAG Reason with no mitigation ETA provided. No go-green action assigned. Single-source signal with no corroboration from Project Artifacts or ALT."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R-006",
+          "subjectArea": "Vendor",
+          "riskDescription": {
+            "context": "Data Hub dependency was resolved on 03 June when the PO provided the current data model for development (EMS RAG Reason, Project Artifacts Section 4).",
+            "condition": "If the provided data model proves incomplete, inconsistent, or requires late-stage changes, integration work may need to be reworked.",
+            "consequence": "Rework could delay backend development, increase effort burn, and create downstream quality issues in data-dependent features."
+          },
+          "category": "Third-Party",
+          "probability": "Unlikely",
+          "impact": "Medium",
+          "rag": "Green",
+          "mitigationPreventiveAction": "Validate Data Hub model completeness with Product Owner, define clear SLAs for model change requests, and implement mock data for testing.",
+          "contingencyCorrectiveAction": "Once data model inconsistencies are detected, activate phased integration approach, engage Data Hub liaison for expedited resolution, and communicate impact to client within 48 hours.",
+          "owner": {
+            "role": "Engineering Manager",
+            "name": "Saitej Ballav"
+          },
+          "targetDate": "15-Jun-2026",
+          "status": "Open",
+          "reasoning": "External dependency recently resolved (03 Jun). Classified as mitigated in EMS. Included because late-stage data model changes are a common integration risk, but evidence of instability is weak (Project Artifacts)."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R-007",
+          "subjectArea": "Resources",
+          "riskDescription": {
+            "context": "Team size reduced from 12 to 8 resources between 10 Sep and 08 Oct 2026, and the Offshore EM role transitioned twice since 13 Aug (Project Artifacts Section 3).",
+            "condition": "If further attrition occurs or knowledge transfer from departing team members is incomplete, delivery continuity and domain expertise could be compromised.",
+            "consequence": "Sprint capacity could drop, onboarding delays could occur, and quality could suffer if critical knowledge is lost."
+          },
+          "category": "People",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement structured knowledge transfer sessions, document critical processes, identify backup resources for key roles, and conduct bi-weekly retention check-ins.",
+          "contingencyCorrectiveAction": "Upon resource resignation, execute pre-planned transition plan within 48 hours, redeploy backup resource, and escalate to Offshore VDH for immediate replacement recruitment.",
+          "owner": {
+            "role": "Offshore VDH",
+            "name": "Magesh Muthuvenkataraman"
+          },
+          "targetDate": "30-Jun-2026",
+          "status": "Open",
+          "reasoning": "Team size fluctuation observed in biweekly history (Project Artifacts). Talent RAG currently Green, but recent reductions and leadership transitions raise continuity concerns. Limited by lack of attrition detail or exit interview data."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R-008",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "AAVA-ADO connectivity remained unestablished as of 14 May, requiring configuration changes and working sessions with the customer (Project Artifacts Section 7).",
+            "condition": "If ADO integration is not completed, automated workflows for backlog management, CI/CD triggers, and progress tracking may remain manual.",
+            "consequence": "Development overhead could increase, sprint reporting could lag, and the team may lose visibility into real-time delivery health."
+          },
+          "category": "Technology",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct working session with Premera and AAVA teams to complete ADO authentication configuration, validate CI/CD pipeline integration, and test automated workflows.",
+          "contingencyCorrectiveAction": "If ADO integration fails, maintain manual backlog management in ADO, implement daily sync scripts for progress tracking, and escalate to Platform AI team for alternative solution.",
+          "owner": {
+            "role": "Primary DE POC",
+            "name": "Ashwin Murugan"
+          },
+          "targetDate": "25-Jun-2026",
+          "status": "Open",
+          "reasoning": "Open configuration dependency from Project Artifacts (14 May). No recent update in EMS or go-green actions. Single-source signal with no corroboration. Included because ADO is the project management tool and integration failure affects delivery visibility."
+        }
+      ]
+    }
+  ]
+}
