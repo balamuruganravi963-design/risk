@@ -1,0 +1,180 @@
+{
+  "client": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS"
+      ],
+      "sourcesNotAvailable": [
+        "Project Artifacts",
+        "ALT"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "AAVA connectivity from Development instance to Production Instance remains unavailable as of the latest EMS update, with a go-green action planned for 2026-06-01 to 2026-06-12 still marked In Progress as of 2026-11-08.",
+            "condition": "The AAVA tooling may remain unable to support full code refactoring and AI-assisted development capabilities in the production environment, limiting the team's ability to leverage planned productivity gains.",
+            "consequence": "Development velocity could stay below target, technical debt may accumulate faster than planned, and the business case for AAVA adoption may not be realized, affecting both delivery timeline and cost efficiency."
+          },
+          "category": "Infrastructure",
+          "probability": "Very likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish weekly technical coordination sessions with AAVA platform team and Premera infrastructure to expedite production connectivity approval and configuration.",
+          "contingencyCorrectiveAction": "Upon AAVA production access delay exceeding two weeks beyond revised target, implement manual code refactoring workflow and escalate to Engineering Manager and Circle Head.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "30-Nov-2026",
+          "status": "In Progress",
+          "reasoning": "Open go-green item (5767) with planned completion date (2026-06-12) now five months overdue as of latest report (2026-11-08). Sustained Amber Timeline RAG and explicit EMS notation that this internal constraint limits AAVA capability. No evidence of resolution in biweekly history. Limited by absence of ALT Next Steps to confirm current mitigation status."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "AAVA deployment does not feature logging and monitoring capabilities on the client instance, with a go-green action to coordinate setup (2026-06-03 to 2026-06-12) still In Progress as of 2026-11-08. EMS notes that metrics are not available from AAVA to track actual progress gains.",
+            "condition": "The team may continue operating without visibility into AAVA performance, error patterns, or actual productivity impact, making it impossible to validate tool effectiveness or troubleshoot issues proactively.",
+            "consequence": "Silent failures could go undetected, the team may be unable to demonstrate ROI to the client or internal stakeholders, and operational support could be compromised when issues arise in production."
+          },
+          "category": "Infrastructure",
+          "probability": "Very likely",
+          "impact": "Medium",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Implement automated metric dashboards tracking AAVA unit test coverage, defect rates, and sprint completion with weekly review by Engineering Manager and Delivery Manager.",
+          "contingencyCorrectiveAction": "Should AAVA logging remain unavailable beyond December 15, deploy alternative monitoring using SonarQube and ADO analytics to track productivity metrics and escalate to AAVA team.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "15-Dec-2026",
+          "status": "In Progress",
+          "reasoning": "Open go-green item (5768) with planned completion five months overdue. EMS explicitly identifies this as an internal constraint requiring Premera support. Absence of logging/monitoring in a production tool represents a fundamental operational gap. Limited by lack of Project Artifacts (incident logs, support tickets) to assess whether issues have already materialized."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "Scope changes are emerging from UX standpoint and business angle, marked as external in nature in EMS, with Scope RAG sustained at Amber since 2026-05-14. EMS notes that all scope is to be triaged and handled based on available bandwidth, with UX and Infra Setup discussions ongoing (go-green item 5757, 2026-05-04 to 2026-06-05).",
+            "condition": "Uncontrolled scope evolution may continue as UX requirements are clarified and business needs emerge, potentially exceeding the team's capacity to absorb changes within the fixed SOW period and resource allocation.",
+            "consequence": "Critical functionality may be deferred or delivered with reduced quality, client expectations may not be fully met, and the team may face pressure to extend the timeline or increase effort beyond the SOW budget."
+          },
+          "category": "Scope Management",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish formal change control board with Premera Product Owner to assess UX scope changes weekly, documenting impact estimates on timeline and deliverables before approval.",
+          "contingencyCorrectiveAction": "When scope changes exceed 15% of sprint capacity, rebaseline delivery plan with client, prioritize critical-path functionality, and defer non-essential features to Phase 2.",
+          "owner": "Krithika Aravind (Delivery Manager)",
+          "targetDate": "22-Nov-2026",
+          "status": "In Progress",
+          "reasoning": "Scope RAG has been Amber continuously for seven months (2026-05-14 through 2026-11-08). EMS identifies scope changes as external and ongoing. Go-green item 5757 shows discussions extending beyond planned end date. Team size reduction from 12 to 8 resources reduces capacity to absorb scope changes. Limited by absence of ALT Key Risks and Project Artifacts (change request log, scope baseline) to quantify scope creep magnitude."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Citrix VDI is experiencing slowness and frequent disconnections, having an impact on delivery velocity per EMS, with a go-green action to raise a ticket with Premera (2026-06-01 to 2026-06-12) still In Progress as of 2026-11-08. Timeline RAG has been Amber since 2026-04-30.",
+            "condition": "Developer productivity may continue to be degraded by infrastructure performance issues, with work interruptions, lost context from disconnections, and extended wait times for basic operations.",
+            "consequence": "Sprint velocity could remain below plan, developer morale may decline due to persistent tooling friction, and the cumulative time loss could translate to missed delivery commitments or increased overtime costs."
+          },
+          "category": "Infrastructure",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Coordinate with Premera IT to implement VDI support coverage during offshore hours and monitor Citrix performance metrics daily to identify recurring failure patterns.",
+          "contingencyCorrectiveAction": "If VDI disconnections exceed three per day per developer, activate onshore team for critical-path tasks and escalate to Premera IT and Delivery Manager within 24 hours.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "06-Dec-2026",
+          "status": "In Progress",
+          "reasoning": "Open go-green item (5770) with planned resolution five months overdue. EMS explicitly links Citrix issues to delivery impact. Timeline RAG Amber for seven months suggests persistent execution challenges. However, Quality and Talent RAG remain Green, indicating team is managing impact so far. Limited by absence of Project Artifacts (velocity metrics, sprint burndown data) to quantify actual productivity loss."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Vendor",
+          "riskDescription": {
+            "context": "External dependency exists with Data Hub per EMS, with Timeline RAG Amber. EMS notes that the current Data Model provided by Product Owner as of June 3rd will be used for Development as a mitigation approach.",
+            "condition": "The Data Hub team may deliver schema changes, additional entities, or integration requirements after development has progressed using the June 3rd baseline model, requiring rework of data access layers, APIs, and potentially UI components.",
+            "consequence": "Late-stage refactoring could introduce defects, delay testing cycles, and require additional effort beyond the SOW budget, while also creating technical debt if workarounds are implemented instead of proper integration."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct bi-weekly alignment sessions with Data Hub team to review schema evolution and validate integration points against June 3rd baseline throughout development lifecycle.",
+          "contingencyCorrectiveAction": "Once Data Hub schema divergence is detected, isolate affected data access layers, implement adapter pattern to minimize rework, and escalate timeline impact to Product Owner.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "29-Nov-2026",
+          "status": "Open",
+          "reasoning": "EMS identifies Data Hub as an external dependency with Timeline impact. The mitigation strategy (using June 3rd baseline) is a point-in-time snapshot that may diverge from evolving Data Hub design. Five months have passed since baseline (June 3 to Nov 8), increasing likelihood of model drift. Single-source signal from EMS only. Limited by absence of ALT Escalation Triggers and Project Artifacts (integration test results, dependency tracking log) to assess whether divergence has begun."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Resources",
+          "riskDescription": {
+            "context": "Team size decreased by 33% from 12 resources (10 offshore, 2 onshore) during 2026-05-07 to 2026-10-01 period to 8 resources (7 offshore, 1 onshore) as of 2026-11-08, per EMS biweekly report history. This reduction occurred while Overall RAG remained Amber and multiple go-green items remained open.",
+            "condition": "The reduced team may lack sufficient capacity to address the four open go-green items, absorb ongoing scope changes, and maintain delivery velocity, especially if additional attrition occurs or if key personnel with domain knowledge are among those who departed.",
+            "consequence": "Sprint commitments may be missed, go-green items could remain unresolved longer, technical debt may accumulate, and the team may be unable to respond to emerging client priorities without further timeline or budget impact."
+          },
+          "category": "People",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Conduct skills assessment of current eight-member team, identify critical knowledge gaps from departed resources, and implement cross-training plan with weekly knowledge transfer sessions.",
+          "contingencyCorrectiveAction": "Should sprint velocity drop below 70% of baseline, engage backup resources from offshore VDH pool within five days and escalate to Circle Head for resource augmentation.",
+          "owner": "Krithika Aravind (Delivery Manager)",
+          "targetDate": "25-Nov-2026",
+          "status": "Open",
+          "reasoning": "Significant team reduction (4 resources, 33%) documented in EMS biweekly history between 2026-10-01 and 2026-11-08. Reduction occurred while project health remained Amber and multiple infrastructure/scope challenges were unresolved. Talent RAG is Green, suggesting no current staffing crisis, but the reduction in absolute capacity during a challenged period raises delivery risk. Limited by absence of ALT Key Progress Made and Project Artifacts (resource plan, sprint velocity trends) to assess whether reduced team is meeting commitments."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Governance",
+          "riskDescription": {
+            "context": "Overall RAG has been sustained at Amber continuously since project activation on 2026-03-26 (over 7 months) per EMS biweekly history. Four go-green items initiated between 2026-05-04 and 2026-06-03 with target end dates of 2026-06-05 and 2026-06-12 all remain In Progress as of 2026-11-08, indicating 5-month overrun on planned remediation actions.",
+            "condition": "The go-green remediation process may not be effectively driving issues to closure, suggesting either that the underlying problems are more complex than initially assessed, that dependencies are blocking progress, or that execution rigor on remediation actions is insufficient.",
+            "consequence": "Client confidence in the team's ability to resolve challenges may erode, governance escalation to senior leadership may be triggered, and the sustained Amber state could lead to contract scrutiny, reduced likelihood of follow-on work, or formal performance improvement plans."
+          },
+          "category": "Governance",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct root cause analysis of overdue go-green items with Delivery Manager and Engineering Manager, establish revised closure dates, and implement weekly governance review with Premera stakeholders.",
+          "contingencyCorrectiveAction": "If overall RAG remains Amber beyond December 20, escalate to Circle Head and Primary DE POC to initiate formal improvement plan and client executive review.",
+          "owner": "Krithika Aravind (Delivery Manager)",
+          "targetDate": "20-Dec-2026",
+          "status": "Open",
+          "reasoning": "Seven-month sustained Amber RAG with no documented improvement trajectory in EMS. All four go-green items significantly overdue (5 months past target dates) with no status change from In Progress. EMS notes client was notified and items discussed in governance calls as of 2026-06-04, but no subsequent updates. However, Cost and CSAT remain Green, suggesting client relationship has not yet deteriorated. Limited by absence of ALT Escalation Triggers and Project Artifacts (governance meeting minutes, client feedback, escalation emails) to assess client sentiment and escalation risk."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Commercial",
+          "riskDescription": {
+            "context": "Cost RAG briefly turned Amber on three occasions (2026-04-02, 2026-04-16, 2026-05-28) before returning to Green, per EMS biweekly history. The project is operating past the original end date (2026-08-31) and within 6 weeks of SOW end date (2026-09-22) as of the latest report (2026-11-08), with multiple unresolved technical and scope challenges.",
+            "condition": "If the four open go-green items and ongoing scope discussions require effort beyond the SOW end date, or if infrastructure issues continue to degrade productivity, the project may need a time extension or additional resources, potentially triggering cost overruns or margin erosion.",
+            "consequence": "The engagement could become unprofitable, requiring either client negotiation for additional budget (risking relationship strain) or absorption of overrun costs internally (impacting business unit financials and team incentives)."
+          },
+          "category": "Commercial",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Review remaining SOW budget and effort burn rate weekly with Client Manager, identify scope items at risk of overrun, and secure documented approval for timeline extension.",
+          "contingencyCorrectiveAction": "Should effort exceed SOW budget by 10%, initiate change request negotiation with Premera within 48 hours and engage Circle Head to approve internal cost absorption if needed.",
+          "owner": "Manoj GVSS (Client Manager)",
+          "targetDate": "13-Dec-2026",
+          "status": "Open",
+          "reasoning": "Cost RAG history shows three brief Amber periods, indicating prior cost pressure. Project is operating in final weeks of SOW period with unresolved challenges. Team size reduction may be a cost management response. However, Cost RAG is currently Green and has been stable since 2026-06-04, suggesting active cost control. Single-source signal from EMS. Limited by absence of ALT context and Project Artifacts (budget tracking, effort burn reports, change request financials) to assess remaining budget headroom and likelihood of overrun."
+        }
+      ]
+    }
+  ]
+}
