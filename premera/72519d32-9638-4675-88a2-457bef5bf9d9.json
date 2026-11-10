@@ -1,0 +1,180 @@
+{
+  "clientName": "",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "Project Artifacts"
+      ],
+      "sourcesNotAvailable": [
+        "ALT"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "AAVA connectivity from Development instance to Production instance remains unestablished as of 04 Jun 2026, documented as Internal issue in EMS RAG reason and confirmed across multiple governance feedback entries from 23 Apr through 04 Jun 2026.",
+            "condition": "Code refactoring and agentic workflow capabilities may remain unavailable or severely limited throughout the delivery window, preventing the team from leveraging AAVA platform benefits.",
+            "consequence": "Development velocity could decline, technical debt may accumulate, and the client's expectation to see builds only on their platform may not be met, weakening client trust and satisfaction."
+          },
+          "category": "Technology",
+          "probability": "Very likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish weekly technical touchpoints with AAVA Platform Team and Premera to prioritize connectivity resolution and document integration constraints.",
+          "contingencyCorrectiveAction": "Upon AAVA connectivity failure beyond 15 Jul 2026, switch development to Ascendion environment and escalate to Premera project board within 48 hours.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "15-Jul-2026",
+          "status": "Open",
+          "reasoning": "Persistent unresolved connectivity issue documented across seven governance cycles (23 Apr – 04 Jun 2026) in EMS and Project Artifacts with no ETA for resolution. Client expressed dissatisfaction on 23 Apr 2026. Multiple solutions tested with no success (30 Apr 2026). Target Date: 31 Aug 2026."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "Scope changes from UX standpoint and business angle are documented as External factor in EMS RAG reason (04 Jun 2026) and governance feedback (21 May, 28 May), with all scope to be triaged based on available bandwidth.",
+            "condition": "Additional scope may exceed available team capacity or timeline, requiring either scope reduction, timeline extension, or additional resources.",
+            "consequence": "Project delivery could be delayed, client expectations may not be fully met, or cost overruns may occur if additional resources are needed to absorb the changes."
+          },
+          "category": "Scope",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Conduct scope triage sessions with Premera PO bi-weekly to prioritize UX changes and align deliverables with available team bandwidth.",
+          "contingencyCorrectiveAction": "Should scope changes exceed 20% baseline by 01 Aug 2026, invoke change request process and negotiate timeline extension with client leadership.",
+          "owner": "Krithika Aravind (Delivery Manager)",
+          "targetDate": "01-Jul-2026",
+          "status": "Open",
+          "reasoning": "Active scope changes under discussion as of 04 Jun 2026 per EMS go-green plan and governance feedback. Client PO intervention required (21 May 2026). Scope Amber in EMS. Limited by missing ALT context on scope prioritization. Target Date: 31 Aug 2026."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "AAVA deployment does not feature logging and monitoring as documented in EMS RAG reason (04 Jun 2026), and coordination with Premera team and AAVA team is required per go-green plan.",
+            "condition": "Production defects or performance issues may go undetected or undiagnosed, and root cause analysis may be delayed or incomplete.",
+            "consequence": "Post-deployment stability could be compromised, client confidence in production readiness may weaken, and operational support costs may increase."
+          },
+          "category": "Quality",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement SonarQube code coverage and Playwright automation testing with weekly quality reviews to detect defects before production deployment.",
+          "contingencyCorrectiveAction": "Once production defects exceed severity threshold, deploy manual log collection scripts and escalate to AAVA team for monitoring tool setup.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "15-Jul-2026",
+          "status": "Open",
+          "reasoning": "Internal issue confirmed in EMS (04 Jun 2026) with no logging/monitoring setup on AAVA client instance. Go-green plan identifies coordination dependency with no ETA. Quality RAG is Green, but observability gap creates medium-term risk. Target Date: 31 Aug 2026."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Citrix VDI experiences slowness and frequent disconnection impacting delivery, documented in EMS go-green plan (04 Jun 2026) and identified as Infrastructure bottleneck in project categorization.",
+            "condition": "Team productivity may continue to degrade if VDI performance issues persist, and ticket resolution by Premera may take longer than the remaining timeline allows.",
+            "consequence": "Sprint velocity could decline, developer frustration may increase attrition risk, and delivery timelines may slip."
+          },
+          "category": "Infrastructure",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Raise Citrix VDI performance ticket with Premera immediately and monitor resolution progress through daily SC II helpdesk coordination.",
+          "contingencyCorrectiveAction": "Upon VDI downtime exceeding four hours, activate offshore VDI support coverage and notify Premera leadership of productivity impact within two hours.",
+          "owner": "Krithika Aravind (Delivery Manager)",
+          "targetDate": "20-Jun-2026",
+          "status": "Open",
+          "reasoning": "Ongoing VDI performance issue documented in EMS go-green plan (04 Jun 2026) with ticket to be raised. Infrastructure identified as bottleneck in project categorization. External dependency on Premera with no ETA. Target Date: 31 Aug 2026."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Governance",
+          "riskDescription": {
+            "context": "Metrics are not available from AAVA to track actual progress gains, documented as Internal issue in EMS RAG reason (04 Jun 2026), and baseline is 45 story points with effort 8 but actual progress metrics unavailable per Project Artifacts.",
+            "condition": "The team may lack visibility into true delivery velocity and AAVA effectiveness, making it difficult to detect slippage or justify platform investment.",
+            "consequence": "Management decisions may be based on incomplete data, course corrections may be delayed, and client confidence in delivery transparency may weaken."
+          },
+          "category": "Governance",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Define delivery and quality metrics in weekly status reports including unit testing progress, defect leakage, and sprint story completion.",
+          "contingencyCorrectiveAction": "When AAVA metrics remain unavailable beyond 01 Jul 2026, implement manual ADO tracking dashboard and communicate visibility gaps to client weekly.",
+          "owner": "Krithika Aravind (Delivery Manager)",
+          "targetDate": "01-Jul-2026",
+          "status": "Open",
+          "reasoning": "Confirmed metrics gap in EMS (04 Jun 2026) and Project Artifacts. Internal issue with no resolution plan documented. Affects delivery visibility and decision-making. Target Date: 31 Aug 2026."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Third-Party",
+          "riskDescription": {
+            "context": "Dependency with Data Hub is documented as External factor in EMS RAG reason (04 Jun 2026), with current Data Model provided by PO as of 6/3 being used for Development.",
+            "condition": "Data model changes or Data Hub unavailability after development has begun may require rework or integration delays.",
+            "consequence": "Development effort could be wasted, integration testing may be delayed, and delivery timeline may be impacted."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate Data Hub model stability with Premera PO bi-weekly and confirm integration testing schedule before UAT phase begins.",
+          "contingencyCorrectiveAction": "Should Data Hub model change after 15 Jul 2026, isolate affected components and negotiate two-week buffer for rework with client PO.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "15-Jul-2026",
+          "status": "Open",
+          "reasoning": "External Data Hub dependency documented in EMS (04 Jun 2026). Data Model provided as of 6/3 but no confirmation of stability or finality. Single-source indication with moderate impact if model changes. Target Date: 31 Aug 2026."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Resources",
+          "riskDescription": {
+            "context": "Team size is 11 (10 offshore + 1 onshore) per EMS resource summary (04 Jun 2026), and scope changes are to be triaged based on available bandwidth per EMS RAG reason.",
+            "condition": "If scope changes exceed current team capacity and no additional resources are added, critical features may be deprioritized or delivery quality may decline.",
+            "consequence": "Client expectations may not be met, technical debt may accumulate, or team burnout may increase attrition risk."
+          },
+          "category": "People",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Review team capacity weekly with Engineering Manager and identify backup resources from Enterprise Solutions practice for critical skill gaps.",
+          "contingencyCorrectiveAction": "When team utilization exceeds 90% for two consecutive sprints, request additional offshore resource from talent pool and notify client of bandwidth constraint.",
+          "owner": "Krithika Aravind (Delivery Manager)",
+          "targetDate": "01-Jul-2026",
+          "status": "Open",
+          "reasoning": "Scope changes under discussion (EMS, 04 Jun 2026) with fixed team size and bandwidth constraint. Talent RAG is Green but capacity risk exists if scope expands. Limited by missing ALT context on resource adequacy. Target Date: 31 Aug 2026."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Client",
+          "riskDescription": {
+            "context": "Client expressed dissatisfaction with builds on Ascendion environment and would like to see it only on their platform, documented in governance feedback (23 Apr 2026), and AAVA connectivity to client platform remains unresolved as of 04 Jun 2026.",
+            "condition": "If builds continue on Ascendion environment due to unresolved connectivity, client dissatisfaction may escalate.",
+            "consequence": "Client relationship could deteriorate, CSAT may decline from Green to Amber or Red, and contract renewal or future work may be jeopardized."
+          },
+          "category": "Client",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Communicate AAVA connectivity resolution progress to Premera weekly and align build environment expectations during governance calls.",
+          "contingencyCorrectiveAction": "If client escalates dissatisfaction beyond 15 Jul 2026, schedule executive alignment session with Premera leadership and present revised platform migration roadmap.",
+          "owner": "Krithika Aravind (Delivery Manager)",
+          "targetDate": "15-Jul-2026",
+          "status": "Open",
+          "reasoning": "Client dissatisfaction documented in governance feedback (23 Apr 2026) and AAVA connectivity issue persists through 04 Jun 2026 per EMS. CSAT is currently Green but client sentiment risk exists. Target Date: 31 Aug 2026."
+        }
+      ]
+    }
+  ]
+}
