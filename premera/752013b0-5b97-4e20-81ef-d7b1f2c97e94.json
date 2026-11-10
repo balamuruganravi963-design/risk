@@ -1,0 +1,180 @@
+{
+  "clientName": "",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "Project Artifacts"
+      ],
+      "sourcesNotAvailable": [
+        "ALT"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "AAVA connectivity from Development instance to Production instance remains blocked as of 2026-06-04, limiting the capability to use AAVA fully for code and refactoring efforts (EMS, Project Artifacts).",
+            "condition": "Critical AAVA functionality may remain unavailable through the delivery window, forcing manual development approaches or incomplete automation.",
+            "consequence": "Development velocity could decline significantly, increasing effort burn and delaying feature delivery against the 2026-08-31 project end date."
+          },
+          "category": "Technology",
+          "probability": "Very likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish weekly technical touchpoints with AAVA Platform Team and Premera to review connectivity blockers, fix timelines, and workarounds.",
+          "contingencyCorrectiveAction": "Upon connectivity failure exceeding two weeks, activate manual development workflows and escalate to AAVA Platform leadership and Premera CTO within 48 hours.",
+          "owner": "Engineering Manager - Saitej Ballav",
+          "targetDate": "20-Jun-2026",
+          "status": "Open",
+          "reasoning": "Open internal blocker confirmed across multiple governance cycles (2026-04-02 through 2026-06-04) with no ETA for resolution. AAVA Platform Team coordination with Premera still pending. Project end date: 2026-08-31."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "Multiple scope changes from UX and business perspectives emerged mid-project (first noted 2026-04-23) and remain open as of 2026-06-04, classified as external factors requiring Product Owner triage (EMS, Project Artifacts).",
+            "condition": "Uncontrolled scope expansion may exceed available team bandwidth, especially with AAVA productivity constraints already in place.",
+            "consequence": "Timeline slippage or scope de-scoping could occur, eroding client confidence and potentially triggering commercial renegotiation."
+          },
+          "category": "Scope",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Implement formal scope change assessment process with Product Owner, documenting impact on deliverables, timelines, and bandwidth before acceptance.",
+          "contingencyCorrectiveAction": "Should scope changes exceed 15% of baseline effort, escalate to Delivery Manager and Client Product Owner to de-scope lower-priority features.",
+          "owner": "Delivery Manager - Krithika Aravind",
+          "targetDate": "15-Jun-2026",
+          "status": "Open",
+          "reasoning": "External scope changes confirmed in governance feedback (2026-04-23, 2026-05-20, 2026-05-28, 2026-06-04). Client PO prioritization still pending. Compounded by AAVA delivery constraints. Project end date: 2026-08-31."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "AAVA deployment does not feature logging and monitoring as of 2026-06-04, and AAVA Team requires Premera support to identify requirements and plan implementation (EMS, Project Artifacts).",
+            "condition": "Production incidents or performance degradation may go undetected or undiagnosed after go-live, limiting operational visibility.",
+            "consequence": "Post-deployment support could be severely hampered, increasing Mean Time to Resolution (MTTR) and risking client satisfaction and operational stability."
+          },
+          "category": "Technology",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Coordinate with Premera SRE and AAVA Team to define logging and monitoring requirements, and implement on client instance by July.",
+          "contingencyCorrectiveAction": "If logging and monitoring are not operational by go-live, deploy manual incident tracking and daily health checks until automated solution is live.",
+          "owner": "Engineering Manager - Saitej Ballav",
+          "targetDate": "15-Jul-2026",
+          "status": "Open",
+          "reasoning": "Open internal gap confirmed in 2026-06-04 governance report. No logging/monitoring capability on AAVA client instance. Critical for production readiness. Project end date: 2026-08-31."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Vendor",
+          "riskDescription": {
+            "context": "Data Hub dependency is external, and the current data model baseline (provided by PO on 2026-06-03) assumes Data Hub will deliver data in a consumable format, but no confirmation or ETA exists (EMS, Project Artifacts).",
+            "condition": "Data Hub may deliver data in an incompatible format or experience delays, requiring rework of integration logic or data transformation layers.",
+            "consequence": "Integration testing could be blocked or delayed, pushing critical path activities and jeopardizing the 2026-08-31 delivery date."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate Data Hub API delivery format against current data model baseline by June 30, and document transformation requirements if gaps exist.",
+          "contingencyCorrectiveAction": "Once Data Hub delivery is delayed beyond June 30, implement mock data service for integration testing and notify client of timeline impact.",
+          "owner": "Engineering Manager - Saitej Ballav",
+          "targetDate": "30-Jun-2026",
+          "status": "Open",
+          "reasoning": "External dependency confirmed in 2026-06-04 governance report. Data model baseline established but Data Hub delivery format and timing unconfirmed. Single-source indication. Project end date: 2026-08-31."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Citrix slowness and frequent disconnection are impacting delivery as of 2026-06-04, with a ticket to be raised with Premera to address the issue (EMS, Project Artifacts).",
+            "condition": "Persistent Citrix performance degradation may continue to disrupt developer productivity and collaboration, especially for offshore resources.",
+            "consequence": "Cumulative productivity loss could erode sprint velocity, increasing the risk of timeline slippage or requiring additional effort to compensate."
+          },
+          "category": "Infrastructure",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Raise priority ticket with Premera infrastructure team to diagnose Citrix performance issues and implement Zscaler disable or Citrix upgrade by June 20.",
+          "contingencyCorrectiveAction": "Should Citrix performance remain degraded beyond one week, extend offshore coverage hours and provide alternate VDI access to maintain productivity.",
+          "owner": "Delivery Manager - Krithika Aravind",
+          "targetDate": "20-Jun-2026",
+          "status": "Open",
+          "reasoning": "Active infrastructure issue confirmed in 2026-06-04 governance report. Ticket not yet raised; resolution dependent on Premera infrastructure team. Project end date: 2026-08-31."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "Metrics are not available from AAVA to track actual progress gains using AAVA as of 2026-06-04, and AAVA Team must develop metric capture and analytics functionality for the client instance (EMS, Project Artifacts).",
+            "condition": "Without visibility into AAVA productivity gains, the team may be unable to validate automation ROI or adjust delivery plans based on actual throughput.",
+            "consequence": "Delivery forecasting accuracy could decline, leading to late detection of velocity shortfalls and reactive rather than proactive management."
+          },
+          "category": "Governance",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Define AAVA metric capture requirements with AAVA Team and integrate code coverage and velocity tracking into weekly status reports by June 25.",
+          "contingencyCorrectiveAction": "If AAVA metrics remain unavailable, implement manual sprint velocity tracking and communicate forecast adjustments to client in weekly governance calls.",
+          "owner": "Delivery Manager - Krithika Aravind",
+          "targetDate": "25-Jun-2026",
+          "status": "Open",
+          "reasoning": "Open internal gap confirmed in 2026-06-04 governance report. AAVA metrics unavailable; solution design pending. Impacts delivery transparency and planning. Project end date: 2026-08-31."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "ADO connectivity for AAVA remains unestablished as of 2026-05-06, requiring configuration changes and a working session with Premera (Project Artifacts).",
+            "condition": "Continued ADO integration failure may prevent AAVA from accessing work item data, limiting automation scope and forcing manual synchronization.",
+            "consequence": "Development workflow efficiency could be reduced, increasing manual overhead and slowing feature throughput."
+          },
+          "category": "Technology",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Schedule working session with Premera DevOps and AAVA Platform Team to complete ADO configuration and test connectivity by June 18.",
+          "contingencyCorrectiveAction": "Should ADO connectivity fail, redirect AAVA to manual work item synchronization and notify Delivery Manager of automation scope reduction.",
+          "owner": "Engineering Manager - Saitej Ballav",
+          "targetDate": "18-Jun-2026",
+          "status": "Open",
+          "reasoning": "Open internal blocker noted in 2026-05-06 governance report. Configuration changes require customer working session; no update in subsequent reports. Project end date: 2026-08-31."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Customer",
+          "riskDescription": {
+            "context": "Client expressed dissatisfaction on 2026-04-23 with builds happening on Ascendion environment rather than Premera platform, preferring builds on their platform (Project Artifacts).",
+            "condition": "If builds continue on Ascendion environment without client acceptance, trust erosion may occur and client may withhold sign-off on deliverables.",
+            "consequence": "Acceptance delays or rework requests could emerge late in the cycle, jeopardizing the 2026-08-31 delivery and client satisfaction scores."
+          },
+          "category": "Stakeholder",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Align with Premera Product Owner on build environment strategy, and transition builds to Premera platform once AAVA connectivity is resolved by June 30.",
+          "contingencyCorrectiveAction": "If Premera platform builds remain blocked, document client acceptance of Ascendion environment in governance meeting and obtain formal sign-off.",
+          "owner": "Delivery Manager - Krithika Aravind",
+          "targetDate": "30-Jun-2026",
+          "status": "Open",
+          "reasoning": "Client dissatisfaction documented in 2026-04-23 governance report. AAVA connectivity issues persist through 2026-06-04, suggesting build environment concern may remain unresolved. Project end date: 2026-08-31."
+        }
+      ]
+    }
+  ]
+}
