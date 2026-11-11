@@ -1,0 +1,319 @@
+{
+  "client": "Premera Blue Cross",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "Project Artifacts",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "Premera is planning a big-bang rollout to 2,500+ producers on October 22, 2026. End-to-end registration testing with 11 users was completed successfully on 10/22, but the application has not been validated at scale (ALT, Project Artifacts).",
+            "condition": "The mass producer onboarding may encounter technical failures, performance degradation, or data integrity issues when processing 2,500+ concurrent registrations.",
+            "consequence": "The rollout could require emergency rollback and remediation, delaying go-live, damaging client trust, and requiring unplanned effort to stabilize the platform."
+          },
+          "category": "Deployment",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct load testing with 2,500+ concurrent users before rollout to validate platform capacity and identify performance bottlenecks.",
+          "contingencyCorrectiveAction": "Upon detection of technical failures during mass onboarding, activate phased rollback to stable state, escalate to project board within 2 hours, and deploy backup registration workflow.",
+          "owner": "Subhajit Sikdar (Delivery EM)",
+          "targetDate": "18-Oct-2026",
+          "status": "Open",
+          "reasoning": "Open risk in ALT Watchlist corroborated by Project Artifacts showing successful small-scale test (11 users) but no evidence of load testing at production scale. Single-source early warning signal."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "AAVA connectivity from Ascendion Development instance to Premera Production instance remains unestablished since March 2026. EMS theme shows this is an open High/High risk, and Project Artifacts confirm AAVA logging and monitoring are not available (EMS, Project Artifacts).",
+            "condition": "Critical code generation, refactoring, and agent-driven development tasks may continue to require manual intervention, reducing delivery velocity and increasing defect risk.",
+            "consequence": "Sprint capacity could decline, technical debt may accumulate, and the team may miss opportunities to leverage AI-driven productivity gains, increasing cost and timeline pressure."
+          },
+          "category": "Technology",
+          "probability": "Very likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish weekly technical touchpoints with AAVA Platform Team and Premera IT to prioritize connectivity resolution and monitor open issues.",
+          "contingencyCorrectiveAction": "If AAVA connectivity is not resolved within 2 weeks, switch to atomic agent development with local tooling and rebaseline sprint capacity to 70% of planned velocity.",
+          "owner": "Subhajit Sikdar (Delivery EM)",
+          "targetDate": "15-Jun-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk (RISK-001, High/High) since 2026-03-25, corroborated by Project Artifacts showing AAVA connectivity and logging gaps remain unresolved. Multiple independent sources confirm active condition."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Integration",
+          "riskDescription": {
+            "context": "Data Hub API schema and 4 total premium fields have ETA of July 30, 2026. Team is proceeding with synthetic data and contract-based mappings. EMS theme shows open High/High dependency risk, and Project Artifacts confirm entity stitching complexity (EMS, Project Artifacts).",
+            "condition": "When actual Data Hub APIs are integrated, schema mismatches, entity stitching failures, or incorrect data mappings may surface during E2E testing or UAT.",
+            "consequence": "Late-cycle defects could require design rework, delay UAT sign-off, and force scope de-prioritization or timeline extension."
+          },
+          "category": "Integration",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Conduct daily handshake meetings with Data Hub team to validate API contract and data mappings before July 30 delivery.",
+          "contingencyCorrectiveAction": "Once schema mismatches are detected during integration, rebaseline impacted scope with customer, prioritize critical-path functionality, and defer non-essential features to post-UAT release.",
+          "owner": "Subhajit Sikdar (Delivery EM)",
+          "targetDate": "25-Jul-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk (RISK-002, High/High) since 2026-06-25, supported by Project Artifacts showing team proceeding with synthetic data and ETA of 2026-07-30 for critical fields. Strong evidence from multiple sources."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "Multiple mid-project scope changes have been introduced without formal change control, including UX redesigns (BoB grid to card view, dual role handling, dashboard access for all roles), infrastructure changes (Azure Front Door replacing App Gateway), and repository restructuring. EMS theme shows open High/High scope risk, and Project Artifacts document 19 scope change items (EMS, Project Artifacts).",
+            "condition": "Uncontrolled scope expansion may continue, consuming available bandwidth and pushing critical UAT or stabilization tasks into compressed timelines.",
+            "consequence": "Delivery quality could degrade, client expectations may not be met, and the team may face margin erosion or need to negotiate scope reductions late in the cycle."
+          },
+          "category": "Scope",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Implement formal change control process requiring Premera program leadership approval and impact assessment before scoping any new requirements.",
+          "contingencyCorrectiveAction": "If uncontrolled scope expansion continues beyond sprint capacity, escalate to Premera program leadership, conduct must-have/good-to-have analysis, and defer low-priority features to Phase 2.",
+          "owner": "Subhajit Sikdar (Delivery EM)",
+          "targetDate": "01-May-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk (RISK-003, High/High) since 2026-04-23, corroborated by Project Artifacts showing 19 documented scope changes and observation that changes are being absorbed without formal change control. Strong evidence from multiple sources."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Citrix server slowness and frequent timeouts have been impacting offshore team productivity since June 2026. EMS theme shows open Medium/High risk, and Project Artifacts confirm this as an ongoing challenge in the WSR dated July 22, 2026 (EMS, Project Artifacts).",
+            "condition": "Persistent Citrix performance issues may continue to reduce offshore team velocity, increase rework due to disconnections, and delay critical integration and testing tasks.",
+            "consequence": "Sprint capacity could remain below plan, offshore team morale may decline, and delivery timelines could slip further."
+          },
+          "category": "Infrastructure",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement VDI support coverage during offshore hours and restart VDI proactively at start of each work session to prevent timeouts.",
+          "contingencyCorrectiveAction": "Upon Citrix timeout exceeding 30 minutes, reprioritize tasks to non-VDI-dependent workstreams and escalate to Premera IT for urgent resolution within 4 hours.",
+          "owner": "Subhajit Sikdar (Delivery EM)",
+          "targetDate": "15-Jun-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk (RISK-004, Medium/High) since 2026-06-04, corroborated by Project Artifacts WSR showing Citrix slowness as an active challenge. Mitigation (ticket to Premera) is planned but not yet resolved."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Security",
+          "riskDescription": {
+            "context": "Auth0 DB connection configuration in ACPT environment cannot be updated by Ascendion team due to lack of access. EMS theme shows open High/Medium risk with ETA of July 10, 2026, and Project Artifacts confirm this is blocking move to ACPT (EMS, Project Artifacts).",
+            "condition": "If Premera team (Ganesh/Drew) does not update the Auth0 ACPT configuration by the target date, ACPT environment readiness may be delayed, blocking integration testing and UAT preparation.",
+            "consequence": "UAT start could be delayed, E2E testing scenarios may remain incomplete, and production deployment approval could be at risk."
+          },
+          "category": "Access",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Coordinate daily with Ganesh to secure Drew's time slot for Auth0 ACPT configuration update before July 10 deadline.",
+          "contingencyCorrectiveAction": "If Auth0 ACPT configuration is not updated by July 10, escalate to Premera program leadership, request emergency access delegation, and prepare Dev environment workaround for UAT.",
+          "owner": "Subhajit Sikdar (Delivery EM)",
+          "targetDate": "08-Jul-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk (RISK-005, High/Medium) since 2026-07-06, corroborated by Project Artifacts showing dependency on Premera team with ETA 2026-07-10. Mitigation in progress but outcome uncertain. Target Date: 2026-07-10."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "Upstream data setup for integration and E2E testing scenarios is pending from Premera Data Hub team. EMS theme shows open dependency with ETA of July 6, 2026, and Project Artifacts confirm team needs continued support for data setup (EMS, Project Artifacts).",
+            "condition": "Without complete Agent & Agency test data in Dev/ACPT environments, integration and E2E test coverage may remain incomplete, and defects may escape to UAT or production.",
+            "consequence": "UAT defect density could increase, client confidence in release quality may weaken, and post-production stabilization effort could rise."
+          },
+          "category": "Quality",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct daily two-amigo meetings with Data Hub team to align on test data requirements and validate data setup progress.",
+          "contingencyCorrectiveAction": "If Data Hub test data is not available by July 6, obtain Customer Manager approval to start E2E testing in parallel with functional testing and flag duplicate defect risk.",
+          "owner": "Subhajit Sikdar (Delivery EM)",
+          "targetDate": "04-Jul-2026",
+          "status": "Open",
+          "reasoning": "Open EMS dependency (DEP-004) with ETA 2026-07-06, corroborated by Project Artifacts observation (OBS-004) showing upstream data setup is pending. Moderate evidence from multiple sources. Target Date: 2026-07-06."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "Only one LLM is available in PortKey, preventing use of a reviewer-agent and leading to manual effort. EMS theme shows open Medium/High risk, and Project Artifacts document this as an AAVA limitation (EMS, Project Artifacts).",
+            "condition": "Agent-generated code and test cases may contain undetected errors or suboptimal logic, requiring additional human review and rework.",
+            "consequence": "Productivity gains from AAVA may fall short of expectations, increasing manual QA effort and delaying sprint completion."
+          },
+          "category": "Technology",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement human review checkpoint for all agent-generated outputs and document LLM limitations per task-type to guide prompt engineering.",
+          "contingencyCorrectiveAction": "If agent-generated output quality falls below 80% accuracy threshold, revert to manual development for critical components and escalate to AAVA Platform Team for multi-LLM support.",
+          "owner": "Subhajit Sikdar (Delivery EM)",
+          "targetDate": "01-May-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk (RISK-006, Medium/High) since 2026-03-16, corroborated by Project Artifacts showing single LLM limitation. Mitigation (prompt-engineering workarounds, human review checkpoint) is in progress."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "AAVA and Premera Tools integration (SharePoint, Azure Blob, ADO) is required before Agent Development can proceed fully. EMS theme shows open High/High risk with ETA of June 15, 2026, and Project Artifacts confirm this is limiting Agent Development (EMS, Project Artifacts).",
+            "condition": "Delays in tool integration may continue to limit Agent Development, forcing the team to proceed with atomic agents and requiring refactoring effort when integrations are achieved.",
+            "consequence": "Development velocity may remain below plan, technical debt may accumulate, and the team may incur unplanned refactoring effort."
+          },
+          "category": "Technology",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Prioritize common tool integration points with Premera (Safal) and track progress via weekly Governance calls to unblock Agent Development.",
+          "contingencyCorrectiveAction": "If tool integration is not completed by June 15, proceed with atomic agents as interim approach and allocate 15% sprint capacity for refactoring once integrations are available.",
+          "owner": "Subhajit Sikdar (Delivery EM)",
+          "targetDate": "10-Jun-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk (RISK-007, High/High) since 2026-03-09, corroborated by Project Artifacts showing dependency on Premera (Safal) with ETA 2026-06-15. Strong evidence from multiple sources. Target Date: 2026-06-15."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "Inadequate agent hardening may cause inconsistent behavior in production environments. EMS theme shows open Medium/High risk, and Project Artifacts document this as an AAVA agent development risk (EMS, Project Artifacts).",
+            "condition": "Agents deployed to production may exhibit unpredictable behavior under edge cases or high load, requiring emergency fixes or rollback.",
+            "consequence": "Production stability could be compromised, client trust may weaken, and unplanned stabilization effort could increase."
+          },
+          "category": "Quality",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Define agent hardening checklist with fallback logic and perform scenario testing for edge cases before production deployment.",
+          "contingencyCorrectiveAction": "Upon detection of inconsistent agent behavior in production, activate rollback to previous stable version within 1 hour and escalate to AAVA Platform Team for emergency fix.",
+          "owner": "Subhajit Sikdar (Delivery EM)",
+          "targetDate": "15-Jul-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk (RISK-008, Medium/High) since 2026-03-16, supported by Project Artifacts showing mitigation (hardening checklist, scenario testing, fallback logic) is planned but not yet implemented. Single-source indication with clear impact."
+        },
+        {
+          "sNo": 11,
+          "riskId": "R - 011",
+          "subjectArea": "Resources",
+          "riskDescription": {
+            "context": "Limited training datasets may delay agent maturity and expected productivity gains. EMS theme shows open Medium/Medium risk, and Project Artifacts document this as an AAVA agent learning risk (EMS, Project Artifacts).",
+            "condition": "Agents may take longer than planned to reach expected performance levels, requiring extended human oversight and reducing automation ROI.",
+            "consequence": "Sprint capacity may remain below target, and the business case for AAVA adoption may weaken."
+          },
+          "category": "People",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Plan phased agent rollout with curated datasets and track learning trends weekly to adjust training approach.",
+          "contingencyCorrectiveAction": "If agent maturity falls below 70% productivity target after 4 weeks, allocate backup manual resources and revisit AAVA adoption timeline with client.",
+          "owner": "Subhajit Sikdar (Delivery EM)",
+          "targetDate": "01-Jun-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk (RISK-009, Medium/Medium) since 2026-03-16, supported by Project Artifacts showing mitigation (phased rollout, curated datasets, learning trends tracking) is planned. Single-source indication with moderate impact."
+        },
+        {
+          "sNo": 12,
+          "riskId": "R - 012",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "Unavailability or late discovery of client-specific format may lead to agent outputs not meeting expected formats. EMS theme shows open Medium/Medium risk, and Project Artifacts document this as a client template alignment risk (EMS, Project Artifacts).",
+            "condition": "Agent-generated outputs (test cases, documentation, code) may require rework to align with Premera standards, causing delivery delays and rework effort.",
+            "consequence": "Client acceptance may be delayed, and the team may incur unplanned effort to reformat or regenerate agent outputs."
+          },
+          "category": "Quality",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Request sample templates and reporting formats from Premera during early discovery and validate agent outputs with SMEs before scale development.",
+          "contingencyCorrectiveAction": "If agent outputs do not meet Premera format standards, allocate 10% sprint capacity for reformatting and define output format standards for future agent tasks.",
+          "owner": "Subhajit Sikdar (Delivery EM)",
+          "targetDate": "15-May-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk (RISK-010, Medium/Medium) since 2026-03-17, supported by Project Artifacts showing mitigation (request sample templates, define output format standards, validate with SMEs) is planned. Single-source indication with moderate impact."
+        },
+        {
+          "sNo": 13,
+          "riskId": "R - 013",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "Agent dependency on external tools may result in execution failures impacting automation continuity. EMS theme shows open Medium/Medium risk, and Project Artifacts document this as a tool/API invocation failure risk (EMS, Project Artifacts).",
+            "condition": "External tool or API failures may cause agent workflows to fail, requiring manual intervention and reducing automation reliability.",
+            "consequence": "Automation continuity could be disrupted, increasing manual effort and delaying sprint completion."
+          },
+          "category": "Technology",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement retry logic and timeout handling for all agent tool invocations and monitor tool reliability weekly.",
+          "contingencyCorrectiveAction": "Upon external tool failure exceeding 15 minutes, switch to manual workflow for critical tasks and escalate to tool vendor for resolution within 2 hours.",
+          "owner": "Subhajit Sikdar (Delivery EM)",
+          "targetDate": "01-Jun-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk (RISK-011, Medium/Medium) since 2026-03-16, supported by Project Artifacts showing mitigation (retry logic, timeout handling, graceful degradation) is planned. Single-source indication with moderate impact."
+        },
+        {
+          "sNo": 14,
+          "riskId": "R - 014",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "Poor coordination between multiple agents may cause workflow delays or incorrect task sequencing. EMS theme shows open Medium/Medium risk, and Project Artifacts document this as an agent orchestration risk (EMS, Project Artifacts).",
+            "condition": "Multi-agent workflows may experience coordination failures, leading to incorrect task execution order or incomplete deliverables.",
+            "consequence": "Delivery quality could degrade, and the team may incur rework effort to correct orchestration issues."
+          },
+          "category": "Technology",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Define orchestration patterns for multi-agent workflows and implement workflow monitoring dashboard to track agent coordination.",
+          "contingencyCorrectiveAction": "If multi-agent coordination failures occur more than twice per sprint, revert to single-agent workflows and test multi-agent scenarios in isolated environment before re-deployment.",
+          "owner": "Subhajit Sikdar (Delivery EM)",
+          "targetDate": "15-Jun-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk (RISK-012, Medium/Medium) since 2026-03-16, supported by Project Artifacts showing mitigation (orchestration patterns, workflow monitoring, multi-agent scenario testing) is planned. Single-source indication with moderate impact."
+        },
+        {
+          "sNo": 15,
+          "riskId": "R - 015",
+          "subjectArea": "Integration",
+          "riskDescription": {
+            "context": "Team is proceeding with data mappings provided by Premera. If issues with values from these mappings arise and lead back to design (Entity stitching), it might have time impact. EMS theme shows open Medium/Medium risk with ETA of July 15, 2026, and Project Artifacts confirm this as a DH integration data mapping risk (EMS, Project Artifacts).",
+            "condition": "Data mapping discrepancies may surface during E2E testing or UAT, requiring design changes to entity stitching logic and re-integration effort.",
+            "consequence": "UAT timeline could slip, and the team may need to re-baseline integration scope or negotiate timeline extension."
+          },
+          "category": "Integration",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct continuous handshake with Data Hub team on data received over mapped APIs and immediately discuss any discrepancy identified.",
+          "contingencyCorrectiveAction": "Once data mapping discrepancies are detected during E2E testing, rebaseline impacted integration scope with customer and prioritize critical entity mappings for UAT sign-off.",
+          "owner": "Subhajit Sikdar (Delivery EM)",
+          "targetDate": "10-Jul-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk (RISK-013, Medium/Medium) since 2026-06-25, corroborated by Project Artifacts showing continuous handshake with DH team is required. Mitigation in progress. Target Date: 2026-07-15."
+        }
+      ]
+    }
+  ]
+}
