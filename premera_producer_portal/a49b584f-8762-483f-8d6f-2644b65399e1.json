@@ -1,0 +1,219 @@
+{
+  "client": "Premera Blue Cross",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "Project Artifacts",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "ALT reports that Premera executed a big-bang rollout to 2,500+ producers on 22 October 2026 with only 11 users tested end-to-end in the Edge-DataHub-Producer Portal registration flow prior to mass onboarding.",
+            "condition": "Production issues may surface at scale that were not detected during limited pre-rollout validation, requiring emergency rollback and remediation.",
+            "consequence": "Rollback would disrupt access for 2,500+ producers, damage client trust, trigger reputational risk, and require unplanned rework effort under time pressure."
+          },
+          "category": "Deployment",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Implement phased rollout with 500-user cohorts weekly, validate critical flows and high-risk areas first before each wave.",
+          "contingencyCorrectiveAction": "Upon detection of registration failure rate exceeding 5%, activate immediate rollback to pre-deployment state, engage emergency response team within 2 hours, and communicate rollback to all producers within 4 hours.",
+          "owner": "Shivanand Otari (Delivery Manager)",
+          "targetDate": "22-Oct-2026",
+          "status": "Open",
+          "reasoning": "ALT explicitly identifies rollback risk if issues are encountered during mass onboarding. Limited pre-production validation (11 users) before big-bang approach to 2,500+ users elevates likelihood. Confirmed by ALT (October 2026)."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "EMS RISK-001 (opened 9 March 2026, still In Progress as of July 2026) documents that AAVA connectivity from Development instance to Production instance remains unestablished, and ALT shows production deployment completed without resolution.",
+            "condition": "Post-deployment code refactoring or defect remediation may require significantly more manual effort than planned because agentic workflows cannot operate in the production environment.",
+            "consequence": "Hypercare and post-rollout stabilization costs could exceed budget, and response time to production defects may be slower than client expectations."
+          },
+          "category": "Technology",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Document dual-path workflows for AI-assisted and manual code refactoring, implement mandatory pairing and design reviews for critical defect fixes.",
+          "contingencyCorrectiveAction": "If defect resolution SLA is breached due to manual effort, escalate to AAVA Platform Team and client within 24 hours, allocate additional senior developer capacity, and revise hypercare timeline with client approval.",
+          "owner": "Lakshmi Deepa Brahmapuram (Engineering Manager)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk carried forward from March through July 2026 with no closure documented. ALT confirms production deployment occurred. Persistent unresolved connectivity issue supported by EMS context themes and WSR."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Data",
+          "riskDescription": {
+            "context": "EMS RISK-003 and RISK-010 document dependency on Data Hub for Book of Business APIs and total premium fields, with data mapping proceeding on baseline assumptions as of 3 June 2026. WSR shows DH Integration at 95% as of 22 July 2026.",
+            "condition": "Data discrepancies or entity stitching errors may emerge in production when real producer data flows at scale, especially for the 4 total premium fields that were not finalized until 30 July 2026.",
+            "consequence": "Producers may see incorrect Book of Business data, leading to client escalations, emergency data fixes, and potential regulatory compliance concerns if financial data is inaccurate."
+          },
+          "category": "Data",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct daily data reconciliation checks between Data Hub and Producer Portal for total premium fields during first 2 weeks post-rollout.",
+          "contingencyCorrectiveAction": "Once data discrepancy affecting more than 10% of producers is detected, freeze new registrations, deploy emergency data correction script within 8 hours, notify affected producers of data refresh timeline, and escalate to Data Hub Team and Premera leadership immediately.",
+          "owner": "Ashwin Murugan (Primary DE POC)",
+          "targetDate": "05-Nov-2026",
+          "status": "Open",
+          "reasoning": "Combination of EMS RISK-003 (High/High, open, due 30 July) and RISK-010 (Medium/Medium, open, due 15 July) with WSR noting data mapping baseline approach. ALT shows production deployment, elevating exposure. Supported by EMS and Artifacts."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "EMS RISK-005 (opened 1 June 2026) and WSR (22 July 2026) report ongoing Citrix server slowness and frequent disconnections impacting offshore team productivity, with mitigation status Planned and ticket to Premera IT not yet confirmed resolved.",
+            "condition": "If Citrix performance issues persist into the hypercare period, the offshore team may be unable to respond quickly to production incidents or perform real-time troubleshooting.",
+            "consequence": "Delayed incident response could extend production outages, frustrate producers, and strain the client relationship during the critical 4-week hypercare window."
+          },
+          "category": "Infrastructure",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish VDI support coverage during offshore hours, escalate Citrix performance ticket to Premera IT with SLA commitment before hypercare start.",
+          "contingencyCorrectiveAction": "If Citrix outage exceeds 2 hours during hypercare, activate onshore backup support team, redirect critical incident response to onshore resources, and communicate revised response SLA to client within 1 hour.",
+          "owner": "Shivanand Otari (Delivery Manager)",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk (Medium/High) with mitigation Planned (not completed). WSR confirms ongoing challenge. Hypercare phase (post-rollout) increases criticality of rapid remote access. Supported by EMS and Artifacts."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Security",
+          "riskDescription": {
+            "context": "Artifacts OBS-005 documents 86 CVEs detected in PI4 Sprint 3 (June 2026), including 4 Critical and 82 High severity vulnerabilities on the Alpine base image, with status In Progress but no closure confirmed by ALT reporting date.",
+            "condition": "Unpatched Critical or High CVEs may remain in the production environment when the portal goes live, exposing the system to exploitation.",
+            "consequence": "A security breach could compromise producer data, trigger regulatory penalties, force emergency patching and downtime, and severely damage Premera's reputation."
+          },
+          "category": "Security",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate all 4 Critical CVEs are patched before rollout, document accepted risk for remaining High CVEs with Premera InfoSec approval.",
+          "contingencyCorrectiveAction": "Upon detection of active exploit or security breach, initiate immediate incident response protocol, isolate affected systems within 30 minutes, engage Premera InfoSec and Ascendion security team, deploy emergency patch within 4 hours, and notify affected producers per regulatory requirements.",
+          "owner": "Ascender (QA Manager)",
+          "targetDate": "15-Oct-2026",
+          "status": "Open",
+          "reasoning": "86 CVEs (4 Critical, 82 High) documented in Artifacts with status In Progress. No evidence of closure in ALT. Production deployment occurred. Single-source (Artifacts) but high-severity finding."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "Artifacts OBS-004 reports backend code coverage at 57% as of PI4 Sprint 3 (June 2026), below the organizational 80% target, and WSR shows Integration Testing and Pen Test both at 0% as of 22 July 2026.",
+            "condition": "Insufficient test coverage and incomplete integration/penetration testing may allow defects or vulnerabilities to reach production undetected.",
+            "consequence": "Production defects could surface during the mass rollout or hypercare period, requiring emergency fixes, rollback, or extended stabilization effort."
+          },
+          "category": "Quality",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Prioritize testing of critical flows and high-risk areas, implement mandatory pairing and design reviews for all production defect fixes.",
+          "contingencyCorrectiveAction": "If critical defect is detected in production affecting more than 100 producers, activate emergency fix protocol, deploy hotfix within 6 hours with expedited regression testing, and communicate fix timeline to affected producers within 2 hours.",
+          "owner": "Ascender (QA Manager)",
+          "targetDate": "20-Oct-2026",
+          "status": "Open",
+          "reasoning": "Backend coverage 23 percentage points below target documented in Artifacts. Integration Testing and Pen Test at 0% per WSR. ALT shows production deployment occurred. Combined quality gaps elevate defect risk. Supported by Artifacts."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Operations",
+          "riskDescription": {
+            "context": "EMS RISK-004 (opened 3 June 2026, In Progress) documents that AAVA logging and monitoring are not available on the client instance, and no closure is confirmed in ALT.",
+            "condition": "Limited observability in production may delay detection and diagnosis of performance degradation, errors, or security events during the hypercare period.",
+            "consequence": "Slower incident response and root cause analysis could extend outages, frustrate producers, and weaken confidence in the platform's operational readiness."
+          },
+          "category": "Operations",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Deploy interim manual monitoring procedures with hourly health checks, establish enhanced alerting via Application Insights and Dynatrace during hypercare.",
+          "contingencyCorrectiveAction": "Should incident detection delay exceed 30 minutes due to monitoring gaps, escalate to AAVA Platform Team and Premera immediately, activate enhanced manual monitoring every 15 minutes, and communicate revised incident response SLA to client.",
+          "owner": "Lakshmi Deepa Brahmapuram (Engineering Manager)",
+          "targetDate": "25-Oct-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk (Medium/High, In Progress, ETA 12 June 2026) with no documented closure. ALT confirms production deployment. Observability gap in production environment is a known operational risk. Supported by EMS."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Vendor",
+          "riskDescription": {
+            "context": "EMS RISK-007 (opened 9 March 2026, High/High, Open) and context themes document that AAVA tools integration with Premera-specific systems (SharePoint, Azure Blob, ADO) remains incomplete, forcing the team to use atomic agents as an interim workaround.",
+            "condition": "Rework may be required to refactor agent-based code once full tool integration is available, and the interim atomic agent approach may not scale efficiently for production support.",
+            "consequence": "Unplanned refactoring effort could consume hypercare capacity, delay feature enhancements, and increase cost if the work extends beyond the original SOW."
+          },
+          "category": "Vendor",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Document refactoring scope and effort estimate, prioritize tool integration completion with AAVA Platform Team and Premera by end of hypercare.",
+          "contingencyCorrectiveAction": "If tool integration remains incomplete post-hypercare and refactoring is required, raise Change Request for additional effort, negotiate timeline extension with Premera, and allocate dedicated refactoring sprint with client approval.",
+          "owner": "Lakshmi Deepa Brahmapuram (Engineering Manager)",
+          "targetDate": "30-Nov-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk (High/High) with dependency DEP-007 (Open, ETA 15 June 2026) unresolved. WSR notes atomic agent workaround. ALT shows production deployment. Refactoring risk is forward-looking. Supported by EMS and Artifacts."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Customer",
+          "riskDescription": {
+            "context": "Artifacts ASM-006 and OBS-007 document that UAT stakeholders were not fully nominated and UAT test cases and upstream data setup remained pending as of 22 July 2026, with UAT completion at 0%. ALT shows production deployment occurred by 22 October 2026.",
+            "condition": "Incomplete UAT may mean that business-critical scenarios were not validated before rollout, and producers may encounter workflows that do not match their expectations or business rules.",
+            "consequence": "Producer complaints, support ticket volume spikes, and client dissatisfaction could escalate during hypercare, requiring urgent business rule corrections and re-training."
+          },
+          "category": "Customer",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct rapid business validation sessions with Premera PO during first week of hypercare, prioritize critical-path workflow validation with producer feedback.",
+          "contingencyCorrectiveAction": "Once support ticket volume exceeds 50 tickets per day due to workflow mismatches, activate emergency business rule review with Premera PO, deploy corrective configuration changes within 48 hours, and communicate workflow adjustments to all producers via email and portal notification.",
+          "owner": "Shivanand Otari (Delivery Manager)",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "Artifacts document UAT at 0% and pending UAT test cases/data setup (ETA 14 August 2026). ALT confirms production deployment. Gap between UAT readiness and deployment elevates business validation risk. Supported by Artifacts and ALT."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "EMS RISK-002 (opened 4 May 2026, High/High, In Progress) and Artifacts OBS-002 document 19 scope change items tracked as of July 2026, with multiple items still pending decision, and EMS context themes note that scope changes are to be triaged based on available bandwidth.",
+            "condition": "Additional scope changes may emerge during hypercare or post-rollout stabilization, especially if producer feedback identifies gaps in functionality or usability.",
+            "consequence": "Unplanned scope additions could consume hypercare capacity, delay closure of the engagement, and trigger commercial disputes if the work exceeds the $650,000 NTE contract."
+          },
+          "category": "Scope",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish formal Change Request procedure for all new scope items during hypercare, perform impact assessment with client approval before implementation.",
+          "contingencyCorrectiveAction": "If scope changes exceed 10% of hypercare capacity or threaten contract NTE limit, escalate to Premera program leadership immediately, rebaseline scope and timeline with formal CR, and negotiate contract amendment or phased delivery for deferred items.",
+          "owner": "Shivanand Otari (Delivery Manager)",
+          "targetDate": "22-Sep-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk (High/High, In Progress) with 19 scope change items tracked in Artifacts. ALT shows production deployment. Post-rollout feedback loop may trigger additional changes. Supported by EMS and Artifacts."
+        }
+      ]
+    }
+  ]
+}
