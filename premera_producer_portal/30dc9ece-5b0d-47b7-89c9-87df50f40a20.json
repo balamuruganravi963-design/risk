@@ -1,0 +1,219 @@
+{
+  "client": "Premera Blue Cross",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "Project Artifacts",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "Production deployment is complete and 11-user pilot registration succeeded on 10/22. Premera plans a big-bang rollout to 2,500+ producers on October 22.",
+            "condition": "A defect or integration failure may surface during mass onboarding that was not detected in the 11-user pilot.",
+            "consequence": "The rollout could require emergency rollback, delaying go-live, eroding client confidence, and triggering penalty clauses or milestone payment disputes."
+          },
+          "category": "Deployment",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct staged rollout starting with 50-100 producers, monitor for 48 hours, then scale incrementally to reduce blast radius.",
+          "contingencyCorrectiveAction": "Upon detection of critical defect during mass onboarding, activate emergency rollback to previous stable state within 2 hours and escalate to project board.",
+          "owner": "Subhajit Sikdar (Delivery Manager)",
+          "targetDate": "20-Oct-2026",
+          "status": "Open",
+          "reasoning": "Big-bang approach with limited pilot testing (11 users vs. 2,500+) raises the probability of undetected edge cases. Confirmed in ALT (Watchlist risk) and EMS (RISK-011 Open/High/Medium). Single-phase rollout without staged release increases blast radius."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Integration",
+          "riskDescription": {
+            "context": "Data Hub total premium fields (4 new fields) have ETA 30-Jul and changes can only be completed by 5-Aug. Team is proceeding with current data mappings, and possible value discrepancies are still under discussion.",
+            "condition": "Late delivery or schema changes in the DH premium fields may require backend refactoring after integration testing has started.",
+            "consequence": "Rework could delay UAT entry, compress testing cycles, and increase the risk of production defects or cost overruns."
+          },
+          "category": "Third-Party",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish daily handshake with Data Hub team to validate field mappings and document discrepancies by 25-Jul to allow buffer for remediation.",
+          "contingencyCorrectiveAction": "If DH fields are not available by 30-Jul, deploy feature toggle to disable total premium calculation and defer to Phase 2 post-UAT.",
+          "owner": "Subhajit Sikdar (Delivery Manager)",
+          "targetDate": "25-Jul-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk (RISK-002, High/High, Schedule/Technical) with a hard ETA (30-Jul) and narrow remediation window (5-Aug). WSR confirms dependency is active and unresolved. Data mapping uncertainties compound the risk."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Auth0 DB connection configuration must be updated by Premera IT (Drew/Ganesh) for ACPT promotion. Ascendion lacks tenant access. ETA is 10-Jul, but this is a blocker for ACPT environment progression.",
+            "condition": "If Premera IT delays the configuration update, ACPT deployment and integration testing may stall.",
+            "consequence": "Testing timelines could slip, compressing UAT and increasing the likelihood of defects escaping to production."
+          },
+          "category": "Infrastructure",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Coordinate with Ganesh by 5-Jul to schedule Drew's availability and confirm configuration update completion by 10-Jul with daily status checks.",
+          "contingencyCorrectiveAction": "If configuration update is delayed beyond 10-Jul, escalate to Premera Program Manager and deploy to Dev environment for parallel testing to maintain schedule.",
+          "owner": "Subhajit Sikdar (Delivery Manager)",
+          "targetDate": "05-Jul-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk (RISK-003, High/Medium, Schedule/Infrastructure) with external dependency on Premera IT. WSR confirms this is a current blocker. Mitigation is in progress but not yet closed."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "AAVA connectivity from Dev instance to Premera Prod instance remains unresolved across multiple sprints. Manual workarounds are required, limiting agentic workflow capabilities.",
+            "condition": "Continued lack of AAVA Prod connectivity may prevent the team from leveraging agentic workflows for code refactoring and testing automation.",
+            "consequence": "Development velocity could degrade, technical debt could accumulate, and manual effort could increase cost and schedule risk."
+          },
+          "category": "Technology",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Prioritize tool integration with AAVA Platform Team and Premera IT by 15-Jun, and proceed with atomic agents as interim approach to maintain velocity.",
+          "contingencyCorrectiveAction": "Once AAVA connectivity delay exceeds 30 days, deploy external code generation tool with temporary license and upskill team to maintain productivity.",
+          "owner": "Lakshmi Deepa Brahmapuram (Engineering Manager)",
+          "targetDate": "15-Jun-2026",
+          "status": "Open",
+          "reasoning": "Persistent open risk (EMS RISK-001, raised 16-Mar, still open as of 22-Jul). Multiple governance reports (CES 23-Apr, 21-May, 4-Jun) confirm this is a recurring blocker. Mitigation is in progress but unresolved."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "86 CVEs detected (4 Critical, 82 High) on the alpine base image. Code coverage is 57% on backend. 190 code smells include 2 Critical and 80 Major issues.",
+            "condition": "Unresolved Critical CVEs and low backend code coverage may allow security vulnerabilities or defects to reach production.",
+            "consequence": "A security incident or production defect could trigger client escalation, delay go-live, or require emergency patching post-deployment."
+          },
+          "category": "Quality",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Remediate all 4 Critical CVEs by 15-Jul and increase backend code coverage to 70% by 25-Jul through dedicated sprint focus.",
+          "contingencyCorrectiveAction": "If Critical CVEs remain unresolved by 20-Jul, switch to alternate base image and revalidate all container deployments before UAT entry.",
+          "owner": "Lakshmi Deepa Brahmapuram (Engineering Manager)",
+          "targetDate": "15-Jul-2026",
+          "status": "Open",
+          "reasoning": "Confirmed in Artifacts (Sprint Demo metrics). 4 Critical CVEs and 2 Critical code smells are material. Backend coverage at 57% is below enterprise thresholds (typically 70-80%). Penetration testing is pending (WSR)."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "19 scope change items are tracked in the WSR Scope Change Tracker. Multiple changes (CCS GraphQL API ownership, IaC pipeline ownership, Auth0 config ownership, dual-role requirements) were introduced mid-project.",
+            "condition": "Additional scope changes or requirement clarifications during UAT may exceed available bandwidth and trigger formal change control.",
+            "consequence": "Timeline or budget overruns could occur, or the client may contest additional charges, straining the commercial relationship."
+          },
+          "category": "Scope",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement formal scope change approval process requiring Premera Program Manager sign-off before any new requirement is added to backlog.",
+          "contingencyCorrectiveAction": "Should scope changes exceed 10% of baseline effort during UAT, invoke change control process and negotiate timeline extension or scope reduction with client.",
+          "owner": "Subhajit Sikdar (Delivery Manager)",
+          "targetDate": "01-Jul-2026",
+          "status": "Open",
+          "reasoning": "EMS Scope RAG is Amber. WSR confirms 19 scope changes, several with Medium effort. SOW Section 14 allows change control invocation. Decision Log #32 (25-Jun) confirms new requirements must be triaged for timeline impact."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Resources",
+          "riskDescription": {
+            "context": "Citrix server slowness and frequent disconnections are impacting offshore team productivity. This is an active challenge confirmed in WSR 22-Jul.",
+            "condition": "Persistent VPN and Citrix issues may continue to degrade offshore team velocity during the critical UAT and stabilization phases.",
+            "consequence": "Sprint capacity could decline, delaying UAT entry or hypercare readiness, and increasing the risk of production defects due to compressed testing."
+          },
+          "category": "Infrastructure",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Raise priority ticket with Premera IT by 25-Jun to address Citrix slowness and implement alternate VPN solution for offshore team by 10-Jul.",
+          "contingencyCorrectiveAction": "If Citrix issues persist beyond 15-Jul, reallocate critical development tasks to onshore team and extend offshore working hours to compensate for lost productivity.",
+          "owner": "Subhajit Sikdar (Delivery Manager)",
+          "targetDate": "25-Jun-2026",
+          "status": "Open",
+          "reasoning": "Confirmed in EMS (OBS-004 Open) and WSR (22-Jul Challenges). Offshore team represents 10 of 12 resources (83%). Persistent infrastructure issues across multiple sprints indicate systemic problem."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Testing",
+          "riskDescription": {
+            "context": "Integration testing is 0% complete as of 22-Jul. UAT test case availability and upstream data setup for E2E scenarios are pending Premera business support.",
+            "condition": "Late availability of UAT test cases or integration test data may compress the testing window and reduce defect detection coverage.",
+            "consequence": "Critical defects could escape to production, triggering rollback, client escalation, or post-deployment stabilization costs."
+          },
+          "category": "Testing",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct daily coordination calls with Premera business team to prioritize UAT test case delivery and upstream data setup by 1-Aug.",
+          "contingencyCorrectiveAction": "If UAT test cases are not available by 5-Aug, execute integration testing using synthetic data and defer full E2E validation to hypercare phase.",
+          "owner": "Subhajit Sikdar (Delivery Manager)",
+          "targetDate": "01-Aug-2026",
+          "status": "Open",
+          "reasoning": "WSR confirms Integration Testing is 0% and UAT is 0% as of 22-Jul. EMS DEP-013 (UAT Support) is Open with no ETA. Project end date is 31-Aug, leaving limited time for full test cycles."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "Only one LLM is available in PortKey. This prevents use of a reviewer-agent and may cause task-specific underperformance, requiring additional manual review.",
+            "condition": "LLM limitations may require additional manual review and rework of agent-generated code or test cases.",
+            "consequence": "Development and testing velocity could degrade, increasing manual effort, cost, and schedule risk."
+          },
+          "category": "Technology",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Document LLM limitations by task type and implement human review checkpoints for all agent-generated code before integration by 30-Jun.",
+          "contingencyCorrectiveAction": "When LLM output quality falls below 70% accuracy threshold, switch to manual code generation and adjust sprint estimates to reflect increased effort.",
+          "owner": "Lakshmi Deepa Brahmapuram (Engineering Manager)",
+          "targetDate": "30-Jun-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk (RISK-004, raised 16-Mar, Medium/High). WSR Open Items confirm this is an active constraint. AAVA productivity metrics (Sprint Demo 18-Jun) show partial adoption (42% dev tasks, 35% code AI-generated), indicating limited agentic leverage."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Vendor",
+          "riskDescription": {
+            "context": "Access to Premera-specific tools (SharePoint, Azure Blob, ADO) for AAVA integration is Open with ETA 15-Jun. This dependency is unresolved.",
+            "condition": "Continued lack of tool access may prevent full AAVA workflow integration and limit agent-based automation.",
+            "consequence": "Development and testing efficiency could remain suboptimal, increasing manual effort and delaying delivery of agentic productivity gains."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate tool access request to Premera IT (Safal) by 10-Jun and confirm access provisioning by 15-Jun with daily status tracking.",
+          "contingencyCorrectiveAction": "If tool access is not granted by 20-Jun, deploy external alternative tool with temporary license and upskill team to maintain AAVA workflow continuity.",
+          "owner": "Lakshmi Deepa Brahmapuram (Engineering Manager)",
+          "targetDate": "10-Jun-2026",
+          "status": "Open",
+          "reasoning": "Open EMS dependency (DEP-006, ETA 15-Jun). WSR Dep #20 confirms this is unresolved. AAVA connectivity issues (RISK-001) and tool integration delays (RISK-005) are related and compound the risk."
+        }
+      ]
+    }
+  ]
+}
