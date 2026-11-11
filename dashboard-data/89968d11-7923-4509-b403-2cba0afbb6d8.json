@@ -1,0 +1,219 @@
+{
+  "client": "Premera Blue Cross",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "Project Artifacts",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "The Producer Portal application and supporting infrastructure are fully deployed to Production as of 23-Oct-2026. End-to-end Edge\u2013DataHub\u2013Producer Portal (OKTA) registration process was validated with only 11 users on 10/22. Premera is planning to send registration emails to 2,500+ producers on October 22 using a big-bang rollout approach (ALT Deck 23-Oct-2026).",
+            "condition": "If an issue is encountered during the mass producer onboarding rollout to 2,500+ producers, the rollout may need to be rolled back and remediated, causing operational disruption.",
+            "consequence": "Rollback would impact 2,500+ producers, damage client trust, delay revenue realization, and require significant rework effort to remediate and re-deploy."
+          },
+          "category": "Delivery",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement phased producer onboarding with cohorts of 250 users per wave, monitoring registration success rate and system performance before each subsequent wave.",
+          "contingencyCorrectiveAction": "Upon registration failure rate exceeding 10% or system performance degradation, halt rollout immediately, activate incident response team, and switch to manual registration process within 4 hours.",
+          "owner": "Subhajit Sikdar (Delivery Manager)",
+          "targetDate": "22-Oct-2026",
+          "status": "In Progress",
+          "reasoning": "Production deployment is complete and technically validated with 11 users successfully (ALT Deck 23-Oct-2026). However, the big-bang approach to 2,500+ producers without phased rollout introduces risk. Mitigation is in place through end-to-end validation, but scale-related issues may only surface during mass onboarding. Supported by ALT Deck and WSR."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Integration",
+          "riskDescription": {
+            "context": "Data Hub integration dependency has been a recurring theme throughout the project. As of 22-Jul-2026, 4 additional total premium fields from Data Hub were expected by 30th July, with changes only possible by 5th August (WSR Risk Register). The current Data Model provided by PO as of 6/3 is used for Development; expected that Data Hub provides data in a format consumable by the current Data Model (EMS Context).",
+            "condition": "If Data Hub provides data in a format not consumable by the current Data Model, or if the 4 total premium fields are not delivered as expected, integration issues may surface during production operations.",
+            "consequence": "Late discovery of data format mismatches or missing fields could require emergency fixes, impact producer experience, and delay full feature availability."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish daily data validation checks comparing Data Hub production output against expected data model schema, with automated alerts for format deviations or missing fields.",
+          "contingencyCorrectiveAction": "Once data format mismatch is detected, activate backup data transformation layer to normalize Data Hub output, and escalate to Data Hub team for schema alignment within 48 hours.",
+          "owner": "Subhajit Sikdar (Delivery Manager)",
+          "targetDate": "30-Jul-2026",
+          "status": "Open",
+          "reasoning": "Data Hub BoB API was closed on 6/30 (WSR Dependencies), but the 4 total premium fields dependency was still open as of 22-Jul with ETA 30-Jul. Decision D019 and D031 document the approach to proceed with synthetic data and current mappings, with refactor PBI planned once actual APIs are ready. Risk remains that production data may not match development assumptions. Supported by WSR and EMS."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "AAVA connectivity from Development instance to Production Instance has not been established since project inception, limiting the team's capability to use AAVA fully for code generation and refactoring effort (EMS Context, OBS-001). AAVA deployment does not feature logging and monitoring on the client instance; metrics are not available from AAVA to track actual progress gains (EMS Context, OBS-004).",
+            "condition": "Without AAVA connectivity to Production and without logging/monitoring, the team may be unable to leverage AAVA for production support, troubleshooting, or future enhancements.",
+            "consequence": "Reduced productivity for post-deployment maintenance and enhancements, increased manual effort, and inability to measure AI acceleration ROI in production."
+          },
+          "category": "Technology",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Coordinate with Premera IT and AAVA platform team to establish production connectivity and implement monitoring solution with alerting by end of hypercare period.",
+          "contingencyCorrectiveAction": "If AAVA production connectivity is not established within 30 days, implement open-source AI coding agents as backup, and mandate pairing and design reviews for critical code paths.",
+          "owner": "Subhajit Sikdar (Delivery Manager)",
+          "targetDate": "30-Nov-2026",
+          "status": "Open",
+          "reasoning": "AAVA connectivity issue has been persistent since project inception and remains unresolved (EMS OBS-001). AAVA logging and monitoring are not available on the client instance (EMS OBS-004). While the portal is deployed and functional, the lack of AAVA production connectivity limits future support and enhancement velocity. Supported by EMS and WSR."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "Multiple scope changes from UX standpoint and business angle have been introduced mid-sprint, causing rework and impacting sprint velocity. 19 scope change tracker items were logged as of 22-Jul-2026 (WSR Scope Change Tracker). Decision D037 (7/16/2026) on dual role entitlement logic is still Pending (WSR Decision Log).",
+            "condition": "If additional scope changes or pending design decisions (such as dual role entitlement logic) are introduced post-production deployment, they may require rework and emergency fixes in production.",
+            "consequence": "Unplanned rework in production could destabilize the application, impact producer experience, and increase cost."
+          },
+          "category": "Requirements",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish formal scope change control process requiring customer approval and impact assessment for all post-production changes, with documented estimates on timeline and cost impact.",
+          "contingencyCorrectiveAction": "Should emergency scope change be required post-production, activate change advisory board for expedited review, and deploy fix via hotfix process with rollback plan within 72 hours.",
+          "owner": "Subhajit Sikdar (Delivery Manager)",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "19 scope change items were logged (WSR Scope Change Tracker), and Decision D037 on dual role entitlement logic remains Pending as of 7/16 (WSR Decision Log). While production deployment is complete, unresolved design decisions and ongoing scope changes introduce risk of post-deployment rework. Supported by WSR and EMS."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Citrix server slowness and frequent timeouts have been impacting offshore team efforts throughout the project (EMS Context, OBS-003). A ticket needs to be raised with Premera to address the issue (WSR Challenges).",
+            "condition": "If Citrix connectivity issues persist post-deployment, the offshore team may be unable to respond quickly to production incidents or support requests.",
+            "consequence": "Delayed incident response, reduced support effectiveness, and potential SLA breaches during hypercare and ongoing support."
+          },
+          "category": "Infrastructure",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Raise priority ticket with Premera IT to resolve Citrix connectivity issues, and implement VDI support coverage during offshore hours to ensure continuous access.",
+          "contingencyCorrectiveAction": "When Citrix connectivity is lost for more than 30 minutes, activate onshore backup support team to handle critical incidents until offshore access is restored.",
+          "owner": "Subhajit Sikdar (Delivery Manager)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "Citrix slowness has been a recurring challenge (EMS OBS-003, WSR Challenges). While the portal is deployed, the offshore team's ability to support production operations may be impacted by ongoing connectivity issues. Ticket to be raised with Premera (WSR Go-Green Plan). Supported by EMS and WSR."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "As of PI4 Sprint 3 (18-Jun-2026), 86 CVEs were detected (4 Critical, 82 High) - all on the alpine base image (WSR Sprint Demo). Code quality scan showed 190 code smells (2 Critical, 80 Major, 104 Minor, 4 Info) (WSR Sprint Demo). Test failure rate was 15% with 11 bugs, 1 spilled to next sprint (WSR Sprint Demo).",
+            "condition": "If unresolved CVEs or code quality issues remain in the production deployment, they may surface as security vulnerabilities or defects during mass producer onboarding.",
+            "consequence": "Security audit findings could delay client sign-off, expose the client to compliance penalties, and require emergency patching."
+          },
+          "category": "Compliance",
+          "probability": "Unlikely",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct immediate security audit of production deployment to validate all Critical and High CVEs are remediated, and implement automated vulnerability scanning with weekly reporting.",
+          "contingencyCorrectiveAction": "Upon discovery of unresolved Critical CVE in production, activate emergency patching process, deploy fix within 24 hours, and notify Premera security team immediately.",
+          "owner": "Subhajit Sikdar (Delivery Manager)",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "CVEs and code quality issues were identified as of PI4 Sprint 3 (WSR Sprint Demo 18-Jun). While IT validation and PO/business validation were completed successfully as of 23-Oct (ALT Deck), the presence of Critical CVEs on the base image introduces residual risk. No explicit confirmation that all CVEs were remediated before production deployment. Supported by WSR."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Commercial",
+          "riskDescription": {
+            "context": "The project is a Fixed Bid engagement for $650,000 (SOW Section 13). Multiple scope changes have been introduced (19 scope change tracker items as of 22-Jul-2026, WSR Scope Change Tracker). No formal Change Requests (CRs) are documented in the artifacts reviewed, and scope changes are managed through decision log and scope change tracker (Project Artifacts Report).",
+            "condition": "If the cumulative effort for scope changes exceeds the Fixed Bid budget, margin may erode or the client may contest additional charges.",
+            "consequence": "Margin erosion, potential commercial dispute, and strained client relationship."
+          },
+          "category": "Commercial",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct commercial review of all 19 scope changes to quantify effort impact, and initiate formal change request process for any changes exceeding 5% budget threshold.",
+          "contingencyCorrectiveAction": "If margin erosion exceeds 10% of fixed bid value, escalate to Circle Head and Client Partner to negotiate contract amendment or defer non-critical scope to Phase 2.",
+          "owner": "Subhajit Sikdar (Delivery Manager)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "19 scope change items were logged (WSR Scope Change Tracker), but no formal CRs are documented (Project Artifacts Report). The Fixed Bid model ($650,000, SOW Section 13) combined with multiple scope changes introduces commercial risk. Cost RAG is Green as of 22-Oct (EMS), but cumulative scope changes may impact margin. Supported by WSR, SOW, and EMS."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Resources",
+          "riskDescription": {
+            "context": "The project team consists of 7 Offshore and 1 Onshore resources (8 total) as of 22-Jul-2026 (WSR). Tech Stack for QE Automation was moved from Selenium to Playwright with TypeScript, and Selenium resource Kishore transitioned to a new resource and rolled off effective 5/1/2026 (WSR Decision Log D001). No dedicated DevOps resource is planned; identified David from AI Platform Build Claims POD for on-need basis support (WSR Decision Log D002).",
+            "condition": "If key resources transition off during hypercare or ongoing support, critical domain knowledge may be lost before replacements ramp up.",
+            "consequence": "Reduced support capacity, delayed incident resolution, and potential SLA breaches during hypercare."
+          },
+          "category": "People",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Develop comprehensive transition plan with structured knowledge handovers, cross-skill team members on critical components, and document all key processes and system architecture before any resource transitions.",
+          "contingencyCorrectiveAction": "Upon unplanned resource departure, immediately engage backup resource from offshore pool, and extend overlap period to 2 weeks for knowledge transfer with daily handover sessions.",
+          "owner": "Subhajit Sikdar (Delivery Manager)",
+          "targetDate": "30-Nov-2026",
+          "status": "Open",
+          "reasoning": "Kishore rolled off effective 5/1 (WSR Decision Log D001), and no dedicated DevOps resource is planned (WSR Decision Log D002). While Talent RAG is Green as of 22-Oct (EMS), the lean team size (8 total) and reliance on on-need DevOps support introduce risk during hypercare. Supported by WSR and EMS."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Testing",
+          "riskDescription": {
+            "context": "UAT was planned for PI6 (Aug 2026) with UAT Signoff on 8/14/2026 (WSR Timeline). As of 22-Jul-2026, UAT test cases and upstream data setup for integration and E2E scenarios were still needed, with daily calls enabled but continued support required (WSR Support Required). Client support was requested for UAT test cases and upstream data setup (WSR Client Review 22-Jul).",
+            "condition": "If UAT test cases were not comprehensive or if upstream data setup was incomplete, defects may surface during mass producer onboarding in production.",
+            "consequence": "Late discovery of defects could require emergency fixes, impact producer experience, and delay full feature availability."
+          },
+          "category": "Quality",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct post-production validation testing with comprehensive test scenarios covering all producer personas and LOBs, and establish production monitoring dashboards to detect defects early.",
+          "contingencyCorrectiveAction": "When production defect is detected impacting producer onboarding, activate hotfix process, deploy fix within 48 hours, and implement manual workaround as temporary coverage until fix is deployed.",
+          "owner": "Subhajit Sikdar (Delivery Manager)",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "UAT test cases and upstream data setup were still in progress as of 22-Jul (WSR Support Required). While IT validation and PO/business validation were completed successfully as of 23-Oct (ALT Deck), the compressed timeline between UAT (planned 8/14) and production deployment (23-Oct) introduces risk of incomplete test coverage. Supported by WSR and ALT."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Governance",
+          "riskDescription": {
+            "context": "The project is on the ALT Watchlist as of 23-Oct-2026 (ALT Deck). Overall RAG is Amber with Scope=Amber, Timeline=Amber (EMS Context 22-Oct). Multiple ongoing issues persist including AAVA connectivity, scope changes, and DH dependency (EMS Context).",
+            "condition": "If governance oversight is reduced post-deployment, unresolved issues (AAVA connectivity, scope changes, DH dependency) may escalate and impact ongoing operations.",
+            "consequence": "Escalation of unresolved issues could lead to operational disruptions, client dissatisfaction, and reputational risk."
+          },
+          "category": "Governance",
+          "probability": "Unlikely",
+          "impact": "Medium",
+          "rag": "Green",
+          "mitigationPreventiveAction": "Maintain weekly governance calls with Premera stakeholders throughout hypercare period to monitor open issues, and establish clear escalation paths for unresolved dependencies.",
+          "contingencyCorrectiveAction": "If any unresolved issue escalates to client executive level, activate Circle Head and Client Partner for immediate resolution, and provide daily status updates until issue is closed.",
+          "owner": "Subhajit Sikdar (Delivery Manager)",
+          "targetDate": "30-Nov-2026",
+          "status": "Open",
+          "reasoning": "Project is on ALT Watchlist (ALT Deck 23-Oct), indicating executive-level monitoring is in place. Overall RAG is Amber (EMS 22-Oct), but CSAT is Green, indicating client satisfaction is maintained. Governance processes are established (SOW Section 15), and daily collaboration calls are enabled (WSR Client Review 22-Jul). Risk is mitigated by active governance. Supported by ALT, EMS, and WSR."
+        }
+      ]
+    }
+  ]
+}
