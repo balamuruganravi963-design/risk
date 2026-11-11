@@ -1,0 +1,220 @@
+{
+  "client": "Premera Blue Cross",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "Project Artifacts"
+      ],
+      "sourcesNotAvailable": [
+        "ALT"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "AAVA connectivity between Ascendion Development instance and Premera Production instance has not been established since project inception (25 Mar 2026)",
+            "condition": "Without production instance connectivity, AAVA agents remain unable to access real-time Premera data and systems, forcing development to continue on isolated Ascendion environments, which the client has explicitly rejected (CES 23 Apr 2026).",
+            "consequence": "Delivery timelines could slip further, client confidence may erode due to continued work on non-approved environments, and the core value proposition of AAVA-accelerated development may not materialize, risking milestone payments and contract performance."
+          },
+          "category": "Technical Infrastructure",
+          "probability": "Very likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish weekly technical meetings with AAVA platform team to coordinate access details, prioritize critical API stabilization, and track fix timelines.",
+          "contingencyCorrectiveAction": "Upon connectivity failure exceeding four weeks, activate backup development on isolated Ascendion environment with daily client sync and escalate to SVP within 48 hours.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "15-Jun-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk RISK-001 (High/High/High) corroborated by OBS-001 and ten consecutive biweekly CES reports (26 Mar - 04 Jun 2026) documenting persistent connectivity failure. Client dissatisfaction recorded 23 Apr 2026. Mitigation in progress but no ETA. Target Date: 31 Aug 2026."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "Multiple scope changes from UX and business perspectives have been introduced mid-project without formal change control (EMS OBS-002, CES reports 23 Apr - 04 Jun 2026). EMS Scope RAG is Amber. SOW Section 5 states material scope changes may invoke Change Management, but EMS shows changes being triaged based on available bandwidth rather than formal process.",
+            "condition": "Uncontrolled scope expansion may continue as design and development progress, consuming bandwidth allocated to baseline features and compressing testing and stabilization phases.",
+            "consequence": "Timeline and cost overruns could occur, milestone acceptance may be delayed, and quality may degrade if testing is compressed. Client relationship could suffer if expectations diverge from deliverables."
+          },
+          "category": "Scope Management",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Implement formal change control process with impact assessment on all scope additions before acceptance, securing SOW or CR approval before extending work.",
+          "contingencyCorrectiveAction": "When unplanned scope exceeds 15% of sprint capacity, invoke Change Management per SOW Section 14 and negotiate timeline extension with client within one sprint.",
+          "owner": "Krithika Aravind (Delivery Manager)",
+          "targetDate": "30-May-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk RISK-002 (High/High/High) supported by OBS-002 and four consecutive CES reports (23 Apr - 04 Jun 2026). Scope Amber in EMS. SOW change control provisions not yet invoked despite material changes. Target Date: 31 Aug 2026."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Dependency",
+          "riskDescription": {
+            "context": "Data Hub dependency is unresolved (EMS RISK-003, open since 03 Jun 2026). Current Data Model provided by Product Owner as of 06 Jun 2026 is being used as baseline, but Data Hub must provide data in consumable format. EMS dependency DEP-011 is marked At Risk. CES report 04 Jun 2026 flags this as Amber driver.",
+            "condition": "Data Hub may deliver APIs in a format incompatible with the current baseline Data Model, or delivery may be delayed beyond development phase needs.",
+            "consequence": "Significant rework could be required to refactor data integration layer after development is complete, delaying UAT and Go-Live. New PBI creation and refactoring effort may consume Hypercare budget or require change order."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Deliver high-priority Data Hub APIs first, establish detailed RACI matrix between teams, and align release calendars before Sprint 3 completion.",
+          "contingencyCorrectiveAction": "Once Data Hub API delivery exceeds two-week delay, rebaseline impacted scope with client, create refactoring PBI, and defer affected LOB features to Phase 2.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "20-Jun-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk RISK-003 (High/Medium/High) and At Risk dependency DEP-011 documented in EMS and CES 04 Jun 2026. Mitigation plan is to baseline current model and create refactoring PBI, but no ETA for Data Hub API delivery. Single external dependency. Target Date: 31 Aug 2026."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Citrix VDI slowness and frequent disconnections are impacting offshore team productivity (EMS OBS-003, RISK-005 open since 04 Jun 2026). Assumption ASM-012 (network connectivity and Citrix provision) is marked At Risk. No resolution ticket has been raised yet with Premera IT (EMS OBS-003).",
+            "condition": "Citrix performance issues may persist or worsen as team ramps up development and testing activities, reducing effective offshore capacity.",
+            "consequence": "Sprint velocity could decline, offshore team morale may suffer, and delivery timelines may slip. If offshore capacity drops significantly, onshore resources may need to absorb work at higher cost, eroding margin."
+          },
+          "category": "Infrastructure",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Raise ticket with Premera IT immediately, provide VDI support coverage during offshore hours, and monitor sprint velocity weekly to quantify impact.",
+          "contingencyCorrectiveAction": "Should VDI downtime exceed 20% of offshore hours for two consecutive sprints, reallocate critical-path tasks to onshore resources and request client approval for timeline adjustment.",
+          "owner": "Krithika Aravind (Delivery Manager)",
+          "targetDate": "15-Jun-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk RISK-005 (Medium/High/Medium), OBS-003, and At Risk assumption ASM-012 documented. Mitigation planned but not yet executed (ticket not raised as of 04 Jun 2026). Offshore team is 10 of 12 resources (83% of team). Target Date: 31 Aug 2026."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Governance",
+          "riskDescription": {
+            "context": "AAVA deployment on the client instance does not feature logging and monitoring (EMS OBS-005, RISK-004 open since 04 Jun 2026), limiting observability of agent performance and outputs. CES report 04 Jun 2026 notes AAVA Team needs support from Premera to identify requirements and come up with a plan. Mitigation is Planned, not In Progress.",
+            "condition": "Without logging and monitoring, AAVA agent errors, performance degradation, or incorrect outputs may go undetected during development and testing phases.",
+            "consequence": "Defects could surface late in UAT or post-deployment, requiring emergency fixes during Hypercare. Client trust in AAVA-generated code quality may decline, and troubleshooting production issues could be significantly delayed."
+          },
+          "category": "Quality Assurance",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Coordinate with Premera and AAVA teams to define monitoring requirements, implement basic metric capture on client instance, and conduct weekly agent output reviews.",
+          "contingencyCorrectiveAction": "Upon detection of AAVA-generated defect in UAT, activate manual code review for all agent outputs, extend UAT phase by two weeks, and deploy additional QA resources.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "25-Jun-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk RISK-004 (Medium/High/Medium) and OBS-005 documented. Mitigation Planned but not yet started. CES 04 Jun 2026 flags as internal Amber driver. Limited by missing ALT data on actual agent performance trends. Target Date: 31 Aug 2026."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Commercial",
+          "riskDescription": {
+            "context": "Project is fixed-price milestone-based ($650,000 total, SOW Section 13) with seven milestones from Design Phase through Hypercare. EMS shows Scope Amber and Timeline Amber as of 04 Jun 2026. Multiple open risks (RISK-001, RISK-002, RISK-003, RISK-005) threaten milestone delivery dates. SOW Section 14 allows change control for deviations due to dependencies on third parties and factors outside Contractor's control, but no change orders are documented yet.",
+            "condition": "If timeline slips due to AAVA connectivity, scope changes, Data Hub delays, or Citrix issues force milestone delays, Contractor may need to absorb additional effort within fixed price or invoke change control.",
+            "consequence": "Margin erosion could occur if additional effort is absorbed without change order. If change control is invoked, client relationship may be strained, and contract negotiations could delay project further. Milestone payment delays could impact Contractor cash flow."
+          },
+          "category": "Commercial",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement formal change control per SOW Section 14 for all material scope changes, track effort variance weekly, and communicate timeline impacts proactively.",
+          "contingencyCorrectiveAction": "When cumulative effort overrun exceeds 10% of milestone budget, initiate change order negotiation with client within five business days per SOW Section 14 provisions.",
+          "owner": "Krithika Aravind (Delivery Manager)",
+          "targetDate": "31-Aug-2026",
+          "status": "Open",
+          "reasoning": "Fixed-price contract (SOW Section 13) combined with Scope Amber, Timeline Amber, and four open High-impact risks (RISK-001, RISK-002, RISK-003, RISK-005) in EMS. SOW Section 14 provides change control mechanism but not yet invoked. Cost RAG is Green as of 04 Jun 2026, but trajectory is concerning. Target Date: 31 Aug 2026."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Resources",
+          "riskDescription": {
+            "context": "SOW Section 5 assumes Company will provide timely access to systems, environments, and documentation; cloud infrastructure before development start; third-party API access; SME availability; UAT stakeholder availability; and Product Owner for decision-making. EMS shows multiple dependencies (DEP-001, DEP-002, DEP-006) are Pending, and DEP-003, DEP-004, DEP-007 are In Progress as of 04 Jun 2026. Discovery phase was delayed due to access provisioning issues (EMS RISK-006, now Mitigated).",
+            "condition": "If Premera continues to delay provisioning of environments, SME access, or UAT stakeholder availability as project moves into Development, Testing, and UAT phases, team productivity may drop and phase gates may be missed.",
+            "consequence": "Sprint velocity could decline, testing phases could be compressed, UAT could be delayed or incomplete, and Go-Live date could slip. Client dissatisfaction may increase if delays are attributed to Contractor rather than client-side dependencies."
+          },
+          "category": "People",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Rebaseline impacted scope with client if dependencies delayed, prioritize critical-path functionality, and document all delays with associated timeline impacts per SOW Section 6.1.",
+          "contingencyCorrectiveAction": "Once client dependency delay exceeds two weeks beyond agreed date, agree on phased delivery with client, defer non-critical features, and escalate to Quarterly Business Review.",
+          "owner": "Krithika Aravind (Delivery Manager)",
+          "targetDate": "31-Jul-2026",
+          "status": "Open",
+          "reasoning": "Seven client dependencies (DEP-001 through DEP-007) are Pending or In Progress in EMS. Discovery phase delay (RISK-006) was client-related and now Mitigated, but pattern of delayed provisioning established. SOW Section 5 and 6.1 list extensive client responsibilities. Talent RAG is Green, but external dependency risk remains. Target Date: 31 Aug 2026."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Security",
+          "riskDescription": {
+            "context": "SOW Section 5 assumes security policies, compliance requirements, and data governance rules will be shared during Discovery. SOW Section 12 requires Security Testing (JFROG) and Accessibility Testing (WCAG 2.2 AA compliance) with formal sign-off. SOW Section 6.2 lists OKTA/SSO integration as a third-party dependency (DEP-010, In Progress). No security or compliance observations are documented in EMS, but Discovery phase was delayed (RISK-006), which may have compressed security requirements gathering.",
+            "condition": "If security policies and compliance requirements were not fully captured during delayed Discovery phase, or if OKTA integration is delayed, security and compliance gaps may surface during Security Testing or UAT.",
+            "consequence": "Security test failures could delay UAT and Go-Live. Compliance findings could require architectural rework. Client sign-off on Security Testing (SOW Section 12) could be withheld, blocking milestone payments. Regulatory penalties could be imposed on client if portal goes live with compliance gaps."
+          },
+          "category": "Compliance",
+          "probability": "Unlikely",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct security and compliance requirements validation session with client stakeholders before Design Phase completion, securing formal sign-off on security architecture per SOW Section 12.",
+          "contingencyCorrectiveAction": "Should security test failures surface in UAT, engage third-party security consultant within 72 hours, extend UAT by three weeks, and defer Go-Live to next release window.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "15-Jun-2026",
+          "status": "Open",
+          "reasoning": "SOW Sections 5 and 12 establish security and compliance requirements. Discovery phase delay (RISK-006) may have compressed requirements gathering. OKTA integration dependency (DEP-010) is In Progress. No EMS observations on security, but absence of evidence is not evidence of absence. Healthcare client (HCLS vertical) implies HIPAA and PII sensitivity. Single-source signal (SOW + Discovery delay). Target Date: 31 Aug 2026."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "SOW Section 4 lists React.js v19.1.1 as frontend technology. React 19 was released in December 2024 and is relatively new. SOW Section 2.1 includes comprehensive testing requirements (Unit, Functional, Regression, Performance, Security, Accessibility) and NFR validation. SOW Section 11 states NFRs will be validated in Discovery and documented in Project Plan. No EMS observations on technology stack risks, but AAVA framework itself is proprietary and new to client environment (RISK-001, RISK-004, RISK-007 all relate to AAVA platform issues).",
+            "condition": "React 19 may have limited community support, undiscovered bugs, or compatibility issues with other stack components (TypeScript, Jest, Playwright). AAVA framework integration with .NET Core backend and Azure services may encounter unforeseen technical challenges as development scales.",
+            "consequence": "Development velocity could slow if React 19 issues surface. Regression testing scope could expand if framework updates are required mid-project. Performance or security issues could surface late in testing, requiring rework and delaying Go-Live."
+          },
+          "category": "Technical Infrastructure",
+          "probability": "Unlikely",
+          "impact": "Medium",
+          "rag": "Green",
+          "mitigationPreventiveAction": "Document workflows functioning with and without AI assistance, maintain dual paths for critical tasks, and conduct architecture review before Sprint 2 per SOW Section 12.",
+          "contingencyCorrectiveAction": "Upon discovery of critical React 19 compatibility issue, evaluate rollback to React 18 LTS, engage Ascendion architecture team, and assess two-week timeline impact.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "30-Jun-2026",
+          "status": "Open",
+          "reasoning": "SOW Section 4 specifies React 19.1.1 (new framework version). AAVA platform issues documented (RISK-001, RISK-004, RISK-007) suggest proprietary technology risk. Quality RAG is Green in EMS as of 04 Jun 2026, suggesting no current technical issues. Single-source signal (SOW tech stack). Indirect evidence only. Target Date: 31 Aug 2026."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Vendor",
+          "riskDescription": {
+            "context": "SOW Section 6.2 lists multiple third-party dependencies: AI model API availability (OpenAI, Anthropic, etc.) - DEP-009 Pending; Benefitfocus SSO Integration (Small Group) - DEP-012 Pending; Insight Reporter SSO Integration (Large Group) - DEP-013 Pending. SOW Attachment 1 shows Benefitfocus link is required for Quote, Sale, Billing, Payment for Small Group, and Insight Reporter SSO is required for Large Group page. These are core features, not optional enhancements.",
+            "condition": "If Benefitfocus or Insight Reporter integration is delayed or unavailable, Small Group and Large Group Book of Business features cannot be completed and tested.",
+            "consequence": "UAT for Small Group and Large Group LOBs could be blocked or incomplete. Go-Live may need to be phased, with some LOBs delayed. Milestone 5 (UAT completion) and Milestone 6 (Go-Live) payments could be at risk. Client may reject deliverables as incomplete per SOW Section 12 acceptance criteria."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Rebaseline impacted scope with client if vendor dependencies delayed, prioritize Individual and Med Supp LOBs, and agree on phased delivery per SOW Section 14.",
+          "contingencyCorrectiveAction": "When vendor SSO integration delay exceeds four weeks, deploy mock SSO interfaces for UAT, defer affected LOB Go-Live to Phase 2, and negotiate milestone payment adjustment.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "15-Jul-2026",
+          "status": "Open",
+          "reasoning": "Three third-party dependencies (DEP-009, DEP-012, DEP-013) are Pending in EMS. SOW Attachment 1 shows Benefitfocus and Insight Reporter are core features for 2 of 4 LOBs. No EMS observations on third-party vendor engagement status. SOW Section 6.2 acknowledges external vendor dependencies. Limited by missing ALT data on vendor coordination. Target Date: 31 Aug 2026."
+        }
+      ]
+    }
+  ]
+}
