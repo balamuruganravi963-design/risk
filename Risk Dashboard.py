@@ -124,7 +124,8 @@ def owner_parts(r):
 
 def owner_cell(r):
     name, role = owner_parts(r)
-    return labeled_lines([("Name", name), ("Role", role)])
+    parts = [html.escape(str(v)) for v in (name, role) if has_value(v)]
+    return SafeHtml(" — ".join(parts)) if parts else "—"
 
 
 # (header, value getter, min width in px) — exactly the requested register layout.
