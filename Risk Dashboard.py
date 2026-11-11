@@ -84,14 +84,47 @@ def risk_parts(r):
     return "", d or "", ""
 
 
-def risk_statement(r):
-    """Short text for the table's Risk Description column."""
-    context, condition, _ = risk_parts(r)
-    return condition or context
+class SafeHtml(str):
+    """Marks a string that is already escaped / trusted HTML."""
 
 
 def cell(value):
+    if isinstance(value, SafeHtml):
+        return str(value)
     return html.escape(str(value)) if has_value(value) else "—"
+
+
+PLACEHOLDER = "<span style='opacity:0.5;'>—</span>"
+
+
+def labeled_lines(pairs):
+    """[(label, value), ...] -> one 'Label: value' line each; blank values show a placeholder."""
+    lines = []
+    for label, value in pairs:
+        body = html.escape(str(value)) if has_value(value) else PLACEHOLDER
+        lines.append(f"<div><b>{html.escape(label)}:</b> {body}</div>")
+    return SafeHtml("".join(lines))
+
+
+def risk_description_cell(r):
+    """Context / Condition / Consequence, each on its own line (placeholder if missing)."""
+    context, condition, consequence = risk_parts(r)
+    return labeled_lines(
+        [("Context", context), ("Condition", condition), ("Consequence", consequence)]
+    )
+
+
+def owner_parts(r):
+    """Return (name, role) whether owner is {"name","role"}, a plain string, or split fields."""
+    o = r.get("owner")
+    if isinstance(o, dict):
+        return o.get("name", ""), o.get("role", "")
+    return o or r.get("ownerName", ""), r.get("ownerRole", "")
+
+
+def owner_cell(r):
+    name, role = owner_parts(r)
+    return labeled_lines([("Name", name), ("Role", role)])
 
 
 # (header, value getter, min width in px) — exactly the requested register layout.
@@ -99,14 +132,14 @@ TABLE_COLUMNS = [
     ("S.No", lambda r, i: r.get("sNo", i), 50),
     ("Risk ID", lambda r, i: display_id(r.get("riskId")), 70),
     ("Subject Area", lambda r, i: r.get("subjectArea"), 100),
-    ("Risk Description", lambda r, i: risk_statement(r), 280),
+    ("Risk Description", lambda r, i: risk_description_cell(r), 320),
     ("Category", lambda r, i: r.get("category"), 100),
     ("Probability", lambda r, i: r.get("probability"), 90),
     ("Impact", lambda r, i: r.get("impact"), 80),
     ("RAG", lambda r, i: rag_label(r.get("rag")), 85),
     ("Mitigation / Preventive Action", lambda r, i: r.get("mitigationPreventiveAction"), 240),
     ("Contingency / Corrective Action", lambda r, i: r.get("contingencyCorrectiveAction"), 240),
-    ("Owner", lambda r, i: r.get("owner"), 140),
+    ("Owner", lambda r, i: owner_cell(r), 170),
     ("Target Date", lambda r, i: r.get("targetDate"), 100),
     ("Status", lambda r, i: r.get("status"), 70),
 ]
