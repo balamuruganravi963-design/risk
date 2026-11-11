@@ -1,0 +1,220 @@
+{
+  "client": "Premera Blue Cross",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "Project Artifacts"
+      ],
+      "sourcesNotAvailable": [
+        "EMS",
+        "ALT"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R-001",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "As of 23-Oct-2026, the Producer Portal is fully deployed to Production and technically ready. Premera is planning to send registration emails to 2,500+ producers on October 22 using a big-bang rollout approach (ALT Deck, 23-Oct-2026).",
+            "condition": "",
+            "consequence": "Rollback could delay producer access to the portal, damage client confidence, require emergency remediation effort, and impact Premera's business operations and producer relationships."
+          },
+          "category": "Deployment",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement phased rollout with pilot cohorts of 100-250 producers before mass deployment to validate production stability at scale.",
+          "contingencyCorrectiveAction": "Upon detection of critical production defects affecting more than 5% of users, activate rollback to pre-deployment state within 2 hours and escalate to executive steering committee immediately.",
+          "owner": "Lakshmi Deepa Brahmapuram (Delivery Manager)",
+          "targetDate": "22-Oct-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 2,
+          "riskId": "R-002",
+          "subjectArea": "Integration",
+          "riskDescription": {
+            "context": "DH APIs for Book of Business were not available before PPOR development start. Team proceeded with synthetic data based on contract schema. As of 22-July-2026, all DH API integrations are reported complete, but 4 additional fields for total premium calculation were awaited from DH with ETA 30-July-2026 (WSR, 22-July-2026).",
+            "condition": "",
+            "consequence": "Late discovery of integration defects could cause incorrect Book of Business displays, data integrity issues, and require emergency fixes post-rollout, impacting producer trust and portal reliability."
+          },
+          "category": "Integration",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct daily data reconciliation between Data Hub and Producer Portal for first 30 days post-rollout to detect mapping discrepancies early.",
+          "contingencyCorrectiveAction": "Once data integrity errors exceed 2% threshold, switch to manual data validation workflow and deploy hotfix within 48 hours with Data Hub team support.",
+          "owner": "Srinath Vishwanath (Engineering Manager)",
+          "targetDate": "30-Jul-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 3,
+          "riskId": "R-003",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Citrix server slowness and timeouts were impacting offshore team efforts as of 22-July-2026 (WSR, 22-July-2026). Mitigation plan was to raise a ticket with Premera to address the issue.",
+            "condition": "",
+            "consequence": "Delayed incident response could prolong producer-facing issues, reduce portal availability, and weaken client confidence in support capability."
+          },
+          "category": "Infrastructure",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish VDI support coverage during offshore hours and keep Citrix Windows app open in background to prevent auto-upgrade disruptions during hypercare.",
+          "contingencyCorrectiveAction": "Should Citrix response time exceed 10 seconds for 3 consecutive sessions, escalate to Premera IT infrastructure team within 1 hour and activate alternate remote access method.",
+          "owner": "Lakshmi Deepa Brahmapuram (Delivery Manager)",
+          "targetDate": "15-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 4,
+          "riskId": "R-004",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "AAVA connectivity from Development instance to Production Instance was not established as of 22-July-2026. Build was happening on Ascendion environment instead of Premera's platform, which was not acceptable to the client (WSR, 22-July-2026). Mitigation plan was for AAVA Platform Team to work with client to troubleshoot.",
+            "condition": "",
+            "consequence": "Reduced AAVA adoption could lower productivity gains in future work, limit AI-driven automation benefits, and require more manual effort for enhancements or Phase 2 work."
+          },
+          "category": "Technology",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish weekly technical touchpoints with AAVA platform team to review open issues, fix timelines, and prioritize critical API stabilization for Phase 2 readiness.",
+          "contingencyCorrectiveAction": "If AAVA connectivity remains unavailable beyond 30-Sep-2026, revert to manual development approach for Phase 2 enhancements and adjust effort estimates by 40% upward.",
+          "owner": "Srinath Vishwanath (Primary DE POC)",
+          "targetDate": "30-Sep-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 5,
+          "riskId": "R-005",
+          "subjectArea": "Security",
+          "riskDescription": {
+            "context": "As of PI04-Sprint 3 (18-June-2026), SCA scans using JFrog Xray detected 86 CVEs (4 Critical, 82 High) (WSR Sprint Demo, 18-June-2026). Penetration testing was planned post-UAT (target: Aug-2026) (WSR Decision Log, 3-June-2026).",
+            "condition": "",
+            "consequence": "Unpatched vulnerabilities could lead to data breaches, compliance violations, client dissatisfaction, and regulatory penalties, especially given the sensitive producer and member data handled by the portal."
+          },
+          "category": "Security",
+          "probability": "Unlikely",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct weekly vulnerability scans with automated patch deployment for critical CVEs and complete penetration testing before production rollout with sign-off from security team.",
+          "contingencyCorrectiveAction": "Upon discovery of exploited vulnerability in production, activate incident response team within 30 minutes, isolate affected components, and deploy emergency patch within 4 hours.",
+          "owner": "Srinath Vishwanath (Engineering Manager)",
+          "targetDate": "15-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 6,
+          "riskId": "R-006",
+          "subjectArea": "Data",
+          "riskDescription": {
+            "context": "Decision Log (Item #31, 25-June-2026) notes: 'While data mappings are mostly closed, possible values for the data are still being discussed. Team to go forward with the mapping defined for now. There could be possible issues coming during E2E testing or UAT which needs to be then handled.' (WSR, 22-July-2026).",
+            "condition": "",
+            "consequence": "Data accuracy issues could mislead producers, damage trust in the portal, and require emergency data fixes, impacting portal credibility and client satisfaction."
+          },
+          "category": "Data",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate data mapping assumptions with business owners during UAT and document all field-level transformations in a data dictionary for producer support reference.",
+          "contingencyCorrectiveAction": "When data display errors are reported by more than 10 producers, initiate emergency data mapping review with Data Hub team and deploy corrective mapping within 72 hours.",
+          "owner": "Srinath Vishwanath (Engineering Manager)",
+          "targetDate": "10-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 7,
+          "riskId": "R-007",
+          "subjectArea": "Third-Party",
+          "riskDescription": {
+            "context": "Auth0 DB connection configuration in ACPT was pending Premera team action as of 22-July-2026. The DB connection config needed to be updated by Premera team as Ascendion did not have access to ACPT tenant. ETA was 10-July-2026 (WSR, 22-July-2026).",
+            "condition": "",
+            "consequence": "Authentication failures could prevent producers from accessing the portal, causing business disruption, producer frustration, and emergency escalation to Auth0 and Premera teams."
+          },
+          "category": "Third-Party",
+          "probability": "Unlikely",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Monitor Auth0 service availability with automated health checks every 5 minutes and maintain documented escalation path to Auth0 support with 24x7 contact.",
+          "contingencyCorrectiveAction": "Should Auth0 authentication fail for more than 5 minutes, activate backup authentication method via OKTA federated access and notify Premera IT within 15 minutes.",
+          "owner": "Srinath Vishwanath (Engineering Manager)",
+          "targetDate": "10-Jul-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 8,
+          "riskId": "R-008",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "As of 22-July-2026, integration and accessibility testing were in progress (WSR, 22-July-2026). UAT was planned for Aug-2026 (SOW timeline). As of 23-Oct-2026, IT validation and high-level PO/business validation were completed successfully (ALT Deck, 23-Oct-2026).",
+            "condition": "",
+            "consequence": "Late discovery of defects could cause portal instability, producer-facing errors, and require emergency fixes, impacting producer experience and client satisfaction."
+          },
+          "category": "Quality",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct comprehensive UAT with business owners covering all producer roles and LOBs before production rollout, with mandatory negative test case execution and regression coverage.",
+          "contingencyCorrectiveAction": "Once production defect rate exceeds 3 critical issues per week, deploy dedicated triage team and implement daily hotfix release cycle until stabilization is achieved.",
+          "owner": "TBD (QA Manager)",
+          "targetDate": "15-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 9,
+          "riskId": "R-009",
+          "subjectArea": "Operations",
+          "riskDescription": {
+            "context": "AAVA deployment does not feature logging and monitoring on the client instance as of 22-July-2026. Metrics are not available from AAVA to track actual progress gains. AAVA Team needs support from Premera to identify requirements and come up with a plan (WSR, 22-July-2026).",
+            "condition": "",
+            "consequence": "Limited observability could delay incident diagnosis, reduce the ability to optimize AAVA performance, and weaken the business case for AI adoption in future phases."
+          },
+          "category": "Operations",
+          "probability": "Possible",
+          "impact": "Low",
+          "rag": "Green",
+          "mitigationPreventiveAction": "Deploy centralized logging infrastructure with Application Insights and Dynatrace integration for AAVA components to enable real-time monitoring and alerting by 15-Sep-2026.",
+          "contingencyCorrectiveAction": "If automated monitoring is unavailable, implement manual daily log review process and maintain incident response runbook for common AAVA failure patterns to reduce diagnosis time.",
+          "owner": "Srinath Vishwanath (Primary DE POC)",
+          "targetDate": "15-Sep-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 10,
+          "riskId": "R-010",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "19 scope change items were documented in the Scope Change Tracker as of 22-July-2026, including identity setup ownership transfer, CCS API implementation, infra provisioning, QE tech stack change, mobile responsive design, frontend repo migration, agent use approach, API integration strategy, user hierarchy, export UI, super user login, DR strategy, BoB DH API, feature toggle for MedSup/Billing, DH API entity stitching, BoB UX field changes, repository changes, dashboard access, and dual role handling (WSR, 22-July-2026).",
+            "condition": "",
+            "consequence": "Uncontrolled scope changes could erode margin, delay future enhancements, and strain client relationship if expectations are not aligned."
+          },
+          "category": "Scope",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish formal change request approval process with documented scope baseline and impact assessment for budget, schedule, and resource implications before accepting new requirements.",
+          "contingencyCorrectiveAction": "Should scope changes exceed 10% of original baseline, initiate formal change order negotiation with Premera leadership and rebaseline project plan with revised milestones and budget.",
+          "owner": "Lakshmi Deepa Brahmapuram (Delivery Manager)",
+          "targetDate": "01-Sep-2026",
+          "status": "Open",
+          "reasoning": ""
+        }
+      ]
+    }
+  ]
+}
