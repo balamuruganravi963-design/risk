@@ -1,0 +1,220 @@
+{
+  "client": "Premera Blue Cross",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "Project Artifacts"
+      ],
+      "sourcesNotAvailable": [
+        "ALT"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "AAVA connectivity from the Development instance to the Premera Production instance has not been established since project inception, persisting across multiple bi-weekly reporting cycles (March through November 2026), as recorded in EMS OBS-001 and RISK-001.",
+            "condition": "Full AAVA capability for code generation and refactoring may remain unavailable, limiting development velocity and forcing manual workarounds.",
+            "consequence": "Sprint capacity could decline, development timelines may slip, and the team may fail to realize the productivity gains that justified the AAVA platform investment."
+          },
+          "category": "Technology",
+          "probability": "Very likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish weekly technical touchpoints with AAVA platform team and Premera IT to review open connectivity issues, fix timelines, and workarounds.",
+          "contingencyCorrectiveAction": "Upon connectivity delay exceeding two weeks beyond target date, activate manual development approach, reallocate sprint capacity, and escalate to Program Manager within 48 hours.",
+          "owner": "Ashwin Murugan (Primary DE POC)",
+          "targetDate": "15-Jul-2026",
+          "status": "Open",
+          "reasoning": "Open EMS RISK-001 (High/High, In Progress) corroborated by OBS-001 (Open, AAVA Platform Team). Issue persists since project inception (March 2026) through latest reporting (November 2026). Mitigation in progress but not yet resolved."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "Multiple UX and business scope changes have been introduced mid-project and are being triaged based on available bandwidth, as recorded in EMS RISK-002 (High/High, In Progress) and OBS-002 (Open).",
+            "condition": "Remaining scope may exceed available capacity, requiring either timeline extension or descoping of planned features.",
+            "consequence": "Project end date (2026-08-31) could be missed, client expectations may not be met, and Change Management process may be invoked, risking cost overruns or margin erosion."
+          },
+          "category": "Scope",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Implement formal scope change assessment procedure, perform impact analysis on timeline and capacity, and secure documented customer approval before committing to changes.",
+          "contingencyCorrectiveAction": "Once scope exceeds 10% of baseline capacity, invoke Change Management process, rebaseline delivery plan with customer, prioritize critical-path functionality, and defer non-essential features.",
+          "owner": "Ashwin Murugan (Primary DE POC)",
+          "targetDate": "30-Jun-2026",
+          "status": "Open",
+          "reasoning": "Open EMS RISK-002 (High/High, In Progress) and OBS-002 (Open, Delivery Manager / Client Product Owner). Scope Amber in EMS. Work Assignment Section 5 and 14 note that material scope changes may invoke Change Management."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Dependency",
+          "riskDescription": {
+            "context": "Development is proceeding on a baseline Data Model provided by the Product Owner as of 6/3/2026, while the Data Hub team has not yet delivered APIs in a consumable format, as recorded in EMS RISK-003 (High/High, In Progress), DEP-012 (Open), and OBS-004 (Open).",
+            "condition": "When Data Hub APIs are delivered, the data format may not match the baseline model, requiring refactoring of already-developed code and integration logic.",
+            "consequence": "Refactoring effort could delay Testing and UAT phases, consume unplanned capacity, and push the Go-Live date beyond 2026-08-31."
+          },
+          "category": "Third-Party",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Conduct bi-weekly alignment reviews with Data Hub team to validate data model assumptions, document API contract specifications, and identify deviations early.",
+          "contingencyCorrectiveAction": "Should Data Hub API format deviate from baseline model, create refactoring PBI, rebaseline Testing and UAT timelines, and escalate to Product Owner for prioritization within 72 hours.",
+          "owner": "Ashwin Murugan (Primary DE POC)",
+          "targetDate": "30-Jun-2026",
+          "status": "Open",
+          "reasoning": "Open EMS RISK-003 (High/High, In Progress), DEP-012 (Open, Premera Data Hub Team), and OBS-004 (Open, Client Data Hub Team). Baseline model dated 6/3/2026; refactoring PBI to be created. Timing Amber in EMS."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Citrix VDI slowness and frequent disconnections are impacting offshore team productivity, as recorded in EMS RISK-006 (Medium/High, Planned) and OBS-003 (Open, Premera IT).",
+            "condition": "If Citrix performance is not improved, offshore team members may continue to experience reduced productivity and delivery delays.",
+            "consequence": "Sprint velocity could decline, development timelines may slip, and the team may miss the 2026-08-31 project end date."
+          },
+          "category": "Infrastructure",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Raise Citrix performance ticket with Premera IT, track resolution weekly, and implement offshore-hours VDI support coverage to minimize downtime impact.",
+          "contingencyCorrectiveAction": "If VDI downtime exceeds 4 hours per week, shift critical development tasks to onshore hours, adjust sprint capacity by 15%, and notify stakeholders.",
+          "owner": "Ashwin Murugan (Primary DE POC)",
+          "targetDate": "15-Jun-2026",
+          "status": "Open",
+          "reasoning": "Open EMS RISK-006 (Medium/High, Planned) and OBS-003 (Open, Premera IT). Mitigation planned (ticket to be raised with Premera). Timing Amber in EMS. 7 offshore resources out of 8 total."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "AAVA deployment does not feature logging and monitoring on the client instance, and metrics are not available from AAVA to track actual progress gains, as recorded in EMS RISK-004 (Medium/High, Planned) and RISK-005 (Medium/High, Planned).",
+            "condition": "Without logging, monitoring, and metrics, the team may be unable to troubleshoot AAVA issues, measure productivity gains, or demonstrate ROI.",
+            "consequence": "AAVA platform value may not be realized, client confidence in the solution could decline, and future AAVA engagements may be at risk."
+          },
+          "category": "Technology",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Coordinate with AAVA team and Premera IT to define logging and monitoring requirements, establish basic metric capture, and schedule implementation by mid-July.",
+          "contingencyCorrectiveAction": "If logging and monitoring setup is delayed beyond July 15, implement manual tracking of AAVA usage and productivity metrics, and communicate limitations to stakeholders.",
+          "owner": "Ashwin Murugan (Primary DE POC)",
+          "targetDate": "15-Jul-2026",
+          "status": "Open",
+          "reasoning": "Open EMS RISK-004 (Medium/High, Planned) and RISK-005 (Medium/High, Planned). Mitigation planned (coordinate with Premera and AAVA teams). Single-source indication (EMS only)."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Dependency",
+          "riskDescription": {
+            "context": "Cloud infrastructure and necessary environments are assumed to be provided by Premera before the start of development (Work Assignment Section 5, Assumption), but EMS reports that Infra setup is still being discussed as of November 2026, and DEP-003 (Provision of development, staging, production environments) is In Progress.",
+            "condition": "If environments are not fully provisioned before Development Sprints 3-4 and Testing phases, deployment and testing activities may be delayed.",
+            "consequence": "UAT, Go-Live, and Hypercare milestones could slip, risking the 2026-08-31 project end date and milestone-based invoicing schedule."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Communicate environment requirements early, submit provisioning requests upfront, and conduct daily follow-ups with Premera cloud infrastructure team to expedite Azure services provisioning.",
+          "contingencyCorrectiveAction": "Once environment provisioning delay exceeds one week before Sprint 3 start, request staging environment immediately, adjust deployment timeline, and escalate to Delivery Manager.",
+          "owner": "Ashwin Murugan (Primary DE POC)",
+          "targetDate": "30-Jun-2026",
+          "status": "Open",
+          "reasoning": "Work Assignment Section 5 Assumption and Section 6.1 Dependency (DEP-003 In Progress). EMS context notes Infra setup still being discussed. Timing Amber in EMS. Limited by missing ALT data."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Security",
+          "riskDescription": {
+            "context": "Security policies, compliance requirements, and data governance rules are assumed to be shared during Discovery (Work Assignment Section 5, Assumption), and ASM-009 status is In Progress as of November 2026.",
+            "condition": "If security and compliance requirements are not fully documented and approved before Testing phases, security testing and accessibility testing may uncover gaps late in the cycle.",
+            "consequence": "Security or compliance findings could delay UAT sign-off, require rework, and push Go-Live beyond 2026-08-31, or expose the client to regulatory penalties."
+          },
+          "category": "Compliance",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct security and compliance requirements review with Premera stakeholders during Discovery phase, document policies, and obtain formal approval before Development Sprint 1.",
+          "contingencyCorrectiveAction": "Should security testing reveal critical gaps after Sprint 4, allocate dedicated sprint for remediation, defer non-critical features, and notify stakeholders of revised Go-Live date.",
+          "owner": "Ashwin Murugan (Primary DE POC)",
+          "targetDate": "15-May-2026",
+          "status": "Open",
+          "reasoning": "Work Assignment Section 5 Assumption (ASM-009 In Progress). Security Testing and Accessibility Testing (WCAG 2.2AA) in scope per Work Assignment Section 12. Single-source indication (Project Artifacts only). Limited by missing ALT data."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Dependency",
+          "riskDescription": {
+            "context": "UAT stakeholders are assumed to be nominated and reasonably available per agreed timeline (Work Assignment Section 5, Assumption), but ASM-007 and DEP-006 status is Pending as of November 2026.",
+            "condition": "If UAT stakeholders are not identified and available when UAT phase begins (Milestone 5, July-August 2026 per indicative timeline), UAT execution may be delayed or incomplete.",
+            "consequence": "UAT sign-off could slip, delaying Go-Live (Milestone 6) and Hypercare (Milestone 7), and risking the 2026-08-31 project end date and $260,000 in milestone-based invoicing."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Request Premera to nominate UAT stakeholders by end of Sprint 2, confirm availability timeslots, and schedule first round of testing completion by July 19.",
+          "contingencyCorrectiveAction": "If UAT stakeholders are unavailable by July 1, engage Product Owner to identify alternate testers, adjust UAT scope to available capacity, and communicate revised timeline.",
+          "owner": "Ashwin Murugan (Primary DE POC)",
+          "targetDate": "30-Jun-2026",
+          "status": "Open",
+          "reasoning": "Work Assignment Section 5 Assumption (ASM-007 Pending) and Section 6.1 Dependency (DEP-006 Pending). UAT phase per indicative timeline July-August 2026. Single-source indication (Project Artifacts only). Limited by missing ALT data."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Dependency",
+          "riskDescription": {
+            "context": "Third-party integrations with Benefitfocus (Small Group SSO) and Insight Reporter (Large Group SSO) are in scope (Work Assignment Attachment 1), but DEP-013 and DEP-014 status is Pending (to be confirmed during Discovery) as of November 2026.",
+            "condition": "If third-party API access, documentation, and SSO integration points are not confirmed and available before Development Sprints 3-4, integration development and testing may be delayed.",
+            "consequence": "End-to-end testing of Small Group and Large Group BOB features could be incomplete, risking defects in production and delaying Go-Live beyond 2026-08-31."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Engage Benefitfocus and Insight Reporter stakeholders during Discovery to secure API documentation, sandbox credentials, and SSO integration specifications by end of Sprint 1.",
+          "contingencyCorrectiveAction": "If third-party API access is delayed beyond Sprint 2, develop mock integration endpoints for testing, prioritize non-SSO features, and defer SSO integration to post-Go-Live phase.",
+          "owner": "Ashwin Murugan (Primary DE POC)",
+          "targetDate": "15-Jun-2026",
+          "status": "Open",
+          "reasoning": "Work Assignment Attachment 1 (Benefitfocus and Insight Reporter SSO links in scope). DEP-013 and DEP-014 Pending (to be confirmed during Discovery). Single-source indication (Project Artifacts only). Limited by missing ALT data."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "Deliverables and acceptance criteria may be re-defined and updated as mutually agreed during Discovery Phase, and material changes will invoke change control process (Work Assignment Section 12).",
+            "condition": "If Discovery Phase deliverables are not fully approved before Development Sprints begin, or if acceptance criteria change mid-project, scope may expand or require rework.",
+            "consequence": "Development effort could exceed the fixed-price contract ($650,000), requiring Change Management, or the team may need to descope features to stay within budget, risking client satisfaction."
+          },
+          "category": "Scope",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Secure formal approval of Discovery Phase deliverables and acceptance criteria before Sprint 1, document all changes, and invoke change control for material deviations.",
+          "contingencyCorrectiveAction": "Should acceptance criteria change after Sprint 2, assess impact on budget and timeline, rebaseline scope with customer, and agree on phased delivery or descoping.",
+          "owner": "Ashwin Murugan (Primary DE POC)",
+          "targetDate": "30-May-2026",
+          "status": "Open",
+          "reasoning": "Work Assignment Section 12 (deliverables and acceptance criteria may be re-defined during Discovery; material changes invoke change control). Section 14 (Change Management process). Fixed-price contract $650,000. Scope Amber in EMS. Limited by missing ALT data."
+        }
+      ]
+    }
+  ]
+}
