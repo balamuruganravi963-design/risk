@@ -255,17 +255,7 @@ st.dataframe(pd.DataFrame(rbp_rows), width="stretch", hide_index=True)
 st.divider()
 
 # ---------------- PROJECT SELECTION ---------------- #
-project_names = [
-    p.get("projectName", f"Project {i + 1}") for i, p in enumerate(projects)
-]
-selected_project_name = st.selectbox("Select Project", project_names)
-project = next(
-    (p for p in projects if p.get("projectName") == selected_project_name),
-    projects[0],
-)
-
-# Project Name as a read-only text-box heading.
-st.text_input("Project Name", value=project.get("projectName", ""), disabled=True)
+project = projects[0]
 
 pc1, pc2, pc3 = st.columns(3)
 pc1.write(f"**Project Status:** {project.get('projectStatus') or '-'}")
