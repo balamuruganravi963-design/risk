@@ -1,0 +1,199 @@
+{
+  "client": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "Project Artifacts",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "Premera planned a big-bang rollout to 2,500+ producers on October 22, 2026, with end-to-end registration tested on only 11 users as of October 10 (ALT, 23 Oct 2026). The project is on WATCHLIST status, and rollout status was awaited as of October 23.",
+            "condition": "If issues arise during mass producer onboarding\u2014such as scale-related performance degradation, data integrity failures, or user experience defects not surfaced in limited testing\u2014the rollout may require emergency rollback and remediation.",
+            "consequence": "Rollback would disrupt producer onboarding, damage client trust, delay production adoption, trigger support escalations, and require unplanned remediation effort during Hypercare."
+          },
+          "category": "Deployment",
+          "probability": "Very likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Implement phased rollout with pilot cohorts of 100-250 producers per wave, monitoring performance and user feedback before scaling.",
+          "contingencyCorrectiveAction": "Upon observing critical failures affecting 10% of users or system instability, activate emergency rollback to pre-deployment state, engage project board and Premera leadership within 2 hours, and deploy hotfix team to remediate root cause before re-attempting rollout in controlled waves.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "25-Oct-2026",
+          "status": "Open",
+          "reasoning": "ALT (23 Oct 2026) explicitly flags rollback risk for big-bang rollout to 2,500+ producers; limited E2E testing with only 11 users (ALT); integration, E2E, UAT, and pen testing were 0% complete as of 22 Jul (Project Artifacts); rollout status awaited 1 day after planned date suggests possible issues."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Data Integration",
+          "riskDescription": {
+            "context": "Data Hub integration completed as of July 22, 2026, but data mapping issues flagged (R-DH-01, ETA 15 Jul) and entity stitching complexity with potential NFR impact noted in scope changes (Project Artifacts, 22 Jul 2026). End-to-end testing covered only 11 users (ALT, 23 Oct 2026).",
+            "condition": "If Data Hub API performance, data quality, or entity stitching issues surface at scale during production use with 2,500+ producers, they may cause slow response times, incorrect data display, or user experience degradation.",
+            "consequence": "Performance or data quality issues would degrade user experience, trigger support escalations, damage client trust, and require emergency fixes during Hypercare."
+          },
+          "category": "Integration",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct daily Data Hub API performance monitoring with response time thresholds under 2 seconds and data quality validation checks during Hypercare.",
+          "contingencyCorrectiveAction": "If response time exceeds 5 seconds or data quality errors exceed 2% of transactions, activate fallback to cached data for read-only operations, escalate to Data Hub team and Premera IT within 4 hours, and deploy performance tuning or data correction scripts within 24 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "30-Oct-2026",
+          "status": "Open",
+          "reasoning": "Data Hub integration completed and E2E tested with 11 users (ALT, 23 Oct 2026); but data mapping issues (R-DH-01), entity stitching complexity, and potential NFR impact flagged in Project Artifacts (22 Jul 2026); limited scale testing; EMS R855/R856 marked Resolved but conflict with open WSR risks lowers confidence."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Security",
+          "riskDescription": {
+            "context": "Security testing and penetration testing were 0% complete as of July 22, 2026, with 190 code smells (2 Critical, 80 Major) and 86 CVEs (4 Critical, 82 High) in progress (Project Artifacts, 22 Jul 2026). Production deployment completed by October 23, 2026, with IT validation passed (ALT), but no explicit confirmation of security testing completion.",
+            "condition": "If security testing and penetration testing were not completed before Production deployment, undetected security vulnerabilities may exist in the Production system.",
+            "consequence": "Undetected security vulnerabilities could expose the system to security breaches, data leaks, compliance violations, and client penalties."
+          },
+          "category": "Security",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Execute expedited penetration testing and security scan remediation for all Critical and High CVEs within two weeks of production deployment.",
+          "contingencyCorrectiveAction": "Should a security breach or vulnerability exploitation occur, immediately isolate affected components, invoke incident response protocol, notify Premera InfoSec and legal teams within 1 hour, and deploy emergency security patches within 48 hours while maintaining audit trail for compliance reporting.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "Security testing and pen testing 0% complete as of 22 Jul 2026 (Project Artifacts); 190 code smells and 86 CVEs in progress; ALT (23 Oct 2026) confirms IT validation completed but no explicit confirmation of security testing or pen testing completion; uncertainty about security testing status."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "The project absorbed 19 scope changes (~0.75\u20131 sprint effort) as of July 22, 2026, with Dual Role (Producer & Agency Admin) discussion still pending (Project Artifacts, 22 Jul 2026). EMS risk R857 (Scope changes) remains open with status Identified and mitigation Assessed (EMS, 29 Jun 2026).",
+            "condition": "If additional scope changes or unresolved requirements such as Dual Role entitlement logic surface during production use or Hypercare, they may require rework or emergency fixes.",
+            "consequence": "Rework during Hypercare would consume support capacity, delay stabilization, increase cost, and erode client satisfaction."
+          },
+          "category": "Scope",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish formal change control requiring impact assessment and customer approval for all new scope requests during Hypercare, prioritizing critical-path items only.",
+          "contingencyCorrectiveAction": "If scope changes exceed 0.5 sprint effort during Hypercare, rebaseline the delivery plan with Premera, defer non-critical enhancements to post-Hypercare phase, and communicate revised timeline to stakeholders within 3 business days.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "Carried forward from open EMS risk R857 (Identified, Assessed, 29 Jun 2026) and re-rated; 19 scope changes absorbed and Dual Role discussion pending as of 22 Jul 2026 (Project Artifacts); project now in Production (ALT, 23 Oct 2026); production use may surface new requirements; no recent evidence of active scope changes but risk remains open."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Authentication",
+          "riskDescription": {
+            "context": "Auth0-Entra integration was pending and Auth0 DB connection config update in ACPT was open (ETA 10 Jul 2026) as of July 22, 2026 (Project Artifacts, 22 Jul 2026). End-to-end registration with 11 users was successful as of October 10, 2026 (ALT), suggesting integration completed, but limited testing scope.",
+            "condition": "If Auth0-Entra integration issues or DB connection config issues surface during production use\u2014such as authentication failures, authorization errors, or federated access issues for Super Users\u2014they may block user access or cause security vulnerabilities.",
+            "consequence": "Authentication or authorization failures would block producer access, trigger support escalations, damage client trust, and require emergency fixes during Hypercare."
+          },
+          "category": "Authentication",
+          "probability": "Unlikely",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate Auth0-Entra federated access for all user roles including Super Users through targeted testing scenarios and monitor authentication logs daily.",
+          "contingencyCorrectiveAction": "Upon authentication failure affecting more than 5 users or any Super User access block, activate backup manual authentication workflow, escalate to Auth0 and Premera IT teams immediately, and deploy DB connection config fix or rollback to last known good configuration within 4 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "28-Oct-2026",
+          "status": "Open",
+          "reasoning": "Auth0-Entra integration pending and R-Auth0-01 open as of 22 Jul 2026 (Project Artifacts); ALT (23 Oct 2026) E2E registration successful suggests integration completed; but limited testing with 11 users may not have surfaced all scenarios; federated access for Super Users is a new scope change; High impact if it occurs; relevant for Hypercare."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Citrix server slowness and frequent disconnection issues impacting offshore team were flagged in the EMS go-green plan (23 Oct 2026) and as a challenge in Project Artifacts (22 Jul 2026), with a ticket to be raised with Premera.",
+            "condition": "If Citrix performance issues persist during Hypercare, they may slow down incident response, troubleshooting, and remediation by the offshore support team.",
+            "consequence": "Delayed incident response during Hypercare would extend issue resolution times, degrade user experience, and damage client satisfaction."
+          },
+          "category": "Infrastructure",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate Citrix performance ticket to Premera IT with priority support request and establish VDI backup access for offshore team within 48 hours.",
+          "contingencyCorrectiveAction": "If Citrix downtime exceeds 30 minutes or slowness impacts incident response, redirect offshore team to VDI or local development environment, notify Premera IT and project stakeholders, and engage onshore team for critical incident coverage until Citrix service is restored.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "25-Oct-2026",
+          "status": "Open",
+          "reasoning": "Citrix issues flagged in both EMS go-green plan (23 Oct 2026) and Project Artifacts (22 Jul 2026); ticket to be raised with Premera suggests issue not yet resolved; no confirmation of resolution in ALT (23 Oct 2026); relevant for Hypercare support."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Compliance",
+          "riskDescription": {
+            "context": "Accessibility testing (WCAG 2.2 AA compliance) was 0% complete as of July 22, 2026, though testing had started (Project Artifacts, 22 Jul 2026). Production deployment completed by October 23, 2026, with IT validation passed (ALT), but no explicit confirmation of accessibility testing completion.",
+            "condition": "If accessibility testing was not completed before Production deployment, accessibility compliance gaps (WCAG 2.2 AA violations) may exist in the Production system.",
+            "consequence": "Accessibility compliance gaps could expose Premera to compliance violations, legal penalties, and reputational damage, and may require remediation during Hypercare."
+          },
+          "category": "Compliance",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct automated and manual WCAG 2.2 AA accessibility audit within two weeks and prioritize remediation of critical violations by severity.",
+          "contingencyCorrectiveAction": "If accessibility violations are identified by users or auditors, provide alternative access methods immediately, document accommodation requests, deploy remediation fixes in phased sprints, and communicate compliance timeline to Premera legal and compliance teams within 5 business days.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "08-Nov-2026",
+          "status": "Open",
+          "reasoning": "Accessibility testing 0% complete as of 22 Jul 2026 (Project Artifacts); testing started per WSR Key Accomplishments; ALT (23 Oct 2026) IT validation completed suggests some accessibility validation done; but no explicit confirmation of accessibility testing completion; WCAG 2.2 AA compliance required."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "UAT was 0% complete as of July 22, 2026, with UAT sign-off target of August 14, 2026 (Project Artifacts, 22 Jul 2026). ALT (23 Oct 2026) confirms high-level PO/business validation completed successfully, but formal UAT completion status is not explicitly confirmed.",
+            "condition": "If formal UAT was not completed or was limited in scope before Production deployment, user acceptance gaps or usability issues may surface during production use with 2,500+ producers.",
+            "consequence": "User acceptance gaps during production use could cause user dissatisfaction, support escalations, rework requests, and damage client trust during the critical rollout period."
+          },
+          "category": "Quality",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct post-deployment user feedback sessions with early adopter cohorts and track usability issues through dedicated support channel during Hypercare.",
+          "contingencyCorrectiveAction": "If user acceptance issues exceed 15% negative feedback rate or trigger more than 20 support tickets per week, engage Premera business owners to validate acceptance criteria, prioritize usability fixes in remediation backlog, and communicate resolution timeline within 3 business days.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "05-Nov-2026",
+          "status": "Open",
+          "reasoning": "UAT 0% complete as of 22 Jul 2026 (Project Artifacts); ALT (23 Oct 2026) high-level PO/business validation completed suggests some validation done; but formal UAT completion status uncertain; limited E2E testing with 11 users; big-bang rollout to 2,500+ users may surface user acceptance gaps."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Commercial",
+          "riskDescription": {
+            "context": "The project operates under a fixed-price contract ($650,000 NTE) and has absorbed 19 scope changes within the existing budget as of July 22, 2026 (Project Artifacts, 22 Jul 2026). EMS risk R857 (Scope changes) remains open (Identified, Assessed, 29 Jun 2026), and the big-bang rollout poses rollback and remediation risk (ALT, 23 Oct 2026).",
+            "condition": "If additional scope changes or rework during Hypercare\u2014such as rollback remediation, security fixes, or accessibility remediation\u2014exceed the fixed-price budget, margin erosion or cost overrun may occur.",
+            "consequence": "Cost overrun or margin erosion could damage Ascendion's profitability and client relationship, and may require contract amendment or absorbing costs."
+          },
+          "category": "Commercial",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Monitor Hypercare effort weekly against remaining budget allocation and flag any scope changes requiring formal change request approval with cost impact assessment.",
+          "contingencyCorrectiveAction": "If Hypercare costs approach 90% of allocated budget or scope changes exceed 1 sprint effort, rebaseline the budget with Premera, prioritize critical fixes only, defer non-critical enhancements to separate change order, and escalate to program leadership for contract amendment approval within 5 business days.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "30-Nov-2026",
+          "status": "Open",
+          "reasoning": "Fixed-price contract with 19 scope changes absorbed within budget as of 22 Jul 2026 (Project Artifacts); R857 (scope changes) open in EMS (Identified, Assessed, 29 Jun 2026); big-bang rollout risk (ALT, 23 Oct 2026), security/accessibility remediation, and Hypercare rework may trigger additional costs; relevant for Hypercare."
+        }
+      ]
+    }
+  ]
+}
