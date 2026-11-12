@@ -1,0 +1,199 @@
+{
+  "client": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "Project Artifacts",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "The Producer Portal application is fully deployed to Production, and IT and PO/business validation are complete (ALT, 23 October 2026). Premera planned to send registration emails to 2,500+ producers on 22 October 2026 using a big-bang rollout approach (ALT, 23 October 2026). End-to-end Edge\u2013DataHub\u2013Producer Portal (OKTA) registration process was completed with 11 users as of 22 October 2026 (ALT, 23 October 2026).",
+            "condition": "A critical issue may be encountered during the mass producer onboarding that prevents successful registration or portal access.",
+            "consequence": "The production rollout may need to be rolled back and remediated, delaying producer onboarding and causing business disruption and reputational impact with 2,500+ producers."
+          },
+          "category": "Rollout",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct staged rollout validation with incremental producer cohorts (100, 500, 1000) before full-scale deployment to detect issues early.",
+          "contingencyCorrectiveAction": "Upon detection of critical registration or portal access failure affecting more than 5% of producers, activate rollback to last stable build, engage Premera escalation path within 2 hours, and switch to phased rollout approach with daily cohorts of 250 producers.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "22-Oct-2026",
+          "status": "Open",
+          "reasoning": "ALT escalation trigger met (23 October 2026); big-bang rollout approach with 2,500+ producers introduces scale risk despite successful pilot with 11 users (ALT). Rollback and remediation plan exists as contingency (ALT)."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "The project has absorbed approximately 14 scope changes equivalent to 0.75\u20131 sprint of additional effort (EMS R857, Artifacts 22 July 2026). R857 is Identified, mitigation is Assessed (EMS, 29 June 2026).",
+            "condition": "Further scope additions may be requested by Premera during UAT or Hypercare.",
+            "consequence": "Delivery timelines may be impacted, and the fixed-price contract ($650,000) may require Change Management negotiation, delaying milestone payments and straining client relationship."
+          },
+          "category": "Requirements",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement formal Change Request procedure requiring Premera sign-off and timeline impact assessment before accepting any new scope during UAT or Hypercare.",
+          "contingencyCorrectiveAction": "Should additional scope be requested post-UAT sign-off, escalate to Premera Program Manager and Ascendion Delivery Lead to negotiate Change Order with revised milestone dates and commercial terms within 5 business days.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "14-Aug-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk R857 carried forward and re-rated (29 June 2026); 14 scope changes already absorbed (Artifacts, 22 July 2026); mitigation Assessed but not yet finalized (EMS)."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Security",
+          "riskDescription": {
+            "context": "SAST scan identified 190 code smells, including 2 Critical and 80 Major (Artifacts, 18 June 2026). SCA scan detected 86 CVEs, including 4 Critical and 82 High, all on Alpine base image (Artifacts, 18 June 2026). Both scans are In Progress (Artifacts, 18 June 2026). Penetration Testing is 0% (Artifacts, 22 July 2026).",
+            "condition": "Critical and High severity code smells and CVEs may remain unresolved before Go-Live.",
+            "consequence": "Unresolved vulnerabilities could be exploited in production, leading to data breaches, compliance violations, and reputational damage with Premera and 2,500+ producers."
+          },
+          "category": "Vulnerabilities",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Resolve all Critical and Major code smells and Critical/High CVEs by 05-Aug-2026 through daily triage sessions and prioritize Alpine base image upgrade to eliminate CVE exposure.",
+          "contingencyCorrectiveAction": "If Critical vulnerabilities remain unresolved by UAT sign-off (14-Aug-2026), defer affected features to post-Go-Live hotfix release, engage Premera Security team for risk acceptance waiver, and deploy compensating controls (WAF rules, monitoring alerts) within 48 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "05-Aug-2026",
+          "status": "Open",
+          "reasoning": "2 Critical and 80 Major code smells, 4 Critical and 82 High CVEs In Progress (Artifacts, 18 June 2026); no resolution update in Artifacts (22 July 2026); Pen Test 0% (Artifacts, 22 July 2026); production deployment complete (ALT, 23 October 2026)."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "Integration testing is 0% as of 22 July 2026 (Artifacts). Upstream Data setup for integration & E2E scenarios is Open (Artifacts, 22 July 2026). Data Hub dependencies (4 new Total Premium fields, Search by NPN on producer entity) have ETA 30 July 2026 (Artifacts, 22 July 2026).",
+            "condition": "Upstream Data setup or Data Hub dependencies may be delayed beyond 30 July 2026, preventing completion of Integration testing.",
+            "consequence": "UAT execution (target sign-off: 14 August 2026) may be delayed, and defects may surface late in UAT or production, requiring rework and delaying Go-Live (target sign-off: 25 August 2026)."
+          },
+          "category": "Testing",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish daily Data Hub and Upstream Data checkpoint calls with Premera (Deba) to track Total Premium fields and NPN search delivery by 30-Jul-2026 and unblock Integration testing start.",
+          "contingencyCorrectiveAction": "Once Data Hub dependencies exceed 30-Jul-2026 by 3 days, rebaseline UAT sign-off to 21-Aug-2026, prioritize critical BoB and Dashboard scenarios for Integration testing first, and defer non-critical features to post-Go-Live release.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "30-Jul-2026",
+          "status": "Open",
+          "reasoning": "Integration testing 0% (Artifacts, 22 July 2026); Upstream Data setup and Data Hub dependencies Open with ETA 30 July 2026 (Artifacts, 22 July 2026); UAT target sign-off 14 August 2026 (Artifacts)."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "UAT is 0% as of 22 July 2026 (Artifacts). UAT test cases early availability is Open with no ETA (Artifacts, 22 July 2026). UAT target sign-off is 14 August 2026 (Artifacts, 22 July 2026).",
+            "condition": "UAT test cases may not be available early enough to allow timely UAT execution and sign-off by 14 August 2026.",
+            "consequence": "UAT sign-off may be delayed, pushing Go-Live (target sign-off: 25 August 2026) and Rollout (2 September 2026) timelines and increasing pressure on Penetration Testing and final deployment activities."
+          },
+          "category": "Testing",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Secure Premera UAT test cases and tester availability confirmation by 01-Aug-2026 through escalation to Premera Program Manager and schedule QE leadership review before UAT start.",
+          "contingencyCorrectiveAction": "Should UAT test cases remain unavailable by 05-Aug-2026, Ascendion QE team to draft provisional UAT scenarios from acceptance criteria, obtain Premera PO approval, and execute UAT with revised sign-off date of 21-Aug-2026.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Aug-2026",
+          "status": "Open",
+          "reasoning": "UAT test cases availability Open with no ETA (Artifacts, 22 July 2026); UAT 0% (Artifacts, 22 July 2026); UAT target sign-off 14 August 2026 (Artifacts)."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Vendor",
+          "riskDescription": {
+            "context": "Auth0 integration with Entra (Azure AD SSO for Super Users) is Pending with no ETA (Artifacts, 22 July 2026). Auth0 DB connection configuration update in ACPT is Open with ETA 10 July 2026 (Artifacts, 22 July 2026). Auth0 terraform release pipeline support is Open with no ETA (Artifacts, 22 July 2026).",
+            "condition": "Auth0 integration dependencies may not be resolved in time for ACPT deployment completion or UAT execution.",
+            "consequence": "ACPT deployment may remain incomplete, delaying Integration testing and UAT, and Super User login functionality may not be available for UAT or Go-Live."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate Auth0 Entra integration and DB connection config to Premera (Ganesh, Drew) by 05-Jul-2026 and allocate Ascendion team member to coordinate Auth0 terraform pipeline support daily until ACPT deployment completes.",
+          "contingencyCorrectiveAction": "If Auth0 DB connection config is not updated in ACPT by 12-Jul-2026, deploy workaround using manual DB connection configuration for UAT, document technical debt, and schedule automated terraform pipeline implementation for post-Go-Live sprint.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "10-Jul-2026",
+          "status": "Open",
+          "reasoning": "Auth0 Entra integration Pending, DB connection config ETA 10 July 2026, terraform pipeline support Open (Artifacts, 22 July 2026); ACPT deployment in progress (Artifacts, 22 July 2026)."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "Backend code coverage is 57% as of 18 June 2026 (Artifacts). Frontend code coverage is 98% (Artifacts, 18 June 2026). Production deployment is complete (ALT, 23 October 2026).",
+            "condition": "Low backend code coverage may allow defects to remain undetected in backend services and APIs.",
+            "consequence": "Defects may surface during Integration testing, UAT, or production, requiring rework and potentially delaying Go-Live or causing production incidents during Hypercare."
+          },
+          "category": "Testing",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Increase backend unit test coverage to 75% by 25-Jul-2026 through daily code review checkpoints and prioritize critical API and service layer test scenarios in Jenkins pipeline.",
+          "contingencyCorrectiveAction": "Should backend defects surface during Integration testing or UAT due to low coverage, allocate dedicated developer pair to triage and fix within 24 hours, and extend UAT regression cycle by 3 days to validate fixes.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "25-Jul-2026",
+          "status": "Open",
+          "reasoning": "Backend code coverage 57% (Artifacts, 18 June 2026); no update in Artifacts (22 July 2026); production deployment complete (ALT, 23 October 2026)."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Citrix slowness and frequent disconnection are impacting offshore team delivery (Artifacts, 22 July 2026). A ticket is to be raised with Premera to address the issue (EMS Go-Green Plan, Artifacts 22 July 2026).",
+            "condition": "Citrix performance issues may persist if the ticket is not resolved promptly by Premera.",
+            "consequence": "Offshore team productivity may remain degraded, delaying completion of Integration testing, UAT support, and Hypercare activities."
+          },
+          "category": "Environment",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Raise Citrix performance ticket with Premera IT by 24-Jul-2026 requesting 24/7 VDI support coverage during offshore hours and Citrix upgrade scheduling to restore offshore team productivity.",
+          "contingencyCorrectiveAction": "Upon continued Citrix slowness beyond 31-Jul-2026, reallocate critical Integration testing and UAT support tasks to onshore team members during PT business hours and adjust offshore team assignments to non-VDI-dependent activities (documentation, test case review).",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "24-Jul-2026",
+          "status": "Open",
+          "reasoning": "Citrix slowness and disconnection impacting offshore team (Artifacts, 22 July 2026); ticket to be raised with Premera (EMS Go-Green Plan); no resolution update."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Security",
+          "riskDescription": {
+            "context": "Penetration Testing is 0% and planned post-UAT completion (Artifacts, 22 July 2026). UAT target sign-off is 14 August 2026 (Artifacts, 22 July 2026). Go-Live target sign-off is 25 August 2026 (Artifacts, 22 July 2026).",
+            "condition": "UAT completion may be delayed, pushing Penetration Testing start date and leaving insufficient time for remediation of Pen Test findings before Go-Live.",
+            "consequence": "Go-Live may be delayed, or the application may go live with unresolved Pen Test findings, increasing security risk and compliance exposure."
+          },
+          "category": "Compliance",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Schedule Penetration Testing start for 15-Aug-2026 (1 day after UAT sign-off target) and pre-approve security quarantined components with Premera InfoSec by 10-Aug-2026 to ensure timely completion.",
+          "contingencyCorrectiveAction": "Should UAT sign-off delay beyond 18-Aug-2026, rebaseline Go-Live sign-off to 01-Sep-2026, conduct Pen Test in parallel with UAT remediation, and escalate Critical findings only for pre-Go-Live fix with Medium/Low deferred to Hypercare sprint.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Aug-2026",
+          "status": "Open",
+          "reasoning": "Pen Test 0% (Artifacts, 22 July 2026); depends on UAT completion (R-005); UAT target sign-off 14 August 2026, Go-Live target sign-off 25 August 2026 (Artifacts); 11-day window for Pen Test and remediation is tight. Cascading risk triggered by UAT delay (R-005)."
+        }
+      ]
+    }
+  ]
+}
