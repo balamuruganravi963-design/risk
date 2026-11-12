@@ -1,0 +1,99 @@
+{
+  "client": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "Project Artifacts",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R-001",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "ALT (23 Oct 2026) shows Premera planned a big-bang rollout to 2,500+ producers on 22 October after validating the E2E Edge-DataHub-Producer Portal registration process with only 11 users. WSR (22 Jul 2026) documented a 15% test failure rate, 86 unresolved CVEs (4 Critical, 82 High), and penetration testing decision still pending.",
+            "condition": "Production defects or performance issues may surface during the mass producer onboarding, requiring rollback and remediation.",
+            "consequence": "A failed rollout could disrupt access for 2,500+ insurance producers, damage client trust, and require costly emergency fixes or a full rollback."
+          },
+          "category": "Deployment",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct regression, performance, and rollback testing on critical business flows before the 22 October rollout.",
+          "contingencyCorrectiveAction": "Upon detection of critical defects during rollout, activate the rollback procedure and notify the 2,500 producers within 24 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-10-2026",
+          "status": "Open",
+          "reasoning": "ALT explicitly flags this as an escalation trigger (big-bang rollout risk). WSR quality signals (test failures, unresolved CVEs, limited scale testing) support the likelihood. Combined evidence from ALT and Project Artifacts."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R-002",
+          "subjectArea": "Security",
+          "riskDescription": {
+            "context": "WSR (22 Jul 2026) reported 86 CVEs (4 Critical, 82 High) on the alpine base image marked as 'in-progress,' and penetration testing decision was still pending. ALT (23 Oct 2026) confirms production deployment is complete but does not mention CVE resolution.",
+            "condition": "Unpatched security vulnerabilities may remain in the production environment when the system is live and serving 2,500+ producers.",
+            "consequence": "Security audit findings could trigger compliance penalties, expose Premera to data breach risk, and delay or block future producer onboarding waves."
+          },
+          "category": "Compliance",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Implement compensating controls and patch alpine base image CVEs before enabling external producer access to production.",
+          "contingencyCorrectiveAction": "Escalate to CISO and isolate affected services immediately if a security audit finding or breach is detected, with incident response within 4 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "08-10-2026",
+          "status": "In Progress",
+          "reasoning": "Open technical debt from WSR (22 Jul) with no documented closure in ALT (23 Oct). Three-month gap between WSR and production deployment with CVEs still marked 'in-progress' raises likelihood. Supported by Project Artifacts."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R-003",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "EMS Risk R857 (Identified, opened 29 Jun 2026) states that the project has absorbed approximately 14 scope changes equivalent to 0.75\u20131 sprint of additional effort, with no formal change orders issued. WSR (22 Jul 2026) confirms the 14 changes and notes that data mapping discussions were ongoing.",
+            "condition": "Further scope additions or post-production enhancement requests may exceed the remaining budget or delay future release cycles.",
+            "consequence": "Margin erosion could occur, or the client may contest additional charges, straining the commercial relationship and delivery capacity."
+          },
+          "category": "Commercial",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish formal change request procedures requiring impact assessment and client sign-off before accepting any future scope additions.",
+          "contingencyCorrectiveAction": "When scope additions exceed 0.5 sprint effort, invoke the change control process and communicate timeline and budget impacts to Premera stakeholders.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "30-11-2026",
+          "status": "Open",
+          "reasoning": "Carried forward from open EMS Risk R857 and re-rated. Pattern of scope absorption without change orders is established in WSR. Production deployment (ALT) reduces immediate timeline impact but future enhancement risk remains. Supported by EMS and Project Artifacts."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R-004",
+          "subjectArea": "Operations",
+          "riskDescription": {
+            "context": "ALT (23 Oct 2026) shows a big-bang rollout to 2,500+ producers is planned. WSR (22 Jul 2026) noted that DevOps support is available only on-need basis (no dedicated resource), and Citrix slowness and frequent disconnection are impacting offshore team productivity.",
+            "condition": "The support team may be overwhelmed by production incidents during the mass rollout, especially if infrastructure or access issues persist.",
+            "consequence": "Delayed incident response could degrade user experience, reduce producer satisfaction, and strain the hypercare team during the critical 4-week stabilization period."
+          },
+          "category": "Operations",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Cross-train delivery team on DevOps tasks and establish 24/7 hypercare coverage schedule with escalation paths before 22 October rollout.",
+          "contingencyCorrectiveAction": "If incident response time exceeds 2 hours, escalate to David (DevOps) and engage Premera IT to prioritize Citrix resolution.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-10-2026",
+          "status": "Open",
+          "reasoning": "Big-bang rollout approach (ALT) combined with limited support resources and unresolved infrastructure issues (WSR) raises operational risk. Supported by ALT and Project Artifacts."
+        }
+      ]
+    }
+  ]
+}
