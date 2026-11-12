@@ -1,0 +1,119 @@
+{
+  "client": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "Project Artifacts",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "ALT (23-Oct-2026) reports Premera is planning a big-bang rollout to 2,500+ producers on 22-Oct-2026, with only 11 users validated in end-to-end Edge\u2013DataHub\u2013Producer Portal (OKTA) registration testing.",
+            "condition": "If issues are encountered during the mass producer onboarding, the rollout may need to be rolled back and remediated.",
+            "consequence": "Rollback and remediation would disrupt producer onboarding, delay business value realization, damage client trust, and require emergency fixes under time pressure."
+          },
+          "category": "Deployment",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct phased validation with pilot user group (50\u2013100 producers) before mass rollout to identify issues early.",
+          "contingencyCorrectiveAction": "Upon detecting critical issues during rollout, halt onboarding, activate rollback procedure, and escalate to project board within 4 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Oct-2026",
+          "status": "Open",
+          "reasoning": "ALT (23-Oct-2026) explicitly identifies big-bang rollout risk with limited pre-rollout validation (11 users vs. 2,500+ target); no phased approach or pilot group documented. Target Date: 22-Oct-2026 (rollout date)."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "EMS R857 (Identified, 29-Jun-2026) reports the project has absorbed approximately 14 scope changes (equivalent to 0.75\u20131 sprint of additional effort) within a fixed-price contract ($650,000), with no formal change orders documented as of 22-Jul-2026.",
+            "condition": "Further scope additions may exceed the remaining budget or require contract renegotiation.",
+            "consequence": "Margin could erode, or the client may contest additional charges, leading to commercial disputes and strained relationship."
+          },
+          "category": "Commercial",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement formal change control process requiring written approval and cost impact assessment for all scope changes.",
+          "contingencyCorrectiveAction": "Should margin erosion exceed 10%, escalate to commercial leadership and negotiate contract amendment or scope reduction with client.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "29-Nov-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk (R857 Identified) corroborated by Project Artifacts (WSR Scope Change Tracker, 22-Jul-2026) showing 14 changes absorbed and 2 Pending; fixed-price contract with no change orders invoked; pattern of scope creep established. End Date: 31-Dec-2026 (EMS)."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Integration",
+          "riskDescription": {
+            "context": "EMS R856 (Resolved) noted performance and NFR issues would only become visible after live Data Hub integration; ALT (23-Oct-2026) reports E2E validation completed with only 11 users before mass rollout to 2,500+ producers.",
+            "condition": "Performance degradation or data inconsistency may occur under production load (2,500+ concurrent users) that was not visible in small-scale testing.",
+            "consequence": "Performance issues or data inconsistency in production would require emergency fixes, rollback, or service degradation, damaging client trust and producer experience."
+          },
+          "category": "Performance",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct load testing simulating 2,500+ concurrent users and validate NFRs before production rollout to identify bottlenecks.",
+          "contingencyCorrectiveAction": "Once response time exceeds 3 seconds or error rate exceeds 2%, activate performance tuning team and notify producers of degradation.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "10-Oct-2026",
+          "status": "Open",
+          "reasoning": "Carried forward from EMS R856 (Resolved) and re-assessed based on ALT (23-Oct-2026) evidence of limited load validation (11 users) before big-bang rollout; no evidence of NFR validation at production scale in Project Artifacts (WSR 22-Jul-2026) or ALT."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Security",
+          "riskDescription": {
+            "context": "Project Artifacts (WSR 22-Jul-2026) report 86 CVEs detected (4 critical, 82 high) in progress and penetration testing not yet started (0% complete); ALT (23-Oct-2026) reports IT validation completed but is silent on CVE resolution or penetration testing completion.",
+            "condition": "Unresolved critical or high CVEs, or incomplete penetration testing, may remain in the production environment.",
+            "consequence": "Security vulnerabilities could expose Premera to breaches, compliance violations, regulatory penalties, and reputational damage."
+          },
+          "category": "Compliance",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Remediate all critical and high CVEs and complete penetration testing with documented sign-off before production rollout.",
+          "contingencyCorrectiveAction": "Upon discovery of exploited vulnerability, isolate affected systems, apply emergency patch, and notify InfoSec and client within 2 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Nov-2026",
+          "status": "In Progress",
+          "reasoning": "Project Artifacts (WSR 22-Jul-2026) confirm 86 CVEs (4 critical, 82 high) in progress and pen test not started; ALT (23-Oct-2026) silent on resolution; IT validation completed per ALT may indicate acceptable risk level, but no explicit confirmation of CVE remediation or pen test completion."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Operations",
+          "riskDescription": {
+            "context": "ALT (23-Oct-2026) reports Premera is planning a big-bang rollout to 2,500+ producers on 22-Oct-2026 with only 11 users validated in E2E testing; Project Artifacts (WSR 22-Jul-2026) show 4 weeks of Hypercare planned post-rollout.",
+            "condition": "The Hypercare support team may be overwhelmed by a high volume of issues, questions, and incidents from the mass rollout.",
+            "consequence": "High volume of Hypercare incidents could strain the support team, delay issue resolution, and impact producer experience during the critical stabilization period."
+          },
+          "category": "Support",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish 24/7 Hypercare coverage with escalation tiers and daily incident review to ensure rapid issue resolution.",
+          "contingencyCorrectiveAction": "When incident backlog exceeds 50 open tickets, deploy backup support resources and communicate resolution timeline to affected producers.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "22-Oct-2026",
+          "status": "Open",
+          "reasoning": "Combined evidence from ALT (big-bang rollout with limited validation) and Project Artifacts (4-week Hypercare planned); no mention of Hypercare readiness or staffing in ALT. Hypercare period: approximately 22-Oct-2026 to 19-Nov-2026."
+        }
+      ]
+    }
+  ]
+}
