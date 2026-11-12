@@ -1,0 +1,219 @@
+{
+  "client": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "Project Artifacts",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "Premera planned a big-bang rollout to 2,500+ producers on October 22, 2026, and the ALT deck (23 October 2026) reports status awaited.",
+            "condition": "If a defect, performance issue, or integration failure surfaces during the mass producer onboarding, the rollout may need to be rolled back.",
+            "consequence": "Rollback and remediation would delay producer onboarding, damage client confidence, require emergency fixes, and extend the stabilization period beyond the planned Hypercare window."
+          },
+          "category": "Deployment",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish phased rollout with pilot group validation before mass onboarding to detect issues early and protect the production rollout.",
+          "contingencyCorrectiveAction": "Upon detection of critical defect or integration failure during mass onboarding, activate rollback procedure immediately and rebaseline go-live plan with earliest available release window within 24 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Oct-2026",
+          "status": "Open",
+          "reasoning": "ALT deck (23 October 2026) explicitly flags this as a WATCHLIST risk. Big-bang approach to 2,500+ users with no phased rollout increases exposure. Status awaited as of 23 October indicates the rollout outcome is uncertain."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Security",
+          "riskDescription": {
+            "context": "Sprint 3 metrics (18 June 2026) detected 86 CVEs (4 Critical, 82 High) and 190 code smells (2 Critical, 80 Major) in progress.",
+            "condition": "If Critical and High CVEs remain unresolved at the time of mass producer onboarding, unpatched vulnerabilities may be exploited in Production.",
+            "consequence": "A security incident could expose producer and member data, trigger regulatory penalties, and force an emergency rollback or patching cycle."
+          },
+          "category": "Compliance",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct internal security testing to resolve all Critical and High CVEs before October 15 and validate fixes in parallel with ongoing deployment activities.",
+          "contingencyCorrectiveAction": "If security vulnerability is exploited in Production, deploy emergency patch within 48 hours and escalate to CISO with incident response plan and customer communication.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "10-Oct-2026",
+          "status": "Open",
+          "reasoning": "CVE remediation was in progress as of 18 June 2026 (Project Artifacts). No confirmation of resolution by October 22 rollout date. ALT deck does not mention security validation completion. Single-source signal (Artifacts), but high impact justifies inclusion."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "The project absorbed 14 scope changes (0.75\u20131 sprint effort) and EMS Risk R857 (29 June 2026) flags further scope additions as a Moderate/Likely/Medium risk with mitigation plan pending.",
+            "condition": "Additional scope requests during Hypercare or post-rollout stabilization may exceed the available budget and timeline buffer.",
+            "consequence": "Unplanned scope could erode margin, delay closure, or require a change order negotiation with the client."
+          },
+          "category": "Commercial",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement formal scope change process requiring program leadership approval and impact assessment before accepting any new requirements during Hypercare and stabilization.",
+          "contingencyCorrectiveAction": "If scope change request exceeds available buffer, escalate to Premera program leadership within 48 hours with impact analysis and defer non-critical items to Phase 2.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Oct-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk R857 (Identified/Assessed) supported by 14 documented scope changes in Artifacts. Decision 32 (25 June 2026) requires program leadership review for new requirements, reducing likelihood but not eliminating it."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "The WSR (22 July 2026) flagged Citrix server slowness and frequent disconnections impacting offshore team efforts, with a ticket to be raised with Premera.",
+            "condition": "If Citrix performance issues persist during Hypercare, the offshore team may be unable to respond quickly to production incidents.",
+            "consequence": "Delayed incident resolution could extend outages, frustrate producers, and weaken client satisfaction during the critical stabilization period."
+          },
+          "category": "Infrastructure",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Raise Citrix performance ticket with Premera IT by September 15 and validate resolution before October 22 rollout to ensure offshore team responsiveness.",
+          "contingencyCorrectiveAction": "If Citrix issue persists during Hypercare incident, redirect critical support tasks to onshore team and escalate to Premera IT with SLA breach notification within 4 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "10-Sep-2026",
+          "status": "Open",
+          "reasoning": "Flagged in WSR go-green plan (22 July 2026) and EMS context. No confirmation of resolution by October 2026. Hypercare support depends on offshore team responsiveness."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Data",
+          "riskDescription": {
+            "context": "WSR open item (25 June 2026) noted data mappings mostly closed but possible values still under discussion, with minor modifications expected during E2E/UAT. Decision 31 flagged potential design changes if issues surface.",
+            "condition": "If data mapping discrepancies surface during mass producer onboarding, incorrect or missing data may be displayed to producers.",
+            "consequence": "Data integrity issues could undermine producer trust, trigger support escalations, and require emergency data fixes or rollback."
+          },
+          "category": "Data",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate data mappings with Data Hub and business team through end-to-end testing by September 30 and confirm data integrity across all producer scenarios.",
+          "contingencyCorrectiveAction": "Upon detection of data integrity issue during mass onboarding, activate emergency data fix procedure and notify producers of data correction timeline within 24 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "25-Sep-2026",
+          "status": "Open",
+          "reasoning": "WSR open item (25 June 2026) and Decision 31 flag unresolved data mapping discussions. ALT deck reports end-to-end registration testing completed with 11 users, but no confirmation of full data validation across 2,500+ producers."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "Decision 7 (28 April 2026) noted tool integration delays led to atomic agent development requiring refactoring effort (Medium). Open risks (9\u201317 March 2026) include single LLM limitations, tools integration delays, inadequate agent hardening, limited training datasets, client template misalignment, tool/API invocation failures, and poor agent orchestration.",
+            "condition": "If agent-generated code or test cases contain latent defects due to inadequate hardening or LLM limitations, these may surface during mass producer usage.",
+            "consequence": "Agent-related defects could cause functional failures, require emergency patches, and extend the stabilization period."
+          },
+          "category": "Quality",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement human review checkpoint for all agent-generated code and test cases before October 15 and validate agent outputs against production scenarios.",
+          "contingencyCorrectiveAction": "If agent-related defect is detected in Production, deploy manual workaround within 24 hours and escalate to engineering team for permanent fix within 72 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "10-Oct-2026",
+          "status": "Open",
+          "reasoning": "Multiple open agent development risks documented in WSR (9\u201317 March 2026) and Decision 7. ~70% agent-generated test cases and ~35% AI-generated code (Sprint 3 metrics) increase exposure. No confirmation of agent hardening completion by October 2026."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Resources",
+          "riskDescription": {
+            "context": "The project switched QE automation from Selenium to Playwright (Decision 4, 8 April 2026) and Selenium resource Kishore transitioned effective 1 May 2026. DevOps support is on-need basis from David (AI Platform Build Claims POD).",
+            "condition": "If the Playwright automation framework or on-need DevOps support proves insufficient during Hypercare incident response, the team may lack the capacity to diagnose and resolve issues quickly.",
+            "consequence": "Delayed incident resolution could extend producer downtime and weaken client confidence during the critical stabilization period."
+          },
+          "category": "People",
+          "probability": "Unlikely",
+          "impact": "Medium",
+          "rag": "Green",
+          "mitigationPreventiveAction": "Validate Playwright automation framework and DevOps support availability through dry-run incident response exercise by October 10 to ensure Hypercare readiness.",
+          "contingencyCorrectiveAction": "If DevOps support is unavailable during critical incident, engage backup resource from AI Platform Build Claims POD and notify Premera of potential delay.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "05-Oct-2026",
+          "status": "Open",
+          "reasoning": "Automation switch and DevOps support model documented in Artifacts (Decision 4, Decision 2). Talent RAG is Green (EMS). No evidence of skill gaps or capacity issues. Included due to on-need support model and Hypercare criticality, but likelihood is low."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Vendor",
+          "riskDescription": {
+            "context": "WSR (22 July 2026) reported awaiting 4 new fields for total premium on BoB with ETA 30 July from Data Hub, and awaiting DH support for search by NPN on producer entity with ETA 30 July. Dependency D026 (Confirmation from DH on total premium fields) was Open with needed-by date 6 July 2026.",
+            "condition": "If Data Hub delays delivery of the total premium fields or NPN search support beyond the October rollout, producers may see incomplete or incorrect Book of Business data.",
+            "consequence": "Incomplete data could trigger producer complaints, support escalations, and require emergency data fixes or rollback."
+          },
+          "category": "Third-Party",
+          "probability": "Unlikely",
+          "impact": "Medium",
+          "rag": "Green",
+          "mitigationPreventiveAction": "Confirm Data Hub delivery of total premium fields and NPN search support by September 20 and validate integration through end-to-end testing before rollout.",
+          "contingencyCorrectiveAction": "If Data Hub dependency is not met, defer total premium and NPN search features to Phase 2 and communicate workaround to producers within 48 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "16-Sep-2026",
+          "status": "Open",
+          "reasoning": "Dependency D026 was Open as of 22 July 2026 with ETA 30 July. ALT deck (23 October 2026) reports end-to-end registration testing completed successfully, suggesting Data Hub integration is functional. No confirmation of total premium fields delivery, but likelihood is low given successful testing."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Customer",
+          "riskDescription": {
+            "context": "ALT deck (23 October 2026) reports Premera is planning to send registration emails to 2,500+ producers on October 22 using a big-bang rollout approach, status awaited. No phased rollout or pilot group documented.",
+            "condition": "If producers encounter registration failures, authentication issues, or missing data during the mass onboarding, support volume may overwhelm the Hypercare team.",
+            "consequence": "High support volume could delay incident resolution, frustrate producers, and damage client satisfaction during the critical rollout period."
+          },
+          "category": "Customer",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish Hypercare support capacity plan with dedicated triage team and escalation path by October 10 to handle anticipated support volume during mass onboarding.",
+          "contingencyCorrectiveAction": "If support volume exceeds capacity during mass onboarding, activate overflow support from backup team and extend Hypercare hours with customer communication within 12 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "05-Oct-2026",
+          "status": "Open",
+          "reasoning": "ALT deck flags big-bang rollout risk. No evidence of phased rollout, pilot group, or support capacity planning in Artifacts or EMS. End-to-end testing with 11 users (ALT) does not validate support capacity for 2,500+ producers."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Operations",
+          "riskDescription": {
+            "context": "Go-green plan (22 July 2026) includes updating retry logic to classify invalid email-format failures as non-retryable, deploying to Production, and re-enabling Azure 4xx/5xx alerts. Hypercare monitoring planned post-rollout.",
+            "condition": "If the retry logic update or Azure alert configuration is incomplete or incorrect at the time of mass producer onboarding, false-positive P4 incidents may distract the Hypercare team from real issues.",
+            "consequence": "Alert noise could delay detection and resolution of actual production incidents, extending producer downtime."
+          },
+          "category": "Operations",
+          "probability": "Unlikely",
+          "impact": "Medium",
+          "rag": "Green",
+          "mitigationPreventiveAction": "Deploy retry logic update to Production by September 25 and validate Azure alert configuration through monitoring dry-run before October 22 rollout.",
+          "contingencyCorrectiveAction": "If false-positive alerts occur during Hypercare, temporarily disable Azure 4xx/5xx alerts and implement manual monitoring with escalation to engineering team.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "20-Sep-2026",
+          "status": "Open",
+          "reasoning": "Go-green plan documented in EMS (22 July 2026). No evidence of incomplete deployment. ALT deck reports IT validation and business validation completed successfully. Included due to Hypercare criticality, but likelihood is low."
+        }
+      ]
+    }
+  ]
+}
