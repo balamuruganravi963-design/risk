@@ -1,0 +1,199 @@
+{
+  "client": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "23-Oct-2026",
+      "sourcesUsed": [
+        "EMS",
+        "ALT",
+        "Project Artifacts"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "ALT reports that Premera executed a big-bang rollout to 2,500+ producers on October 22 after validating the end-to-end registration process with only 11 users, and status is awaited as of 23-Oct-2026.",
+            "condition": "Critical defects or performance degradation may surface under production load, requiring emergency rollback and remediation.",
+            "consequence": "Rollback would disrupt 2,500+ producers, delay business value realization, damage client and producer trust, and require unplanned remediation effort extending the timeline."
+          },
+          "category": "Deployment",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish 24x7 war room monitoring with automated alerting for critical thresholds during the first 72 hours post-rollout.",
+          "contingencyCorrectiveAction": "Upon detection of critical defects impacting 10% or more producers, activate emergency rollback procedure, notify all 2,500+ producers within 2 hours, and escalate to Premera executive leadership immediately.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "22-Oct-2026",
+          "status": "In Progress",
+          "reasoning": "ALT Watchlist status confirms big-bang rollout with minimal pre-production validation (11 users vs. 2,500+ target); rollback risk explicitly flagged in ALT; no phased rollout mitigation in place."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "EMS Risk R857 (Identified, Moderate severity) notes that the project has absorbed approximately 14 scope changes equivalent to 0.75\u20131 sprint of additional effort, and mitigation plan is still being arrived at as of 29-Jun-2026.",
+            "condition": "Further scope additions may exceed remaining capacity and budget, especially if post-production issues from the big-bang rollout require unplanned work.",
+            "consequence": "Timeline slippage, margin erosion, or client disputes over additional charges could result."
+          },
+          "category": "Scope Management",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement formal change control board with documented impact assessment and Premera approval required before accepting any new scope.",
+          "contingencyCorrectiveAction": "When cumulative unplanned effort exceeds 0.5 sprint, rebaseline the delivery plan with Premera, prioritize critical-path items, and defer non-essential features to post-Hypercare phase.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "Carried forward from open EMS Risk R857; 14 scope changes already absorbed; no finalized mitigation plan; compounded by production rollout uncertainty (ALT)."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "Project Artifacts show backend test coverage at 57% and 11 failed functional test cases (15% failure rate) as of 22-Jul-2026, with 86 CVEs (4 Critical, 82 High) on the alpine base image and 190 code smells (2 Critical, 80 Major).",
+            "condition": "Unresolved defects or unpatched vulnerabilities may surface in production under real-world load or during security audits.",
+            "consequence": "Production incidents, security audit findings, client escalation, and remediation rework could delay stabilization and impact client satisfaction."
+          },
+          "category": "Quality",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct daily defect triage during Hypercare, prioritize critical CVE remediation, and target 75% backend coverage by 15-Nov-2026.",
+          "contingencyCorrectiveAction": "Should production defects exceed 5 P1/P2 incidents per week, deploy dedicated hotfix team and implement daily client status updates with remediation timelines.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Nov-2026",
+          "status": "In Progress",
+          "reasoning": "Low backend test coverage, high CVE count, and open functional test failures documented in Artifacts; production deployment completed (ALT) before full remediation; single-source signal but material impact."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Integration",
+          "riskDescription": {
+            "context": "Project Artifacts Risk R1 (25-Jun-2026) notes that the team is proceeding with data mappings provided by Data Hub, and if issues with values arise leading back to entity stitching design, there may be time impact.",
+            "condition": "Data mapping discrepancies or entity stitching issues may surface during production use, requiring design changes and re-integration.",
+            "consequence": "Production data quality issues, producer-facing errors, and unplanned rework could extend the stabilization period and erode client trust."
+          },
+          "category": "Integration",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate Data Hub API responses against business rules daily during Hypercare and maintain continuous communication with DH and business teams.",
+          "contingencyCorrectiveAction": "When data discrepancies are identified, implement temporary data transformation workaround in Wrapper service and escalate design change request to Premera within 24 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "30-Oct-2026",
+          "status": "Open",
+          "reasoning": "Open risk in Artifacts (R1, 25-Jun-2026, ETA 15-Jul-2026); Data Hub integration completed but validation limited to 11 users (ALT); production load may expose latent issues."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Project Artifacts note ongoing Citrix slowness and frequent disconnection impacting offshore team delivery, with a ticket to be raised with Premera as of 22-Jul-2026, and EMS go-green plan references the same issue.",
+            "condition": "Persistent Citrix performance issues may delay post-production support, defect resolution, and Hypercare activities.",
+            "consequence": "Slower response times to production incidents could extend issue resolution cycles and weaken client confidence during the critical stabilization phase."
+          },
+          "category": "Infrastructure",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate Citrix performance ticket to Premera IT weekly, document all productivity impacts, and request priority resolution by 01-Nov-2026.",
+          "contingencyCorrectiveAction": "If Citrix issues persist beyond 01-Nov, shift critical Hypercare tasks to onshore resources and request Premera approval for temporary VPN access as alternative.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "Confirmed in both EMS go-green plan and Artifacts (22-Jul-2026); issue unresolved as of last reporting; impacts offshore team productivity during Hypercare."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "Project Artifacts Risk R4 (16-Mar-2026, Open) notes that only one LLM is available in PortKey, which may underperform on specific tasks and prevents use of a reviewer-agent, leading to manual effort.",
+            "condition": "Continued reliance on a single underperforming LLM may reduce agent-driven efficiency gains and increase manual rework during post-production enhancements or defect resolution.",
+            "consequence": "Productivity loss, increased effort costs, and slower delivery of enhancements could result."
+          },
+          "category": "Technology",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Document LLM limitations per task type, implement human review checkpoints for agent outputs, and request Premera approval for multi-LLM access.",
+          "contingencyCorrectiveAction": "When agent output quality falls below 70% accuracy, switch to manual development workflow and track additional effort for scope adjustment discussions.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "Open risk in Artifacts (R4, 16-Mar-2026); no resolution documented; agent efficiency gains (~70% test cases, ~35% code generation) may not be sustainable if LLM limitations persist."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "Project Artifacts Risks R6, R7, R8, R9, R10 (all 16-Mar-2026, Open) identify multiple agent-related risks: inadequate hardening, limited training datasets, client template misalignment, tool/API invocation failures, and poor orchestration.",
+            "condition": "Unresolved agent maturity issues may cause inconsistent behavior, workflow delays, or incorrect task sequencing during post-production support and enhancements.",
+            "consequence": "Agent-driven productivity gains may not materialize, leading to manual fallback effort, cost overruns, and slower response to production issues."
+          },
+          "category": "Technology",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Define agent hardening checklist with fallback logic, implement retry and timeout handling, and conduct scenario testing for multi-agent workflows weekly.",
+          "contingencyCorrectiveAction": "Once agent failures exceed 20% of invocations, activate manual fallback procedures, document all failures, and reassess agent usage strategy with Premera.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "30-Nov-2026",
+          "status": "Open",
+          "reasoning": "Five open agent-related risks documented in Artifacts (R6\u2013R10, all 16-Mar-2026); no closure or mitigation status updates; agent framework (AAVA) is a core technology differentiator."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Security",
+          "riskDescription": {
+            "context": "Project Artifacts show 86 CVEs detected (4 Critical, 82 High) on the alpine base image as of 22-Jul-2026, and no documented remediation plan or penetration test completion status.",
+            "condition": "Unpatched critical and high-severity vulnerabilities may be exploited or flagged during post-deployment security audits.",
+            "consequence": "Security incidents, compliance violations, audit findings, and emergency patching could delay stabilization and expose the client to regulatory penalties."
+          },
+          "category": "Security",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Prioritize remediation of 4 Critical CVEs by 01-Nov-2026, upgrade alpine base image, and schedule penetration test completion by 15-Nov-2026.",
+          "contingencyCorrectiveAction": "Should security audit identify exploitable vulnerabilities, implement emergency patching within 48 hours, notify Premera security team immediately, and conduct root cause analysis.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "86 CVEs (4 Critical, 82 High) documented in Artifacts (22-Jul-2026); production deployment completed (ALT 23-Oct-2026); no evidence of remediation or pen test closure."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Commercial",
+          "riskDescription": {
+            "context": "Project Artifacts show a fixed-price contract of $650,000 over 7 milestones, with approximately 14 scope changes already absorbed (0.75\u20131 sprint effort), and EMS Risk R857 notes that further scope additions may impact delivery timelines.",
+            "condition": "Unplanned post-production remediation effort from the big-bang rollout or additional scope changes may exceed the fixed-price budget.",
+            "consequence": "Margin erosion or client disputes over additional charges could result, impacting profitability and client relationship."
+          },
+          "category": "Commercial",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Track all unplanned effort weekly against Hypercare budget, document scope change impacts, and obtain Premera approval before exceeding contracted hours.",
+          "contingencyCorrectiveAction": "When unplanned effort reaches 80% of Hypercare budget, initiate change request discussion with Premera for additional funding or scope deferral.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "30-Nov-2026",
+          "status": "Open",
+          "reasoning": "Fixed-price contract (Artifacts); 14 scope changes absorbed (EMS R857, Artifacts); big-bang rollout risk (ALT) may trigger unplanned effort; no contingency buffer documented."
+        }
+      ]
+    }
+  ]
+}
