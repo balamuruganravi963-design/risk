@@ -1,0 +1,100 @@
+{
+  "client": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS"
+      ],
+      "sourcesNotAvailable": [
+        "Project Artifacts",
+        "ALT"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R-001",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "The project has absorbed approximately 14 scope changes equivalent to 0.75\u20131 sprint of additional effort, and R857 remains Identified with mitigation plan not yet arrived (EMS).",
+            "condition": "Further scope additions may exceed remaining budget and schedule buffer.",
+            "consequence": "Delivery timelines could slip or margin could erode if additional effort is not absorbed or negotiated with the client."
+          },
+          "category": "Scope",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish formal scope change control with impact assessment and customer approval before acceptance to prevent uncontrolled effort expansion.",
+          "contingencyCorrectiveAction": "Upon exceeding one sprint buffer, rebaseline delivery plan with customer, prioritize critical-path features, and escalate to project board within 48 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Jul-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 2,
+          "riskId": "R-002",
+          "subjectArea": "Operations",
+          "riskDescription": {
+            "context": "Azure 4xx/5xx alerts are currently disabled and retry logic requires update to classify invalid email-format failures as non-retryable before re-enabling (EMS go-green plan).",
+            "condition": "Production issues may go undetected or false-positive P4 incidents may recur if the retry logic change is not deployed and validated successfully.",
+            "consequence": "Operational stability could weaken and client trust in monitoring and incident response may decline."
+          },
+          "category": "Operations",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Deploy and validate retry logic update in Production, re-enable Azure 4xx/5xx alerts, and conduct Hypercare monitoring to prevent false-positive incidents.",
+          "contingencyCorrectiveAction": "Should false-positive P4 incidents recur post-deployment, roll back retry logic change and notify engineering lead and client within 24 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "31-Jul-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 3,
+          "riskId": "R-003",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Citrix slowness and frequent disconnections are impacting delivery, and a ticket to address the issue with Premera has not yet been raised (EMS go-green plan).",
+            "condition": "Team productivity may continue to degrade if Citrix infrastructure issues are not resolved promptly.",
+            "consequence": "Sprint velocity could decline and delivery timelines may be impacted."
+          },
+          "category": "Infrastructure",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Raise ticket with Premera infrastructure team, track downtime in Confluence, and request VDI support coverage during offshore hours to prevent productivity loss.",
+          "contingencyCorrectiveAction": "If Citrix issues persist beyond two weeks, reprioritize tasks to non-dependent workstreams and notify delivery manager and client.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "08-Jul-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 4,
+          "riskId": "R-004",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "R856 and R855 related to Data Hub API integration and delivery are marked Resolved in EMS, but no evidence of completed performance or NFR validation is available.",
+            "condition": "Performance bottlenecks or NFR failures may surface during later testing or go-live if validation was incomplete.",
+            "consequence": "Late-stage rework could delay go-live and weaken client confidence in release readiness."
+          },
+          "category": "Quality",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct performance and NFR validation testing on live Data Hub APIs before UAT exit, prioritizing critical flows to prevent late-stage bottlenecks.",
+          "contingencyCorrectiveAction": "Upon detecting performance bottlenecks during UAT, rebaseline impacted scope with customer, defer non-critical features, and notify project board.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "30-Sep-2026",
+          "status": "Open",
+          "reasoning": ""
+        }
+      ]
+    }
+  ]
+}
