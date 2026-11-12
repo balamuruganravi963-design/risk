@@ -1,0 +1,199 @@
+{
+  "client": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "Project Artifacts",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "The Producer Portal was deployed to Production using a big-bang rollout approach to onboard 2,500+ producers on 22-Oct-2026, and ALT lists this as a WATCHLIST escalation trigger.",
+            "condition": "If issues are encountered during mass producer onboarding, the rollout may need to be rolled back and remediated, disrupting the production environment.",
+            "consequence": "Rollback could delay go-live, damage client trust, require emergency remediation effort, and impact producer access to critical business functions."
+          },
+          "category": "Deployment",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement phased rollout with pilot cohorts, daily monitoring dashboards, and automated rollback scripts to prevent mass onboarding failures.",
+          "contingencyCorrectiveAction": "Upon detection of critical onboarding failure affecting 5% of users, activate automated rollback to last stable release and escalate to project board within 2 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "ALT WATCHLIST status as of 23-Oct-2026 identifies rollout risk; big-bang approach with 2,500+ users poses higher failure impact than phased rollout. End-to-end testing with 11 users completed successfully (ALT), but production scale risk remains. Project end date: 31-Dec-2026."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "The project has absorbed approximately 14 scope changes equivalent to 0.75\u20131 sprint of additional effort, and EMS R857 (Identified, Moderate/Medium) flags further scope additions as a risk.",
+            "condition": "Additional scope changes may continue to emerge, particularly around the Dual Role requirement still under discussion as of 22-Jul-2026.",
+            "consequence": "Further scope creep could erode the fixed-price contract margin, delay remaining deliverables, or require renegotiation with the client."
+          },
+          "category": "Scope Management",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish formal change control board with weekly scope review meetings and mandatory client sign-off before accepting new requirements.",
+          "contingencyCorrectiveAction": "When cumulative scope changes exceed 1.5 sprint effort, initiate formal CR process with commercial re-baselining and communicate timeline impact to client.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "30-Nov-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk R857 (Identified, raised 29-Jun-2026); 14 scope changes already absorbed within $650K fixed-price contract (Project Artifacts); Dual Role requirement discussions ongoing (WSR 22-Jul-2026 Decision #37 Pending). Project end date: 31-Dec-2026."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Security",
+          "riskDescription": {
+            "context": "Security scans detected 86 CVEs (4 Critical, 82 High) as of 22-Jul-2026, and remediation is marked as In-Progress in the Project Artifacts.",
+            "condition": "If critical and high-severity vulnerabilities are not fully remediated before production stabilization, the application may remain exposed to security exploits.",
+            "consequence": "Unpatched vulnerabilities could lead to security incidents, compliance audit failures, client penalties, or forced production downtime for emergency patching."
+          },
+          "category": "Compliance",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct weekly security scan reviews, prioritize Critical CVEs for immediate patching, and integrate automated vulnerability tracking into CI/CD pipeline.",
+          "contingencyCorrectiveAction": "If Critical CVE remains unpatched 7 days before hypercare end, deploy compensating controls, notify CISO, and schedule emergency patching window with client approval.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Dec-2026",
+          "status": "Open",
+          "reasoning": "86 CVEs (4 Critical, 82 High) flagged in WSR 22-Jul-2026 demo deck slide 5; application already deployed to Production as of 23-Oct-2026 (ALT); remediation status not confirmed in ALT. Project end date: 31-Dec-2026."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "Backend code coverage is 57% as of 22-Jul-2026 (WSR demo deck slide 5), and the project absorbed scope changes requiring data stitching and orchestration (WSR Scope Change #13, #15) with potential NFR impact.",
+            "condition": "Low backend code coverage combined with complex data orchestration logic may allow defects to escape into production, especially under load.",
+            "consequence": "Production defects could degrade user experience, trigger rollback, increase post-deployment support costs, and damage client confidence."
+          },
+          "category": "Quality Assurance",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Increase backend code coverage to 75% by adding unit tests for orchestration logic and enforce coverage gates in Jenkins pipeline.",
+          "contingencyCorrectiveAction": "When production defect rate exceeds 3 critical defects per week during hypercare, activate war room with daily triage and deploy hotfixes within 24 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "30-Nov-2026",
+          "status": "Open",
+          "reasoning": "Backend code coverage at 57% (WSR 22-Jul-2026); multiple scope changes involving Data Hub API orchestration and entity stitching (Project Artifacts); application deployed to Production (ALT 23-Oct-2026). Project end date: 31-Dec-2026."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Citrix server slowness and frequent disconnections are impacting offshore team efforts, flagged in WSR 22-Jul-2026 Challenge slide 2 and EMS go-green plan.",
+            "condition": "If Citrix connectivity issues persist during Hypercare (Sep-Oct 2026), the offshore team may be unable to respond quickly to production incidents.",
+            "consequence": "Delayed incident response could extend production outages, increase client dissatisfaction, and escalate support costs."
+          },
+          "category": "Infrastructure",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate Citrix issue to Premera infrastructure team, implement VDI monitoring alerts, and provide backup onshore coverage during offshore hours.",
+          "contingencyCorrectiveAction": "If Citrix downtime exceeds 2 hours during hypercare, activate onshore backup team for incident response and notify client of potential SLA impact.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "30-Nov-2026",
+          "status": "Open",
+          "reasoning": "Citrix slowness flagged in WSR 22-Jul-2026 and EMS go-green plan; ticket to be raised with Premera (EMS); Hypercare period Sep-Oct 2026 (Project Artifacts); offshore team dependency for support. Project end date: 31-Dec-2026."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "The project uses AAVA agent framework with a term-based license limited to the Work Assignment duration (01-Mar-2026 to 31-Aug-2026), and multiple agent-related risks are open in WSR 22-Jul-2026 Risk Register (single LLM, tools integration delays, agent hardening, orchestration).",
+            "condition": "If AAVA agents underperform or require manual fallback during Hypercare, productivity gains may not materialize and support effort may increase.",
+            "consequence": "Manual effort fallback could erode margin, delay issue resolution, and reduce the business case for AAVA adoption in future phases."
+          },
+          "category": "Technology",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Document AAVA agent limitations, implement manual workflow fallback procedures, and conduct agent performance validation before hypercare with senior developer review checkpoints.",
+          "contingencyCorrectiveAction": "When AAVA agent failure rate exceeds 20% during hypercare, switch to manual workflow and allocate additional developer capacity for issue resolution.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "30-Nov-2026",
+          "status": "Open",
+          "reasoning": "Multiple open AAVA agent risks in WSR 22-Jul-2026 Risk Register (single LLM, tools integration, agent hardening, orchestration); AAVA license term-limited to Work Assignment duration (Project Artifacts); Hypercare Sep-Oct 2026. Project end date: 31-Dec-2026."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Data",
+          "riskDescription": {
+            "context": "Data mapping discussions were ongoing as of 22-Jul-2026, with WSR Risk Register flagging that if issues with data values lead back to design (entity stitching), there may be time impact (ETA 15-Jul-2026).",
+            "condition": "If Data Hub data quality or mapping issues surface during production onboarding or Hypercare, defects may require design changes and rework.",
+            "consequence": "Late design changes could delay stabilization, increase rework costs, and impact producer user experience during onboarding."
+          },
+          "category": "Data Management",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct weekly data mapping validation meetings with Data Hub and business teams, implement automated data quality checks, and validate all entity stitching logic before hypercare.",
+          "contingencyCorrectiveAction": "If data mapping defects impact 10% of producer records during onboarding, activate data remediation task force and communicate corrected data delivery timeline to client.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "30-Nov-2026",
+          "status": "Open",
+          "reasoning": "Data mapping risk flagged in WSR 22-Jul-2026 Risk Register (raised 25-Jun-2026, ETA 15-Jul-2026); entity stitching complexity noted in Scope Changes #13, #15 (Project Artifacts); production deployment completed (ALT 23-Oct-2026). Project end date: 31-Dec-2026."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Commercial",
+          "riskDescription": {
+            "context": "The project absorbed 14 scope changes (0.75\u20131 sprint effort) within a $650K fixed-price contract, and no formal change orders have been raised as of 22-Jul-2026 (Project Artifacts).",
+            "condition": "If additional scope, rework, or extended Hypercare support is required beyond the original SOW end date (31-Aug-2026), effort may exceed the contracted budget.",
+            "consequence": "Budget overrun could erode margin, require internal cost absorption, or lead to commercial disputes with the client."
+          },
+          "category": "Commercial",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement formal change request process with mandatory commercial impact assessment and client sign-off before accepting any new scope beyond 14 absorbed changes.",
+          "contingencyCorrectiveAction": "When project budget utilization exceeds 90%, escalate to commercial leadership, freeze new scope acceptance, and initiate formal CR negotiation with client for additional funding.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "30-Nov-2026",
+          "status": "Open",
+          "reasoning": "14 scope changes absorbed without change orders (Project Artifacts); fixed-price contract $650K (Work Assignment); project end date extended to 31-Dec-2026 from SOW end 31-Aug-2026 (EMS, Project Artifacts). Project end date: 31-Dec-2026."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Customer",
+          "riskDescription": {
+            "context": "The project is on ALT WATCHLIST as of 23-Oct-2026 due to big-bang rollout risk, and WSR 22-Jul-2026 flagged support required for upstream Data Hub data setup and UAT test cases.",
+            "condition": "If the big-bang rollout encounters issues or if Hypercare support is insufficient, producer users may experience service disruptions or onboarding delays.",
+            "consequence": "Poor producer experience during onboarding could damage Premera's relationship with producers, reduce portal adoption, and escalate client dissatisfaction."
+          },
+          "category": "Customer Satisfaction",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish daily hypercare monitoring dashboards, conduct proactive user outreach for onboarding support, and maintain 24/7 incident response coverage during first 30 days post-rollout.",
+          "contingencyCorrectiveAction": "Upon detection of user satisfaction score below 70% or 10+ critical support tickets per day, activate escalation to client leadership and deploy additional support resources within 24 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "ALT WATCHLIST status (23-Oct-2026); big-bang rollout to 2,500+ producers on 22-Oct-2026 (ALT); support required for upstream data setup and UAT test cases (WSR 22-Jul-2026). Project end date: 31-Dec-2026."
+        }
+      ]
+    }
+  ]
+}
