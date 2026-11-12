@@ -1,0 +1,239 @@
+{
+  "client": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "Project Artifacts",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "The project has absorbed approximately 14 scope changes equivalent to 0.75\u20131 sprint of additional effort (EMS, WSR). R857 is Identified with mitigation assessed but not finalized (EMS 29 June 2026).",
+            "condition": "Further scope additions may be requested without formal change control.",
+            "consequence": "Delivery timelines may slip, and the team may be unable to absorb additional effort without impacting quality or cost."
+          },
+          "category": "Scope Management",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish formal change control procedures with impact assessment and client approval before accepting new scope additions.",
+          "contingencyCorrectiveAction": "Upon approval of scope changes exceeding 0.5 sprint effort, rebaseline delivery plan with Premera and communicate revised timeline to all stakeholders.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Aug-2026",
+          "status": "In Progress",
+          "reasoning": "Open EMS risk R857 carried forward; mitigation assessed but not finalized as of 22 July 2026 (EMS, WSR); no new changes documented in ALT 23 October 2026."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Resources",
+          "riskDescription": {
+            "context": "Citrix server slowness and frequent disconnections are impacting offshore team delivery (EMS, WSR 22 July 2026). A ticket is to be raised with Premera to address the issue (EMS go-green plan). No resolution is documented in ALT (23 October 2026).",
+            "condition": "Citrix performance issues may persist or worsen.",
+            "consequence": "Offshore team productivity may continue to decline, extending delivery timelines for future enhancements and increasing the risk of missed commitments."
+          },
+          "category": "Infrastructure",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate Citrix performance ticket to Premera IT with SLA and monitor resolution weekly to restore offshore team connectivity.",
+          "contingencyCorrectiveAction": "If Citrix issues persist beyond 2 weeks, reallocate critical tasks to onshore resources and adjust sprint capacity planning accordingly.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "06-Nov-2026",
+          "status": "Open",
+          "reasoning": "Confirmed by 2 sources (EMS, WSR); no resolution after 3 months (22 July to 23 October); external dependency (Premera IT)."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Resources",
+          "riskDescription": {
+            "context": "No dedicated DevOps resource is planned; DevOps Engineer David (AI Platform Build Claims POD) is providing on-need support (WSR 22 July 2026).",
+            "condition": "Infrastructure provisioning, deployment automation, or incident response may be delayed when David is unavailable.",
+            "consequence": "Future releases or production incidents may experience longer resolution times, and infrastructure changes may be deprioritized, impacting delivery velocity."
+          },
+          "category": "People",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Cross-train two team members on DevOps tasks and automate deployment pipelines to reduce dependency on David's availability.",
+          "contingencyCorrectiveAction": "When David is unavailable and infrastructure changes are required, escalate to Enterprise Solutions practice lead to allocate backup DevOps resource.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "04-Dec-2026",
+          "status": "Open",
+          "reasoning": "On-need support model documented in WSR (22 July 2026); depends on David's availability and competing priorities."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "Backend code coverage is 57% (WSR 22 July 2026), below the typical 80% threshold for enterprise applications.",
+            "condition": "Untested code paths may contain defects that are not detected during development or testing.",
+            "consequence": "Defects may reach production, increasing the post-deployment incident rate and requiring emergency fixes that disrupt planned work."
+          },
+          "category": "Testing",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement mandatory unit test coverage for all new backend code and increase coverage to 75% through sprint-based testing sprints.",
+          "contingencyCorrectiveAction": "If defects reach production due to low coverage, conduct root cause analysis and implement focused regression testing for affected modules.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "18-Dec-2026",
+          "status": "Open",
+          "reasoning": "Backend code coverage at 57% per WSR (22 July 2026); no plan documented to improve to standard threshold."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Security",
+          "riskDescription": {
+            "context": "86 CVEs (4 critical, 82 high) are detected on the Alpine base image and are in progress (WSR 22 July 2026). No resolution is documented in ALT (23 October 2026).",
+            "condition": "One or more critical or high-severity CVEs may be exploited in the production environment.",
+            "consequence": "A security incident or data breach could occur, triggering regulatory penalties, client escalation, and reputational damage."
+          },
+          "category": "Security",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Upgrade Alpine base image to latest patched version and validate all 86 CVEs are resolved before end of November.",
+          "contingencyCorrectiveAction": "Upon detection of CVE exploitation attempt, isolate affected containers immediately and activate incident response protocol with Premera Cyber team.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "13-Nov-2026",
+          "status": "In Progress",
+          "reasoning": "86 CVEs (4 critical, 82 high) in progress per WSR (22 July 2026); no resolution evidence in ALT (23 October 2026); production deployed."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "Only one LLM is available in Port Key, which may underperform on specific tasks and prevents the use of a reviewer-agent, leading to manual effort (WSR 22 July 2026).",
+            "condition": "Agent-generated outputs may contain errors or inconsistencies that are not caught by automated review.",
+            "consequence": "Manual review effort may increase, and low-quality outputs may reach production, reducing the expected productivity gains from the AAVA framework."
+          },
+          "category": "Technology",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement standardized review checklists for all agent outputs and conduct weekly quality audits to detect errors early.",
+          "contingencyCorrectiveAction": "If agent output quality drops below 90% accuracy, increase manual review frequency to 100% and escalate to AAVA team.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "13-Nov-2026",
+          "status": "Open",
+          "reasoning": "Open risk in WSR (22 July 2026); single LLM limitation documented; mitigation includes prompt-engineering workarounds and human review checkpoints."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "AAVA tool integration with Premera enterprise platforms (SharePoint, Azure Blob, ADO) is not available; atomic agents are used instead (WSR Scope Change #7, 13 April 2026). Refactoring effort will be required when tool integrations become available (WSR Dependency #20, 15 June 2026).",
+            "condition": "Tool integrations may become available, requiring refactoring of atomic agents to tool-integrated agents.",
+            "consequence": "Refactoring effort may consume development capacity, delaying future enhancements or requiring additional budget."
+          },
+          "category": "Technology",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Define refactoring scope and effort estimate for atomic-to-tool-integrated agent conversion and reserve 1 sprint capacity for future refactoring.",
+          "contingencyCorrectiveAction": "When tool integrations become available, defer non-critical enhancements by 1 sprint to accommodate refactoring effort without impacting commitments.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "20-Nov-2026",
+          "status": "Open",
+          "reasoning": "Scope change and open dependency documented in WSR (13 April, 15 June 2026); refactoring effort acknowledged; tool integration availability uncertain."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "Premera is planning to send registration emails to 2,500+ producers on 22 October 2026 using a big-bang rollout approach (ALT 23 October 2026). End-to-end registration was tested with only 11 users as of 22 October 2026 (ALT). The rollout status is awaited (ALT).",
+            "condition": "A critical issue may be encountered during the mass producer onboarding.",
+            "consequence": "The rollout may need to be rolled back and remediated, delaying producer onboarding and damaging Premera's reputation with 2,500+ producers."
+          },
+          "category": "Deployment",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Conduct phased rollout with 100 producers first, validate for 48 hours, then expand to remaining producers in batches of 500.",
+          "contingencyCorrectiveAction": "Upon detection of critical issue affecting more than 5% of producers, halt registration emails immediately, activate rollback procedure, and escalate to Premera program leadership within 2 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "TBD",
+          "status": "In Progress",
+          "reasoning": "ALT escalation trigger met (23 October 2026); big-bang approach with limited E2E testing (11 users); confirmed by 2 sources (ALT, WSR decision log)."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "Inadequate agent hardening may cause inconsistent behavior in production (WSR 22 July 2026). A hardening checklist, feedback loop, scenario testing, and fallback logic are planned (WSR mitigation).",
+            "condition": "Agent hardening may be incomplete or insufficient.",
+            "consequence": "Agents may produce inconsistent outputs or fail unexpectedly in production, requiring manual intervention and reducing user confidence in the system."
+          },
+          "category": "Quality",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Complete agent hardening checklist with scenario testing for all production agents and implement fallback logic for edge cases by end of November.",
+          "contingencyCorrectiveAction": "If agent produces inconsistent output in production, switch to manual workflow for affected task and log incident for AAVA team review.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "04-Dec-2026",
+          "status": "In Progress",
+          "reasoning": "Open risk in WSR (22 July 2026); hardening mitigation planned but completion status unknown; production deployed by 23 October 2026."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Vendor",
+          "riskDescription": {
+            "context": "Multiple critical and high-impact dependencies are open and externally controlled, including Data Hub (4 total premium fields, Search by NPN), Auth0 (Entra integration), Azure (Front Door & DNS), and Citrix (server performance) (WSR 22 July 2026). Citrix slowness is confirmed in EMS (22 July 2026) and unresolved in ALT (23 October 2026).",
+            "condition": "One or more external dependencies may be delayed or delivered incomplete.",
+            "consequence": "Future enhancements or production incident resolution may be delayed, and the team may be unable to meet client commitments without external party cooperation."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish weekly dependency review with Data Hub, Auth0, and Premera IT teams to track progress and escalate delays early.",
+          "contingencyCorrectiveAction": "When external dependency is delayed beyond 2 weeks, rebaseline impacted scope with Premera and agree on phased delivery for affected features.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "06-Nov-2026",
+          "status": "In Progress",
+          "reasoning": "Multiple external dependencies documented in WSR (22 July 2026); Citrix unresolved after 3 months (EMS, ALT); confirmed by 2 sources."
+        },
+        {
+          "sNo": 11,
+          "riskId": "R - 011",
+          "subjectArea": "Data",
+          "riskDescription": {
+            "context": "The team is proceeding with approved UI-based data mappings, but possible values for data are still being discussed (WSR Decision Log #31, 25 June 2026). If issues with values from mappings lead to design changes (entity stitching), timeline impact is possible (WSR 22 July 2026).",
+            "condition": "Data mapping discrepancies between the Portal, Data Hub, and upstream systems may surface during production use.",
+            "consequence": "BoB data may be inaccurate, triggering producer complaints and requiring entity stitching changes that delay future releases."
+          },
+          "category": "Data",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate data mappings with Data Hub and business teams weekly and document approved field values to prevent design rework.",
+          "contingencyCorrectiveAction": "If data discrepancies surface in production, implement data validation layer in Portal wrapper service and communicate corrected mappings to producers.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "20-Nov-2026",
+          "status": "In Progress",
+          "reasoning": "Open risk in WSR (22 July 2026); data mappings approved but values under discussion; design change impact acknowledged."
+        }
+      ]
+    }
+  ]
+}
