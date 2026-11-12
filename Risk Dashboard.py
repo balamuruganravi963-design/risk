@@ -4,6 +4,7 @@ import json
 import re
 from collections import Counter
 
+import altair as alt
 import pandas as pd
 import requests
 import streamlit as st
@@ -301,13 +302,37 @@ if risks:
     if show_graph:
         chart_df = ct.drop(columns="Total")
         rag_colors = {"Red": "#dc3545", "Amber": "#ff9800", "Green": "#28a745"}
-        st.bar_chart(
-            chart_df,
-            color=[rag_colors.get(c, "#888888") for c in chart_df.columns],
-            stack=True,
-            x_label="Category",
-            y_label="Number of risks",
+
+        # Y-axis upper limit = tallest stacked bar + 2 (so the axis never runs far past the data)
+        y_max = int(ct["Total"].max()) + 2
+
+        long_df = chart_df.reset_index().melt(
+            id_vars="Category", var_name="RAG", value_name="Risks"
         )
+        chart = (
+            alt.Chart(long_df)
+            .mark_bar()
+            .encode(
+                x=alt.X("Category:N", title="Category", sort=None),
+                y=alt.Y(
+                    "Risks:Q",
+                    title="Number of risks",
+                    stack="zero",
+                    scale=alt.Scale(domain=[0, y_max], nice=False),
+                    axis=alt.Axis(tickMinStep=1, format="d"),
+                ),
+                color=alt.Color(
+                    "RAG:N",
+                    scale=alt.Scale(
+                        domain=list(chart_df.columns),
+                        range=[rag_colors.get(c, "#888888") for c in chart_df.columns],
+                    ),
+                    legend=alt.Legend(title="RAG"),
+                ),
+                tooltip=["Category", "RAG", "Risks"],
+            )
+        )
+        st.altair_chart(chart, width="stretch")
     else:
         st.dataframe(ct, width="stretch")
 else:
