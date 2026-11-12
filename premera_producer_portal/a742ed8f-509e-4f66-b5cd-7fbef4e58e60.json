@@ -1,0 +1,80 @@
+{
+  "client": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [
+        "Project Artifacts"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "ALT (23-Oct-2026) reports that Premera plans a big-bang rollout to 2,500+ producers on October 22, with only 11 users tested end-to-end successfully. The project is on WATCHLIST status, and ALT identifies a rollback risk if issues are encountered during mass onboarding.",
+            "condition": "If technical or process issues surface during the mass producer onboarding, the rollout may need to be rolled back and remediated, delaying producer access to the portal.",
+            "consequence": "A rollback would disrupt onboarding for 2,500+ producers, damage client confidence in the platform's stability, require emergency remediation effort, and potentially delay go-live timelines."
+          },
+          "category": "Deployment",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Implement phased producer onboarding with cohort validation gates and automated health checks before each wave.",
+          "contingencyCorrectiveAction": "Upon detection of critical onboarding failure, activate rollback procedure within 2 hours and escalate to executive steering committee.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "08-10-2026",
+          "status": "Open",
+          "reasoning": "ALT escalation trigger is active with big-bang approach to 2,500+ users after limited 11-user pilot. Project is on WATCHLIST. EMS go-green plan shows ongoing stabilization activities (retry logic, alert re-enablement). Target Date: 2026-12-31."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "EMS go-green plan states 'Citrix - Slowness and frequent disconnection having an impact in delivery - Ticket to be raised with Premera to address the same.' This infrastructure issue is currently affecting the delivery team.",
+            "condition": "If Citrix performance issues persist without resolution, team productivity may continue to degrade, slowing development, testing, and support activities during the critical post-deployment phase.",
+            "consequence": "Sustained delivery slowdown could delay defect remediation, hypercare response times, and any remaining scope work, impacting client satisfaction and operational efficiency."
+          },
+          "category": "Infrastructure",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate Citrix performance issue to Premera infrastructure team with SLA-tracked ticket and daily status reviews.",
+          "contingencyCorrectiveAction": "If Citrix issues persist beyond 48 hours, reprioritize team to offline tasks and notify client of delivery impact.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "30-10-2026",
+          "status": "Open",
+          "reasoning": "Open item in EMS go-green plan with confirmed delivery impact. Ticket to Premera not yet raised (EMS). Single-source signal. Target Date: 2026-12-31."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "EMS Risk R857 (Identified, Moderate severity, Likely likelihood, Medium impact, opened 2026-06-29) reports that the project has absorbed approximately 14 scope changes equivalent to 0.75\u20131 sprint of additional effort. Mitigation status is Assessed, but mitigation plan 'needs to be arrived.'",
+            "condition": "If the client requests further scope additions without timeline or budget adjustments, the remaining delivery window to 2026-12-31 may become insufficient to complete all committed work.",
+            "consequence": "Timeline pressure could force scope descoping, quality compromises, or require a project extension, eroding margin and client trust."
+          },
+          "category": "Scope Management",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish formal change request process with impact assessment and client approval before accepting any new scope.",
+          "contingencyCorrectiveAction": "When scope additions exceed 1 sprint equivalent, rebaseline delivery plan with client prioritization and phased go-live approach.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "06-11-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk (R857) with no finalized mitigation plan. 14 scope changes already absorbed. Project end date is 2026-12-31. Likelihood depends on client future behavior. Target Date: 2026-12-31."
+        }
+      ]
+    }
+  ]
+}
