@@ -1,0 +1,139 @@
+{
+  "client": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "ALT",
+        "Project Artifacts"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "ALT reports a big bang rollout to 2,500+ producers on October 22, 2026, with only 11 users tested end-to-end in the registration process.",
+            "condition": "Issues may be encountered during mass producer onboarding that require rollback and remediation of the deployment.",
+            "consequence": "Rollback would delay producer access to the portal, require remediation effort, damage client trust, and potentially disrupt Premera's producer business operations."
+          },
+          "category": "Deployment",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement phased rollout with pilot cohorts and validation checkpoints before full-scale producer onboarding.",
+          "contingencyCorrectiveAction": "Upon encountering critical issues during onboarding, activate rollback procedure and escalate to project board within 24 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Oct-2026",
+          "status": "Open",
+          "reasoning": "ALT escalation trigger met (mass onboarding risk); limited scale testing before big bang rollout increases uncertainty despite completed IT and business validation. Target Date: Oct 22, 2026 (ALT)."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "EMS R857 documents 14 scope changes already absorbed (equivalent to 0.75\u20131 sprint of effort), and Project Artifacts show Dual Role scope change discussions ongoing with Medium effort estimated.",
+            "condition": "Further scope additions may be requested during the Hypercare period and post-deployment support phase without formal change control enforcement.",
+            "consequence": "Uncontrolled scope expansion could consume support capacity, delay future enhancements, strain team bandwidth, and impact timeline adherence."
+          },
+          "category": "Scope",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement formal change request approval process with impact assessment and client sign-off before accepting additions.",
+          "contingencyCorrectiveAction": "When scope addition requests arise, conduct impact assessment and communicate timeline adjustments requiring client approval before proceeding.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "30-Oct-2026",
+          "status": "In Progress",
+          "reasoning": "Carried forward from open EMS R857 (opened Jun 29, 2026) and re-rated; mitigation assessed but not yet arrived, and Artifacts confirm ongoing scope discussions (EMS, Artifacts). End Date: 2026-12-31 (EMS)."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Integration",
+          "riskDescription": {
+            "context": "Project Artifacts document open Data Hub integration risks (data mappings, total premium fields) as of July 22, 2026, and ALT shows successful registration testing with only 11 users before mass rollout.",
+            "condition": "Performance and NFR issues with Data Hub APIs may surface under production load when 2,500+ producers access the portal concurrently.",
+            "consequence": "Integration issues at scale could cause slow response times, incomplete data display, or user errors, leading to producer complaints, support escalation, and potential remediation effort."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct load testing with Data Hub APIs simulating 2,500+ concurrent users before mass onboarding.",
+          "contingencyCorrectiveAction": "Once performance degradation exceeds acceptable thresholds, coordinate with Data Hub team to optimize queries and implement caching workarounds.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "18-Oct-2026",
+          "status": "Open",
+          "reasoning": "Artifacts document open DH integration risks (Jul 22); ALT shows deployment completed (Oct 23) but scale testing not documented. Single-source (Artifacts) with ALT partial confirmation; limited by missing scale validation data. ETA: Jul 30, 2026 (Artifacts - DH fields)."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "Project Artifacts document multiple open AAVA agent framework risks (Single LLM Limitation, Agent Hardening, Agent Learning, Tool/API Invocation Failures, Agent Orchestration) opened March 16, 2026, with no closure dates, and agent adoption remains low with no formal adoption plan.",
+            "condition": "Agent framework limitations may lead to inconsistent behavior, manual effort, and reduced productivity gains in post-deployment support and future development work.",
+            "consequence": "Team efficiency and quality could decline, increasing support costs and delaying future enhancements, though production stability is not directly threatened."
+          },
+          "category": "Technology",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish agent hardening checklist, orchestration patterns, and manual fallback workflows for critical support tasks.",
+          "contingencyCorrectiveAction": "Activate manual workflows immediately if agent failures occur and document issues for framework improvement backlog.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "Combined from five open Artifacts risks (Mar 16, 2026) related to AAVA agent framework; agents working per Jun demo but adoption low and multiple hardening/orchestration concerns unresolved (Artifacts)."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "EMS Go-Green Plan and Project Artifacts (July 22, 2026) both document ongoing Citrix server slowness and frequent disconnection issues impacting offshore team delivery, with a ticket to be raised with Premera but no resolution documented.",
+            "condition": "Citrix infrastructure performance may continue to degrade or remain unresolved, reducing offshore team productivity during the Hypercare period.",
+            "consequence": "Support response times could be delayed, Hypercare SLA adherence may be impacted, and incident resolution capability could be degraded."
+          },
+          "category": "Infrastructure",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate Citrix performance ticket to Premera infrastructure team with priority support request.",
+          "contingencyCorrectiveAction": "Upon Citrix outage or severe degradation, reprioritize tasks to non-dependent workstreams and communicate delays to stakeholders.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "25-Oct-2026",
+          "status": "Open",
+          "reasoning": "Confirmed by two independent sources (EMS Go-Green Plan, Artifacts Jul 22); ongoing issue with no resolution; ticket escalation planned but not completed (EMS, Artifacts)."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Operations",
+          "riskDescription": {
+            "context": "EMS documents 14 scope changes absorbed, Project Artifacts document Citrix issues impacting offshore team, and ALT reports mass onboarding of 2,500+ producers on October 22, 2026, all converging during the Hypercare period through October 2026.",
+            "condition": "Support capacity may be insufficient to handle the volume of incidents, user questions, and production issues arising from mass onboarding combined with ongoing infrastructure and scope pressures.",
+            "consequence": "Delayed incident response, unresolved production issues, client escalation, SLA breaches, and erosion of client confidence in the new platform could occur during the critical adoption period."
+          },
+          "category": "Operations",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish dedicated Hypercare support roster with clear escalation paths and capacity buffer for mass onboarding.",
+          "contingencyCorrectiveAction": "Once incident backlog exceeds 20 open P1/P2 tickets, engage additional offshore resources and escalate to client within 48 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "21-Oct-2026",
+          "status": "Open",
+          "reasoning": "Compound risk combining EMS R857 (scope changes), Artifacts Citrix issue, and ALT mass onboarding (2,500+ users Oct 22); multiple stressors converge during Hypercare period (EMS, Artifacts, ALT). Hypercare End: Oct 2026 (Artifacts)."
+        }
+      ]
+    }
+  ]
+}
