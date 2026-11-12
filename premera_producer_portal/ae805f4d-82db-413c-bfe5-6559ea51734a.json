@@ -1,0 +1,180 @@
+{
+  "client": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "Project Artifacts"
+      ],
+      "sourcesNotAvailable": [
+        "ALT"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R-001",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "The project has absorbed approximately 14 scope changes equivalent to 0.75\u20131 sprint of additional effort, and EMS Risk R857 (Scope changes) remains Identified with mitigation status Assessed as of 29-Jun-2026.",
+            "condition": "Further scope additions may exceed the remaining buffer and delay delivery timelines beyond the 25-Aug-2026 Production Deploy target.",
+            "consequence": "Timeline slippage could impact client go-live plans, erode margin due to unplanned effort, and weaken stakeholder confidence in delivery predictability."
+          },
+          "category": "Scope Management",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish formal change control procedure requiring impact assessment and client approval before accepting any new scope additions.",
+          "contingencyCorrectiveAction": "Upon acceptance of scope changes exceeding one sprint effort, rebaseline delivery plan with client and defer non-critical features to post-Production.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "05-Aug-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk R857 with Identified status and no finalized mitigation; WSR documents additional BoB scope change (#17) agreed in-scope with DH impact analysis still pending. Mitigation needs to be arrived per EMS."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R-002",
+          "subjectArea": "Integration",
+          "riskDescription": {
+            "context": "Integration testing requires upstream system support for test data setup to validate integration and E2E scenarios, raised 30-Jun-2026 in WSR and agreed by Premera to address, but no resolution date is documented.",
+            "condition": "Delayed upstream system support may prevent completion of E2E test scenarios before UAT Signoff on 14-Aug-2026.",
+            "consequence": "Incomplete E2E validation could allow integration defects to surface during UAT or Production, delaying signoff and increasing rework cost."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct weekly status reviews with Premera upstream teams to track test data readiness and escalate blockers by 01-Aug-2026.",
+          "contingencyCorrectiveAction": "Should upstream data setup delay beyond 08-Aug-2026, initiate parallel E2E testing with synthetic data and escalate to project steering committee.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Aug-2026",
+          "status": "Open",
+          "reasoning": "Single-source signal from WSR 22-Jul-2026; dependency on external Premera upstream teams with no documented ETA; UAT Signoff is 23 days from WSR date."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R-003",
+          "subjectArea": "Data",
+          "riskDescription": {
+            "context": "Data availability on Dev/ACPT environments for related Data Hub entities (BoB) remains open per WSR 22-Jul-2026, and data mappings are mostly closed but possible values are still being discussed.",
+            "condition": "Incomplete or inconsistent test data may prevent thorough functional and integration testing before UAT.",
+            "consequence": "Data-related defects could emerge late in UAT, requiring rework and potentially delaying Production Deploy on 25-Aug-2026."
+          },
+          "category": "Data Management",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate current data mappings with Data Hub team by 29-Jul-2026 and document all open possible values for UAT verification.",
+          "contingencyCorrectiveAction": "Once data defects are identified in UAT, activate dedicated data remediation team and communicate revised signoff date to stakeholders within 24 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "29-Jul-2026",
+          "status": "Open",
+          "reasoning": "Single-source signal from WSR 22-Jul-2026; WSR advises to proceed with current mapping definitions and handle E2E/UAT issues later, indicating accepted risk with no mitigation plan."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R-004",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Citrix slowness and frequent disconnection are impacting delivery per EMS go-green plan as of 29-Jun-2026, and a ticket to address the issue with Premera IT is planned but not yet raised.",
+            "condition": "Continued VDI connectivity disruptions may reduce productive development and testing hours during the Build + SIT stage.",
+            "consequence": "Loss of productive hours could compress sprint capacity, delay feature completion, and increase pressure on the UAT timeline."
+          },
+          "category": "Infrastructure",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Raise priority ticket with Premera IT by 26-Jul-2026 and monitor VDI performance daily with escalation threshold of three disruptions per week.",
+          "contingencyCorrectiveAction": "When VDI disruptions exceed three incidents per week, request alternate remote access solution and extend sprint timeline by two days with client approval.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "26-Jul-2026",
+          "status": "Open",
+          "reasoning": "Confirmed in EMS go-green plan 29-Jun-2026; mitigation (ticket to Premera IT) planned but not yet executed; similar VDI disruption noted in related AI Platform Build project on same client infrastructure."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R-005",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "Pipelines require reconfiguration and base images rebuild after repository fork per WSR 22-Jul-2026, with no documented completion date or owner assignment.",
+            "condition": "Delayed pipeline reconfiguration may block automated build and deployment workflows during the Build + SIT stage.",
+            "consequence": "Manual workarounds could slow down sprint velocity, increase deployment errors, and delay readiness for UAT."
+          },
+          "category": "DevOps",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Assign DevOps resource to complete pipeline reconfiguration and base image rebuild by 02-Aug-2026 with daily progress tracking.",
+          "contingencyCorrectiveAction": "If pipeline reconfiguration extends beyond 02-Aug-2026, implement manual build and deployment checklist and communicate two-day buffer extension to UAT team.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "02-Aug-2026",
+          "status": "Open",
+          "reasoning": "Single-source signal from WSR 22-Jul-2026; no documented owner or ETA; pipeline stability is critical for continuous integration in Build + SIT stage."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R-006",
+          "subjectArea": "Requirements",
+          "riskDescription": {
+            "context": "Dashboard requirement (#29) raised 15-Jun-2026 requires data to be shown for all role types, with Premera as owner, but no resolution or delivery date is documented in WSR 22-Jul-2026.",
+            "condition": "Unresolved dashboard requirement may remain incomplete at UAT entry, requiring late-stage rework or deferral.",
+            "consequence": "Late clarification or scope addition could delay UAT Signoff on 14-Aug-2026 or force a production workaround, impacting user experience."
+          },
+          "category": "Requirements",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate dashboard requirement (#29) to Premera business owner by 25-Jul-2026 and secure final clarification before UAT entry on 05-Aug-2026.",
+          "contingencyCorrectiveAction": "Should requirement remain unresolved by 05-Aug-2026, document as known limitation in UAT scope and schedule post-Production enhancement with client agreement.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "25-Jul-2026",
+          "status": "Open",
+          "reasoning": "Single-source signal from WSR 22-Jul-2026; requirement raised over one month prior with no documented progress; owner is client (Premera), introducing dependency risk."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R-007",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "WSR 22-Jul-2026 advises to proceed with current data mapping definitions and handle issues during E2E/UAT later, while possible values for data are still being discussed.",
+            "condition": "Deferred data mapping validation may result in a cluster of data-related defects surfacing during UAT.",
+            "consequence": "High defect volume in UAT could overwhelm the team, delay signoff on 14-Aug-2026, and compress the Production Deploy window."
+          },
+          "category": "Quality Assurance",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Schedule detailed QE review with Data Hub team by 29-Jul-2026 to validate all data mappings before UAT entry.",
+          "contingencyCorrectiveAction": "Once data defects exceed ten critical issues in UAT, activate defect triage war room and negotiate three-day UAT extension with client stakeholders.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "29-Jul-2026",
+          "status": "Open",
+          "reasoning": "Single-source signal from WSR 22-Jul-2026; explicit acceptance of deferred validation risk with no documented mitigation; UAT is 23 days from WSR date."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R-008",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "EMS go-green plan as of 29-Jun-2026 requires updating retry logic to classify invalid email-format failures as non-retryable, deploying to Production, re-enabling Azure 4xx/5xx alerts, and continuing Hypercare monitoring.",
+            "condition": "Incomplete or delayed execution of the go-green plan may leave false-positive P4 incidents unresolved, masking valid production failures post-deployment.",
+            "consequence": "Undetected production issues could degrade user experience, delay incident response, and erode client trust during Hypercare."
+          },
+          "category": "Deployment",
+          "probability": "Unlikely",
+          "impact": "Medium",
+          "rag": "Green",
+          "mitigationPreventiveAction": "Deploy retry logic update to Production by 20-Aug-2026 and re-enable Azure 4xx/5xx alerts with validation in pre-Production environment.",
+          "contingencyCorrectiveAction": "Monitor alert false-positive rate daily post-deployment and revert to manual incident triage if false positives exceed five per day.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "20-Aug-2026",
+          "status": "Open",
+          "reasoning": "Confirmed in EMS go-green plan 29-Jun-2026; plan is documented and actionable; likelihood is low given clear mitigation steps, but impact remains medium if not executed before Production Deploy on 25-Aug-2026."
+        }
+      ]
+    }
+  ]
+}
