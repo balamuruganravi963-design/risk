@@ -1,0 +1,219 @@
+{
+  "client": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "ALT",
+        "Project Artifacts"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "ALT reports that Premera executed a big-bang rollout to 2,500+ producers on 22 October 2026, and WSR dated 22 July 2026 shows UAT and Penetration Testing were at 0% completion before Production deployment.",
+            "condition": "Production defects, authentication failures, or performance issues may surface at scale during mass user onboarding, requiring emergency rollback and remediation.",
+            "consequence": "Rollback could disrupt 2,500+ producer registrations, damage client trust, trigger contractual penalties, and require unplanned rework effort and cost."
+          },
+          "category": "Deployment",
+          "probability": "Very Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Conduct phased pilot rollout with 50-100 producers before big-bang deployment to validate production stability and identify defects early.",
+          "contingencyCorrectiveAction": "Upon detection of critical production defect affecting 10% or more users, activate rollback procedure within 2 hours and escalate to project board immediately.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Oct-2026",
+          "status": "Open",
+          "reasoning": "Big-bang rollout to 2,500+ producers without completed UAT or Pen Test (ALT + WSR). ALT explicitly flags rollback risk. Project end date 31 December 2026 (EMS)."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Security",
+          "riskDescription": {
+            "context": "WSR dated 22 July 2026 reports 86 CVEs detected (4 Critical, 82 High) on the alpine base image, and ALT dated 23 October 2026 does not mention Penetration Testing completion before Production deployment.",
+            "condition": "Unpatched vulnerabilities may be exploited in Production, leading to security breaches or unauthorized access to producer and member data.",
+            "consequence": "Security incident could result in regulatory penalties, client escalation, reputational damage, and mandatory remediation effort."
+          },
+          "category": "Compliance",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Implement emergency patch deployment for 4 Critical CVEs on alpine base image and complete penetration testing before Production rollout.",
+          "contingencyCorrectiveAction": "If security breach is detected, isolate affected containers within 1 hour, engage CISO team, and initiate forensic analysis and regulatory notification per policy.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "10-Oct-2026",
+          "status": "Open",
+          "reasoning": "4 Critical and 82 High CVEs unresolved as of July WSR; no evidence of Pen Test completion in ALT (October). Project end date 31 December 2026 (EMS)."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "WSR dated 22 July 2026 shows 190 code smells (2 Critical, 80 Major) and a 15% functional test failure rate with 11 open bugs.",
+            "condition": "Code quality defects may manifest as user-facing errors, data inconsistencies, or workflow failures during Production use.",
+            "consequence": "Defect remediation during Hypercare could increase support costs, delay stabilization, and erode client satisfaction."
+          },
+          "category": "Quality",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish mandatory code review gate requiring 80% unit test coverage and zero Critical code smells before pull request approval.",
+          "contingencyCorrectiveAction": "When production defect rate exceeds 5 per week, deploy dedicated SWAT team to triage and hotfix within 48 hours and communicate status to client daily.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Oct-2026",
+          "status": "Open",
+          "reasoning": "2 Critical and 80 Major code smells plus 15% test failure rate (WSR July). No UAT completion before Production (ALT October). Project end date 31 December 2026 (EMS)."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "EMS Risk R857 (opened 29 June 2026, status Identified) notes that 14 scope changes have been absorbed (0.75\u20131 sprint effort), and WSR dated 22 July 2026 states further scope additions may impact delivery timelines.",
+            "condition": "Additional scope changes may be requested during Hypercare or post-deployment stabilization, requiring unplanned effort.",
+            "consequence": "Scope creep could erode project margin, delay closure, and require change order negotiations with the client."
+          },
+          "category": "Project-Level",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement formal change control board with client approval required for any scope additions and impact assessment completed within 3 business days.",
+          "contingencyCorrectiveAction": "If scope change exceeds 0.5 sprint effort, escalate to program manager and rebaseline timeline and budget through formal change request process.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "30-Sep-2026",
+          "status": "Open",
+          "reasoning": "Carried forward from open EMS Risk R857 (Identified, mitigation plan not yet arrived); corroborated by WSR scope change pressure. Project end date 31 December 2026 (EMS)."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "EMS Go-Green Plan and WSR dated 22 July 2026 both report Citrix server slowness and frequent disconnections impacting the offshore team, with a ticket to be raised with Premera.",
+            "condition": "Unresolved Citrix performance issues may continue to degrade offshore team productivity during Hypercare and post-deployment support.",
+            "consequence": "Support response times could increase, SLA breaches may occur, and additional onshore effort may be needed at higher cost."
+          },
+          "category": "Technology",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate Citrix performance ticket to Premera infrastructure team with P2 priority and implement VDI support coverage during offshore hours as workaround.",
+          "contingencyCorrectiveAction": "If Citrix downtime exceeds 4 hours, shift critical support tasks to onshore team and track additional cost for client reimbursement discussion.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "25-Sep-2026",
+          "status": "Open",
+          "reasoning": "Citrix issue documented in EMS Go-Green Plan and WSR (July); no resolution evidence in ALT (October). Project end date 31 December 2026 (EMS)."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Data",
+          "riskDescription": {
+            "context": "WSR dated 22 July 2026 notes that data mapping discrepancies (Risk/Issue opened 25 June 2026) may lead back to design changes, and Dual Role requirement discussions remain pending (Decision #37, 16 July 2026).",
+            "condition": "Data mapping or entitlement logic issues may surface during Production use, requiring design rework and code changes.",
+            "consequence": "Rework during Hypercare could extend stabilization, increase support costs, and delay final project closure."
+          },
+          "category": "Data",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate data mappings with business and Data Hub teams in weekly review sessions and finalize Dual Role entitlement logic before Production rollout.",
+          "contingencyCorrectiveAction": "If data mapping defect is identified in Production, implement temporary manual workaround and schedule hotfix deployment within 5 business days with client approval.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Oct-2026",
+          "status": "Open",
+          "reasoning": "Data mapping risk and Dual Role requirement unresolved as of WSR (July); no resolution evidence in ALT (October). Project end date 31 December 2026 (EMS)."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Vendor",
+          "riskDescription": {
+            "context": "WSR dated 22 July 2026 reports multiple open Auth0 dependencies: DB connection configuration update in ACPT (ETA 10 July), Entra integration for Super User login (ETA TBD), and terraform release pipeline support.",
+            "condition": "Auth0 configuration issues or integration failures may cause authentication errors or Super User login failures in Production.",
+            "consequence": "Authentication failures could block producer access, trigger P1 incidents, and require emergency vendor support."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Complete Auth0 DB connection configuration update in ACPT and validate Super User Entra integration with end-to-end test before Production deployment.",
+          "contingencyCorrectiveAction": "If Auth0 authentication failure occurs, activate manual user provisioning process and engage Auth0 vendor support with P1 escalation within 1 hour.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "10-Oct-2026",
+          "status": "Open",
+          "reasoning": "Multiple Auth0 dependencies open as of WSR (July); no resolution evidence in ALT (October). Project end date 31 December 2026 (EMS)."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "WSR dated 22 July 2026 lists an open risk (16 March 2026) stating that poor coordination between multiple AAVA agents may cause workflow delays or incorrect task sequencing, with Schedule, Cost, and Quality impact.",
+            "condition": "Agent orchestration failures may occur in Production, leading to incomplete workflows, incorrect data processing, or user-facing errors.",
+            "consequence": "Agent failures could require manual intervention, increase support costs, and undermine the value proposition of the AAVA framework."
+          },
+          "category": "Technology",
+          "probability": "Unlikely",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement agent orchestration monitoring with automated alerts for workflow failures and conduct end-to-end agent integration testing before Production rollout.",
+          "contingencyCorrectiveAction": "Upon agent orchestration failure, switch to manual workflow execution and engage AAVA platform team for root cause analysis and fix within 24 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Oct-2026",
+          "status": "Open",
+          "reasoning": "Open agent orchestration risk from WSR (July); AAVA framework is core to Producer Portal tech stack (EMS). Low probability but high impact if agents fail. Project end date 31 December 2026 (EMS)."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Operations",
+          "riskDescription": {
+            "context": "ALT dated 23 October 2026 reports a big-bang rollout to 2,500+ producers, and WSR dated 22 July 2026 shows Hypercare is planned for 4 weeks post-go-live but provides no capacity, runbook, or escalation details.",
+            "condition": "The support team may be overwhelmed by incident volume during the 4-week Hypercare period, especially given untested UAT scenarios and unresolved quality issues.",
+            "consequence": "SLA breaches, delayed incident resolution, and client escalation could occur, requiring additional support resources at unplanned cost."
+          },
+          "category": "Operations",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish dedicated Hypercare team with 24x7 coverage, documented runbook, and escalation matrix before Production rollout and conduct dry-run simulation.",
+          "contingencyCorrectiveAction": "If incident volume exceeds 20 tickets per day during Hypercare, deploy additional support resources from AI Circle and extend Hypercare period by 2 weeks.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "20-Oct-2026",
+          "status": "Open",
+          "reasoning": "Big-bang rollout (ALT October) combined with no UAT completion (WSR July) and unresolved quality/security issues. Project end date 31 December 2026 (EMS)."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Vendor",
+          "riskDescription": {
+            "context": "EMS Risks R855 and R856 (both resolved) were related to Data Hub API delivery delays, and WSR dated 22 July 2026 reports ongoing dependencies on Data Hub for 4 premium fields (ETA 30 July), NPN search support (ETA 30 July), and upstream data setup.",
+            "condition": "New Data Hub API issues, data quality problems, or performance bottlenecks may emerge during Production use at scale.",
+            "consequence": "Data Hub failures could cause incomplete Book of Business displays, incorrect premium calculations, or user-facing errors, requiring emergency fixes."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct daily collaboration with Data Hub and Edge teams to validate upstream data setup and complete end-to-end integration testing before Production rollout.",
+          "contingencyCorrectiveAction": "If Data Hub API failure occurs, activate synthetic data fallback for non-critical fields and escalate to Data Hub team with P1 priority for resolution within 4 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "25-Oct-2026",
+          "status": "Open",
+          "reasoning": "EMS R855/R856 resolved, but WSR (July) shows ongoing Data Hub dependencies; history of delays increases recurrence risk. Project end date 31 December 2026 (EMS)."
+        }
+      ]
+    }
+  ]
+}
