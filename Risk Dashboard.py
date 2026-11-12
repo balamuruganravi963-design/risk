@@ -150,10 +150,10 @@ TABLE_COLUMNS = [
 RAG_MATRIX_IMPACTS = ["High Impact", "Medium Impact", "Low Impact"]
 RAG_MATRIX = [
     ("Very Likely", ["Red", "Red", "Amber"]),
-    ("Likely", ["Red", "Amber", "Green"]),
+    ("Likely", ["Red", "Amber", "Amber"]),
     ("Possible", ["Amber", "Amber", "Green"]),
     ("Unlikely", ["Amber", "Green", "Green"]),
-    ("Rare", ["Green", "Green", "Green"]),
+    ("Rare", ["Amber", "Green", "Green"]),
 ]
 RAG_BG = {
     "Red": "rgba(220, 53, 69, 0.35)",
