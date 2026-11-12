@@ -1,0 +1,120 @@
+{
+  "client": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "Project Artifacts"
+      ],
+      "sourcesNotAvailable": [
+        "ALT"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "The project has absorbed approximately 14 scope changes equivalent to 0.75\u20131 sprint of additional effort, with Risk R857 Identified as of 29-Jun-2026 and mitigation status Assessed but not yet finalized (EMS).",
+            "condition": "Further uncontrolled scope additions may exceed the remaining buffer and push delivery timelines beyond the 31-Dec-2026 project end date.",
+            "consequence": "Timeline slippage could trigger client dissatisfaction, margin erosion from unplanned effort, and potential contractual disputes over SOW scope boundaries."
+          },
+          "category": "Scope Management",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish formal change control board with weekly scope assessment reviews to evaluate impact before approval.",
+          "contingencyCorrectiveAction": "Upon approval of any scope change exceeding 0.5 sprint effort, rebaseline timeline with Premera and escalate to project board within 48 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "05-Aug-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk R857 (Moderate severity, Likely likelihood, Medium impact) combined with 14 absorbed changes and no finalized mitigation plan as of 29-Jun-2026. Elevated to High impact due to cumulative scope pressure and proximity to SOW end date (30-Nov-2026). Target Date: 31-Dec-2026."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Integration",
+          "riskDescription": {
+            "context": "Integration with live Data Hub APIs was pending as of 29-Jun-2026 (EMS R856, now Resolved), but the 22-Jul-2026 WSR reports that upstream system support for E2E data setup and validation remains open (Project Artifacts).",
+            "condition": "Performance, NFR defects, and data validation issues may surface late in UAT or post-production, as full end-to-end testing cannot be completed without upstream system support.",
+            "consequence": "Late-stage defect discovery could delay UAT signoff (targeted 14-Aug-2026) and production implementation (targeted 25-Aug-2026), eroding client confidence and increasing rework cost."
+          },
+          "category": "Integration",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Conduct daily upstream system coordination calls with Premera to secure E2E test data by 01-Aug-2026.",
+          "contingencyCorrectiveAction": "If upstream data support is not available by 01-Aug-2026, defer non-critical E2E scenarios and escalate to Premera executive sponsor immediately.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Aug-2026",
+          "status": "Open",
+          "reasoning": "EMS R856 marked Resolved but WSR (22-Jul-2026) confirms E2E testing dependency still open; cross-source signal indicates incomplete integration validation. UAT signoff ETA: 14-Aug-2026, Production ETA: 25-Aug-2026."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Citrix slowness and frequent disconnection issues are impacting delivery, with a ticket to be raised with Premera to address the same (EMS go-green plan, 29-Jun-2026).",
+            "condition": "If Citrix access issues persist or escalate, the offshore and onshore team's productivity may degrade further during the Build & SIT phase.",
+            "consequence": "Sprint velocity could drop, delaying integration testing, UAT preparation, and the 14-Aug-2026 UAT signoff target, with downstream impact on the 25-Aug-2026 production implementation."
+          },
+          "category": "Infrastructure",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Raise priority ticket with Premera IT and implement VDI support coverage during offshore hours by 29-07-2026.",
+          "contingencyCorrectiveAction": "Should Citrix issues persist beyond three business days, reprioritize non-dependent tasks and notify Premera delivery lead.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "29-Jul-2026",
+          "status": "Open",
+          "reasoning": "Single-source signal from EMS go-green plan; no resolution timeline or severity escalation documented yet. Rated Possible due to lack of corroborating evidence from WSR. UAT ETA: 14-Aug-2026, Production ETA: 25-Aug-2026."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "The project is 19% complete as of 22-Jul-2026 with UAT signoff targeted for 14-Aug-2026 (23 days away) and production implementation by 25-Aug-2026 (Project Artifacts WSR). Build & Test is in progress, but E2E testing remains blocked by upstream system support.",
+            "condition": "Compressed testing cycles may force incomplete test coverage or rushed defect triage, allowing critical defects to escape into UAT or production.",
+            "consequence": "Production defects could trigger client escalations, emergency patches, and reputational damage, especially if NFR or integration issues surface post-go-live."
+          },
+          "category": "Quality Assurance",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct QA effectiveness review of all test artifacts and implement mandatory negative testing for requirement changes weekly.",
+          "contingencyCorrectiveAction": "If critical defects are detected in UAT after 10-Aug-2026, activate backup regression team and defer non-critical features.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "02-Aug-2026",
+          "status": "Open",
+          "reasoning": "Derived from timeline pressure (19% complete, 23 days to UAT signoff) and open E2E testing dependency (WSR 22-Jul-2026). No direct quality RAG degradation signal, but compound risk from integration and schedule factors. UAT ETA: 14-Aug-2026, Production ETA: 25-Aug-2026."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "The go-green plan includes updating retry logic to classify invalid email-format failures as non-retryable, deploying to Production, and re-enabling Azure 4xx/5xx alerts, with Hypercare monitoring to follow (EMS, 29-Jun-2026). No completion date or deployment status is documented as of 22-Jul-2026.",
+            "condition": "If the Azure alert tuning deployment is delayed or introduces regressions, false-positive P4 incidents may recur or valid failures may go undetected during the production ramp-up.",
+            "consequence": "Operational instability during Hypercare could erode client trust, trigger SLA breaches, and require emergency rollback or hotfixes."
+          },
+          "category": "Deployment",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Deploy Azure retry logic update to Production by 12-Aug-2026 with validation checkpoint before re-enabling alerts.",
+          "contingencyCorrectiveAction": "Upon detection of false-positive alerts or missed failures, roll back alert configuration and engage Azure support team.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "12-Aug-2026",
+          "status": "Open",
+          "reasoning": "Single-source signal from EMS go-green plan; no WSR confirmation of deployment status or timeline. Rated Possible due to lack of evidence of delay or regression, but proximity to production date (25-Aug-2026) warrants inclusion. Production ETA: 25-Aug-2026."
+        }
+      ]
+    }
+  ]
+}
