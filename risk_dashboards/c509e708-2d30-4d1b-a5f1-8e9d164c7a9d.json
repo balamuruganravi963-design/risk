@@ -1,0 +1,219 @@
+{
+  "client": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "Project Artifacts",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R-001",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "The application was deployed to Production and is technically ready for producer onboarding as of October 10, 2026 (ALT). A big-bang rollout approach for mass producer onboarding was scheduled for October 22, 2026 (ALT). The project status is High Concern on WATCHLIST (ALT).",
+            "condition": "If issues are encountered during mass producer onboarding, the entire rollout may need to be rolled back and remediated.",
+            "consequence": "Production deployment would be reversed, producer onboarding timeline would be disrupted, and business operations would be impacted while remediation is completed."
+          },
+          "category": "Deployment",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement phased rollout with pilot producer cohort validation before mass onboarding to identify issues early.",
+          "contingencyCorrectiveAction": "Upon encountering critical issues during mass onboarding, activate immediate rollback to last stable release, notify all producers within 2 hours, and escalate to project board for remediation timeline approval.",
+          "owner": "Saitej Ballav",
+          "targetDate": "18-Oct-2026",
+          "status": "Open",
+          "reasoning": "Big-bang rollout approach creates single point of failure for mass producer onboarding (ALT). Project placed on WATCHLIST High Concern specifically due to this deployment risk (ALT). Rollout was scheduled for October 22, 2026, with outcome awaited as of October 23, 2026 (ALT)."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R-002",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "The project has absorbed approximately 14 scope changes equivalent to 0.75\u20131 sprint of additional effort (EMS). R857 is open with Moderate severity, Likely likelihood, Medium impact, and Assessed mitigation status (EMS). Mitigation plan needs to be arrived following PMR identification (EMS).",
+            "condition": "Further scope additions may be requested during or after the mass producer onboarding phase.",
+            "consequence": "Delivery timelines could slip, and the team's capacity to support production stabilization and new scope simultaneously could be strained."
+          },
+          "category": "Scope Management",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish formal change control procedure with impact assessment and customer approval before accepting additional scope requests.",
+          "contingencyCorrectiveAction": "When scope additions exceed 0.5 sprint effort, rebaseline delivery plan with customer, defer non-critical features to Phase 2, and communicate timeline adjustments to all stakeholders.",
+          "owner": "Saitej Ballav",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk R857 carried forward and re-rated. Pattern of 14 scope changes already absorbed (EMS). Mitigation plan not yet finalized (EMS). Project now in production with mass onboarding underway, increasing likelihood of change requests."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R-003",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "ACPT tenant access is delayed, impacting the move to ACPT environment (Artifacts). Drew (Premera) has the required access, and the team is working with Ganesh to get time from Drew for configuration updates (Artifacts). Deploy to ACPT is pending with help needed from Premera (Artifacts).",
+            "condition": "Continued delays in ACPT tenant access and deployment may prevent the team from validating configuration changes or testing environment-specific issues.",
+            "consequence": "Environment progression would be blocked, and issues that should have been caught in ACPT could surface in Production, requiring emergency fixes."
+          },
+          "category": "Infrastructure",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate ACPT tenant access request to Premera infrastructure leadership with Drew and document all configuration requirements upfront.",
+          "contingencyCorrectiveAction": "If ACPT access remains blocked beyond 7 days, reprioritize non-dependent tasks, document all delays for timeline rebaselining, and prepare production hotfix process for environment-specific issues.",
+          "owner": "Saitej Ballav",
+          "targetDate": "08-Nov-2026",
+          "status": "Open",
+          "reasoning": "ACPT tenant access delay is open and unresolved (Artifacts). Dependency on Drew's availability and Premera support creates external control risk (Artifacts). Application already in Production (ALT), so ACPT issues could now manifest as production incidents."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R-004",
+          "subjectArea": "Governance",
+          "riskDescription": {
+            "context": "Approvals from John's team are needed to take the application to Production, and this needs discussion (Artifacts). The application has already been deployed to Production as of October 10, 2026 (ALT).",
+            "condition": "If required approvals were bypassed or are still pending post-deployment, governance non-compliance may be identified during audit or review.",
+            "consequence": "The project could face audit findings, and the client relationship could be strained if approval processes were not followed correctly."
+          },
+          "category": "Governance",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Document all production deployment approvals retroactively with John's team and establish formal sign-off process for future releases.",
+          "contingencyCorrectiveAction": "If audit identifies missing approvals, prepare remediation report documenting deployment rationale, obtain retroactive sign-offs, and implement enhanced governance controls with weekly approval status reviews.",
+          "owner": "Saitej Ballav",
+          "targetDate": "25-Oct-2026",
+          "status": "Open",
+          "reasoning": "Artifacts note approvals from John's team pending and needing discussion (Artifacts). ALT confirms Production deployment occurred October 10, 2026 (ALT). Timing conflict suggests approvals may have been incomplete at deployment, creating governance risk."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R-005",
+          "subjectArea": "Integration",
+          "riskDescription": {
+            "context": "Premium calculation data from Data Hub is expected to be delivered on July 30, 2026, with implementation by August 5, 2026 (Artifacts). The team is working with the E2E team on this dependency (Artifacts). The project is now in Production with mass producer onboarding scheduled for October 22, 2026 (ALT).",
+            "condition": "If premium calculation integration was not fully validated or if Data Hub data quality issues exist, incorrect premium amounts may be displayed to producers.",
+            "consequence": "Producers could receive inaccurate premium information, leading to billing disputes, loss of client trust, and potential regulatory compliance issues."
+          },
+          "category": "Integration",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct end-to-end premium calculation validation with Data Hub team using production data samples before mass onboarding.",
+          "contingencyCorrectiveAction": "Upon detecting premium calculation discrepancies, immediately disable affected premium display features, activate manual premium verification process with business team, and escalate to Data Hub team for root cause analysis within 24 hours.",
+          "owner": "Saitej Ballav",
+          "targetDate": "15-Oct-2026",
+          "status": "Open",
+          "reasoning": "Premium calculation dependency on Data Hub noted in Artifacts with August 5, 2026 implementation target. Application now in Production (ALT). Time gap between integration target and production rollout creates risk that integration issues were not fully validated under production load."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R-006",
+          "subjectArea": "Security",
+          "riskDescription": {
+            "context": "Advance Pen-Test (item #26) is pending, assigned to Ganesh/Viraj, with a target date of June 17, 2026 (Artifacts). The application was deployed to Production on October 10, 2026 (ALT).",
+            "condition": "If the penetration test was not completed or if identified vulnerabilities were not remediated before production deployment, security weaknesses may exist in the live application.",
+            "consequence": "The application could be exposed to security breaches, and sensitive producer or client data could be compromised, resulting in regulatory penalties and reputational damage."
+          },
+          "category": "Security",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Complete penetration testing immediately with InfoSec team and remediate all critical and high vulnerabilities before next release.",
+          "contingencyCorrectiveAction": "Should security breach occur, activate incident response protocol immediately, isolate affected systems, notify Premera security team within 1 hour, and engage external security forensics team for remediation.",
+          "owner": "Saitej Ballav",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "Pen-Test item #26 pending as of Artifacts with June 17, 2026 target. Application deployed to Production October 10, 2026 (ALT). Four-month gap suggests Pen-Test may not have been completed or findings not fully remediated before go-live."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R-007",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "Multi-region deployment with Azure Front Door is being explored for disaster recovery, as DR will not be implicitly handled by the platform (Artifacts). The cost impact is estimated as Small-Medium depending on the finalized approach (Artifacts). The application is now in Production (ALT).",
+            "condition": "If the disaster recovery strategy is not finalized or implemented, a regional Azure outage could take the Producer Portal offline with no failover capability.",
+            "consequence": "Producers would lose access to the portal during an outage, business operations would be disrupted, and the client's service level commitments to producers could be breached."
+          },
+          "category": "Infrastructure",
+          "probability": "Unlikely",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Finalize multi-region disaster recovery architecture with Azure Front Door and implement automated failover testing by November.",
+          "contingencyCorrectiveAction": "Upon regional Azure outage, monitor Azure status dashboard, communicate estimated recovery time to all producers within 30 minutes, and escalate to Azure support for expedited restoration.",
+          "owner": "Saitej Ballav",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "DR strategy still being explored as of Artifacts, with multi-region deployment not yet finalized. Application in Production (ALT). Absence of confirmed DR capability creates business continuity risk, though Azure regional outages are rare."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R-008",
+          "subjectArea": "Operations",
+          "riskDescription": {
+            "context": "The go-green plan includes updating retry logic to classify invalid email-format failures as non-retryable, deploying and validating the change in Production, and re-enabling Azure 4xx/5xx alerts (EMS). Hypercare monitoring is to continue to confirm valid failures are captured without false-positive P4 incidents (EMS). The application is in Production with mass producer onboarding underway (ALT).",
+            "condition": "If the retry logic update is not completed or if Azure alerts remain disabled, production issues may go undetected or generate excessive false-positive incidents.",
+            "consequence": "Real failures could be missed, leading to undetected outages, or the team could be overwhelmed by false alerts, reducing their ability to respond to genuine incidents during the critical onboarding period."
+          },
+          "category": "Monitoring",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Deploy retry logic update to classify invalid email failures as non-retryable and re-enable Azure alerts with validated thresholds.",
+          "contingencyCorrectiveAction": "If false-positive alerts exceed 10 per day, implement manual alert triage process, escalate to Azure support for threshold tuning, and maintain 24/7 on-call rotation until alerts stabilize.",
+          "owner": "Saitej Ballav",
+          "targetDate": "25-Oct-2026",
+          "status": "Open",
+          "reasoning": "Go-green plan in EMS indicates retry logic and alert re-enablement work is pending. Application in Production with mass onboarding underway (ALT). Timing suggests monitoring improvements may not be complete during highest-risk period."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R-009",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Citrix is experiencing slowness and frequent disconnection, having an impact on delivery (EMS). A ticket is to be raised with Premera to address the issue (EMS). The application is in Production with mass producer onboarding underway (ALT).",
+            "condition": "If Citrix connectivity issues persist, the team's ability to monitor production, respond to incidents, or deploy emergency fixes during the critical onboarding period may be degraded.",
+            "consequence": "Incident response times could increase, and the team's capacity to support the mass producer onboarding could be reduced, amplifying the impact of any production issues."
+          },
+          "category": "Infrastructure",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate Citrix connectivity ticket to Premera infrastructure team and implement VPN backup access for all team members.",
+          "contingencyCorrectiveAction": "When Citrix downtime exceeds 2 hours, activate VPN access for critical team members, establish backup communication channels via Teams, and notify Premera of degraded support capability.",
+          "owner": "Saitej Ballav",
+          "targetDate": "28-Oct-2026",
+          "status": "Open",
+          "reasoning": "Citrix connectivity issue noted in EMS go-green plan as impacting delivery. Ticket to be raised with Premera (EMS). Application in Production with mass onboarding underway (ALT). Issue unresolved and team dependent on Premera to fix, creating operational risk during high-stakes period."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R-010",
+          "subjectArea": "Integration",
+          "riskDescription": {
+            "context": "Daily collaboration with Data Hub, Edge, and the business team is ongoing for Auth0-Entra integration (Artifacts). The application is in Production (ALT).",
+            "condition": "If the Auth0-Entra integration is not fully stabilized, authentication or authorization issues may surface during mass producer onboarding.",
+            "consequence": "Producers could be unable to log in or could receive incorrect access permissions, disrupting onboarding and damaging client confidence in the platform."
+          },
+          "category": "Integration",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate Auth0-Entra integration with production user load testing and establish daily sync monitoring with Data Hub team.",
+          "contingencyCorrectiveAction": "Upon authentication failure affecting more than 5 users, activate manual user provisioning process, escalate to Auth0 support within 30 minutes, and communicate workaround instructions to affected producers immediately.",
+          "owner": "Saitej Ballav",
+          "targetDate": "18-Oct-2026",
+          "status": "Open",
+          "reasoning": "Auth0-Entra integration work noted as ongoing in Artifacts. Application in Production with mass onboarding underway (ALT). Ongoing integration work during production rollout suggests potential for authentication/authorization issues under load."
+        }
+      ]
+    }
+  ]
+}
