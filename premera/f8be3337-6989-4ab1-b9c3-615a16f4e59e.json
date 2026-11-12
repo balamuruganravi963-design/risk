@@ -1,0 +1,259 @@
+{
+  "client": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "Project Artifacts",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "ALT reports that Premera sent registration emails to 2,500+ producers on October 22 using a big-bang rollout approach, and the status is awaited as of October 23. End-to-end registration was validated with only 11 users prior to mass rollout.",
+            "condition": "If technical issues, performance degradation, or registration failures occur during mass producer onboarding, the rollout may need to be rolled back and remediated.",
+            "consequence": "Rollback would damage client confidence, delay producer access to the portal, require emergency remediation effort, and could trigger contractual penalties or scope renegotiation."
+          },
+          "category": "Deployment Risk",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish phased rollout checkpoints with producer cohort validation and rollback criteria before mass onboarding to prevent uncontrolled deployment.",
+          "contingencyCorrectiveAction": "Upon detection of registration failures exceeding 5%, halt mass onboarding, activate rollback to pre-deployment state, and escalate to Premera program board within 2 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "ALT escalation trigger met; big-bang approach with minimal pre-production validation (11 users) before mass rollout to 2,500+ producers. Supported by ALT."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Security",
+          "riskDescription": {
+            "context": "Project Artifacts report 86 CVEs detected (4 Critical, 82 High) as of 22-July-2026, with status in progress. Penetration testing is planned post-ACPT/UAT but not yet scheduled.",
+            "condition": "Critical and high-severity vulnerabilities may remain unresolved when the system is live in Production, and penetration testing may uncover additional exploitable weaknesses.",
+            "consequence": "Security incidents could expose sensitive producer and member data, trigger regulatory penalties (HIPAA/PCI compliance), damage client trust, and require emergency patching or Production rollback."
+          },
+          "category": "Security",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Conduct internal API security testing weekly and prioritize remediation of Critical CVEs before penetration test to prevent Production exposure.",
+          "contingencyCorrectiveAction": "Once penetration test identifies exploitable vulnerabilities, deploy emergency patches within 48 hours, escalate to CISO, and invoke Production rollback if regulatory exposure confirmed.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "08-Nov-2026",
+          "status": "In Progress",
+          "reasoning": "Open security risk combined with Project Artifacts evidence of 4 Critical CVEs in progress and pending penetration test. Supported by Project Artifacts and ALT (Production deployment completed, security validation incomplete)."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Commercial",
+          "riskDescription": {
+            "context": "EMS R857 (Identified/Moderate/Likely/Medium) reports that the project has absorbed approximately 14 scope changes equivalent to 0.75\u20131 sprint of additional effort, and further scope additions may impact delivery timelines. Project Artifacts confirm Scope is Amber and list 19 scope changes logged as of 22-July-2026. The engagement is a fixed bid ($650,000) with no change orders executed.",
+            "condition": "Continued scope additions without formal change orders may exhaust remaining budget and schedule buffer, requiring either unpaid effort or renegotiation of contract terms.",
+            "consequence": "Margin erosion, team burnout, delivery timeline slippage, or client dispute over additional charges could occur."
+          },
+          "category": "Scope Management",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement formal change control gate requiring client sign-off and commercial amendment for scope additions exceeding 0.25 sprint effort to prevent margin erosion.",
+          "contingencyCorrectiveAction": "Should scope additions exceed 1 sprint without change orders, freeze non-critical work and escalate to Premera program manager for contract renegotiation within 1 week.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "Carried forward from open EMS R857 and corroborated by Project Artifacts Scope Amber status and 19 logged scope changes. Supported by EMS and Project Artifacts."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "EMS Go-Green Plan notes Citrix slowness and frequent disconnection impacting delivery, with a ticket to be raised with Premera. Project Artifacts report Citrix server slowness and timeouts impacting offshore team efforts, and file upload functionality impacting Dev, QA, and UAT on all environments (intermittent issue escalated to highest level).",
+            "condition": "Persistent infrastructure instability (Citrix, file upload) may continue to degrade offshore team productivity and testing effectiveness during Hypercare and post-deployment support phases.",
+            "consequence": "Slower defect resolution, reduced sprint velocity, delayed bug fixes, and increased risk of Production incidents could result."
+          },
+          "category": "Infrastructure",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Monitor Citrix session stability hourly and escalate infrastructure tickets to Premera IT with SLA tracking to prevent offshore team productivity loss.",
+          "contingencyCorrectiveAction": "When Citrix downtime exceeds 2 hours, shift critical tasks to onshore team and notify Premera delivery lead of schedule impact within 4 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "08-Nov-2026",
+          "status": "Open",
+          "reasoning": "Repeated signal across EMS Go-Green Plan and Project Artifacts; escalated but unresolved. Supported by EMS and Project Artifacts."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Data",
+          "riskDescription": {
+            "context": "Project Artifacts report that Data Hub 4 new total premium fields were delayed to 30-Jul (was 6-Jul), and upstream data setup for integration & E2E testing is only partially closed with few data available. Data mapping discrepancies are noted: team proceeding with provided mappings, but if issues with values lead back to design (entity stitching), may have time impact.",
+            "condition": "Data mapping discrepancies or incomplete upstream data setup may cause incorrect calculations, missing fields, or failed integrations to surface during Production use by 2,500+ producers.",
+            "consequence": "Producer-facing data errors could damage client trust, require emergency data fixes, and trigger support escalations or contractual remediation."
+          },
+          "category": "Data Quality",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate Data Hub field mappings with Premera business owners weekly and reconcile sample producer data against legacy systems to prevent calculation errors.",
+          "contingencyCorrectiveAction": "Upon producer report of data discrepancy, isolate affected records, notify Premera Data Hub team, and deploy corrective data patch within 24 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Nov-2026",
+          "status": "In Progress",
+          "reasoning": "Project Artifacts evidence of delayed Data Hub fields, partial data setup, and mapping discrepancies; mitigated by daily collaboration but risk remains. Supported by Project Artifacts."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "Project Artifacts note that performance of the application with 100+ concurrent users is to be validated post-integration, and NFR issues may surface after Data Hub integration. ALT reports that the application is technically ready for producer onboarding with 2,500+ producers, but end-to-end registration was validated with only 11 users.",
+            "condition": "The portal may experience performance degradation, timeouts, or capacity issues when 2,500+ producers access the system concurrently, as NFR validation under realistic load has not been completed.",
+            "consequence": "Poor user experience, system unavailability, producer complaints, and emergency performance tuning or infrastructure scaling could result."
+          },
+          "category": "Performance",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Execute load tests simulating 3,000 concurrent producers weekly in ACPT and tune Azure App Services scaling thresholds to prevent Production capacity issues.",
+          "contingencyCorrectiveAction": "Should response times exceed 5 seconds during peak usage, activate Azure auto-scaling, redirect traffic to backup region, and notify producers of temporary slowness.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "08-Nov-2026",
+          "status": "Open",
+          "reasoning": "Project Artifacts note NFR validation pending; ALT reports limited pre-production validation (11 users) before mass rollout. Supported by Project Artifacts and ALT."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Security",
+          "riskDescription": {
+            "context": "Project Artifacts report that penetration testing is planned post-ACPT/UAT completion but not yet scheduled. ALT reports that the application is fully deployed to Production and IT validation completed, but no mention of penetration test completion.",
+            "condition": "Penetration testing may uncover exploitable vulnerabilities or compliance gaps requiring remediation after Production deployment.",
+            "consequence": "Emergency patching, Production downtime, regulatory audit findings, or delayed producer onboarding could occur."
+          },
+          "category": "Compliance",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Schedule penetration test by 15-Nov-2026 and allocate 2-week remediation buffer before SOW end to prevent post-Production security findings.",
+          "contingencyCorrectiveAction": "Upon penetration test critical findings, deploy hotfix within 72 hours, re-test with InfoSec, and escalate to Premera CISO if compliance gap confirmed.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "Project Artifacts evidence of pending penetration test; ALT confirms Production deployment without mention of penetration test completion. Supported by Project Artifacts and ALT."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Vendor",
+          "riskDescription": {
+            "context": "Project Artifacts report that Auth0 integration with Entra (Super Users) is open with ETA TBD, and Auth0 DB connection config update in ACPT was closed on 8-Jul-2026. Auth0 change propagation was noted as a schedule risk: DB connection config maintained outside Auth0, and Premera team must update ACPT tenant config (Ascendion lacks access).",
+            "condition": "If Auth0 integration with Entra remains incomplete or misconfigured, Super Users may be unable to access the portal, or authentication failures may occur during mass producer onboarding.",
+            "consequence": "Producer access blocked, support escalations, client dissatisfaction, and emergency configuration changes could result."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate Auth0 Entra integration with Premera IAM team bi-weekly and document manual Super User provisioning workaround to prevent access blocking.",
+          "contingencyCorrectiveAction": "When Super User authentication fails, activate manual OKTA provisioning workaround and notify Premera IAM team for Entra config update within 24 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "08-Nov-2026",
+          "status": "Open",
+          "reasoning": "Project Artifacts evidence of open Auth0 integration dependency with TBD ETA and Premera-controlled config access. Supported by Project Artifacts."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "Project Artifacts note that the AAVA license is term-based, and Deliverables will function without AAVA post-Term. The SOW term is 2026-02-16 to 2026-11-30, and the project end date is 2026-12-31.",
+            "condition": "If the AAVA license expires at the end of the SOW term (30-Nov-2026) and Premera does not renew or replace AAVA functionality, agent-based features (test case generation, code generation, orchestration) may degrade or fail in Production.",
+            "consequence": "Reduced operational efficiency, manual workarounds, or feature degradation could impact producer experience and support costs."
+          },
+          "category": "Technology",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Document AAVA-dependent features and develop manual fallback procedures for agent tasks before 30-Nov-2026 SOW end to prevent operational degradation.",
+          "contingencyCorrectiveAction": "Should AAVA license expire without renewal, switch to manual test case generation and code review processes and notify Premera of reduced automation efficiency.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "22-Nov-2026",
+          "status": "Open",
+          "reasoning": "Project Artifacts evidence of term-based AAVA license with no renewal plan documented; SOW term ends 30-Nov-2026. Supported by Project Artifacts."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Operations",
+          "riskDescription": {
+            "context": "EMS Go-Green Plan notes the need to update retry logic to classify invalid email-format failures as non-retryable, deploy and validate the change in Production, and then re-enable Azure 4xx/5xx alerts. Hypercare monitoring is to continue to confirm that valid failures are captured without generating false-positive P4 incidents.",
+            "condition": "If Azure 4xx/5xx alerts remain disabled or misconfigured during Hypercare, critical Production failures (authentication errors, API failures, service outages) may go undetected until producers report issues.",
+            "consequence": "Delayed incident detection, prolonged Production outages, producer dissatisfaction, and increased support escalations could result."
+          },
+          "category": "Monitoring",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate Azure 4xx/5xx alert routing to ServiceNow weekly and test incident escalation workflow to prevent undetected Production failures during Hypercare.",
+          "contingencyCorrectiveAction": "When critical Production failure goes undetected for over 30 minutes, activate manual monitoring dashboard review and escalate to Ascendion DevOps on-call engineer.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "08-Nov-2026",
+          "status": "Open",
+          "reasoning": "EMS Go-Green Plan evidence of pending alert re-enablement and Hypercare monitoring dependency. Supported by EMS."
+        },
+        {
+          "sNo": 11,
+          "riskId": "R - 011",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "Project Artifacts report that UAT test cases early delivery is open with ETA TBD, and UAT support is 0% complete as of 22-July-2026. UAT sign-off target is 14-Aug-2026. However, ALT reports Production deployment already completed, suggesting UAT was completed.",
+            "condition": "If UAT test cases were not delivered early enough for Ascendion QA team to prepare test data, environments, and scripts, UAT execution may have been compressed or incomplete, allowing defects to leak to Production.",
+            "consequence": "Increased defect leakage to Production, higher support load during Hypercare, and producer dissatisfaction could result."
+          },
+          "category": "Testing",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Request UAT test cases from Premera QA by 1-Aug-2026 and prepare test data and scripts in parallel to prevent UAT execution delay.",
+          "contingencyCorrectiveAction": "Should UAT test cases arrive late, prioritize critical-path scenarios, compress regression scope, and communicate UAT sign-off risk to Premera program manager.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "TBD",
+          "status": "Mitigated",
+          "reasoning": "Project Artifacts evidence of open UAT test case dependency with TBD ETA; however, ALT reports Production deployment completed, suggesting UAT was completed. Conflict between sources lowers likelihood. Supported by Project Artifacts; contradicted by ALT."
+        },
+        {
+          "sNo": 12,
+          "riskId": "R - 012",
+          "subjectArea": "Customer",
+          "riskDescription": {
+            "context": "Project Artifacts report that Learning Center & Contact Support links to page contents are open with ETA 6-Jul-2026 (missed). No owner is identified for this dependency. ALT reports Production deployment completed.",
+            "condition": "If Learning Center and Contact Support content is unavailable or incomplete when 2,500+ producers access the portal, producers may be unable to self-serve for common issues or contact support effectively.",
+            "consequence": "Increased support call volume, producer frustration, poor user experience, and client dissatisfaction could result."
+          },
+          "category": "User Experience",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Review Learning Center and Contact Support content with Premera weekly and publish interim FAQ page to prevent producer self-service gaps.",
+          "contingencyCorrectiveAction": "When producers report missing support content, activate live chat support escalation and notify Premera content owner for immediate page update.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "Project Artifacts evidence of open dependency with missed ETA and no owner; absence signal. Supported by Project Artifacts."
+        }
+      ]
+    }
+  ]
+}
