@@ -1,0 +1,319 @@
+{
+  "client": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "Project Artifacts",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "Premera planned a big-bang rollout to 2,500+ producers on 22 October 2026. The ALT deck (23 Oct) reports status is awaited and the project is on WATCHLIST.",
+            "condition": "If a critical defect surfaces during mass onboarding, the rollout may need to be rolled back and remediated.",
+            "consequence": "Rollback could delay go-live, erode client confidence, require emergency fixes, and impact the stabilization timeline and hypercare support."
+          },
+          "category": "Deployment",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement phased rollout with 10% producer cohort first, validate for 48 hours, then scale incrementally to full population.",
+          "contingencyCorrectiveAction": "Upon detection of critical defect affecting >5% of users, activate rollback procedure within 2 hours and escalate to Premera program leadership immediately.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "21-Oct-2026",
+          "status": "Open",
+          "reasoning": "ALT (23 Oct) explicitly flags this as the primary risk and escalation trigger. The big-bang approach with 2,500+ users introduces higher failure probability than phased rollout. Single-source (ALT) but highly specific and recent."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "The project has absorbed approximately 14 scope changes equivalent to 0.75\u20131 sprint of additional effort. EMS risk R857 is Identified (Moderate severity, Likely likelihood, Medium impact) with mitigation status Assessed but not yet arrived.",
+            "condition": "Further unplanned scope additions may continue to accumulate during hypercare or post-deployment phases.",
+            "consequence": "Additional effort could erode margin, delay closure of remaining work, or require change orders that strain the client relationship."
+          },
+          "category": "Scope",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish formal change control procedure requiring Premera program leadership approval and impact assessment for all new requirements during hypercare.",
+          "contingencyCorrectiveAction": "Should scope additions exceed 0.5 sprint effort, invoke change request process and communicate timeline and cost impact to client within 3 business days.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Oct-2026",
+          "status": "In Progress",
+          "reasoning": "Open EMS risk R857 (Identified, 29 Jun 2026). Scope changes have already occurred; pattern suggests likelihood of recurrence. Mitigation plan not yet finalized (EMS, Artifacts)."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Citrix server slowness and frequent disconnection have been impacting offshore team efforts since at least 22 July 2026. A ticket to be raised with Premera to address the issue is noted in the EMS go-green plan.",
+            "condition": "If Citrix performance does not improve or the issue recurs during hypercare, offshore team productivity may remain constrained.",
+            "consequence": "Support response times could lengthen, post-deployment fixes may be delayed, and client satisfaction during hypercare could decline."
+          },
+          "category": "Infrastructure",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate Citrix performance ticket to Premera infrastructure team with SLA commitment and establish alternate VPN access for critical support tasks.",
+          "contingencyCorrectiveAction": "If Citrix downtime exceeds 4 hours during hypercare, redirect critical tasks to onshore team and notify Premera of potential SLA impact.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "Documented in EMS go-green plan and WSR (22 Jul) as an ongoing challenge. Ticket not yet raised. Recurrence during hypercare is plausible (EMS, Artifacts)."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Data",
+          "riskDescription": {
+            "context": "As of 22 July 2026, the team was awaiting 4 new fields for total premium calculation from Data Hub, with ETA 30 July. Dependency #26 (Confirmation from DH on total premium fields) was open with needed-by date 06 July. WSR Risk Register (03 Jul) notes that if fields are made available on 30 July, changes can only be made by 5 August.",
+            "condition": "If the total premium fields delivered by Data Hub are incomplete, incorrect, or require additional stitching logic, rework may be needed after production deployment.",
+            "consequence": "Late data corrections could introduce defects in billing calculations, require emergency patches, and undermine producer trust in the portal's accuracy."
+          },
+          "category": "Data",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct data validation workshop with Data Hub team by 25 July to confirm field definitions, mappings, and sample data accuracy.",
+          "contingencyCorrectiveAction": "Upon discovery of incorrect total premium calculations in production, deploy hotfix within 24 hours and communicate correction plan to affected producers immediately.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "25-Jul-2026",
+          "status": "Mitigated",
+          "reasoning": "Open dependency (Dep #26) and WSR risk (03 Jul). Tight timeline (30 Jul delivery, 5 Aug change cutoff) increases risk of incomplete or incorrect data. Single-source (Artifacts) but material impact on billing accuracy."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Integration",
+          "riskDescription": {
+            "context": "Data Hub integration was 15% complete as of 22 July 2026. WSR Risk Register (25 Jun) notes that the team is proceeding with data mappings provided, but if issues with values from mappings lead back to design (entity stitching), there may be time impact.",
+            "condition": "If entity stitching logic or data mappings prove incorrect or incomplete during production use, integration defects may surface under load or with real producer data.",
+            "consequence": "Integration failures could disrupt Book of Business retrieval, dashboard display, or registration workflows, requiring urgent remediation and potentially triggering rollback."
+          },
+          "category": "Integration",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Execute end-to-end integration testing with production-like data volumes and validate entity stitching logic for all LOBs by 10 August.",
+          "contingencyCorrectiveAction": "Once integration failure rate exceeds 2% in production, activate fallback to cached data and escalate to Data Hub team for joint resolution within 4 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "10-Aug-2026",
+          "status": "Mitigated",
+          "reasoning": "WSR Risk Register (25 Jun) flags this as an open risk. Data Hub integration was incomplete as of 22 Jul. Complexity of entity stitching (Commercial Group, Individual Member, Provider) increases likelihood of latent defects (Artifacts)."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Security",
+          "riskDescription": {
+            "context": "As of 18 June 2026, Software Composition Analysis (JFrog Xray) detected 86 CVEs (4 Critical, 82 High) in the codebase, marked as in progress. Penetration testing was not started and was planned post-UAT.",
+            "condition": "If critical or high-severity CVEs remain unresolved at the time of production deployment, unpatched vulnerabilities may be exploited.",
+            "consequence": "Security incidents could expose producer data, trigger compliance penalties, damage client trust, and require emergency patching or rollback."
+          },
+          "category": "Security",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Remediate all 4 Critical CVEs and prioritize 20 highest-risk High CVEs by 15 August; complete penetration testing by 25 August.",
+          "contingencyCorrectiveAction": "Should a Critical CVE exploit be detected in production, isolate affected component within 1 hour and deploy emergency patch within 8 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Aug-2026",
+          "status": "Mitigated",
+          "reasoning": "86 CVEs (4 Critical, 82 High) documented in WSR Sprint Demo (18 Jun). Penetration testing not started as of 22 Jul. Production deployment occurred by 23 Oct without explicit confirmation of CVE remediation (Artifacts)."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "Integration Testing, E2E Testing, UAT, and Penetration Testing were all at 0% completion as of 22 July 2026. UAT sign-off was planned for 14 August 2026, with Pen Test on 25 August and Go-Live on 2 September 2026. ALT (23 Oct) reports production deployment completed, but does not confirm completion of all planned testing phases.",
+            "condition": "If Integration, E2E, UAT, or Pen Test phases were compressed or skipped to meet the deployment timeline, untested defects may surface during production use.",
+            "consequence": "Late-stage defects could disrupt producer onboarding, require rollback, and necessitate extended hypercare or emergency fixes."
+          },
+          "category": "Quality",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate completion of Integration, E2E, UAT, and Pen Test with signed-off test summary reports before mass rollout on 22 October.",
+          "contingencyCorrectiveAction": "Upon detection of P1/P2 defects during mass rollout, halt onboarding immediately and activate war room with Premera and Ascendion leadership within 2 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "20-Oct-2026",
+          "status": "Open",
+          "reasoning": "Testing phases were 0% complete as of 22 Jul, with tight timeline to 2 Sep go-live. ALT (23 Oct) does not confirm testing completion. Compressed testing increases defect escape risk (Artifacts, ALT)."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "WSR Risk Register (16 Mar) notes that only one LLM is available in PortKey (AAVA platform). This may underperform on specific tasks and prevents use of a reviewer-agent, leading to manual effort.",
+            "condition": "If AAVA-generated code or test cases contain latent defects due to single-LLM limitations, these may surface during production use or hypercare.",
+            "consequence": "Manual rework could increase support effort, delay defect resolution, and reduce the expected productivity gains from agent-assisted development."
+          },
+          "category": "Technology",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement manual code review checkpoint for all AAVA-generated code and document LLM limitations per task type by 15 August.",
+          "contingencyCorrectiveAction": "If AAVA-generated defect rate exceeds 10% during hypercare, revert to manual code development and notify Premera of productivity impact.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Aug-2026",
+          "status": "Mitigated",
+          "reasoning": "WSR Risk Register (16 Mar) flags single-LLM limitation as an open risk. ~70% test cases and ~35% code were AI-generated. No evidence of mitigation or reviewer-agent implementation (Artifacts)."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "WSR Risk Register (16 Mar) notes that inadequate agent hardening may cause inconsistent behavior in production. WSR Sprint Demo (18 Jun) reports ~42% development tasks achieved with agents and ~35% code AI-generated.",
+            "condition": "If AAVA agents were not sufficiently hardened before production deployment, inconsistent or incorrect outputs may occur under edge-case scenarios or high load.",
+            "consequence": "Agent failures could degrade user experience, generate incorrect data, or require fallback to manual processes, increasing support burden."
+          },
+          "category": "Technology",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Define agent hardening checklist and perform scenario testing with edge cases and load conditions by 20 August; implement fallback logic.",
+          "contingencyCorrectiveAction": "When agent failure rate exceeds 5% in production, disable affected agent and switch to manual workflow with notification to support team.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "20-Aug-2026",
+          "status": "Mitigated",
+          "reasoning": "WSR Risk Register (16 Mar) flags agent hardening as an open risk. No evidence of hardening completion or validation in later artifacts. Agent-generated code in production increases exposure (Artifacts)."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Resources",
+          "riskDescription": {
+            "context": "WSR Decision Log #1 (08 Apr) notes that QE Automation tech stack moved from Selenium to Playwright with TypeScript, and Selenium resource Kishore transitioned out effective 01 May 2026. WSR Decision Log #2 (14 Apr) notes that DevOps support is provided on-need basis by David (AI Platform Build Claims POD) due to no dedicated DevOps resource planned.",
+            "condition": "If the Playwright resource or on-need DevOps support is unavailable during hypercare or post-deployment, automation maintenance and infrastructure troubleshooting may be delayed.",
+            "consequence": "Slower defect resolution, reduced automation coverage, and increased manual testing effort could extend hypercare duration and strain client satisfaction."
+          },
+          "category": "Resources",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Secure backup Playwright resource and formalize DevOps on-call rotation with SLA commitment for hypercare period by 25 August.",
+          "contingencyCorrectiveAction": "If primary Playwright or DevOps resource is unavailable for >8 hours, engage backup resource and escalate to Ascendion resource management immediately.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "25-Aug-2026",
+          "status": "Mitigated",
+          "reasoning": "Tech stack change and resource transition documented in WSR Decision Log (08 Apr, 14 Apr). No dedicated DevOps resource. Hypercare support model not explicitly confirmed (Artifacts)."
+        },
+        {
+          "sNo": 11,
+          "riskId": "R - 011",
+          "subjectArea": "Vendor",
+          "riskDescription": {
+            "context": "Dependency #20 (Access to Premera Tools - SharePoint, Azure Blob, ADO - for AAVA integration) was open as of 22 July 2026, with needed-by date 15 June 2026. WSR Risk Register (09 Mar) notes that AAVA and Premera Tools integration is required before Agent Development and may limit Agent Development and delay downstream tasks.",
+            "condition": "If AAVA integration with Premera tools remains incomplete or unstable, agent-assisted support tasks during hypercare may fail or require manual workarounds.",
+            "consequence": "Reduced agent productivity could increase manual support effort, delay issue resolution, and undermine the business case for AAVA adoption."
+          },
+          "category": "Vendor",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate Dependency #20 to Premera program leadership and secure tool access with integration validation by 10 August.",
+          "contingencyCorrectiveAction": "Should AAVA tool integration fail during hypercare, revert to manual support workflows and document productivity impact for commercial discussion.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "10-Aug-2026",
+          "status": "Mitigated",
+          "reasoning": "Open dependency (Dep #20) and WSR Risk Register (09 Mar). Needed-by date (15 Jun) passed without closure as of 22 Jul. AAVA integration incomplete increases hypercare risk (Artifacts)."
+        },
+        {
+          "sNo": 12,
+          "riskId": "R - 012",
+          "subjectArea": "Operations",
+          "riskDescription": {
+            "context": "EMS go-green plan (22 Jul) notes the need to update retry logic to classify invalid email-format failures as non-retryable, deploy and validate the change in Production, and re-enable Azure 4xx/5xx alerts. It also calls for continued Hypercare monitoring to confirm that valid failures are captured without generating false-positive P4 incidents.",
+            "condition": "If retry logic or alert configuration is not correctly tuned before mass producer onboarding, false-positive incidents may flood the support queue or valid failures may be missed.",
+            "consequence": "Support team productivity could decline, genuine issues may go undetected, and client confidence in monitoring and incident response may erode."
+          },
+          "category": "Operations",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Deploy updated retry logic and re-enable Azure alerts by 15 October; validate alert accuracy with 48-hour monitoring before mass rollout.",
+          "contingencyCorrectiveAction": "If false-positive alert rate exceeds 20% during rollout, temporarily disable alerts and escalate to Azure support for tuning within 4 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Oct-2026",
+          "status": "In Progress",
+          "reasoning": "EMS go-green plan (22 Jul) documents this as an open action. No confirmation of completion in ALT (23 Oct). Mass rollout increases exposure to alert tuning issues (EMS, ALT)."
+        },
+        {
+          "sNo": 13,
+          "riskId": "R - 013",
+          "subjectArea": "Governance",
+          "riskDescription": {
+            "context": "WSR Decision Log #31 (25 Jun) notes that data mappings are mostly closed, but possible values for data are still being discussed. The team is proceeding with mappings defined, but possible issues may arise during E2E testing or UAT (expected to be minor modifications, but design changes may impact timelines). WSR Decision Log #32 (25 Jun) notes that any new requirements need to be discussed with Premera program leadership before scoping.",
+            "condition": "If data mapping assumptions prove incorrect during production use, or if new requirements emerge during hypercare without clear change control, scope and timeline may drift.",
+            "consequence": "Uncontrolled scope changes could erode margin, delay hypercare closure, and strain the client relationship."
+          },
+          "category": "Governance",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate data mapping assumptions with Data Hub team and Premera business stakeholders by 10 August; document sign-off in governance log.",
+          "contingencyCorrectiveAction": "Should data mapping issues surface in production, invoke change control process and communicate impact assessment to Premera leadership within 2 business days.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "10-Aug-2026",
+          "status": "Mitigated",
+          "reasoning": "WSR Decision Log (25 Jun) flags data mapping uncertainty and change control process. Pattern of scope changes (R857) suggests likelihood of recurrence. No explicit change control enforcement documented (Artifacts)."
+        },
+        {
+          "sNo": 14,
+          "riskId": "R - 014",
+          "subjectArea": "Compliance",
+          "riskDescription": {
+            "context": "Work Assignment specifies compliance with WCAG 2.2 AA accessibility standards. WSR (22 Jul) notes that Accessibility testing is in progress. No explicit confirmation of accessibility validation completion is provided in ALT (23 Oct).",
+            "condition": "If accessibility testing was incomplete or defects remain unresolved at production deployment, the portal may not meet WCAG 2.2 AA standards.",
+            "consequence": "Non-compliance could trigger regulatory findings, require remediation, and expose Premera to legal or reputational risk."
+          },
+          "category": "Compliance",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Complete WCAG 2.2 AA accessibility testing and remediate all P1/P2 findings by 20 August; obtain third-party validation report.",
+          "contingencyCorrectiveAction": "If accessibility defects are identified post-deployment, prioritize remediation within 30 days and communicate compliance plan to Premera legal and compliance teams.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "20-Aug-2026",
+          "status": "Mitigated",
+          "reasoning": "Accessibility testing in progress as of 22 Jul. No confirmation of completion in ALT (23 Oct). WCAG 2.2 AA is a contractual requirement (Work Assignment). Single-source (Artifacts) but material compliance risk."
+        },
+        {
+          "sNo": 15,
+          "riskId": "R - 015",
+          "subjectArea": "Commercial",
+          "riskDescription": {
+            "context": "Work Assignment specifies a total contract value of $650,000 (not to exceed) with milestone-based payment structure. Approximately 14 scope changes have been absorbed (0.75\u20131 sprint effort). EMS cost dimension is Green as of 22 July 2026.",
+            "condition": "If additional scope changes or extended hypercare effort push total effort beyond the contract ceiling, margin may erode or Premera may contest additional charges.",
+            "consequence": "Margin erosion could impact project profitability, and unresolved commercial disputes could strain the client relationship."
+          },
+          "category": "Commercial",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Monitor effort burn weekly against contract ceiling and flag any scope additions requiring change request by 15 August.",
+          "contingencyCorrectiveAction": "Should effort exceed 90% of contract value, initiate commercial discussion with Premera to formalize change order or adjust scope within 5 business days.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Aug-2026",
+          "status": "Mitigated",
+          "reasoning": "Pattern of scope changes (R857) and fixed-price contract ($650K not to exceed) create commercial pressure. EMS cost is Green, but no buffer documented. Hypercare duration and effort not yet confirmed (Artifacts, EMS)."
+        }
+      ]
+    }
+  ]
+}
