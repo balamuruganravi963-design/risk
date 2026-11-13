@@ -1,0 +1,259 @@
+{
+  "client": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "Project Artifacts",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "The Producer Portal is deployed to Production and technically ready. Premera planned a big-bang rollout to 2,500+ producers on 22-Oct-2026. ALT lists this as a WATCHLIST item with an explicit deployment risk.",
+            "condition": "If an issue is encountered during the mass producer onboarding, the rollout may need to be rolled back and remediated.",
+            "consequence": "Rollback would delay producer access to the portal, damage client confidence, and require emergency remediation effort under time pressure."
+          },
+          "category": "Deployment",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement phased rollout with pilot cohort of 50 producers before mass onboarding to validate integration and performance.",
+          "contingencyCorrectiveAction": "Upon critical defect detection during onboarding, activate rollback procedure and engage backup manual registration process within 4 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "18-Oct-2026",
+          "status": "Open",
+          "reasoning": "Carried forward from ALT (23-Oct-2026) as an open deployment risk. Big-bang rollout approach (2,500+ users) increases blast radius. No staged rollout or pilot phase documented. Production validation completed with only 11 users; scale testing gap exists."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "The project has absorbed 14 scope changes equivalent to 0.75\u20131 sprint of additional effort as of 29-Jun-2026. EMS Risk R857 is Identified with mitigation status Assessed but no finalized mitigation plan.",
+            "condition": "Further scope additions may continue to be absorbed without formal change control, compressing remaining buffer and increasing delivery pressure.",
+            "consequence": "Margin erosion, team burnout, or quality shortcuts could result if scope creep continues unmanaged."
+          },
+          "category": "Scope Management",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish formal change request procedure with impact assessment and client approval before accepting any new scope additions.",
+          "contingencyCorrectiveAction": "When cumulative scope changes exceed 1 sprint effort, escalate to program leadership and negotiate timeline extension or scope deferral.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Jul-2026",
+          "status": "In Progress",
+          "reasoning": "Open EMS risk R857 (Identified, Assessed, no mitigation plan finalized). WSR Scope Change Tracker shows 14 changes absorbed without formal CR as of 22-Jul-2026, violating Work Assignment Section 14 assumption. Change Management process defined but not invoked."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Citrix server slowness and frequent disconnections have been impacting offshore team delivery since at least 22-Jul-2026. WSR lists this as an open issue with no ETA. EMS go-green plan includes raising a Citrix ticket with Premera.",
+            "condition": "If Citrix performance is not resolved, offshore team productivity may remain degraded, extending effort and delaying remaining work.",
+            "consequence": "Increased cost due to prolonged effort, potential missed milestones, and team frustration."
+          },
+          "category": "Infrastructure",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate Citrix performance ticket to Premera IT with dedicated support coverage during offshore hours to resolve connectivity issues.",
+          "contingencyCorrectiveAction": "If Citrix slowness persists beyond one week, reprioritize tasks to non-Citrix-dependent activities and engage onshore resources for critical work.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Aug-2026",
+          "status": "Open",
+          "reasoning": "Open issue in WSR (22-Jul-2026) with no ETA. Corroborated by EMS go-green plan. Offshore team is a significant portion of the delivery team; prolonged degradation affects sprint velocity and quality."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Integration",
+          "riskDescription": {
+            "context": "Data mapping values for Data Hub integration were still being discussed as of 25-Jun-2026. WSR Decision #31 notes the team is proceeding with defined mappings, but if issues with values lead back to design (entity stitching), there may be time impact.",
+            "condition": "Misalignment in data mapping or entity stitching may surface during E2E testing or post-deployment, requiring rework of integration logic.",
+            "consequence": "Late-stage rework could delay stabilization, increase defect count, and weaken client trust in data accuracy."
+          },
+          "category": "Integration",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct weekly data mapping validation sessions with Data Hub and business teams to confirm entity stitching before E2E testing.",
+          "contingencyCorrectiveAction": "If data misalignment is detected during E2E testing, rebaseline impacted scope and agree phased delivery with Premera to protect rollout.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Jul-2026",
+          "status": "Open",
+          "reasoning": "Open risk in WSR Risk Register (25-Jun-2026) with ETA 15-Jul-2026. Data mapping discussions ongoing as of 25-Jun-2026. ALT shows Production deployed 23-Oct-2026, but upstream data setup for Integration/E2E testing was pending as of 22-Jul-2026. Risk of misalignment remains."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "As of 22-Jul-2026, backend code coverage is 57% (target 80% per Work Assignment), 190 code smells exist (2 Critical, 80 Major), and 86 CVEs are detected (4 Critical, 82 High) on Alpine base image.",
+            "condition": "Unresolved code quality issues and low unit test coverage may allow defects to reach Production, especially under the pressure of a big-bang rollout.",
+            "consequence": "Post-deployment defects could trigger rollback, emergency patches, or client escalation."
+          },
+          "category": "Quality",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Enforce quality gate requiring 80% backend coverage and critical code smell resolution before ACPT deployment with senior developer reviews.",
+          "contingencyCorrectiveAction": "Upon production defect detection, activate emergency patch process and deploy hotfix within 24 hours with expedited testing and client communication.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "05-Aug-2026",
+          "status": "Open",
+          "reasoning": "WSR Sprint Demo PI4 Sp3 (22-Jul-2026) shows persistent code quality issues and BE coverage gap. ALT deployment risk (big-bang rollout) amplifies the impact of latent defects. No evidence of quality gate enforcement or remediation plan in provided artifacts."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Security",
+          "riskDescription": {
+            "context": "SCA scans as of 22-Jul-2026 detected 86 CVEs (4 Critical, 82 High) on Alpine base image. No remediation plan or timeline is documented in the provided artifacts.",
+            "condition": "Unpatched critical and high-severity vulnerabilities may remain in the Production environment, exposing the platform to security threats.",
+            "consequence": "Security audit findings could delay client sign-off, trigger compliance penalties, or result in a security incident post-deployment."
+          },
+          "category": "Security",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Remediate all critical CVEs and upgrade Alpine base image before production deployment with penetration test validation post-UAT.",
+          "contingencyCorrectiveAction": "Should security audit fail, implement virtual patching via WAF rules and isolate vulnerable components until patches are deployed within 48 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "10-Aug-2026",
+          "status": "Open",
+          "reasoning": "WSR Sprint Demo PI4 Sp3 (22-Jul-2026) shows 86 CVEs (4 Critical, 82 High). No remediation plan or timeline documented. Penetration testing was planned post-UAT (WSR Decision Log #20), but no results or remediation status is available in the provided artifacts as of 23-Oct-2026."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "AAVA adoption remains low with no formal adoption plan. Tool integration delays (AAVA 2.0 SharePoint, Azure Blob, ADO access pending as of 15-Jun-2026) caused refactoring effort (Change #7). WSR Risk Register lists open agent-related risks (Single LLM, Tools Integration, Agent Hardening, Agent Learning, Client Template Alignment, Tool/API Invocation Failures, Agent Orchestration).",
+            "condition": "Low AAVA adoption and unresolved agent framework risks may limit productivity gains, increase manual effort, and introduce inconsistent agent behavior in Production.",
+            "consequence": "Reduced ROI on AAVA investment, increased support burden, and potential client dissatisfaction with agent-driven features."
+          },
+          "category": "Technology",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Define AAVA adoption roadmap with hardening checklist and fallback logic for agent failures before production agent deployment.",
+          "contingencyCorrectiveAction": "If agent behavior is inconsistent in production, switch to manual processes and escalate to AAVA support for troubleshooting within 24 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "25-Jul-2026",
+          "status": "Open",
+          "reasoning": "Multiple open risks in WSR Risk Register (16-Mar-2026, 09-Mar-2026, 17-Mar-2026) with no ETA. AAVA 2.0 tool integration dependency (Dep #20) pending as of 15-Jun-2026. Scope Change #7 documents refactoring due to tool integration delays. No formal adoption plan or hardening checklist documented."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Vendor",
+          "riskDescription": {
+            "context": "Auth0 terraform release pipeline support is listed as an open issue in WSR (22-Jul-2026) with no ETA. Premera team must provide continued support if any issue arises.",
+            "condition": "If Auth0 configuration changes are required post-deployment and Premera support is unavailable or delayed, identity and access management issues may block producer access.",
+            "consequence": "Producer onboarding delays, support escalations, and potential rollback if authentication failures occur at scale."
+          },
+          "category": "Third-Party",
+          "probability": "Unlikely",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Secure dedicated Auth0 support contact from Premera with escalation path and document terraform pipeline runbook before production deployment.",
+          "contingencyCorrectiveAction": "Upon Auth0 configuration failure, engage Premera escalation contact immediately and activate manual user provisioning workaround to maintain onboarding continuity.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Aug-2026",
+          "status": "Open",
+          "reasoning": "Open issue in WSR Support Required (22-Jul-2026) with no ETA. Auth0 DB connection config dependency was previously closed (08-Jul-2026), but terraform pipeline support remains open. Single-source indication, but high impact if authentication issues occur during mass producer onboarding."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Testing",
+          "riskDescription": {
+            "context": "Upstream data setup for Integration and E2E testing was pending as of 22-Jul-2026 (WSR Support Required) with no ETA. ALT shows Production deployment completed 23-Oct-2026, but E2E validation was limited to portal-only, persona-based testing with 11 users.",
+            "condition": "Insufficient end-to-end testing with live upstream data (Edge, Data Hub) may allow integration defects to surface during mass producer onboarding.",
+            "consequence": "Post-deployment defects could trigger rollback, emergency patches, or client escalation."
+          },
+          "category": "Testing",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Prioritize upstream data setup with Edge and Data Hub teams and execute full E2E integration testing before production deployment.",
+          "contingencyCorrectiveAction": "Upon integration defect detection post-deployment, execute limited testing in available environments and deploy hotfix within 48 hours with expedited validation.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "10-Aug-2026",
+          "status": "Open",
+          "reasoning": "Open dependency in WSR Support Required (22-Jul-2026) with no ETA. ALT shows E2E validation completed with only 11 users; scale testing gap exists. Big-bang rollout (2,500+ users) amplifies the impact of untested integration scenarios."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Commercial",
+          "riskDescription": {
+            "context": "The project is a Fixed Bid engagement ($650,000 NTE) with milestone-based payments. 14 scope changes have been absorbed without formal CR as of 29-Jun-2026, and the project end date was extended from 31-Aug-2026 to 31-Dec-2026 (EMS).",
+            "condition": "If additional scope changes or timeline extensions are required, the Fixed Bid model may not cover the effort, leading to margin erosion or client disputes over additional charges.",
+            "consequence": "Financial loss for Ascendion or client dissatisfaction if additional charges are contested."
+          },
+          "category": "Commercial",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Invoke formal change control procedure for all new scope requests with cost and timeline impact assessment before client approval.",
+          "contingencyCorrectiveAction": "If margin erosion exceeds 10%, escalate to program leadership and negotiate change order or scope deferral with Premera within one week.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Jul-2026",
+          "status": "Open",
+          "reasoning": "Fixed Bid model (Work Assignment) combined with 14 absorbed scope changes (WSR Scope Change Tracker) and timeline extension (EMS: 31-Aug-2026 to 31-Dec-2026). No formal CR raised despite Work Assignment Section 14 requirement. Risk of margin erosion or client dispute."
+        },
+        {
+          "sNo": 11,
+          "riskId": "R - 011",
+          "subjectArea": "Resources",
+          "riskDescription": {
+            "context": "QE resource Kishore transitioned out effective 01-May-2026 and was replaced with a Playwright + TypeScript resource (WSR Decision Log #1, 04-Aug-2026). No dedicated DevOps resource is planned; David from AI Platform Build Claims POD provides on-need IaC/DevOps support (WSR Decision Log #2, 14-Apr-2026).",
+            "condition": "If David's availability is constrained or if additional DevOps support is required post-deployment, infrastructure or deployment issues may not be resolved promptly.",
+            "consequence": "Delayed incident resolution, prolonged downtime, or escalation during Hypercare."
+          },
+          "category": "People",
+          "probability": "Unlikely",
+          "impact": "Medium",
+          "rag": "Green",
+          "mitigationPreventiveAction": "Cross-train team members on IaC and DevOps tasks and document runbooks for common deployment and infrastructure operations.",
+          "contingencyCorrectiveAction": "If David is unavailable during incident, engage Premera DevOps team and monitor incident resolution to ensure timely closure.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Sep-2026",
+          "status": "Open",
+          "reasoning": "Single-source indication from WSR Decision Log (14-Apr-2026). No evidence of DevOps bottleneck or incident in provided artifacts. Talent RAG is Green in EMS. Likelihood is low, but impact is medium if issue occurs during Hypercare."
+        },
+        {
+          "sNo": 12,
+          "riskId": "R - 012",
+          "subjectArea": "Stakeholder",
+          "riskDescription": {
+            "context": "UAT test cases early delivery was listed as an open support request in WSR (22-Jul-2026) with no ETA. Work Assignment assumes UAT stakeholders are nominated and available per timeline.",
+            "condition": "If UAT test cases are not delivered early or if UAT stakeholder availability is constrained, UAT execution may be delayed or incomplete, allowing defects to reach Production.",
+            "consequence": "Post-deployment defects, client dissatisfaction, or rollback if critical issues are discovered late."
+          },
+          "category": "Client",
+          "probability": "Unlikely",
+          "impact": "Medium",
+          "rag": "Green",
+          "mitigationPreventiveAction": "Secure UAT test case delivery commitment from Premera by 01-Aug and confirm stakeholder availability for UAT execution window.",
+          "contingencyCorrectiveAction": "If UAT test cases are delayed, prioritize business-critical scenarios and execute limited UAT to validate core functionality before deployment.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Aug-2026",
+          "status": "Open",
+          "reasoning": "Open support request in WSR (22-Jul-2026) with no ETA. ALT shows Production deployment completed 23-Oct-2026, suggesting UAT was completed. Single-source indication with no evidence of UAT delay or defect leakage in provided artifacts. Likelihood is low."
+        }
+      ]
+    }
+  ]
+}
