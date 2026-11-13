@@ -1,0 +1,219 @@
+{
+  "client": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "Project Artifacts",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "ALT Deck 23-Oct-2026 reports high development bugs and high integration bugs, with bug fixing and PR deployment delays impacting completion timelines. EMS Quality RAG was Green in Jun-2026, indicating recent degradation.",
+            "condition": "Unresolved defects may escape into production or block the Phase 1 release, requiring emergency fixes post-deployment.",
+            "consequence": "Production stability could be compromised, client trust eroded, and post-release support costs elevated due to late defect remediation."
+          },
+          "category": "Quality",
+          "probability": "Very Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Implement daily code review sessions with senior developers and increase QA regression testing frequency in UAT/Staging environments.",
+          "contingencyCorrectiveAction": "Upon production defect detection, activate emergency fix protocol with dedicated hotfix team and escalate to project board within 24 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "10-Nov-2026",
+          "status": "Open",
+          "reasoning": "WATCHLIST status (ALT Oct-2026) combined with explicit high bug count and PR deployment delays (ALT) against Green Quality RAG baseline (EMS Jun-2026). Two independent sources confirm active quality pressure. October 15 release target passed with bugs still open."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Resources",
+          "riskDescription": {
+            "context": "ALT Deck 23-Oct-2026 flags resource constraints due to shared Phase 1/Phase 2 resources and team ramp-down occurring while Phase 1 is at 87% completion and Phase 2 is in progress (9 modules, 96 pages, Sep-Dec 2026). POD4 experienced long absence and attrition, with replacement resources onboarded from .Net project.",
+            "condition": "Split focus and reduced capacity may prevent timely closure of Phase 1 defects and deliverables, while Phase 2 scope items spill into Phase 1 pending catalyst team PR approvals.",
+            "consequence": "Phase 1 completion could be delayed beyond Dec-2026 project end date, and Phase 2 delivery timelines may slip, increasing cost and client dissatisfaction."
+          },
+          "category": "People",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish dedicated Phase 1 closure team with senior backup resources and develop formal transition plan with knowledge handover schedules.",
+          "contingencyCorrectiveAction": "Once Phase 1 completion risk exceeds two weeks, reallocate Phase 2 resources temporarily and escalate to delivery leadership for staffing augmentation.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "05-Nov-2026",
+          "status": "Open",
+          "reasoning": "ALT Oct-2026 explicitly flags resource constraints and team ramp-down as active challenges. POD4 attrition mitigated by onboarding but ramp-up lag remains. Concurrent Phase 1/Phase 2 work with shared resources raises delivery risk. Single-source (ALT) but corroborated by WATCHLIST status."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Vendor",
+          "riskDescription": {
+            "context": "ALT Deck 23-Oct-2026 identifies infrastructure readiness dependencies from Cleo team for Forum and LMU as an open blocker, with October 15 target date passed. No status update on Cleo team progress in ALT Deck dated 23-Oct-2026.",
+            "condition": "Cleo team delays may persist, blocking Phase 1 deployment to production or preventing full end-to-end testing of Forum and LMU integrations.",
+            "consequence": "Release could be further delayed, or production deployment may proceed with incomplete infrastructure, risking operational failures and client escalation."
+          },
+          "category": "Third-Party",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Conduct weekly infrastructure status reviews with Cleo team and submit formal escalation to Premera infrastructure leadership for priority support.",
+          "contingencyCorrectiveAction": "Should infrastructure readiness exceed three weeks delay, deploy Phase 1 with Forum/LMU features disabled and activate phased rollout plan.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "Open dependency past target date (15-Oct) with no closure documented in ALT Deck dated 23-Oct. Infrastructure blocker on critical path for release. Single-source (ALT) but WATCHLIST status and missed target date elevate likelihood."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "EMS Risk R857 (29-Jun-2026, Identified, Moderate severity, Likely likelihood, Medium impact) documents ~14 scope changes absorbed (0.75\u20131 sprint effort) with mitigation approach pending finalization. ALT Deck 23-Oct-2026 reports scope spillover impacting end-to-end feature completion, with Phase 2 scope items included in Phase 1 pending catalyst team PR approvals.",
+            "condition": "Further scope additions or uncontrolled spillover from Phase 2 may exceed remaining capacity and budget, delaying Phase 1 closure and destabilizing Phase 2 planning.",
+            "consequence": "Project end date (31-Dec-2026) may be breached, margin could erode, and client may contest additional charges or scope changes."
+          },
+          "category": "Scope",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish formal change control procedure with client sign-off required for all Phase 2 scope items and freeze Phase 1 scope.",
+          "contingencyCorrectiveAction": "When scope spillover impacts sprint capacity by more than 20%, rebaseline delivery plan with client and defer non-critical features to Phase 2.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "08-Nov-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk (R857, Identified, Assessed mitigation) corroborated by ALT scope spillover and catalyst PR approval delays. Two independent sources confirm ongoing scope pressure. Impact Medium per EMS baseline; likelihood Likely due to active spillover (ALT)."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "ALT Deck 23-Oct-2026 (dated 8 days post-target) still references 'preparing for October 15 release,' with high bugs, PR deployment delays, Cleo infrastructure dependency, and catalyst PR approvals flagged as open issues. WSR 22-Jul-2026 showed UAT signoff dates 14-Aug and 25-Aug-2026.",
+            "condition": "October 15 release may have been delayed or deployed with known defects, and subsequent production deployment may face approval or readiness blockers.",
+            "consequence": "Client expectations could be unmet, production stability compromised if deployed prematurely, or further schedule slippage if release is deferred."
+          },
+          "category": "Deployment",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Conduct go/no-go gate review with client and engineering leadership before production deployment, validating all critical defects resolved and approvals obtained.",
+          "contingencyCorrectiveAction": "Upon deployment readiness failure, activate phased rollout with core features only and schedule incremental releases with two-week intervals for remaining features.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "ALT dated 23-Oct still preparing for 15-Oct release (8 days past target) with multiple open blockers (bugs, Cleo, catalyst approvals). WSR Jul-2026 showed UAT signoff in Aug-2026. Release status unclear; likelihood Likely due to missed target and open blockers."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "EMS go-green plan (Jun-2026) flags Citrix slowness and frequent disconnection impacting delivery, with ticket to be raised with Premera. AI Platform Build WSR 14-Aug-2026 corroborates recurring VDI connectivity disruptions causing offshore team productivity loss.",
+            "condition": "Persistent VDI/Citrix instability may continue to disrupt development, testing, and deployment activities, especially as team ramps down and knowledge transfer activities intensify.",
+            "consequence": "Productivity loss could delay Phase 1 closure and Phase 2 delivery, increase rework due to incomplete testing, and frustrate team morale."
+          },
+          "category": "Infrastructure",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Raise priority ticket with Premera infrastructure team for Citrix resolution and implement VDI support coverage during offshore hours to minimize downtime.",
+          "contingencyCorrectiveAction": "Request client laptops for critical team members as VDI alternative and adjust sprint velocity to account for 15% productivity loss.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "12-Nov-2026",
+          "status": "Open",
+          "reasoning": "EMS go-green plan (Jun-2026) identifies Citrix issue with ticket to be raised; AI Platform Build WSR (Aug-2026) corroborates VDI disruptions. Two sources confirm infrastructure instability. No resolution documented in ALT Oct-2026. Likelihood Possible (ongoing issue, mitigation pending)."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Operations",
+          "riskDescription": {
+            "context": "ALT Deck 23-Oct-2026 reports knowledge gaps during transition phase, with documentation inventory creation, missing SOPs identification, and KT recordings capture in progress. Project at 87% completion with team ramp-down occurring.",
+            "condition": "Incomplete knowledge transfer and missing operational documentation may leave support teams unprepared for production handover and Hypercare phase.",
+            "consequence": "Post-deployment support incidents could escalate, client satisfaction decline, and operational stability suffer due to inadequate runbooks and tribal knowledge loss."
+          },
+          "category": "Knowledge Transfer",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Complete documentation inventory and missing SOPs by mid-November, conduct weekly KT progress reviews, and establish governance plan with client within two weeks.",
+          "contingencyCorrectiveAction": "Retain two key resources for extended Hypercare support if KT completion falls below 80% by production deployment date.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "18-Nov-2026",
+          "status": "In Progress",
+          "reasoning": "ALT Oct-2026 explicitly flags knowledge gaps and documentation/KT activities in progress. Team ramp-down concurrent with Phase 1 closure (87% complete) raises handover risk. Single-source (ALT) but corroborated by WATCHLIST status and resource constraints."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Commercial",
+          "riskDescription": {
+            "context": "EMS Risk R857 (29-Jun-2026) documents ~14 scope changes absorbed (0.75\u20131 sprint effort) with mitigation approach pending. ALT Deck 23-Oct-2026 reports scope spillover and Phase 2 scope items included in Phase 1. EMS Cost RAG was Green in Jun-2026.",
+            "condition": "Absorbed scope changes and ongoing spillover may have consumed contingency budget, and further scope additions or Phase 1 delays may require additional funding not covered by the SoW (ends 30-Nov-2026).",
+            "consequence": "Margin erosion could occur, or client may dispute additional charges, leading to commercial friction and potential contract renegotiation."
+          },
+          "category": "Commercial",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct commercial impact assessment of absorbed scope changes and initiate formal change request process with client for SoW extension beyond 30-Nov-2026.",
+          "contingencyCorrectiveAction": "Negotiate phased delivery agreement with client to defer non-critical Phase 1 features if budget threshold is breached by 10%.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "22-Nov-2026",
+          "status": "Open",
+          "reasoning": "EMS Risk R857 (scope changes, Identified) and ALT scope spillover suggest budget pressure. EMS Cost RAG Green (Jun-2026) but no financial data in ALT (Oct-2026). SoW end 30-Nov-2026 approaching with Phase 1 at 87% and Phase 2 concurrent. Likelihood Possible due to scope pressure without confirmed budget breach."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Governance",
+          "riskDescription": {
+            "context": "ALT Deck 23-Oct-2026 references catalyst team PR approvals for Phase 2 scope items included in Phase 1 as an open dependency. WSR 22-Jul-2026 showed Production approvals from John's team pending before Prod deployment.",
+            "condition": "Delayed or withheld approvals from catalyst team or John's team may block Phase 1 feature completion or production deployment, extending timelines.",
+            "consequence": "Release schedule could slip further, client expectations unmet, and project credibility weakened if approvals are not expedited."
+          },
+          "category": "Governance",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish documented approval gates with defined turnaround times and escalate pending catalyst and John's team approvals to client leadership weekly.",
+          "contingencyCorrectiveAction": "Deploy Phase 1 with approved features only if approvals exceed two-week delay and communicate revised scope to client stakeholders.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "25-Nov-2026",
+          "status": "Open",
+          "reasoning": "ALT Oct-2026 flags catalyst PR approvals as open; WSR Jul-2026 flagged John's team Prod approvals as pending. Two sources confirm approval dependencies on critical path. No closure documented in ALT Oct-2026. Likelihood Possible (dependencies open but not yet blocking)."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Security",
+          "riskDescription": {
+            "context": "WSR 22-Jul-2026 noted DR strategy under exploration (multi-region deployment with Azure Front Door, Small-Medium impact), with platform not implicitly handling disaster recovery. No DR decision documented in ALT Deck 23-Oct-2026.",
+            "condition": "Production deployment may proceed without a finalized disaster recovery plan, leaving the system vulnerable to regional outages or data loss events.",
+            "consequence": "Compliance audit findings could delay client sign-off, or a production incident could result in extended downtime and client penalties."
+          },
+          "category": "Compliance",
+          "probability": "Unlikely",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Finalize DR strategy decision with client by end-November, implement regular Azure backups with offsite storage, and document recovery procedures in runbooks.",
+          "contingencyCorrectiveAction": "Implement interim single-region backup and restore procedures with 24-hour RTO until multi-region DR architecture is approved and deployed.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "29-Nov-2026",
+          "status": "Open",
+          "reasoning": "WSR Jul-2026 flagged DR strategy as unresolved (Small-Medium impact). No update in ALT Oct-2026. Single-source (WSR) with no corroboration of urgency. Likelihood Unlikely (not flagged as blocker) but Impact High (compliance/operational risk if incident occurs)."
+        }
+      ]
+    }
+  ]
+}
