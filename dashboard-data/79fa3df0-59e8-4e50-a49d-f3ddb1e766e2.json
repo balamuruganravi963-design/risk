@@ -1,0 +1,179 @@
+{
+  "client": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "Project Artifacts",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "Premera planned a big-bang rollout of registration emails to 2,500+ producers on October 22, 2026, with status awaited as of the ALT reporting date (23-Oct-2026). The project is on WATCHLIST in ALT due to this rollout risk.",
+            "condition": "If an issue is encountered during the mass producer onboarding, the rollout may need to be rolled back and remediated, disrupting onboarding for over 2,500 producers.",
+            "consequence": "A rollback would delay producer portal adoption, disrupt business operations, damage client confidence, and require unplanned remediation effort and cost."
+          },
+          "category": "Deployment",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish phased rollout pilot with 100 producers before mass deployment to validate registration flow and identify defects early.",
+          "contingencyCorrectiveAction": "Upon detection of critical registration failure affecting 10% of users, activate rollback procedure within 2 hours and escalate to project board immediately.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "22-Oct-2026",
+          "status": "Open",
+          "reasoning": "ALT WATCHLIST status and explicit risk statement supported by big-bang rollout dependency; limited testing with only 11 users before mass rollout; no mitigation plan documented in ALT or EMS. Target Date: 2026-12-31."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "The project has absorbed approximately 14 scope changes equivalent to 0.75\u20131 sprint of additional effort. EMS risk R857 (Scope changes) is Identified with mitigation status Assessed but mitigation plan not yet finalized.",
+            "condition": "Further scope additions may be requested by the client, consuming additional sprint capacity and extending delivery timelines beyond the current December 2026 end date.",
+            "consequence": "Timeline extension could delay production rollout completion, increase cost, and erode margin if not covered by change orders."
+          },
+          "category": "Scope Management",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement formal scope change evaluation process requiring impact assessment and customer approval before accepting any new additions to baseline.",
+          "contingencyCorrectiveAction": "Should scope additions exceed 1 sprint effort, rebaseline delivery plan with customer and defer non-critical features to Phase 2 release.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk R857 (Severity: Moderate, Likelihood: Likely, Impact: Medium, Status: Identified, opened 2026-06-29); 14 scope changes already absorbed; mitigation identified in PMR but not yet finalized. Target Date: 2026-12-31."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Integration",
+          "riskDescription": {
+            "context": "Project Artifacts WSR (22-Jul-2026) reports that upstream systems data setup for integration and E2E testing validation requires support, with status 'Support needed'. No ETA is available.",
+            "condition": "If upstream systems do not provide timely data setup support, integration and end-to-end testing may remain incomplete or delayed.",
+            "consequence": "Incomplete testing could allow defects to reach production, increasing post-deployment incidents and requiring costly remediation during or after the mass producer rollout."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate upstream data setup request to Premera steering committee weekly and track progress against integration testing schedule milestones.",
+          "contingencyCorrectiveAction": "If upstream data is not available by 01-Nov-2026, deploy synthetic test data for E2E validation and communicate testing limitations to stakeholders.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "Single-source signal from Project Artifacts WSR (22-Jul-2026); dependency on external upstream systems with no ETA; corroborated by resolved EMS risks R855 and R856 indicating prior Data Hub API integration challenges. Target Date: 2026-12-31."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Project Artifacts WSR (07-May-2026) shows that the multi-region deployment strategy (PPOR with Azure Front Door) was proposed but remains pending Premera approval as of 22-Jul-2026.",
+            "condition": "If Premera delays or declines approval for the multi-region deployment strategy, the solution may lack geographic redundancy and disaster recovery capability.",
+            "consequence": "A single-region deployment could expose the production portal to regional outages, impacting availability for 2,500+ producers and violating client availability expectations."
+          },
+          "category": "Infrastructure",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Secure documented Premera decision on multi-region strategy by 15-Nov-2026 and implement Azure Front Door if approved before December rollout.",
+          "contingencyCorrectiveAction": "Should approval be declined, implement single-region disaster recovery with offsite backup and 4-hour RTO, and communicate availability risk to Premera.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "Single-source signal from Project Artifacts WSR (22-Jul-2026); pending client approval with no ETA; risk heightened by imminent mass producer rollout requiring high availability. Target Date: 2026-12-31."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "ALT reports end-to-end Edge\u2013DataHub\u2013Producer Portal (OKTA) registration process validated with only 11 users as of 22-Oct-2026, in preparation for big-bang rollout to 2,500+ producers. No load or performance testing results are documented in EMS, ALT or Project Artifacts.",
+            "condition": "The application may encounter performance degradation, timeout errors, or system instability under the load of 2,500+ concurrent or near-concurrent producer registrations.",
+            "consequence": "Performance issues during mass rollout could trigger the rollback scenario described in ALT, causing business disruption and reputational damage."
+          },
+          "category": "Quality",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct load testing simulating 2,500 concurrent registrations and validate NFR thresholds for response time and throughput before mass rollout.",
+          "contingencyCorrectiveAction": "Upon observing response time exceeding 5 seconds or error rate above 2%, throttle registration email batches and engage Azure support within 1 hour.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "20-Oct-2026",
+          "status": "Open",
+          "reasoning": "ALT reports limited pre-production validation (11 users) before big-bang rollout; no documented load or NFR testing; EMS resolved risk R856 noted performance and NFR issues would only become visible after Data Hub API integration. Target Date: 2026-12-31."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "Project Artifacts WSR (22-Jul-2026) reports that the frontend code is maintained as a separate repository in the Sales repo (not MDX repo), and the code base was forked to a new repository requiring pipeline reconfiguration. Pipeline reconfiguration status is marked as Completed.",
+            "condition": "If the reconfigured CI/CD pipeline has not been fully validated under production load or integration scenarios, deployment or rollback operations may fail or introduce defects.",
+            "consequence": "Pipeline failures during or after the mass producer rollout could delay remediation, extend downtime, and prevent rapid rollback if issues arise."
+          },
+          "category": "Technology",
+          "probability": "Unlikely",
+          "impact": "Medium",
+          "rag": "Green",
+          "mitigationPreventiveAction": "Validate reconfigured CI/CD pipeline with production-scale deployment dry run and document rollback procedure before mass producer rollout.",
+          "contingencyCorrectiveAction": "If pipeline failure occurs, execute manual deployment using documented backup procedure and notify DevOps team for root cause analysis.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "18-Oct-2026",
+          "status": "Open",
+          "reasoning": "Single-source signal from Project Artifacts WSR (22-Jul-2026); pipeline reconfiguration completed but limited evidence of production-scale validation; lower likelihood due to completion status but included due to proximity to mass rollout. Target Date: 2026-12-31."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Operations",
+          "riskDescription": {
+            "context": "EMS go-green plan includes updating retry logic to classify invalid email-format failures as non-retryable, deploying to Production, re-enabling Azure 4xx/5xx alerts, and continuing Hypercare monitoring. Additionally, a ticket is to be raised with Premera to address Citrix slowness and frequent disconnections impacting delivery.",
+            "condition": "If Citrix performance issues are not resolved before or during the mass producer rollout, team responsiveness to production incidents may be delayed.",
+            "consequence": "Delayed incident response could extend downtime or defect resolution time during the critical rollout window, increasing business impact and client dissatisfaction."
+          },
+          "category": "Operations",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate Citrix performance ticket to Premera IT by 18-Oct-2026 and establish VDI support coverage during offshore hours for continuous monitoring.",
+          "contingencyCorrectiveAction": "If Citrix issues persist, deploy backup remote access solution for critical support staff and document incident response delays in status reports.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "18-Oct-2026",
+          "status": "Open",
+          "reasoning": "EMS go-green plan explicitly identifies Citrix slowness and disconnections as impacting delivery; ticket to be raised with Premera but resolution status unknown; risk heightened by imminent mass rollout requiring rapid incident response. Target Date: 2026-12-31."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Requirements",
+          "riskDescription": {
+            "context": "Project Artifacts WSR (22-Jul-2026) reports that Decision #15 regarding field specifications for BoB (Book of Business) Export enhancement remains pending finalization.",
+            "condition": "If field specifications are not finalized before the mass producer rollout, the BoB Export functionality may not meet producer expectations or business requirements.",
+            "consequence": "Functional gaps in BoB Export could lead to producer complaints, rework requests, and additional scope changes post-rollout, increasing cost and effort."
+          },
+          "category": "Requirements",
+          "probability": "Possible",
+          "impact": "Low",
+          "rag": "Green",
+          "mitigationPreventiveAction": "Secure documented customer approval on Decision 15 field specifications by 01-Nov-2026 and implement changes before December production release.",
+          "contingencyCorrectiveAction": "If decision is not finalized, deploy BoB Export with current baseline fields and schedule enhancement as Phase 2 feature with customer agreement.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "Single-source signal from Project Artifacts WSR (22-Jul-2026); Decision #15 pending; lower impact as BoB Export is an enhancement feature, not core registration functionality; included due to proximity to rollout. Target Date: 2026-12-31."
+        }
+      ]
+    }
+  ]
+}
