@@ -1,0 +1,479 @@
+{
+  "client": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "Project Artifacts",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "The project has absorbed 14 scope changes equivalent to 0.75\u20131 sprint of additional effort, and EMS risk R857 remains Identified with mitigation not yet arrived.",
+            "condition": "Further scope additions may exceed the remaining buffer capacity and delay critical milestones.",
+            "consequence": "UAT sign-off (14 Aug 2026) and Go-Live (2 Sept 2026) could be delayed, impacting client readiness and contractual commitments."
+          },
+          "category": "Scope",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Implement formal change control board to assess scope impact before acceptance and prioritize critical-path features for Go-Live.",
+          "contingencyCorrectiveAction": "Upon approval of additional scope changes, defer non-critical features to post-Go-Live phase and escalate timeline impact to client leadership within 48 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "05-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Data",
+          "riskDescription": {
+            "context": "Data mappings from Data Hub are mostly closed, but possible values for data are still being discussed per Artifacts Decision Log #31 (25 June 2026).",
+            "condition": "Discrepancies in data values or entity stitching logic may surface during E2E testing or UAT, requiring design changes.",
+            "consequence": "Rework effort and timeline impact could delay UAT sign-off and compress the window for Go-Live preparation."
+          },
+          "category": "Data",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct weekly data mapping validation sessions with Data Hub and business teams to confirm entity stitching logic before E2E testing.",
+          "contingencyCorrectiveAction": "Once data discrepancies are detected in E2E testing, activate rapid design review with Data Hub team and communicate timeline impact to stakeholders.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "29-Jul-2026",
+          "status": "In Progress",
+          "reasoning": ""
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Citrix server slowness and timeouts are impacting offshore team efforts per ALT challenges and Artifacts challenges (22 July 2026).",
+            "condition": "Continued Citrix performance degradation may reduce offshore team sprint velocity and delay integration testing activities.",
+            "consequence": "Integration testing and E2E testing timelines could slip, compressing the UAT window and threatening the 14 Aug UAT sign-off target."
+          },
+          "category": "Infrastructure",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement VDI support coverage during offshore hours and utilize alternative environments for testing when Citrix performance degrades.",
+          "contingencyCorrectiveAction": "When Citrix downtime exceeds 4 hours, reprioritize sprint tasks to non-dependent workstreams and communicate revised testing schedule to stakeholders.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "30-Jul-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "71 functional test cases were executed with a 15% failure rate (11 failed tests) and 1 bug spilled from PI4 Sprint 3 per Artifacts PI04 Sprint 3 Metrics.",
+            "condition": "Resolution of test failures and bug fixes may consume sprint capacity in PI5 Sprint 3, delaying UAT readiness.",
+            "consequence": "UAT start could be delayed, compressing the UAT window and risking the 14 Aug sign-off target."
+          },
+          "category": "Quality",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Allocate dedicated sprint capacity for test failure resolution and implement daily defect triage to prioritize UAT-blocking issues.",
+          "contingencyCorrectiveAction": "Should test failure resolution extend beyond sprint capacity, defer non-critical test scenarios to post-UAT and notify stakeholders of revised test coverage.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "26-Jul-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Commercial",
+          "riskDescription": {
+            "context": "The project has absorbed 14 scope changes (0.75\u20131 sprint equivalent effort) under a fixed-price contract of $650,000, and ALT risks highlight agent-related manual effort (Single LLM, Tools integration, Agent learning).",
+            "condition": "Additional scope changes or increased manual effort due to agent limitations may exceed the available budget buffer.",
+            "consequence": "Fixed-price margin could erode, requiring internal cost absorption or renegotiation with the client."
+          },
+          "category": "Commercial",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish cost tracking dashboard for absorbed scope changes and agent manual effort to monitor margin erosion against contract value.",
+          "contingencyCorrectiveAction": "Upon margin erosion exceeding 10%, escalate to commercial team and initiate change request discussion with client for additional scope coverage.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "09-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Security",
+          "riskDescription": {
+            "context": "Software Composition Analysis identified 86 CVEs (4 Critical, 82 High) on the alpine base image per Artifacts PI04 Sprint 3 Metrics.",
+            "condition": "Pending penetration testing may identify these or additional vulnerabilities as unacceptable, requiring remediation before Go-Live.",
+            "consequence": "UAT sign-off could be delayed, remediation effort could compress the Hypercare window, and Go-Live (2 Sept 2026) could be at risk."
+          },
+          "category": "Security",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Upgrade alpine base image to latest patched version and remediate Critical and High CVEs before penetration testing commences.",
+          "contingencyCorrectiveAction": "Upon pen test identifying unacceptable CVEs, activate emergency patching protocol and escalate to security team for remediation within 72 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "SAST scans identified 190 code smells (2 Critical, 80 Major, 104 Minor, 4 Info) per Artifacts PI04 Sprint 3 Metrics.",
+            "condition": "Critical and major code smells may degrade code maintainability and surface as defects or technical debt post-deployment.",
+            "consequence": "Production support effort could increase, and client satisfaction could decline if quality issues surface during Hypercare."
+          },
+          "category": "Quality",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Remediate Critical and Major code smells identified by Sonar and integrate code quality gates into CI/CD pipeline.",
+          "contingencyCorrectiveAction": "Should code quality issues surface post-deployment, allocate Hypercare capacity for hotfixes and communicate technical debt backlog to client.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "08-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "Only one LLM is available in Port Key, which may underperform on specific agent tasks and prevents use of a reviewer-agent per ALT risk.",
+            "condition": "Agent underperformance in production may require manual intervention to correct outputs or handle exceptions.",
+            "consequence": "Agent value proposition could be reduced, manual effort could increase, and client expectations for automation may not be met."
+          },
+          "category": "Technology",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Document LLM performance limitations per task type and implement human review checkpoints for agent outputs before production deployment.",
+          "contingencyCorrectiveAction": "When agent output quality falls below threshold, activate manual review workflow and notify stakeholders of reduced automation coverage.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "12-Aug-2026",
+          "status": "In Progress",
+          "reasoning": ""
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Vendor",
+          "riskDescription": {
+            "context": "Access to Premera Specific Tools (SharePoint, Azure Blob, ADO) for AAVA integration is overdue since 15 June 2026 per Artifacts Dependency #20, and ALT risk highlights Tools Integration as a blocker.",
+            "condition": "Continued delay in tools integration may limit agent functionality and delay agent-dependent features.",
+            "consequence": "Agent development and agent-dependent features could be delayed, impacting delivery timelines and agent value realization."
+          },
+          "category": "Third-Party",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate Premera Tools access request to client leadership and prioritize common tool integration points to unblock agent development.",
+          "contingencyCorrectiveAction": "Should tools access remain blocked, develop agent functionality using mock integrations and defer full integration to post-Go-Live phase.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "29-Jul-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "ALT risk highlights that inadequate agent hardening may cause inconsistent agent behavior in production.",
+            "condition": "Insufficient scenario testing or missing fallback logic may result in agent failures or incorrect outputs in production.",
+            "consequence": "Production instability, user experience degradation, and rework effort could occur, impacting client trust and Hypercare success."
+          },
+          "category": "Technology",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Define agent hardening checklist and perform scenario testing with fallback logic before production deployment to prevent inconsistent behavior.",
+          "contingencyCorrectiveAction": "Upon agent failure in production, activate fallback manual workflow and escalate to development team for hotfix within 24 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Aug-2026",
+          "status": "In Progress",
+          "reasoning": ""
+        },
+        {
+          "sNo": 11,
+          "riskId": "R - 011",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "ALT risk highlights that agent dependency on external tools (AAVA, Premera Tools, DH APIs) may result in execution failures.",
+            "condition": "External tool or API failures may disrupt agent automation continuity and reduce reliability.",
+            "consequence": "Automation disruption could reduce agent effectiveness and require manual intervention, impacting productivity and client expectations."
+          },
+          "category": "Technology",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement retry logic and timeout handling for external tool invocations and design graceful degradation paths for agent automation.",
+          "contingencyCorrectiveAction": "When external tool failure exceeds retry threshold, switch to manual workflow and notify support team for tool restoration.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "16-Aug-2026",
+          "status": "In Progress",
+          "reasoning": ""
+        },
+        {
+          "sNo": 12,
+          "riskId": "R - 012",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "ALT risk highlights that poor coordination between multiple AAVA agents may cause workflow delays or incorrect task sequencing.",
+            "condition": "Inadequate orchestration patterns or workflow monitoring may result in workflow inefficiency or incorrect outputs.",
+            "consequence": "Workflow delays and rework effort could occur, impacting delivery timelines and agent value realization."
+          },
+          "category": "Technology",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Define agent orchestration patterns and implement workflow monitoring to ensure correct task sequencing before production deployment.",
+          "contingencyCorrectiveAction": "Should workflow delays occur, manually intervene to correct task sequencing and notify stakeholders of revised completion timeline.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "19-Aug-2026",
+          "status": "In Progress",
+          "reasoning": ""
+        },
+        {
+          "sNo": 13,
+          "riskId": "R - 013",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "Backend unit test coverage is 57% compared to 98% frontend coverage per Artifacts PI04 Sprint 3 Metrics.",
+            "condition": "The backend coverage gap may leave defects undetected until integration or UAT, requiring late-stage rework.",
+            "consequence": "Defects discovered late could delay UAT sign-off, increase rework effort, and compress the Hypercare window."
+          },
+          "category": "Quality",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Increase backend unit test coverage to 80% minimum and prioritize testing of critical business logic before integration testing.",
+          "contingencyCorrectiveAction": "Should defects surface in integration or UAT, allocate dedicated sprint capacity for backend fixes and communicate revised test coverage to stakeholders.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "02-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 14,
+          "riskId": "R - 014",
+          "subjectArea": "Security",
+          "riskDescription": {
+            "context": "Penetration testing is pending and split into two phases per Artifacts Decision Log #20 and ALT, with 86 CVEs (4 Critical, 82 High) already identified.",
+            "condition": "Pen test may identify additional security vulnerabilities requiring remediation before Go-Live.",
+            "consequence": "UAT sign-off could be delayed, remediation effort could compress the Hypercare window, and Go-Live (2 Sept 2026) could be at risk."
+          },
+          "category": "Compliance",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Schedule and complete penetration testing by 10 Aug to allow sufficient remediation time before UAT sign-off on 14 Aug.",
+          "contingencyCorrectiveAction": "Upon identifying critical pen test findings, activate emergency remediation team and escalate to security leadership for approval to proceed within 48 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "05-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 15,
+          "riskId": "R - 015",
+          "subjectArea": "Compliance",
+          "riskDescription": {
+            "context": "Accessibility testing is in progress with WCAG 2.2 AA compliance required per Artifacts.",
+            "condition": "Accessibility testing may identify WCAG 2.2 AA non-compliance requiring remediation before UAT sign-off.",
+            "consequence": "Remediation effort could delay UAT sign-off and compress the window for Go-Live preparation."
+          },
+          "category": "Compliance",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Complete accessibility testing by 5 Aug and remediate WCAG 2.2 AA non-compliance findings before UAT sign-off on 14 Aug.",
+          "contingencyCorrectiveAction": "Should accessibility remediation extend beyond capacity, defer non-critical findings to post-Go-Live and document exceptions for client approval.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "05-Aug-2026",
+          "status": "In Progress",
+          "reasoning": ""
+        },
+        {
+          "sNo": 16,
+          "riskId": "R - 016",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Front End, Account Management API, and Wrapper API are deployed to ACPT, but connectivity and service integration issues are being resolved per ALT and Artifacts Key Accomplishments.",
+            "condition": "Persistent ACPT connectivity and service integration issues may delay E2E testing and UAT readiness.",
+            "consequence": "E2E testing could be delayed, compressing the UAT window and risking the 14 Aug UAT sign-off target."
+          },
+          "category": "Infrastructure",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Resolve ACPT connectivity and service integration issues by 1 Aug and validate deployment stability before E2E testing commences.",
+          "contingencyCorrectiveAction": "Should ACPT issues persist, execute E2E testing in Dev environment and escalate connectivity resolution to client infrastructure team.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Aug-2026",
+          "status": "In Progress",
+          "reasoning": ""
+        },
+        {
+          "sNo": 17,
+          "riskId": "R - 017",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "Production dark deploy is planned with approvals from John's team needed per Artifacts Decision Log #33 (8 July 2026).",
+            "condition": "Delay in production deployment approvals may compress the Hypercare window or delay Go-Live.",
+            "consequence": "Go-Live (2 Sept 2026) could be delayed, or the 4-week Hypercare window could be compressed, increasing post-deployment risk."
+          },
+          "category": "Deployment",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Align with John's team by 10 Aug to confirm production deployment approvals and release calendar before Prod deploy on 25 Aug.",
+          "contingencyCorrectiveAction": "Should approvals delay beyond 20 Aug, escalate to client leadership and request expedited approval process to protect Go-Live date.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "09-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 18,
+          "riskId": "R - 018",
+          "subjectArea": "Vendor",
+          "riskDescription": {
+            "context": "Data Hub is expected to provide 4 additional fields for total premium calculation by 30 July 2026, with implementation window until 5 Aug per ALT risk and Artifacts Dependency #26 and challenges.",
+            "condition": "Delay in receiving the fields beyond 30 July may leave insufficient time for implementation by 5 Aug, blocking BoB feature completion.",
+            "consequence": "BoB total premium calculation feature could be incomplete for UAT, blocking UAT testing and delaying UAT sign-off."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Confirm Data Hub delivery of total premium fields by 25 July and prepare implementation plan to complete integration by 5 Aug.",
+          "contingencyCorrectiveAction": "Should fields not be available by 30 July, defer total premium calculation to post-UAT phase and communicate feature limitation to stakeholders.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "25-Jul-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 19,
+          "riskId": "R - 019",
+          "subjectArea": "Vendor",
+          "riskDescription": {
+            "context": "Data Hub support for search by NPN on producer entity is pending with ETA 30 July 2026 per Artifacts challenges.",
+            "condition": "Delay in Data Hub support beyond 30 July may block producer entity search functionality.",
+            "consequence": "Producer entity search feature could be incomplete for UAT, blocking UAT testing and delaying UAT sign-off."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Confirm Data Hub support for NPN search by 25 July and prepare integration plan to complete implementation by 5 Aug.",
+          "contingencyCorrectiveAction": "Should NPN search support not be available by 30 July, defer producer entity search to post-UAT and communicate feature limitation to stakeholders.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "25-Jul-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 20,
+          "riskId": "R - 020",
+          "subjectArea": "Operations",
+          "riskDescription": {
+            "context": "Azure 4xx/5xx alerts are currently disabled, and the go-green plan includes updating retry logic to classify invalid email-format failures as non-retryable before re-enabling alerts per EMS.",
+            "condition": "If retry logic is not correctly updated, false-positive alerts may mask valid failures during Hypercare monitoring.",
+            "consequence": "Valid production failures could be missed, delaying issue detection and resolution during the critical Hypercare period."
+          },
+          "category": "Operations",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Update retry logic to classify invalid email-format failures as non-retryable and re-enable Azure 4xx/5xx alerts before Hypercare monitoring.",
+          "contingencyCorrectiveAction": "Should false-positive alerts persist during Hypercare, implement manual log review process and escalate alert tuning to monitoring team.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "22-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 21,
+          "riskId": "R - 021",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "ALT risk highlights that limited training datasets may delay agent maturity and expected productivity gains.",
+            "condition": "Insufficient or low-quality training datasets may result in agent underperformance and delayed maturity.",
+            "consequence": "Agent effectiveness could be reduced, productivity gains could be delayed, and client expectations for automation may not be met."
+          },
+          "category": "Technology",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Curate training datasets for agent learning and implement phased rollout to track agent maturity trends before full production deployment.",
+          "contingencyCorrectiveAction": "Should agent maturity lag expectations, supplement with manual intervention and communicate revised productivity gain timeline to stakeholders.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "16-Aug-2026",
+          "status": "In Progress",
+          "reasoning": ""
+        },
+        {
+          "sNo": 22,
+          "riskId": "R - 022",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "ALT risk highlights that unavailability or late discovery of client-specific templates may lead to agent outputs not meeting expected formats.",
+            "condition": "If client-specific templates are not available or discovered late, agent outputs may require rework to match expected formats.",
+            "consequence": "Rework effort and delivery delays could occur, impacting agent value realization and client satisfaction."
+          },
+          "category": "Technology",
+          "probability": "Unlikely",
+          "impact": "Medium",
+          "rag": "Green",
+          "mitigationPreventiveAction": "Request client-specific templates during discovery and validate agent output format standards with SMEs before scale development.",
+          "contingencyCorrectiveAction": "Should template mismatches occur, adjust agent output formatting and revalidate with SMEs before next deployment cycle.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "TBD",
+          "status": "In Progress",
+          "reasoning": ""
+        },
+        {
+          "sNo": 23,
+          "riskId": "R - 023",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Auth0 DB connection configuration is maintained outside Auth0, and configuration update in ACPT tenant requires Premera team access (Drew) per ALT risk and Artifacts Risk Register.",
+            "condition": "Delay in Premera team (Drew) updating the Auth0 DB connection configuration may block ACPT deployment and E2E testing.",
+            "consequence": "ACPT deployment could be delayed, E2E testing could be delayed, and the UAT window could be compressed, risking the 14 Aug UAT sign-off target."
+          },
+          "category": "Infrastructure",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Coordinate with Drew by 5 Aug to complete Auth0 DB connection configuration update in ACPT before E2E testing completion.",
+          "contingencyCorrectiveAction": "Should Drew's availability delay beyond 10 Aug, escalate to client leadership for alternate resource and communicate revised ACPT timeline to stakeholders.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "05-Aug-2026",
+          "status": "In Progress",
+          "reasoning": ""
+        }
+      ]
+    }
+  ]
+}
