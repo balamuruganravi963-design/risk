@@ -1,0 +1,259 @@
+{
+  "client": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "Project Artifacts",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "Premera planned a big-bang producer onboarding rollout to 2,500+ producers on October 22, 2026, with only 11 users validated in end-to-end testing prior to mass rollout.",
+            "condition": "A critical defect or integration failure may surface during mass producer onboarding that was not detected in the limited pre-production validation.",
+            "consequence": "The rollout may require emergency rollback and remediation, disrupting producer access, damaging client confidence, and requiring unplanned rework effort."
+          },
+          "category": "Deployment",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Implement phased producer onboarding with 10% cohorts weekly, monitor registration success rates and critical errors in real-time dashboards.",
+          "contingencyCorrectiveAction": "Upon detection of registration failure rate exceeding 5%, halt onboarding immediately, activate rollback procedure, escalate to project board within 2 hours.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "22-Oct-2026",
+          "status": "Open",
+          "reasoning": "ALT WATCHLIST status explicitly flags this as a risk: 'If an issue is encountered during the mass producer onboarding, the rollout may need to be rolled back and remediated.' Only 11 users tested before 2,500+ rollout represents insufficient production validation coverage."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "The project has absorbed approximately 14 scope changes equivalent to 0.75\u20131 sprint of additional effort as of July 2026, with EMS Risk R857 still in Identified status with mitigation plan pending.",
+            "condition": "Additional scope changes may continue to emerge during Hypercare and post-production stabilization phases.",
+            "consequence": "Remaining budget and timeline buffers could be exhausted, leading to margin erosion or requiring change orders that the client may contest."
+          },
+          "category": "Scope",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish formal scope change evaluation procedure requiring impact assessment, client approval, and CR documentation before any new work begins.",
+          "contingencyCorrectiveAction": "When unplanned effort exceeds 0.5 sprint equivalent, escalate to Delivery Manager and client program lead to negotiate change order or defer scope.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "Open EMS Risk R857 (Moderate/Likely/Medium, Identified status, mitigation Assessed but not finalized) combined with 19 logged scope changes in Project Artifacts. Pattern of continuous scope additions suggests further changes likely during production stabilization."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Citrix server slowness and frequent disconnections were impacting offshore team delivery as of July 2026, with a ticket planned to be raised with Premera but resolution status unknown.",
+            "condition": "Unresolved Citrix performance issues may continue to degrade team productivity during Hypercare and post-production support phases.",
+            "consequence": "Incident response times could lengthen and production defect resolution may be delayed, weakening service levels and client satisfaction."
+          },
+          "category": "Infrastructure",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate Citrix performance ticket to Premera infrastructure team, request Citrix upgrade or VPN access for offshore team as alternative connectivity method.",
+          "contingencyCorrectiveAction": "If Citrix downtime exceeds 4 hours, redirect critical support tasks to onshore team and schedule offshore work during Premera business hours.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "Project Artifacts (WSR 22 July) documented Citrix slowness/timeouts as a Challenge impacting offshore delivery. Go-Green Plan noted ticket to be raised but no resolution confirmed. ALT (October) does not mention resolution, suggesting issue may persist."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Third-Party",
+          "riskDescription": {
+            "context": "As of July 2026, the project was awaiting 4 new Data Hub fields for total premium on Book of Business (ETA 30 July) and Data Hub search by NPN support (ETA 30 July), with risk flagged that changes only acceptable by August 5.",
+            "condition": "Late or incomplete Data Hub API enhancements may have forced workarounds or deferred functionality that could surface as production defects or user complaints.",
+            "consequence": "Producer users may report missing or incorrect premium data or search failures, requiring emergency patches and eroding trust in the portal's data accuracy."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct end-to-end validation of Data Hub premium fields and NPN search in production, document any data discrepancies and escalate to Data Hub team.",
+          "contingencyCorrectiveAction": "When producers report data accuracy issues, activate Data Hub support bridge, implement temporary UI disclaimer, and prioritize hotfix deployment within 48 hours.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "08-Nov-2026",
+          "status": "Open",
+          "reasoning": "Project Artifacts Risk Register (7/3/26) flagged Data Hub dependency with tight deadline (30 July delivery, changes only by 5 August). ALT shows production deployment proceeded, but no confirmation that Data Hub enhancements were fully delivered and validated. Single-source signal with potential downstream impact."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Security",
+          "riskDescription": {
+            "context": "JFrog Xray scans as of July 2026 detected 86 CVEs including 4 Critical and 82 High severity vulnerabilities in the application's software composition.",
+            "condition": "Unresolved Critical and High CVEs may remain in the production deployment if remediation was not completed before go-live.",
+            "consequence": "The application could be exposed to exploitable security vulnerabilities, risking data breaches, compliance violations, and client penalties or audit findings."
+          },
+          "category": "Security",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct immediate CVE remediation review, prioritize Critical and High vulnerabilities, apply security patches, and re-scan before next release cycle.",
+          "contingencyCorrectiveAction": "Upon detection of security exploit attempt or audit finding, isolate affected component, apply emergency patch, and notify Premera security team within 4 hours.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "Project Artifacts (WSR 22 July, PI04 Sprint 3 Metrics) documented 86 CVEs (4 Critical, 82 High) from JFrog Xray. No evidence in ALT or EMS that CVE remediation was completed before production deployment. Compliance and security audit risk remains."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "Sonar scans as of July 2026 identified 190 code smells including 2 Critical and 80 Major issues, and Data Hub integration NFR/performance testing was incomplete due to pending live API availability.",
+            "condition": "Code quality issues and untested performance characteristics under production load may cause runtime errors, memory leaks, or degraded response times.",
+            "consequence": "User experience could suffer from application slowness or failures, leading to producer complaints, increased support burden, and potential need for emergency performance tuning."
+          },
+          "category": "Quality",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement code quality improvement sprint to address Critical and Major code smells, conduct load testing with production-like data volumes and user concurrency.",
+          "contingencyCorrectiveAction": "When production response time exceeds 5 seconds or error rate exceeds 2%, activate performance monitoring, identify bottleneck, and deploy optimization patch.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "Project Artifacts documented 190 code smells (2 Critical, 80 Major) and noted that NFR/performance issues would only become visible after Data Hub integration (Risk R856, resolved but testing timing unclear). ALT shows rapid move to production; quality debt may not have been fully addressed."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "The project uses AAVA agent framework under a limited term-based license, with multiple agent-related risks documented in July 2026 including single LLM limitations, inadequate agent hardening, tool integration dependencies, and orchestration complexity.",
+            "condition": "AAVA agent components may exhibit inconsistent behavior, tool invocation failures, or poor orchestration in production scenarios not covered in testing.",
+            "consequence": "Agent-driven features could fail or produce incorrect outputs, requiring manual intervention, reducing automation value, and impacting user trust in AI-assisted capabilities."
+          },
+          "category": "Technology",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Stabilize AAVA platform interfaces, implement retry logic and timeout handling for tool invocations, define agent hardening checklist and validate in production scenarios.",
+          "contingencyCorrectiveAction": "If agent failure rate exceeds 10%, disable affected agent workflows, route tasks to manual processing, and notify users of temporary service degradation.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "08-Nov-2026",
+          "status": "Open",
+          "reasoning": "Project Artifacts Risk Register (3/16/26, 3/9/26) documented multiple AAVA-related risks: single LLM underperformance, agent hardening gaps, tool/API invocation failures, orchestration issues. No evidence in ALT that these were fully mitigated before production. Compound risk across multiple agent dimensions."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Data",
+          "riskDescription": {
+            "context": "Project Artifacts noted that data mappings were mostly closed but possible values for data were still being discussed as of July 2026, with risk flagged that design changes impacting timelines could arise during E2E testing or UAT.",
+            "condition": "Data mapping discrepancies or incomplete entity stitching logic may cause incorrect Book of Business displays, premium calculations, or producer hierarchy views in production.",
+            "consequence": "Producers may see wrong member counts, incorrect premium totals, or missing agency affiliations, leading to trust erosion, support escalations, and potential compliance issues if reporting is inaccurate."
+          },
+          "category": "Data",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct data accuracy validation meetings with Data Hub and business teams weekly, document entity stitching rules, and implement automated data reconciliation checks.",
+          "contingencyCorrectiveAction": "When data discrepancy is reported, validate against source system, document issue, implement temporary UI disclaimer, and prioritize data fix within 72 hours.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "08-Nov-2026",
+          "status": "Open",
+          "reasoning": "Project Artifacts Decision Log #31 and Risk Register (6/25/26) noted data mapping values under discussion and risk of design issues during E2E/UAT due to entity stitching complexity. ALT shows production deployment proceeded; unclear if all data mapping issues were resolved. Data accuracy is critical for producer trust."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Vendor",
+          "riskDescription": {
+            "context": "Auth0 DB connection configuration update in ACPT environment was delayed as of July 2026 (Dependency #33, ETA 10 July), blocking ACPT deployment and requiring Premera internal access (Drew/Ganesh).",
+            "condition": "Auth0 configuration dependencies or access delays may recur in production for future changes, updates, or incident remediation requiring Auth0 adjustments.",
+            "consequence": "Authentication or authorization issues could take longer to resolve if Premera internal approvals or access are required, extending incident duration and impacting producer access."
+          },
+          "category": "Vendor",
+          "probability": "Unlikely",
+          "impact": "Medium",
+          "rag": "Green",
+          "mitigationPreventiveAction": "Document Auth0 configuration procedures, request delegated admin access for Ascendion team, and establish pre-approved change process for routine Auth0 updates.",
+          "contingencyCorrectiveAction": "If Auth0 issue blocks producer login, engage Premera Auth0 admin on priority escalation bridge and implement temporary bypass if available.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "Project Artifacts Risk Register (7/6/26) documented Auth0 config dependency blocking ACPT move. ALT shows production deployment succeeded, suggesting dependency was resolved. However, pattern of external dependency and access control may recur. Single-source, indirect signal; rated Unlikely but retained due to authentication criticality."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Transition",
+          "riskDescription": {
+            "context": "The project involves a 4-week Hypercare period post-go-live (September\u2013October 2026) with deliverables including knowledge transfer, training, and documentation, but no dedicated DevOps resource is planned (David from AI Platform Build Claims POD provides on-need support).",
+            "condition": "Knowledge gaps or insufficient operational readiness may surface during Hypercare if documentation is incomplete, training was rushed, or support model is unclear.",
+            "consequence": "Premera operations team may struggle to resolve incidents independently, leading to prolonged Ascendion dependency, increased support costs, and delayed transition to steady-state operations."
+          },
+          "category": "Transition",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct knowledge transfer sessions with Premera operations team weekly, deliver comprehensive runbooks and troubleshooting guides, and validate operational readiness before Hypercare ends.",
+          "contingencyCorrectiveAction": "If Premera team cannot resolve P1/P2 incidents independently, extend Hypercare support by 2 weeks and schedule additional training sessions.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "Project Artifacts noted no dedicated DevOps resource (Decision Log #2) and 4-week Hypercare planned. ALT shows production deployment but no mention of Hypercare completion or transition status. Lack of dedicated support resource and compressed knowledge transfer timeline create operational readiness risk."
+        },
+        {
+          "sNo": 11,
+          "riskId": "R - 011",
+          "subjectArea": "Compliance",
+          "riskDescription": {
+            "context": "The Work Assignment requires WCAG 2.2 AA accessibility compliance, and accessibility testing was underway as of July 2026, but penetration testing was split into two phases with final E2E pen test planned after Data Hub integration.",
+            "condition": "Accessibility or security compliance gaps may have been deferred or incompletely validated before production deployment due to phased testing approach.",
+            "consequence": "Post-production accessibility audits or security assessments could uncover non-compliance findings requiring remediation, risking regulatory penalties, client dissatisfaction, or mandated rollback."
+          },
+          "category": "Compliance",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct accessibility audit against WCAG 2.2 AA standards, complete final E2E penetration test, document compliance status, and remediate findings before audit window.",
+          "contingencyCorrectiveAction": "Upon audit finding or accessibility complaint, assess severity, implement remediation plan within 10 business days, and communicate corrective action to Premera compliance team.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "Project Artifacts documented WCAG 2.2 AA requirement, accessibility testing in progress (July), and pen test split into two phases (Decision Log #20, #26). ALT shows production deployment proceeded rapidly; unclear if final E2E pen test and full accessibility validation were completed. Compliance risk with High impact if findings emerge."
+        },
+        {
+          "sNo": 12,
+          "riskId": "R - 012",
+          "subjectArea": "Commercial",
+          "riskDescription": {
+            "context": "The engagement is a fixed-price Work Assignment with total value $650,000 and no additional expenses authorized, yet the project has absorbed 14 scope changes equivalent to 0.75\u20131 sprint of effort and multiple agent-related technical risks remain open.",
+            "condition": "Unplanned Hypercare effort, production defect remediation, or scope creep during stabilization may exceed the fixed-price budget envelope.",
+            "consequence": "Ascendion may incur margin erosion or need to negotiate a change order that Premera may resist, leading to commercial tension or uncompensated effort."
+          },
+          "category": "Commercial",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Track all unplanned effort weekly, raise change requests immediately when scope exceeds baseline, and align with Premera on commercial coverage before proceeding.",
+          "contingencyCorrectiveAction": "When unplanned effort reaches 5% of contract value, escalate to Delivery Manager and client program lead to negotiate budget adjustment or scope reduction.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "Project Artifacts documented fixed-price $650,000 contract with no additional expenses authorized, 14 absorbed scope changes, and multiple open technical/quality risks. ALT shows production deployment but Hypercare status unknown. Compound risk: fixed price + scope creep + unresolved technical debt + potential production issues."
+        }
+      ]
+    }
+  ]
+}
