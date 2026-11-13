@@ -1,0 +1,140 @@
+{
+  "client": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [
+        "Project Artifacts"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "Producer Portal deployed to Production and validated with 11 users on 10/22. Premera planning big-bang rollout to 2,500+ producers on October 22.",
+            "condition": "Issues may be encountered during mass producer onboarding at scale, requiring rollback and remediation.",
+            "consequence": "Rollback would disrupt 2,500+ producers, damage client trust, delay business value realization, and require unplanned remediation effort."
+          },
+          "category": "Deployment",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Implement phased rollout with pilot cohorts of 100-250 producers weekly, validating performance and user experience before full deployment.",
+          "contingencyCorrectiveAction": "Upon critical defect affecting 10% of users, activate rollback procedure within 2 hours and escalate to project board immediately.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "ALT explicit risk with escalation trigger and WATCHLIST status; limited pre-rollout validation scale (11 users vs. 2,500+) and big-bang strategy amplify likelihood."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "Project has absorbed 14 scope changes equivalent to 0.75-1 sprint of additional effort. EMS R857 is open and Identified with mitigation assessed but not implemented.",
+            "condition": "Further scope additions may occur without corresponding timeline or resource adjustments.",
+            "consequence": "Delivery timelines could slip, team capacity could be strained, and quality may be compromised to meet fixed deadlines."
+          },
+          "category": "Scope Management",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish formal change control board with client, requiring impact assessment and approval for all scope changes before acceptance.",
+          "contingencyCorrectiveAction": "When scope changes exceed 1 sprint effort, rebaseline timeline and communicate revised delivery dates to stakeholders within 48 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "08-Nov-2026",
+          "status": "In Progress",
+          "reasoning": "Carried forward from open EMS risk R857 (opened 2026-06-29); historical pattern of 14 changes and assessed-but-not-implemented mitigation support likelihood."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Citrix slowness and frequent disconnection are impacting delivery, acknowledged in EMS Go-Green Plan. Ticket to be raised with Premera.",
+            "condition": "Infrastructure performance issues may persist or worsen if Premera does not resolve Citrix issues promptly.",
+            "consequence": "Development and support team productivity could decline, delaying defect resolution and post-rollout support during critical Hypercare period."
+          },
+          "category": "Infrastructure",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Raise priority ticket with Premera IT, implement Citrix workaround keeping Windows app open, and monitor connectivity daily during Hypercare.",
+          "contingencyCorrectiveAction": "If Citrix issues persist beyond 5 business days, provide VDI access to critical team members and reprioritize non-dependent tasks.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "EMS Go-Green Plan explicit item; mitigation planned but not started, external dependency on Premera, timing critical during Hypercare."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Operations",
+          "riskDescription": {
+            "context": "Azure 4xx/5xx alerts generating false-positives due to invalid email-format failures. Retry logic update in progress per EMS Go-Green Plan.",
+            "condition": "Until retry logic is deployed and validated in Production, genuine production failures may be masked by false-positives, or alerts may remain disabled.",
+            "consequence": "Critical production issues during or after the 2,500+ producer rollout could go undetected, delaying incident response and impacting user experience."
+          },
+          "category": "Monitoring",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Deploy retry logic update to Production by week-end, validate alert accuracy, and re-enable Azure 4xx/5xx monitoring under Hypercare observation.",
+          "contingencyCorrectiveAction": "Should genuine production failures be detected after alert re-enablement, activate manual log review every 4 hours and notify on-call team.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "29-Oct-2026",
+          "status": "In Progress",
+          "reasoning": "EMS Go-Green Plan; deployment to Production pending, Hypercare monitoring planned, timing coincides with high-risk mass rollout."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "End-to-end OKTA registration process validated with only 11 users on 10/22. Big-bang rollout to 2,500+ producers planned immediately after. EMS R856 (resolved) noted performance/NFR issues visible only after integration.",
+            "condition": "Performance, scalability, or edge-case issues may surface only at scale, as NFR and load testing under realistic production conditions were limited.",
+            "consequence": "System performance degradation, user experience issues, or functional defects could emerge during rollout, requiring emergency fixes or rollback."
+          },
+          "category": "Testing",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct production load testing with 500 concurrent users, monitor API response times and database performance daily during rollout week.",
+          "contingencyCorrectiveAction": "Once response time exceeds 3 seconds or error rate reaches 5%, throttle user access and deploy performance patches within 24 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "05-Nov-2026",
+          "status": "Open",
+          "reasoning": "ALT: 11-user validation vs. 2,500+ rollout scale gap; EMS R856 (resolved 2026-06-29) context supports concern; big-bang strategy limits incremental validation."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Stakeholder",
+          "riskDescription": {
+            "context": "Premera is responsible for sending registration emails to 2,500+ producers on October 22. This is a client-controlled dependency per ALT.",
+            "condition": "Premera may delay or modify the email campaign timing or scope, or email delivery issues (spam filters, incorrect distribution lists) may occur.",
+            "consequence": "Producer onboarding could be delayed, adoption targets missed, or incomplete rollout could create support and communication challenges."
+          },
+          "category": "Client Dependency",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate email distribution list with Premera weekly, confirm spam filter whitelisting, and establish backup communication channel via client portal.",
+          "contingencyCorrectiveAction": "If email delivery fails for more than 10% of recipients, coordinate with Premera to resend within 48 hours and provide direct registration links via support channel.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "12-Nov-2026",
+          "status": "Open",
+          "reasoning": "ALT explicit client dependency; external control, big-bang approach amplifies impact of any delay or issue."
+        }
+      ]
+    }
+  ]
+}
