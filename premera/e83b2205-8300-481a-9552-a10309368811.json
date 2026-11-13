@@ -1,0 +1,120 @@
+{
+  "client": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS"
+      ],
+      "sourcesNotAvailable": [
+        "Project Artifacts",
+        "ALT"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "The project has absorbed approximately 14 scope changes equivalent to 0.75\u20131 sprint of additional effort, and R857 is logged as Identified with Moderate severity (EMS).",
+            "condition": "Further uncontrolled scope additions may exceed the remaining buffer and force trade-offs in planned features or timelines.",
+            "consequence": "Delivery commitments to Premera could slip, or quality may be compromised to meet the November 2026 SOW end date."
+          },
+          "category": "Scope",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish formal scope change approval process with impact assessment and documented customer sign-off before acceptance.",
+          "contingencyCorrectiveAction": "Upon exceeding sprint buffer, rebaseline scope with Premera, prioritize critical-path features, and agree phased delivery by 15-Oct-2026.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Jul-2026",
+          "status": "Open",
+          "reasoning": "Open EMS risk R857 (Identified, Assessed) with 14 scope changes already absorbed; mitigation plan not yet finalized. SOW end date: 2026-11-30."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Governance",
+          "riskDescription": {
+            "context": "R857 mitigation is marked as Assessed but the specific mitigation plan has not yet been arrived at, per EMS risk description (EMS).",
+            "condition": "Without a concrete mitigation plan, scope change governance may remain reactive rather than controlled.",
+            "consequence": "Unplanned effort could continue to accumulate, eroding margin and increasing the risk of timeline impact."
+          },
+          "category": "Project Management",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Define and document scope governance controls with approval authority, impact thresholds, and escalation path by next PMR.",
+          "contingencyCorrectiveAction": "If unplanned effort exceeds 0.5 sprint, escalate to Premera leadership and negotiate timeline extension or scope deferral.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "08-Jul-2026",
+          "status": "Open",
+          "reasoning": "Mitigation identified as part of PMR but not yet finalized (EMS R857); single-source indication of governance gap."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "The go-green plan notes Citrix slowness and frequent disconnection having an impact on delivery, with a ticket to be raised with Premera to address the same (EMS).",
+            "condition": "If Premera's Citrix environment remains unstable or the resolution is delayed, development and testing productivity may continue to degrade.",
+            "consequence": "Sprint velocity could decline, and the Build + SIT stage may overrun, jeopardizing the November 2026 SOW end date."
+          },
+          "category": "Infrastructure",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Raise Citrix support ticket with Premera, track resolution weekly, and implement team restart protocol to minimize downtime.",
+          "contingencyCorrectiveAction": "If Citrix issues persist beyond two weeks, request alternative VDI access or offshore support coverage and adjust sprint commitments.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Jul-2026",
+          "status": "Open",
+          "reasoning": "Active infrastructure issue noted in EMS go-green plan; resolution depends on Premera's response. SOW end date: 2026-11-30."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "The go-green plan describes updating retry logic to classify invalid email-format failures as non-retryable and re-enabling Azure 4xx/5xx alerts under Hypercare monitoring (EMS).",
+            "condition": "If the retry logic change introduces unintended side effects or if valid failures are misclassified, production incidents may go undetected or be incorrectly suppressed.",
+            "consequence": "Client-facing service degradation could occur without timely alerting, damaging Premera's trust and triggering escalation."
+          },
+          "category": "Quality",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate retry logic change in staging with full test coverage, then deploy to Production under Hypercare monitoring.",
+          "contingencyCorrectiveAction": "If false negatives or service degradation occur, roll back retry logic immediately and escalate to Azure support within 24 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "22-Jul-2026",
+          "status": "In Progress",
+          "reasoning": "Go-green plan involves a logic change in Production with Hypercare monitoring; unproven mitigation for alert false-positives (EMS)."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "R856 noted that integration with live Data Hub APIs was pending and performance/NFR issues would only become visible after integration; the risk is now marked Resolved (EMS).",
+            "condition": "If the resolution was based on initial integration only and not on sustained load or full NFR validation, latent performance or scalability issues may surface under production traffic.",
+            "consequence": "Post-go-live performance degradation could require emergency tuning, delay full rollout, or impact end-user experience for Premera producers."
+          },
+          "category": "Technology",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct load testing with Neoload on live Data Hub APIs and validate NFR thresholds before Production rollout.",
+          "contingencyCorrectiveAction": "Should performance degrade post-go-live, activate emergency tuning team and defer non-critical features to stabilize core flows.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Sep-2026",
+          "status": "Open",
+          "reasoning": "R856 resolved but originally flagged that NFR issues would only become visible after integration; no evidence of full load or NFR validation in EMS. Limited by missing Project Artifacts and ALT data."
+        }
+      ]
+    }
+  ]
+}
