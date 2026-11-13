@@ -1,0 +1,89 @@
+{
+  "client": "Premera Blue Cross",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "ALT"
+      ],
+      "sourcesNotAvailable": [
+        "EMS",
+        "Project Artifacts"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "A big-bang rollout for mass producer onboarding was scheduled for October 22, and ALT lists a Watchlist status with the reason that issues during mass onboarding may require rollback and remediation.",
+            "condition": "Critical defects or integration failures may surface during the mass onboarding event, forcing a production rollback.",
+            "consequence": "Rollback would disrupt producer access, damage client confidence, and require costly emergency remediation under time pressure."
+          },
+          "category": "Deployment",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Implement phased producer onboarding with staged validation checkpoints to prevent mass rollback scenarios.",
+          "contingencyCorrectiveAction": "Upon critical defect detection during onboarding, activate rollback procedure and escalate to project board within 24 hours.",
+          "owner": {
+            "name": "",
+            "role": "EM"
+          },
+          "targetDate": "18-10-2024",
+          "status": "Open",
+          "reasoning": "Open risk documented in ALT as the reason for Watchlist status; big-bang approach concentrates exposure. Limited by missing EMS and Project Artifacts data."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "File Upload functionality remains inconsistent and requires constant monitoring, as noted in ALT challenges.",
+            "condition": "Persistent file upload failures may continue in production, affecting producer workflows.",
+            "consequence": "Producer productivity could decline, support tickets may spike, and client satisfaction may erode."
+          },
+          "category": "Technical",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement automated file upload monitoring with alert thresholds to prevent producer workflow disruption.",
+          "contingencyCorrectiveAction": "Activate manual file submission workaround and notify producers immediately when upload failure rate exceeds 10 percent.",
+          "owner": {
+            "name": "",
+            "role": "EM"
+          },
+          "targetDate": "15-10-2024",
+          "status": "Open",
+          "reasoning": "Carried forward from open ALT challenge; instability persists post-deployment. Single-source signal; impact limited by missing operational metrics."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "ALT states that development is expected to complete as planned, but there is an inability to assess potential defect volume based on QA coverage to date.",
+            "condition": "Undetected defects may emerge in production because test coverage was insufficient to reveal them earlier.",
+            "consequence": "Post-deployment defect volume could exceed support capacity, delaying stabilization and increasing remediation cost."
+          },
+          "category": "Quality",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct comprehensive regression testing with negative test cases before production stabilization to prevent undetected defects.",
+          "contingencyCorrectiveAction": "When post-deployment defect volume exceeds baseline, activate priority triage process and communicate revised stabilization timeline to stakeholders.",
+          "owner": {
+            "name": "",
+            "role": "EM"
+          },
+          "targetDate": "11-10-2024",
+          "status": "Open",
+          "reasoning": "Open quality risk documented in ALT; uncertainty around defect volume at production entry. Single-source; no EMS or Artifacts data to corroborate or refine."
+        }
+      ]
+    }
+  ]
+}
