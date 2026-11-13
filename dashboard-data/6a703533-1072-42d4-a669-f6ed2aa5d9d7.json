@@ -1,0 +1,179 @@
+{
+  "client": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "23-Oct-2026",
+      "sourcesUsed": [
+        "EMS",
+        "Project Artifacts",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Deployment",
+          "riskDescription": {
+            "context": "Premera executed a big-bang rollout to 2,500+ producers on October 22, 2026, after completing end-to-end registration with only 11 users. ALT reports the application is on Watchlist with an escalation trigger for any critical issue during mass onboarding.",
+            "condition": "A production defect, performance bottleneck, or integration failure may surface under the load of 2,500+ concurrent users that was not detected during limited pre-production validation.",
+            "consequence": "The rollout could require emergency rollback and remediation, disrupting producer access, damaging client confidence, and triggering unplanned rework effort and cost overruns."
+          },
+          "category": "Deployment",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish daily production health dashboards monitoring user load, error rates, and API response times to detect anomalies early.",
+          "contingencyCorrectiveAction": "Upon detection of critical production defect affecting 10% or more users, activate emergency rollback procedure, engage backup support team, and escalate to Premera program leadership within 2 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "ALT Watchlist status and escalation trigger confirmed as of 23-Oct-2026; limited pre-production validation (11 users) before mass rollout; corroborated by Project Artifacts showing 15% functional test failure rate and 86 unresolved CVEs as of 22-July-2026. Open risk, carried forward and re-rated."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Security",
+          "riskDescription": {
+            "context": "Project Artifacts report 86 CVEs detected (4 Critical, 82 High) on the alpine base image as of 22-July-2026, with status 'in-progress'. No closure date is documented in EMS or ALT.",
+            "condition": "Unpatched vulnerabilities may remain in the Production environment, exposing the platform to security exploits or compliance audit findings.",
+            "consequence": "A security incident could compromise producer data, trigger regulatory penalties, and require emergency patching or rollback, delaying stabilization and eroding client trust."
+          },
+          "category": "Security",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct weekly vulnerability scans and prioritize patching of Critical and High CVEs on alpine base image by severity and exploitability.",
+          "contingencyCorrectiveAction": "Should a security exploit be detected, immediately isolate affected containers, deploy emergency patch from approved image repository, and notify Premera Cyber team within 1 hour.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "Project Artifacts (WSR 22-July-2026) document 86 CVEs (4 Critical, 82 High) in-progress; no evidence of closure in ALT (23-Oct-2026) or EMS; single-source indication with no cross-validation of remediation. Open risk, carried forward and re-rated."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "Project Artifacts show 190 code smells (2 Critical, 80 Major, 104 Minor) and a 15% functional test failure rate (11 failed, 1 bug open and spilled) as of 22-July-2026. ALT reports the application is technically ready for producer onboarding as of 23-Oct-2026.",
+            "condition": "Residual code quality issues and unresolved defects may degrade platform stability or user experience under production load.",
+            "consequence": "Increased post-production defect leakage could require unplanned hotfixes, extend Hypercare effort, and reduce producer satisfaction."
+          },
+          "category": "Quality",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct effectiveness reviews of QA artifacts weekly and address Critical and Major code smells through prioritized refactoring sprints.",
+          "contingencyCorrectiveAction": "If production defect rate exceeds 5 incidents per week, activate extended Hypercare support team and communicate impact to Premera stakeholders.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "08-Nov-2026",
+          "status": "Open",
+          "reasoning": "Project Artifacts (WSR 22-July-2026) document 190 code smells (2 Critical, 80 Major) and 15% test failure rate; no evidence of full remediation in ALT (23-Oct-2026); single-source indication. Open risk, carried forward and re-rated."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "EMS Risk R857 (Identified, Moderate/Likely/Medium, opened 29-Jun-2026) reports the project has absorbed approximately 14 scope changes (equivalent to 0.75\u20131 sprint of additional effort). Project Artifacts log 19 scope changes as of 22-July-2026, with Decision #32 establishing a gate for new requirements.",
+            "condition": "Additional scope changes may be requested during Hypercare or post-production stabilization, consuming remaining budget and effort reserves.",
+            "consequence": "Margin erosion or timeline extension could occur, and the client may contest additional charges if scope changes are not formally managed through the change control process."
+          },
+          "category": "Scope",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement formal change request process requiring Premera program leadership approval and effort impact assessment before scoping any new requirement.",
+          "contingencyCorrectiveAction": "If scope change requests exceed 2 per month during Hypercare, rebaseline delivery plan with Premera and escalate to QBR for budget adjustment.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Nov-2026",
+          "status": "In Progress",
+          "reasoning": "EMS Risk R857 (Identified, Moderate/Likely/Medium) corroborated by Project Artifacts (19 scope changes logged as of 22-July-2026); mitigation identified as part of PMR but not yet arrived; Decision #32 establishes gate but does not prevent future changes. Open risk, carried forward and re-rated."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "Project Artifacts report Citrix server slowness and frequent disconnection impacting offshore team efforts as of 22-July-2026. EMS go-green plan includes 'Citrix - Slowness and frequent disconnection having an impact in delivery - Ticket to be raised with Premera to address the same.'",
+            "condition": "Unresolved Citrix performance issues may continue to degrade offshore team productivity during Hypercare and post-production support.",
+            "consequence": "Delayed response to production incidents or defects could extend Hypercare duration, increase support cost, and weaken client satisfaction."
+          },
+          "category": "Infrastructure",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Raise ticket with Premera infrastructure team to resolve Citrix slowness and implement VDI support coverage during offshore hours.",
+          "contingencyCorrectiveAction": "If Citrix downtime exceeds 4 hours per week, reprioritize tasks to non-dependent workstreams and escalate to Premera IT leadership.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "08-Nov-2026",
+          "status": "Open",
+          "reasoning": "Project Artifacts (WSR 22-July-2026) and EMS go-green plan both document Citrix performance issues; no evidence of resolution in ALT (23-Oct-2026); single-source indication with no cross-validation of remediation. Open risk, carried forward and re-rated."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Technology",
+          "riskDescription": {
+            "context": "Project Artifacts document 7 open agent-related risks as of 22-July-2026: Single LLM (may underperform on specific tasks, prevents use of reviewer-agent, leading to manual effort), Tools Integration (AAVA and Premera Tools integration required before Agent Development, may limit Agent Development and delay downstream tasks), Agent Hardening (inadequate hardening may cause inconsistent behavior in production), Agent Learning (limited training datasets may delay agent maturity and expected productivity gains), Client Template Alignment (unavailability or late discovery of client-specific format may lead to agent outputs not meeting expected formats, causing rework), Tool/API Invocation Failures (agent dependency on external tools may result in execution failures impacting automation continuity), Agent Orchestration (poor coordination between multiple agents may cause workflow delays or incorrect task sequencing).",
+            "condition": "Unresolved agent platform limitations or integration gaps may reduce the effectiveness of AAVA-driven automation during Hypercare and post-production support.",
+            "consequence": "Increased manual effort, delayed defect remediation, or inconsistent agent behavior could extend Hypercare duration, increase support cost, and reduce the realized ROI of the AAVA investment."
+          },
+          "category": "Technology",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Document workflows with both AI-assisted and manual paths for critical tasks and evaluate open-source alternatives for single LLM constraints.",
+          "contingencyCorrectiveAction": "If agent automation effectiveness drops below 40%, switch to manual processes for critical support tasks and notify Premera of reduced ROI.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "Project Artifacts (WSR 22-July-2026) document 7 open agent-related risks; no evidence of closure in ALT (23-Oct-2026) or EMS; single-source indication. Multiple open risks combined into one comprehensive risk covering agent platform limitations and integration gaps. Open risk, carried forward and re-rated."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Vendor",
+          "riskDescription": {
+            "context": "Project Artifacts report Dependency #26 (High, Open): Confirmation from DH on total premium fields shared by business (needed by 06-Jul-2026, ETA not provided). Project Artifacts also report awaiting 4 new fields for total premium on BoB (ETA 30-Jul from DH) and awaiting DH support for search by NPN on producer entity (ETA 30-Jul from DH) as of 22-July-2026.",
+            "condition": "Unresolved Data Hub dependencies may result in incomplete or incorrect Book of Business data being displayed to producers in Production.",
+            "consequence": "Producers may report data accuracy issues, requiring emergency data fixes or feature toggles, damaging client confidence and extending Hypercare effort."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish escalation path with Data Hub team and rebaseline impacted BoB features with Premera for phased delivery if delays persist.",
+          "contingencyCorrectiveAction": "If Data Hub fields remain unavailable beyond 15-Nov, activate feature toggle to hide incomplete BoB data and communicate workaround to producers.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "Project Artifacts (WSR 22-July-2026) document open Data Hub dependencies (Dependency #26, awaiting 4 new fields for total premium, awaiting DH support for search by NPN); no evidence of closure in ALT (23-Oct-2026) or EMS; single-source indication. Open risk, carried forward and re-rated."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Resources",
+          "riskDescription": {
+            "context": "Project Artifacts report Dependency #20 (Critical, Open): Access to Premera Specific Tools (SharePoint, Azure Blob, ADO) for AAVA integration (needed by 15-Jun-2026, ETA not provided) as of 22-July-2026. No evidence of closure in ALT (23-Oct-2026) or EMS.",
+            "condition": "Unresolved access dependencies may prevent full AAVA integration with Premera tools, limiting agent effectiveness during Hypercare and post-production support.",
+            "consequence": "Increased manual effort and delayed defect remediation could extend Hypercare duration, increase support cost, and reduce the realized ROI of the AAVA investment."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate access request to Premera IT leadership and reprioritize non-dependent AAVA workstreams to maintain automation progress.",
+          "contingencyCorrectiveAction": "If access remains blocked beyond 15-Nov, document manual workarounds for critical AAVA tasks and notify Premera of reduced automation ROI.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "Project Artifacts (WSR 22-July-2026) document Dependency #20 (Critical, Open); no evidence of closure in ALT (23-Oct-2026) or EMS; single-source indication. Open risk, carried forward and re-rated."
+        }
+      ]
+    }
+  ]
+}
