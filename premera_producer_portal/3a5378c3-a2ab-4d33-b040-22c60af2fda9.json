@@ -1,0 +1,80 @@
+{
+  "client": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS"
+      ],
+      "sourcesNotAvailable": [
+        "Project Artifacts",
+        "ALT"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Scope",
+          "riskDescription": {
+            "context": "The project has absorbed approximately 14 scope changes equivalent to 0.75\u20131 sprint of additional effort, and R857 is Identified with mitigation status Assessed (EMS).",
+            "condition": "Further scope additions may exceed remaining capacity and require timeline extension or resource augmentation.",
+            "consequence": "Delivery commitments to the client could slip, eroding trust and potentially triggering commercial renegotiation."
+          },
+          "category": "Scope",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish formal scope change evaluation and approval procedure with impact assessment before accepting new requests.",
+          "contingencyCorrectiveAction": "Upon further scope additions exceeding capacity, rebaseline impacted deliverables with Premera and agree phased delivery.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Aug-2026",
+          "status": "Open",
+          "reasoning": "Carried forward from open EMS risk R857 (Identified, Moderate, Likely, Medium) and re-rated based on cumulative scope absorption already equivalent to nearly one sprint. Mitigation plan not yet finalized (EMS)."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Infrastructure",
+          "riskDescription": {
+            "context": "The go-green plan documents Citrix slowness and frequent disconnections impacting delivery, with a ticket to be raised with Premera to address the issue (EMS).",
+            "condition": "Persistent Citrix instability may continue to degrade developer productivity and collaboration effectiveness.",
+            "consequence": "Sprint velocity could decline, increasing the likelihood of timeline pressure and quality shortcuts."
+          },
+          "category": "Infrastructure",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Raise Premera ticket to analyze and resolve Citrix slowness and disconnections impacting developer productivity.",
+          "contingencyCorrectiveAction": "When connectivity issues cause two-hour daily loss, restart VDI sessions and escalate to Premera infrastructure team.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "22-Jul-2026",
+          "status": "Open",
+          "reasoning": "Single-source signal from EMS go-green plan; ticket not yet raised, so resolution timeline and client responsiveness unknown. Impact on delivery explicitly noted (EMS)."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "Azure 4xx/5xx alert false-positives required retry logic updates to classify invalid email-format failures as non-retryable, with deployment and validation in Production still pending (EMS).",
+            "condition": "Until the updated retry logic is deployed and validated, false-positive P4 incidents may continue to mask genuine failures or consume support effort.",
+            "consequence": "Real production issues could be missed or delayed in detection, weakening operational stability and client confidence."
+          },
+          "category": "Quality",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Deploy updated retry logic to Production and validate alert accuracy during Hypercare monitoring before re-enabling alerts.",
+          "contingencyCorrectiveAction": "Should false-positive incidents persist post-deployment, implement manual alert triage and notify Premera of monitoring gaps.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "29-Jul-2026",
+          "status": "In Progress",
+          "reasoning": "Single-source signal from EMS go-green plan; deployment and validation not yet complete, so risk remains open. Hypercare monitoring planned but not yet confirmed effective (EMS)."
+        }
+      ]
+    }
+  ]
+}
