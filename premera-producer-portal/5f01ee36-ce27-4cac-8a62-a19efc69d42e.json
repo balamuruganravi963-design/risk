@@ -1,0 +1,419 @@
+{
+  "clientName": "",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "ALT",
+        "ART"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R-001",
+          "subjectArea": "AI Platform Connectivity",
+          "riskDescription": {
+            "context": "The agentic platform's connectivity from the development instance to the client's production instance remains unestablished, and the team is currently building on an internal environment as a workaround (EMS - RAG). The client has expressed dissatisfaction with work not running on their platform, and multiple solutions have been tested without a confirmed resolution timeline (EMS - Client Feedback). This has been an active Amber driver across several consecutive governance cycles (EMS - RAG).",
+            "condition": "The connectivity gap may persist without resolution, leaving the agentic workflows unable to run on the client's production instance for the remainder of the engagement.",
+            "consequence": "Agentic workflow outputs validated only on an internal environment may not behave as expected on the client's platform, eroding client confidence in the solution and potentially requiring significant rework before any production handover."
+          },
+          "category": "Third-Party",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish weekly coordination sessions with AAVA Platform Team and client infrastructure team to resolve production connectivity blockers.",
+          "contingencyCorrectiveAction": "Upon connectivity failure persisting beyond two weeks, escalate to executive sponsors and activate parallel manual deployment path with 48-hour SLA.",
+          "owner": "Atlee (AI Technical Manager)",
+          "targetDate": "20-Sep-2026",
+          "status": "In Progress",
+          "reasoning": "The connectivity issue has persisted across multiple sprint cycles with no confirmed resolution date, the client has already expressed dissatisfaction, and the workaround does not replicate the production environment. A similar-project pattern of agentic AI connectivity dependencies blocking delivery corroborates the high impact rating."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R-002",
+          "subjectArea": "Scope Governance",
+          "riskDescription": {
+            "context": "Scope changes from both a user experience and business angle are being introduced mid-project, and the MVP scope is not fully frozen (EMS - Risk). All incoming scope is being triaged against available bandwidth rather than through a formal change control gate (EMS - Risk). This has been identified as an external Amber driver across consecutive governance reviews (EMS - RAG).",
+            "condition": "The client may continue to introduce new requirements or user experience changes without a formally agreed change control process, absorbing team capacity that was committed to the current release.",
+            "consequence": "Uncontrolled scope additions could consume sprint capacity allocated to agreed deliverables, leaving committed features incomplete and creating disputes about what is covered under the current agreement."
+          },
+          "category": "Scope/Change Control",
+          "probability": "Very likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Implement formal change control gate requiring Product Owner sign-off and impact assessment before any mid-sprint scope additions.",
+          "contingencyCorrectiveAction": "When scope additions exceed 15% of sprint capacity, invoke Change Management process and escalate to Program Manager within 24 hours.",
+          "owner": "Krithika Aravind (Delivery Manager)",
+          "targetDate": "15-Sep-2026",
+          "status": "In Progress",
+          "reasoning": "Scope changes are already occurring mid-project and the MVP scope remains unfrozen, making further additions very likely. A similar-project pattern of client-driven mid-cycle scope additions without formal change control confirms the high impact. No formal change gate is yet enforced."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R-003",
+          "subjectArea": "Data Hub Integration",
+          "riskDescription": {
+            "context": "The downstream data integration approach with the external data platform remains pending, and development is proceeding against a baseline data model provided by the product owner rather than the final data platform APIs (EMS - Risk). A new backlog item has been planned to refactor once the actual APIs are available (EMS - Risk). This dependency is flagged as an external Amber driver (EMS - RAG).",
+            "condition": "The external data platform may deliver APIs in a format that differs materially from the baseline data model currently used for development, requiring significant refactoring of data access and integration layers.",
+            "consequence": "Rework across multiple modules built against the interim data model could compress the remaining delivery window and introduce defects in data flows that were previously considered stable."
+          },
+          "category": "Dependency",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Document data contract with Data Hub team and validate API schema alignment through proof-of-concept integration before Sprint 5.",
+          "contingencyCorrectiveAction": "Should Data Hub API format deviate by more than 20% from baseline, activate refactor backlog item and reallocate two engineers immediately.",
+          "owner": "Vipin (AI Architect)",
+          "targetDate": "01-Oct-2026",
+          "status": "In Progress",
+          "reasoning": "Development is actively proceeding against an unconfirmed data model with an explicit refactor backlog item already planned, indicating the mismatch risk is acknowledged. A similar-project pattern of external data hub API finalization delays causing late-stage rework corroborates the high impact."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R-004",
+          "subjectArea": "Client PR Review Capacity",
+          "riskDescription": {
+            "context": "The project is now in a multi-squad delivery phase with three active teams generating parallel pull requests, and the client's reviewer capacity is limited (ALT - Risk). The current sprint already shows a PR abandon rate of over thirty percent and an average cycle time of more than six days (ART - WSR). Multiple pull requests are expected to reach client reviewers on the same day once all squads are fully active (ALT - Risk).",
+            "condition": "Client-side reviewers may become a bottleneck as parallel pull request volumes from multiple squads converge, causing reviews to queue and cycle times to extend further.",
+            "consequence": "Delayed PR approvals could stall feature completion across all squads simultaneously, compressing the integration and testing window and putting the Release 3 delivery plan at risk."
+          },
+          "category": "Customer/Stakeholder",
+          "probability": "Very likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Implement staggered PR submission schedule across squads and establish dedicated client reviewer rotation with 48-hour SLA per PR.",
+          "contingencyCorrectiveAction": "Once PR cycle time exceeds 10 days, escalate to client Program Manager and activate internal peer review as interim approval.",
+          "owner": "Linta George (Engineering Manager)",
+          "targetDate": "18-Sep-2026",
+          "status": "Open",
+          "reasoning": "The ALT deck explicitly names limited client-side PR reviewer capacity as a current risk with multiple squads becoming active simultaneously. The WSR already shows elevated cycle times and abandon rates, and a similar-project pattern of client approval bottlenecks causing severe delivery impact corroborates the rating."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R-005",
+          "subjectArea": "Third-Party Voice Bot Integration",
+          "riskDescription": {
+            "context": "The third-party voice platform's failure path is unresolved, with a recurring error occurring after a defined number of messages and no fix confirmed (EMS - OBS). The intent model integration into the pipeline is delayed, and the downstream integration approach for the voice bot and call deflection has not been finalized (EMS - Risk). The voice platform team is actively engaged but has not provided a resolution timeline (ART - WSR).",
+            "condition": "The third-party voice platform may not resolve the failure path issue before the integration testing window, leaving end-to-end voice workflows untested against real error scenarios.",
+            "consequence": "Unresolved failure paths in the voice integration could surface as production incidents after go-live, damaging client confidence in the solution's reliability and requiring emergency fixes under support conditions."
+          },
+          "category": "Third-Party",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Conduct daily standups with Genesys team to track failure path resolution and document workaround for no-match error scenario.",
+          "contingencyCorrectiveAction": "If Genesys failure path remains unresolved 10 days before UAT, deploy fallback error handling and escalate to vendor account manager.",
+          "owner": "Vijay Kishor Singh (AI Lead)",
+          "targetDate": "25-Sep-2026",
+          "status": "In Progress",
+          "reasoning": "The failure path issue is open with no resolution date, the integration approach is not finalized, and the intent model integration is already delayed. A similar-project pattern of external vendor integration unknowns blocking pipeline delivery at high severity corroborates the rating."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R-006",
+          "subjectArea": "Contract Coverage",
+          "riskDescription": {
+            "context": "The original work assignment term ends in late August, and the ALT deck reports Release 3 delivery is planned through late November with ongoing squad activity (ALT - Key Triggers). The project is on the watchlist with active delivery continuing post the original term (ALT - Key Triggers). No reference to a signed extension or amended work assignment is present in the available project data (ART - SOW Terms).",
+            "condition": "Delivery activity may continue into Release 3 without a formally executed contract extension or amended work assignment covering the extended period.",
+            "consequence": "Work performed beyond the original term without agreed contractual coverage could lead to disputed obligations, unenforceable scope boundaries, and complications in invoicing and resource allocation."
+          },
+          "category": "Contractual",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Initiate contract extension negotiation with client legal and finalize amended work assignment covering September through November 2026.",
+          "contingencyCorrectiveAction": "Upon reaching August 31 without signed extension, halt all new development work and escalate to Account Director within 24 hours.",
+          "owner": "Jarad Coffins (Account Director)",
+          "targetDate": "10-Sep-2026",
+          "status": "Open",
+          "reasoning": "The original SOW term has passed and Release 3 is planned through November, yet no extension is evidenced in the project data. A similar-project pattern of engagements operating without a signed SOW extension confirms this as a high-impact contractual exposure."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R-007",
+          "subjectArea": "Security Vulnerability Remediation",
+          "riskDescription": {
+            "context": "The client has requested vulnerability remediation arising from a recent production deployment, and the process to address these vulnerabilities has not yet been defined (ALT - Key Triggers). Ongoing vulnerability fixes are acknowledged in the sprint review (ART - WSR). Automation of credential key rotation for the data platform is also pending, with manual rotation currently in place (EMS - OBS).",
+            "condition": "The vulnerability remediation process may remain undefined while the application is live in production, and manual credential rotation may continue without automation, leaving security gaps unaddressed.",
+            "consequence": "Unresolved production vulnerabilities and manual credential management could expose the client's platform to security incidents, triggering compliance obligations and damaging the client relationship."
+          },
+          "category": "Security/Compliance",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Define vulnerability remediation process with client security team and automate Snowflake key rotation by Sprint 4 completion.",
+          "contingencyCorrectiveAction": "Should vulnerability count exceed 10 high-severity items, activate dedicated security sprint and reallocate two engineers to remediation immediately.",
+          "owner": "Linta George (Engineering Manager)",
+          "targetDate": "30-Sep-2026",
+          "status": "In Progress",
+          "reasoning": "The client has already requested remediation with a past target date, the process is undefined, and manual key rotation is an acknowledged open observation. A similar-project pattern of credential management gaps rated as major with high data loss impact corroborates the severity."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R-008",
+          "subjectArea": "Integration Testing Readiness",
+          "riskDescription": {
+            "context": "The integration testing approach for the end-to-end pipeline has not been finalized, and the test data strategy is still under discussion (EMS - Risk). Test data and test environment availability is an assumption currently in progress rather than confirmed (EMS - Assumption). The client's team availability for user acceptance testing is an open dependency (EMS - Dependency).",
+            "condition": "The integration testing approach and test data strategy may remain unresolved as the project moves toward release, leaving end-to-end validation without an agreed scope, tooling, or data set.",
+            "consequence": "Without a defined integration test strategy and available test data, defects in cross-system flows may not be detected before release, increasing the risk of production incidents and requiring post-release remediation."
+          },
+          "category": "Data Readiness",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Finalize integration test strategy and secure test data provisioning from client by Sprint 3 end with documented acceptance criteria.",
+          "contingencyCorrectiveAction": "If test data remains unavailable 15 days before UAT, generate synthetic test data set and notify client of coverage limitations.",
+          "owner": "TBD (QA Manager)",
+          "targetDate": "22-Sep-2026",
+          "status": "In Progress",
+          "reasoning": "Both the integration test approach and test data strategy are open with no confirmed resolution dates, and the UAT team availability is an unconfirmed dependency. A similar-project pattern of integration testing being on hold causing late defect detection corroborates the high impact."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R-009",
+          "subjectArea": "Architecture Knowledge Transfer",
+          "riskDescription": {
+            "context": "Architecture knowledge transfer from the established squad to the newly formed squads has not started, and new members lack full context on the existing design (EMS - Risk). The mitigation plan has not been initiated (EMS - Risk). Documentation inventory is being created and missing standard operating procedures are being identified (ALT - Key Triggers).",
+            "condition": "New squad members may begin development work on post-MVP features without receiving architecture knowledge transfer, leading them to make design decisions inconsistent with the established patterns.",
+            "consequence": "Inconsistent architectural decisions across squads could introduce integration defects and require rework to align implementations, reducing the team's effective delivery capacity during the most critical delivery phase."
+          },
+          "category": "Knowledge Continuity",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Schedule architecture KT sessions from CSR Assist team to all squads and document design patterns in shared wiki by Sprint 4.",
+          "contingencyCorrectiveAction": "Upon detecting architectural inconsistency in PR review, halt affected PBI and conduct immediate design alignment session with architect.",
+          "owner": "Vipin (AI Architect)",
+          "targetDate": "28-Sep-2026",
+          "status": "Not Started",
+          "reasoning": "The KT has not started and the mitigation is not initiated, while new squads are already active. A similar-project pattern of teams lacking overall context and design understanding causing significant rework risk, rated as very high, corroborates the impact."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R-010",
+          "subjectArea": "Post-MVP Authentication Architecture",
+          "riskDescription": {
+            "context": "The authentication spike for downstream integration is pending, and the design outcome could require significant architecture changes (EMS - Risk). The downstream integration approach for voice bot and call deflection is also not finalized (EMS - Risk). Both items are post-MVP scope with no due dates assigned (EMS - Risk).",
+            "condition": "The authentication spike may reveal that the current architecture requires substantial changes to support downstream integrations, triggering a redesign that affects components already built for the MVP.",
+            "consequence": "A late-stage architecture change driven by authentication requirements could force rework of delivered components, extend the post-MVP delivery timeline, and introduce regression risk in features already accepted by the client."
+          },
+          "category": "Technical/Architecture",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Complete downstream authentication spike and assess architecture impact before MVP sign-off to prevent post-release rework.",
+          "contingencyCorrectiveAction": "Should auth spike reveal major architecture changes, create isolated authentication service layer and refactor incrementally across three sprints.",
+          "owner": "Vipin (AI Architect)",
+          "targetDate": "15-Oct-2026",
+          "status": "In Progress",
+          "reasoning": "The spike is pending with no due date and the design impact is explicitly acknowledged as potentially significant. A similar-project pattern of authentication architecture gaps requiring major redesign corroborates the high impact, but the event has not yet materialized, keeping likelihood at Possible."
+        },
+        {
+          "sNo": 11,
+          "riskId": "R-011",
+          "subjectArea": "AAVA Observability",
+          "riskDescription": {
+            "context": "The agentic platform deployment on the client instance does not include logging and monitoring, and the platform team needs client support to define requirements and implement a solution (EMS - Risk). Metrics to track actual productivity gains from the agentic tooling are not available (EMS - RAG). Coordination between the platform team and the client team is in progress with no confirmed timeline (EMS - Risk).",
+            "condition": "Logging, monitoring, and metrics capture for the agentic platform may remain unavailable on the client instance throughout the delivery period.",
+            "consequence": "Without observability on the client instance, production incidents in agentic workflows may go undetected or take significantly longer to diagnose, and the team will be unable to demonstrate or measure the productivity value of the agentic tooling to the client."
+          },
+          "category": "Environment/Infrastructure",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Coordinate with AAVA team and client infrastructure to deploy basic logging and monitoring on client instance by Sprint 5.",
+          "contingencyCorrectiveAction": "If client-side observability remains unavailable, deploy agent-level logging to Azure Application Insights and share dashboards with client weekly.",
+          "owner": "Atlee (AI Technical Manager)",
+          "targetDate": "05-Oct-2026",
+          "status": "In Progress",
+          "reasoning": "The observability gap has persisted across multiple governance cycles with no resolution date, and the dependency on both the platform team and the client team makes resolution uncertain. The impact is medium because the core delivery can continue, but the inability to demonstrate value and diagnose issues is a meaningful operational gap."
+        },
+        {
+          "sNo": 12,
+          "riskId": "R-012",
+          "subjectArea": "VDI and Development Environment",
+          "riskDescription": {
+            "context": "The offshore team relies on the client-provided virtual desktop infrastructure for all development work, and recurring connectivity disruptions causing five to ten minutes of recovery time have been observed, particularly when collaboration tools and development environments are used simultaneously (EMS - OBS). The assumption that network connectivity and the virtual desktop environment will be provided is currently in progress rather than confirmed (EMS - Assumption). A ticket to address the issue has been planned but not yet confirmed as raised (EMS - RAG).",
+            "condition": "Virtual desktop connectivity disruptions may continue or worsen during high-activity sprint periods, particularly as squad size increases with Release 3 ramp-up.",
+            "consequence": "Sustained productivity loss across the offshore team could reduce effective sprint capacity, causing spillover of committed backlog items and compressing the integration and testing window."
+          },
+          "category": "Environment/Infrastructure",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Raise VDI performance ticket with client IT and monitor incident frequency daily to offset productivity loss through extended hours.",
+          "contingencyCorrectiveAction": "When VDI downtime exceeds 2 hours per day for three consecutive days, escalate to client infrastructure lead and request priority resolution.",
+          "owner": "Krithika Aravind (Delivery Manager)",
+          "targetDate": "20-Sep-2026",
+          "status": "In Progress",
+          "reasoning": "The disruptions are recurring and documented, the assumption is unconfirmed, and the remediation ticket has not been confirmed as raised. A similar-project pattern of VDI connectivity issues impacting offshore productivity, which was eventually resolved, suggests the risk is controllable but real while open."
+        },
+        {
+          "sNo": 13,
+          "riskId": "R-013",
+          "subjectArea": "POD Resource Continuity",
+          "riskDescription": {
+            "context": "A delivery pod is experiencing resource challenges due to extended absences, with scope spillover and impact to end-to-end feature completion identified as a consequence (ALT - Risk). The squad reorganization mid-PI has already resulted in insufficient knowledge transfer to new members and diluted sprint metrics (EMS - Risk). Member contribution has slightly declined due to changing priorities and production support demands (ART - WSR).",
+            "condition": "Extended absences in the affected pod may continue or recur, leaving the squad unable to complete its committed scope for the current release without redistribution of work to other pods.",
+            "consequence": "Scope spillover from the affected pod could overload other squads already managing their own delivery commitments, reducing overall team throughput and creating gaps in end-to-end feature completion for Release 3."
+          },
+          "category": "Resource/Talent",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Re-baseline POD4 sprint capacity and redistribute critical PBIs to other squads with buffer allocation for knowledge ramp-up.",
+          "contingencyCorrectiveAction": "Should POD4 absences extend beyond two weeks, activate backup resource from Services POD and conduct expedited knowledge transfer within 48 hours.",
+          "owner": "Krithika Aravind (Delivery Manager)",
+          "targetDate": "25-Sep-2026",
+          "status": "Open",
+          "reasoning": "The ALT deck explicitly names this as a current risk, and the WSR confirms declining member contribution. The squad reorganization has already reduced effective capacity, making further spillover likely. Impact is medium because redistribution across squads is possible, though at a cost to other workstreams."
+        },
+        {
+          "sNo": 14,
+          "riskId": "R-014",
+          "subjectArea": "Deliverable Acceptance and Sign-off",
+          "riskDescription": {
+            "context": "The client's review and approval of deliverables within the agreed fifteen business day window is an open dependency (EMS - Dependency). Sign-off on acceptance criteria at each project phase is also an open dependency (EMS - Dependency). The product owner's designation for decision-making authority is an open assumption (EMS - Assumption), and UAT stakeholders have not been confirmed as nominated and available (EMS - Assumption).",
+            "condition": "The client may not nominate UAT stakeholders or provide phase-level sign-offs within the agreed timelines, leaving deliverables in an unaccepted state as the project approaches its release window.",
+            "consequence": "Unaccepted deliverables could block progression to subsequent phases, create ambiguity about what has been formally agreed, and expose the engagement to disputes about completion and payment milestones."
+          },
+          "category": "Customer/Stakeholder",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Secure Product Owner designation and UAT stakeholder nominations from client by Sprint 3 with documented acceptance criteria per phase.",
+          "contingencyCorrectiveAction": "If client sign-off exceeds 15 business days, escalate to Program Manager and document provisional acceptance to unblock subsequent phase.",
+          "owner": "Krithika Aravind (Delivery Manager)",
+          "targetDate": "22-Sep-2026",
+          "status": "Open",
+          "reasoning": "Multiple client-side acceptance dependencies are open simultaneously with no confirmed status, and the product owner designation is unconfirmed. A similar-project pattern of UAT sign-off delays rated as major and very likely corroborates the high impact, but the project's active governance cadence moderates likelihood to Possible."
+        },
+        {
+          "sNo": 15,
+          "riskId": "R-015",
+          "subjectArea": "OKTA and SSO Integration",
+          "riskDescription": {
+            "context": "The identity provider availability for authentication and single sign-on integration is an open third-party dependency with no confirmed status or timeline (EMS - Dependency). Third-party API access and credentials are an open assumption dependent on the client (EMS - Assumption). The portal's registration and role-based access control features are dependent on this integration (ART - SOW Terms).",
+            "condition": "The identity provider may experience availability issues or delays in providing the required integration credentials and configuration, blocking authentication and access control implementation.",
+            "consequence": "Delays in identity provider integration could prevent the team from completing and testing the registration, user profile, and role-based access modules, leaving core portal functionality unvalidated before release."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Secure OKTA API credentials and integration documentation from client by Sprint 2 end and validate authentication flow in development environment.",
+          "contingencyCorrectiveAction": "Should OKTA integration credentials be delayed beyond Sprint 3, implement mock authentication service and defer SSO integration to post-MVP phase.",
+          "owner": "Sai Shankar (Team Lead UI)",
+          "targetDate": "18-Sep-2026",
+          "status": "Open",
+          "reasoning": "The dependency is open with no confirmed status, and the portal's core access control features depend on it. A similar-project pattern of third-party authentication integration dependencies causing delivery risk corroborates the high impact, but no current signal indicates active disruption, keeping likelihood at Possible."
+        },
+        {
+          "sNo": 16,
+          "riskId": "R-016",
+          "subjectArea": "AI Model API Availability",
+          "riskDescription": {
+            "context": "The availability and rate limits of third-party AI model APIs are an open dependency for the agentic development workstream (EMS - Dependency). The agentic platform requires connectivity to multiple external AI services, and no confirmed SLA or rate limit agreement is referenced in the project data (EMS - Dependency). The agentic platform connectivity issue has already demonstrated sensitivity to external service dependencies (EMS - Risk).",
+            "condition": "Third-party AI model API providers may impose rate limits or experience availability disruptions during peak development or testing periods, throttling the agentic workflows.",
+            "consequence": "Rate-limited or unavailable AI model APIs could stall agentic workflow development and testing, forcing the team to queue work or implement fallback mechanisms not originally scoped, adding unplanned effort."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Monitor AI model API rate limits daily and implement request throttling to stay within 80% of confirmed limits.",
+          "contingencyCorrectiveAction": "Upon encountering rate limit throttling, switch to alternate AI model provider and notify client of model change within 24 hours.",
+          "owner": "Atlee (AI Technical Manager)",
+          "targetDate": "30-Sep-2026",
+          "status": "Open",
+          "reasoning": "The dependency is open and the project's agentic workstream is sensitive to external service availability, as evidenced by the existing connectivity risk. A similar-project pattern of AI environment provisioning delays and agentic connectivity dependencies supports the rating, but no active disruption is currently evidenced."
+        },
+        {
+          "sNo": 17,
+          "riskId": "R-017",
+          "subjectArea": "Operational Support Readiness",
+          "riskDescription": {
+            "context": "The team is building a more detailed runbook for on-call incident identification, and the current runbook is insufficient for rapid incident resolution (EMS - OBS). The application is already deployed to production and is technically ready for producer onboarding (ALT - Key Triggers). Production support activities and ongoing vulnerability fixes are acknowledged as active workstreams (ART - WSR).",
+            "condition": "The runbook may remain incomplete as the application enters active producer onboarding, leaving the on-call team without adequate guidance for incident triage and resolution.",
+            "consequence": "An incomplete runbook during active production use could result in extended incident resolution times, increased escalations to senior engineers, and reduced client confidence in the team's support capability."
+          },
+          "category": "Operational/Support",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Complete detailed runbook with incident triage flowcharts and escalation paths before producer onboarding begins in October.",
+          "contingencyCorrectiveAction": "If runbook remains incomplete at onboarding, assign dedicated senior engineer to on-call rotation and conduct daily incident retrospectives.",
+          "owner": "Linta George (Engineering Manager)",
+          "targetDate": "01-Oct-2026",
+          "status": "In Progress",
+          "reasoning": "The runbook gap is an open observation with no closure date, and the application is already in production with onboarding imminent. A similar-project pattern of insufficient on-call processes causing delayed incident handling corroborates the impact, but the team is actively working on it, moderating likelihood to Possible."
+        },
+        {
+          "sNo": 18,
+          "riskId": "R-018",
+          "subjectArea": "Design and Architecture Approval",
+          "riskDescription": {
+            "context": "Timely approval of design documents, wireframes, and architecture specifications is an in-progress dependency required from the client to proceed to subsequent phases (EMS - Dependency). Access to existing systems for integration is also in progress (EMS - Dependency). Security clearances and access permissions for the development team are in progress (EMS - Dependency).",
+            "condition": "The client may delay approvals of design documents or architecture specifications, or return them with significant changes, at a point when development has already progressed based on earlier drafts.",
+            "consequence": "Late design changes or delayed approvals could require rework of components already built, create misalignment between delivered features and client expectations, and compress the remaining delivery window."
+          },
+          "category": "Governance/Process",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement design review checkpoint at Sprint 2 end with client architect sign-off before proceeding to full-scale development.",
+          "contingencyCorrectiveAction": "Should design approval be delayed beyond 10 business days, document provisional approval and proceed with development at client's documented risk.",
+          "owner": "Krithika Aravind (Delivery Manager)",
+          "targetDate": "18-Sep-2026",
+          "status": "In Progress",
+          "reasoning": "Multiple client-side approval dependencies are in progress simultaneously, and the project's history of access delays in the discovery phase demonstrates a pattern of client-side approval latency. The impact is medium because rework is recoverable, but the compounding effect of several simultaneous approvals elevates the risk."
+        },
+        {
+          "sNo": 19,
+          "riskId": "R-019",
+          "subjectArea": "Knowledge Documentation Completeness",
+          "riskDescription": {
+            "context": "The documentation inventory is being created and missing standard operating procedures are being identified, with knowledge transfer recordings being captured (ALT - Key Triggers). The project is on the watchlist with Release 3 delivery planned through late November, meaning the engagement will continue for several more months (ALT - Key Triggers). Architecture knowledge transfer to new squads has not started (EMS - Risk).",
+            "condition": "The documentation and knowledge transfer effort may not be completed before key engineers rotate off the project or before the engagement concludes, leaving gaps in institutional knowledge.",
+            "consequence": "Incomplete documentation and knowledge transfer could leave the client's team unable to independently operate, maintain, or extend the portal after the engagement ends, increasing dependency on the delivery team and creating support risks."
+          },
+          "category": "Knowledge Continuity",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Create documentation inventory and capture KT recordings for all modules by Sprint 5 with client team review sessions.",
+          "contingencyCorrectiveAction": "If documentation remains incomplete at engagement end, provide 30-day extended support period and conduct daily knowledge transfer sessions.",
+          "owner": "Krithika Aravind (Delivery Manager)",
+          "targetDate": "20-Oct-2026",
+          "status": "In Progress",
+          "reasoning": "The documentation effort is in progress but incomplete, and the architecture KT has not started. A similar-project pattern of knowledge transfer gaps causing delivery dependency and very high severity corroborates the concern, but the team is actively working on it, moderating likelihood to Possible."
+        },
+        {
+          "sNo": 20,
+          "riskId": "R-020",
+          "subjectArea": "Software License Procurement",
+          "riskDescription": {
+            "context": "All necessary software licenses for AI models, databases, and tools are assumed to be procured by the client before development begins, and this assumption is currently open (EMS - Assumption). The agentic platform connectivity issue has already demonstrated that client-side provisioning can be a bottleneck (EMS - Risk). Several third-party tool dependencies remain open (EMS - Dependency).",
+            "condition": "Required software licenses for AI models or platform tools may not be procured or renewed in time for the Release 3 development and testing phases.",
+            "consequence": "Missing licenses could block access to critical development or testing tools, forcing the team to use workarounds or pause work on affected features until procurement is completed."
+          },
+          "category": "Dependency",
+          "probability": "Possible",
+          "impact": "Low",
+          "rag": "Green",
+          "mitigationPreventiveAction": "Validate all software license procurement status with client procurement team by Sprint 3 and document license expiration dates.",
+          "contingencyCorrectiveAction": "Upon license unavailability, identify open-source alternatives and notify client of tool substitution within 48 hours.",
+          "owner": "Krithika Aravind (Delivery Manager)",
+          "targetDate": "22-Sep-2026",
+          "status": "Open",
+          "reasoning": "The assumption is open but there is no current signal of an active procurement gap. The project's history of client-side provisioning delays makes this plausible, but the impact is limited because individual tool gaps are typically recoverable. Rated Possible with Low impact as a KB-pattern-supported precaution."
+        }
+      ]
+    }
+  ]
+}
