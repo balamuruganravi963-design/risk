@@ -1,0 +1,460 @@
+{
+  "clientName": "",
+  "projects": [
+    {
+      "projectId": "Not available",
+      "projectName": "Producer Portal",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "ART"
+      ],
+      "sourcesNotAvailable": [
+        "EMS",
+        "ALT"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Client Environment Provisioning",
+          "riskDescription": {
+            "context": "The engagement assumes the client will provide cloud infrastructure and all necessary environments before development begins, and that development, staging, and production environments will be provisioned by the client (ART - SOW Terms). Security clearances and access permissions for the development team are also listed as client-side dependencies (ART - SOW Terms).",
+            "condition": "The client may not provision development, staging, or production environments on schedule, or security clearances may be delayed, leaving the team unable to begin or progress development and testing activities.",
+            "consequence": "Development and testing activities could be blocked or compressed into a shorter window, forcing the team to work in unvalidated environments or defer integration and performance testing, which may surface critical defects late in the delivery cycle and put the August contract term at risk."
+          },
+          "category": "Dependency",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish weekly environment provisioning status reviews with client infrastructure team to track Azure resource provisioning milestones and security clearances.",
+          "contingencyCorrectiveAction": "Upon environment provisioning delay exceeding two weeks from baseline, rebaseline impacted scope with client, prioritize critical-path functionality, and escalate to program governance within 48 hours.",
+          "owner": "TBD - confirm with PM (Engagement Manager)",
+          "targetDate": "15-Apr-2026",
+          "status": "Open",
+          "reasoning": "Environment provisioning is a named client-side dependency with no confirmed readiness date in the artifacts, and the assumption that environments will be ready before development begins has not been validated. A similar-project pattern shows environment provisioning delays are a recurring and high-severity risk in comparable engagements, and the fixed-price, milestone-based contract structure amplifies the impact of any delay."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Third-Party Integration APIs",
+          "riskDescription": {
+            "context": "The portal requires integration with several third-party systems including an identity provider for single sign-on, an external quoting and billing platform for small group, a large group reporting tool via single sign-on, and a commissions platform (ART - SOW Terms). The engagement assumes the client will provide required third-party API access and credentials, and that third-party integration APIs and their documentation will be available (ART - SOW Terms).",
+            "condition": "One or more third-party vendors may not provide API documentation, credentials, or stable endpoints in time for the integration and testing phases, or may impose rate limits and breaking changes that are not communicated in advance.",
+            "consequence": "Integration development could be blocked or built against incomplete specifications, requiring rework when actual APIs are available, compressing the testing window and potentially leaving key portal features such as book-of-business data, single sign-on links, and commissions views unvalidated before go-live."
+          },
+          "category": "Third-Party",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish escalation path with client for OKTA, Benefitfocus, Insight Reporter, and commissions vendor API access, and validate documentation completeness during Discovery phase.",
+          "contingencyCorrectiveAction": "Upon API documentation or credential delay exceeding two weeks, rebaseline integration scope, implement mock services for continued development, and escalate to client program manager immediately.",
+          "owner": "TBD - confirm with PM (Tech Lead)",
+          "targetDate": "30-Apr-2026",
+          "status": "Open",
+          "reasoning": "Multiple third-party integrations are in scope and their readiness depends on external parties outside the delivery team's control; the SOW explicitly lists third-party API availability as a dependency with no confirmed status. A similar-project pattern shows unknown or late API integration points are a recurring high-severity risk, and the fixed-price contract provides no buffer for rework caused by third-party delays."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Phase Gate Sign-Off",
+          "riskDescription": {
+            "context": "The project follows a hybrid methodology where Discovery, Architecture, and Design phases each require formal client sign-off before the next phase may begin (ART - SOW Terms). The client is accountable for approving design documents, wireframes, and architecture specifications within agreed timelines, and the SOW states that architecture must be approved by the client architect with no open critical risks before proceeding (ART - SOW Terms).",
+            "condition": "The client may delay review and sign-off of Discovery, Architecture, or Design deliverables beyond the fifteen-business-day acceptance window, or may return deliverables with significant comments that require multiple revision cycles.",
+            "consequence": "Development cannot begin until design and architecture are formally approved, so repeated or prolonged sign-off cycles would compress the iterative development and testing window within the fixed August contract term, reducing the team's capacity to deliver the full agreed scope."
+          },
+          "category": "Customer/Stakeholder",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Conduct weekly design and architecture review checkpoints with client architect and security stakeholders to resolve critical comments before formal submission.",
+          "contingencyCorrectiveAction": "Upon sign-off delay exceeding fifteen business days, invoke change management process to rebaseline development timeline, communicate schedule impact to client program manager, and escalate to quarterly business review.",
+          "owner": "TBD - confirm with PM (Project Manager)",
+          "targetDate": "15-May-2026",
+          "status": "Open",
+          "reasoning": "Client sign-off is a hard gate before development in the hybrid methodology, and the SOW places accountability for approvals on the client side with no escalation mechanism defined for delays beyond the acceptance window. A similar-project pattern shows client approval delays on design and architecture artifacts are a frequent cause of compressed delivery timelines in fixed-price engagements."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Scope Governance Post-Discovery",
+          "riskDescription": {
+            "context": "The SOW states that the features and requirements in Attachment 1 may be updated by the client during the Discovery phase, and that any material scope changes post-Discovery or in any phase may invoke the change management process (ART - SOW Terms). The deliverables and acceptance criteria may also be re-defined during Discovery as mutually agreed (ART - SOW Terms).",
+            "condition": "The client may continue to request additions or modifications to requirements after the Discovery phase is closed, either informally during sprint planning or through requests that are not formally processed through the change control procedure.",
+            "consequence": "Uncontrolled scope additions would absorb sprint capacity without a corresponding adjustment to timeline or budget, eroding the team's ability to deliver the agreed portal features within the fixed contract term and creating disputes over what is included in the milestone-based payments."
+          },
+          "category": "Scope/Change Control",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Implement formal change control form review process for all scope additions post-Discovery, with impact assessment on cost, timeline, and functionality before acceptance.",
+          "contingencyCorrectiveAction": "Upon uncontrolled scope request during sprint planning, defer to change control log, document impact on milestone deliverables, and escalate to client program manager for authorization sign-off.",
+          "owner": "TBD - confirm with PM (Project Manager)",
+          "targetDate": "30-Apr-2026",
+          "status": "Open",
+          "reasoning": "The SOW explicitly anticipates scope updates during Discovery and provides a change management process, but the mechanism relies on both parties invoking it consistently; a similar-project pattern shows clients frequently add work mid-cycle without formal change requests, and the fixed-price structure means unabsorbed scope directly erodes delivery capacity."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "AAVA Platform Dependency",
+          "riskDescription": {
+            "context": "The portal development relies on a proprietary agent framework for autonomous AI agent development, orchestration, and acceleration of development activities (ART - SOW Terms). The SOW grants the client a term-based license for this platform limited to the duration of the work assignment, and states that the platform shall not be required for the deliverables to function after the term ends (ART - SOW Terms).",
+            "condition": "The proprietary agent framework may have functional limitations, undocumented constraints, or integration incompatibilities with the client's enterprise standards that are not discovered until mid-development, or the framework's agent outputs may require more iterative refinement than planned.",
+            "consequence": "Development timelines could be extended if agents require significant rework or if the framework cannot support specific portal requirements, and the team may need to build fallback implementations without the framework, increasing effort and reducing the benefit of the accelerated development approach."
+          },
+          "category": "Product/Platform Limitation",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Validate AAVA framework compatibility with client enterprise standards during Architecture phase, and document fallback implementation approach for critical portal components.",
+          "contingencyCorrectiveAction": "Upon AAVA framework limitation discovery, implement fallback development approach without framework for affected components, rebaseline sprint capacity, and escalate timeline impact to client within 48 hours.",
+          "owner": "TBD - confirm with PM (AI Architect)",
+          "targetDate": "15-May-2026",
+          "status": "Open",
+          "reasoning": "The proprietary agent framework is central to the development acceleration strategy and is used across multiple portal components; a similar-project pattern shows that reliance on a proprietary AI agent platform introduces delivery risk when framework limitations or token-level dependencies are discovered mid-engagement, and the SOW's own caveat that the platform must not be required post-term signals awareness of this dependency."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Security and Compliance Requirements",
+          "riskDescription": {
+            "context": "The portal handles sensitive producer and member data across multiple lines of business and must support role-based access control aligned with regulatory requirements (ART - SOW Terms). The SOW assumes that security policies, compliance requirements, and data governance rules will be shared during Discovery, and that the design must be formally approved by architecture and security stakeholders before development proceeds (ART - SOW Terms).",
+            "condition": "The client's security team may not share complete compliance requirements and data governance rules during Discovery, or may introduce additional security constraints during the design review that require significant rework of the authentication, authorization, or data architecture.",
+            "consequence": "Security and compliance gaps discovered late in development or during security testing could require architectural changes to the role-based access control model, authentication flows, or data handling, delaying the security testing sign-off and potentially blocking go-live if regulatory obligations are not demonstrably met."
+          },
+          "category": "Security/Compliance",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Conduct security and compliance requirements workshop with client security team during Discovery to document RBAC matrix, data governance rules, and regulatory constraints before design.",
+          "contingencyCorrectiveAction": "Upon late security requirement discovery, assess impact on RBAC and authentication architecture, implement required changes in dedicated sprint, and defer non-critical features to protect go-live.",
+          "owner": "TBD - confirm with PM (Solution Architect)",
+          "targetDate": "30-Apr-2026",
+          "status": "Open",
+          "reasoning": "The portal handles regulated producer and member data with RBAC across multiple lines of business, and the security requirements are assumed to be provided by the client during Discovery with no confirmed readiness; a similar-project pattern shows that late or incomplete security requirements in regulated environments frequently cause rework in authentication and authorization design, and the SOW requires security stakeholder sign-off as a hard gate."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "UAT Stakeholder Availability",
+          "riskDescription": {
+            "context": "The SOW assumes the client will nominate UAT stakeholders and ensure their reasonable availability as per the agreed timeline, and that the client team will be reasonably available for UAT execution (ART - SOW Terms). UAT sign-off is a milestone-linked deliverable and a prerequisite for go-live (ART - SOW Terms).",
+            "condition": "The client may not nominate UAT stakeholders in time, or nominated stakeholders may have competing priorities that reduce their availability during the UAT execution window, causing UAT to start late or proceed with insufficient client participation.",
+            "consequence": "Delayed or incomplete UAT would defer the go-live sign-off, compressing the hypercare period within the contract term or pushing activities beyond the August contract end date, and could result in disputed acceptance of deliverables if the client later raises issues that were not tested."
+          },
+          "category": "Customer/Stakeholder",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Secure UAT stakeholder nomination and availability commitment from client during Design phase, and schedule UAT execution window aligned to client sprint calendar.",
+          "contingencyCorrectiveAction": "Upon UAT stakeholder unavailability or delay exceeding one week, prioritize critical go-live features for testing, escalate to client program manager, and defer non-critical UAT to post-go-live.",
+          "owner": "TBD - confirm with PM (Project Manager)",
+          "targetDate": "15-Jun-2026",
+          "status": "Open",
+          "reasoning": "UAT is a client-accountable activity in the RACI and is tied directly to milestone payments; the assumption of stakeholder availability has no confirmed nomination or schedule in the artifacts, and a similar-project pattern shows UAT delays caused by client-side availability are among the most common causes of go-live deferral in fixed-price portal engagements."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Test Data Availability",
+          "riskDescription": {
+            "context": "The SOW assumes that test data and test environments will be made available by the client for all testing phases (ART - SOW Terms). The portal will process sensitive producer and member data including personally identifiable information across multiple lines of business, and the data architecture and governance model are in-scope deliverables of the Discovery phase (ART - SOW Terms).",
+            "condition": "The client may not provide representative, compliant test data sets in time for functional, integration, performance, and security testing phases, or the test data provided may not cover all lines of business, producer hierarchy levels, and edge cases required for thorough validation.",
+            "consequence": "Testing could proceed with incomplete or non-representative data, leaving gaps in validation of book-of-business views, role-based access filtering, and data export functions, which may result in defects surfacing in production and compliance exposure if sensitive data handling is not fully verified before go-live."
+          },
+          "category": "Data Readiness",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Define test data strategy and coverage requirements for all LOBs during Discovery, and validate client commitment to provision compliant test data before functional testing.",
+          "contingencyCorrectiveAction": "Upon test data unavailability or incompleteness, implement data masking and synthetic data generation for critical test scenarios, and escalate compliance risk to client security stakeholders immediately.",
+          "owner": "TBD - confirm with PM (QE Lead)",
+          "targetDate": "15-May-2026",
+          "status": "Open",
+          "reasoning": "Test data provision is a client-side assumption with no confirmed readiness, and the portal's multi-LOB, multi-role data model requires comprehensive test data coverage; a similar-project pattern shows test data strategy delays are a recurring risk in healthcare and regulated environments, and the absence of a confirmed data governance model at this stage increases the likelihood of gaps."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Architecture Decision Finalization",
+          "riskDescription": {
+            "context": "The technology stack lists several options that are not yet confirmed, including the database platform and containerization approach, with a note that final technology selections will be confirmed during the Architecture phase (ART - SOW Terms). The architecture must be approved by the client architect before development begins, and the data architecture and governance model are Discovery deliverables (ART - SOW Terms).",
+            "condition": "Key architecture decisions, particularly around the database platform, event-driven communication layer, and deployment model, may remain unresolved or subject to revision after development has begun, either due to delayed client architect review or emerging enterprise standards constraints.",
+            "consequence": "Development work built on provisional architecture choices may require significant rework if decisions change after sprints have started, increasing effort, introducing integration inconsistencies, and reducing the team's ability to deliver the full feature set within the fixed contract term."
+          },
+          "category": "Technical/Architecture",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Finalize database, event-driven communication, and deployment architecture decisions during Architecture phase with client architect approval before sprint planning.",
+          "contingencyCorrectiveAction": "Upon architecture decision change after development start, assess impact on completed sprints, implement required rework in dedicated sprint, and invoke change management to adjust milestone timeline.",
+          "owner": "TBD - confirm with PM (Solution Architect)",
+          "targetDate": "15-May-2026",
+          "status": "Open",
+          "reasoning": "Multiple technology choices are explicitly unconfirmed in the SOW and depend on the Architecture phase outcome, which itself requires client approval; a similar-project pattern shows that unresolved architecture decisions at the start of development are a leading cause of mid-sprint rework and downstream integration failures, and the hybrid methodology's hard gate between design and development does not eliminate the risk of late changes."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Post-Hypercare Support Coverage",
+          "riskDescription": {
+            "context": "The SOW explicitly states that maintenance and support beyond the four-week stabilization period is out of scope, and that the contract term ends on August 31, 2026 (ART - SOW Terms). The hypercare deliverable acceptance criterion is the later of four weeks after go-live or no open defects or incidents (ART - SOW Terms).",
+            "condition": "If go-live occurs late in the contract term, the four-week hypercare period may extend beyond the August 31 contract end date, or the client may request continued support after hypercare closes without a new contractual agreement in place.",
+            "consequence": "The team could be providing post-hypercare support without agreed contract coverage, creating disputed obligations over effort, scope, and compensation, and exposing the engagement to uncompensated work or abrupt disengagement that leaves the client without adequate support."
+          },
+          "category": "Contractual",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Communicate go-live timeline and hypercare end date to client by June, and initiate discussion on post-hypercare support SOW before August.",
+          "contingencyCorrectiveAction": "Should hypercare extend beyond August 31, invoke change management to establish interim support agreement, document scope and compensation, and escalate to account director for contract amendment.",
+          "owner": "TBD - confirm with PM (Engagement Manager)",
+          "targetDate": "15-Jun-2026",
+          "status": "Open",
+          "reasoning": "The fixed August 31 contract end date combined with a milestone-heavy delivery schedule leaves limited buffer for a late go-live, and the hypercare acceptance criterion tied to open defects means the period could extend unpredictably; a similar-project pattern shows engagements frequently continue beyond contract terms without formal coverage, creating commercial and obligation disputes."
+        },
+        {
+          "sNo": 11,
+          "riskId": "R - 011",
+          "subjectArea": "Key Engineer Continuity",
+          "riskDescription": {
+            "context": "The portal requires specialized skills across several areas including AI agent development using a proprietary framework, cloud-native backend development, RBAC and identity integration, and multi-LOB data architecture (ART - SOW Terms). The delivery model involves both onshore and offshore resources working remotely across India and the United States (ART - SOW Terms).",
+            "condition": "One or more engineers with critical domain knowledge in the proprietary agent framework, identity integration, or data architecture may become unavailable during the project due to attrition, reallocation, or extended absence, without adequate knowledge transfer having occurred.",
+            "consequence": "Loss of a key engineer mid-delivery could leave the team without the expertise needed to progress agent development, resolve integration issues, or maintain architectural consistency, requiring a ramp-up period for a replacement that compresses the remaining delivery window."
+          },
+          "category": "Knowledge Continuity",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Identify backup resources for AAVA framework, RBAC integration, and data architecture roles, and conduct knowledge transfer sessions bi-weekly throughout delivery.",
+          "contingencyCorrectiveAction": "Upon key engineer departure, engage backup resource immediately, conduct accelerated knowledge transfer using documented artifacts, and rebaseline sprint capacity to account for ramp-up period.",
+          "owner": "TBD - confirm with PM (Delivery Manager)",
+          "targetDate": "30-Apr-2026",
+          "status": "Open",
+          "reasoning": "The engagement relies on specialized skills in a proprietary agent framework and complex multi-system integration, creating concentration risk; a similar-project pattern shows knowledge transfer gaps following resource departure are a high-severity recurring risk in engagements with proprietary tooling, and the remote delivery model makes informal knowledge sharing less reliable."
+        },
+        {
+          "sNo": 12,
+          "riskId": "R - 012",
+          "subjectArea": "Client SME Availability",
+          "riskDescription": {
+            "context": "The SOW assumes that the client's stakeholders will be reasonably available for clarifications and governance meetings, and that subject matter experts will be accessible for requirements gathering during Discovery (ART - SOW Terms). The client is accountable for sharing business requirements and changes and facilitating understanding throughout the engagement (ART - SOW Terms).",
+            "condition": "Client subject matter experts may not be consistently available for requirements sessions, design reviews, or clarification requests during Discovery and development sprints, causing the team to proceed on assumptions or wait for inputs.",
+            "consequence": "Requirements gaps or misunderstood business rules could be embedded in the design and development artifacts, leading to rework when the client reviews sprint demos or deliverables, and reducing the quality and completeness of the book-of-business and producer hierarchy features."
+          },
+          "category": "Customer/Stakeholder",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Secure SME availability commitment for Discovery and sprint review sessions during project kickoff, and document business rules and clarifications in BRD.",
+          "contingencyCorrectiveAction": "Should SME become unavailable for clarification, escalate to client program manager, document assumptions in sprint backlog, and validate assumptions in next available review session.",
+          "owner": "TBD - confirm with PM (Project Manager)",
+          "targetDate": "15-Apr-2026",
+          "status": "Open",
+          "reasoning": "SME availability is an assumption with no confirmed schedule or named contacts in the artifacts, and the portal covers multiple lines of business each requiring domain expertise; a similar-project pattern shows reactive demand management and limited client availability during requirements phases are recurring causes of rework and scope instability."
+        },
+        {
+          "sNo": 13,
+          "riskId": "R - 013",
+          "subjectArea": "Offshore Team Infrastructure Access",
+          "riskDescription": {
+            "context": "The SOW assumes that network connectivity and remote access tooling will be provided for necessary team members, and that the offshore team will work from remote locations in India (ART - SOW Terms). The engagement involves a distributed team with onshore resources in the United States and offshore resources in India collaborating on a shared delivery (ART - SOW Terms).",
+            "condition": "Remote access infrastructure provided by the client may experience recurring disruptions or performance degradation, leaving offshore team members unable to access development environments, code repositories, or collaboration tools during their working hours.",
+            "consequence": "Recurring access disruptions would reduce productive development hours for the offshore team, compress sprint capacity, and create coordination gaps between onshore and offshore members, particularly during integration and testing phases that require continuous environment access."
+          },
+          "category": "Environment/Infrastructure",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Monitor VDI connectivity incidents weekly, log disruptions with client IT, and offset productivity loss via extended offshore hours when feasible.",
+          "contingencyCorrectiveAction": "When VDI disruption exceeds five hours in a sprint, reassign affected team members to offline tasks, escalate to client IT for resolution, and adjust sprint velocity accordingly.",
+          "owner": "TBD - confirm with PM (Delivery Manager)",
+          "targetDate": "15-Apr-2026",
+          "status": "Open",
+          "reasoning": "Remote access provision is a client-side assumption with no confirmed readiness, and the offshore team's productivity is entirely dependent on stable connectivity to client-managed infrastructure; a similar-project pattern shows recurring VDI and remote access disruptions are a well-known risk in offshore delivery models for this client environment, and the impact is medium as workarounds are typically available but consume time."
+        },
+        {
+          "sNo": 14,
+          "riskId": "R - 014",
+          "subjectArea": "Resource Onboarding and Ramp-Up",
+          "riskDescription": {
+            "context": "The portal requires a team with skills spanning AI agent development, cloud-native backend, frontend, identity integration, and multi-LOB data architecture (ART - SOW Terms). The engagement is in its early stages with a fixed contract term ending August 31, 2026, and the team must be fully productive during the Discovery and Architecture phases to meet the downstream development schedule (ART - SOW Terms).",
+            "condition": "New team members may require extended ramp-up time to become productive on the proprietary agent framework, the client's enterprise standards, and the multi-LOB domain, particularly if client-side access provisioning or security clearances are delayed.",
+            "consequence": "Reduced team productivity during the early phases could compress the time available for Discovery and Architecture deliverables, increasing the risk of incomplete requirements or unvalidated architecture decisions being carried into development sprints."
+          },
+          "category": "Resource/Talent",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Prepare onboarding collateral for AAVA framework and client enterprise standards, and assign alternative tasks to new members until access is provisioned.",
+          "contingencyCorrectiveAction": "Should onboarding delay exceed two weeks, leverage existing team members to cover Discovery deliverables, and adjust sprint planning to account for reduced capacity.",
+          "owner": "TBD - confirm with PM (Delivery Manager)",
+          "targetDate": "15-Apr-2026",
+          "status": "Open",
+          "reasoning": "The combination of a proprietary agent framework, complex multi-LOB domain, and client-side access dependencies creates a longer-than-typical ramp-up curve; a similar-project pattern shows onboarding delays during critical early phases are a recurring risk, and the fixed contract term means any productivity loss in Discovery directly reduces the buffer available for development."
+        },
+        {
+          "sNo": 15,
+          "riskId": "R - 015",
+          "subjectArea": "Software License Procurement",
+          "riskDescription": {
+            "context": "The SOW assumes that all necessary software licenses including AI models, databases, and tools will be procured by the client before development begins (ART - SOW Terms). The technology stack includes several licensed components such as the identity platform, monitoring tools, test management tools, and cloud services (ART - SOW Terms).",
+            "condition": "The client may not procure all required software licenses before the development phase begins, or procurement processes may be delayed by internal approval cycles, leaving the team without access to licensed tools needed for development, testing, or monitoring.",
+            "consequence": "Development or testing activities dependent on unlicensed tools could be blocked or forced to use workarounds, introducing inconsistencies in the toolchain and potentially requiring rework when the correct licensed tools become available."
+          },
+          "category": "Dependency",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate license procurement status for OKTA, Application Insights, Dynatrace, and test tools during Architecture phase, and escalate delays to client program manager.",
+          "contingencyCorrectiveAction": "Upon license unavailability at development start, utilize shared project licenses or open-source alternatives temporarily, and reprioritize tasks not dependent on blocked tools.",
+          "owner": "TBD - confirm with PM (Tech Lead)",
+          "targetDate": "15-May-2026",
+          "status": "Open",
+          "reasoning": "License procurement is a client-side assumption with no confirmed status in the artifacts, and the technology stack spans multiple licensed platforms; a similar-project pattern shows tool access delays due to licensing and approval processes are a recurring risk in enterprise engagements, though the impact is medium as individual tool gaps can often be worked around temporarily."
+        },
+        {
+          "sNo": 16,
+          "riskId": "R - 016",
+          "subjectArea": "Governance and Escalation Process",
+          "riskDescription": {
+            "context": "The SOW defines a governance structure including quarterly business reviews, monthly program progress reviews, and sprint review and demo meetings, with the client accountable for sprint ceremonies and process management (ART - SOW Terms). The change management process requires both parties to invoke change control procedures and obtain authorization sign-off before work on a change may begin (ART - SOW Terms).",
+            "condition": "The client may not consistently participate in governance ceremonies or may delay authorization sign-offs on change control forms, leaving scope changes and issues without formal resolution or documented decisions.",
+            "consequence": "Unresolved governance gaps could allow informal scope additions to accumulate without change control, create ambiguity about delivery priorities across the multiple lines of business, and reduce the team's ability to escalate blockers through an agreed channel, increasing the risk of misaligned expectations at milestone reviews."
+          },
+          "category": "Governance/Process",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Maintain change control log and issue tracking register, and review governance participation and authorization status in monthly program progress reviews.",
+          "contingencyCorrectiveAction": "When governance participation or authorization delay exceeds one week, escalate to quarterly business review, document impact on milestone deliverables, and defer affected work until authorization is obtained.",
+          "owner": "TBD - confirm with PM (Project Manager)",
+          "targetDate": "15-Apr-2026",
+          "status": "Open",
+          "reasoning": "The governance model depends on consistent client participation and timely authorization, neither of which is confirmed; a similar-project pattern shows that governance gaps in hybrid-methodology engagements frequently allow informal scope changes to accumulate, and the multi-LOB scope of the portal increases the number of stakeholders whose alignment must be maintained."
+        },
+        {
+          "sNo": 17,
+          "riskId": "R - 017",
+          "subjectArea": "Hypercare Handover Readiness",
+          "riskDescription": {
+            "context": "The SOW includes a four-week hypercare period with dedicated post-go-live support, active monitoring, and incident resolution, followed by a formal knowledge transfer and handover with user manuals and sign-off (ART - SOW Terms). Maintenance and support beyond the stabilization period is explicitly out of scope (ART - SOW Terms).",
+            "condition": "The client's operational team may not be adequately prepared to take over support responsibilities at the end of hypercare, either because knowledge transfer sessions were not completed, user documentation was not finalized, or the client has not designated operational owners for the portal.",
+            "consequence": "An unprepared handover could leave the portal without adequate operational support after the engagement closes, increasing the risk of unresolved incidents, configuration errors, and user support gaps that damage the client's confidence in the solution and create pressure for continued engagement without contractual coverage."
+          },
+          "category": "Operational/Support",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct knowledge transfer sessions with client operational team during hypercare, and validate user manual completeness and operational owner designation before handover sign-off.",
+          "contingencyCorrectiveAction": "Should client operational readiness be insufficient at hypercare end, extend knowledge transfer sessions for two weeks, document outstanding handover items, and escalate to client program manager.",
+          "owner": "TBD - confirm with PM (Project Manager)",
+          "targetDate": "15-Aug-2026",
+          "status": "Open",
+          "reasoning": "The hypercare and handover deliverables depend on client-side operational readiness that is not confirmed in the artifacts, and the tight contract term leaves limited time for iterative knowledge transfer; a similar-project pattern shows knowledge transfer gaps at handover are a recurring risk when the client has not designated operational owners early in the engagement."
+        },
+        {
+          "sNo": 18,
+          "riskId": "R - 018",
+          "subjectArea": "Accessibility and Non-Functional Requirements",
+          "riskDescription": {
+            "context": "The SOW includes accessibility testing to WCAG 2.2 AA compliance and non-functional requirements validation as in-scope deliverables, with NFRs to be validated during Discovery and documented as part of the project plan and acceptance criteria (ART - SOW Terms). The SOW also states that deliverables and acceptance criteria may be re-defined during Discovery as mutually agreed (ART - SOW Terms).",
+            "condition": "Non-functional requirements including accessibility standards, performance benchmarks, and security testing scope may not be fully defined and agreed during Discovery, leaving the team to develop against incomplete or provisional NFR specifications that are later revised by the client.",
+            "consequence": "Late changes to NFR specifications could require rework of frontend components, performance test scripts, or security test scope, adding unplanned effort in the testing phase and potentially delaying the sign-off on functional and non-functional testing deliverables."
+          },
+          "category": "Scope/Change Control",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Define and document NFR specifications including WCAG 2.2 AA, performance benchmarks, and security testing scope during Discovery with client sign-off.",
+          "contingencyCorrectiveAction": "Upon NFR specification change after Development start, assess impact on completed sprints, implement required rework in dedicated testing sprint, and defer non-critical NFR validation to post-go-live.",
+          "owner": "TBD - confirm with PM (QE Lead)",
+          "targetDate": "30-Apr-2026",
+          "status": "Open",
+          "reasoning": "NFR finalization is deferred to Discovery with no confirmed baseline, and the SOW allows acceptance criteria to be re-defined during that phase; a similar-project pattern shows that undefined or late-changing NFRs in portal engagements frequently cause rework in testing phases, and accessibility compliance adds a regulatory dimension that increases the consequence of late discovery."
+        },
+        {
+          "sNo": 19,
+          "riskId": "R - 019",
+          "subjectArea": "Producer Hierarchy and RBAC Complexity",
+          "riskDescription": {
+            "context": "The portal must support multiple levels of the producer hierarchy with role-based access control governing data visibility and functionality across individual, small group, large group, and Medicare supplement lines of business (ART - SOW Terms). The RBAC matrix and access and role matrix are Discovery deliverables, and the design must be approved by architecture and security stakeholders (ART - SOW Terms).",
+            "condition": "The producer hierarchy and RBAC model may prove more complex than anticipated during Discovery, with edge cases, regulatory constraints, or legacy data structures that require additional design iterations and client sign-off cycles before the model can be finalized.",
+            "consequence": "A delayed or revised RBAC model would cascade into the authentication and authorization design, database schema, and API layer, requiring rework across multiple components and reducing the time available for development and testing of the book-of-business features."
+          },
+          "category": "Technical/Architecture",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct RBAC complexity assessment workshop with client security and LOB stakeholders during Discovery to identify edge cases and regulatory constraints before design.",
+          "contingencyCorrectiveAction": "Should RBAC model require revision after Design sign-off, implement changes in dedicated sprint, rebaseline authentication and database schema work, and defer non-critical RBAC features.",
+          "owner": "TBD - confirm with PM (Solution Architect)",
+          "targetDate": "30-Apr-2026",
+          "status": "Open",
+          "reasoning": "The multi-LOB, multi-role producer hierarchy is a core architectural concern with regulatory implications, and its complexity will only be fully understood during Discovery; a similar-project pattern shows that RBAC and access control models in regulated healthcare portals frequently require more design iterations than planned, and the dependency on client architect approval adds a further delay risk."
+        },
+        {
+          "sNo": 20,
+          "riskId": "R - 020",
+          "subjectArea": "Communication and Stakeholder Alignment",
+          "riskDescription": {
+            "context": "The portal serves multiple lines of business with different stakeholder groups, and the SOW requires the client to designate a Product Owner or Business Lead for decision-making authority (ART - SOW Terms). The engagement involves distributed teams across India and the United States with standard working hours defined for each geography (ART - SOW Terms).",
+            "condition": "The client may not designate a single empowered Product Owner, or the designated owner may not have sufficient authority to make decisions across all lines of business, leading to requirements and prioritization decisions being escalated to multiple stakeholders with differing views.",
+            "consequence": "Conflicting stakeholder inputs could create backlog instability, delay sprint planning, and result in features being built to one stakeholder's interpretation that are later rejected by another, increasing rework and reducing the team's confidence in the requirements baseline."
+          },
+          "category": "Communication",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Secure Product Owner designation and decision-making authority confirmation from client during project kickoff, and document stakeholder alignment in BRD.",
+          "contingencyCorrectiveAction": "When conflicting stakeholder input delays sprint planning, escalate to monthly program progress review, document decision in backlog, and defer affected features until alignment is achieved.",
+          "owner": "TBD - confirm with PM (Project Manager)",
+          "targetDate": "15-Apr-2026",
+          "status": "Open",
+          "reasoning": "The multi-LOB scope creates inherent stakeholder complexity, and the assumption that a single empowered Product Owner will be designated has not been confirmed; a similar-project pattern shows that unclear decision-making authority in multi-stakeholder portal engagements is a recurring cause of backlog instability and sprint disruption."
+        },
+        {
+          "sNo": 21,
+          "riskId": "R - 021",
+          "subjectArea": "Existing Automation Framework Reusability",
+          "riskDescription": {
+            "context": "The SOW assumes that existing automation frameworks, if any, are reusable with minimal customization, and that if they are not, a new framework may be proposed by the delivery team (ART - SOW Terms). The technology stack includes several testing tools for unit, API, functional, performance, and security testing (ART - SOW Terms).",
+            "condition": "The client's existing automation frameworks may not be compatible with the chosen technology stack or may require significant customization, necessitating the design and build of a new test automation framework during the development phase.",
+            "consequence": "Building a new automation framework mid-delivery would consume engineering capacity that was planned for feature development, reducing sprint throughput and potentially leaving performance, security, or regression testing under-automated for the go-live validation."
+          },
+          "category": "Technical/Architecture",
+          "probability": "Possible",
+          "impact": "Low",
+          "rag": "Green",
+          "mitigationPreventiveAction": "Assess existing automation framework compatibility with React.js and .NET Core stack during Architecture phase, and propose new framework if required.",
+          "contingencyCorrectiveAction": "Should new automation framework be required, allocate dedicated sprint for framework setup, prioritize critical test automation, and defer non-critical regression automation to post-go-live.",
+          "owner": "TBD - confirm with PM (QE Lead)",
+          "targetDate": "15-May-2026",
+          "status": "Open",
+          "reasoning": "The assumption of framework reusability is conditional and unvalidated, and the technology stack includes several new components that may not align with legacy automation tooling; the impact is low because the SOW explicitly anticipates this scenario and allows for a new framework to be proposed, providing a defined fallback path."
+        },
+        {
+          "sNo": 22,
+          "riskId": "R - 022",
+          "subjectArea": "PI Planning Cadence Alignment",
+          "riskDescription": {
+            "context": "The SOW states that the delivery team shall follow the client's PI planning schedules, cadence, and ceremonies (ART - SOW Terms). The project uses a hybrid methodology with Agile sprints of two weeks aligned to the client's sprint calendar (ART - SOW Terms).",
+            "condition": "The client's PI planning schedule may introduce ceremony overhead, freeze periods, or sprint boundary constraints that conflict with the delivery team's internal planning, particularly during the transition from the Waterfall Discovery and Architecture phases into iterative development.",
+            "consequence": "Misalignment between the client's PI cadence and the delivery team's sprint planning could reduce effective development time per sprint, create gaps in backlog readiness at PI boundaries, and complicate capacity planning for the offshore team operating in a different time zone."
+          },
+          "category": "Governance/Process",
+          "probability": "Possible",
+          "impact": "Low",
+          "rag": "Green",
+          "mitigationPreventiveAction": "Align delivery team sprint calendar with client PI planning schedule during project kickoff, and document ceremony participation expectations for onshore and offshore teams.",
+          "contingencyCorrectiveAction": "Should PI planning ceremony overhead reduce sprint capacity, adjust sprint velocity baseline, communicate capacity impact to client, and defer non-critical backlog items to subsequent PI.",
+          "owner": "TBD - confirm with PM (Project Manager)",
+          "targetDate": "15-Apr-2026",
+          "status": "Open",
+          "reasoning": "The obligation to follow the client's PI cadence is contractual but the specific schedule and its constraints are not detailed in the artifacts; the impact is low because PI planning alignment is a manageable coordination challenge, though it could compound with other delivery pressures if the transition from Waterfall to Agile phases is not carefully managed."
+        }
+      ]
+    }
+  ]
+}
