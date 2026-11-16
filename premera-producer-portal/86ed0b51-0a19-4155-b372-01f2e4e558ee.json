@@ -1,0 +1,340 @@
+{
+  "clientName": "",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "ART"
+      ],
+      "sourcesNotAvailable": [
+        "ALT"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Scope Governance",
+          "riskDescription": {
+            "context": "The project has already absorbed approximately fourteen scope changes equivalent to nearly a full sprint of additional effort, and the mitigation plan for this open risk remains assessed but not yet finalized (EMS - Risk). The change management process defined in the contract requires a formal request, impact assessment, and work assignment amendment for any material scope change post-discovery (ART - SOW Terms), yet no evidence of formal change requests being raised for the absorbed changes is documented.",
+            "condition": "Further scope additions may continue to be absorbed informally without invoking the contractual change control process, leaving the team to carry unplanned work without an agreed amendment to the work assignment.",
+            "consequence": "The cumulative unplanned effort could exhaust remaining sprint capacity before the testing and deployment phases are reached, and the absence of formal change records could lead to disputed obligations regarding what is covered under the current contract."
+          },
+          "category": "Scope/Change Control",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish formal change request procedures with impact assessment and client approval before accepting any new scope additions beyond the current baseline.",
+          "contingencyCorrectiveAction": "Upon discovery of uncontrolled scope absorption, immediately rebaseline impacted deliverables with the client, prioritize critical-path work, and escalate to program governance within 48 hours.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "15-Sep-2026",
+          "status": "Open",
+          "reasoning": "An open risk with assessed-but-unfinalized mitigation and fourteen already-absorbed changes corroborates a pattern of informal scope absorption; a similar-project pattern shows mid-cycle additions without change control are a recurring cause of delivery and contractual disputes. Impact is high because uncontrolled scope directly threatens delivery capability and contract coverage simultaneously."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Client Deliverable Approvals",
+          "riskDescription": {
+            "context": "The contract requires the client to review and accept or formally reject each deliverable within fifteen business days, with deemed acceptance applying if no written rejection is received (ART - SOW Terms). Phase gate sign-offs are a stated client dependency for proceeding to the next phase (ART - SOW Terms), and the project is currently in Build and SIT with testing, deployment, and hypercare phases still ahead (EMS - RAG).",
+            "condition": "The client may delay formal review or sign-off on one or more upcoming deliverables — including test strategy documents, UAT sign-off, or go-live approval — beyond the agreed review window, or may return deliverables with significant change requests close to a phase transition.",
+            "consequence": "A delayed or contested sign-off would stall the team's ability to proceed to the next phase, compress the remaining schedule, and could trigger disputes about whether the deemed-acceptance clause applies, straining the client relationship."
+          },
+          "category": "Customer/Stakeholder",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Submit deliverables with advance notice, secure documented client approval on acceptance criteria at each phase gate, and track review timelines weekly in governance meetings.",
+          "contingencyCorrectiveAction": "If client approval exceeds fifteen business days, invoke deemed-acceptance clause in writing, escalate to client program manager, and adjust downstream phase timelines by up to two weeks.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "20-Sep-2026",
+          "status": "Open",
+          "reasoning": "Client approval is a named dependency with no confirmed status for upcoming phases, and the project is entering the most approval-intensive stretch of delivery; a similar-project pattern shows client sign-off delays are a recurring cause of phase stalls in hybrid waterfall-agile engagements. Impact is high because a blocked phase gate halts the entire delivery stream."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Work Assignment Coverage",
+          "riskDescription": {
+            "context": "The work assignment term runs through the end of August 2026, while the project's SOW period extends to the end of November 2026 and the project end date is December 2026 (EMS - RAG, ART - SOW Terms). As of the report date the project is still in Build and SIT, with testing, deployment, and a four-week hypercare stabilization period remaining (EMS - RAG, ART - SOW Terms). No evidence of a renewed or extended work assignment covering the period beyond August 2026 is present in the available artifacts.",
+            "condition": "The team may continue delivering development, testing, deployment, and hypercare activities beyond the work assignment term without a formally executed contract amendment or renewal covering that period.",
+            "consequence": "Work performed without valid contractual coverage could result in disputed payment obligations, unresolved liability for defects found during stabilization, and the client having no formal recourse mechanism for the post-term period."
+          },
+          "category": "Contractual",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Initiate work assignment renewal negotiations immediately, secure bridge contract or amendment covering September through December 2026 before August 31, and align commercial terms with remaining scope.",
+          "contingencyCorrectiveAction": "If renewal is not executed by August 15, halt non-critical work after August 31, escalate to executive sponsors, and negotiate emergency amendment within five business days to resume delivery.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "15-Aug-2026",
+          "status": "Open",
+          "reasoning": "The work assignment term has already passed the report date and multiple delivery phases remain; a similar-project pattern shows that phase-transition SOW gaps are a recognized risk when Phase 2 coverage is not executed before Phase 1 expires. Impact is high because uncontracted delivery creates legal and relationship exposure across the remaining project."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Proprietary Framework Dependency",
+          "riskDescription": {
+            "context": "The delivery uses a proprietary agent framework under a term-based license that expires at the end of August 2026, the same date as the work assignment term (ART - SOW Terms). The contract states the framework is not required for deliverables to function after the term ends, but the portal's agent architecture, orchestration layer, and autonomous agent components are built using this framework (ART - SOW Terms).",
+            "condition": "If the framework license is not renewed or the deliverables are not fully decoupled from the framework before the license expires, the team may lose access to the tooling needed to complete, debug, or modify agent-based components during the remaining testing and deployment phases.",
+            "consequence": "Loss of access to the framework mid-delivery could block completion of agent integration and orchestration work, force unplanned rearchitecting, and delay the testing and deployment phases."
+          },
+          "category": "Product/Platform Limitation",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Validate agent components function independently of the framework by August 15, secure framework license extension through November 2026, or implement abstraction layer to decouple dependencies immediately.",
+          "contingencyCorrectiveAction": "If framework access is lost, immediately switch to open-source agent alternatives, engage senior architects to reimplement critical orchestration logic, and extend testing phase by three weeks.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "10-Aug-2026",
+          "status": "Open",
+          "reasoning": "The license expiry coincides with the work assignment term end while significant delivery phases remain; a similar-project pattern shows term-based proprietary tool dependencies become acute when the license window closes before delivery is complete. Impact is high because the framework underpins core portal functionality that cannot be easily substituted mid-cycle."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Key Person Continuity",
+          "riskDescription": {
+            "context": "The engineering manager is the sole named owner across all project risks, the only identified leadership role in the EMS record, and carries full delivery accountability (EMS - Risk). No delivery manager, QA manager, or secondary technical lead is documented, and resource counts for the team are not available (EMS - RAG). The project is in an active build and integration stage with testing, deployment, and hypercare phases still ahead.",
+            "condition": "If the engineering manager becomes unavailable — through unplanned absence, departure, or competing engagement demands — there is no documented backup or secondary owner to maintain delivery governance, client communication, and technical decision-making.",
+            "consequence": "Delivery continuity would be disrupted across all workstreams simultaneously, client-facing governance meetings and approvals would stall, and accumulated project knowledge held by a single individual would not be accessible to the remaining team."
+          },
+          "category": "Resource/Talent",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Designate a backup technical lead with full project context by September 10, cross-train on governance processes, and establish weekly knowledge-sharing sessions with senior engineers.",
+          "contingencyCorrectiveAction": "Upon unplanned absence exceeding three days, assign practice delivery manager as interim owner, escalate to client within 24 hours, and engage senior architect for technical decisions.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "10-Sep-2026",
+          "status": "Open",
+          "reasoning": "Single-owner concentration is confirmed across all three EMS risks and the project record with no secondary lead documented; a similar-project pattern identifies single-resource delivery ownership as a recurring high-severity risk. Likelihood is Possible rather than higher because no departure signal exists, but the absence of any backup makes impact high."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "UAT Readiness",
+          "riskDescription": {
+            "context": "The contract requires the client to nominate UAT stakeholders and ensure their reasonable availability per the agreed timeline, and UAT execution availability is a stated client dependency (ART - SOW Terms). No UAT team nomination or confirmation is documented in the available artifacts, and the project is currently in Build and SIT with the UAT phase still ahead (EMS - RAG).",
+            "condition": "The client may not nominate a dedicated UAT team in time, or nominated stakeholders may not adhere to the agreed UAT execution schedule, leaving the team unable to obtain the business validation needed for the go-live sign-off milestone.",
+            "consequence": "Insufficient or delayed UAT participation would compress the testing window, increase the risk of undetected business-logic defects reaching production, and block the go-live milestone payment trigger."
+          },
+          "category": "Customer/Stakeholder",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Request UAT tester nominations by September 20, share tester profiles with the client for confirmation, and secure dedicated UAT time slots in advance.",
+          "contingencyCorrectiveAction": "If UAT team is not confirmed by October 1, escalate to client program manager, propose phased UAT with available stakeholders, and extend UAT window by two weeks.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "20-Sep-2026",
+          "status": "Open",
+          "reasoning": "UAT nomination is an unconfirmed client dependency with no evidence of progress; a similar-project pattern shows client UAT teams frequently miss agreed timelines or are not formally assigned, causing go-live delays. Impact is high because UAT sign-off gates both production deployment and a major milestone payment."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Performance and NFR Validation",
+          "riskDescription": {
+            "context": "The resolved risk noted that performance and non-functional requirement issues would only become visible after live Data Hub API integration (EMS - Risk). Integration with the live APIs has since been resolved, meaning the project is now entering the stage where NFR issues can first be observed. Performance, load, and security testing are all in-scope activities planned for the testing phase (ART - SOW Terms).",
+            "condition": "Performance or non-functional defects discovered during system integration testing or the formal testing phase may require significant rework of backend services, API call patterns, or infrastructure configuration that was not anticipated during development.",
+            "consequence": "Late-stage NFR failures could compress the testing phase, require unplanned infrastructure scaling or code changes, and push the deployment window beyond the planned schedule, affecting the client's readiness for go-live."
+          },
+          "category": "Technical/Architecture",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct performance baseline testing on critical flows by September 25, validate NFR acceptance criteria with the client, and schedule senior developer reviews for high-risk components.",
+          "contingencyCorrectiveAction": "Upon discovering NFR failures, prioritize critical-path remediation, engage infrastructure team for scaling adjustments, and extend testing phase by up to two weeks if rework exceeds three days.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "25-Sep-2026",
+          "status": "Open",
+          "reasoning": "The resolved risk explicitly flagged that NFR issues would only surface post-integration, and the project has now reached that stage; a similar-project pattern shows late NFR discovery in portal applications frequently requires rework that was not scoped. Impact is high because NFR failures can affect the entire portal's production readiness."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Environment and Access Provisioning",
+          "riskDescription": {
+            "context": "Provision of development, staging, and production environments is a stated client dependency, and security clearances and access permissions for the development team are also client-owned (ART - SOW Terms). The assumption that cloud infrastructure and environments will be provided before development starts has not been confirmed as fulfilled in the available artifacts (ART - SOW Terms). The project is in Build and SIT, meaning staging and production environments are needed imminently for testing and deployment.",
+            "condition": "The client may delay provisioning the staging or production environment, or security clearance approvals for team members may not be granted in time for the testing and deployment phases.",
+            "consequence": "Without access to the required environments, integration testing, performance testing, security scanning, and deployment rehearsals cannot proceed, compressing the remaining delivery window and potentially blocking the go-live milestone."
+          },
+          "category": "Environment/Infrastructure",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Submit environment provisioning requests for staging and production by September 10, conduct weekly follow-ups with infrastructure teams, and secure temporary sandbox access if delays occur.",
+          "contingencyCorrectiveAction": "If staging environment is not available by October 1, execute limited testing in development environment, escalate to client NOC team, and adjust deployment schedule by two weeks.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "10-Sep-2026",
+          "status": "Open",
+          "reasoning": "Environment provisioning and security clearances are unconfirmed client dependencies at a stage where they are immediately needed; a similar-project pattern shows client-managed environment delays are a recurring blocker during SIT and deployment phases. Impact is high because environment unavailability blocks multiple parallel workstreams."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Identity and Access Integration",
+          "riskDescription": {
+            "context": "The portal's authentication and authorization layer depends on an external identity provider for single sign-on and role-based access control, which is listed as a third-party dependency with assumed-active status and no confirmed delivery date (ART - SOW Terms). The portal serves multiple lines of business with distinct user roles and hierarchy levels, making the identity integration foundational to the entire access model (ART - SOW Terms).",
+            "condition": "The external identity provider integration may encounter configuration issues, delayed credential provisioning, or compatibility gaps with the portal's role-based access control model during SIT or the testing phase.",
+            "consequence": "Authentication failures or misconfigured role assignments discovered late in testing would require rework of the access control layer, delay security testing sign-off, and could expose the portal to unauthorized access if deployed before the issue is fully resolved."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct SSO proof-of-concept with OKTA by September 15, validate role-based access control mappings with the client, and engage SSO specialist if configuration issues arise.",
+          "contingencyCorrectiveAction": "If SSO integration fails, implement temporary basic authentication for UAT, hire SSO expert to resolve issues within one week, and defer full SSO to post-go-live patch.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "15-Sep-2026",
+          "status": "Open",
+          "reasoning": "The identity provider integration is an unconfirmed third-party dependency foundational to the portal's multi-role access model; a similar-project pattern shows SSO and access management integrations frequently surface configuration issues during SIT. Impact is high because authentication failures affect all user roles and lines of business simultaneously."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Knowledge Continuity",
+          "riskDescription": {
+            "context": "Resource counts for the team are not available in the project record, and the team composition is opaque beyond the single named engineering manager (EMS - RAG). The project is in an active build stage with complex integrations, a proprietary agent framework, and multiple technology components including containerized deployment, event-driven messaging, and a multi-LOB data model (ART - SOW Terms). No knowledge transfer or documentation plan is referenced in the available artifacts.",
+            "condition": "If one or more engineers with deep knowledge of specific components — such as the agent orchestration layer, the identity integration, or the data model — leave the project before the testing and deployment phases, that knowledge may not be documented or transferred to remaining team members.",
+            "consequence": "Knowledge gaps in critical components could slow defect resolution during SIT, increase the risk of misconfiguration during deployment, and leave the hypercare team unable to diagnose production issues effectively."
+          },
+          "category": "Knowledge Continuity",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Document critical component architecture and integration patterns by September 20, conduct bi-weekly knowledge-sharing sessions, and maintain updated knowledge repository accessible to all team members.",
+          "contingencyCorrectiveAction": "Upon key engineer departure, assign backup resource with three-day overlap for knowledge transfer, engage practice team for technical reviews, and extend testing window by one week if needed.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "20-Sep-2026",
+          "status": "Open",
+          "reasoning": "The team composition is unknown and no knowledge transfer plan is documented at a stage where component-level expertise is concentrated in individual engineers; a similar-project pattern shows knowledge gaps become acute during testing and stabilization when original developers are no longer available. Impact is medium because the effect is recoverable with effort but would require unplanned rework."
+        },
+        {
+          "sNo": 11,
+          "riskId": "R - 011",
+          "subjectArea": "SME and Stakeholder Availability",
+          "riskDescription": {
+            "context": "Reasonable access to client subject matter experts for requirements gathering and clarification is a stated assumption and client dependency (ART - SOW Terms). Stakeholder availability for governance meetings is also assumed but not confirmed (ART - SOW Terms). No client review or governance feedback records are available in the project data, and the governance query returned an error (EMS - RAG).",
+            "condition": "Client subject matter experts or the designated product owner may become unavailable for clarifications, sprint reviews, or governance meetings during the remaining build and testing phases, particularly around calendar pressure points.",
+            "consequence": "Unresolved requirements ambiguities or delayed decisions would cause the team to proceed on assumptions, increasing the likelihood of rework during testing and UAT, and reducing the quality of acceptance criteria sign-off."
+          },
+          "category": "Customer/Stakeholder",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Confirm SME availability for sprint reviews and governance meetings two weeks in advance, maintain transparent backlog communication, and escalate immediately if clarifications are delayed beyond 48 hours.",
+          "contingencyCorrectiveAction": "If SME becomes unavailable, document assumptions in writing, proceed with available information, and schedule catch-up review within three business days to validate decisions made.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "15-Sep-2026",
+          "status": "Open",
+          "reasoning": "SME availability is an unconfirmed assumption with no governance records to indicate active engagement; a similar-project pattern shows limited SME availability during critical phases is a recurring cause of requirements ambiguity and rework. Impact is medium because the effect is workstream-specific and recoverable with escalation."
+        },
+        {
+          "sNo": 12,
+          "riskId": "R - 012",
+          "subjectArea": "Security and Compliance Validation",
+          "riskDescription": {
+            "context": "Security testing, including static code analysis and security scanning, is in-scope for the testing phase, and WCAG 2.2 AA accessibility compliance is a stated acceptance criterion (ART - SOW Terms). Security policies, compliance requirements, and data governance rules were to be shared during Discovery, but no confirmation that this occurred or that a security governance model was formally accepted is available in the artifacts (ART - SOW Terms).",
+            "condition": "Security scanning or accessibility compliance testing conducted during the testing phase may surface vulnerabilities or non-compliant components that require remediation, particularly if security governance requirements were not fully incorporated during the design and build phases.",
+            "consequence": "Late-stage security or accessibility findings would require unplanned remediation effort, could delay the go-live sign-off, and in a healthcare context may expose the client to regulatory or reputational risk if the portal is deployed with unresolved compliance gaps."
+          },
+          "category": "Security/Compliance",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate security governance model acceptance with the client by September 15, execute JFROG security scans and WCAG accessibility audits on critical flows weekly during build phase.",
+          "contingencyCorrectiveAction": "Upon discovering security vulnerabilities or accessibility gaps, prioritize high-severity findings, allocate dedicated remediation sprint, and defer medium-severity issues to post-go-live patch if needed.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "15-Sep-2026",
+          "status": "Open",
+          "reasoning": "Security governance inputs were assumed to be shared during Discovery but are unconfirmed, and security testing has not yet been executed; a similar-project pattern shows late-stage security scan findings are a recurring issue when compliance requirements are not validated early in the build. Impact is medium because findings are typically remediable but require unplanned effort."
+        },
+        {
+          "sNo": 13,
+          "riskId": "R - 013",
+          "subjectArea": "Test Data Availability",
+          "riskDescription": {
+            "context": "Test data and test environment provision is a stated assumption and client responsibility (ART - SOW Terms). The portal covers multiple lines of business — individual, small group, large group, and a supplemental line — each with distinct data structures for book-of-business, member, group, and commission information (ART - SOW Terms). No confirmation that test data has been prepared or made available is present in the artifacts.",
+            "condition": "The client may not provide representative test data covering all lines of business and user roles in time for the system integration testing and formal testing phases, or the data provided may be incomplete or not reflective of production scenarios.",
+            "consequence": "Insufficient test data would limit the team's ability to validate multi-LOB data rendering, role-based access filtering, and commission calculations, increasing the risk that defects in these areas are not discovered until UAT or production."
+          },
+          "category": "Data Readiness",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Request representative test data for all four lines of business by September 20, prioritize testing critical flows with available partial data, and utilize alternative test environments if needed.",
+          "contingencyCorrectiveAction": "If complete test data is unavailable by October 1, execute limited testing with available data, document coverage gaps in test summary, and schedule supplemental validation during UAT phase.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "20-Sep-2026",
+          "status": "Open",
+          "reasoning": "Test data provision is an unconfirmed client assumption at a stage where SIT is active; a similar-project pattern shows multi-LOB portals frequently encounter test data gaps that delay validation of business-specific scenarios. Impact is medium because the effect is contained to the testing phase and recoverable with client engagement."
+        },
+        {
+          "sNo": 14,
+          "riskId": "R - 014",
+          "subjectArea": "Hypercare and Support Transition",
+          "riskDescription": {
+            "context": "The work assignment includes a four-week post-deployment stabilization period, after which maintenance and support are explicitly out of scope (ART - SOW Terms). The portal integrates multiple third-party systems, a proprietary agent framework, containerized deployment, and event-driven messaging components (ART - SOW Terms). No post-hypercare support plan or handover documentation requirement is referenced in the available artifacts beyond user and admin guides.",
+            "condition": "If the client's internal team or a designated support function is not prepared to take over portal operations at the end of the stabilization period, or if production incidents arise that require knowledge of the agent framework or integration layer beyond what is documented, the team may be drawn into uncontracted support activities.",
+            "consequence": "Continued engagement beyond the stabilization period without contractual coverage would create disputed obligations, and unresolved production issues at handover could damage the client relationship and the project's delivery reputation."
+          },
+          "category": "Operational/Support",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Develop detailed transition plan with knowledge handover sessions by October 15, conduct hypercare training for client support team, and document all integration points and troubleshooting procedures.",
+          "contingencyCorrectiveAction": "If client support team is not ready at hypercare end, negotiate emergency support extension with clear commercial terms, limit scope to critical incidents, and transition within two weeks.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "15-Oct-2026",
+          "status": "Open",
+          "reasoning": "The out-of-scope boundary for post-stabilization support is clearly defined but no handover readiness plan is documented; a similar-project pattern shows complex portal deployments with proprietary components frequently require support beyond the planned stabilization window when client teams are not adequately prepared. Impact is medium because the effect is recoverable through a contract amendment but creates relationship and obligation risk."
+        },
+        {
+          "sNo": 15,
+          "riskId": "R - 015",
+          "subjectArea": "Team Capacity Visibility",
+          "riskDescription": {
+            "context": "Resource counts for the project — onshore, nearshore, and total — are not captured in the project record, and no staffing plan or resource loading information is available in the artifacts (EMS - RAG). The project is in Build and SIT with testing and deployment phases ahead, and the scope has already expanded by approximately a sprint's worth of effort (EMS - Risk).",
+            "condition": "If the team is operating below the capacity needed to absorb the remaining scope — including the already-absorbed changes — without a documented resource plan, gaps in coverage may not be identified until a workstream falls behind.",
+            "consequence": "Undetected capacity shortfalls could result in testing or deployment activities being under-resourced at a critical phase, reducing the team's ability to respond to defects or integration issues discovered during SIT."
+          },
+          "category": "Resource/Talent",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Document current team capacity and sprint velocity by September 10, align resource allocation with implementation teams on realistic timelines, and identify skill gaps for upcoming testing phase.",
+          "contingencyCorrectiveAction": "If capacity shortfall is detected, re-prioritize backlog to focus on critical-path deliverables, onboard additional resources with one-week ramp-up, and extend phase timeline by up to two weeks.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "10-Sep-2026",
+          "status": "Open",
+          "reasoning": "Resource counts are entirely absent from the project record and no staffing plan is documented despite confirmed scope growth; the absence of visibility into team size is itself a risk signal. Impact is medium because the consequence is workstream-specific and addressable once the gap is surfaced."
+        },
+        {
+          "sNo": 16,
+          "riskId": "R - 016",
+          "subjectArea": "Governance Reporting",
+          "riskDescription": {
+            "context": "The contract defines recurring governance cadences including quarterly business reviews, monthly program progress reviews, and sprint review meetings (ART - SOW Terms). However, no client review records, governance feedback, or overall RAG status are available in the project data, and the governance feedback query returned an error (EMS - RAG). No weekly status report for the Producer Portal project was available among the provided artifacts.",
+            "condition": "If governance reporting is not being produced or shared consistently, the client may lack visibility into delivery progress, open risks, and scope absorption, leading to misaligned expectations as the project approaches testing and deployment.",
+            "consequence": "Misaligned client expectations at a late stage could result in contested acceptance criteria, surprise escalations at go-live, or the client raising concerns about delivery quality that could have been managed earlier through regular reporting."
+          },
+          "category": "Governance/Process",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish weekly status reporting by September 10, conduct monthly program progress reviews with client stakeholders, and track SLA metrics and delivery milestones consistently in all reports.",
+          "contingencyCorrectiveAction": "If governance gaps are identified, schedule immediate catch-up review with client program manager, document all open risks and scope changes retroactively, and establish bi-weekly governance cadence going forward.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "10-Sep-2026",
+          "status": "Open",
+          "reasoning": "The complete absence of governance records and RAG data in the project system, combined with no status report for this engagement, suggests reporting cadence may not be fully established; a similar-project pattern shows governance gaps in hybrid delivery models lead to late-stage expectation mismatches. Impact is medium because the consequence is relationship and process-level rather than immediate delivery-blocking."
+        }
+      ]
+    }
+  ]
+}
