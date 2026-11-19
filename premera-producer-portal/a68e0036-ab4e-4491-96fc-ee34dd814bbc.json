@@ -1,0 +1,360 @@
+{
+  "clientName": "",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Producer Portal Development - Phase 1",
+      "projectStatus": "WATCHLIST",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "ART"
+      ],
+      "sourcesNotAvailable": [
+        "EMS",
+        "ALT"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Mass User Onboarding",
+          "riskDescription": {
+            "context": "Producer Portal deployed to Production with successful validation of 11 users end-to-end as of October 22, 2026. Premera is planning to send registration emails to 2,500+ producers on October 22 using a big-bang rollout approach (ALT - Watchlist Report).",
+            "condition": "Big-bang rollout to 2,500+ producers on October 22 represents a 227x scale increase with no documented load testing at that scale.",
+            "consequence": "Rollout failure requiring rollback and remediation, delaying producer access and damaging client confidence in the solution's production readiness."
+          },
+          "category": "Delivery Practices",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Implement phased rollout with 10% cohorts weekly, validate performance thresholds after each wave before proceeding.",
+          "contingencyCorrectiveAction": "Upon registration failure rate exceeding 5%, halt rollout immediately, activate backup manual registration process, and escalate to project board within 2 hours.",
+          "owner": "TBD - confirm with PM (Engineering Manager)",
+          "targetDate": "22-Oct-2026",
+          "status": "Open",
+          "reasoning": "The ALT deck explicitly identifies this as a risk. Testing was performed with only 11 users, and the jump to 2,500+ represents a 227x scale increase with no evidence of load or volume testing at that scale. The big-bang approach leaves no room for phased learning."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Third-Party Integration",
+          "riskDescription": {
+            "context": "Data Hub integration completed week of July 22, 2026, only approximately 6 weeks before the planned mass rollout. No performance testing results are documented in the July 22 WSR (ART - WSR).",
+            "condition": "DH, Auth0, or Edge systems experience latency, throttling, or failure under the load of 2,500+ concurrent or near-concurrent registration and login requests.",
+            "consequence": "Portal becomes unresponsive, stalling producer onboarding and requiring multi-vendor troubleshooting and potential rollout pause or rollback."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct load testing with 3,000-user simulation across DH, Auth0, and Edge, validate response times under 2 seconds.",
+          "contingencyCorrectiveAction": "Activate throttling controls at portal layer to queue requests, communicate delay to users via email, and engage DH support.",
+          "owner": "TBD - confirm with PM (Engineering Manager)",
+          "targetDate": "15-Oct-2026",
+          "status": "Open",
+          "reasoning": "Integration was completed recently with limited time for stabilization. Performance testing acceptance criteria are defined in the Work Assignment but no results are shown in the July WSR. The scale jump and dependency on external systems (DH, Auth0, Edge) create plausible load-related failure modes."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Data Readiness",
+          "riskDescription": {
+            "context": "Team working with Edge and DH to create test data as of July 22, 2026. A decision log entry from June 25, 2026 notes that if issues with data mapping values lead back to design (entity stitching), there might be time impact (ART - WSR).",
+            "condition": "Production data from DH contains unexpected values, missing fields, or incorrect mappings not surfaced during limited testing with 11 users.",
+            "consequence": "Book of Business displays incorrect or incomplete information to producers, generating support tickets and eroding trust in the portal."
+          },
+          "category": "Operational",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate DH data mappings against production dataset for 100 sample producers before rollout, document field discrepancies.",
+          "contingencyCorrectiveAction": "Deploy data validation rules to flag anomalies, notify users of known issues via dashboard banner, and prioritize fixes.",
+          "owner": "TBD - confirm with PM (Engineering Manager)",
+          "targetDate": "18-Oct-2026",
+          "status": "Open",
+          "reasoning": "The WSR shows data setup was still in progress in late July, and a risk was logged about data mapping issues potentially impacting design. The limited user testing (11 users) may not have exposed edge cases or data quality issues that will surface at scale."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Security/Compliance",
+          "riskDescription": {
+            "context": "As of July 22, 2026, the application had 86 CVEs detected (4 critical, 82 high), all on the alpine base image. Penetration testing was 0% complete as of June 30, 2026 and planned for July-August 2026 (ART - WSR).",
+            "condition": "Penetration testing was not completed or the 86 CVEs (including 4 critical) were not remediated before production deployment.",
+            "consequence": "Exploitable vulnerabilities expose producer data, trigger regulatory penalties, and force the portal offline for emergency patching."
+          },
+          "category": "Security/Compliance",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Complete penetration testing and remediate all critical and high CVEs before rollout, obtain security sign-off.",
+          "contingencyCorrectiveAction": "Upon security breach detection, take portal offline immediately, activate incident response team, and notify affected users within 24 hours.",
+          "owner": "TBD - confirm with PM (Engineering Manager)",
+          "targetDate": "20-Oct-2026",
+          "status": "Open",
+          "reasoning": "The WSR shows 86 CVEs including 4 critical as of July 22. Pen testing was not started as of June 30 and was planned for July-August. The ALT deck does not mention pen test completion or CVE remediation, creating uncertainty about whether these were addressed before the October rollout."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Scope/Change Control",
+          "riskDescription": {
+            "context": "A scope change item (#19) logged on July 16, 2026 states that logged-in users with dual roles (Producer and Agency Admin) should get entitlement based on the role played for an agency, not the highest role. Status is marked Pending with Medium effort (ART - WSR).",
+            "condition": "Dual role requirement not finalized, implemented, and tested before the mass rollout.",
+            "consequence": "Users with dual roles see incorrect data or experience authorization errors, file support tickets, and require emergency code changes and redeployment."
+          },
+          "category": "Operational",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Finalize dual role requirements with business, implement authorization logic, and validate with 20 dual-role test users.",
+          "contingencyCorrectiveAction": "Restrict dual-role users to single role temporarily, communicate workaround via email, and deploy fix within 5 business days.",
+          "owner": "TBD - confirm with PM (Engineering Manager)",
+          "targetDate": "17-Oct-2026",
+          "status": "Open",
+          "reasoning": "The scope change was logged in mid-July with Pending status and no resolution documented in the July 22 WSR. The ALT deck does not mention this issue, so it is unclear whether it was resolved before production. The medium effort size and authorization complexity make this a plausible source of production defects."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Contractual",
+          "riskDescription": {
+            "context": "The Work Assignment contract term ended August 31, 2026. Go-Live occurred September 2, 2026 and Hypercare is planned for October 2026. The big-bang rollout to 2,500+ producers is occurring in late October 2026 (ALT - Watchlist Report; ART - Work Assignment).",
+            "condition": "Hypercare period was not formally extended beyond the August 31 contract end date, or team size was reduced after contract end.",
+            "consequence": "Support capacity insufficient for 2,500+ user rollout volume, SLAs breached, client escalation, and potential contractual disputes over support obligations."
+          },
+          "category": "Contractual",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Secure formal Hypercare extension through November 30, staff 3 FTE support team covering all time zones.",
+          "contingencyCorrectiveAction": "Engage backup support resources from bench, escalate P1 incidents to delivery leadership, and communicate SLA exceptions to client.",
+          "owner": "TBD - confirm with PM (Engineering Manager)",
+          "targetDate": "15-Oct-2026",
+          "status": "Open",
+          "reasoning": "The contract ended before Go-Live and Hypercare, and the Work Assignment includes strict acceptance criteria and support obligations. The big-bang rollout and evidence of compressed UAT create plausible grounds for support capacity shortfalls."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Knowledge Continuity",
+          "riskDescription": {
+            "context": "One resource transition occurred on May 1, 2026 (Selenium resource Kishore rolled off). DevOps support is provided on-need basis by David from another POD with no dedicated DevOps resource planned. Contract term ended August 31, 2026 (ART - WSR; ART - Work Assignment).",
+            "condition": "Key team members rolled off after the August 31 contract end, or on-need DevOps support is unavailable during the rollout.",
+            "consequence": "Remaining team lacks knowledge to troubleshoot production issues quickly, incident resolution times increase, and client dissatisfaction escalates."
+          },
+          "category": "Operational",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct knowledge transfer sessions, document runbooks for top 10 incident scenarios, retain 2 core developers through November.",
+          "contingencyCorrectiveAction": "Activate on-call escalation to original development team, prioritize P1/P2 incidents, and defer non-critical enhancements.",
+          "owner": "TBD - confirm with PM (Engineering Manager)",
+          "targetDate": "15-Oct-2026",
+          "status": "Open",
+          "reasoning": "The WSR shows reliance on on-need DevOps support from another project and one prior resource transition. Resource transitions and lack of dedicated DevOps create plausible knowledge gaps during a critical production event occurring after contract end."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Client Dependency",
+          "riskDescription": {
+            "context": "An open risk logged July 6, 2026 states that Auth0 DB connection configuration requires Premera team update as the contractor lacks ACPT tenant access. Mitigation ETA was July 10, 2026 (ART - WSR).",
+            "condition": "Auth0 configuration not fully propagated to production, or similar configuration dependencies requiring Premera team action arise during the rollout.",
+            "consequence": "Producers unable to log in or register, stalling the rollout and requiring emergency Premera team configuration changes."
+          },
+          "category": "Third-Party",
+          "probability": "Unlikely",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate all Auth0 configurations in production with 50 test logins, document Premera escalation contacts for emergency changes.",
+          "contingencyCorrectiveAction": "Upon authentication failure spike above 10%, engage Premera Auth0 admin immediately and activate manual user provisioning as backup.",
+          "owner": "TBD - confirm with PM (Engineering Manager)",
+          "targetDate": "19-Oct-2026",
+          "status": "Open",
+          "reasoning": "The risk was logged in early July with a short ETA, and the ALT deck shows successful registration for 11 users, suggesting the issue was likely resolved. However, the pattern of configuration dependencies on the Premera team creates a plausible failure mode if similar issues exist in production."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Third-Party Integration",
+          "riskDescription": {
+            "context": "An open risk logged July 3, 2026 states that 4 additional fields needed for total premium calculation would be provided by DH on July 30, and if made available on July 30, changes can only be made by August 5. A High priority dependency was open as of July 6, 2026 (ART - WSR).",
+            "condition": "Total premium fields not delivered by DH on time, or delivered but not fully tested before production deployment.",
+            "consequence": "Book of Business displays incorrect premium amounts to producers, generating support tickets and eroding trust in portal data accuracy."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate premium calculations against DH source data for 100 producers across all LOBs before rollout.",
+          "contingencyCorrectiveAction": "Display premium fields as unavailable with explanation banner, prioritize fix deployment, and notify affected users via email.",
+          "owner": "TBD - confirm with PM (Engineering Manager)",
+          "targetDate": "18-Oct-2026",
+          "status": "Open",
+          "reasoning": "The dependency was open with no ETA as of July 6, and the risk noted a tight timeline (July 30 delivery, August 5 implementation). The ALT deck does not mention this issue, so it is unclear whether it was resolved. Premium calculation errors would be highly visible to users."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Third-Party Integration",
+          "riskDescription": {
+            "context": "As of July 22, 2026, the team was awaiting DH support for search by NPN (National Producer Number) on producer entity, with ETA July 30, 2026 from DH. Listed as a challenge with a call-out (ART - WSR).",
+            "condition": "Search by NPN functionality not delivered by DH or not fully integrated and tested before the big-bang rollout.",
+            "consequence": "Users unable to search for producers by NPN, file support tickets, and perceive the portal as incomplete, reducing adoption and satisfaction."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "Low",
+          "rag": "Green",
+          "mitigationPreventiveAction": "Implement alternative search by producer name and agency, document NPN search as planned enhancement for Phase 2.",
+          "contingencyCorrectiveAction": "Monitor search usage patterns and provide manual NPN lookup support via help desk until feature is available.",
+          "owner": "TBD - confirm with PM (Engineering Manager)",
+          "targetDate": "21-Oct-2026",
+          "status": "Open",
+          "reasoning": "The dependency was noted in late July with a short ETA. While the functionality is important, its absence would not block core workflows like registration or viewing book of business, so the impact is limited."
+        },
+        {
+          "sNo": 11,
+          "riskId": "R - 011",
+          "subjectArea": "Environment/Infrastructure",
+          "riskDescription": {
+            "context": "As of July 22, 2026, Citrix server slowness and timeouts were impacting offshore team efforts. The team works from remote locations in India and USA (ART - WSR; ART - Work Assignment).",
+            "condition": "Citrix performance issues persist during the Hypercare period.",
+            "consequence": "Offshore support team experiences delays accessing systems and troubleshooting production issues, incident resolution times increase, and SLA targets are missed."
+          },
+          "category": "Operational",
+          "probability": "Possible",
+          "impact": "Low",
+          "rag": "Green",
+          "mitigationPreventiveAction": "Provision VPN access as Citrix alternative for offshore team, test connectivity and performance before rollout.",
+          "contingencyCorrectiveAction": "Monitor incident resolution times and escalate infrastructure issues to Premera IT if response times exceed 4 hours.",
+          "owner": "TBD - confirm with PM (Engineering Manager)",
+          "targetDate": "16-Oct-2026",
+          "status": "Open",
+          "reasoning": "The issue was noted in July and affects team productivity but not end-user functionality. The impact is limited to support efficiency, which is recoverable with workarounds or infrastructure improvements."
+        },
+        {
+          "sNo": 12,
+          "riskId": "R - 012",
+          "subjectArea": "Delivery Practices",
+          "riskDescription": {
+            "context": "As of July 22, 2026, the application had 190 code smells (2 critical, 80 major, 104 minor), backend code coverage of 57% against a target of 80%, and a test failure rate of 15% (11 of 71 functional tests failed). One bug was open and spilled from the previous sprint (ART - WSR; ART - Work Assignment).",
+            "condition": "Code quality issues and incomplete unit test coverage not addressed before production deployment.",
+            "consequence": "Latent defects surface under production load or edge-case scenarios during the big-bang rollout, requiring emergency hotfixes or rollback."
+          },
+          "category": "Operational",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Remediate all critical and major code smells, increase backend coverage to 75%, rerun failed tests before rollout.",
+          "contingencyCorrectiveAction": "Deploy hotfix pipeline with 2-hour turnaround, prioritize P1 defects, and communicate known issues via status page.",
+          "owner": "TBD - confirm with PM (Engineering Manager)",
+          "targetDate": "17-Oct-2026",
+          "status": "Open",
+          "reasoning": "The WSR shows code quality metrics below target and a test failure rate of 15% as of late July. The ALT deck does not mention code quality remediation, so it is unclear whether these issues were resolved. The big-bang rollout increases the likelihood that latent defects will surface."
+        },
+        {
+          "sNo": 13,
+          "riskId": "R - 013",
+          "subjectArea": "Delivery Practices",
+          "riskDescription": {
+            "context": "UAT was 0% complete as of June 30, 2026, with signoff due August 14, 2026. The WSR dated July 22, 2026 lists need for early UAT test cases and upstream data setup for integration and E2E scenarios as support requirements (ART - WSR; ART - Work Assignment).",
+            "condition": "UAT was compressed, incomplete, or conducted without full upstream data setup.",
+            "consequence": "Critical defects not identified before production deployment surface during the rollout, requiring emergency fixes or rollback, and the client may dispute whether UAT acceptance criteria were met."
+          },
+          "category": "Operational",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Review UAT test results and defect log, validate all P1/P2 defects closed, obtain formal UAT sign-off documentation.",
+          "contingencyCorrectiveAction": "Activate defect triage process, deploy critical fixes within 48 hours, and communicate defect status to client daily.",
+          "owner": "TBD - confirm with PM (Engineering Manager)",
+          "targetDate": "16-Oct-2026",
+          "status": "Open",
+          "reasoning": "UAT was not started as of late June, with signoff due in mid-August and Go-Live in early September. The tight timeline and documented need for early test cases and data setup suggest UAT may have been rushed. The ALT deck does not mention UAT completion or defect counts."
+        },
+        {
+          "sNo": 14,
+          "riskId": "R - 014",
+          "subjectArea": "Contractual",
+          "riskDescription": {
+            "context": "Contract is fixed price at $650,000 with milestone-based billing. Milestones 5 (UAT, $130,000), 6 (Go-Live, $130,000), and 7 (Hypercare, $130,000) total $390,000 (60% of contract value). Contract term ended August 31, 2026, but Go-Live occurred September 2, 2026 (ART - Work Assignment; ALT - Watchlist Report).",
+            "condition": "Client disputes whether UAT, Go-Live, or Hypercare acceptance criteria were fully met, or defects discovered during the big-bang rollout are deemed non-conforming work.",
+            "consequence": "Client withholds or delays milestone payments totalling up to $390,000, contractor experiences cash flow issues, and dispute escalates to contract negotiation or legal action."
+          },
+          "category": "Contractual",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Obtain written acceptance for Milestones 5-7 within 15 business days per contract terms, document all deliverables.",
+          "contingencyCorrectiveAction": "Engage contract management and legal teams, provide evidence of acceptance criteria met, and negotiate payment schedule if disputed.",
+          "owner": "TBD - confirm with PM (Engineering Manager)",
+          "targetDate": "25-Oct-2026",
+          "status": "Open",
+          "reasoning": "The contract ended before Go-Live and Hypercare, and the Work Assignment includes strict acceptance criteria and defect correction obligations. The big-bang rollout risk and evidence of compressed UAT create plausible grounds for payment disputes if defects surface."
+        },
+        {
+          "sNo": 15,
+          "riskId": "R - 015",
+          "subjectArea": "Scope/Change Control",
+          "riskDescription": {
+            "context": "19 scope changes were tracked from April to July 2026, with several marked Agreed (scope increase) including Auth0 configuration (Medium effort), CCS APIs implementation, infrastructure provisioning (Medium effort), and multiple UX and functional changes. No change order documentation or approvals are shown in the WSR (ART - WSR; ART - Work Assignment).",
+            "condition": "Scope increases were implemented without formal change orders or client approval, or the client disputes that the changes were material and should have been covered under the original contract.",
+            "consequence": "Contractor unable to bill for additional work, incurs unrecoverable costs, and dispute escalates to contract negotiation or legal action, damaging the client relationship and project margin."
+          },
+          "category": "Contractual",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Compile scope change log with effort estimates, obtain client sign-off on all scope increases, submit change orders.",
+          "contingencyCorrectiveAction": "Engage contract management to negotiate scope change billing, provide evidence of client-requested changes, and escalate to leadership.",
+          "owner": "TBD - confirm with PM (Engineering Manager)",
+          "targetDate": "30-Oct-2026",
+          "status": "Open",
+          "reasoning": "The WSR shows 19 scope changes with several marked as scope increases, but no change order documentation or approval is shown. The Work Assignment requires formal change management for material changes. The lack of documented approvals creates plausible grounds for billing disputes."
+        },
+        {
+          "sNo": 16,
+          "riskId": "R - 016",
+          "subjectArea": "Contractual",
+          "riskDescription": {
+            "context": "The ALT deck explicitly states that if an issue is encountered during the mass producer onboarding, the rollout may need to be rolled back and remediated. The Work Assignment requires the contractor to correct deficiencies at no charge. Contract term ended August 31, 2026 (ALT - Watchlist Report; ART - Work Assignment).",
+            "condition": "Big-bang rollout is rolled back due to defects or capacity issues after the contract end date.",
+            "consequence": "Contractor required to remediate at no charge under the defect correction clause, incurs unplanned costs post-contract, eroding project margin and potentially leading to disputes over cost responsibility."
+          },
+          "category": "Contractual",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Define rollback criteria and remediation scope with client before rollout, clarify cost responsibility for post-contract fixes.",
+          "contingencyCorrectiveAction": "Engage contract management to negotiate remediation costs, provide evidence of acceptance criteria met, and escalate to leadership.",
+          "owner": "TBD - confirm with PM (Engineering Manager)",
+          "targetDate": "21-Oct-2026",
+          "status": "Open",
+          "reasoning": "This is a cascaded risk from R - 001. The ALT deck explicitly mentions rollback and remediation as a possibility. The Work Assignment requires the contractor to correct deficiencies at no charge, and the rollout is occurring after the contract end date, creating uncertainty about cost responsibility."
+        },
+        {
+          "sNo": 17,
+          "riskId": "R - 017",
+          "subjectArea": "Customer/Stakeholder",
+          "riskDescription": {
+            "context": "The project is on the ALT Watchlist due to the big-bang rollout risk as of October 23, 2026. The Work Assignment is labeled Phase 1, suggesting potential future phases (ALT - Watchlist Report; ART - Work Assignment).",
+            "condition": "Big-bang rollout encounters significant issues requiring rollback or extended remediation.",
+            "consequence": "Client loses confidence in the contractor's delivery capability, decides not to proceed with future phases or other engagements, damaging the relationship and reputation in the healthcare insurance market."
+          },
+          "category": "Customer/Stakeholder",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct executive briefing on rollout readiness, demonstrate risk mitigation measures, and align on success criteria with client leadership.",
+          "contingencyCorrectiveAction": "Upon rollout issues, activate executive engagement, provide daily status updates, and demonstrate rapid remediation capability to rebuild confidence.",
+          "owner": "TBD - confirm with PM (Engineering Manager)",
+          "targetDate": "18-Oct-2026",
+          "status": "Open",
+          "reasoning": "This is a cascaded risk from R - 001 and R - 016. The ALT Watchlist status and explicit rollback risk indicate client concern. The Phase 1 designation suggests future work is contemplated, which would be at risk if the rollout fails."
+        }
+      ]
+    }
+  ]
+}
