@@ -1,0 +1,260 @@
+{
+  "clientName": "",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Producer Portal Development - Phase 1",
+      "projectStatus": "Watchlist",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "ALT",
+        "ART"
+      ],
+      "sourcesNotAvailable": [
+        "EMS"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Testing Readiness",
+          "riskDescription": {
+            "context": "As of July 22, 2026, integration testing and end-to-end testing are both at zero percent complete, with UAT scheduled to begin on August 14, twenty-three days away. Support is required for early availability of UAT test cases and upstream data setup for integration and end-to-end scenarios.",
+            "condition": "Integration and end-to-end testing may remain incomplete or be compressed at UAT start if upstream data setup and test case preparation are delayed.",
+            "consequence": "Defects may not be discovered during UAT and could reach production, impacting the client during the planned mass producer onboarding of over two thousand five hundred users."
+          },
+          "category": "Delivery Practices",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Conduct daily integration readiness reviews with QE leadership and prioritize critical-path test scenarios to achieve 70-80% functional coverage before UAT.",
+          "contingencyCorrectiveAction": "Upon UAT start with incomplete integration testing, activate parallel defect triage team and establish daily client escalation calls to manage production risk.",
+          "owner": "TBD - confirm with PM (EM)",
+          "targetDate": "07-Aug-2026",
+          "status": "Open",
+          "reasoning": "Integration and end-to-end testing have not started with only twenty-three days to UAT, and client dependencies for test data and test cases are still pending. The evidence is corroborated across multiple sections of the status report, and the timeline pressure is acute. The impact is high because defects reaching production during a big-bang rollout could affect the client relationship and delivery capability."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Data Hub Integration",
+          "riskDescription": {
+            "context": "Data Hub integration stood at fifteen percent complete as of July 22, 2026, with UAT due to start on August 14. Two dependencies related to Data Hub remain open past their needed-by dates: confirmation on total premium fields was needed by July 6, and access to Premera-specific tools for agent integration was needed by June 15, thirty-seven days overdue.",
+            "condition": "Data Hub integration may not be complete before integration testing starts, or the integration work may be rushed to meet the UAT start date.",
+            "consequence": "Integration defects may reach UAT or production, causing data quality issues or functional failures when producers access their book of business."
+          },
+          "category": "Third-Party",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Rebaseline Data Hub integration scope with client by July 28, prioritize critical-path API endpoints, and defer non-essential data fields to post-UAT phase.",
+          "contingencyCorrectiveAction": "If Data Hub APIs remain unavailable by August 7, deploy synthetic data layer for UAT and escalate to program leadership for go-live deferral.",
+          "owner": "TBD - confirm with PM (EM)",
+          "targetDate": "28-Jul-2026",
+          "status": "Open",
+          "reasoning": "Data Hub integration is significantly behind schedule with only fifteen percent complete and twenty-three days to UAT. Two related dependencies are overdue, one by thirty-seven days. The evidence is corroborated in the dependency tracker and challenges section. The impact is high because data integration failures would affect core functionality across the portal."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Security Validation",
+          "riskDescription": {
+            "context": "Penetration test scope and approach decisions were marked as pending in early June, with no resolution documented as of July 22. The penetration test is scheduled for August 14 to 25 and is gated by deployment of all application components to the acceptance environment and UAT completion.",
+            "condition": "The penetration test scope may remain undefined, or the test window may be compressed if UAT slips or if deployment to the acceptance environment is delayed.",
+            "consequence": "Security validation coverage may be reduced, allowing security defects to reach production and potentially causing security incidents or compliance violations."
+          },
+          "category": "Governance/Process",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Finalize penetration test scope and vendor selection by July 25 with security stakeholders, and pre-deploy application components to acceptance environment by August 5.",
+          "contingencyCorrectiveAction": "Should penetration test window compress below five days, implement phased security validation with critical-path testing pre-production and full scan post-production within 48 hours.",
+          "owner": "TBD - confirm with PM (EM)",
+          "targetDate": "25-Jul-2026",
+          "status": "Open",
+          "reasoning": "Penetration test scope decisions have been pending for over six weeks with no documented resolution. The test window is short and depends on UAT completion, which is itself at risk. The evidence is corroborated in the decision log and milestone tracker. The impact is high because security defects in a client-facing portal handling producer and member data could trigger compliance violations and damage the client relationship."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Code Quality",
+          "riskDescription": {
+            "context": "Backend code coverage was measured at fifty-seven percent as of July 22, 2026, against a minimum target of eighty percent stated in the work assignment. Integration and end-to-end testing are both at zero percent complete with twenty-three days to UAT start.",
+            "condition": "Backend code coverage may remain below the eighty percent target at release if testing phases are compressed and unit testing is not prioritized.",
+            "consequence": "Untested code paths may contain defects that reach production, increasing the defect volume during the four-week stabilization period and potentially delaying acceptance."
+          },
+          "category": "Delivery Practices",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement daily code coverage tracking with automated SonarQube gates, and allocate two developers per sprint to increase backend test coverage by 5% weekly.",
+          "contingencyCorrectiveAction": "If coverage remains below 75% by August 10, increase manual code review frequency and establish dedicated hypercare defect resolution team for production support.",
+          "owner": "TBD - confirm with PM (EM)",
+          "targetDate": "10-Aug-2026",
+          "status": "Open",
+          "reasoning": "Code coverage is twenty-three percentage points below the contractual target, and testing phases are compressed. The evidence is corroborated in the quality metrics and deliverables sections. The impact is medium because while code coverage gaps increase defect risk, they are recoverable with focused effort during stabilization, though this may extend the hypercare period."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Security Vulnerabilities",
+          "riskDescription": {
+            "context": "Eighty-six common vulnerabilities and exposures were detected as of July 22, 2026, including four rated critical and eighty-two rated high, all on the alpine base image. Security testing scope is defined but execution status is not stated.",
+            "condition": "These vulnerabilities may remain unresolved at production deployment if remediation is not prioritized before the September 2 go-live date.",
+            "consequence": "Security vulnerabilities may be exploited in production, causing security incidents or compliance violations and potentially requiring emergency patching or rollback."
+          },
+          "category": "Security/Compliance",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Upgrade alpine base image to latest patched version by July 30, validate all CVE resolutions through JFrog Xray scan, and document accepted risk for any remaining low-severity items.",
+          "contingencyCorrectiveAction": "Upon discovery of exploitable CVE in production, activate emergency patch deployment within 24 hours and engage CISO team for compensating controls and client notification.",
+          "owner": "TBD - confirm with PM (EM)",
+          "targetDate": "30-Jul-2026",
+          "status": "Open",
+          "reasoning": "A high count of critical and high-severity vulnerabilities is documented, but all are on the base image, which may be addressable through image updates. No evidence of remediation progress or timeline is provided. The impact is high because security incidents in a client-facing portal could trigger compliance violations and damage the client relationship. Likelihood is possible rather than likely because base image vulnerabilities are often addressed through standard patching processes."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Contract Coverage",
+          "riskDescription": {
+            "context": "The contract term runs from March 1 to August 31, 2026. The go-live date is forecast for September 2, two days after contract end, and the four-week stabilization period extends to approximately September 30, thirty days beyond contract end. No contract extension or change order is documented in the sources.",
+            "condition": "Work may continue beyond the contract end date without a documented contract extension if go-live or stabilization activities extend as planned.",
+            "consequence": "Billing and payment for the go-live milestone of one hundred thirty thousand dollars and the stabilization milestone of one hundred thirty thousand dollars may be delayed or disputed, potentially reducing contractor support during the stabilization period."
+          },
+          "category": "Contractual",
+          "probability": "Very likely",
+          "impact": "Medium",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Submit contract extension request to client by July 25 covering September 1 through September 30, with revised milestone payment schedule and scope confirmation.",
+          "contingencyCorrectiveAction": "If contract extension is not approved by August 15, notify client of work stoppage effective August 31 and transition to time-and-materials billing for post-contract support.",
+          "owner": "TBD - confirm with PM (EM)",
+          "targetDate": "25-Jul-2026",
+          "status": "Open",
+          "reasoning": "The go-live date is explicitly scheduled two days after contract end, and stabilization extends thirty days beyond contract end. No extension is documented. The evidence is corroborated in the work assignment and status report. The impact is medium because while billing disputes are recoverable, they may reduce contractor support during a critical stabilization period. Likelihood is very likely because the dates are already committed and no extension is in place."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Infrastructure Support",
+          "riskDescription": {
+            "context": "No dedicated DevOps resource is planned for the project; the team relies on on-need support from an engineer in another program. Infrastructure setup and DevOps work stood at seventy percent complete as of July 22, 2026. The penetration test requires all application components to be deployed to the acceptance environment.",
+            "condition": "DevOps support may be unavailable when needed, delaying deployment to the acceptance environment or production.",
+            "consequence": "The penetration test may be delayed or compressed, reducing security validation coverage and allowing security defects to reach production."
+          },
+          "category": "People/Talent",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Identify backup DevOps resource from practice team by July 26, document all infrastructure deployment procedures, and schedule weekly DevOps availability windows through September.",
+          "contingencyCorrectiveAction": "When DevOps support is unavailable during critical deployment, engage offshore VDI support team and escalate to practice leadership for emergency resource allocation within 4 hours.",
+          "owner": "TBD - confirm with PM (EM)",
+          "targetDate": "26-Jul-2026",
+          "status": "Open",
+          "reasoning": "The project relies on on-need support rather than a dedicated resource, and infrastructure work is not complete. The evidence is corroborated in the resources and progress sections. The impact is medium because deployment delays would compress the penetration test window, but the risk is mitigated by the fact that support has been identified and is available on-need. Likelihood is possible because the support model has been working to date, though it remains a single point of dependency."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Development Environment",
+          "riskDescription": {
+            "context": "Citrix server slowness and timeouts are impacting offshore team efforts as of July 22, 2026. Integration testing and end-to-end testing are both at zero percent complete, with UAT due to start on August 14, twenty-three days away.",
+            "condition": "Citrix performance issues may persist, reducing offshore team productivity and delaying the start or completion of integration and end-to-end testing.",
+            "consequence": "UAT time may be compressed or UAT coverage may be reduced, allowing defects to reach production and impacting the client during the planned mass producer onboarding."
+          },
+          "category": "Environment/Infrastructure",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate Citrix performance issue to client infrastructure team by July 24, implement VDI offshore support coverage during critical testing windows, and keep Citrix app open as workaround.",
+          "contingencyCorrectiveAction": "If Citrix issues persist beyond July 31, reprioritize non-Citrix-dependent workstreams and shift critical testing activities to onshore team with extended hours to maintain schedule.",
+          "owner": "TBD - confirm with PM (EM)",
+          "targetDate": "24-Jul-2026",
+          "status": "Open",
+          "reasoning": "Citrix performance issues are documented as an ongoing challenge, and testing phases have not started. The evidence is corroborated in the challenges section. The impact is medium because while productivity issues can compress testing time, they are recoverable with workarounds or infrastructure improvements. Likelihood is possible because the issue is ongoing but may be resolved before testing phases begin."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Test Data Readiness",
+          "riskDescription": {
+            "context": "Two dependencies remain open past their needed-by dates as of July 22, 2026: confirmation from Data Hub on total premium fields was needed by July 6, and access to Premera-specific tools for agent integration was needed by June 15, thirty-seven days overdue. Support is required for upstream data setup for integration and end-to-end scenarios.",
+            "condition": "These open dependencies may remain unresolved, delaying upstream data setup and the start of integration and end-to-end testing.",
+            "consequence": "Testing time may be compressed, reducing coverage and allowing defects to reach UAT or production."
+          },
+          "category": "Client Dependency",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate overdue dependencies to client program leadership by July 24, establish daily dependency status calls, and reprioritize non-dependent test scenarios for immediate execution.",
+          "contingencyCorrectiveAction": "If dependencies remain unresolved by August 1, implement phased testing approach with synthetic data for initial scenarios and defer dependent tests to post-UAT validation cycle.",
+          "owner": "TBD - confirm with PM (EM)",
+          "targetDate": "24-Jul-2026",
+          "status": "Open",
+          "reasoning": "Two dependencies are overdue, one by thirty-seven days, and upstream data setup is still pending. The evidence is corroborated in the dependency tracker and support-required sections. The impact is medium because while data delays compress testing time, they are recoverable with focused effort and client engagement. Likelihood is likely because the dependencies are already overdue and no resolution date is provided."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Scope Clarity",
+          "riskDescription": {
+            "context": "Several decisions are marked as pending with no resolution date as of July 22, 2026, including dual role entitlement logic pending since July 16, deployment as dark deploy pending since July 8, penetration test phasing pending since June 3, and dashboard design with local caching pending since June 17.",
+            "condition": "These pending decisions may remain unresolved, leaving scope unclear and delaying the start of testing or requiring rework during testing phases.",
+            "consequence": "Testing time may be compressed, reducing coverage and allowing defects to reach UAT or production."
+          },
+          "category": "Governance/Process",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Schedule decision closure workshop with client stakeholders by July 26, document all pending decisions with impact assessment, and establish 48-hour decision turnaround commitment.",
+          "contingencyCorrectiveAction": "If decisions remain pending by August 5, proceed with testing using documented assumptions and flag impacted scenarios for post-decision validation and potential rework.",
+          "owner": "TBD - confirm with PM (EM)",
+          "targetDate": "26-Jul-2026",
+          "status": "Open",
+          "reasoning": "Multiple decisions have been pending for weeks with no documented resolution. The evidence is corroborated in the decision log. The impact is medium because while pending decisions can delay testing or require rework, they are recoverable with focused decision-making and client engagement. Likelihood is possible because some decisions may be resolved before testing phases begin, though the pattern of pending decisions suggests a governance gap."
+        },
+        {
+          "sNo": 11,
+          "riskId": "R - 011",
+          "subjectArea": "Release Rollout",
+          "riskDescription": {
+            "context": "As of October 23, 2026, the application is fully deployed to production and technically ready for producer onboarding. Premera is planning to send registration emails to over two thousand five hundred producers on October 22 using a big-bang rollout approach. As of July 22, 2026, integration testing, end-to-end testing, and penetration testing were all at zero percent complete.",
+            "condition": "If testing phases were compressed or incomplete between July and October, defects may have reached production, and the big-bang rollout may encounter issues requiring rollback and remediation.",
+            "consequence": "Producer onboarding may be delayed, the client may experience reputational damage with producers, and go-live acceptance or stabilization completion may be delayed or withheld."
+          },
+          "category": "Delivery Practices",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement phased rollout approach with pilot group of 50 producers by October 15, monitor system performance and defect trends for 48 hours before mass rollout.",
+          "contingencyCorrectiveAction": "Upon detection of critical defect during mass rollout, activate rollback procedure within 2 hours, notify all producers via email, and establish remediation timeline with client leadership.",
+          "owner": "TBD - confirm with PM (EM)",
+          "targetDate": "15-Oct-2026",
+          "status": "Open",
+          "reasoning": "The big-bang rollout approach with over two thousand five hundred users is inherently high-risk, and testing phases were significantly behind schedule as of July. The ALT document confirms the application is deployed and ready, but also notes the rollback risk. The evidence is corroborated across ALT and ART sources. The impact is high because a rollout failure would affect the client relationship and delivery capability across the project. Likelihood is possible because the application has passed validation, but the compressed testing timeline increases the risk of defects reaching production."
+        },
+        {
+          "sNo": 12,
+          "riskId": "R - 012",
+          "subjectArea": "Commercial Alignment",
+          "riskDescription": {
+            "context": "Nineteen scope changes were logged between March and July 2026, including changes to identity setup, API ownership, infrastructure provisioning, quality engineering tech stack, agent use approach, and API integration approach. A change control process is defined in the work assignment. No documentation of formal change order approvals is provided in the sources.",
+            "condition": "Scope changes may not be formally approved or change orders may not be executed, allowing additional work to be performed without commercial cover.",
+            "consequence": "Billing may be delayed or disputed, and payment for milestones may be withheld or delayed."
+          },
+          "category": "Scope/Change Control",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish formal scope change evaluation procedure by July 26, document all 19 scope changes with effort impact, and submit consolidated change order for client approval.",
+          "contingencyCorrectiveAction": "If change order approval is not received by August 20, notify client of billing adjustment for out-of-scope work and establish mutual agreement on scope boundaries without schedule changes.",
+          "owner": "TBD - confirm with PM (EM)",
+          "targetDate": "26-Jul-2026",
+          "status": "Open",
+          "reasoning": "A high volume of scope changes is documented, and a change control process is defined, but no evidence of formal approvals is provided in the sources. The evidence is corroborated in the scope change tracker and work assignment. The impact is medium because while billing disputes are recoverable, they may delay payment and affect contractor support. Likelihood is possible because the absence of approval documentation in the sources does not confirm that approvals were not obtained, but it raises a concern about change control adherence."
+        }
+      ]
+    }
+  ]
+}
