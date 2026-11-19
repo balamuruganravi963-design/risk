@@ -1,0 +1,319 @@
+{
+  "clientName": "",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Producer Portal Development - Phase 1",
+      "projectStatus": "WATCHLIST",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "ALT",
+        "ART"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Data Hub Integration Completion",
+          "riskDescription": {
+            "context": "The Data Hub integration for Book of Business was targeted for completion by June 22, 2026 (EMS - Timeline slide). As of July 22, 2026, integration is at 95% completion (EMS - Progress metrics), with two open dependencies: confirmation from Data Hub on total premium fields shared by business (needed by July 6, 2026, ETA not stated) and four additional fields for total premium calculation to be provided by Data Hub on July 30, 2026 (EMS - Open Items). The team is proceeding with data mappings provided, but if issues with values from these mappings lead back to design such as entity stitching, it might have time impact (EMS - Risk Register, opened June 25, 2026).",
+            "condition": "Data Hub may continue to delay delivery of the four total premium fields beyond July 30, 2026, or the fields provided may not align with the portal's design assumptions, requiring entity stitching rework.",
+            "consequence": "Integration testing and end-to-end testing would be delayed or incomplete, pushing UAT signoff beyond the August 14, 2026 target and threatening the September 2, 2026 go-live date."
+          },
+          "category": "Third-Party",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Conduct daily handshake meetings with business and Data Hub teams to validate mapped API fields and escalate discrepancies immediately.",
+          "contingencyCorrectiveAction": "Upon Data Hub field delivery delay beyond July 30, rebaseline UAT signoff to August 21 and escalate to program leadership within 24 hours.",
+          "owner": "TBD - confirm with PM (Engagement Manager)",
+          "targetDate": "25-Jul-2026",
+          "status": "Open",
+          "reasoning": "The dependency is open in EMS with no confirmed ETA for one item and a July 30 ETA for another that leaves only six days before UAT signoff on August 14. The risk register explicitly notes time impact if mapping issues arise. The Data Hub integration has already slipped from the original June 22 target, showing a pattern of delay. Impact is high because it affects UAT readiness and the contractual go-live milestone."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "UAT Readiness and Execution",
+          "riskDescription": {
+            "context": "UAT signoff is scheduled for August 14, 2026, with go-live on September 2, 2026 (EMS - Timeline). As of July 22, 2026, UAT completion is at zero percent (EMS - Progress metrics), and the team requires support for getting UAT test cases early and upstream data setup for integration and end-to-end scenarios (EMS - Support Required). Integration testing completion is also at zero percent (EMS - Progress metrics). The Work Assignment states that Company shall nominate UAT stakeholders and ensure their reasonable availability as per agreed timeline (ART - Assumptions), and reasonable availability of Company team for UAT execution is a Company dependency (ART - Dependencies).",
+            "condition": "UAT test cases may not be made available early enough, or upstream data setup for integration and end-to-end scenarios may remain incomplete, preventing UAT from starting on schedule or progressing effectively.",
+            "consequence": "UAT signoff on August 14, 2026 would be missed, delaying the go-live milestone on September 2, 2026 and potentially triggering milestone payment delays or client escalation."
+          },
+          "category": "Client Dependency",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Schedule detailed QE leadership review before August 1 to finalize UAT test cases and secure upstream data setup commitments.",
+          "contingencyCorrectiveAction": "Once UAT signoff delay is confirmed, activate phased UAT with priority test scenarios and escalate to Premera program leadership immediately.",
+          "owner": "TBD - confirm with PM (Engagement Manager)",
+          "targetDate": "29-Jul-2026",
+          "status": "Open",
+          "reasoning": "UAT is zero percent complete with only three weeks remaining to the signoff date. The EMS explicitly calls out the need for early UAT test cases and data setup support, indicating these are not yet in place. The Work Assignment identifies Company availability and data provision as dependencies. The tight timeline and zero progress create a high likelihood of delay, with high impact on the contractual go-live milestone."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Penetration Testing Completion",
+          "riskDescription": {
+            "context": "Penetration testing is scheduled between UAT and go-live, with go-live on September 2, 2026 (EMS - Timeline). As of July 22, 2026, Pen Test completion is at zero percent (EMS - Progress metrics). Penetration testing can commence once all application components defined within the approved trust boundary are deployed to ACPT and UAT testing has been completed (EMS - Decision Log, item 26). The EMS notes that if prerequisites are met ahead of schedule, there may be an opportunity to bring penetration testing forward, but this decision is pending (EMS - Decision Log, item 20 and 26).",
+            "condition": "Penetration testing may not commence on time if ACPT deployment issues persist or UAT completion is delayed, or the testing itself may uncover critical vulnerabilities requiring remediation.",
+            "consequence": "Go-live on September 2, 2026 would be delayed, or the application would go live with unresolved security vulnerabilities, creating compliance and security risk."
+          },
+          "category": "Governance/Process",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate ACPT deployment readiness by August 5 and advance penetration testing schedule if UAT completes early to create buffer.",
+          "contingencyCorrectiveAction": "Should penetration testing uncover critical vulnerabilities, deploy hotfix to production within 72 hours and engage InfoSec team for waiver approval.",
+          "owner": "TBD - confirm with PM (Engagement Manager)",
+          "targetDate": "08-Aug-2026",
+          "status": "Open",
+          "reasoning": "Pen Test is zero percent complete and depends on ACPT deployment and UAT completion, both of which face delays. The EMS shows ACPT deployment is in progress with connectivity and service integration issues being resolved (EMS - Key Accomplishments). The decision to advance Pen Test is pending, indicating no proactive schedule mitigation is confirmed. Impact is high because security testing gates go-live and any findings could require rework."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "ACPT Environment Deployment and Configuration",
+          "riskDescription": {
+            "context": "Front End, Account Management API, and Wrapper API are deployed to ACPT, but the team is resolving issues of connectivity and service integration (EMS - Key Accomplishments, week of July 22, 2026). Auth0 change propagation is blocked because the DB connection configuration is maintained outside Auth0 and needs to be updated by Premera team, as Ascendion does not have access to ACPT tenant; if delayed, this will impact the move to ACPT (EMS - Risk Register, opened July 6, 2026, ETA July 10). Auth0 terraform release pipeline needs continued support if any issue arises (EMS - Support Required). The Work Assignment states that provisioning infrastructure including environments and access is a Company responsibility (ART - RACI matrix).",
+            "condition": "ACPT environment configuration issues may persist, or Auth0 DB connection configuration may not be updated by Premera team on time, preventing full deployment and testing in ACPT.",
+            "consequence": "Integration testing, end-to-end testing, and penetration testing would be delayed, pushing UAT and go-live milestones beyond their scheduled dates."
+          },
+          "category": "Environment/Infrastructure",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish daily sync with Premera infrastructure team to track Auth0 DB configuration update and resolve connectivity issues by July 25.",
+          "contingencyCorrectiveAction": "If ACPT deployment remains blocked beyond July 28, execute limited testing in Dev environment and escalate to Premera program director within 48 hours.",
+          "owner": "TBD - confirm with PM (Engagement Manager)",
+          "targetDate": "24-Jul-2026",
+          "status": "In Progress",
+          "reasoning": "The EMS shows active connectivity and integration issues in ACPT as of July 22, and an open risk item for Auth0 configuration with a July 10 ETA that is now past the reporting date. The team requires continued support, indicating the issues are not fully resolved. Impact is high because ACPT is the gate for UAT and Pen Test, both of which are on the critical path to go-live."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Code Quality and Security Vulnerabilities",
+          "riskDescription": {
+            "context": "As of PI04 Sprint 3 (June 18, 2026), the project has 190 code smells (2 critical, 80 major, 104 minor, 4 info) with status in-progress, and 86 CVEs detected (4 critical, 82 high) with status in-progress (EMS - Engineering Quality metrics). The EMS notes that majority of code smells are due to comments and mocking, and all CVEs detected are on the alpine base image (EMS - Quality Findings Notes). Backend code coverage is 57 percent, below the 80 percent target stated in the Work Assignment (ART - Development deliverables acceptance criteria). No updated EQ metrics are provided in the July 22, 2026 WSR.",
+            "condition": "Code smells and CVEs may remain unresolved as the team focuses on feature completion and integration, and backend code coverage may stay below the contractual 80 percent threshold.",
+            "consequence": "Penetration testing or security review may fail, requiring rework and delaying go-live, or the application may go live with technical debt and security vulnerabilities that degrade stability and increase post-production defects."
+          },
+          "category": "Technical/Architecture",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct senior developer review sessions weekly to address critical and major code smells and increase backend unit test coverage to 70 percent by August 1.",
+          "contingencyCorrectiveAction": "Upon penetration testing failure due to CVEs, engage alpine base image vendor for patched image and redeploy to ACPT within 5 days.",
+          "owner": "TBD - confirm with PM (Engagement Manager)",
+          "targetDate": "01-Aug-2026",
+          "status": "In Progress",
+          "reasoning": "The EQ metrics are from June 18, over a month before the July 22 reporting date, and show in-progress status for code smells and CVEs. The backend code coverage is significantly below the contractual 80 percent target. However, the EMS notes that CVEs are on the base image (not application code) and code smells are largely due to comments and mocking, which may be lower severity. No evidence of active remediation or updated metrics is provided. Impact is medium because security findings could delay go-live, but the issues may be resolvable with focused effort."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Mass Producer Onboarding Rollout",
+          "riskDescription": {
+            "context": "The Producer Portal application and supporting infrastructure are fully deployed to Production as of October 22, 2026, and IT validation and high-level PO and business validation have been completed successfully (ALT - Project Status). As of October 22, 2026, the end-to-end Edge to DataHub to Producer Portal (OKTA) registration process was completed with 11 users, and everything looks good in preparation for big bang producer approach (ALT - Key Accomplishments). Premera is planning to send registration emails to 2,500 plus producers on October 22 using a big-bang rollout approach, status awaited (ALT - Project Status). The project is on WATCHLIST due to the risk that if an issue is encountered during the mass producer onboarding, the rollout may need to be rolled back and remediated (ALT - Risk).",
+            "condition": "An issue may be encountered during the mass producer onboarding to 2,500 plus producers on October 22, 2026, such as registration email failures, authentication errors, or performance degradation under load.",
+            "consequence": "The rollout may need to be rolled back and remediated, delaying full production launch and damaging client confidence in the solution."
+          },
+          "category": "Delivery Practices",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate registration email delivery and OKTA authentication with 100 pilot producers before October 22 to identify and resolve issues early.",
+          "contingencyCorrectiveAction": "Should mass onboarding encounter registration failures exceeding 5 percent, halt email distribution immediately and activate phased rollout with 500 producers per day.",
+          "owner": "TBD - confirm with PM (Engagement Manager)",
+          "targetDate": "18-Oct-2026",
+          "status": "Open",
+          "reasoning": "The ALT explicitly identifies this as a risk and places the project on WATCHLIST. The big-bang approach to onboarding 2,500 plus producers simultaneously is inherently higher risk than a phased rollout. However, the end-to-end registration process was successfully validated with 11 users, and IT and business validation are complete, providing some mitigation. The likelihood is possible rather than likely because the validation was successful, but the scale jump from 11 to 2,500 plus users introduces uncertainty. Impact is high because rollback would delay production launch and affect the client relationship."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Dual Role User Entitlement",
+          "riskDescription": {
+            "context": "A requirement change was raised on July 16, 2026: logged in users with dual role should get entitlement based on the role played for an agency and should not be the highest role of the user (EMS - Decision Log, item 37). Once logged in, the user role is a combination of the user and the agency, and based on the agency selected, the user's entitlement should be decided; further, while the user may lose a particular role for an agency, if the user has a role on another agency then the user should still have access (EMS - Decision Log, item 37). This decision is pending as of July 22, 2026 (EMS - Decision Log, item 37). The scope change tracker lists this as discussions underway with medium effort size (EMS - Scope Change Tracker, item 19).",
+            "condition": "The dual role entitlement requirement may not be finalized and implemented before UAT, or the implementation may introduce authorization defects that are discovered late in testing.",
+            "consequence": "UAT may be delayed while the requirement is clarified and implemented, or authorization defects may reach production, allowing users to access data or functions outside their permitted scope."
+          },
+          "category": "Scope/Change Control",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Finalize dual role entitlement requirement with Premera business team by July 26 and implement authorization logic in Sprint PI5-3 with focused testing.",
+          "contingencyCorrectiveAction": "If authorization defects are discovered in UAT, implement role-based access workaround with manual agency filter and communicate limitation to business users.",
+          "owner": "TBD - confirm with PM (Engagement Manager)",
+          "targetDate": "26-Jul-2026",
+          "status": "Open",
+          "reasoning": "The decision is pending as of July 22, with UAT signoff on August 14, leaving only three weeks to finalize, implement, and test a medium-effort change to a core authorization function. The EMS shows this is part of ongoing discussions, indicating it is not yet resolved. Impact is medium because authorization is a critical security and compliance function, but the issue is scoped and under discussion, suggesting it may be resolved with focused effort."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Production Deployment Approval and Dark Deploy",
+          "riskDescription": {
+            "context": "A decision was raised on July 8, 2026: the Producer Portal needs to be deployed to Prod as a dark deploy (EMS - Decision Log, item 33). A backlog item is to be created, and deploy to ACPT needs to be completed first, which is pending with help needed from Premera (EMS - Decision Log, item 33). Approvals from John's team are needed to take to Prod, and this needs to be discussed with the Engineering team (EMS - Decision Log, item 33). This decision is pending as of July 22, 2026 (EMS - Decision Log, item 33). The timeline shows Prod Deploy scheduled between August 25 and September 2, 2026 (EMS - Timeline).",
+            "condition": "Approvals from the Engineering team for production deployment may not be obtained on time, or the dark deploy process may not be defined and tested before the scheduled deployment window.",
+            "consequence": "Production deployment on September 2, 2026 would be delayed, missing the contractual go-live milestone and potentially triggering milestone payment delays."
+          },
+          "category": "Governance/Process",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Initiate production deployment approval discussion with John's Engineering team by July 29 and document dark deploy process with rollback steps by August 8.",
+          "contingencyCorrectiveAction": "Once production approval delay is confirmed beyond August 20, escalate to Premera program leadership and negotiate revised go-live date with 5-day buffer.",
+          "owner": "TBD - confirm with PM (Engagement Manager)",
+          "targetDate": "29-Jul-2026",
+          "status": "Open",
+          "reasoning": "The decision is pending as of July 22, with production deployment scheduled for August 25 to September 2, leaving approximately five weeks to obtain approvals and complete ACPT deployment. The EMS shows ACPT deployment is in progress with issues being resolved, and the approval process has not yet been initiated. Impact is high because production deployment gates the contractual go-live milestone. Likelihood is possible because the timeline allows some buffer, but the pending status and dependencies create uncertainty."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Infrastructure Setup and DevOps Completion",
+          "riskDescription": {
+            "context": "Infrastructure Setup and DevOps completion is at 70 percent as of both June 17, 2026 and July 22, 2026, showing no progress over five weeks (EMS - Progress metrics). The Work Assignment states that setup CI/CD pipelines and perform CI/CD deployments to lower environments are Contractor responsibilities, while setup environments for Dev, ACPT, Prod is a Company responsibility (ART - RACI matrix). A decision was made on April 14, 2026 that Infra creation using IaC pipelines and DevOps are in scope for Ascendion PPOR team, with on-need support from David from AI Platform Build Claims POD, as there is no dedicated DevOps resource planned for this project (EMS - Decision Log, item 2).",
+            "condition": "Infrastructure and DevOps work may remain incomplete due to lack of dedicated resource and reliance on on-need support, preventing full automation of deployments and environment provisioning.",
+            "consequence": "Deployments to ACPT and production may be delayed or require manual intervention, increasing the risk of deployment errors and delaying UAT and go-live milestones."
+          },
+          "category": "Environment/Infrastructure",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Secure dedicated DevOps resource allocation for 20 hours per week through August to complete IaC pipeline automation and ACPT deployment tasks.",
+          "contingencyCorrectiveAction": "If DevOps automation remains incomplete by August 15, execute manual deployment to ACPT with documented runbook and assign backup engineer for production deploy.",
+          "owner": "TBD - confirm with PM (Engagement Manager)",
+          "targetDate": "05-Aug-2026",
+          "status": "Open",
+          "reasoning": "The metric shows zero progress over five weeks, indicating the work is stalled or deprioritized. The team is relying on on-need support rather than a dedicated DevOps resource, which may limit capacity. However, the EMS shows that deployments to Dev and ACPT have been completed, suggesting the core pipelines are functional. Impact is medium because incomplete DevOps automation increases deployment risk but does not block go-live if manual processes are used."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Citrix Performance and Offshore Team Productivity",
+          "riskDescription": {
+            "context": "Citrix server slowness and timeouts are impacting offshore team efforts (EMS - Challenges, week of July 22, 2026). The Work Assignment states that network connectivity and Citrix will be provided for necessary team members (ART - Assumptions), and standard working hours are 9:00 AM to 6:00 PM Local Time for offshore resources (ART - Working hours). Services are performed from India and USA with remote working arrangements (ART - Work Location).",
+            "condition": "Citrix performance issues may persist, continuing to slow offshore team productivity and increasing the time required to complete development, testing, and deployment tasks.",
+            "consequence": "Sprint velocity may decline, and remaining work for UAT preparation and go-live may take longer than planned, increasing the risk of missing the August 14 UAT signoff and September 2 go-live milestones."
+          },
+          "category": "Environment/Infrastructure",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Extend VDI support coverage during offshore hours and instruct team to keep Citrix app open in background to prevent automatic upgrades.",
+          "contingencyCorrectiveAction": "When Citrix slowness impacts sprint completion, reprioritize non-dependent tasks to onshore team and escalate to Premera infrastructure support for resolution within 48 hours.",
+          "owner": "TBD - confirm with PM (Engagement Manager)",
+          "targetDate": "26-Jul-2026",
+          "status": "In Progress",
+          "reasoning": "The EMS explicitly calls out Citrix slowness as a current challenge impacting offshore team efforts. The offshore team is a significant portion of the delivery capacity, and persistent performance issues would reduce productivity. However, the sprint metrics show improving velocity (from 88 percent completion in PI4 Sprint 1 to 104 percent in PI5 Sprint 2), suggesting the team is managing the issue. Impact is medium because it affects productivity but has not yet caused sprint failures."
+        },
+        {
+          "sNo": 11,
+          "riskId": "R - 011",
+          "subjectArea": "Agent Tool Integration and Rework",
+          "riskDescription": {
+            "context": "A decision was made on April 13, 2026 to use agents for isolated tasks given enterprise tool integration is not available now (EMS - Decision Log, item 3). This would require more human effort for collating and stitching individual agent outputs, and rework may be needed on the agent build when tools are available later (EMS - Decision Log, item 3). The scope change tracker lists this as agreed with medium effort size (EMS - Scope Change Tracker, item 7). An open risk from March 9, 2026 states that AAVA and Premera Tools integration is required before Agent Development and may limit Agent Development and delays in downstream tasks (EMS - Risk Register). Another open risk from March 16, 2026 states that only one LLM is available in Port Key, which may underperform on specific tasks and prevents use of a reviewer-agent, thereby leading to manual effort (EMS - Risk Register).",
+            "condition": "Enterprise tool integration for agents may remain unavailable, requiring continued manual effort to collate and stitch agent outputs, or the single LLM may underperform on specific tasks, reducing agent productivity gains.",
+            "consequence": "Development and testing productivity may be lower than planned, increasing the effort required to complete remaining work and potentially delaying UAT and go-live milestones."
+          },
+          "category": "Product/Platform Limitation",
+          "probability": "Possible",
+          "impact": "Low",
+          "rag": "Green",
+          "mitigationPreventiveAction": "Document workflows with both AI-assisted and manual paths for critical tasks and conduct monthly assessment to measure agent productivity impact.",
+          "contingencyCorrectiveAction": "Monitor agent output quality weekly and switch to manual development for underperforming tasks to maintain sprint velocity.",
+          "owner": "TBD - confirm with PM (Engagement Manager)",
+          "targetDate": "15-Aug-2026",
+          "status": "Open",
+          "reasoning": "The decision to use isolated agents was made in April, and the project has progressed through multiple sprints with improving velocity, suggesting the team has adapted to the limitation. The EMS shows agent-generated test cases at 70 percent and ADO backlog creation efficiency at 75 percent, indicating agents are providing value despite the tool integration gap. The risks are open but have not materialized into delivery delays. Impact is low because the workaround is in place and the project is progressing."
+        },
+        {
+          "sNo": 12,
+          "riskId": "R - 012",
+          "subjectArea": "Milestone Payment Realization",
+          "riskDescription": {
+            "context": "The Work Assignment defines seven milestones with payment amounts totaling 650,000 dollars (ART - Compensation and Payment). Milestone 5 (Completion of UAT) is 130,000 dollars with UAT signoff scheduled for August 14, 2026 (ART - Compensation and Payment; EMS - Timeline). Milestone 6 (Go LIVE) is 130,000 dollars with go-live scheduled for September 2, 2026 (ART - Compensation and Payment; EMS - Timeline). Milestone 7 (Completion of Hypercare) is 130,000 dollars, with hypercare defined as the later of four weeks after Go-Live date or no open defects or incidents (ART - Deliverables and Acceptance Criteria). No invoiced, paid, or pending amounts are stated in the EMS or ART (EMS and ART - Finance sections).",
+            "condition": "UAT signoff on August 14, 2026 or go-live on September 2, 2026 may be delayed due to the risks identified above, or hypercare may extend beyond four weeks if defects or incidents remain open.",
+            "consequence": "Milestone payments totaling 390,000 dollars (Milestones 5, 6, and 7) would be delayed, affecting Contractor cash flow and potentially requiring contract renegotiation or dispute resolution."
+          },
+          "category": "Contractual",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish formal change control procedure with Premera to evaluate and approve scope changes and document milestone acceptance criteria by July 31.",
+          "contingencyCorrectiveAction": "Upon milestone delay confirmation, initiate contract amendment discussion with Premera program leadership to rebaseline payment schedule and protect cash flow within 10 days.",
+          "owner": "TBD - confirm with PM (Engagement Manager)",
+          "targetDate": "31-Jul-2026",
+          "status": "Open",
+          "reasoning": "This is a cascaded risk that follows from the UAT readiness, Data Hub integration, and go-live risks identified above. The Work Assignment defines clear milestone payment terms tied to deliverable acceptance. The likelihood is possible because the parent risks (UAT delay, go-live delay) are rated likely or possible. Impact is high because 390,000 dollars (60 percent of the total contract value) is tied to the final three milestones, and payment delays would significantly affect the Contractor's financial position."
+        },
+        {
+          "sNo": 13,
+          "riskId": "R - 013",
+          "subjectArea": "Hypercare Incident Resolution Capacity",
+          "riskDescription": {
+            "context": "The Work Assignment defines hypercare as dedicated post-go-live support, active monitoring, and incident resolution in accordance with Company's SLAs, with acceptance as the later of four weeks after Go-Live date or no open defects or incidents (ART - Deliverables and Acceptance Criteria). The Work Assignment states that target response and resolution times, measurement methods, exclusions, escalation terms, and penalty or credit amounts for the hypercare incident resolution SLA are not stated (ART - SLAs). No resource plan or team size for hypercare is provided in the EMS or ART (EMS and ART - Resources sections). The project is using on-need DevOps support rather than a dedicated resource (EMS - Decision Log, item 2).",
+            "condition": "Hypercare incident volume may be higher than anticipated if quality issues or integration defects reach production, or the team may lack sufficient capacity to resolve incidents within Company's SLAs if the SLA terms are more stringent than planned.",
+            "consequence": "Hypercare may extend beyond four weeks, delaying Milestone 7 payment of 130,000 dollars, or SLA breaches may occur, potentially triggering penalties or credits and damaging the client relationship."
+          },
+          "category": "Operational/Support",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Define hypercare resource plan with 24x7 coverage and clarify SLA response and resolution time commitments with Premera by August 20.",
+          "contingencyCorrectiveAction": "If hypercare incident volume exceeds 10 critical incidents per week, engage AI Circle for additional support and communicate SLA breach risk to Premera immediately.",
+          "owner": "TBD - confirm with PM (Engagement Manager)",
+          "targetDate": "20-Aug-2026",
+          "status": "Open",
+          "reasoning": "The Work Assignment defines hypercare acceptance as no open defects or incidents, which is a stringent criterion. The SLA terms are not stated, creating uncertainty about the resolution time commitments. The project has open code quality and security issues (code smells, CVEs, low backend code coverage) that could lead to production defects. However, the team has demonstrated delivery capability through improving sprint velocity, and the big-bang onboarding was validated with 11 users. Impact is medium because hypercare extension would delay one milestone payment and could affect client satisfaction, but it would not block project closure."
+        },
+        {
+          "sNo": 14,
+          "riskId": "R - 014",
+          "subjectArea": "Data Mapping and Entity Stitching Rework",
+          "riskDescription": {
+            "context": "A decision was made on June 25, 2026 that while data mappings are mostly closed, possible values for the data are still being discussed, and the team is to go forward with the mapping defined for now (EMS - Decision Log, item 31). There could be possible issues coming during E2E testing or UAT which need to be then handled; it is expected these would be minor modifications, but if there are any issues that lead to design changes, that may impact timelines (EMS - Decision Log, item 31). An open risk from June 25, 2026 states that the team is going forward with the data mappings provided, and if any issues with the values from these mappings come and they lead back to design such as entity stitching, it might have some time impact (EMS - Risk Register, ETA July 15).",
+            "condition": "Data mapping issues may be discovered during integration testing or UAT that require entity stitching design changes, such as mismatches between Data Hub entities (Commercial Group, Individual Member, Provider) and the portal's data model.",
+            "consequence": "Rework would be required to adjust the data model, APIs, and UI, delaying integration testing and UAT and potentially pushing the August 14 UAT signoff and September 2 go-live dates."
+          },
+          "category": "Data Readiness",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct detailed RACI workshop with Data Hub and business teams by July 28 to finalize data value mappings and validate entity stitching logic.",
+          "contingencyCorrectiveAction": "When data mapping issues are discovered in integration testing, prioritize critical-path entity fixes and defer non-essential data fields to post-launch release.",
+          "owner": "TBD - confirm with PM (Engagement Manager)",
+          "targetDate": "28-Jul-2026",
+          "status": "Open",
+          "reasoning": "The decision log and risk register both identify this as a known issue, with the team proceeding based on current mappings while acknowledging the risk of rework. The EMS notes that issues are expected to be minor modifications, but design changes could impact timelines. The risk ETA of July 15 has passed with no update provided in the July 22 WSR, suggesting the issue may still be unresolved. Impact is medium because data mapping issues could delay testing and UAT, but the team has a mitigation plan (continuous handshake with business and DH teams) and the issues are expected to be minor."
+        },
+        {
+          "sNo": 15,
+          "riskId": "R - 015",
+          "subjectArea": "Disaster Recovery Strategy Definition",
+          "riskDescription": {
+            "context": "A decision was raised on May 7, 2026 that a DR strategy for Producer Portal needs to be defined and may not be implicitly handled by the platform; this may need multi region deployment and Azure front door (EMS - Decision Log, item 13). This decision is pending as of July 22, 2026 (EMS - Decision Log, item 13). The scope change tracker lists this as pending with small to medium effort size depending on approach finalized (EMS - Scope Change Tracker, item 12). A later decision on July 17, 2026 states that Azure front door will be used in place of traffic manager, and as Azure front door is being used, app gateway is not needed, with SSL/TLS offloading and WAF handled on the front door (EMS - Decision Log, item 36).",
+            "condition": "The disaster recovery strategy may not be finalized and implemented before go-live, or the multi-region deployment and Azure front door configuration may introduce complexity that delays deployment or causes production issues.",
+            "consequence": "The application may go live without a tested disaster recovery capability, creating business continuity risk, or the DR implementation may delay production deployment beyond September 2, 2026."
+          },
+          "category": "Technical/Architecture",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Finalize disaster recovery strategy with Premera architecture team by August 1 and implement comprehensive backup plan with offsite storage and documented recovery procedures.",
+          "contingencyCorrectiveAction": "If multi-region deployment delays production readiness, deploy single-region with manual failover plan and schedule DR implementation for Phase 2 post-launch.",
+          "owner": "TBD - confirm with PM (Engagement Manager)",
+          "targetDate": "01-Aug-2026",
+          "status": "Open",
+          "reasoning": "The DR strategy decision has been pending since May 7, over two months before the July 22 reporting date, indicating it is not prioritized or is blocked. However, a related decision on July 17 shows that Azure front door is being implemented, which may address some DR requirements. The scope change tracker lists this as small to medium effort, suggesting it is manageable if prioritized. Impact is medium because lack of DR capability creates business continuity risk but does not block go-live, and the DR implementation could be completed post-launch if necessary."
+        }
+      ]
+    }
+  ]
+}
