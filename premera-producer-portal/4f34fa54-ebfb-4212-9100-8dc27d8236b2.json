@@ -1,0 +1,420 @@
+{
+  "clientName": "",
+  "projects": [
+    {
+      "projectId": "",
+      "projectName": "Producer Portal Development - Phase 1",
+      "projectStatus": "In Progress",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "ART"
+      ],
+      "sourcesNotAvailable": [
+        "EMS",
+        "ALT"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Release Readiness",
+          "riskDescription": {
+            "context": "As of July 22, 2026, Integration Testing, UAT, and Penetration Test are all at 0% progress (ART - WSR). Data Hub Integration is 95% complete but 22 days past its revised date of June 30 (ART - WSR). Go Live is scheduled for September 2, 2026, 42 days away (ART - Work Assignment, ART - WSR). UAT Signoff is needed by August 14 (23 days away) and Penetration Test by August 25 (34 days away) (ART - WSR).",
+            "condition": "The remaining testing phases may not complete in the available time, especially if Data Hub Integration delays persist or if testing uncovers issues requiring rework.",
+            "consequence": "Go Live on September 2 may be delayed, affecting the client relationship and the ability to onboard 2,500+ producers as planned."
+          },
+          "category": "Planning/Estimation",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Rebaseline impacted scope with the customer, prioritize critical-path functionality, and adjust sprint priorities to protect the September 2 Production rollout.",
+          "contingencyCorrectiveAction": "Upon any testing phase delay beyond August 25, immediately re-baseline the go-live plan, identify the earliest available release window, and escalate to the project board within 48 hours.",
+          "owner": "EM",
+          "targetDate": "05-Aug-2026",
+          "status": "Open",
+          "reasoning": "Three major testing phases are at 0% with only 42 days to Go Live, and a key dependency (DH Integration) is incomplete and overdue. The compressed timeline leaves little room for issue remediation. Evidence is corroborated across multiple sections of the WSR."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Integration Validation",
+          "riskDescription": {
+            "context": "Data Hub Integration is 95% complete as of July 15, 2026, but its revised completion date of June 30 has passed by 22 days (ART - WSR). An open risk notes that if data mapping issues lead back to design, there might be time impact (ART - WSR, June 25 risk). Integration Testing has not started (0% progress) (ART - WSR).",
+            "condition": "Data Hub Integration may remain incomplete or uncover data mapping issues when Integration Testing begins, requiring design rework.",
+            "consequence": "Integration Testing start may be delayed, compressing the UAT window and increasing the risk of Go Live delay."
+          },
+          "category": "Third-Party",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Conduct daily collaboration with DH and business teams to validate data mappings, and rebaseline the impacted scope if design changes are required.",
+          "contingencyCorrectiveAction": "Should Data Hub Integration remain incomplete beyond July 30, reprioritize tasks to non-dependent workstreams, agree on phased delivery with the customer, and escalate to program leadership within 24 hours.",
+          "owner": "EM",
+          "targetDate": "30-Jul-2026",
+          "status": "Open",
+          "reasoning": "The dependency is overdue by 22 days and an open risk explicitly warns of potential design rework. Integration Testing cannot proceed without stable DH integration, and the timeline is already compressed."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Data Completeness",
+          "riskDescription": {
+            "context": "Four additional fields needed for total premium calculation are expected from Data Hub on July 30, 2026 (ART - WSR, July 3 risk). If delivered on July 30, changes can only be made by August 5 (ART - WSR). UAT Signoff is needed by August 14, only 9 days after the change deadline (ART - WSR).",
+            "condition": "Data Hub may delay delivery of the four total premium fields beyond July 30, or the fields may require additional rework after August 5.",
+            "consequence": "The UAT window may be compressed or UAT may proceed with incomplete functionality, increasing the risk of defects reaching production or delaying Go Live."
+          },
+          "category": "Third-Party",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Coordinate with the E2E team to treat total premium fields as a known item, test other scenarios first, and integrate the fields once available.",
+          "contingencyCorrectiveAction": "If Data Hub delays delivery beyond July 30, implement a feature toggle to disable total premium display, communicate the limitation to UAT stakeholders, and schedule post-UAT integration.",
+          "owner": "EM",
+          "targetDate": "30-Jul-2026",
+          "status": "Open",
+          "reasoning": "The dependency has a stated ETA (July 30) and a narrow window for implementation (by August 5). Any delay or rework would compress UAT. The risk is explicitly documented in the WSR."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Test Preparation",
+          "riskDescription": {
+            "context": "UAT is at 0% progress as of July 22, 2026, with UAT Signoff needed by August 14, 2026 (23 days away) (ART - WSR). The WSR notes that support is required for getting UAT test cases early (ART - WSR). The Work Assignment assumes that UAT stakeholders will be nominated and available per the agreed timeline (ART - Work Assignment).",
+            "condition": "UAT test cases may not be provided in time for UAT preparation, or UAT stakeholders may not be available as assumed.",
+            "consequence": "UAT start may be delayed or UAT execution may be incomplete, increasing the risk of defects reaching production or delaying Go Live."
+          },
+          "category": "Client Dependency",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Schedule a detailed review with QE leadership before August 1 to confirm UAT test cases, stakeholder availability, and environment readiness, and establish backup support structures.",
+          "contingencyCorrectiveAction": "If UAT test cases are not provided by August 5, escalate to the Product Owner and program leadership, implement a minimum 4-week delay buffer, and rebaseline the go-live plan.",
+          "owner": "EM",
+          "targetDate": "01-Aug-2026",
+          "status": "Open",
+          "reasoning": "The WSR explicitly requests early UAT test case support, and UAT is at 0% with only 23 days remaining. The Work Assignment relies on an assumption about stakeholder availability. Any delay in test case delivery or stakeholder availability would compress UAT."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Environment Readiness",
+          "riskDescription": {
+            "context": "An open risk notes that the Auth0 DB connection configuration needs to be updated by the Premera team in the ACPT environment, and the team does not have access to do this themselves (ART - WSR, July 6 risk). The risk states that if this gets delayed, it will impact the move to ACPT (ART - WSR). Front End, Account Management API, and Wrapper API have been deployed to ACPT, but connectivity and service integration issues are being resolved (ART - WSR).",
+            "condition": "The Premera team may delay updating the Auth0 DB connection configuration in ACPT, blocking full ACPT environment readiness.",
+            "consequence": "Integration Testing and UAT may be delayed due to incomplete ACPT environment setup, compressing the testing window and increasing the risk of Go Live delay."
+          },
+          "category": "Client Dependency",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Coordinate with Ganesh and Drew to update the Auth0 DB connection configuration in ACPT by July 30, and track Auth0 terraform release pipeline support needs.",
+          "contingencyCorrectiveAction": "If ACPT configuration is not updated by August 1, utilize alternative environments for limited testing, escalate to program leadership, and adjust sprint priorities to maintain progress.",
+          "owner": "EM",
+          "targetDate": "30-Jul-2026",
+          "status": "Open",
+          "reasoning": "The risk is explicitly documented with a July 10 ETA, and the team lacks access to resolve it themselves. ACPT readiness is a prerequisite for testing phases. The WSR notes ongoing connectivity and integration issues in ACPT."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Code Quality",
+          "riskDescription": {
+            "context": "As of June 18, 2026, backend code coverage is 57% (ART - WSR), below the typical 80% target. There are 190 code smells in progress, including 2 Critical and 80 Major (ART - WSR). The WSR notes that code quality issues are a challenge impacting the October 15 release target, and that design adherence and unit testing implementation continue to be key areas for improvement (ART - WSR). Functional test failure rate is 15% (11 of 71 test cases failed) (ART - WSR).",
+            "condition": "The backend code coverage gap and unresolved code smells may allow defects to remain undetected until Integration Testing or UAT.",
+            "consequence": "Defects may surface late in testing, requiring rework and delaying UAT or Go Live, or defects may reach production, weakening client confidence."
+          },
+          "category": "Delivery Practices",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Increase manual code review frequency with senior developers, prioritize resolution of 2 Critical and 80 Major code smells, and target 80% backend code coverage by August 10.",
+          "contingencyCorrectiveAction": "If code quality issues surface during Integration Testing, schedule additional review sessions with senior developers, seek client input on priorities, and implement defect triage to protect the go-live date.",
+          "owner": "EM",
+          "targetDate": "10-Aug-2026",
+          "status": "Open",
+          "reasoning": "Code coverage is measurably below standard (57% vs 80%), and the WSR explicitly calls out code quality as a challenge impacting release. The 15% functional test failure rate and 190 code smells corroborate the quality gap. Testing phases ahead may uncover issues requiring rework."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Regression Prevention",
+          "riskDescription": {
+            "context": "The WSR notes that end-to-end workflow and impacted-path validation needs strengthening to reduce regression leakage (ART - WSR). Integration Testing is at 0% progress (ART - WSR). There are 190 code smells in progress, including 2 Critical and 80 Major (ART - WSR).",
+            "condition": "Regression testing practices may remain insufficient, and Integration Testing may not catch all regression issues before UAT.",
+            "consequence": "Regression defects may reach UAT or production, requiring emergency fixes and potentially delaying Go Live or causing post-production issues."
+          },
+          "category": "Delivery Practices",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Strengthen end-to-end workflow validation by expanding regression test coverage, executing regression pipelines on ACPT, and validating impacted paths before UAT.",
+          "contingencyCorrectiveAction": "Upon detection of regression leakage in UAT, activate defect triage with senior developers, prioritize critical-path fixes, and communicate revised timelines to stakeholders within 24 hours.",
+          "owner": "EM",
+          "targetDate": "10-Aug-2026",
+          "status": "Open",
+          "reasoning": "The WSR explicitly identifies regression leakage as a concern and calls for strengthening validation practices. Integration Testing has not started, so the effectiveness of regression prevention is unproven. The code smell backlog increases the risk of regression."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Security Validation",
+          "riskDescription": {
+            "context": "Penetration Test is at 0% progress as of July 22, 2026, and is scheduled for August 25, 2026 (34 days away) (ART - WSR). Security testing completion status is not stated in the WSR (ART - WSR). As of June 18, 2026, there were 86 CVEs (4 Critical, 82 High), all on the alpine base image (ART - WSR). As of July 21, 2026, Critical and High CVEs were reduced to 0 after removal of images in CVS environments (ART - WSR).",
+            "condition": "Penetration Test may uncover security vulnerabilities that require remediation, or security testing may be incomplete when Penetration Test begins.",
+            "consequence": "Security issues may delay Go Live if remediation is required, or security vulnerabilities may reach production, exposing the client to compliance or security risk."
+          },
+          "category": "Security/Compliance",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Complete security testing by August 15, validate all application components within the trust boundary are deployed to ACPT, and confirm Penetration Test readiness with InfoSec.",
+          "contingencyCorrectiveAction": "If Penetration Test identifies critical vulnerabilities after August 25, immediately re-baseline the go-live plan, allocate dedicated resources for remediation, and escalate to program leadership within 24 hours.",
+          "owner": "EM",
+          "targetDate": "15-Aug-2026",
+          "status": "Open",
+          "reasoning": "Penetration Test has not started and is scheduled only 8 days before Go Live (Aug 25 vs Sep 2). Security testing completion status is not stated. While CVEs were reduced to 0, the Pen Test may uncover new issues. The compressed timeline leaves little room for remediation."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Accessibility Compliance",
+          "riskDescription": {
+            "context": "Accessibility testing is noted as in progress in the WSR (ART - WSR), but completion status and results are not stated. The Work Assignment includes Accessibility Testing in scope with compliance to WCAG 2.2AA (ART - Work Assignment). Penetration Test is scheduled for August 25, 2026 (ART - WSR).",
+            "condition": "Accessibility testing may be incomplete or may uncover compliance gaps that require remediation before Go Live.",
+            "consequence": "Accessibility issues may delay Go Live if remediation is required, or accessibility gaps may reach production, exposing the client to compliance risk or limiting user access."
+          },
+          "category": "Security/Compliance",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Complete accessibility testing by August 15, validate WCAG 2.2AA compliance, and document test results with sign-off from QE leadership.",
+          "contingencyCorrectiveAction": "If accessibility gaps are identified after August 15, prioritize critical compliance issues, implement workarounds for non-critical gaps, and communicate remediation plan to stakeholders.",
+          "owner": "EM",
+          "targetDate": "15-Aug-2026",
+          "status": "Open",
+          "reasoning": "Accessibility testing is in progress but completion status is not stated. The Work Assignment commits to WCAG 2.2AA compliance. Any gaps found late would require remediation in a compressed timeline. The risk is inferred from the data gap."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Team Continuity",
+          "riskDescription": {
+            "context": "The WSR notes that low team morale, team burn-out, resignations, and increased sick leaves are becoming noticeable (ART - WSR). One POD4 resource experienced long absence and attrition, with replacement resources onboarded (ART - WSR). The QE resource Kishore transitioned out effective May 1, 2026 (ART - WSR). Critical testing phases (Integration Testing, UAT, Penetration Test) are ahead with Go Live in 42 days (ART - WSR).",
+            "condition": "Further attrition or sick leaves may occur during the critical testing phases, disrupting knowledge transfer and delaying testing or deployment activities.",
+            "consequence": "Testing phases may be delayed or quality may degrade, increasing the risk of Go Live delay or defects reaching production."
+          },
+          "category": "People/Talent",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Identify backup resources for critical roles, cross-train team members, document processes, and conduct regular check-ins to monitor morale and workload through August 31.",
+          "contingencyCorrectiveAction": "Upon any resignation during testing phases, immediately activate backup resources, redistribute work strategically, and escalate to program leadership to minimize disruption to project timelines.",
+          "owner": "EM",
+          "targetDate": "31-Aug-2026",
+          "status": "Open",
+          "reasoning": "The WSR explicitly notes low morale, burn-out, resignations, and sick leaves. Recent attrition has occurred. Critical testing phases are ahead, and further attrition would disrupt execution. The risk is corroborated by explicit statements in the WSR."
+        },
+        {
+          "sNo": 11,
+          "riskId": "R - 011",
+          "subjectArea": "Deployment Support",
+          "riskDescription": {
+            "context": "There is no dedicated DevOps resource planned for the project (ART - WSR). David from the AI Platform Build Claims POD is providing on-need basis support for IaC/DevOps (ART - WSR). The WSR notes that Auth0 terraform release pipeline support is needed and may require continued support if any issue arises (ART - WSR). Production deployment is scheduled for September 2, 2026 (ART - WSR).",
+            "condition": "David may be unavailable during critical deployment activities, or DevOps issues may arise that require dedicated support not available on an on-need basis.",
+            "consequence": "Deployment to ACPT or Production may be delayed, compressing testing windows or delaying Go Live."
+          },
+          "category": "People/Talent",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Confirm David's availability for ACPT deployment by August 1 and Production deployment by September 2, and document Auth0 terraform pipeline procedures for backup support.",
+          "contingencyCorrectiveAction": "If David is unavailable during critical deployment activities, engage alternate DevOps resources from the AI Platform Build Claims POD, escalate to program leadership, and adjust deployment schedule.",
+          "owner": "EM",
+          "targetDate": "01-Aug-2026",
+          "status": "Open",
+          "reasoning": "The project relies on borrowed DevOps capacity (David) on an on-need basis, and the WSR explicitly requests continued support for Auth0 terraform pipelines. Critical deployment activities are ahead (ACPT for testing, Production for Go Live). If David is unavailable, deployment may be disrupted."
+        },
+        {
+          "sNo": 12,
+          "riskId": "R - 012",
+          "subjectArea": "Contract Coverage",
+          "riskDescription": {
+            "context": "The contract term is March 1 to August 31, 2026 (ART - Work Assignment). Go Live is scheduled for September 2, 2026, 2 days after the contract end (ART - Work Assignment, ART - WSR). Hypercare is a 4-week period post Go Live (ART - Work Assignment), extending to approximately September 30, 2026, 30 days beyond the contract end. No contract extension or amendment is mentioned in the WSR or Work Assignment (ART - Work Assignment, ART - WSR).",
+            "condition": "Work may continue beyond the contract end date of August 31 without formal commercial cover for Go Live on September 2 and Hypercare through approximately September 30.",
+            "consequence": "Commercial disputes may arise over payment for work performed beyond the contract term, or the contractor may cease work on August 31, leaving Go Live and Hypercare unsupported."
+          },
+          "category": "Contractual",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Secure approved contract amendment or Statement of Work by August 1 to cover Go Live on September 2 and Hypercare through September 30, with clear commercial terms.",
+          "contingencyCorrectiveAction": "If contract amendment is not approved by August 15, immediately escalate to program leadership and legal, halt non-critical work, and rebaseline the go-live plan to align with contract end date.",
+          "owner": "EM",
+          "targetDate": "01-Aug-2026",
+          "status": "Open",
+          "reasoning": "The contract explicitly ends August 31, but Go Live is September 2 and Hypercare extends to approximately September 30. No extension or amendment is mentioned despite this clear gap. The evidence is explicit and corroborated across both documents."
+        },
+        {
+          "sNo": 13,
+          "riskId": "R - 013",
+          "subjectArea": "Scope Formalization",
+          "riskDescription": {
+            "context": "The WSR documents 19 scope changes, many marked as 'Agreed (scope)' with effort sizes ranging from Extra Small to Medium (ART - WSR). The Work Assignment states that material scope changes may invoke the Change Management process and require an amendment to the Work Assignment (ART - Work Assignment). No change orders or contract amendments are mentioned in the WSR (ART - WSR).",
+            "condition": "The 19 scope changes may not have been formalized through change orders or contract amendments, leaving their commercial treatment unclear.",
+            "consequence": "Commercial disputes may arise over payment for scope changes, or the contractor may claim additional compensation for work performed beyond the original scope."
+          },
+          "category": "Scope/Change Control",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish formal change request approval workflow by August 1, document all 19 scope changes with effort estimates, and submit change orders for customer sign-off before UAT.",
+          "contingencyCorrectiveAction": "If scope changes remain unformalized by August 15, escalate to program leadership, halt work on unapproved changes, and document all scope change effort for commercial reconciliation post-project.",
+          "owner": "EM",
+          "targetDate": "01-Aug-2026",
+          "status": "Open",
+          "reasoning": "Nineteen scope changes are documented, many with effort impact, but no change orders or amendments are mentioned. The Work Assignment requires formal change management for material scope changes. The gap between documented changes and formal amendments creates commercial risk."
+        },
+        {
+          "sNo": 14,
+          "riskId": "R - 014",
+          "subjectArea": "Milestone Payment",
+          "riskDescription": {
+            "context": "The contract includes 7 milestones totaling $650,000 (ART - Work Assignment). Milestones 1-3 (Design, Sprint 1&2, Sprint 3&4) totaling $162,500 are completed (ART - Work Assignment, ART - WSR). Milestone 4 (Development and Testing, $97,500) is in progress (ART - WSR). Milestones 5-7 (UAT $130,000, Go Live $130,000, Hypercare $130,000) totaling $390,000 are not started (ART - Work Assignment, ART - WSR). UAT, Go Live, and Hypercare are at risk of delay.",
+            "condition": "If UAT, Go Live, or Hypercare are delayed beyond the contract end date of August 31, milestone payments totaling $390,000 (60% of contract value) may be delayed or disputed.",
+            "consequence": "Payment delays may strain the contractor relationship or lead to commercial disputes over milestone acceptance criteria and payment terms."
+          },
+          "category": "Contractual",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Confirm milestone acceptance criteria with the customer by August 1, track milestone completion against contract dates, and invoice Milestone 4 upon Development and Testing completion.",
+          "contingencyCorrectiveAction": "If milestones delay beyond August 31, escalate to program leadership, negotiate interim payment terms, and document revised milestone schedule in a contract amendment.",
+          "owner": "EM",
+          "targetDate": "01-Aug-2026",
+          "status": "Open",
+          "reasoning": "This risk cascades from R-001 (release readiness) and R-012 (contract coverage). Sixty percent of contract value is tied to milestones not yet started, and those milestones are at risk of delay. The contract ends before Hypercare completes, creating payment timing risk."
+        },
+        {
+          "sNo": 15,
+          "riskId": "R - 015",
+          "subjectArea": "Infrastructure Stability",
+          "riskDescription": {
+            "context": "The WSR notes that Citrix server slowness and timeouts are impacting offshore team efforts (ART - WSR). Recurring network issues, environment downtimes, VPN/tool access issues, and license expiries continue to impact team productivity (ART - WSR). Critical testing phases (Integration Testing, UAT, Penetration Test) are ahead with Go Live in 42 days (ART - WSR).",
+            "condition": "Infrastructure and access issues may persist during critical testing phases, reducing team productivity and delaying testing activities.",
+            "consequence": "Testing phases may be delayed, compressing the timeline and increasing the risk of Go Live delay or incomplete testing."
+          },
+          "category": "Environment/Infrastructure",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement VDI support coverage during offshore hours, keep Citrix Windows app open in the background to prevent auto-upgrade, and escalate recurring issues to Premera infrastructure team.",
+          "contingencyCorrectiveAction": "If infrastructure issues persist beyond August 1, reprioritize tasks to non-dependent workstreams, utilize alternative environments for limited testing, and escalate to program leadership.",
+          "owner": "EM",
+          "targetDate": "01-Aug-2026",
+          "status": "Open",
+          "reasoning": "The WSR explicitly notes recurring infrastructure and access issues impacting productivity. Critical testing phases are ahead, and continued issues would delay execution. The risk is corroborated by explicit statements in the WSR."
+        },
+        {
+          "sNo": 16,
+          "riskId": "R - 016",
+          "subjectArea": "Test Data Readiness",
+          "riskDescription": {
+            "context": "The WSR notes that support is required for upstream data setup of integration and E2E scenarios, with daily calls enabled and continued support needed (ART - WSR). Integration Testing is at 0% progress (ART - WSR). The Work Assignment assumes that test data and test environments will be made available by the Company for all testing phases (ART - Work Assignment).",
+            "condition": "Upstream data setup for integration and E2E testing may be delayed or incomplete, blocking test execution.",
+            "consequence": "Integration Testing and E2E testing may be delayed, compressing the UAT window and increasing the risk of Go Live delay."
+          },
+          "category": "Client Dependency",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Coordinate daily with Edge and DH teams to create test data for integration and E2E scenarios, and confirm data availability by August 5.",
+          "contingencyCorrectiveAction": "If upstream data setup is not available by August 5, utilize synthetic data for limited testing, escalate to program leadership, and adjust sprint priorities to maintain progress.",
+          "owner": "EM",
+          "targetDate": "05-Aug-2026",
+          "status": "Open",
+          "reasoning": "The WSR explicitly requests continued support for upstream data setup, and Integration Testing has not started. The Work Assignment relies on an assumption about test data availability. Any delay in data setup would block testing execution."
+        },
+        {
+          "sNo": 17,
+          "riskId": "R - 017",
+          "subjectArea": "Agent Reliability",
+          "riskDescription": {
+            "context": "The WSR documents multiple open risks related to AAVA agent performance: Single LLM may underperform on specific tasks (March 16 risk); inadequate agent hardening may cause inconsistent behavior in production (March 16 risk); limited training datasets may delay agent maturity (March 16 risk); agent dependency on external tools may result in execution failures (March 16 risk); poor coordination between multiple agents may cause workflow delays (March 16 risk) (ART - WSR). Agent efficiency metrics show ~42% of development tasks achieved with agents, with analysis, code refactor, review, and UI layout remaining manual (ART - WSR).",
+            "condition": "AAVA agents may underperform or behave inconsistently in production, requiring manual intervention or rework.",
+            "consequence": "Post-production support effort may increase during Hypercare, or agent failures may disrupt portal functionality, affecting user experience and client confidence."
+          },
+          "category": "Technical/Architecture",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Define agent hardening checklist and feedback loop, perform scenario testing, implement retry logic and timeout handling, and document LLM limitations per task-type before Go Live.",
+          "contingencyCorrectiveAction": "If agents underperform in production, activate manual intervention procedures, implement fallback logic, and allocate additional resources during Hypercare to maintain service levels.",
+          "owner": "EM",
+          "targetDate": "25-Aug-2026",
+          "status": "Open",
+          "reasoning": "Five open risks explicitly document agent performance concerns, and agent efficiency metrics show significant manual effort still required. The risks are dated March 2026 and remain open. Production use of agents introduces uncertainty about behavior under load."
+        },
+        {
+          "sNo": 18,
+          "riskId": "R - 018",
+          "subjectArea": "Knowledge Transfer",
+          "riskDescription": {
+            "context": "The WSR notes low team morale, burn-out, resignations, and increased sick leaves (ART - WSR). One POD4 resource experienced attrition with replacement resources onboarded (ART - WSR). The Work Assignment includes Training and Knowledge Transfer as a deliverable (ART - Work Assignment). Hypercare is a 4-week period post Go Live (ART - Work Assignment).",
+            "condition": "If further attrition occurs before or during Hypercare, knowledge transfer may be incomplete, leaving support activities understaffed or under-skilled.",
+            "consequence": "Hypercare support quality may degrade, leading to unresolved production issues, client dissatisfaction, and potential escalation."
+          },
+          "category": "Knowledge Continuity",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct Training and Knowledge Transfer sessions by August 20, document user and admin guides, and cross-train team members to ensure knowledge redundancy before Hypercare.",
+          "contingencyCorrectiveAction": "If attrition occurs during Hypercare, immediately activate backup resources, redistribute support tasks, and escalate to program leadership to maintain business continuity and team productivity.",
+          "owner": "EM",
+          "targetDate": "20-Aug-2026",
+          "status": "Open",
+          "reasoning": "This risk cascades from R-010. Attrition has occurred, morale is low, and Hypercare is a critical support phase. If attrition continues, knowledge transfer may be disrupted, affecting support quality. The Work Assignment commits to knowledge transfer as a deliverable."
+        },
+        {
+          "sNo": 19,
+          "riskId": "R - 019",
+          "subjectArea": "Dual Role Handling",
+          "riskDescription": {
+            "context": "Decision #37 in the WSR (July 16, 2026) notes that logged-in users with dual roles (Producer and Agency Admin) should get entitlement based on the role played for an agency, not the highest role of the user (ART - WSR). The decision status is 'Pending' (ART - WSR). Scope change #19 notes that if a producer has a dual role, the user role is specific to the agency, and discussions are underway with a Medium effort size (ART - WSR).",
+            "condition": "The dual role handling requirement may remain unresolved or may be implemented late, requiring rework during UAT or post-production.",
+            "consequence": "UAT may uncover incorrect role-based access, requiring rework and delaying UAT signoff, or incorrect access may reach production, exposing data to unauthorized users and creating a security or compliance issue."
+          },
+          "category": "Security/Compliance",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Finalize dual role handling requirement with Harish by July 30, implement RBAC control updates, and validate entitlement logic before UAT.",
+          "contingencyCorrectiveAction": "If dual role handling is not finalized by August 5, implement a temporary workaround using the highest role logic, document the limitation for UAT, and schedule post-UAT remediation.",
+          "owner": "EM",
+          "targetDate": "30-Jul-2026",
+          "status": "Open",
+          "reasoning": "The decision is pending as of July 16, and the scope change is marked as discussions underway with Medium effort. UAT is 23 days away. If the requirement is not resolved and implemented, UAT may find access control issues, or production may have incorrect entitlements."
+        },
+        {
+          "sNo": 20,
+          "riskId": "R - 020",
+          "subjectArea": "Production Onboarding",
+          "riskDescription": {
+            "context": "Go Live is scheduled for September 2, 2026 (ART - Work Assignment, ART - WSR). The portal is intended to onboard producers across all lines of business. Testing phases are compressed with multiple quality and security risks identified across R-001, R-006, R-007, and R-008.",
+            "condition": "If Go Live proceeds on September 2 with incomplete testing or unresolved quality issues, the mass producer onboarding may encounter functional, performance, or security issues.",
+            "consequence": "Producer onboarding may fail or be rolled back, causing client dissatisfaction, reputational damage, and potential commercial penalties or disputes."
+          },
+          "category": "Operational/Support",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Rebaseline impacted scope with the customer, prioritize critical-path functionality, agree on phased delivery if required, and validate end-to-end registration process before mass onboarding.",
+          "contingencyCorrectiveAction": "Upon detection of functional, performance, or security issues during mass onboarding, immediately activate rollback procedures, communicate the issue to program leadership within 1 hour, and implement phased onboarding as backup.",
+          "owner": "EM",
+          "targetDate": "25-Aug-2026",
+          "status": "Open",
+          "reasoning": "This risk cascades from R-001, R-006, R-007, and R-008. Multiple quality and testing risks threaten release readiness. Mass onboarding amplifies the impact of any production issue. The compressed timeline increases the likelihood of issues reaching production."
+        }
+      ]
+    }
+  ]
+}
