@@ -1,0 +1,240 @@
+{
+  "clientName": "",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS"
+      ],
+      "sourcesNotAvailable": [
+        "ALT",
+        "Project Artifacts"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Scope Governance",
+          "riskDescription": {
+            "context": "The project has already absorbed approximately 14 scope changes (equivalent to 0.75–1 sprint of additional effort), and the mitigation plan for this risk has been identified but not yet finalized (EMS - Risk).",
+            "condition": "The client may continue to introduce additional scope items without a formally agreed change control process, causing the team to absorb further unplanned work beyond what is already accumulated.",
+            "consequence": "The team's capacity to complete committed sprint deliverables could be eroded, leading to disputes over what is covered under the current agreement and potentially requiring renegotiation of delivery commitments."
+          },
+          "category": "Scope/Change Control",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish formal change request mechanism with defined approval workflow and impact assessment for all scope additions.",
+          "contingencyCorrectiveAction": "Upon accumulation of additional 0.5 sprint equivalent, rebaseline impacted delivery plan with client, prioritize critical-path features, and escalate to project board within 72 hours.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "15-Jul-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Integration Platform",
+          "riskDescription": {
+            "context": "Integration with the live data platform APIs was recently resolved as a dependency, but performance and non-functional requirement issues were explicitly noted as only becoming visible after integration is complete (EMS - Risk).",
+            "condition": "Now that integration is proceeding, non-functional and performance issues may surface during system integration testing that were not detectable in earlier isolated testing phases.",
+            "consequence": "Significant rework of integration logic or application components could be required mid-SIT, disrupting the current build cycle and potentially requiring re-engagement with the data platform team to resolve interface or performance gaps."
+          },
+          "category": "Technical/Architecture",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Conduct NFR validation testing on integrated Data Hub APIs weekly during SIT to detect performance bottlenecks early.",
+          "contingencyCorrectiveAction": "Should performance degradation exceed 20% of baseline, activate technical escalation to Data Hub team and deploy caching layer within 5 business days.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "22-Jul-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Data Platform Dependency",
+          "riskDescription": {
+            "context": "The project carried a dependency on timely delivery of data platform APIs, which has been marked resolved (EMS - Risk). However, no assumptions or dependency records are available to confirm the stability or contractual finality of the delivered API interfaces (EMS - Risk).",
+            "condition": "The delivered data platform APIs may not yet have stable or finalized integration contracts, and the client-side data platform team may introduce interface changes during the ongoing SIT phase.",
+            "consequence": "Unstable or revised API contracts could force the development team to rework integration components already built, consuming sprint capacity and creating cascading delays across dependent portal features."
+          },
+          "category": "Dependency",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate Data Hub API contract stability with client platform team and document agreed interface freeze date before SIT completion.",
+          "contingencyCorrectiveAction": "If API contract changes are introduced after integration build, rebaseline affected scope, defer non-critical features, and notify client within 48 hours.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "05-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Team Continuity",
+          "riskDescription": {
+            "context": "The project has a single named Engineering Manager with no delivery manager, QA manager, or secondary owner recorded (EMS - Risk). No resource summary data is available for offshore, onshore, or nearshore headcount (EMS - Risk).",
+            "condition": "If the sole named Engineering Manager becomes unavailable due to attrition, reassignment, or extended absence, there is no documented backup owner to maintain delivery oversight and stakeholder communication.",
+            "consequence": "Project governance, client-facing decisions, and technical direction could stall without a designated alternate, increasing the risk of unresolved blockers and eroding client confidence during the active Build and SIT phase."
+          },
+          "category": "Resource/Talent",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Identify backup Engineering Manager and document succession plan with knowledge handover for critical project decisions and client relationships.",
+          "contingencyCorrectiveAction": "Upon unplanned absence exceeding 3 days, activate designated backup EM and escalate to delivery practice lead for interim governance support.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "31-Jul-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Knowledge Continuity",
+          "riskDescription": {
+            "context": "No resource summary, team composition, or knowledge transfer records are available in the project data (EMS - Risk). The project is in Build and SIT with active development of a portal using specialized technology, and all three open or recently resolved risks are owned by a single individual.",
+            "condition": "Key engineers with domain knowledge of the portal architecture, integration design, and accumulated scope change decisions may leave the project without structured knowledge transfer.",
+            "consequence": "Remaining team members could lack the context needed to maintain integration logic or resolve SIT defects efficiently, leading to extended defect resolution cycles and gaps in institutional knowledge that are difficult to recover."
+          },
+          "category": "Knowledge Continuity",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement bi-weekly knowledge sharing sessions and document integration design decisions and scope change rationale in project repository.",
+          "contingencyCorrectiveAction": "When key engineer departure is confirmed, initiate 2-week structured knowledge transfer with shadowing and update all technical documentation before exit.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "12-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Cloud Environment Access",
+          "riskDescription": {
+            "context": "The project is deployed on a private cloud platform and is currently in the Build and SIT stage (EMS - Risk). No environment readiness assumptions or dependency records are available to confirm that all required environments are provisioned and accessible to the team.",
+            "condition": "Access to required cloud environments for SIT, including necessary credentials, network configurations, and role-based permissions, may be delayed or incomplete as the team progresses through integration testing.",
+            "consequence": "Testing activities could be blocked or forced into workarounds using incomplete environments, reducing the reliability of SIT results and potentially masking defects that only appear in a fully configured environment."
+          },
+          "category": "Environment/Infrastructure",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate Azure Private Cloud environment access and configurations weekly with infrastructure team to prevent SIT blockers and credential delays.",
+          "contingencyCorrectiveAction": "If environment access is blocked beyond 2 business days, escalate to cloud operations lead and deploy temporary workaround environment for testing continuity.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "29-Jul-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Client Decisions and Sign-off",
+          "riskDescription": {
+            "context": "The project has absorbed a significant number of scope changes and is in active Build and SIT, yet no client feedback, governance review records, or assumption records are available (EMS - Risk). The mitigation plan for the scope change risk remains unfinalized.",
+            "condition": "The client may delay or withhold sign-off on sprint deliverables, acceptance criteria, or SIT results, particularly as the volume of absorbed scope changes creates ambiguity about what constitutes agreed delivery.",
+            "consequence": "Delayed client approvals could stall progression through SIT gates, create disputes about acceptance criteria, and leave the team in an extended review cycle that consumes capacity without advancing delivery."
+          },
+          "category": "Customer/Stakeholder",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Secure formal client sign-off on sprint deliverables and SIT acceptance criteria at each milestone checkpoint to prevent downstream approval delays.",
+          "contingencyCorrectiveAction": "If client sign-off is delayed beyond 5 business days, escalate to client manager, document impact on timeline, and communicate revised delivery dates.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "09-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Security and Data Compliance",
+          "riskDescription": {
+            "context": "The project is developing a producer portal for a healthcare client on a private cloud platform, handling data that is likely subject to healthcare data protection requirements (EMS - Risk). No security compliance assumptions, dependency records, or governance feedback are available in the project data.",
+            "condition": "Security controls, data access governance, and compliance validation for the portal may not be formally reviewed or approved before the application progresses toward production readiness.",
+            "consequence": "Undetected compliance gaps could require significant rework of access control, data handling, or audit logging components late in the delivery cycle, and could expose the client to regulatory risk if the portal processes sensitive data without validated controls."
+          },
+          "category": "Security/Compliance",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct HIPAA compliance validation review with client security team and document approved security controls before SIT exit gate.",
+          "contingencyCorrectiveAction": "Should compliance gaps be identified post-SIT, engage security remediation team immediately, defer production rollout, and implement corrective controls within 10 business days.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "15-Sep-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Governance Visibility",
+          "riskDescription": {
+            "context": "The project has no overall RAG score, no individual dimension scores for scope, cost, timeline, quality, talent, or client satisfaction, and no governance feedback or client review records are available (EMS - Risk). All three risk records share the same open date with no subsequent updates visible.",
+            "condition": "Without active governance reporting and health tracking, emerging issues such as scope drift, team capacity gaps, or client dissatisfaction may go undetected until they escalate into significant delivery problems.",
+            "consequence": "Escalations could arrive without early warning signals, reducing the time available to intervene and increasing the likelihood that multiple issues compound before corrective action is taken."
+          },
+          "category": "Governance/Process",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement weekly RAG status reporting with scope, timeline, quality, and talent dimensions to enable early detection of delivery drift.",
+          "contingencyCorrectiveAction": "When any dimension reaches Red status, escalate to delivery practice lead within 24 hours and initiate corrective action plan review.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "22-Jul-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Contractual Coverage",
+          "riskDescription": {
+            "context": "The project has absorbed a significant number of scope changes with no finalized mitigation plan, and no SOW terms or contractual records are available in the project data to confirm whether the absorbed scope is covered under the current agreement (EMS - Risk).",
+            "condition": "Work may continue to be delivered against scope items that have not been formally authorized through a change order or SOW amendment, leaving the additional effort without agreed contractual coverage.",
+            "consequence": "Disputed obligations could arise at project close or during billing cycles, with the client contesting the basis for additional effort and the delivery team unable to demonstrate formal authorization for the absorbed scope."
+          },
+          "category": "Contractual",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Align absorbed scope changes with SOW terms and secure formal change order approval for all additional effort before billing cycle.",
+          "contingencyCorrectiveAction": "If scope dispute arises during billing, engage commercial team immediately, provide detailed scope change log, and negotiate amendment within 15 business days.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "19-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 11,
+          "riskId": "R - 011",
+          "subjectArea": "Operational Readiness",
+          "riskDescription": {
+            "context": "The project is in Build and SIT with a planned end date later in the year, and no hypercare, support transition, or operational handover records are available in the project data (EMS - Risk). The scope has grown through multiple unplanned additions.",
+            "condition": "As the project approaches production readiness, the expanded and partially uncontrolled scope may not have corresponding operational runbooks, support documentation, or handover plans prepared for the client's operations team.",
+            "consequence": "The client's operations team could receive a portal with undocumented features or integration behaviors, leading to support gaps, increased post-launch defect rates, and strained client confidence in the delivered solution."
+          },
+          "category": "Operational/Support",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Develop operational runbooks and support documentation for all portal features and integrations before UAT exit gate to enable smooth handover.",
+          "contingencyCorrectiveAction": "If undocumented features are identified post-launch, activate hypercare support team immediately and deliver missing documentation within 5 business days.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "15-Oct-2026",
+          "status": "Open",
+          "reasoning": ""
+        }
+      ]
+    }
+  ]
+}
