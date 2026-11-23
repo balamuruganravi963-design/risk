@@ -1,0 +1,260 @@
+{
+  "clientName": "",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [
+        "Project Artifacts"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Production Rollout",
+          "riskDescription": {
+            "context": "The project adopted a big-bang approach for mass producer onboarding, with the rollout placed on WATCHLIST status due to the risk of a full rollback if any critical issue is encountered during the onboarding event. The application was technically ready and deployed to production, but the rollout outcome was still awaited at the time of reporting.",
+            "condition": "If a critical defect or system failure surfaces during or immediately after mass producer onboarding, the entire production deployment may need to be rolled back and remediated before re-attempting onboarding.",
+            "consequence": "A full rollback would disrupt all producers simultaneously, damage client confidence in the solution's stability, and require significant unplanned remediation effort before the portal can be re-launched."
+          },
+          "category": "Operational",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Implement phased producer onboarding with pilot cohort validation before mass rollout to identify critical issues early.",
+          "contingencyCorrectiveAction": "Upon critical defect detection during mass onboarding, activate immediate rollback to last stable build, escalate to project board within 24 hours, and establish remediation task force with 72-hour resolution target.",
+          "owner": "Saitej Ballav - Engineering Manager",
+          "targetDate": "15-Oct-2026",
+          "status": "Open",
+          "reasoning": "The project is on WATCHLIST specifically because of this rollout approach, and the ALT deck identifies rollback as the primary escalation trigger. A big-bang deployment with no phased fallback is a well-known high-exposure pattern, and the mitigation (monitoring) does not reduce the probability of a critical issue materialising."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Scope Governance",
+          "riskDescription": {
+            "context": "The project has already absorbed approximately 14 scope changes equivalent to nearly a full sprint of additional effort, and the mitigation for this open risk has not yet been defined. Last-minute requirements related to stored procedures were also received from the client side, creating further downstream pressure.",
+            "condition": "The client may continue to introduce additional requirements or changes without a formal change control process, and the team may absorb these without agreed scope adjustments.",
+            "consequence": "Uncontrolled scope additions would erode the team's capacity for committed deliverables, increase the risk of incomplete feature delivery within the SOW period, and create disputes over what is covered under the existing agreement."
+          },
+          "category": "Scope/Change Control",
+          "probability": "Very likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish formal change control board with mandatory impact assessment and client sign-off for all scope additions.",
+          "contingencyCorrectiveAction": "When scope additions exceed one sprint equivalent without approved change request, freeze new requirements, rebaseline delivery plan with client, and defer non-critical features to Phase 2.",
+          "owner": "Saitej Ballav - Engineering Manager",
+          "targetDate": "30-Sep-2026",
+          "status": "Open",
+          "reasoning": "The pattern is already established with many scope changes absorbed and no mitigation in place. The ALT deck confirms last-minute requirements are still arriving, and a similar-project pattern shows mid-cycle client additions without change control are a recurring and high-impact risk. The absence of a defined mitigation makes recurrence very likely."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Client-Side Approval Dependency",
+          "riskDescription": {
+            "context": "Pull request approvals from the client's catalyst team are pending and have been identified as a blocker affecting development completion. Limited reviewer capacity on the client side has been noted as a challenge.",
+            "condition": "The client's review team may continue to delay or deprioritise pull request approvals, leaving completed development work in a blocked state.",
+            "consequence": "Accumulated unapproved pull requests would prevent code from being merged and tested, stalling feature completion and creating a bottleneck that compounds with other delivery pressures close to the SOW end date."
+          },
+          "category": "Dependency",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish weekly PR review cadence with client catalyst team and escalate pending approvals exceeding 48 hours.",
+          "contingencyCorrectiveAction": "If PR approvals remain blocked beyond five business days, escalate to client program manager, request additional reviewer capacity, and adjust sprint commitments to reflect approval-dependent features.",
+          "owner": "Saitej Ballav - Engineering Manager",
+          "targetDate": "01-Oct-2026",
+          "status": "Open",
+          "reasoning": "The dependency is explicitly flagged in the ALT deck as an active blocker with limited client reviewer capacity. A similar-project pattern confirms this type of external approval dependency frequently persists and has high delivery impact when unresolved. No mitigation is confirmed as working."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Resource Continuity",
+          "riskDescription": {
+            "context": "A delivery pod experienced resource loss due to long absence and attrition, and replacement resources were onboarded from another technology stream. Resources are currently shared between the current phase and the next phase of the engagement, with a team ramp-down occurring.",
+            "condition": "The replacement resources, having come from a different technology background, may not fully absorb the domain and codebase knowledge of the departed members, and further attrition or reallocation to the next phase could reduce the team's effective capacity.",
+            "consequence": "Gaps in domain knowledge and reduced team capacity could lead to incomplete feature delivery, increased defect rates in areas owned by the affected pod, and difficulty sustaining delivery commitments through the remainder of the SOW."
+          },
+          "category": "Resource/Talent",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Conduct structured knowledge transfer sessions for replacement resources covering domain context, integration points, and codebase architecture weekly.",
+          "contingencyCorrectiveAction": "If replacement resource ramp-up delays feature completion beyond one sprint, reallocate critical tasks to experienced team members, defer lower-priority features, and escalate resource capacity gap to delivery leadership.",
+          "owner": "Saitej Ballav - Engineering Manager",
+          "targetDate": "20-Sep-2026",
+          "status": "In Progress",
+          "reasoning": "Attrition has already occurred and replacement resources are from a different technology background, making knowledge gaps plausible. Shared resourcing between phases creates a competing pull on capacity. A similar-project pattern rates this combination as very high severity, and no protective mitigation beyond onboarding is confirmed."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Knowledge Continuity",
+          "riskDescription": {
+            "context": "Resources who departed or were absent from a delivery pod held domain knowledge of the portal's codebase and integration points. Replacement resources were onboarded from a different technology stream, and the team is in a ramp-down phase with resources being shared with the next phase.",
+            "condition": "The domain knowledge held by the departed or absent team members may not have been formally documented or transferred to the replacement resources before they were onboarded.",
+            "consequence": "Undocumented knowledge gaps could surface as defects or delays in areas previously owned by those individuals, and the team may lack the context needed to resolve complex integration or configuration issues independently."
+          },
+          "category": "Knowledge Management",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Document critical integration points, configuration dependencies, and architectural decisions in centralized knowledge repository with bi-weekly review checkpoints.",
+          "contingencyCorrectiveAction": "When knowledge gaps cause integration defects or delays, engage original resource for time-bound consultation, pair replacement resource with experienced team member, and document resolution for future reference.",
+          "owner": "Saitej Ballav - Engineering Manager",
+          "targetDate": "10-Oct-2026",
+          "status": "Open",
+          "reasoning": "Attrition has already occurred and replacements came from a different background, making knowledge transfer gaps plausible. The ramp-down context reduces the window for structured handover. A similar-project pattern confirms knowledge loss during phase transitions is a recurring risk, though the impact is bounded to specific areas rather than the whole project."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Security Vulnerability Recurrence",
+          "riskDescription": {
+            "context": "Deployments to both non-production and production environments were paused due to identified security vulnerabilities that required remediation before deployment could proceed. The project operates on a private cloud environment in the healthcare domain.",
+            "condition": "Additional security vulnerabilities may be identified in subsequent code changes or dependency updates, triggering further deployment pauses in either environment.",
+            "consequence": "Repeated deployment freezes would delay the delivery of features and fixes to the client, and unresolved vulnerabilities in a healthcare application could expose sensitive data and create compliance obligations for the client."
+          },
+          "category": "Security/Compliance",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement automated security scanning in CI/CD pipeline with mandatory vulnerability remediation before code merge to production branch.",
+          "contingencyCorrectiveAction": "Upon identification of high-severity vulnerability, freeze deployment, establish 48-hour remediation window, communicate revised timeline to stakeholders, and deploy hotfix through expedited change approval process.",
+          "owner": "Saitej Ballav - Engineering Manager",
+          "targetDate": "25-Sep-2026",
+          "status": "Open",
+          "reasoning": "A deployment freeze has already occurred once, indicating the codebase or its dependencies carry vulnerability exposure. The healthcare and private cloud context raises the compliance stakes. A similar-project pattern confirms security vulnerability risks in regulated environments are rated severe. The current mitigation (fixing before deployment) is reactive rather than preventive."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "UX Design Dependency",
+          "riskDescription": {
+            "context": "UX design delivery delays have been causing development teams to groom and begin stories before designs are available, resulting in rework when final designs arrive. UX story prioritisation is in progress and deliveries are planned through a near-term date.",
+            "condition": "If UX designs continue to arrive late relative to sprint planning cycles, development teams may again take stories into execution without finalised designs.",
+            "consequence": "Repeated rework cycles would consume sprint capacity, reduce the net output of each sprint, and increase the risk of incomplete or inconsistent user interface delivery within the remaining SOW period."
+          },
+          "category": "Dependency",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Align UX design delivery schedule with sprint planning cycle, requiring finalised designs two sprints ahead of development.",
+          "contingencyCorrectiveAction": "When UX designs arrive late causing rework, defer affected stories to next sprint, prioritise backend and integration work in current sprint, and escalate design delivery timeline to client stakeholders.",
+          "owner": "Saitej Ballav - Engineering Manager",
+          "targetDate": "05-Oct-2026",
+          "status": "In Progress",
+          "reasoning": "The pattern of grooming before UX availability is already established and the mitigation (prioritisation) is still in progress rather than confirmed as resolved. A similar-project pattern identifies this as a recurring systemic issue. The impact is bounded to sprint efficiency and specific feature areas rather than the whole engagement."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Phase 2 Resource Contention",
+          "riskDescription": {
+            "context": "Phase 2 scope covering several modules has been received and development is in progress, with resources currently shared between the current phase and the next phase. A team ramp-down is occurring on the current phase while Phase 2 demands are ramping up.",
+            "condition": "As Phase 2 demands increase, shared resources may be progressively reallocated away from the current phase before its remaining deliverables are complete.",
+            "consequence": "Reduced team capacity on the current phase during its final delivery window could leave features incomplete or insufficiently tested, creating gaps that the client discovers after the SOW closes."
+          },
+          "category": "Resource/Talent",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Define dedicated resource allocation for Phase 1 closure activities until SOW end, with Phase 2 ramp-up limited to non-overlapping resources.",
+          "contingencyCorrectiveAction": "If Phase 2 demands reduce Phase 1 capacity below committed levels, reallocate Phase 2 resources back to Phase 1, defer Phase 2 start by two weeks, and communicate revised Phase 2 timeline to client.",
+          "owner": "Saitej Ballav - Engineering Manager",
+          "targetDate": "20-Oct-2026",
+          "status": "Open",
+          "reasoning": "Resource sharing between phases is confirmed in the ALT deck, and the ramp-down signal indicates the reallocation is already beginning. A similar-project pattern confirms parallel delivery with shared resources creates bandwidth conflicts that frequently affect the phase being wound down. The impact is medium because Phase 2 is a continuation engagement rather than a full loss of the client relationship."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Infrastructure Readiness Dependency",
+          "riskDescription": {
+            "context": "Infrastructure readiness from a third-party internal team is required for specific modules, and this dependency has been identified as outstanding. The project is in the Build and SIT stage with active integration activities under way.",
+            "condition": "The dependent team may not deliver the required infrastructure readiness within the timeframe needed for integration and testing of the affected modules.",
+            "consequence": "Delayed infrastructure availability would block integration and system testing for the dependent modules, compressing the testing window and increasing the risk of unvalidated functionality being carried into the production environment."
+          },
+          "category": "Dependency",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish weekly infrastructure readiness checkpoint with dependent team, tracking delivery milestones against integration test schedule with two-week buffer.",
+          "contingencyCorrectiveAction": "If infrastructure delivery delays integration testing beyond buffer window, escalate to program leadership, prioritise non-dependent modules for testing, and defer dependent module go-live to next release window.",
+          "owner": "Saitej Ballav - Engineering Manager",
+          "targetDate": "15-Oct-2026",
+          "status": "Open",
+          "reasoning": "The dependency is explicitly listed in the ALT deck as outstanding. A similar-project pattern confirms infrastructure dependencies from internal or third-party teams frequently delay integration activities. The likelihood is Possible rather than Likely because no escalation signal beyond identification is present in the context."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Contractual Coverage",
+          "riskDescription": {
+            "context": "The SOW term ends 30-Nov-2026 before the project end date 31-Dec-2026, creating a period where project activities may continue beyond the contractual coverage window. The project has already absorbed a significant number of scope changes without a confirmed change control process.",
+            "condition": "If project activities, support obligations, or scope items extend beyond the SOW end date without a signed extension or change order, the team may continue to deliver work without formal contractual coverage.",
+            "consequence": "Work performed outside the SOW period without agreed coverage could lead to disputed obligations, unrecoverable effort, and strained client relationship if expectations about post-SOW support or deliverables are not aligned."
+          },
+          "category": "Contractual",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Initiate SOW extension or Phase 2 contract negotiation by 15-Oct-2026 to ensure contractual coverage through project closure.",
+          "contingencyCorrectiveAction": "If SOW extension is not approved by 15-Nov-2026, freeze all new scope additions, complete only committed deliverables by SOW end, and transition remaining work to Phase 2 contract with formal handoff documentation.",
+          "owner": "Saitej Ballav - Engineering Manager",
+          "targetDate": "15-Oct-2026",
+          "status": "Open",
+          "reasoning": "The SOW end date precedes the project end date, creating a structural gap. Combined with the established pattern of scope absorption without formal change control, the risk of work continuing without coverage is plausible. A similar-project pattern confirms this is a recurring contractual exposure in engagements with active scope additions."
+        },
+        {
+          "sNo": 11,
+          "riskId": "R - 011",
+          "subjectArea": "Post-Rollout Production Support",
+          "riskDescription": {
+            "context": "The application has been deployed to production and a mass onboarding event is planned. No defined post-go-live support model or hypercare plan is referenced in the available project context.",
+            "condition": "If a formal production support and hypercare model is not established before or immediately after the mass onboarding event, the team may be required to provide unstructured support without agreed scope, escalation paths, or capacity allocation.",
+            "consequence": "Unstructured post-go-live support could consume team capacity needed for remaining Phase 1 deliverables and Phase 2 ramp-up, and the absence of defined support obligations could create client expectation mismatches."
+          },
+          "category": "Operational",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Define hypercare support model with dedicated resources, escalation paths, and service level agreements before mass producer onboarding.",
+          "contingencyCorrectiveAction": "If production issues exceed hypercare capacity, activate offshore support coverage during extended hours, reallocate development resources to critical incident resolution, and defer non-critical Phase 1 features by one sprint.",
+          "owner": "Saitej Ballav - Engineering Manager",
+          "targetDate": "18-Oct-2026",
+          "status": "Open",
+          "reasoning": "Production deployment is complete and mass onboarding is imminent, but no hypercare or support model is referenced in the context. A similar-project pattern confirms that undefined post-go-live support models are a recurring gap that creates both delivery and contractual exposure. Likelihood is Possible because the gap may be addressed informally."
+        },
+        {
+          "sNo": 12,
+          "riskId": "R - 012",
+          "subjectArea": "Stakeholder Expectation Alignment",
+          "riskDescription": {
+            "context": "Last-minute requirements were received from the client side, and Phase 2 scope covering several modules was introduced while Phase 1 is still in active delivery. The project has absorbed a significant number of scope changes without a confirmed mitigation process.",
+            "condition": "The client may hold expectations about Phase 1 completeness or Phase 2 timelines that are not aligned with the team's current capacity and the scope already absorbed, and these expectations may not have been formally reset.",
+            "consequence": "Unaligned expectations could lead to client dissatisfaction at the end of Phase 1, disputes about what was committed, and pressure to absorb further Phase 2 scope without adequate resourcing or timeline adjustment."
+          },
+          "category": "Customer/Stakeholder",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct formal scope baseline review with client stakeholders by 10-Oct-2026, documenting Phase 1 committed deliverables and Phase 2 boundaries.",
+          "contingencyCorrectiveAction": "If client expectations diverge from documented baseline, escalate to program leadership, facilitate expectation reset meeting with client executive sponsor, and agree on phased delivery with revised acceptance criteria.",
+          "owner": "Saitej Ballav - Engineering Manager",
+          "targetDate": "10-Oct-2026",
+          "status": "Open",
+          "reasoning": "The combination of ongoing scope additions, Phase 2 introduction during Phase 1 delivery, and the absence of a formal change control process creates conditions where client expectations may diverge from delivery reality. The likelihood is Possible because the project has maintained active communication, but no formal expectation-reset is evidenced in the context."
+        }
+      ]
+    }
+  ]
+}
