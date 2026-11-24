@@ -1,0 +1,259 @@
+{
+  "clientName": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "ART",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Scope and Contract",
+          "riskDescription": {
+            "context": "SOW defines Hypercare as the later of four weeks post-Go-Live or no open defects/incidents, with Go-Live occurring October 22, 2026 and SOW end November 30, 2026. The mass producer onboarding to 2,500+ users via big-bang rollout on October 22 carries rollback risk if issues are encountered.",
+            "condition": "If defects or incidents are discovered during the mass producer onboarding or within the first four weeks post-Go-Live, the Hypercare period will extend beyond the contractual four-week window to satisfy the no open defects/incidents condition.",
+            "consequence": "Hypercare may extend beyond the SOW end date of November 30, 2026, requiring contract amendment, additional funding, or scope negotiation, and potentially delaying project closure and resource release."
+          },
+          "category": "Hypercare extension",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish weekly defect triage with severity-based SLA and prioritize critical fixes to close incidents before November 19 deadline.",
+          "contingencyCorrectiveAction": "Upon Hypercare extending past November 19, activate pre-approved time-and-materials extension with capped effort hours and escalate to executive governance within 48 hours.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "05-Nov-2026",
+          "status": "Open",
+          "reasoning": "The big-bang rollout to 2,500+ producers on October 22 creates high exposure for defect discovery in the first four weeks, leaving only 11 days to SOW end. The ALT Watchlist explicitly flags rollback risk. The 15% functional test failure rate, backend code coverage of 57%, and 86 CVEs signal quality gaps that may surface during mass user load."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Schedule and Delivery",
+          "riskDescription": {
+            "context": "Premera planned to send registration emails to 2,500+ producers on October 22, 2026 using a big-bang rollout approach, with status awaited. The end-to-end registration process was validated with only 11 users as of October 22, representing 0.4% of the target load.",
+            "condition": "If critical issues such as authentication failures, performance degradation, or data integrity problems are encountered during mass producer onboarding, the rollout will need to be rolled back and remediated before re-attempting onboarding.",
+            "consequence": "A rollback and remediation cycle could delay full producer onboarding by two to four weeks, compressing the Hypercare window and increasing the likelihood of extending beyond the SOW end date of November 30, 2026."
+          },
+          "category": "Deployment rollback",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct synthetic load testing with a 500-user cohort in production before full rollout to validate authentication and performance at scale.",
+          "contingencyCorrectiveAction": "If critical errors exceed 5% of onboarding attempts within the first 24 hours, halt rollout immediately, activate rollback procedure, and engage backup phased onboarding plan with 250-user daily cohorts.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "20-Oct-2026",
+          "status": "Open",
+          "reasoning": "The ALT Watchlist explicitly identifies rollback risk. The big-bang approach to 2,500+ users maximizes exposure compared to a phased rollout. The end-to-end registration process was validated with only 11 users (0.4% of target), leaving a significant gap in load validation. Residual performance/NFR risk noted in the resolved Data Hub API risk suggests production-scale load testing may not have been completed."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Scope and Contract",
+          "riskDescription": {
+            "context": "The project absorbed 14 scope changes equivalent to 0.75-1 sprint by June 29, 2026, with 19 documented by July 22 and several marked Pending or Discussions underway. No BA is assigned and change control enforcement is weak.",
+            "condition": "If additional scope changes are requested or approved during the Hypercare period without formal change control, the team's capacity to address defects and incidents will be diluted.",
+            "consequence": "Hypercare incident response time may degrade, increasing the likelihood of open defects/incidents at the SOW end date and triggering Hypercare extension beyond November 30, 2026."
+          },
+          "category": "Scope creep",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement scope freeze for the Hypercare period with mandatory change request approval requiring Engineering Manager and client Product Owner sign-off.",
+          "contingencyCorrectiveAction": "Once scope additions exceed 20 story points during Hypercare, rebaseline the delivery plan with the client, defer non-critical enhancements, and escalate commercial impact to program governance.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "15-Oct-2026",
+          "status": "Open",
+          "reasoning": "The pattern of scope creep is established: 14 changes absorbed by June 29, 19 documented by July 22, with no mitigation plan or ETA for the active scope risk. The absence of a BA, Delivery Manager, and formal change control enforcement suggests weak scope governance that is likely to persist into Hypercare."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "Backend code coverage is 57% compared to frontend coverage of 98% as of PI04 Sprint 3 (June 18, 2026). The functional test failure rate was 15% with 1 bug open and spilled to the next sprint.",
+            "condition": "If backend code paths with insufficient test coverage are exercised during mass producer onboarding or production use, defects may surface that were not detected during testing.",
+            "consequence": "Backend defects discovered in production could cause data integrity issues, API failures, or integration errors, requiring emergency fixes during Hypercare and potentially extending the Hypercare period beyond the SOW end date."
+          },
+          "category": "Defect leakage",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Execute targeted backend integration testing with Data Hub APIs covering critical transaction paths and increase backend coverage to 75% before mass onboarding.",
+          "contingencyCorrectiveAction": "Upon discovery of a severity-1 backend defect in production, deploy a hotfix within 4 hours using the pre-approved emergency change process and activate a dedicated on-call support rotation.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "18-Oct-2026",
+          "status": "Open",
+          "reasoning": "The 43-percentage-point gap between backend (57%) and frontend (98%) code coverage indicates a significant backend testing gap. The 15% functional test failure rate and 1 bug spilled to the next sprint suggest incomplete defect remediation. The big-bang rollout to 2,500+ producers will exercise backend code paths at production scale for the first time."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Governance and Compliance",
+          "riskDescription": {
+            "context": "86 CVEs were detected in PI04 Sprint 3, including 4 critical and 82 high-severity vulnerabilities, all on the alpine base image. The Producer Portal is deployed to Production and accessible to 2,500+ producers in a HCLS regulated environment.",
+            "condition": "If a critical CVE in the alpine base image is exploited by an attacker or malicious actor during the Hypercare period, the application may be compromised.",
+            "consequence": "A security incident could require immediate application takedown, forensic investigation, remediation, and re-deployment, delaying Hypercare completion and potentially extending beyond the SOW end date, and exposing Premera to regulatory and reputational risk."
+          },
+          "category": "Security vulnerability",
+          "probability": "Unlikely",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Deploy Web Application Firewall with virtual patching rules for critical CVEs and implement enhanced monitoring with automated alerting for exploitation attempts.",
+          "contingencyCorrectiveAction": "If a security breach is detected, invoke the incident response plan immediately, isolate affected systems within 30 minutes, engage the forensic team, and notify HHS/OCR within 72 hours per HIPAA requirements.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "25-Oct-2026",
+          "status": "Open",
+          "reasoning": "The presence of 4 critical and 82 high-severity CVEs creates a security exposure in a HCLS regulated environment. The likelihood is Unlikely because not all CVEs are remotely exploitable and mitigating controls may be in place, but the impact is High because a security incident would require immediate takedown and could expose Premera to regulatory penalties and reputational damage."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Customer and Relationship",
+          "riskDescription": {
+            "context": "Four new fields for total premium calculation on the Book of Business were awaited from Data Hub with an ETA of July 30, 2026 per the WSR Challenges section. As of October 23, 2026, this ETA has passed by 85 days with no resolution documented in the sources.",
+            "condition": "If the four total premium fields are not delivered by Data Hub or are delivered with incorrect data, producers will see incomplete or inaccurate premium information in their Book of Business.",
+            "consequence": "Incomplete or inaccurate premium data may erode producer trust in the portal, increase support calls during Hypercare, and delay the no open defects/incidents condition for Hypercare completion, potentially extending beyond the SOW end date."
+          },
+          "category": "Data completeness",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate Data Hub total premium field availability and data accuracy through end-to-end testing with production data before mass onboarding launch.",
+          "contingencyCorrectiveAction": "If premium data is incomplete or inaccurate, display a clear disclaimer to producers, escalate to the Data Hub team for 48-hour resolution, and provide manual premium calculation support via a dedicated hotline.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "21-Oct-2026",
+          "status": "Open",
+          "reasoning": "The dependency ETA of July 30 has passed by 85 days as of October 23 with no resolution documented. The production deployment occurred October 22, suggesting either the fields were delivered late and implemented, or the portal went live without them. The absence of an update in the sources suggests the latter, creating a data completeness risk for producers."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Technical and Integration",
+          "riskDescription": {
+            "context": "Access to Premera-specific tools (SharePoint, Azure Blob, ADO) for AAVA integration is a critical open dependency with an ETA of June 15, 2026, which was 37 days overdue as of July 22, 2026. Agent-related risks were opened March 9-17, 2026 and remain open with no ETA as of July 22.",
+            "condition": "If AAVA tool integration is not completed or is incomplete, the agent-based automation for development tasks, test case generation, and backlog creation will not be available for post-deployment support and defect remediation during Hypercare.",
+            "consequence": "The team's productivity during Hypercare may be reduced, increasing defect resolution time and the likelihood of open defects/incidents at the SOW end date, potentially extending Hypercare beyond November 30, 2026."
+          },
+          "category": "Integration dependency",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Prioritize manual defect remediation processes with documented runbooks and allocate additional developer capacity for Hypercare to compensate for missing agent automation.",
+          "contingencyCorrectiveAction": "Should defect resolution time exceed the 48-hour SLA due to reduced productivity, reallocate two additional developers from other projects and extend daily standup to twice-daily triage sessions.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "28-Oct-2026",
+          "status": "Open",
+          "reasoning": "The critical dependency for AAVA tool access was 37 days overdue as of July 22, and no resolution status is documented. Agent-related risks have been open for 127-135 days with no ETA. However, the production deployment occurred successfully on October 22, indicating core portal functionality does not depend on AAVA tool integration, limiting the impact to Hypercare productivity."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Governance and Compliance",
+          "riskDescription": {
+            "context": "All seven SOW milestones show Yet to Start status in EMS despite the project being in Build + SIT stage as of July 22, 2026 and production deployment complete as of October 22, 2026. No actual start or end dates are documented for any milestone across any source.",
+            "condition": "If milestone tracking data is not updated to reflect actual project progress, governance and stakeholder reporting will rely on inaccurate status, obscuring the true project position.",
+            "consequence": "Governance decisions regarding Hypercare completion, SOW closure, and resource release may be delayed or based on incomplete information, increasing the likelihood of disputes regarding deliverable acceptance and contract closure."
+          },
+          "category": "Data quality",
+          "probability": "Very likely",
+          "impact": "Low",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Update milestone tracking system with actual completion dates for all seven milestones and establish a weekly status reporting cadence through SOW end.",
+          "contingencyCorrectiveAction": "If milestone data discrepancies cause acceptance disputes, convene a joint Ascendion-Premera governance review within 5 business days to reconcile actuals and agree on deliverable sign-off criteria.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "25-Oct-2026",
+          "status": "Open",
+          "reasoning": "The conflict between milestone status (Yet to Start) and actual project progress (production deployment complete) is documented across all three sources, indicating a systemic data quality issue. The likelihood is Very likely because the data lag is already evident and no corrective action is documented. The impact is Low because the data lag affects reporting and governance visibility but does not directly impact delivery."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Resource and People",
+          "riskDescription": {
+            "context": "All three EMS risks are owned by Saitej Ballav (Engineering Manager) with no delegation to Delivery Manager, QA Manager, or Client Manager, none of whom are assigned. The active scope risk has been open for 116 days with no mitigation plan or ETA.",
+            "condition": "If the Engineering Manager is unavailable or overloaded during the Hypercare period, risk monitoring and mitigation response may be delayed.",
+            "consequence": "Delayed risk response during Hypercare could allow incidents to escalate, increasing the likelihood of open defects/incidents at the SOW end date and potentially extending Hypercare beyond November 30, 2026."
+          },
+          "category": "Key-person dependency",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Delegate risk ownership to a senior technical lead and establish a daily risk review checkpoint during Hypercare with a clear escalation path to program leadership.",
+          "contingencyCorrectiveAction": "Upon Engineering Manager unavailability exceeding 24 hours, activate backup decision authority with the designated technical lead and escalate critical risks directly to the Delivery Practice head.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "22-Oct-2026",
+          "status": "Open",
+          "reasoning": "The concentration of risk ownership with a single individual creates a single point of failure for risk monitoring and mitigation. The absence of assigned Delivery Manager, QA Manager, and Client Manager exacerbates this concentration. The scope risk has been open for 116 days with no mitigation plan, suggesting the Engineering Manager may be overloaded or risk management is not being prioritized."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Scope and Contract",
+          "riskDescription": {
+            "context": "The SOW end date is November 30, 2026, and Hypercare is defined as the later of four weeks post-Go-Live or no open defects/incidents. Production deployment occurred October 22, 2026, leaving only 39 days to SOW end.",
+            "condition": "If defects or incidents remain open on November 30, 2026, the Hypercare period will not be complete but the SOW term will have expired.",
+            "consequence": "The project will require a contract amendment or extension to complete Hypercare, potentially triggering change control, additional funding negotiation, and delayed project closure, and creating ambiguity regarding ongoing support obligations."
+          },
+          "category": "Contract term expiry",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Accelerate defect closure with daily triage prioritizing severity-1 and severity-2 issues to achieve zero open defects by the November 19 target date.",
+          "contingencyCorrectiveAction": "If open defects exist on November 25, initiate a change request for SOW extension with time-and-materials commercial terms and secure client approval before November 30 expiry.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "10-Nov-2026",
+          "status": "Open",
+          "reasoning": "The 11-day gap between the four-week Hypercare window (ending November 19) and the SOW end (November 30) provides minimal buffer for defect remediation. The mass producer onboarding rollback risk, backend defect leakage risk, and Data Hub total premium field delay all increase the likelihood of open defects/incidents persisting to November 30."
+        },
+        {
+          "sNo": 11,
+          "riskId": "R - 011",
+          "subjectArea": "Schedule and Delivery",
+          "riskDescription": {
+            "context": "The Dependency Tracker shows the Confirmation from DH on total premium fields dependency with an ETA of July 6, 2026, while the WSR Challenges section states ETA 30th July from DH for the same item. Both ETAs have passed as of October 23, 2026 with no resolution documented.",
+            "condition": "If the team and Data Hub are working to different ETAs for the same dependency, coordination and handoff planning will be misaligned.",
+            "consequence": "The total premium fields may be delivered later than expected by the team, causing rework or incomplete data in production and increasing support calls during Hypercare."
+          },
+          "category": "Dependency coordination",
+          "probability": "Likely",
+          "impact": "Low",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct a joint coordination call with the Data Hub team to confirm current field availability status and establish a single source of truth for dependency tracking.",
+          "contingencyCorrectiveAction": "Once conflicting ETAs cause data inconsistency in production, implement a temporary workaround with manual premium calculation and communicate the limitation to producers via an in-app notification.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "23-Oct-2026",
+          "status": "Open",
+          "reasoning": "The conflicting ETAs (July 6 vs. July 30) within the same source indicate a coordination or communication gap. Both ETAs have passed as of October 23 with no resolution documented, suggesting the dependency was not resolved on either date. The impact is Low because the dependency affects a specific feature (total premium fields) but does not block core portal functionality."
+        },
+        {
+          "sNo": 12,
+          "riskId": "R - 012",
+          "subjectArea": "Governance and Compliance",
+          "riskDescription": {
+            "context": "RAG status is Not Set across all dimensions (Overall, Scope, Cost, Timeline, Quality, Talent, CSAT) with no reason or Go-Green plan documented. The active scope risk has Likely likelihood and Medium impact, and the Go-Live milestone is 3-3.5 months late as of October 22, 2026.",
+            "condition": "If RAG status is not set or updated during the Hypercare period, governance escalation triggers will not fire and stakeholders will lack visibility into project health.",
+            "consequence": "Issues discovered during Hypercare may not be escalated in a timely manner, delaying mitigation response and increasing the likelihood of open defects/incidents at the SOW end date."
+          },
+          "category": "Governance gap",
+          "probability": "Very likely",
+          "impact": "Low",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct an immediate RAG assessment across all dimensions and establish a weekly RAG review with documented Go-Green plans for any Amber or Red status through SOW end.",
+          "contingencyCorrectiveAction": "If RAG absence delays a critical escalation, convene an emergency governance meeting within 24 hours to assess project health and agree on expedited mitigation actions with executive sponsorship.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "24-Oct-2026",
+          "status": "Open",
+          "reasoning": "The absence of RAG status despite an active scope risk and a 3-3.5 month schedule delay indicates a governance gap that has persisted throughout the project. The likelihood is Very likely because the pattern of absent RAG status is established and no corrective action is documented. The impact is Low because the absence affects governance visibility and escalation but does not directly impact delivery."
+        }
+      ]
+    }
+  ]
+}
