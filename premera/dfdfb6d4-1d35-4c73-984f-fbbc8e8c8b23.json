@@ -1,0 +1,380 @@
+{
+  "clientName": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [
+        "ART"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R-001",
+          "subjectArea": "Governance and Compliance",
+          "riskDescription": {
+            "context": "No RAG status has been set across all seven dimensions (Overall, Scope, Cost, Timeline, Quality, Talent, CSAT) despite the project being in Build + SIT stage mid-execution (EMS - RAG)",
+            "condition": "When project health deteriorates in any dimension without established baseline indicators",
+            "consequence": "Emerging issues in scope, timeline, cost, or quality cannot be escalated or addressed systematically, preventing proactive risk management and stakeholder transparency"
+          },
+          "category": "Governance gap",
+          "probability": "Very Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish RAG baseline across all seven dimensions with documented reasons and weekly update cadence by Engineering Manager.",
+          "contingencyCorrectiveAction": "Upon any dimension showing Amber or Red without prior visibility, escalate to executive sponsor within 24 hours and convene emergency steering committee to assess impact and recovery plan.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Mar-2026",
+          "status": "Open",
+          "reasoning": "Already occurring—complete absence of RAG across all dimensions on a mid-execution Category 1 project eliminates early warning capability. High impact as this prevents systematic escalation and creates blind spots for all health dimensions."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R-002",
+          "subjectArea": "Schedule and Delivery",
+          "riskDescription": {
+            "context": "All seven SOW milestones show 'Yet to Start' status despite project being in Build + SIT stage and Design Phase scheduled to complete March 31, 2026 (EMS - Milestones)",
+            "condition": "When milestone actuals are not updated or when significant schedule slippage has occurred without documentation",
+            "consequence": "Cannot perform earned value analysis, schedule variance tracking, or predictive slippage assessment, masking potential delivery delays"
+          },
+          "category": "Milestone tracking gap",
+          "probability": "Very Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Update milestone actuals in EMS weekly, conduct schedule impact analysis for absorbed scope, and establish milestone tracking discipline.",
+          "contingencyCorrectiveAction": "If milestone data lag exceeds one week, activate manual tracking dashboard and escalate to Delivery Manager for immediate EMS reconciliation within 48 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "22-Mar-2026",
+          "status": "Open",
+          "reasoning": "Data contradiction is already evident—'Build + SIT' stage designation conflicts with 'Yet to Start' milestone status. High impact as this eliminates schedule variance visibility and earned value tracking for a 10-month project."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R-003",
+          "subjectArea": "Scope and Contract",
+          "riskDescription": {
+            "context": "Project has absorbed 14 scope changes equivalent to 0.75–1 sprint of additional effort (1.5–2 weeks) on a 6-month development timeline, representing 8–10% schedule pressure. No dedicated BA assigned (Resources: BA = 'NA'). Risk opened June 29, 2026 with mitigation status 'Assessed' but mitigation plan states 'needs to be arrived' with no ETA (EMS - Risks, Resources). ALT deck reports scope spillover impacting end-to-end feature completion and last-minute requirements from Pearson related to stored procedures (ALT - Risks, Challenges)",
+            "condition": "When additional scope changes are requested without formal change control process or schedule adjustment",
+            "consequence": "Sprint 3 & 4 completion milestone (May 31) and Development & Testing completion (June 15) face slippage, compressing the 15-day testing window and increasing defect escape probability"
+          },
+          "category": "Scope creep",
+          "probability": "Very Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Implement formal change control board with documented evaluation procedure, client approval requirement, and impact assessment before acceptance of any new scope.",
+          "contingencyCorrectiveAction": "Upon receipt of any scope change request, halt acceptance immediately, invoke change control process, and escalate to client sponsor within 24 hours with timeline and cost impact analysis.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Apr-2026",
+          "status": "Open",
+          "reasoning": "Pattern is already occurring with 14 changes absorbed and ALT confirming ongoing spillover. No mitigation in place despite 'Assessed' status. High impact as 1 sprint equivalent on tight sequential schedule directly threatens June milestones and testing adequacy."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R-004",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "High number of development bugs and integration bugs. NexLedgr platform has concerns around code stability with too many regression bugs identified. Fixing and deploying PRs is delaying completion (ALT - Risks, Challenges). Testing window remains 15 days (June 1–15) for all testing types (functional, performance, accessibility, security) despite scope expansion of 0.75–1 sprint (EMS - Milestones, Risks)",
+            "condition": "When compressed testing timeline is applied to expanded scope with existing high bug volume and regression issues",
+            "consequence": "Defect leakage into UAT and production increases, potentially impacting Go-Live milestone (July 1–15) and post-production stability during Hypercare phase"
+          },
+          "category": "Defect leakage",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Expand test coverage beyond acceptance criteria to include database, negative scenarios, state validation, and implement Amigo peer review for all QA scenarios.",
+          "contingencyCorrectiveAction": "If defect density exceeds 3 per module during testing, halt development, deploy backup QA resources from reserve pool, and extend testing window by 5 days with client escalation.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "25-May-2026",
+          "status": "Open",
+          "reasoning": "Multiple signals present—ALT confirms high bug volume and regression issues already occurring, 15-day testing window unchanged despite scope growth, and NexLedgr platform stability concerns documented. High impact as healthcare portal defects affect Go-Live readiness and regulatory compliance."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R-005",
+          "subjectArea": "Schedule and Delivery",
+          "riskDescription": {
+            "context": "Oct 15 release delayed to address additional requirements from Pearson, including some Phase 2 scope items. Project at 87% completion as of October 23 (ALT - Project Status, Progress Updates). Sequential milestone dependencies with no buffer between Design → Sprints → Testing → UAT → Go-Live phases (EMS - Milestones)",
+            "condition": "When early milestone slippage occurs in a tightly sequenced schedule with no buffer periods",
+            "consequence": "Cascade effect propagates through UAT (June 16–30) and Go-Live (July 1–15) milestones, potentially missing contractual delivery date and incurring client escalation"
+          },
+          "category": "Milestone slippage",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Conduct critical path analysis, introduce 5-day buffer between UAT and Go-Live, and establish weekly milestone variance review with client sponsor.",
+          "contingencyCorrectiveAction": "Upon any milestone slipping beyond 3 days, activate fast-track plan with extended team hours, escalate to executive sponsor, and negotiate revised Go-Live date with client within 48 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-May-2026",
+          "status": "Open",
+          "reasoning": "ALT confirms Oct 15 release already delayed with Phase 2 scope pulled forward. Tight sequential dependencies with no buffer mean any further slippage cascades. High impact as Go-Live miss affects contractual commitment and client relationship."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R-006",
+          "subjectArea": "Schedule and Delivery",
+          "riskDescription": {
+            "context": "Pending PR approvals from Pearson catalyst team are creating downstream schedule risks and impacting sprint completion commitments (ALT - Risks, Dependencies)",
+            "condition": "When client-side PR approval delays continue without escalation or alternative approval path",
+            "consequence": "Sprint velocity degrades, sprint completion commitments cannot be met, and Development & Testing milestone (June 1–15) faces further slippage"
+          },
+          "category": "Dependency blocking",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Raise PR approval dependencies during sprint planning, include approval status in Definition of Ready, and escalate pending approvals exceeding 48 hours to client sponsor.",
+          "contingencyCorrectiveAction": "When PR approval delays exceed 3 business days, implement parallel work streams on non-dependent tasks and notify client of sprint commitment impact via formal communication.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Apr-2026",
+          "status": "Open",
+          "reasoning": "ALT confirms dependency is already gating sprint completion. Likely to continue without escalation mechanism. Medium impact as it affects sprint velocity but may be recoverable with client engagement."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R-007",
+          "subjectArea": "Resource and People",
+          "riskDescription": {
+            "context": "POD4 experiencing resource challenges due to long absence and attrition. Resources are shared between Phase 1 and Phase 2. Team ramp-down occurring. Replacement resources onboarded from .Net project (ALT - Risks, Challenges, Mitigation Actions). Team of 9 resources with only 2 Ascenders (22%), no dedicated BA, combined testing roles (EMS - Resources)",
+            "condition": "When team ramp-down proceeds during active development phase with shared resources across phases and recent replacement onboarding",
+            "consequence": "Knowledge loss from attrition, reduced capacity from shared resources, and ramp-up time for replacements may delay sprint deliverables and increase defect introduction"
+          },
+          "category": "Resource capacity",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Assign backup senior resources for critical roles, conduct knowledge transfer sessions weekly, and monitor deliverable completion by Engineering Manager to prevent capacity gaps.",
+          "contingencyCorrectiveAction": "Should resource unavailability impact sprint commitment, reallocate tasks to available team members and communicate revised sprint scope to client within 24 hours of identification.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "08-Apr-2026",
+          "status": "In Progress",
+          "reasoning": "ALT confirms resource challenges and ramp-down already occurring. Mitigation (replacement onboarding) in place but effectiveness uncertain during ramp-up. Medium impact as it affects capacity but replacements may stabilize situation."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R-008",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "Resolved risk (Risk 856) noted 'Performance and NFR issues will only become visible after integration' with Data Hub APIs. Integration completed June 29, 2026 (EMS - Risks). ALT reports NexLedgr platform concerns around code stability with too many regression bugs (ALT - Challenges)",
+            "condition": "When latent performance and non-functional requirement issues surface during SIT or UAT phases after integration",
+            "consequence": "Performance bottlenecks or NFR failures may require rework, extending testing timeline and potentially delaying UAT sign-off (June 16–30) and Go-Live (July 1–15)"
+          },
+          "category": "Technical debt",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Define performance acceptance criteria and NFR baselines before UAT, conduct performance testing during SIT, and validate against benchmarks with D365 experts.",
+          "contingencyCorrectiveAction": "Should performance issues emerge during UAT, engage technical architect to identify optimization opportunities and communicate timeline extension to client if remediation exceeds 3 days.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Jun-2026",
+          "status": "Open",
+          "reasoning": "Risk explicitly noted in resolved dependency but no performance baseline or NFR criteria visible in EMS. ALT confirms platform stability concerns. Medium impact as performance issues may require rework but are addressable before Go-Live."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R-009",
+          "subjectArea": "Governance and Compliance",
+          "riskDescription": {
+            "context": "Project classified as Category 1 with total score 20 and Infrastructure identified as primary bottleneck (EMS - Project Categorization). No assigned Delivery Manager, QA Manager, or Client Manager (EMS - Project Details). No EQ metrics tracked (all three EQ categories empty), no SLA/KPI metrics defined, no finance actuals tracked (EMS - EQ, SLA, KPI, Finance)",
+            "condition": "When Category 1 project governance requirements (enhanced risk management, frequent reviews, executive oversight) are not implemented",
+            "consequence": "Governance maturity gap prevents early detection of cost variance, quality degradation, or delivery issues, increasing probability of uncontrolled escalation"
+          },
+          "category": "Governance maturity gap",
+          "probability": "Very Likely",
+          "impact": "Medium",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Implement Category 1 governance framework with weekly RAG reviews, assign Delivery Manager and QA Manager, and establish documented escalation paths and decision logs.",
+          "contingencyCorrectiveAction": "Upon identification of any uncontrolled escalation event, activate executive steering committee immediately and implement emergency governance controls including daily status reviews until stabilized.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "22-Mar-2026",
+          "status": "Open",
+          "reasoning": "Already occurring—Category 1 project lacks governance rigor expected for this classification. Multiple management roles unassigned and zero quantitative metrics tracked. Medium impact as governance gaps enable other risks but do not directly cause delivery failure."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R-010",
+          "subjectArea": "Finance and Commercial",
+          "riskDescription": {
+            "context": "No finance actuals tracked (NBL data empty). Scope expansion of 14 changes equivalent to 0.75–1 sprint effort absorbed without documented cost impact (EMS - Finance, Risks). No margin, budget variance, or effort overrun visibility (EMS - Finance)",
+            "condition": "When scope absorption occurs without financial tracking or change order process",
+            "consequence": "Margin erosion from uncompensated scope expansion cannot be quantified or recovered, potentially impacting project profitability and setting precedent for future scope additions"
+          },
+          "category": "Margin erosion",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement finance actuals tracking in EMS monthly, document cost impact of absorbed scope changes, and establish change request process with commercial terms.",
+          "contingencyCorrectiveAction": "Should margin erosion exceed 10% threshold, engage commercial team to negotiate change order with client and communicate budget variance to executive leadership for recovery options.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "31-Mar-2026",
+          "status": "Open",
+          "reasoning": "Scope absorption already occurred (14 changes = 1 sprint effort) with no financial tracking. Likely that margin impact exists but is unquantified. Medium impact as financial loss is probable but magnitude unknown without actuals."
+        },
+        {
+          "sNo": 11,
+          "riskId": "R-011",
+          "subjectArea": "Scope and Contract",
+          "riskDescription": {
+            "context": "Project SOW ends November 30, 2026, while project end date is December 31, 2026, creating a 1-month gap (EMS - Project Details). Hypercare milestone scheduled July 16–August 31, 2026 (47 days), ending 3 months before SOW end (EMS - Milestones)",
+            "condition": "When project activities extend beyond SOW coverage period without contract amendment",
+            "consequence": "Work performed in December 2026 may lack contractual coverage, creating billing disputes or uncompensated effort"
+          },
+          "category": "Contract coverage gap",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate December activities against SOW scope, secure formal SOW extension with clear timelines if required, and align project end date with contractual coverage.",
+          "contingencyCorrectiveAction": "Should December work be confirmed without SOW coverage, halt non-critical activities immediately and escalate to commercial team for contract amendment within 5 business days.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "30-Sep-2026",
+          "status": "Open",
+          "reasoning": "Date mismatch exists between SOW end (Nov 30) and project end (Dec 31). Possible that December activities are planned but not covered. Medium impact as gap may be intentional buffer or may require contract amendment."
+        },
+        {
+          "sNo": 12,
+          "riskId": "R-012",
+          "subjectArea": "Resource and People",
+          "riskDescription": {
+            "context": "Testing roles (functional and regression) both staffed by 'Ascender' designation, likely same resource pool. Only 2 of 9 team members are Ascenders (22%) (EMS - Resources). 15-day testing window (June 1–15) for all testing types with expanded scope (EMS - Milestones, Risks)",
+            "condition": "When testing resource capacity is insufficient for compressed timeline and expanded scope",
+            "consequence": "Testing coverage gaps may occur, increasing defect escape rate into UAT and production, affecting quality and Go-Live readiness"
+          },
+          "category": "Key-person dependency",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Augment testing capacity with additional QA resources from reserve pool, prioritize high-risk testing areas, and implement risk-based testing strategy for 15-day window.",
+          "contingencyCorrectiveAction": "Should testing resource unavailability occur, engage backup QA resources from other projects and communicate testing scope prioritization to client for acceptance within 48 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "20-May-2026",
+          "status": "Open",
+          "reasoning": "Combined testing roles with compressed 15-day window and scope expansion create capacity risk. Possible that testing bandwidth is insufficient. Medium impact as testing gaps affect quality but may be mitigated with prioritization."
+        },
+        {
+          "sNo": 13,
+          "riskId": "R-013",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "No EQ metrics tracked (Engineering Quotient, EQ Operations Actual, EQ Operations Baseline all empty). EQ exemption status not set, exemption period not defined (EMS - EQ, Resources). ALT reports high development bugs, high integration bugs, and regression bugs in NexLedgr platform (ALT - Risks, Challenges)",
+            "condition": "When quality metrics are not tracked and quality issues are reported without quantitative baseline",
+            "consequence": "Cannot assess quality trend direction, benchmark against standards, or quantify improvement, limiting ability to predict defect rates in UAT and production"
+          },
+          "category": "Quality metrics gap",
+          "probability": "Very Likely",
+          "impact": "Low",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish EQ baseline and tracking cadence, implement defect density and test coverage metrics, and monitor quality trends weekly for early warning.",
+          "contingencyCorrectiveAction": "Should quality issues escalate without metrics visibility, implement temporary manual tracking dashboard and report quality status to client weekly until EQ tracking is established.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Apr-2026",
+          "status": "Open",
+          "reasoning": "Already occurring—zero EQ metrics with ALT confirming quality issues. Low impact as gap affects visibility and benchmarking but does not directly cause quality degradation. Quality issues are being managed despite lack of metrics."
+        },
+        {
+          "sNo": 14,
+          "riskId": "R-014",
+          "subjectArea": "Governance and Compliance",
+          "riskDescription": {
+            "context": "Effort metric shows baseline 45.0 and current effort 8.0, with unclear relationship (17.8% if same unit). Team size 9 resources. Sizing method is Story Point (EMS - Resources)",
+            "condition": "When effort measurement units and utilization calculations are ambiguous",
+            "consequence": "Cannot assess team capacity for scope absorption, validate resource loading, or forecast effort requirements for remaining milestones"
+          },
+          "category": "Metrics ambiguity",
+          "probability": "Very Likely",
+          "impact": "Low",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Clarify effort measurement units, establish utilization tracking methodology, and implement consistent velocity and capacity reporting in sprint retrospectives to improve forecasting.",
+          "contingencyCorrectiveAction": "Should capacity planning errors occur due to metrics ambiguity, implement temporary hour-based tracking and recalibrate velocity baselines using historical sprint data for correction.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "08-Apr-2026",
+          "status": "Open",
+          "reasoning": "Already occurring—effort metric relationship unclear. Low impact as ambiguity affects capacity planning visibility but team is functioning and delivering (87% complete per ALT)."
+        },
+        {
+          "sNo": 15,
+          "riskId": "R-015",
+          "subjectArea": "Schedule and Delivery",
+          "riskDescription": {
+            "context": "UAT milestone scheduled June 16–30 (15 days) with client sign-off required. Go-Live scheduled July 1–15 (15 days) immediately following UAT with no buffer (EMS - Milestones). ALT reports Oct 15 release delayed and project at 87% completion (ALT - Progress Updates)",
+            "condition": "When UAT identifies defects or client requests changes requiring rework within the 15-day window",
+            "consequence": "No buffer between UAT and Go-Live means any UAT issues directly impact Go-Live date, increasing probability of production deployment delay"
+          },
+          "category": "Schedule buffer gap",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Introduce 5-day buffer between UAT completion and Go-Live, conduct pre-UAT readiness review with D365 experts, and maintain ETA buffers for unforeseen delays.",
+          "contingencyCorrectiveAction": "Should UAT defects require rework exceeding 3 days, activate catch-up plan with extended team hours and negotiate revised Go-Live date with client sponsor immediately.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Jun-2026",
+          "status": "Open",
+          "reasoning": "Tight sequential schedule with no buffer is structural risk. Possible that UAT will surface issues requiring rework. Medium impact as buffer absence increases Go-Live delay probability but UAT may proceed smoothly."
+        },
+        {
+          "sNo": 16,
+          "riskId": "R-016",
+          "subjectArea": "Customer and Relationship",
+          "riskDescription": {
+            "context": "ALT deck reports project on WATCHLIST with High Concern (HC) status. Last-minute requirements received from Pearson related to stored procedures. Phase 2 scope items pulled into Phase 1. Pending PR approvals from Pearson catalyst team (ALT - Project Status, Risks, Challenges)",
+            "condition": "When client continues to introduce late requirements or delays approvals without formal change control",
+            "consequence": "Client relationship strain may escalate to formal escalation, impacting future phases and contract renewal discussions"
+          },
+          "category": "Escalation",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish communication SLAs with client, conduct weekly stakeholder alignment meetings, and implement early escalation protocols for any approval delays exceeding 48 hours.",
+          "contingencyCorrectiveAction": "Should client relationship strain escalate, engage executive sponsor to facilitate client partnership discussion and document agreed change control process within 5 business days.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "25-Mar-2026",
+          "status": "Open",
+          "reasoning": "WATCHLIST HC status and multiple client-driven challenges (late requirements, approval delays, Phase 2 scope pull-forward) indicate relationship stress. Possible that escalation occurs without improved governance. Medium impact as relationship issues affect project but are manageable with stakeholder engagement."
+        },
+        {
+          "sNo": 17,
+          "riskId": "R-017",
+          "subjectArea": "Governance and Compliance",
+          "riskDescription": {
+            "context": "Active scope risk (Risk 857) has mitigation status 'Assessed' but mitigation plan states 'needs to be arrived' with no ETA. Risk opened June 29, 2026 (EMS - Risks). No forward-looking risk register beyond 3 total risks for 10-month project (EMS - Risks)",
+            "condition": "When risk mitigation planning is delayed or incomplete for active risks",
+            "consequence": "Scope risk continues to materialize without control mechanism, and other emerging risks (UAT, Go-Live, Hypercare) remain unidentified until they occur"
+          },
+          "category": "Overdue mitigation",
+          "probability": "Very Likely",
+          "impact": "Low",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Assign owners and deadlines for all risks marked 'needs to be arrived', conduct forward-looking risk identification workshop for remaining milestones, and document mitigation plans with ETAs.",
+          "contingencyCorrectiveAction": "Should any active risk materialize without mitigation plan, escalate to executive sponsor immediately and implement emergency response team to contain impact within 24 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "29-Mar-2026",
+          "status": "Open",
+          "reasoning": "Already occurring—active risk without mitigation plan since June 29. Low impact as mitigation delay affects risk management maturity but scope issue is being managed operationally per ALT (87% complete)."
+        },
+        {
+          "sNo": 18,
+          "riskId": "R-018",
+          "subjectArea": "Schedule and Delivery",
+          "riskDescription": {
+            "context": "Hypercare milestone scheduled July 16–August 31, 2026 (47 days) for post-go-live support (EMS - Milestones). ALT reports NexLedgr platform concerns around code stability with too many regression bugs and high integration bugs (ALT - Challenges)",
+            "condition": "When production deployment occurs with known code stability concerns and high bug volume",
+            "consequence": "Hypercare period may experience elevated incident volume, requiring extended support effort and potentially impacting production stability and user adoption"
+          },
+          "category": "Production stability",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct pre-production stability review, establish incident response runbooks, and allocate dedicated support resources for Hypercare period to address production issues promptly.",
+          "contingencyCorrectiveAction": "Should production incident volume exceed planned capacity during Hypercare, deploy additional support resources from reserve pool and communicate extended support plan to client within 24 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Jul-2026",
+          "status": "Open",
+          "reasoning": "ALT confirms code stability concerns and high bug volume pre-production. Possible that issues surface in production. Medium impact as Hypercare is planned but elevated incident volume may exceed planned capacity."
+        }
+      ]
+    }
+  ]
+}
