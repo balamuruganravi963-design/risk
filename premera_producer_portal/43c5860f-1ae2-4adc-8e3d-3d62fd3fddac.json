@@ -1,0 +1,259 @@
+{
+  "clientName": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "ART",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Finance and Commercial",
+          "riskDescription": {
+            "context": "Hypercare was baselined to complete by August 31, 2026, but as of October 23, 2026 (53 days later), it remains in progress with no revised end date, while the SOW term ends November 30, 2026.",
+            "condition": "If Hypercare extends beyond November 30, 2026.",
+            "consequence": "The project may incur SOW overrun without a formal contract amendment, creating commercial and governance exposure."
+          },
+          "category": "SOW overrun",
+          "probability": "Very Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish formal SOW amendment with revised Hypercare end date and commercial terms by November 15, 2026.",
+          "contingencyCorrectiveAction": "Upon SOW expiration on November 30, immediately escalate to Delivery Leader and Client Sponsor to invoke emergency CR approval within 48 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "Hypercare has already run 53 days past its baseline end with no revised timeline, and only 38 days remain until SOW expiration. The overrun is already occurring, making it very likely to continue past the SOW end date. Impact is High because SOW overrun without amendment creates contractual and financial risk."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Technical and Integration",
+          "riskDescription": {
+            "context": "Premera sent registration emails to 2,500+ producers on October 22, 2026 using a big-bang rollout approach, with outcome status awaited as of October 23.",
+            "condition": "If a technical or user experience issue is encountered during the mass onboarding.",
+            "consequence": "The rollout may need to be rolled back and remediated, delaying producer access and potentially impacting business operations."
+          },
+          "category": "Rollout risk",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Monitor mass onboarding daily for technical issues, user feedback, and system performance through November 8, 2026.",
+          "contingencyCorrectiveAction": "If critical issues affect 10% or more users, activate rollback procedure and switch to phased onboarding within 24 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "08-Nov-2026",
+          "status": "Open",
+          "reasoning": "The big-bang approach (2,500+ users at once) carries higher risk than phased rollout, but the pilot with 11 users was successful, reducing the likelihood. Impact is High because rollback would affect 2,500+ users and delay business value realization."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "As of June 18, 2026, the codebase carried 190 code smells (2 Critical, 80 Major), 86 CVEs (4 Critical, 82 High), and 11 open bugs (7 High), all marked In-Progress with no resolution timeline or target.",
+            "condition": "If quality debt surfaces as defects or performance issues during mass producer onboarding.",
+            "consequence": "Production stability may be compromised, requiring emergency fixes and potentially triggering the rollback scenario."
+          },
+          "category": "Defect leakage",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct manual code reviews weekly and prioritize resolution of 2 Critical code smells and 4 Critical CVEs by November 15, 2026.",
+          "contingencyCorrectiveAction": "If Production defects impact 5% or more users, deploy emergency hotfix team and escalate to Architecture Lead within 4 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "Quality debt was documented 4+ months ago with no updated remediation status, and the mass onboarding (2,500+ users) will stress-test the system. The pilot succeeded, but scale may expose latent issues. Impact is High because Production defects during mass onboarding could force rollback."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Scope and Contract",
+          "riskDescription": {
+            "context": "19 scope changes have been absorbed (equivalent to 0.75–1 sprint of effort), and the change rate accelerated from 0.12 to 0.22 changes per day, with an open scope-change risk that has no mitigation plan or ETA.",
+            "condition": "If additional scope changes are accepted during Hypercare without impact assessment.",
+            "consequence": "Hypercare effort may increase further, extending the phase beyond the November 30, 2026 SOW end date."
+          },
+          "category": "Scope creep",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement formal change control process requiring impact assessment and client approval for all Hypercare scope changes by October 30, 2026.",
+          "contingencyCorrectiveAction": "If scope changes exceed 1 additional sprint effort, defer non-critical items to post-Hypercare phase and rebaseline timeline with client.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "30-Oct-2026",
+          "status": "Open",
+          "reasoning": "The scope change rate has nearly doubled (83% increase) and no mitigation plan exists to control further additions. The pattern is established and unmitigated, making continuation likely. Impact is Medium because additional effort can be absorbed within Hypercare but will extend the timeline."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Resource and People",
+          "riskDescription": {
+            "context": "Actual effort is 8.0 against a baseline of 45.0 (about 82% below), and the team was formed on May 22, 2026, which is 2.5 months after the project start date of March 1, 2026.",
+            "condition": "If effort remains significantly below baseline during Hypercare.",
+            "consequence": "The team may lack capacity to address Production issues, scope changes, or user support requests, extending Hypercare duration."
+          },
+          "category": "Capacity constraint",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate current team capacity against Hypercare workload and add backup resources if capacity gap exceeds 20% by November 1, 2026.",
+          "contingencyCorrectiveAction": "If Production issues exceed team capacity, reallocate resources from other projects and engage vendor support within 48 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "The 82% effort variance has not been explained or updated since May 22, and no resource ramp-up plan is documented. The project reached Production despite the variance, suggesting the baseline may have been incorrect, but the gap remains unresolved. Impact is Medium because under-capacity during Hypercare could delay closure but is unlikely to cause major disruption."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Technical and Integration",
+          "riskDescription": {
+            "context": "Four additional fields needed for total premium calculation on the Book of Business were expected from Data Hub by July 30, 2026, with no updated status as of October 23, 2026 (85 days later).",
+            "condition": "If the four total premium fields remain unavailable or incorrect.",
+            "consequence": "The Book of Business total premium calculation may be incomplete or inaccurate, requiring rework or limiting producer functionality."
+          },
+          "category": "Integration complexity",
+          "probability": "Unlikely",
+          "impact": "Medium",
+          "rag": "Green",
+          "mitigationPreventiveAction": "Validate Data Hub total premium field availability and accuracy with Data Hub team by October 30, 2026.",
+          "contingencyCorrectiveAction": "If fields are unavailable, implement temporary calculation workaround and communicate limitation to producers via in-app notification.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "30-Oct-2026",
+          "status": "Open",
+          "reasoning": "The dependency is 85 days overdue with no status update, but the application deployed to Production, suggesting either the fields were delivered or a workaround was implemented. Impact is Medium because field inaccuracy would affect a key feature but is correctable."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Technical and Integration",
+          "riskDescription": {
+            "context": "The Auth0 database connection configuration update required Premera team support (specifically, access from Drew) and was needed by July 10, 2026, with no updated status as of October 23, 2026 (105 days later).",
+            "condition": "If the Auth0 configuration was not completed or requires further changes.",
+            "consequence": "Authentication issues may surface during mass producer onboarding, blocking user access."
+          },
+          "category": "Integration complexity",
+          "probability": "Unlikely",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate Auth0 configuration completion with Premera team and document backup access procedure by October 30, 2026.",
+          "contingencyCorrectiveAction": "If authentication fails, activate backup Auth0 tenant and engage Drew for emergency configuration within 2 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "30-Oct-2026",
+          "status": "Open",
+          "reasoning": "The dependency is 105 days overdue with no status update, but the application deployed to Production and 11 users completed registration successfully, suggesting the configuration was completed. Impact is High because authentication failure would block all user access."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Technical and Integration",
+          "riskDescription": {
+            "context": "Seven agent-related risks (single LLM, tools integration, agent hardening, learning, template alignment, invocation failures, orchestration) were opened between March 9–17, 2026, with no ETAs or closure status as of July 22, 2026 (4+ months later).",
+            "condition": "If agent framework issues surface during Hypercare or future enhancements.",
+            "consequence": "Agent-generated code or test cases may require rework, increasing maintenance effort and reducing the expected productivity gains from the AAVA framework."
+          },
+          "category": "Technical debt",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Review and close all seven agent framework risks with documented resolution or acceptance by November 8, 2026.",
+          "contingencyCorrectiveAction": "If agent issues require rework, revert to manual code generation and allocate additional developer time for affected components.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "08-Nov-2026",
+          "status": "Open",
+          "reasoning": "The risks were opened early in the project and remain unresolved 4+ months later, but the project reached Production, suggesting the risks were either mitigated or accepted. Impact is Medium because agent issues would increase effort but are unlikely to block operations."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "Backend unit test coverage is 57% as of June 18, 2026, which is below the typical 80% target, with no target or improvement plan documented.",
+            "condition": "If backend code changes are required during Hypercare or future enhancements.",
+            "consequence": "Regression defects may be introduced due to insufficient test coverage, requiring additional testing effort and potentially impacting Production stability."
+          },
+          "category": "Testing coverage gap",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement code coverage tracking through Jenkins pipeline and increase backend unit test coverage to 70% by November 15, 2026.",
+          "contingencyCorrectiveAction": "If regression defects occur, conduct manual regression testing for affected modules and deploy hotfix within 24 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "The 57% coverage is below industry standard (80%), and no improvement plan or target is documented. Hypercare and future enhancements will require code changes, creating defect risk. Impact is Medium because low coverage increases defect risk but does not guarantee defects will occur."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Resource and People",
+          "riskDescription": {
+            "context": "The Auth0 database connection configuration update depended on one person (Drew) who held access, with a delay risk noted on July 6, 2026.",
+            "condition": "If Drew is unavailable when future Auth0 configuration changes are needed.",
+            "consequence": "Authentication configuration changes may be delayed, blocking user access updates or new user onboarding."
+          },
+          "category": "Key-person dependency",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Cross-train one additional team member on Auth0 configuration and obtain backup access by November 1, 2026.",
+          "contingencyCorrectiveAction": "If Drew is unavailable, escalate to Premera IT Lead for emergency access provisioning within 4 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "The single-person dependency was documented, but no backup access or cross-training plan is mentioned, and the current status is unknown. Impact is Medium because delays would affect specific configuration tasks but are unlikely to cause widespread disruption."
+        },
+        {
+          "sNo": 11,
+          "riskId": "R - 011",
+          "subjectArea": "Resource and People",
+          "riskDescription": {
+            "context": "No Business Analyst is assigned to the project, as indicated by the NA value in the BA field of the resource record.",
+            "condition": "If scope changes or requirements clarifications are needed during Hypercare.",
+            "consequence": "Requirements may be misunderstood or poorly managed, leading to rework or scope creep continuation."
+          },
+          "category": "Skill gap",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Assign Product Owner or senior developer to BA responsibilities and document requirements management process by October 30, 2026.",
+          "contingencyCorrectiveAction": "If requirements issues arise, engage external BA consultant and conduct requirements review session with client within 48 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "30-Oct-2026",
+          "status": "Open",
+          "reasoning": "The absence of a BA may have contributed to the 19 scope changes absorbed without formal change control. Hypercare typically involves user feedback and requirements refinement. Impact is Medium because poor requirements management increases effort but is recoverable."
+        },
+        {
+          "sNo": 12,
+          "riskId": "R - 012",
+          "subjectArea": "Resource and People",
+          "riskDescription": {
+            "context": "Infrastructure creation using IaC pipelines and DevOps are in scope for the Ascendion team, but no dedicated DevOps resource is planned; support is provided on-need basis by David from another project (AI Platform Build Claims POD).",
+            "condition": "If infrastructure issues arise during Hypercare and David is unavailable.",
+            "consequence": "Infrastructure troubleshooting and remediation may be delayed, impacting Production stability and user access."
+          },
+          "category": "Capacity constraint",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Cross-train one team member on IaC pipelines and document infrastructure troubleshooting procedures by November 1, 2026.",
+          "contingencyCorrectiveAction": "If David is unavailable, engage Azure support and escalate to Premera Infrastructure Lead within 2 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "The on-need support model creates availability risk, but the project reached Production, suggesting the model was sufficient for deployment. Hypercare may require infrastructure support. Impact is Medium because delays would affect specific infrastructure tasks but are unlikely to cause prolonged outages."
+        }
+      ]
+    }
+  ]
+}
