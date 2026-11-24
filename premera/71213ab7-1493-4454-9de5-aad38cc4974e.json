@@ -1,0 +1,240 @@
+{
+  "clientName": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS"
+      ],
+      "sourcesNotAvailable": [
+        "ART",
+        "ALT"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Governance and Compliance",
+          "riskDescription": {
+            "context": "All seven SOW milestones show \"Yet to Start\" status despite the project being in Build + SIT stage, with the Design Phase scheduled to have ended March 31 and Sprint 1&2 scheduled to have ended April 30.",
+            "condition": "If milestone actuals are not reconciled with current project execution state.",
+            "consequence": "Executive and client visibility into schedule health may remain absent, preventing early detection of delays and causing late discovery of Go-Live readiness issues."
+          },
+          "category": "Milestone tracking failure",
+          "probability": "Very Likely",
+          "impact": "Medium",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Implement weekly milestone reconciliation reviews with Engineering Manager to validate actual progress against baseline and update EMS tracking.",
+          "contingencyCorrectiveAction": "Upon discovery of tracking discrepancies exceeding two sprints, conduct immediate project health audit and rebaseline milestones with client within five working days.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "10-Jun-2026",
+          "status": "Open",
+          "reasoning": "The disconnect between stage (Build + SIT) and milestone status (all \"Yet to Start\") is already present. Impact is Medium because the tracking gap itself does not delay delivery but prevents proactive management of delays that may already exist."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Scope and Contract",
+          "riskDescription": {
+            "context": "Fourteen scope changes have been absorbed (equivalent to 0.75–1 sprint of additional effort), and an open scope risk signals further additions are likely, with no mitigation plan yet defined.",
+            "condition": "If further scope additions are accepted without impact assessment and change control.",
+            "consequence": "Another 0.5–1 sprint of unplanned effort may be absorbed, compressing the 15-day UAT window or the 15-day Go-Live window and increasing defect injection risk."
+          },
+          "category": "Scope creep",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish formal scope change approval procedure requiring impact assessment and client sign-off before accepting any new requirements or changes.",
+          "contingencyCorrectiveAction": "Should scope additions exceed one additional sprint effort, escalate to client steering committee and negotiate UAT extension or phased delivery approach.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "05-Jun-2026",
+          "status": "Open",
+          "reasoning": "The active scope risk has \"Likely\" likelihood per EMS, and 14 changes already absorbed show a pattern. Impact is Medium because the UAT and Go-Live windows have zero buffer, so further scope absorption would compress testing or deployment phases."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Schedule and Delivery",
+          "riskDescription": {
+            "context": "Actual effort is 8.0 against a baseline of 45.0 (about 82% below), and the team was formed on May 22, 2.5 months after the project start date of March 1.",
+            "condition": "If effort stays well below baseline as sprint work ramps up toward the Development and Testing completion date of June 15.",
+            "consequence": "Sprint velocity may fall short of delivering planned features, causing Development and Testing to miss its June 15 end date and squeezing the 15-day UAT window."
+          },
+          "category": "Velocity constraint",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Conduct sprint velocity reviews every two sprints to identify capacity gaps and adjust resource allocation or backlog prioritization immediately.",
+          "contingencyCorrectiveAction": "Upon velocity shortfall exceeding 20%, activate catch-up plan with extended hours or engage additional resources and rebaseline Dev completion to June 20.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "08-Jun-2026",
+          "status": "Open",
+          "reasoning": "Effort is far below baseline with no recovery plan shown, and the team was formed late. Impact is High because the UAT window has zero buffer and depends on Dev/Testing completing on time."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Schedule and Delivery",
+          "riskDescription": {
+            "context": "UAT is scheduled for a 15-day window (June 16–30) starting the day after Development and Testing ends (June 15), with no buffer between the two phases.",
+            "condition": "If Development and Testing finishes late or requires rework due to defects or incomplete features.",
+            "consequence": "The 15-day UAT window may not allow sufficient time for client sign-off, which could delay the Go-Live milestone scheduled for July 1–15."
+          },
+          "category": "Milestone slippage",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Implement daily defect triage and resolution tracking from June 1 to ensure Development and Testing completion by June 15 deadline.",
+          "contingencyCorrectiveAction": "Once Development completion slips beyond June 15, immediately negotiate UAT extension to July 7 and reschedule Go-Live to July 15-22 with client approval.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "12-Jun-2026",
+          "status": "Open",
+          "reasoning": "Zero buffer and the effort variance make a Dev/Testing delay likely. Impact is High because Go-Live depends on UAT sign-off and has no buffer."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "The Data Hub API integration risk was resolved on June 29, but the original risk description noted that \"performance and NFR issues will only become visible after integration.\"",
+            "condition": "If performance and non-functional requirements testing has not been completed following the API integration.",
+            "consequence": "Performance or stability issues may surface during UAT or Go-Live, requiring rework and potentially delaying client sign-off or production deployment."
+          },
+          "category": "Testing gap",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct performance and NFR validation testing within three days of API integration completion to identify issues before UAT starts.",
+          "contingencyCorrectiveAction": "Should performance issues emerge during UAT, deploy workaround configuration adjustments and schedule performance tuning sprint post-Go-Live with client agreement.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "13-Jun-2026",
+          "status": "Open",
+          "reasoning": "The integration is resolved, but no evidence of performance validation is shown. Impact is High because performance issues discovered late would delay UAT or Go-Live."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Scope and Contract",
+          "riskDescription": {
+            "context": "The team operates in a Co-Engineering model with 7 of 9 resources from the client or third parties, and no Business Analyst is assigned (marked \"NA\").",
+            "condition": "If requirements ambiguity or stakeholder misalignment leads to rework or additional scope changes during UAT.",
+            "consequence": "Rework may consume UAT time or extend beyond the June 30 UAT end date, delaying Go-Live and increasing the risk of SOW overrun."
+          },
+          "category": "Requirements ambiguity",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Strengthen requirement clarification process by conducting bi-weekly stakeholder alignment reviews with client Product Owner and technical teams before UAT.",
+          "contingencyCorrectiveAction": "Upon identification of requirements gaps during UAT, prioritize critical-path functionality and defer non-essential items to post-Go-Live phase with client approval.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "10-Jun-2026",
+          "status": "Open",
+          "reasoning": "The absence of a BA and the Co-Engineering model create a requirements risk, but no direct evidence of misalignment is shown. Impact is Medium because UAT has no buffer and rework would cascade to Go-Live."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "No QA Manager is assigned to the project, and no Engineering Quotient (EQ) or quality metrics are available to track defect density, test coverage, or technical debt.",
+            "condition": "If quality issues accumulate undetected through the Build and SIT phases.",
+            "consequence": "Defects may leak into UAT or production, increasing rework effort, delaying Go-Live, and impacting customer satisfaction."
+          },
+          "category": "Quality governance gap",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement weekly quality review sessions with QE leadership to track defect trends, test coverage, and critical path testing completion.",
+          "contingencyCorrectiveAction": "If defect leakage exceeds acceptable threshold during UAT, activate prioritized retesting plan focusing on critical functionality and communicate revised Go-Live readiness.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "08-Jun-2026",
+          "status": "Open",
+          "reasoning": "The absence of a QA Manager and quality metrics creates a quality oversight risk, but no defect data is available to confirm issues. Impact is Medium because defect leakage would delay UAT or Go-Live."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Schedule and Delivery",
+          "riskDescription": {
+            "context": "The Go-Live milestone (July 1–15) depends on UAT completion and client sign-off by June 30, with no buffer between UAT end and Go-Live start.",
+            "condition": "If UAT extends beyond June 30 due to defects, rework, or client feedback cycles.",
+            "consequence": "Go-Live may slip beyond July 15, compressing the Hypercare phase (July 16–August 31) and increasing the risk of approaching the SOW end date of November 30."
+          },
+          "category": "Milestone dependency",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Align with client by June 10 on UAT prioritization, sign-off criteria, and deployment prerequisites to secure Go-Live readiness confirmation.",
+          "contingencyCorrectiveAction": "Once UAT sign-off is delayed beyond June 30, escalate to project steering committee and negotiate phased Go-Live with critical functionality deployed first.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "10-Jun-2026",
+          "status": "Open",
+          "reasoning": "Multiple upstream risks (velocity shortfall, UAT compression, performance validation gap) make a UAT extension likely. Impact is High because Go-Live is a contractual milestone and slippage would cascade to Hypercare."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Finance and Commercial",
+          "riskDescription": {
+            "context": "The SOW ends on November 30, 2026, while the project ends on December 31, 2026, creating a 1-month gap. Hypercare is scheduled to end August 31, leaving a 3-month buffer.",
+            "condition": "If Go-Live slips or Hypercare extends due to production issues or unresolved defects.",
+            "consequence": "Hypercare effort may continue beyond the SOW end date, requiring a contract amendment and potentially impacting margin or client relationship."
+          },
+          "category": "SOW overrun",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Monitor Go-Live and Hypercare progress weekly and initiate SOW amendment discussions by September 15 if extension risk is identified.",
+          "contingencyCorrectiveAction": "Should Hypercare extend beyond October 31, engage client commercial team to formalize Change Request for extended support with revised commercial terms.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Sep-2026",
+          "status": "Open",
+          "reasoning": "The 3-month buffer provides some protection, but upstream schedule risks (Go-Live delay) could erode it. Impact is Medium because a SOW overrun would require contractual action and could affect profitability."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Technical and Integration",
+          "riskDescription": {
+            "context": "Infrastructure was identified as the primary bottleneck on May 7, 2026, with a Category 1 score of 20 and uniformly low scores (1) across Infrastructure, Knowledge, Process, and Governance dimensions.",
+            "condition": "If infrastructure constraints (environment provisioning, deployment pipeline, or Azure configuration) remain unresolved as the project moves toward Go-Live.",
+            "consequence": "Deployment activities may be delayed or encounter issues during Go-Live (July 1–15), potentially causing production rollout delays or stability problems."
+          },
+          "category": "Infrastructure bottleneck",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate Azure deployment pipeline readiness and environment availability by June 20 through dry-run deployment to production-like environment.",
+          "contingencyCorrectiveAction": "If deployment issues arise during Go-Live window, activate rollback procedure and engage Azure support for immediate resolution within 24 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "20-Jun-2026",
+          "status": "Open",
+          "reasoning": "The bottleneck was identified in May, and integration risks were resolved in June, suggesting some progress. However, no updated categorization is shown. Impact is Medium because infrastructure issues during Go-Live would delay production deployment."
+        },
+        {
+          "sNo": 11,
+          "riskId": "R - 011",
+          "subjectArea": "Governance and Compliance",
+          "riskDescription": {
+            "context": "No RAG status is set across any dimension (Overall, Scope, Cost, Timeline, Quality, Talent, CSAT), and the Go-Green Plan field is empty, despite an active scope risk, effort variance, and milestone tracking failure.",
+            "condition": "If RAG status and Go-Green planning are not established before UAT begins on June 16.",
+            "consequence": "Executive and client stakeholders may lack visibility into project health, preventing proactive escalation and causing late discovery of issues that could delay Go-Live or impact customer satisfaction."
+          },
+          "category": "Governance gap",
+          "probability": "Very Likely",
+          "impact": "Medium",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish weekly RAG status reporting and Go-Green action tracking in project governance meetings starting immediately to ensure executive visibility.",
+          "contingencyCorrectiveAction": "Upon escalation of untracked issues during UAT, conduct emergency project health review and communicate revised status to executive stakeholders within 48 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "05-Jun-2026",
+          "status": "Open",
+          "reasoning": "The absence of RAG status is already present and has persisted through Build + SIT. Impact is Medium because the governance gap itself does not delay delivery but prevents early detection and remediation of issues that could."
+        }
+      ]
+    }
+  ]
+}
