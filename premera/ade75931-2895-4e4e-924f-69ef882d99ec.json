@@ -1,0 +1,220 @@
+{
+  "clientName": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [
+        "ART"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Schedule and Delivery",
+          "riskDescription": {
+            "context": "All 7 SOW milestones are marked \"Yet to Start\" with no actual start or end dates recorded, despite the project being in Build + SIT stage and the Design Phase, Sprint 1&2, Sprint 3&4, and Development & Testing milestones having scheduled end dates between March 31 and June 15, 2026.",
+            "condition": "If milestone actuals are recorded and reveal that these phases are overdue.",
+            "consequence": "A cascade of schedule delays may surface, compressing the 15-day UAT window (June 16-30) and the 15-day Go-Live window (July 1-15), which could push Go-Live beyond its scheduled date."
+          },
+          "category": "Milestone slippage",
+          "probability": "Very Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish weekly milestone tracking reviews with stakeholders to record actuals and update project stage status by June 5.",
+          "contingencyCorrectiveAction": "Upon confirmation of milestone overrun, re-baseline UAT and Go-Live timelines immediately and escalate to the project board within 48 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "05-Jun-2026",
+          "status": "Open",
+          "reasoning": "The conflict between \"Yet to Start\" status and Build + SIT stage designation indicates either data recording failure or unrecorded slippage. If the latter, multiple milestones are already overdue as of June 29, leaving no buffer for UAT or Go-Live."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Resource and People",
+          "riskDescription": {
+            "context": "The team's actual effort is 8.0 story points against a baseline of 45.0 (about 82% below), and the team was formed on May 22, 2026, which is 2.5 months after the project start date of March 1, 2026.",
+            "condition": "If effort remains well below baseline as sprint work ramps up in the Development and Testing phase.",
+            "consequence": "Sprint velocity may fall short of what is needed to complete Development and Testing by June 15, causing the milestone to slip and squeezing the 15-day UAT window that starts June 16."
+          },
+          "category": "Capacity constraint",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Conduct daily stand-ups with Scrum Masters to identify blockers and onboard backup resources to restore baseline capacity by May 30.",
+          "contingencyCorrectiveAction": "Once sprint velocity drops below 30 story points for two consecutive sprints, activate catch-up plan and escalate to leadership within 24 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "30-May-2026",
+          "status": "Open",
+          "reasoning": "Effort is far below baseline with no recovery trend shown, and the late team formation suggests incomplete ramp-up. Impact is High because the UAT window has no buffer and depends on on-time Development & Testing completion."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Governance and Compliance",
+          "riskDescription": {
+            "context": "No Delivery Manager or QA Manager is assigned to the project, and the Business Analyst role is marked as not available, despite the project being a Category 1 engagement in active Build + SIT phase with 14 absorbed scope changes.",
+            "condition": "If these management and quality assurance roles remain unfilled through the UAT and Go-Live phases.",
+            "consequence": "Decision-making may be delayed, quality gates may be weakened, and scope change control may remain ineffective, which could lead to UAT defect spikes or Go-Live readiness issues."
+          },
+          "category": "Process gap",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Allocate current team members to cover Delivery Manager and QA Manager roles and initiate BA hiring by May 15.",
+          "contingencyCorrectiveAction": "If roles remain unfilled by June 1, engage practice leadership to provide interim coverage and adjust sprint planning accordingly.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-May-2026",
+          "status": "Open",
+          "reasoning": "Category 1 projects require enhanced governance, and the absence of a QA Manager during testing phases and a Delivery Manager for escalation creates structural gaps. Impact is Medium because the Engineering Manager provides partial mitigation."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Resource and People",
+          "riskDescription": {
+            "context": "Only 2 of 9 team members are Ascenders, and they hold all critical roles including Scrum Master, Architect, Development, and Testing.",
+            "condition": "If one or both Ascenders become unavailable due to attrition or reassignment.",
+            "consequence": "Critical capabilities may be lost, and knowledge transfer to remaining team members could delay sprint delivery and testing activities."
+          },
+          "category": "Key-person dependency",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement cross-training sessions and document critical processes with shadowing for non-Ascender team members by May 25.",
+          "contingencyCorrectiveAction": "If Ascender attrition occurs, engage practice team to provide interim support and onboard replacement within two weeks.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "25-May-2026",
+          "status": "Open",
+          "reasoning": "No backup or shadowing plan is documented, and the concentration of critical roles in two people creates a single point of failure. Impact is Medium because the team could recover with onboarding, but ramp-up time would compress downstream phases."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Scope and Contract",
+          "riskDescription": {
+            "context": "The project has absorbed 14 scope changes equivalent to 0.75-1 sprint of additional effort, and an open risk warns that further scope additions are likely and may impact delivery timelines, but the mitigation plan is noted as \"needs to be arrived\" with no active mitigation in place.",
+            "condition": "If additional scope changes are accepted without formal impact assessment and change control thresholds.",
+            "consequence": "Another 0.5-1 sprint of unplanned effort could be absorbed, which may compress the Hypercare phase or force testing shortcuts that increase defect escape risk."
+          },
+          "category": "Scope creep",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish formal change control process with impact assessment and client approval thresholds before accepting further scope changes by May 10.",
+          "contingencyCorrectiveAction": "If scope additions exceed one sprint effort, negotiate timeline extension with client and adjust Hypercare schedule accordingly.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "10-May-2026",
+          "status": "Open",
+          "reasoning": "The scope change rate has accelerated, and the open scope risk has no mitigation plan despite being rated \"Likely.\" Impact is Medium because the effort is recoverable within the Hypercare buffer, but quality trade-offs are probable."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "The Data Hub API integration risk was resolved on June 29, 2026, one day before the UAT milestone end date of June 30, and the risk explicitly noted that \"performance and NFR issues will only become visible after integration.\"",
+            "condition": "If performance, accessibility, and security testing are conducted during the UAT phase rather than before it.",
+            "consequence": "NFR issues may surface during UAT, requiring rework that could extend UAT beyond June 30 and delay the Go-Live date of July 1-15."
+          },
+          "category": "Testing compression",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Conduct comprehensive NFR validation including performance and security testing immediately post-integration and complete by June 10.",
+          "contingencyCorrectiveAction": "Upon detection of NFR defects during UAT, activate rework team and extend UAT by one week with client approval.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "10-Jun-2026",
+          "status": "Open",
+          "reasoning": "The integration was completed with only one day before UAT ends, leaving no time for comprehensive NFR validation before UAT starts. Impact is High because UAT has a 15-day window with no buffer, and client sign-off depends on successful UAT completion."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "The Development and Testing milestone allocates 15 days (June 1-15) for comprehensive testing including functional, performance, accessibility, and security testing, and this window follows the absorption of 14 scope changes equivalent to 0.75-1 sprint of effort.",
+            "condition": "If Development activities extend into the testing window due to scope absorption or capacity shortfalls.",
+            "consequence": "Test coverage may be incomplete, increasing the probability of defect escape into UAT or production, which could extend Hypercare beyond its scheduled August 31 end date."
+          },
+          "category": "Testing compression",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Schedule detailed review with QE leadership before June 1 to prioritize test coverage and allocate additional QA resources.",
+          "contingencyCorrectiveAction": "If testing extends beyond June 15, implement parallel testing tracks and communicate UAT delay to client within 48 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "28-May-2026",
+          "status": "Open",
+          "reasoning": "The 15-day window is already tight for comprehensive testing, and the absorbed scope changes increase the testing burden. Impact is Medium because defects can be addressed in UAT or Hypercare, but client satisfaction and Hypercare effort are at risk."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Schedule and Delivery",
+          "riskDescription": {
+            "context": "The Development and Testing milestone is scheduled to end on June 15, and the UAT milestone is scheduled to start on June 16, with no buffer between the two phases.",
+            "condition": "If Development and Testing finishes late or requires rework due to quality issues.",
+            "consequence": "The 15-day UAT window may not be sufficient for client sign-off, which could delay Go-Live beyond its scheduled July 1-15 window."
+          },
+          "category": "Schedule buffer erosion",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Maintain two-day buffer in Development ETA and conduct daily progress reviews with stakeholders to detect delays early.",
+          "contingencyCorrectiveAction": "Once Development completion slips beyond June 15, re-baseline UAT start date and escalate to project board within 24 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "12-Jun-2026",
+          "status": "Open",
+          "reasoning": "Zero buffer means any Development delay cascades immediately into UAT, and the compressed testing timeline increases the probability of rework. Impact is High because Go-Live depends on UAT sign-off and has no buffer."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Governance and Compliance",
+          "riskDescription": {
+            "context": "No RAG status is recorded across any dimension (Overall, Scope, Cost, Timeline, Quality, Talent, CSAT) for a Category 1 project in active Build + SIT stage, and the Go-Green plan field is empty.",
+            "condition": "If RAG status remains unrecorded through the UAT and Go-Live phases.",
+            "consequence": "Stakeholders may not receive advance warning of project deterioration, which could lead to late-stage surprises and reduced confidence when issues surface during UAT or Go-Live."
+          },
+          "category": "Process gap",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement weekly RAG status updates across all dimensions with clear criteria and publish to stakeholders by May 8.",
+          "contingencyCorrectiveAction": "If RAG status gaps persist, schedule governance review with leadership and establish mandatory reporting cadence within one week.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "08-May-2026",
+          "status": "Open",
+          "reasoning": "Category 1 projects require enhanced oversight, and the absence of RAG status eliminates a key governance mechanism. Impact is Medium because the absence affects visibility and stakeholder confidence but does not directly cause delivery failure."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Finance and Commercial",
+          "riskDescription": {
+            "context": "The SOW is scheduled to end on November 30, 2026, and the Hypercare phase is scheduled to end on August 31, 2026, leaving a 3-month buffer, but the Hypercare phase depends on successful Go-Live and may extend if defects escape from the compressed testing and UAT phases.",
+            "condition": "If Hypercare extends beyond August 31 due to production defects or unresolved UAT issues.",
+            "consequence": "Hypercare effort may continue into the SOW buffer period, and if the extension is significant, it could approach the SOW end date of November 30, requiring a contract amendment or creating an SOW overrun."
+          },
+          "category": "SOW overrun",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Monitor defect escape rates during UAT and implement comprehensive regression testing to minimize production issues by August 15.",
+          "contingencyCorrectiveAction": "If Hypercare extends beyond September 30, initiate SOW amendment discussions with client and adjust resource allocation accordingly.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Aug-2026",
+          "status": "Open",
+          "reasoning": "The compressed testing timeline and pending NFR validation increase the probability of defect escape, which would extend Hypercare. Impact is Medium because the 3-month buffer provides some protection, but a significant extension could create commercial risk."
+        }
+      ]
+    }
+  ]
+}
