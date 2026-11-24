@@ -1,0 +1,219 @@
+{
+  "clientName": "",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "ART",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Scope and Contract",
+          "riskDescription": {
+            "context": "19 scope changes have been absorbed from project inception through July 22, 2026, with the rate accelerating from 0.12 changes per day (March-June) to 0.22 changes per day (July), and an open scope-change risk signals that further additions are likely.",
+            "condition": "If additional scope changes are accepted without formal impact assessment and approval workflow.",
+            "consequence": "The 9-member team may absorb another 0.5-1 sprint of unplanned effort, further compressing the already-delayed Hypercare phase and risking incomplete stabilization before the big-bang rollout to 2,500+ producers."
+          },
+          "category": "Scope creep",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish formal scope change procedure requiring documented impact assessment, customer approval, and rebaselining before acceptance of any new requirements.",
+          "contingencyCorrectiveAction": "Upon absorption of 1+ additional sprint capacity, reconfirm priorities with customer, drop lower-value work, escalate to leadership for resource augmentation or scope reduction decision.",
+          "owner": "Saitej Ballav (Primary EM)",
+          "targetDate": "15-Aug-2026",
+          "status": "Open",
+          "reasoning": "The scope change rate has accelerated 83% in July compared to March-June, and Risk 857 remains open with no concrete mitigation plan or due date. The team has already absorbed 0.75-1 sprint of additional effort, and the pattern shows no sign of slowing. Impact is Medium because further scope absorption will stress capacity and compress Hypercare, but the project reached Production, so impact is not High."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Technical and Integration",
+          "riskDescription": {
+            "context": "Data Hub API delivery and integration were marked resolved as of June 29, 2026, but three open risks and dependencies related to DH integration, total premium fields, and data confirmation remain as of July 22, 2026, with ETAs of July 15 and July 30.",
+            "condition": "If the DH integration issues surface during end-to-end testing or the big-bang rollout.",
+            "consequence": "Data mapping discrepancies or missing fields may cause incorrect Book of Business displays or dashboard metrics, requiring emergency fixes during Hypercare and potentially triggering a rollback of the 2,500+ producer onboarding."
+          },
+          "category": "Integration complexity",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Conduct daily handshake with DH and business teams on data mappings; validate all critical-path BoB and dashboard fields against DH schema before ACPT deployment.",
+          "contingencyCorrectiveAction": "Once data mapping discrepancy is detected in E2E testing, immediately escalate to DH team and business stakeholders, implement workaround using cached or default values, and defer non-critical fields to post-rollout fix within 48 hours.",
+          "owner": "Saitej Ballav (Primary EM)",
+          "targetDate": "30-Jul-2026",
+          "status": "Open",
+          "reasoning": "The resolution of Risks 855 and 856 appears premature, as three related DH issues remain open. The mitigation is reactive rather than proactive, and the project proceeded with synthetic data, deferring integration risk. Impact is High because data issues directly affect core user experience for 2,500+ producers, and the ALT deck explicitly states a rollback risk. Likelihood is Likely because DH issues are recurring and mitigation is weak."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Schedule and Delivery",
+          "riskDescription": {
+            "context": "The Producer Portal application is deployed to Production and technically ready for producer onboarding, with a big-bang rollout to 2,500+ producers planned for October 22, 2026, following end-to-end registration testing with only 11 users.",
+            "condition": "If a defect or performance issue is encountered during the mass producer onboarding.",
+            "consequence": "The rollout may need to be rolled back and remediated, delaying producer access to the portal, damaging client confidence, and requiring additional stabilization effort beyond the planned Hypercare period."
+          },
+          "category": "Deployment risk",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct phased pilot rollout to 50-100 producers before big-bang; validate load, concurrency, and edge-case scenarios; establish go/no-go criteria with client sign-off 48 hours before mass rollout.",
+          "contingencyCorrectiveAction": "Should critical defect or performance degradation occur affecting 10%+ of users during rollout, activate rollback procedure within 2 hours, communicate status to all producers via email, and schedule remediation deployment within 72 hours.",
+          "owner": "Saitej Ballav (Primary EM)",
+          "targetDate": "15-Oct-2026",
+          "status": "Open",
+          "reasoning": "The ALT deck explicitly identifies this as an active risk. The big-bang approach amplifies impact, and the 11-user test is a very small sample (0.4% of 2,500+). Impact is High because a rollback affects all 2,500+ producers and damages client confidence. Likelihood is Possible because the application passed validation, but the small test sample and big-bang approach increase likelihood above Unlikely."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Governance and Compliance",
+          "riskDescription": {
+            "context": "EMS shows all seven milestones as Yet to Start with no actual dates, while the WSR dated July 22, 2026 states six milestones have passed their scheduled end dates, and the ALT deck dated October 22, 2026 confirms Production deployment and validation completion.",
+            "condition": "If milestone status updates are not synchronized across EMS, project tracking, and governance reporting.",
+            "consequence": "Stakeholders may lack accurate visibility into schedule performance, delaying escalation of further slippage and preventing timely corrective action for the remaining Hypercare phase."
+          },
+          "category": "Data quality and governance gap",
+          "probability": "Very Likely",
+          "impact": "Medium",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Implement weekly EMS milestone status reconciliation with WSR and ALT; assign single owner to update EMS within 2 business days of milestone completion or status change.",
+          "contingencyCorrectiveAction": "Once milestone data gap is detected by stakeholder, conduct emergency reconciliation session within 24 hours, update EMS with actual dates, and communicate corrected schedule variance to governance board within 48 hours.",
+          "owner": "Saitej Ballav (Primary EM)",
+          "targetDate": "01-Aug-2026",
+          "status": "Open",
+          "reasoning": "The conflict between EMS, ART WSR, and ALT is a clear data quality issue. EMS milestone data is stale, meaning the primary metrics system does not reflect actual status. Likelihood is Very Likely because the data gap is already evident. Impact is Medium because the tracking gap does not stop delivery but obscures schedule variance and delays governance escalation."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "The 9-member team has absorbed 0.75-1 sprint of additional effort from 19 scope changes, and the resource metrics show baseline story points of 45.0 against effort story points of 8.0, suggesting significant underperformance or capacity constraints.",
+            "condition": "If the team continues to absorb scope changes and schedule pressure without augmentation or scope reduction.",
+            "consequence": "Testing time may be further compressed, defect injection rates may increase, and technical debt may accumulate, leading to quality issues surfacing during the big-bang rollout or Hypercare phase."
+          },
+          "category": "Quality degradation due to capacity stress",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Reconfirm sprint priorities with customer weekly; drop lower-value work; move to 1-week planning cycles; escalate for resource augmentation if velocity drops below 30 story points per sprint.",
+          "contingencyCorrectiveAction": "Upon detection of defect injection rate increase (10+ defects per sprint) or test coverage drop below 70%, halt new feature development, allocate 50% of team capacity to defect resolution and technical debt reduction for one sprint.",
+          "owner": "Saitej Ballav (Primary EM)",
+          "targetDate": "08-Aug-2026",
+          "status": "Open",
+          "reasoning": "The team has absorbed 0.75-1 sprint of additional effort, and the baseline vs. effort variance suggests capacity constraints. No resource augmentation is documented, and the BA role is not assigned. Impact is Medium because quality degradation may not stop the rollout but increases the likelihood of defects during the big-bang rollout. Likelihood is Likely because capacity stress is evident and no mitigation is in place."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Technical and Integration",
+          "riskDescription": {
+            "context": "Six agent-related risks (Single LLM, Tools Integration, Agent Hardening, Agent Learning, Client Template Alignment, Tool/API Invocation Failures, Agent Orchestration) were opened between March 9 and March 17, 2026, and remain open with no ETA as of July 22, 2026.",
+            "condition": "If agent performance issues or tool integration failures surface during production use.",
+            "consequence": "Agent-generated outputs may be inconsistent, inaccurate, or fail to meet client-specific format requirements, requiring manual intervention or rework and reducing the expected productivity gains from the AAVA framework."
+          },
+          "category": "Agent framework risk",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Identify APIs and components dependent on AAVA; prioritize stabilization of those interfaces; document LLM limitations per task-type; implement human review checkpoint for agent outputs before production use.",
+          "contingencyCorrectiveAction": "When agent output accuracy drops below 80% or tool invocation failure rate exceeds 10%, switch to manual process for affected tasks, escalate to AAVA platform team, and implement fallback logic within 72 hours.",
+          "owner": "Saitej Ballav (Primary EM)",
+          "targetDate": "TBD - confirm with PM",
+          "status": "Open",
+          "reasoning": "The six agent-related risks have been open for 4+ months with no ETA or concrete mitigation actions. The mitigation plans are generic and do not address root causes. Impact is Medium because agent issues may degrade user experience but are unlikely to stop the portal from functioning. Likelihood is Possible because the risks have not surfaced as blockers (project reached Production), but lack of mitigation means they could surface during production use."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "The UAT milestone is scheduled for a 15-day window (June 16-30, 2026) with no buffer between the Development and Testing phase (ending June 15) and UAT start, and the Development and Testing milestone passed its scheduled end date by 37 days as of July 22, 2026.",
+            "condition": "If Development and Testing delays cascade into the UAT window or if UAT is compressed to meet the Go-Live date.",
+            "consequence": "Client sign-off may be rushed or incomplete, allowing defects to escape to Production and increasing the likelihood of issues during the big-bang rollout to 2,500+ producers."
+          },
+          "category": "Testing compression",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Schedule detailed review with QE leadership before UAT start; prioritize risk-based testing for critical-path features; establish minimum UAT duration of 10 business days with client agreement before Go-Live.",
+          "contingencyCorrectiveAction": "If UAT window is compressed below 10 days, escalate to client for Go-Live date extension, conduct parallel regression testing, and allocate additional QA resources to fast-track defect resolution within 24-hour SLA.",
+          "owner": "Saitej Ballav (Primary EM)",
+          "targetDate": "16-Jun-2026",
+          "status": "Open",
+          "reasoning": "Development and Testing passed its scheduled end by 37 days, and UAT had no buffer. The 15-day UAT window is tight, and any compression increases the risk of inadequate validation. Impact is Medium because UAT compression may allow defects to escape, but the project passed validation, suggesting some UAT occurred. Likelihood is Likely because the Development delay is confirmed and schedule pressure to meet the October 22 rollout would incentivize compressing UAT."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Finance and Commercial",
+          "riskDescription": {
+            "context": "The SOW term is March 1 to August 31, 2026, with the final Hypercare milestone scheduled to end August 31, but the Hypercare scheduled end has passed by 52 days as of October 22, 2026, indicating a 2-month SOW overrun.",
+            "condition": "If the SOW overrun is not formalized through a contract amendment or change request.",
+            "consequence": "Ascendion may absorb the additional effort beyond August 31 without additional payment, eroding margin, or the client may dispute payment for work performed outside the SOW term, creating a commercial conflict."
+          },
+          "category": "SOW overrun and margin erosion",
+          "probability": "Very Likely",
+          "impact": "Medium",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish formal procedure for evaluating and approving scope changes requiring SOW amendment; document all delays and impacts; escalate SOW extension request to client by August 15 with revised timeline and commercials.",
+          "contingencyCorrectiveAction": "Upon SOW end date (August 31) with incomplete deliverables, immediately submit Change Request documenting overrun cause, effort expended, and proposed commercial terms; halt non-critical work pending client approval within 10 business days.",
+          "owner": "Saitej Ballav (Primary EM)",
+          "targetDate": "15-Aug-2026",
+          "status": "Open",
+          "reasoning": "The SOW term ended August 31, and the Hypercare end passed by 52 days as of October 22, confirming a 2-month overrun. The fixed-price contract is $650,000 not to exceed, and no contract amendment is documented. Likelihood is Very Likely because the overrun is confirmed and no amendment is documented. Impact is Medium because the overrun affects margin and may create a commercial dispute but does not stop delivery."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Governance and Compliance",
+          "riskDescription": {
+            "context": "No RAG status is recorded in EMS, no Delivery Manager, QA Manager, or Client Manager is assigned at the project level, and the BA role is marked as not assigned, creating accountability and oversight gaps.",
+            "condition": "If issues requiring cross-functional coordination or client escalation arise during Hypercare or the big-bang rollout.",
+            "consequence": "Issue resolution may be delayed due to unclear ownership or lack of a client-facing escalation path, prolonging the impact on the 2,500+ producers and increasing the likelihood of a rollback."
+          },
+          "category": "Governance gap",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement detailed issue tracking and governance mechanisms including DSR, WSR, MBR; establish RACI matrix between teams; assign interim Delivery Manager and Client Manager roles by August 1.",
+          "contingencyCorrectiveAction": "When cross-functional issue requiring client escalation arises, Engineering Manager escalates directly to client Program Manager within 4 hours, conducts emergency coordination call within 24 hours, and documents resolution path with assigned owners.",
+          "owner": "Saitej Ballav (Primary EM)",
+          "targetDate": "01-Aug-2026",
+          "status": "Open",
+          "reasoning": "The absence of RAG status in EMS, combined with the lack of Delivery Manager, QA Manager, Client Manager, and BA assignments, creates a governance gap. Impact is Medium because governance gaps may delay issue resolution but are unlikely to stop delivery. Likelihood is Possible because the project reached Production without documented escalations, but the big-bang rollout increases the likelihood that issues requiring escalation will arise."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Technical and Integration",
+          "riskDescription": {
+            "context": "The Auth0 Change propagation risk, opened July 6, 2026, requires DB connection configuration update in ACPT, but the mitigation plan depends on the availability of one person (Drew) who has access, with an ETA of July 10, 2026.",
+            "condition": "If Drew is unavailable or the configuration update is delayed beyond July 10.",
+            "consequence": "The move to ACPT may be delayed, compressing the integration testing and E2E testing windows and increasing the risk of authentication issues surfacing during the big-bang rollout."
+          },
+          "category": "Single-person dependency",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Identify backup resource with ACPT Auth0 access; document configuration update procedure; schedule knowledge transfer session with Drew and backup resource by July 8; obtain client approval for backup resource access provisioning.",
+          "contingencyCorrectiveAction": "If Drew is unavailable and configuration update is not completed by July 10, escalate to client IT security team for emergency access provisioning, request expedited approval within 24 hours, and defer non-Auth0 ACPT testing to maintain schedule.",
+          "owner": "Saitej Ballav (Primary EM)",
+          "targetDate": "08-Jul-2026",
+          "status": "Open",
+          "reasoning": "The mitigation plan depends on one person (Drew) with access, creating a single-person dependency. The ETA is July 10, only 4 days from the risk opening date (July 6), which is a tight timeline. Impact is Medium because the Auth0 configuration is critical for authentication, but the risk is specific to the ACPT environment (not Production), so it affects testing timelines. Likelihood is Possible because the ETA is tight and no backup plan is documented, but no evidence of delay is in the sources."
+        }
+      ]
+    }
+  ]
+}
