@@ -1,0 +1,160 @@
+{
+  "clientName": "",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS"
+      ],
+      "sourcesNotAvailable": [
+        "ART",
+        "ALT"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Schedule and Delivery",
+          "riskDescription": {
+            "context": "The project has absorbed 14 scope changes equivalent to 0.75-1 sprint of additional effort (19-25% scope growth relative to 4 planned sprints), and an open risk (857) signals further additions are likely without a formal change control process. (EMS - Risks)",
+            "condition": "If additional scope changes are accepted without impact assessment and approval workflow during Sprint 3&4 or Development and Testing phases.",
+            "consequence": "Further scope additions could consume an additional 1-2 sprints of effort, delaying Development and Testing completion beyond June 15, 2026, and cascading to UAT (June 16-30) and Go-Live (July 1-15) milestones due to zero buffer between phases."
+          },
+          "category": "Scope creep",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish formal change control board with impact assessment workflow and approval gates for all scope additions.",
+          "contingencyCorrectiveAction": "Once scope additions exceed 1 sprint equivalent, freeze non-critical features, escalate to client stakeholders, and extend Development and Testing milestone by 2 weeks.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Apr-2026",
+          "status": "Open",
+          "reasoning": "The project has absorbed 19-25% scope growth with an active risk indicating further additions are likely. No mitigation plan or change control process is documented. The compressed 15-day Development and Testing phase has zero buffer to absorb additional work, making schedule impact highly probable."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Schedule and Delivery",
+          "riskDescription": {
+            "context": "The Development and Testing milestone (June 1-15, 2026) allocates only 15 days to complete all development activities and testing including functional, performance, accessibility, and security testing, which is 50-63% shorter than industry benchmarks (4-6 weeks), with zero buffer before UAT (June 16-30). (EMS - Milestones)",
+            "condition": "If development work extends into the testing window or if defects requiring rework are discovered during functional, performance, accessibility, or security testing.",
+            "consequence": "Testing time may be reduced to meet the June 15 deadline, increasing the risk of incomplete test coverage and defect escape to UAT, or the Development and Testing milestone may slip, delaying UAT start and pushing Go-Live beyond July 15, 2026."
+          },
+          "category": "Schedule compression",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Implement parallel testing streams for functional, performance, and security testing starting Sprint 4 to maximize coverage within 15-day window.",
+          "contingencyCorrectiveAction": "If critical defects emerge after June 10, invoke 2-week UAT delay, notify client immediately, and extend hypercare by 2 weeks.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-May-2026",
+          "status": "Open",
+          "reasoning": "The 15-day comprehensive testing window is 50-63% shorter than industry benchmarks. The sequential dependency chain with zero buffer makes schedule cascade highly probable. Any slippage in Development and Testing directly delays UAT and Go-Live."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Resource and People",
+          "riskDescription": {
+            "context": "Actual effort (8.0 units) is 82.2% below baseline effort (45.0 units), and without time-period context or trend data, this variance may indicate sustained under-utilization or ramp-up delays. (EMS - Resources)",
+            "condition": "If the effort variance represents sustained under-capacity and the team cannot ramp up to full productivity by the Development and Testing phase (June 1-15, 2026).",
+            "consequence": "The team may be unable to complete planned development and testing work within the 15-day Development and Testing milestone, causing slippage that cascades to UAT and Go-Live."
+          },
+          "category": "Capacity shortfall",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct weekly velocity tracking and capacity analysis through Sprint 3 to identify ramp-up gaps and adjust sprint commitments accordingly.",
+          "contingencyCorrectiveAction": "If velocity remains below 70% of baseline by Sprint 3 end, engage two additional developers and extend Development milestone by 1 week.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "30-Apr-2026",
+          "status": "Open",
+          "reasoning": "The 82.2% effort shortfall is significant, but interpretation is ambiguous (could be under-utilization, ramp-up, or data quality issue). If the variance represents sustained under-capacity, impact on milestone completion would be high. Uncertain likelihood with high impact drives Amber rating."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Technical and Integration",
+          "riskDescription": {
+            "context": "Infrastructure is identified as the primary bottleneck (Category 1 assessment, May 7, 2026), and a resolved integration risk (856) noted performance and NFR issues will only become visible after integration with Data Hub APIs. (EMS - Project Categorization, Risks)",
+            "condition": "If performance or NFR issues emerge during performance testing in the Development and Testing phase (June 1-15, 2026) and require significant rework or infrastructure optimization.",
+            "consequence": "Performance issue resolution could consume the limited 15-day Development and Testing window, delaying milestone completion and cascading to UAT, or performance defects could escape to UAT, causing client sign-off delays and pushing Go-Live beyond July 15, 2026."
+          },
+          "category": "Performance risk",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Execute load and performance baseline tests with Data Hub APIs by Sprint 3 completion to identify NFR issues early.",
+          "contingencyCorrectiveAction": "If performance degradation exceeds 20% of NFR targets, activate Azure infrastructure optimization team and defer non-critical features to post-Go-Live.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "25-May-2026",
+          "status": "Open",
+          "reasoning": "Infrastructure bottleneck has materialized as integration risks (now resolved), but performance issues may only become visible during testing. The compressed testing window leaves little time for performance rework. Moderate likelihood with high impact drives Amber rating."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Governance and Compliance",
+          "riskDescription": {
+            "context": "The project is categorized as Category 1 (highest complexity/risk tier, total score 20, assessed May 7, 2026), which typically requires elevated governance including weekly RAG reporting and governance reviews, but RAG status is completely absent across all dimensions and client reviews/governance feedback extraction failed. (EMS - Project Categorization, RAG, Warnings)",
+            "condition": "If governance processes (RAG reporting, milestone status updates, client reviews, governance feedback) remain non-operational or non-compliant with Category 1 requirements through the Development and Testing and UAT phases.",
+            "consequence": "Critical issues (scope overruns, schedule slippage, quality defects, client dissatisfaction) may go undetected or unescalated until they materialize as major impacts, such as UAT sign-off delays or Go-Live postponement."
+          },
+          "category": "Governance gap",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement weekly RAG reporting, milestone status updates, and bi-weekly governance reviews with client stakeholders starting immediately.",
+          "contingencyCorrectiveAction": "If critical issues are detected without prior escalation, convene emergency governance review within 48 hours and communicate revised timeline to stakeholders.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "05-Apr-2026",
+          "status": "Open",
+          "reasoning": "Category 1 projects require rigorous governance, but RAG status is absent, client feedback is unavailable, and milestone status is not updated. Governance gaps delay issue detection rather than directly causing delivery failure. Likely likelihood with Medium impact drives Amber rating."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Governance and Compliance",
+          "riskDescription": {
+            "context": "All 7 SOW milestones show status Yet to Start with no actual start/end dates despite the project being in Build + SIT stage, and risk open dates (June 29, 2026) occur after related milestone end dates (June 15, June 30, 2026), creating temporal inconsistencies. (EMS - Milestones, Project Details, Risks)",
+            "condition": "If milestone status updates and actual date tracking remain non-operational through the Development and Testing phase (June 1-15, 2026).",
+            "consequence": "Schedule performance cannot be assessed, preventing early detection of milestone slippage and making it impossible to calculate schedule variance or predict Go-Live achievability, which may result in late discovery of schedule delays."
+          },
+          "category": "Data quality issue",
+          "probability": "Very Likely",
+          "impact": "Medium",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Validate and update all milestone actual dates weekly in EMS system and resolve temporal inconsistencies by end of Sprint 2.",
+          "contingencyCorrectiveAction": "Once milestone data gaps prevent schedule tracking, implement manual weekly status tracking and escalate data quality issues to PMO within 24 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "20-Apr-2026",
+          "status": "Open",
+          "reasoning": "Temporal inconsistencies and stale milestone status are already present (risks opened after milestone dates, all milestones show Yet to Start). The data quality issues are current and unresolved. This is a visibility risk that impairs schedule management. Very Likely likelihood with Medium impact drives Red rating."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Resource and People",
+          "riskDescription": {
+            "context": "The Business Analyst role is marked NA with no dedicated requirements management resource, in a project that has already absorbed 14 scope changes (19-25% scope growth). (EMS - Resources, Risks)",
+            "condition": "If requirements elicitation, user story refinement, and change impact assessment continue without dedicated BA ownership during Sprint 3&4 and UAT phases.",
+            "consequence": "Requirements volatility may continue, driving further scope additions that consume effort and delay milestones, or requirements ambiguity may lead to rework during UAT when client expectations are not met."
+          },
+          "category": "Resource gap",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Assign dedicated BA or designate Scrum Master with BA accountability for requirements management and UAT coordination by Sprint 3 start.",
+          "contingencyCorrectiveAction": "If requirements ambiguity causes UAT rework, engage client BA for joint clarification sessions and extend UAT by 1 week with documented change request.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "25-Apr-2026",
+          "status": "Open",
+          "reasoning": "The absence of a BA in a project with 14 scope changes indicates requirements management challenges. The likelihood of continued requirements volatility or UAT rework is high given the structural gap. Likely likelihood with Medium impact drives Amber rating."
+        }
+      ]
+    }
+  ]
+}
