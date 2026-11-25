@@ -1,0 +1,179 @@
+{
+  "clientName": "",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "WATCHLIST",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "ART",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R-001",
+          "subjectArea": "Schedule and Delivery",
+          "riskDescription": {
+            "context": "As of July 22, 2026, Integration testing stands at 15%, E2E testing at 0%, UAT at 0%, and Pen Test at 0%, despite the Development and Testing milestone scheduled for completion by June 15 and UAT milestone by June 30 (ART - WSR, EMS - Milestones).",
+            "condition": "If the revised UAT signoff date of August 14 is missed or testing coverage remains incomplete.",
+            "consequence": "Critical defects may escape into production during the mass producer onboarding planned for October 22, requiring rollback and remediation, delaying the revised rollout beyond September 2."
+          },
+          "category": "Milestone slippage",
+          "probability": "Very Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish daily testing status reviews with Integration, E2E, UAT, and Pen Test leads to track completion against August 14 UAT signoff deadline.",
+          "contingencyCorrectiveAction": "Upon discovery of critical defects during mass producer onboarding on October 22, activate rollback procedure, halt registration emails, and escalate to client stakeholders within 4 hours with remediation timeline.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "10-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 2,
+          "riskId": "R-002",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "As of July 22, 2026, the project carries 86 CVEs (4 Critical, 82 High) with status In-Progress, 190 Code Smells (2 Critical, 80 Major), Functional Test Failure Rate of 15% (11 of 71 test cases failed), and 1 bug spilled from the sprint (ART - WSR).",
+            "condition": "If quality debt remediation is deferred to post-production or Hypercare phase.",
+            "consequence": "The accumulated quality debt may surface as production incidents during the mass producer onboarding on October 22, increasing incident volume beyond Hypercare capacity and eroding client confidence."
+          },
+          "category": "Defect leakage",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Implement daily CVE and Code Smell remediation sprints with mandatory resolution of all 4 Critical CVEs and 2 Critical Code Smells before August 25 Production deployment.",
+          "contingencyCorrectiveAction": "Should production incidents exceed 10 per day during mass onboarding, deploy emergency hotfix team, redirect 3 developers from post-production work, and escalate to client within 2 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "20-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 3,
+          "riskId": "R-003",
+          "subjectArea": "Technical and Integration",
+          "riskDescription": {
+            "context": "As of July 22, 2026, four open risks related to AAVA agent framework remain unresolved with no stated ETAs: Single LLM limitations may underperform on specific tasks, Tools Integration delays may limit agent development, inadequate Agent Hardening may cause inconsistent behavior in production, and limited training datasets may delay Agent Learning and expected productivity gains (ART - WSR).",
+            "condition": "If agent maturity gaps are not addressed before mass producer onboarding on October 22.",
+            "consequence": "Agent-driven functionality may exhibit inconsistent behavior or underperformance during production use, requiring manual intervention and reducing the expected productivity gains from the AAVA framework."
+          },
+          "category": "Integration complexity",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct weekly agent performance reviews with AAVA framework leads to validate LLM output consistency, Tools Integration status, and Agent Hardening checkpoints before October 22 rollout.",
+          "contingencyCorrectiveAction": "If agent inconsistency is observed during production use, activate manual fallback workflow for affected tasks and notify users of temporary manual processing with 24-hour resolution target.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Oct-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 4,
+          "riskId": "R-004",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "The resolved API integration risk explicitly warns Performance and NFR issues will only become visible after integration, and Data Hub API integration was completed near the original dependency deadline of June 30, compressing the performance testing window within the Development and Testing milestone scheduled for June 1-15 (EMS - Risk, EMS - Milestones).",
+            "condition": "If performance and NFR validation was incomplete or conducted in non-production-equivalent environments before Production deployment on August 25.",
+            "consequence": "Performance issues may surface during the mass producer onboarding on October 22 when 2,500+ users access the portal concurrently, causing response time degradation or system unavailability and requiring emergency performance tuning or rollback."
+          },
+          "category": "Performance validation gap",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Execute production-scale load testing with 2,500+ concurrent user simulation against live Data Hub APIs by August 15 to validate response time and throughput NFRs.",
+          "contingencyCorrectiveAction": "Once response time exceeds 3 seconds or system availability drops below 99% during mass onboarding, trigger emergency performance tuning, engage Azure support, and escalate to client within 1 hour with rollback decision.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 5,
+          "riskId": "R-005",
+          "subjectArea": "Resource and People",
+          "riskDescription": {
+            "context": "The team operates with a baseline of 45 story points but has delivered only 8 story points of effort (17.8% of baseline), and Backend code coverage stands at 57% against an 80% target, a gap of 23 percentage points (EMS - Resources, ART - WSR, ART - Work Assignment).",
+            "condition": "If resource capacity remains constrained and the team continues to prioritize velocity over quality coverage.",
+            "consequence": "The Backend code coverage gap may persist into production, increasing the risk of undetected defects in backend services and requiring post-production rework during Hypercare or beyond."
+          },
+          "category": "Resource capacity shortfall",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Allocate 2 backend developers to unit test backfill sprints targeting 80% code coverage by August 20, with weekly coverage tracking and signoff.",
+          "contingencyCorrectiveAction": "If backend defects surface during Hypercare exceeding 5 per week, reallocate 1 frontend developer to backend support and extend Hypercare by 2 weeks with client approval.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "20-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 6,
+          "riskId": "R-006",
+          "subjectArea": "Governance and Compliance",
+          "riskDescription": {
+            "context": "The project has no Delivery Manager or QA Manager, the Engineering Manager owns all three identified risks, and the BA role is marked as NA, while 19 scope changes have been documented and absorbed without finalized mitigation for the open scope change risk (EMS - Project Details, EMS - Risk, EMS - Resources, ART - WSR).",
+            "condition": "If governance structure and role coverage gaps persist and further scope changes arrive without centralized triage and impact assessment.",
+            "consequence": "Uncontrolled scope additions may continue to consume development capacity, delaying post-production enhancements or warranty work and eroding margin on the fixed-price $650,000 contract."
+          },
+          "category": "Governance structure gap",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Assign a dedicated Delivery Manager and establish weekly governance reviews with Engineering Manager to distribute risk ownership and scope change triage by August 5.",
+          "contingencyCorrectiveAction": "If post-production scope additions exceed 0.25 sprint effort, defer non-critical enhancements to Phase 2, communicate impact to client, and document margin erosion for contract amendment discussion.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "05-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 7,
+          "riskId": "R-007",
+          "subjectArea": "Scope and Contract",
+          "riskDescription": {
+            "context": "The project has absorbed 14 scope changes equivalent to 0.75-1 sprint of additional effort, and an open scope change risk with Likely likelihood signals further additions are probable, while the mitigation plan remains in Assessed status with no finalized actions, owners, or ETAs (EMS - Risk, ART - WSR).",
+            "condition": "If further scope additions arrive during or after the mass producer onboarding on October 22 without formal change control and impact assessment.",
+            "consequence": "Additional scope changes may consume post-production capacity allocated for Hypercare incident resolution or warranty work, delaying issue remediation and increasing client escalation risk."
+          },
+          "category": "Scope creep",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement formal change control board with Engineering Manager and client Product Owner to review all scope requests, assess effort impact, and require signoff before acceptance by August 1.",
+          "contingencyCorrectiveAction": "When scope additions during Hypercare exceed 0.5 sprint effort, escalate to client leadership, propose Phase 2 deferral, and document impact on incident resolution capacity with 48-hour response SLA.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Aug-2026",
+          "status": "Open",
+          "reasoning": ""
+        },
+        {
+          "sNo": 8,
+          "riskId": "R-008",
+          "subjectArea": "Schedule and Delivery",
+          "riskDescription": {
+            "context": "Premera is planning to send registration emails to 2,500+ producers on October 22 using a big-bang rollout approach, following successful end-to-end registration of 11 users, and the Producer Portal application and supporting infrastructure are fully deployed to Production with IT validation and high-level PO/business validation completed (ALT - Watchlist Summary).",
+            "condition": "If a critical issue is encountered during the mass producer onboarding on October 22 that affects user registration, authentication, or book of business access.",
+            "consequence": "The rollout may need to be rolled back and remediated, delaying producer access to the portal beyond the revised September 2 rollout date and requiring re-communication to 2,500+ producers."
+          },
+          "category": "Rollout execution risk",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct phased rollout pilot with 100 producers on October 15 to validate registration, authentication, and book of business access before full 2,500+ rollout on October 22.",
+          "contingencyCorrectiveAction": "Upon encountering critical issue affecting 10% or more of producers during October 22 rollout, halt registration emails immediately, activate rollback procedure, and communicate remediation timeline to affected producers within 4 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Oct-2026",
+          "status": "Open",
+          "reasoning": ""
+        }
+      ]
+    }
+  ]
+}
