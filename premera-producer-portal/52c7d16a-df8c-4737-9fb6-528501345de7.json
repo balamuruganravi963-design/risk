@@ -1,0 +1,519 @@
+{
+  "clientName": "",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Active",
+      "riskPredictionDate": "22-Jul-2026",
+      "sourcesUsed": [
+        "EMS",
+        "ALT",
+        "ART"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Mass User Onboarding Rollout",
+          "riskDescription": {
+            "context": "The project is on the watchlist status with a big-bang rollout approach planned to send registration emails to a large volume of producers simultaneously (ALT - Key Triggers). End-to-end registration was validated with only a small pilot group prior to the mass rollout, and the outcome of the mass send was still awaited at the time of reporting (ALT - Key Triggers).",
+            "condition": "If issues arise during the mass producer onboarding event — such as registration failures, identity-provider errors, or system instability under load — the rollout may need to be halted and rolled back.",
+            "consequence": "A rollback would prevent producers from accessing the portal, disrupt the client's business operations, damage the client relationship, and require emergency remediation effort that may extend well beyond the planned hypercare window."
+          },
+          "category": "Operational/Support",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Implement phased rollout with progressive cohorts and establish real-time monitoring dashboards to detect registration failures before full population deployment.",
+          "contingencyCorrectiveAction": "Upon detection of critical registration failures exceeding 5% threshold, immediately halt mass send, activate rollback procedure, and escalate to engineering leadership within 2 hours.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "15-Oct-2026",
+          "status": "Open",
+          "reasoning": "The big-bang approach to onboarding a very large user population, with only a small pilot validation completed, creates a high-probability failure scenario; a similar-project pattern of integrated releases with multi-party dependencies shows rollback events are a recurring outcome when scale testing is limited."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Scope Governance",
+          "riskDescription": {
+            "context": "The project has already absorbed a significant number of scope changes equivalent to nearly a full sprint of additional effort, and the mitigation plan for this open risk is still to be finalized (EMS - Risk). Several further scope items remain under active discussion, including a medium-effort dual-role requirement that has not yet been formally approved or sized (ART - WSR).",
+            "condition": "Additional scope items may continue to be introduced or approved without a formally executed change order, causing the team to absorb unplanned effort within the existing contract envelope.",
+            "consequence": "Continued uncontrolled scope absorption could exhaust remaining sprint capacity before the planned go-live, leave agreed deliverables incomplete, and create disputes about what is covered under the current contract."
+          },
+          "category": "Scope/Change Control",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish formal change control gate requiring written approval and impact assessment for all new scope additions before acceptance into sprint backlog.",
+          "contingencyCorrectiveAction": "When scope additions exceed one sprint equivalent without approved change order, freeze new requests, rebaseline delivery plan with customer, and prioritize critical-path features only.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "25-Jul-2026",
+          "status": "Open",
+          "reasoning": "The open risk with no finalized mitigation, combined with active discussions on a further medium-effort item and a pattern of scope absorption already at nearly one sprint, makes continued uncontrolled additions likely; a similar-project pattern confirms mid-cycle scope additions without change control are a recurring cause of delivery strain."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Client-Side Dependency — Identity Configuration",
+          "riskDescription": {
+            "context": "The configuration update required on the acceptance environment's identity-provider tenant depends on access held by a specific member of the client's team, and this dependency was flagged as blocking the move to the acceptance environment (ART - WSR). The dependency was open with a target date that has already passed, and the team has been working to secure the required time from the client contact (ART - WSR).",
+            "condition": "The client-side team member may remain unavailable or deprioritize the configuration update, leaving the acceptance environment unable to receive the full application stack.",
+            "consequence": "Without the acceptance environment fully operational, end-to-end integration and accessibility testing cannot be completed, compressing the window available before the planned production deployment and increasing the risk of undetected issues reaching production."
+          },
+          "category": "Dependency",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Escalate to client program manager for dedicated access slot from Drew by 15-Jul, document all configuration steps, and establish backup client contact.",
+          "contingencyCorrectiveAction": "If access remains blocked beyond 20-Jul, reprioritize to non-ACPT dependent testing, execute limited validation in Dev environment, and revise go-live schedule by two weeks.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "15-Jul-2026",
+          "status": "Open",
+          "reasoning": "The dependency is past its target date with no confirmed resolution, and it directly gates acceptance-environment readiness at a stage when the project is in active system integration testing; a similar-project pattern shows client-side approval and access delays frequently persist and cascade into downstream testing compression."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Security Vulnerability Remediation",
+          "riskDescription": {
+            "context": "Static composition analysis scans have identified a substantial number of vulnerabilities including several rated critical and a large number rated high, and these are currently in-progress with no confirmed remediation closure (ART - WSR). Penetration testing has been proposed in two phases but is pending approval, meaning the phased approach has not yet been formally sanctioned (ART - WSR).",
+            "condition": "Critical and high-severity vulnerabilities may remain unresolved at the time of production deployment if remediation is not completed and the penetration testing approval is not obtained in time.",
+            "consequence": "Deploying to production with unresolved critical vulnerabilities in a healthcare portal handling producer identity and book-of-business data could expose the client to a data breach, regulatory non-compliance, and significant reputational damage."
+          },
+          "category": "Security/Compliance",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Prioritize remediation of all 4 Critical CVEs by 01-Aug, establish daily security standup, and secure phased penetration testing approval by 05-Aug.",
+          "contingencyCorrectiveAction": "If Critical CVEs remain unresolved by 10-Aug, defer production deployment, implement compensating controls for High CVEs, and engage third-party security assessment within 48 hours.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "01-Aug-2026",
+          "status": "Open",
+          "reasoning": "A large number of open vulnerabilities at critical and high severity, combined with a pending approval for the penetration testing approach, creates a credible path to production deployment without full security clearance; a similar-project pattern confirms that CISO or penetration testing delays in late-stage delivery frequently result in unresolved findings reaching go-live."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Data Hub Upstream Dependency",
+          "riskDescription": {
+            "context": "Two open dependencies on the upstream data platform team remain unresolved: delivery of additional fields required for total premium calculation and support for a producer entity search capability, both with near-term target dates (ART - WSR). The team has noted these as active call-outs and is working around them by testing other scenarios first (ART - WSR).",
+            "condition": "The upstream team may not deliver the required fields and search support by the stated target dates, leaving these functional areas untested against live data before the acceptance and production phases.",
+            "consequence": "Gaps in integration coverage for premium calculation and producer search could surface as defects during user acceptance testing or after go-live, requiring emergency fixes that disrupt the hypercare period and erode client confidence."
+          },
+          "category": "Dependency",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct daily alignment calls with Data Hub team to track field delivery progress and establish clear RACI for premium calculation integration by 30-Jul.",
+          "contingencyCorrectiveAction": "Upon Data Hub delay beyond 05-Aug, implement synthetic data stub for premium fields, complete testing with mock values, and schedule post-go-live integration patch within two weeks.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "30-Jul-2026",
+          "status": "Open",
+          "reasoning": "Both dependencies are open with near-term targets and the team is already working around them, indicating the upstream team's delivery is uncertain; a similar-project pattern shows upstream API and data delivery delays frequently persist beyond initial target dates when the dependency owner is an external team."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Data Mapping and Requirement Clarity",
+          "riskDescription": {
+            "context": "Data mappings are mostly closed but possible values for certain fields are still being discussed with the business and upstream teams, and the team is proceeding with current mappings under the assumption that no design changes will be required (ART - WSR). The risk register notes that if issues with field values lead back to entity-stitching design, there may be a time impact (ART - WSR).",
+            "condition": "Possible values for mapped fields may be confirmed differently from what the team has implemented, requiring design-level changes to the data integration layer after integration testing has begun.",
+            "consequence": "Design changes at this stage would require rework across the integration layer and associated front-end components, compressing the time available for user acceptance testing and increasing the likelihood of defects reaching production."
+          },
+          "category": "Data Readiness",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate all field mappings with business and Data Hub teams by 25-Jul through structured review sessions and document sign-off on agreed values.",
+          "contingencyCorrectiveAction": "When mapping discrepancies surface during integration testing, immediately convene design review, assess entity-stitching impact, and defer non-critical field changes to post-go-live release if needed.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "25-Jul-2026",
+          "status": "Open",
+          "reasoning": "The team is actively proceeding on unconfirmed field values, and the risk register explicitly flags the design-change scenario; a similar-project pattern confirms that data mapping ambiguities discovered during integration testing frequently require rework that cascades into UAT compression."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Production Deployment Approval",
+          "riskDescription": {
+            "context": "Production deployment is planned as a dark deploy and requires completion of the acceptance environment deployment first, followed by approvals from the client's engineering team (ART - WSR). The acceptance environment deployment is still in progress, and the approval chain has not yet been formally initiated (ART - WSR).",
+            "condition": "The client's engineering team may impose additional requirements, delay their review, or require changes before granting production deployment approval, particularly if acceptance environment validation is compressed.",
+            "consequence": "A delayed or conditional production approval could push the go-live date, shorten the hypercare window, and force the team to operate in a compressed stabilization period with less time to address issues before the contract support period ends."
+          },
+          "category": "Customer/Stakeholder",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Initiate production approval process with John's engineering team by 25-Jul, provide detailed deployment readiness checklist, and schedule approval review by 10-Aug.",
+          "contingencyCorrectiveAction": "If engineering approval is delayed beyond 15-Aug, escalate to program leadership, negotiate conditional go-live with monitoring commitment, and extend hypercare window by two weeks.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "10-Aug-2026",
+          "status": "Open",
+          "reasoning": "The approval dependency is real and the acceptance environment is not yet fully operational, making a compressed or delayed approval chain plausible; a similar-project pattern shows engineering sign-off gates frequently introduce delays when the upstream environment readiness is still in progress at the time of review."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Proprietary Agent Platform Stability",
+          "riskDescription": {
+            "context": "The project uses a proprietary agent framework as a core accelerator for development and testing tasks, and the team has already experienced tool integration delays that required refactoring from atomic agents to a different approach (ART - WSR). Open risks in the register flag agent hardening, orchestration coordination, and tool or API invocation failures as unresolved concerns (ART - WSR).",
+            "condition": "The proprietary agent framework may experience stability issues, unresolved integration defects, or invocation failures in the acceptance or production environment, where the team has less control over the platform configuration.",
+            "consequence": "Instability in the agent framework could disrupt automated development and testing workflows, increase manual effort, and introduce inconsistent behavior in agent-generated outputs that are difficult to diagnose and remediate under time pressure."
+          },
+          "category": "Product/Platform Limitation",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement agent hardening checklist with fallback logic for tool invocation failures and conduct scenario testing across all agent orchestration workflows by 01-Aug.",
+          "contingencyCorrectiveAction": "Upon agent framework instability in ACPT or production, switch to manual workflows for affected tasks, engage AAVA platform support team, and implement retry logic with 24-hour resolution SLA.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "01-Aug-2026",
+          "status": "Open",
+          "reasoning": "Multiple open risks in the register directly address agent hardening, orchestration, and tool invocation failures, and the team has already encountered integration delays requiring refactoring; a similar-project pattern confirms that proprietary agent platforms with known stability issues and unresolved integration defects frequently cause disruption when promoted to higher environments."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "UAT Readiness and Client Participation",
+          "riskDescription": {
+            "context": "The team has flagged a need for early access to UAT test cases from the client side, and upstream data setup for integration and end-to-end scenarios is still requiring daily support calls to progress (ART - WSR). The SOW assumes the client will provide test data and test environments for all testing phases (ART - SOW Terms).",
+            "condition": "The client may not provide UAT test cases, test data, or dedicated UAT participation in time to support the planned acceptance testing window, particularly given the compressed timeline between acceptance environment readiness and the go-live target.",
+            "consequence": "Insufficient client participation in UAT could result in acceptance testing being conducted without representative business scenarios, leaving functional gaps undetected until after go-live and creating disputes about whether deliverables meet acceptance criteria."
+          },
+          "category": "Customer/Stakeholder",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Secure UAT test cases from client by 05-Aug through structured request to business team and schedule QE leadership review to align on acceptance criteria.",
+          "contingencyCorrectiveAction": "If UAT test cases remain unavailable by 12-Aug, execute limited acceptance testing with internal scenarios, document coverage gaps, and negotiate post-go-live validation window with client sign-off.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "05-Aug-2026",
+          "status": "Open",
+          "reasoning": "The team is actively requesting early UAT test cases and upstream data support, indicating client-side readiness is not yet confirmed; a similar-project pattern shows that when UAT test case provision and data setup are still pending at the integration testing stage, the acceptance window is frequently compressed or conducted without full business coverage."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Offshore Environment Access",
+          "riskDescription": {
+            "context": "The offshore team is experiencing slowness and timeouts on the remote access infrastructure used to connect to client systems, and this is listed as an active challenge impacting team efforts (ART - WSR). The SOW assumes that network connectivity and remote access will be provided for necessary team members (ART - SOW Terms).",
+            "condition": "The remote access infrastructure may continue to degrade or experience extended outages, particularly as the team moves into intensive integration and end-to-end testing phases that require sustained, concurrent access.",
+            "consequence": "Persistent access degradation would reduce the effective working hours of the offshore team, slow integration testing progress, and compress the time available to resolve defects before the acceptance and production phases."
+          },
+          "category": "Environment/Infrastructure",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate Citrix slowness to client infrastructure team by 25-Jul, request VDI support coverage during offshore hours, and document productivity impact in weekly status reports.",
+          "contingencyCorrectiveAction": "When Citrix outages exceed 4 hours cumulative per day, shift critical tasks to onshore team, adjust sprint commitments, and request alternative remote access method from client IT.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "25-Jul-2026",
+          "status": "Open",
+          "reasoning": "The issue is already active and listed as a current challenge, making continuation plausible; a similar-project pattern confirms that VDI and remote access slowness affecting offshore teams tends to persist without a root-cause fix and escalates during high-concurrency testing phases."
+        },
+        {
+          "sNo": 11,
+          "riskId": "R - 011",
+          "subjectArea": "Contract Coverage Post SOW End",
+          "riskDescription": {
+            "context": "The SOW period ends before the project execution period, and the hypercare phase extends through the end of the month following go-live (ART - SOW Terms). The project has absorbed a significant number of scope changes, and the dual-role requirement under discussion represents additional medium-effort work that has not yet been formally covered by a change order (ART - WSR).",
+            "condition": "Work performed during the hypercare period or arising from approved scope additions may extend beyond what is covered by the current SOW, without a formally executed amendment in place.",
+            "consequence": "Performing work outside the agreed contract period or scope without a signed amendment could lead to disputed obligations, delayed invoicing against the final milestone, and potential exposure for the delivery team if the client declines to authorize additional spend."
+          },
+          "category": "Contractual",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Document all absorbed scope changes with effort estimates, initiate formal change request for dual-role requirement by 01-Aug, and secure SOW amendment covering hypercare period.",
+          "contingencyCorrectiveAction": "If change order approval is delayed beyond 15-Aug, halt work on unapproved scope, escalate commercial exposure to program leadership, and negotiate time-and-materials arrangement for hypercare support.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "01-Aug-2026",
+          "status": "Open",
+          "reasoning": "The gap between the SOW end date and the project execution end date, combined with unformalized scope additions, creates a credible contractual exposure; a similar-project pattern confirms that support and scope work performed without a signed amendment frequently leads to billing disputes and unrecovered effort."
+        },
+        {
+          "sNo": 12,
+          "riskId": "R - 012",
+          "subjectArea": "Accessibility Compliance",
+          "riskDescription": {
+            "context": "Accessibility testing for the portal is underway against the WCAG 2.2 AA standard, which is a stated compliance requirement in the SOW (ART - SOW Terms). The project is in the system integration testing phase with a compressed timeline to go-live, and accessibility testing has not yet been confirmed as complete (ART - WSR).",
+            "condition": "Accessibility testing may surface non-conformances that require design or implementation changes close to the go-live date, or testing may not be completed in time to allow remediation before production deployment.",
+            "consequence": "Deploying a healthcare portal with unresolved accessibility non-conformances could expose the client to regulatory and legal risk under applicable accessibility obligations, and may require a post-go-live remediation cycle that extends the team's support commitment."
+          },
+          "category": "Security/Compliance",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Complete WCAG 2.2 AA accessibility testing for all critical user journeys by 10-Aug and prioritize Level A compliance issues for immediate remediation.",
+          "contingencyCorrectiveAction": "Upon discovery of Level A non-conformances after 15-Aug, defer non-critical features with accessibility issues, implement compensating controls, and schedule post-go-live remediation sprint within 30 days.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "10-Aug-2026",
+          "status": "Open",
+          "reasoning": "Accessibility testing is in progress but not confirmed complete, and the compressed timeline to go-live limits the window for remediation; a similar-project pattern confirms that late-stage accessibility findings in healthcare portals frequently require rework that cannot be absorbed within the original delivery window."
+        },
+        {
+          "sNo": 13,
+          "riskId": "R - 013",
+          "subjectArea": "DevOps Continuity",
+          "riskDescription": {
+            "context": "DevOps support for the project is provided on an as-needed basis by a resource shared with another team, with no dedicated DevOps resource planned for this engagement (ART - WSR). The project is in the build and system integration testing phase with active deployment pipeline work underway, including acceptance environment front door and DNS configuration (ART - WSR).",
+            "condition": "The shared DevOps resource may become unavailable or deprioritized toward the other team at a critical moment, such as during acceptance environment finalization, production dark deploy preparation, or a rollback event.",
+            "consequence": "Unavailability of DevOps support at a critical deployment juncture could block environment promotion, delay production readiness, and leave the team without the expertise needed to execute or reverse a deployment under time pressure."
+          },
+          "category": "Resource/Talent",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Cross-train two team members on CI/CD pipeline operations by 01-Aug, document all deployment procedures, and secure committed DevOps availability during production deployment window.",
+          "contingencyCorrectiveAction": "If shared DevOps resource becomes unavailable during critical deployment, engage practice-level DevOps backup, escalate to delivery leadership, and defer deployment by 48 hours if needed to secure support.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "01-Aug-2026",
+          "status": "Open",
+          "reasoning": "The absence of a dedicated DevOps resource is a structural single-point-of-failure at a stage requiring active deployment work; a similar-project pattern confirms that shared resource arrangements frequently result in unavailability during competing priorities, with the highest impact occurring at deployment gates."
+        },
+        {
+          "sNo": 14,
+          "riskId": "R - 014",
+          "subjectArea": "AAVA Tool Access for Integration",
+          "riskDescription": {
+            "context": "Access to the client's collaboration and storage tools required for the agent framework integration has been open and past its target date, with no confirmed closure (ART - WSR). The agent framework's integration with these tools is a prerequisite for completing certain agent development tasks, and delays have already caused the team to refactor the agent approach (ART - WSR).",
+            "condition": "The client-side access provisioning for the required tools may remain unresolved, preventing the agent framework from being fully integrated with the client's environment before the acceptance and production phases.",
+            "consequence": "Without full tool integration, agent-assisted workflows will remain limited to workarounds, increasing manual effort and leaving the agent framework in a partially validated state that may behave differently in the production environment."
+          },
+          "category": "Dependency",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate AAVA tool access request to Safal by 25-Jul with detailed access requirements and establish workaround documentation for manual workflows until integration completes.",
+          "contingencyCorrectiveAction": "If tool access remains blocked beyond 05-Aug, finalize agent development using workaround approach, document manual review checkpoints, and defer full AAVA integration to post-go-live enhancement.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "25-Jul-2026",
+          "status": "Open",
+          "reasoning": "The access dependency is past its target date with no confirmed resolution, and the team has already absorbed one refactoring cycle due to this gap; a similar-project pattern confirms that client-side tool access provisioning delays tend to persist and limit the completeness of agent or automation integrations."
+        },
+        {
+          "sNo": 15,
+          "riskId": "R - 015",
+          "subjectArea": "Single LLM Constraint",
+          "riskDescription": {
+            "context": "The project relies on a single language model available through the agent platform, and the risk register notes that this model may underperform on specific task types and prevents the use of a reviewer-agent pattern, requiring manual review checkpoints instead (ART - WSR).",
+            "condition": "The single available language model may prove insufficient for the range of tasks required during the remaining build, testing, and stabilization phases, particularly for complex orchestration or review scenarios.",
+            "consequence": "Reliance on manual review checkpoints in place of automated reviewer-agent patterns increases the effort required per task, reduces the productivity gains expected from the agent framework, and may introduce inconsistencies in agent-generated outputs that are harder to catch at scale."
+          },
+          "category": "Technical/Architecture",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Document LLM limitations per task type, implement prompt-engineering workarounds, and establish human review checkpoints for all agent-generated code and test artifacts.",
+          "contingencyCorrectiveAction": "When LLM underperformance causes output quality issues, increase manual review frequency, allocate additional senior developer time for validation, and revise productivity estimates for affected agent tasks.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "01-Aug-2026",
+          "status": "Open",
+          "reasoning": "The constraint is documented as an open risk with a known workaround that increases manual effort; the limitation is structural and unlikely to be resolved within the project timeline, making its impact on productivity and output consistency a plausible ongoing concern."
+        },
+        {
+          "sNo": 16,
+          "riskId": "R - 016",
+          "subjectArea": "Knowledge Continuity — Engineering Manager",
+          "riskDescription": {
+            "context": "The project has a single named engineering manager with no secondary delivery lead identified in the project data (EMS - RAG). The project is in a critical phase involving simultaneous acceptance environment deployment, integration testing, security remediation, and preparation for a large-scale production rollout (ART - WSR).",
+            "condition": "If the engineering manager becomes unavailable due to unplanned absence, reassignment, or departure during this critical phase, there is no identified backup with equivalent project context.",
+            "consequence": "Loss of the primary engineering manager at this stage would leave the team without coordinated technical and delivery oversight, slow decision-making on open dependencies and risks, and reduce the client's confidence in the team's ability to deliver the go-live on schedule."
+          },
+          "category": "Knowledge Continuity",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Identify backup delivery lead from practice team by 01-Aug, conduct weekly knowledge-sharing sessions on critical dependencies, and document all stakeholder escalation paths.",
+          "contingencyCorrectiveAction": "Upon unplanned absence of engineering manager, activate backup delivery lead immediately, escalate to practice leadership, and conduct daily standups with client program manager until continuity is restored.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "01-Aug-2026",
+          "status": "Open",
+          "reasoning": "Single-person ownership of delivery leadership at a high-complexity, multi-dependency phase is a well-documented concentration risk; a similar-project pattern confirms that key-person departure or unavailability during late-stage delivery creates disproportionate disruption when no documented succession or backup exists."
+        },
+        {
+          "sNo": 17,
+          "riskId": "R - 017",
+          "subjectArea": "Agent Hardening and Production Behavior",
+          "riskDescription": {
+            "context": "Open risks in the project register flag inadequate agent hardening as a concern, noting that insufficient hardening may cause inconsistent behavior in production, and that limited training datasets may delay agent maturity (ART - WSR). The agent framework is central to several delivery and testing workflows, and its production behavior has not yet been validated at scale (ART - WSR).",
+            "condition": "Agents deployed to production may exhibit inconsistent or unexpected behavior under real-world conditions that were not covered during scenario testing in lower environments.",
+            "consequence": "Inconsistent agent behavior in production could generate incorrect outputs in producer-facing workflows, require emergency intervention during the hypercare period, and undermine the client's confidence in the agent-assisted components of the portal."
+          },
+          "category": "Technical/Architecture",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Define agent hardening checklist with scenario testing coverage, implement fallback logic for edge cases, and validate agent outputs with sample production data by 05-Aug.",
+          "contingencyCorrectiveAction": "When agent inconsistencies surface in production, immediately switch affected workflows to manual mode, document failure patterns, and implement corrective training dataset within 48 hours.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "05-Aug-2026",
+          "status": "Open",
+          "reasoning": "The hardening and learning risks are explicitly open in the project register with no confirmed mitigation closure, and the agents have not been validated at production scale; a similar-project pattern confirms that agent orchestration and hardening gaps frequently surface as behavioral inconsistencies when promoted to production environments."
+        },
+        {
+          "sNo": 18,
+          "riskId": "R - 018",
+          "subjectArea": "QA Automation Continuity",
+          "riskDescription": {
+            "context": "The QA automation resource transitioned from one test automation framework to another mid-project, and the current automation suite is built on the newer framework (ART - WSR). The project is entering the integration and end-to-end testing phase where automation coverage is critical for scenario validation at scale (ART - WSR).",
+            "condition": "If the QA automation resource becomes unavailable or departs, the automation suite built on the newer framework may not be sufficiently documented or cross-trained for another team member to maintain and extend.",
+            "consequence": "Loss of the primary QA automation resource would reduce the team's ability to execute and extend automated test coverage during integration and acceptance testing, increasing reliance on manual testing and slowing defect detection in the compressed pre-go-live window."
+          },
+          "category": "Resource/Talent",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Cross-train one additional QA resource on Playwright framework by 01-Aug, document all automation suite architecture, and establish backup QA support from practice team.",
+          "contingencyCorrectiveAction": "If primary QA automation resource becomes unavailable, activate backup QA resource, shift to manual testing for non-critical scenarios, and extend integration testing window by one week.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "01-Aug-2026",
+          "status": "Open",
+          "reasoning": "The mid-project framework transition concentrates automation knowledge in a single resource who built the new suite; a similar-project pattern confirms that single-resource automation ownership without cross-training creates a continuity gap that is most damaging during high-intensity testing phases."
+        },
+        {
+          "sNo": 19,
+          "riskId": "R - 019",
+          "subjectArea": "Client Template and Output Format Alignment",
+          "riskDescription": {
+            "context": "An open risk in the project register flags that unavailability or late discovery of client-specific output formats may cause agent-generated outputs to not meet expected formats, requiring rework (ART - WSR). The project uses agent-generated outputs for backlog creation, test cases, and code components, and these are being validated incrementally (ART - WSR).",
+            "condition": "Client-specific format or template requirements for agent outputs may be identified late in the delivery cycle, after a significant volume of agent-generated artifacts has already been produced.",
+            "consequence": "Late discovery of format misalignment would require rework across agent-generated artifacts, increasing manual effort and potentially delaying acceptance of deliverables if the client rejects outputs that do not conform to expected standards."
+          },
+          "category": "Governance/Process",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Request sample client templates for all agent output types by 25-Jul, validate agent-generated artifacts with business SMEs, and define output format standards early.",
+          "contingencyCorrectiveAction": "Upon late discovery of format misalignment, prioritize rework for acceptance-critical artifacts, allocate additional manual effort for reformatting, and negotiate acceptance criteria adjustment with client if needed.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "25-Jul-2026",
+          "status": "Open",
+          "reasoning": "The risk is explicitly open in the project register with no confirmed mitigation closure, and agent-generated artifacts are already in use at scale; the risk is plausible given that format alignment is typically confirmed through iterative client review, which may not have covered all artifact types."
+        },
+        {
+          "sNo": 20,
+          "riskId": "R - 020",
+          "subjectArea": "AAVA License and Post-Term Deliverable Dependency",
+          "riskDescription": {
+            "context": "The proprietary agent framework license is term-based and tied to the duration of the work assignment (ART - SOW Terms). The SOW states that deliverables must function without the agent framework after the term ends, but a significant portion of the codebase and test artifacts have been generated using the framework (ART - WSR).",
+            "condition": "If deliverables generated through the agent framework are not validated to function independently of the platform before the contract term ends, the client may discover post-term dependencies that were not anticipated.",
+            "consequence": "Post-term dependencies on the agent framework could prevent the client from operating or maintaining the portal without continued access to the platform, creating a contractual dispute about whether deliverables meet the independence requirement stated in the agreement."
+          },
+          "category": "Contractual",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate all AAVA-generated deliverables function independently of platform by 15-Aug, document framework dependencies, and provide client with standalone operation guide.",
+          "contingencyCorrectiveAction": "If post-term AAVA dependencies are discovered, negotiate extended license access for client, provide migration plan to framework-independent code, and offer knowledge transfer sessions within 30 days.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "15-Aug-2026",
+          "status": "Open",
+          "reasoning": "The SOW explicitly requires deliverables to function without the agent framework post-term, but the extent of framework-generated code and artifacts has grown significantly; this creates a plausible gap between the contractual requirement and the actual state of deliverables if independence is not formally validated before term end."
+        },
+        {
+          "sNo": 21,
+          "riskId": "R - 021",
+          "subjectArea": "Dual Role Requirement Scope Addition",
+          "riskDescription": {
+            "context": "A dual-role requirement — where a producer may also act as an agency administrator — is under active discussion and has been logged as a medium-effort scope change that has not yet been formally approved or sized into the plan (ART - WSR). The user role and entitlement logic is now described as agency-specific, adding complexity to the authorization model (ART - WSR).",
+            "condition": "The dual-role requirement may be formally approved and added to the delivery scope without a corresponding change order, requiring the team to absorb the medium-effort work within the existing sprint plan.",
+            "consequence": "Absorbing the dual-role implementation without a change order would further compress the remaining sprint capacity, increase the risk of incomplete testing of the authorization model, and potentially delay the go-live if the feature introduces integration complexity that was not anticipated."
+          },
+          "category": "Scope/Change Control",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Finalize dual-role requirement discussions by 01-Aug with formal effort estimate, submit change request for approval, and defer implementation to post-go-live if not approved.",
+          "contingencyCorrectiveAction": "If dual-role requirement is approved without change order after 05-Aug, negotiate sprint capacity trade-off with client, defer lower-priority features, and extend UAT window by one week.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "01-Aug-2026",
+          "status": "Open",
+          "reasoning": "The requirement is under active discussion and has already been sized as medium effort, making formal approval and absorption without a change order plausible given the project's history of absorbing scope changes; the authorization model complexity adds a technical dimension that increases the impact if the work is not properly planned."
+        },
+        {
+          "sNo": 22,
+          "riskId": "R - 022",
+          "subjectArea": "Hypercare Support Scope",
+          "riskDescription": {
+            "context": "The hypercare period is planned for approximately four weeks following go-live, and the SOW defines the support obligations for this phase (ART - SOW Terms). The big-bang onboarding of a very large producer population and the volume of open scope changes increase the likelihood of a high volume of support requests and defect reports during hypercare (ALT - Key Triggers).",
+            "condition": "The volume and complexity of issues arising during hypercare may exceed what the current team composition and SOW support terms can absorb, particularly if the mass onboarding event generates widespread registration or access issues.",
+            "consequence": "Support demand beyond the agreed hypercare scope would require the team to perform work not covered by the current contract, creating a dispute about obligations and potentially leaving producers without timely resolution of access issues."
+          },
+          "category": "Operational/Support",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Define hypercare support SLAs and escalation procedures by 10-Aug, establish on-call rotation for critical issues, and document out-of-scope support request process.",
+          "contingencyCorrectiveAction": "When hypercare support requests exceed SOW coverage by 20%, escalate to program leadership, negotiate time-and-materials arrangement for extended support, and prioritize P1/P2 issues only.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "10-Aug-2026",
+          "status": "Open",
+          "reasoning": "The combination of a big-bang onboarding event and a large volume of absorbed scope changes creates a plausible scenario of elevated hypercare demand; a similar-project pattern confirms that post-go-live support volumes frequently exceed SOW coverage when a large user population is onboarded simultaneously."
+        },
+        {
+          "sNo": 23,
+          "riskId": "R - 023",
+          "subjectArea": "Azure Front Door and DNS Configuration",
+          "riskDescription": {
+            "context": "Completion of the acceptance environment's front door and DNS configuration is listed as a key action item still in progress (ART - WSR). This configuration is a prerequisite for the full acceptance environment to be operational and for end-to-end testing to proceed against the integrated stack (ART - WSR).",
+            "condition": "The front door and DNS configuration may encounter technical issues or require additional client-side approvals that delay its completion, leaving the acceptance environment partially operational.",
+            "consequence": "A partially operational acceptance environment would limit the scope of integration and end-to-end testing that can be conducted, reducing confidence in the production deployment and increasing the risk of environment-specific issues surfacing after go-live."
+          },
+          "category": "Environment/Infrastructure",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Complete Azure Front Door and DNS configuration by 01-Aug with daily progress tracking, engage client network team for approvals, and validate routing rules before full deployment.",
+          "contingencyCorrectiveAction": "If Front Door configuration is delayed beyond 05-Aug, execute limited E2E testing using direct endpoint access, document configuration gaps, and schedule post-deployment validation within 48 hours.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "01-Aug-2026",
+          "status": "Open",
+          "reasoning": "The configuration is an active in-progress item at a stage when the acceptance environment needs to be fully operational for testing; infrastructure configuration tasks of this type frequently encounter unexpected issues that require additional coordination with the client's network or security teams."
+        },
+        {
+          "sNo": 24,
+          "riskId": "R - 024",
+          "subjectArea": "Resource Attrition During Critical Phase",
+          "riskDescription": {
+            "context": "The project is in a high-intensity phase combining system integration testing, acceptance environment deployment, security remediation, and preparation for a large-scale production rollout, all within a compressed timeline (ART - WSR). The team includes resources who have undergone mid-project tool transitions and are carrying concentrated knowledge of specific components (ART - WSR).",
+            "condition": "One or more team members may choose to leave the project during this critical phase, attracted by other opportunities or fatigued by the sustained high-intensity delivery pace.",
+            "consequence": "Unplanned attrition at this stage would reduce the team's capacity and create knowledge gaps in components where cross-training has not been completed, slowing integration testing and increasing the risk of defects going undetected before go-live."
+          },
+          "category": "Resource/Talent",
+          "probability": "Unlikely",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Monitor team morale through weekly check-ins, identify attrition risk indicators early, and establish retention tactics including recognition and workload balancing.",
+          "contingencyCorrectiveAction": "Upon unplanned resource departure, immediately engage practice team for replacement, prioritize knowledge transfer sessions, and rebaseline sprint commitments with client to protect critical-path deliverables.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "01-Aug-2026",
+          "status": "Open",
+          "reasoning": "Attrition during a high-intensity final phase is a well-documented pattern, though the positive client feedback and active delivery momentum reduce the immediate likelihood; a similar-project pattern confirms that sustained delivery pressure without visible relief increases attrition probability, particularly for resources with concentrated knowledge."
+        },
+        {
+          "sNo": 25,
+          "riskId": "R - 025",
+          "subjectArea": "Auth0 Terraform Pipeline",
+          "riskDescription": {
+            "context": "The team has flagged a need for continued client-side support if issues arise with the identity-provider terraform release pipeline, and this is listed as an active support requirement (ART - WSR). The pipeline is used for deploying identity configuration changes across environments, and issues have already been anticipated (ART - WSR).",
+            "condition": "Issues may arise in the terraform release pipeline for identity configuration during the acceptance or production deployment phases, requiring client-side support that may not be available on demand.",
+            "consequence": "Pipeline failures during environment promotion or production deployment could block identity configuration changes from being applied, preventing the registration and authentication flows from functioning correctly and delaying the go-live or requiring a rollback."
+          },
+          "category": "Technical/Architecture",
+          "probability": "Unlikely",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Document Auth0 terraform pipeline procedures with rollback steps, conduct dry-run deployment in ACPT by 05-Aug, and secure dedicated client support during production deployment window.",
+          "contingencyCorrectiveAction": "Upon terraform pipeline failure during production deployment, immediately invoke rollback procedure, engage Ganesh for emergency support, and defer identity configuration changes to manual application within 4 hours.",
+          "owner": "Saitej Ballav (Engineering Manager)",
+          "targetDate": "05-Aug-2026",
+          "status": "Open",
+          "reasoning": "The team has proactively flagged this as a support requirement, indicating awareness of the risk, but the dependency on client-side availability for resolution makes the impact high if an issue does occur at a critical deployment moment; the likelihood is moderated by the fact that the pipeline has been in use and issues are anticipated rather than confirmed."
+        }
+      ]
+    }
+  ]
+}
