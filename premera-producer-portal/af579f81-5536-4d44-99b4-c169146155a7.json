@@ -1,0 +1,239 @@
+{
+  "clientName": "Premera",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Watchlist",
+      "riskPredictionDate": "23-Oct-2026",
+      "sourcesUsed": [
+        "EMS",
+        "ART",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Schedule and Delivery",
+          "riskDescription": {
+            "context": "The Producer Portal was deployed to Production and validated with 11 users as of October 22, but the big-bang rollout to 2,500+ producers exposes the application to mass usage without phased validation. (ALT - Watchlist Report)",
+            "condition": "If a defect or performance issue surfaces during the mass producer onboarding.",
+            "consequence": "The rollout may need to be rolled back, delaying producer access and requiring remediation effort that could extend into December."
+          },
+          "category": "Rollout risk",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish production monitoring dashboards with real-time defect alerting and define rollback criteria before mass onboarding commences.",
+          "contingencyCorrectiveAction": "Upon detection of critical defect affecting more than 10% of users, activate immediate rollback to pre-deployment state and engage rapid response team within 2 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "25-Oct-2026",
+          "status": "Open",
+          "reasoning": "The big-bang approach amplifies the impact of any single defect across 2,500+ users simultaneously. Likelihood is Possible because validation with 11 users was successful, but the 15% functional test failure rate and 57% backend code coverage indicate residual quality risk. Impact is High because rollback would affect all producers and delay business value realization."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Finance and Commercial",
+          "riskDescription": {
+            "context": "The Hypercare phase baseline end date of August 31, 2026 is now 53 days in the past, and the SOW end date of November 30, 2026 is 37 days in the future. (EMS - Milestones; EMS - Project Details)",
+            "condition": "If Hypercare effort continues beyond the SOW end date.",
+            "consequence": "The project will overrun the SOW term, requiring a contract amendment or absorbing effort within the fixed-bid budget, which could erode margin."
+          },
+          "category": "SOW overrun",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Formalize Hypercare closure criteria and initiate SOW amendment discussions with client by November 8 to secure commercial coverage for extended support.",
+          "contingencyCorrectiveAction": "Should SOW end date be breached without amendment, escalate to commercial leadership and reallocate effort from project end buffer to absorb overrun within fixed budget.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "08-Nov-2026",
+          "status": "Open",
+          "reasoning": "Hypercare is already 53 days past its baseline end with no documented closure. Likelihood is Likely because the gap is large and no closure is shown. Impact is Medium because the SOW overrun is manageable within the 31-day buffer to project end (December 31), but margin erosion is probable on a fixed-bid contract."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Scope and Contract",
+          "riskDescription": {
+            "context": "19 scope changes have been absorbed (equivalent to 0.75-1 sprint of effort), and the scope change rate accelerated from 0.12 to 0.22 changes per day, with an open scope-change risk showing no mitigation plan after 116 days. (EMS - Risks; ART - WSR)",
+            "condition": "If additional scope changes are accepted without formal impact assessment and approval workflow.",
+            "consequence": "Another 0.5-1 sprint of unplanned effort could be absorbed, further eroding margin on the fixed-bid contract and potentially extending effort beyond the SOW end date."
+          },
+          "category": "Scope creep",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement formal change request procedure with impact assessment and client sign-off requirement for all scope additions effective immediately.",
+          "contingencyCorrectiveAction": "When unplanned scope exceeds 0.5 sprint effort threshold, escalate to program leadership and negotiate timeline extension or deprioritize lower-value features to maintain SOW compliance.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "The scope change rate has nearly doubled and the open risk has no mitigation plan, indicating weak scope control. Likelihood is Likely because the pattern is established and unmitigated. Impact is Medium because the effort is recoverable within the remaining 37 days to SOW end, but margin erosion is cumulative."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "Backend code coverage is 57%, which is below the typical 70-80% enterprise threshold, indicating untested code paths. (ART - WSR)",
+            "condition": "If producers encounter functionality that exercises untested backend code paths during normal usage.",
+            "consequence": "Defects may surface post-production, requiring hotfixes during Hypercare and potentially impacting producer satisfaction."
+          },
+          "category": "Defect leakage",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Integrate code coverage tracking into CI/CD pipeline and prioritize unit test creation for critical backend modules to achieve 70% coverage by November 15.",
+          "contingencyCorrectiveAction": "If post-production defects surface in untested code, deploy hotfix within 24 hours and conduct root cause analysis to expand regression suite for affected modules.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "The 57% coverage leaves 43% of backend code untested, and the 15% functional test failure rate indicates quality gaps. Likelihood is Possible because not all untested paths will be exercised immediately. Impact is Medium because defects can be remediated during Hypercare, but producer satisfaction may be affected."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Governance and Compliance",
+          "riskDescription": {
+            "context": "86 CVEs have been detected (4 Critical, 82 High) on the alpine base image and remain unresolved. (ART - WSR)",
+            "condition": "If a Critical or High CVE is exploited in the Production environment.",
+            "consequence": "A security incident could occur, requiring emergency patching and potentially exposing producer data or disrupting service availability."
+          },
+          "category": "Security vulnerability",
+          "probability": "Unlikely",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct Fortify and Veracode scans on alpine base image and apply patches for all 4 Critical CVEs by November 5.",
+          "contingencyCorrectiveAction": "Upon detection of CVE exploitation, isolate affected container immediately, deploy patched base image within 4 hours, and engage CISO team for incident response coordination.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "05-Nov-2026",
+          "status": "Open",
+          "reasoning": "The CVEs are on the base image, which is foundational to the application. Likelihood is Unlikely because exploitation requires specific attack vectors, but the presence of 4 Critical CVEs elevates the risk. Impact is High because a security incident would have regulatory, reputational, and operational consequences in a healthcare context."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "15% of functional tests (11 of 71) failed during PI4 Sprint 3, and 1 bug was spilled to the next sprint. (ART - WSR)",
+            "condition": "If the functional test failure rate persists or increases in subsequent sprints.",
+            "consequence": "Defect injection may continue, increasing the likelihood of post-production issues and extending Hypercare remediation effort."
+          },
+          "category": "Testing quality gap",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Expand functional test coverage to include negative scenarios, database testing, and state validation, and conduct root cause analysis on recurring defect patterns weekly.",
+          "contingencyCorrectiveAction": "Should test failure rate exceed 10% in any sprint, allocate additional QA resources for defect triage and implement quality gate to prevent spillover to production.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "12-Nov-2026",
+          "status": "Open",
+          "reasoning": "The 15% failure rate indicates quality issues in the testing process or application stability. Likelihood is Possible because the failure rate is from a single sprint and may not recur, but no corrective action is documented. Impact is Medium because defects can be caught in testing or remediated in Hypercare, but cumulative rework effort could extend the timeline."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Resource and People",
+          "riskDescription": {
+            "context": "Actual effort is 8.0 against a baseline of 45.0 (about 82% below), and the team was formed 2.5 months after project start. (EMS - Resource Information; EMS - Project Details)",
+            "condition": "If the effort shortfall persists as Hypercare and post-production support ramp up.",
+            "consequence": "The team may lack capacity to address post-production defects, scope changes, or Hypercare incidents in a timely manner, extending Hypercare duration."
+          },
+          "category": "Capacity constraint",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct capacity planning review and reallocate resources from lower-priority activities to Hypercare support, targeting 80% of baseline effort by November 10.",
+          "contingencyCorrectiveAction": "When Hypercare incident backlog exceeds 5 open items, engage backup resources from adjacent projects and adjust sprint plans to accommodate support workload.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "10-Nov-2026",
+          "status": "Open",
+          "reasoning": "The effort shortfall is large and persistent with no recovery shown. Likelihood is Likely because the gap has not closed despite the project reaching Production. Impact is Medium because the shortfall affects response time but does not block delivery, and Hypercare can be extended if needed."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Resource and People",
+          "riskDescription": {
+            "context": "Critical configuration tasks depend on single individuals: Drew holds Auth0 ACPT tenant access, and David provides DevOps support on an on-need basis. (ART - WSR)",
+            "condition": "If Drew or David becomes unavailable when a configuration change or infrastructure issue arises.",
+            "consequence": "Environment configuration or infrastructure support may be delayed, impacting the team's ability to respond to post-production issues or deploy hotfixes."
+          },
+          "category": "Key-person dependency",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Document Auth0 and DevOps access procedures in runbooks and cross-train two backup resources on critical configuration tasks by November 8.",
+          "contingencyCorrectiveAction": "If Drew or David is unavailable during a critical incident, escalate to infrastructure leadership for emergency access provisioning and engage external vendor support within 4 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "08-Nov-2026",
+          "status": "Open",
+          "reasoning": "No backup or cross-training is documented for these dependencies. Likelihood is Possible because availability issues are not certain but are common in on-need support models. Impact is Medium because delays would affect response time but not block all work."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Governance and Compliance",
+          "riskDescription": {
+            "context": "No Delivery Manager, QA Manager, or Client Manager is assigned, and the project is classified as Category 1, which requires enhanced governance. (EMS - Project Details; EMS - Project Categorization)",
+            "condition": "If a governance-level issue arises that requires escalation or cross-functional coordination.",
+            "consequence": "The issue may not be escalated or resolved in a timely manner, as all ownership is concentrated on the Engineering Manager, increasing the risk of delayed intervention."
+          },
+          "category": "Governance gap",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Assign interim Delivery Manager and QA Manager roles from adjacent projects and establish weekly governance review meetings by November 1.",
+          "contingencyCorrectiveAction": "Should governance escalation be required, engage program leadership directly and invoke emergency decision-making protocol to expedite cross-functional coordination within 24 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "Category 1 projects require robust governance structures, and the absence of key roles creates a single point of failure for risk detection and escalation. Likelihood is Possible because governance issues are not certain but are more likely in complex projects. Impact is Medium because governance gaps affect decision-making speed but do not directly block delivery."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Schedule and Delivery",
+          "riskDescription": {
+            "context": "Two open dependencies are overdue: access to Premera tools for AAVA integration (needed by June 15, now 130 days overdue) and DH confirmation on total premium fields (needed by July 6, now 109 days overdue), with no ETA stated. (ART - WSR)",
+            "condition": "If these dependencies remain unresolved and are required for post-production enhancements or defect fixes.",
+            "consequence": "Post-production work may be blocked, delaying enhancements or fixes and extending Hypercare effort."
+          },
+          "category": "Dependency delay",
+          "probability": "Possible",
+          "impact": "Low",
+          "rag": "Green",
+          "mitigationPreventiveAction": "Reprioritize non-dependent workstreams and escalate overdue dependencies to client program leadership for resolution by November 15.",
+          "contingencyCorrectiveAction": "If dependencies remain unresolved by November 30, rebaseline affected enhancements to Phase 2 scope and proceed with phased delivery to protect Hypercare closure.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "The dependencies are significantly overdue with no ETA, indicating low priority or unresolved blockers. Likelihood is Possible because the dependencies may not be critical for current Production operation, but they could become blockers for future work. Impact is Low because the dependencies do not affect current Production stability, and workarounds may exist."
+        },
+        {
+          "sNo": 11,
+          "riskId": "R - 011",
+          "subjectArea": "Governance and Compliance",
+          "riskDescription": {
+            "context": "EMS shows all 7 milestones as Yet to Start with no actual dates, while ART shows milestone progress percentages and revised dates as of July 2026, and ALT shows Production deployment complete as of October 2026. (EMS - Milestones; ART - WSR; ALT - Watchlist Report)",
+            "condition": "If project decisions or governance reviews rely on EMS milestone data.",
+            "consequence": "Decisions may be based on stale or incorrect data, leading to misaligned expectations or delayed interventions."
+          },
+          "category": "Data quality gap",
+          "probability": "Possible",
+          "impact": "Low",
+          "rag": "Green",
+          "mitigationPreventiveAction": "Update EMS milestone actuals to reflect Production deployment completion and establish weekly data reconciliation process across EMS, ART, and ALT sources.",
+          "contingencyCorrectiveAction": "When data conflicts are detected during governance reviews, validate status through ALT as primary source and issue corrected status report within 24 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "29-Oct-2026",
+          "status": "Open",
+          "reasoning": "The EMS data is clearly stale, as it contradicts both ART and ALT sources. Likelihood is Possible because governance reviews may use multiple data sources, but EMS is a primary system. Impact is Low because the staleness is detectable through cross-source validation, and ALT provides current status."
+        }
+      ]
+    }
+  ]
+}
