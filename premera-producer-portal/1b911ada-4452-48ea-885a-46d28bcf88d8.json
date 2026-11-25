@@ -1,0 +1,260 @@
+{
+  "clientName": "",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Watchlist",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "ART",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [
+        "EMS"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Schedule and Delivery",
+          "riskDescription": {
+            "context": "The Producer Portal application was deployed to production and validated by IT and business stakeholders, and an end-to-end registration process was successfully tested with 11 users as of October 22, 2026. Premera planned to send registration emails to 2,500+ producers on October 22, 2026, using a big-bang rollout approach with no phased pilot or staged onboarding. (ALT - Watchlist)",
+            "condition": "If a defect, integration issue, or data quality problem is encountered during the mass producer onboarding event.",
+            "consequence": "The rollout may need to be rolled back and remediated, causing a production outage for 2,500+ producers, delaying the September 2, 2026 rollout target by an additional 1-2 months, and potentially triggering client escalation and reputational damage."
+          },
+          "category": "Rollout Failure",
+          "probability": "Very Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish real-time monitoring dashboard for authentication, Data Hub API response times, and error rates during the first 24 hours post-rollout.",
+          "contingencyCorrectiveAction": "Upon detection of error rate exceeding 5% or authentication failure affecting 50+ users, activate rollback procedure within 2 hours and escalate to Premera program leadership and Ascendion delivery head immediately.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "22-10-2026",
+          "status": "Open",
+          "reasoning": "The rollout is in progress or just completed as of October 23, 2026, making the event already occurring or imminent. The project absorbed 19 scope changes, experienced 3-month milestone slippage, deferred integration and data quality risks by developing with synthetic data, and showed quality debt. The big-bang approach creates a 2,500+ user blast radius."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "The Data Hub API for Book of Business was needed by May 1, 2026, but delivered on June 16, 2026 (46-day delay). To mitigate timeline risk, the team proceeded with schema mapping based on UI design (approved June 2, 2026) and synthetic data, with acknowledgment that potential rework may be required if the final Data Hub schema differs. An open risk from June 25, 2026 (ETA July 15) noted that if issues with data mappings lead back to design, there would be time impact. As of October 23, 2026, no closure of this risk is documented. (ART - WSR)",
+            "condition": "If the schema mapping assumptions or entity stitching logic prove incorrect when the portal is used with live Data Hub data by 2,500+ producers.",
+            "consequence": "Producers may see incorrect Book of Business data, leading to user complaints, loss of trust, and potential regulatory compliance issues if producers make business decisions based on inaccurate data."
+          },
+          "category": "Data Quality Defect",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Conduct reconciliation testing of Book of Business data against Data Hub source records for 20 producer accounts across all LOBs before mass rollout.",
+          "contingencyCorrectiveAction": "If data discrepancies are reported by 10 or more producers within the first 48 hours, engage Data Hub team to validate schema mappings and deploy corrected wrapper service within 5 business days.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "20-10-2026",
+          "status": "Open",
+          "reasoning": "The team developed with UI-based schema assumptions and synthetic data due to Data Hub API delays, deferring integration risk to production. The data mapping risk opened June 25 with ETA July 15 remains undocumented as closed 3+ months later. Multiple signals and weak mitigation support Likely likelihood."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "An open risk from July 3, 2026 noted that 4 additional fields needed for total premium calculation would be provided by Data Hub on July 30, 2026. If made available on July 30, changes could only be completed by August 5, 2026. As of October 23, 2026, no closure of this risk or confirmation of field availability is documented. (ART - WSR)",
+            "condition": "If the 4 additional total premium fields were not delivered by Data Hub, or if the fields were delivered but the calculation logic was not fully tested with live data.",
+            "consequence": "Producers may see incorrect total premium amounts on the Book of Business pages, leading to billing disputes, producer complaints, and potential financial impact if producers make commission or renewal decisions based on incorrect premium data."
+          },
+          "category": "Calculation Error",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate total premium calculation logic against Data Hub source data for 15 sample accounts and document field mapping confirmation from Data Hub team.",
+          "contingencyCorrectiveAction": "If premium calculation errors are reported by 5 or more producers, disable total premium display on Book of Business UI and communicate workaround to producers within 24 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "20-10-2026",
+          "status": "Open",
+          "reasoning": "The risk was opened July 3 with ETA July 30, but no closure is documented 3+ months later. The fields are critical for a core financial metric. Multiple signals support Likely likelihood. Impact is Medium because it affects one metric rather than the entire Book of Business."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Technical and Integration",
+          "riskDescription": {
+            "context": "An open risk from July 6, 2026 (ETA July 10) noted that the DB connection configuration for Auth0 is maintained outside Auth0, and the team was able to promote other changes but the DB connection config needs to be updated by the Premera team as the Ascendion team does not have access to the ACPT tenant. As of October 23, 2026, no closure of this risk is documented. (ART - WSR)",
+            "condition": "If the Auth0 DB connection configuration was not correctly propagated to production, or if Drew (the only person with ACPT tenant access) is unavailable to make emergency configuration changes.",
+            "consequence": "Producers may be unable to log in or register on the portal, causing a production outage for 2,500+ users and requiring emergency rollback or configuration fix, delaying the rollout and triggering client escalation."
+          },
+          "category": "Authentication Failure",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Secure written confirmation from Drew that Auth0 DB connection configuration has been validated in production and document backup contact with ACPT tenant access.",
+          "contingencyCorrectiveAction": "Upon authentication failure affecting 20 or more users, escalate to Drew and Premera Cyber team within 30 minutes and activate manual user provisioning workaround for critical producers.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "22-10-2026",
+          "status": "Open",
+          "reasoning": "The risk was opened July 6 with ETA July 10, but no closure is documented 3+ months later. Authentication is critical path — failure causes complete portal outage. However, production deployment proceeded, suggesting the issue may have been resolved. Single signal with attempted mitigation supports Possible likelihood."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "Six agent-related risks were opened between March 9-17, 2026, and all remain open with no ETA as of July 22, 2026 (4+ months open). The risks include Single LLM, Tools Integration, Agent Hardening, Agent Learning, Client Template Alignment, and Tool/API Invocation Failures. A scope change decision on April 13 noted that due to tool integration delays, the team would use agents for isolated tasks, requiring more human effort. Metrics from July 22 showed 42% development tasks achieved with agents and 35% code AI generated. (ART - WSR)",
+            "condition": "If agent-generated code contains defects, inconsistent behavior, or performance issues that were not caught during testing due to inadequate agent hardening and lack of automated review.",
+            "consequence": "Producers may encounter application errors, slow response times, or unexpected behavior during production use, leading to user complaints, support tickets, and potential need for emergency patches or rollback."
+          },
+          "category": "Code Quality Defect",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct code review of all agent-generated wrapper service and orchestration logic with focus on error handling and fallback paths before rollout.",
+          "contingencyCorrectiveAction": "If application errors attributed to agent-generated code are reported by 10 or more users, deploy manual code workaround within 48 hours and communicate known issue to producers.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "20-10-2026",
+          "status": "Open",
+          "reasoning": "Six agent-related risks have been open for 4+ months with no mitigation plan or ETA. Agent productivity is below target. The risks explicitly mention inadequate agent hardening may cause inconsistent behavior in production. Multiple signals and weak mitigation support Likely likelihood."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Technical and Integration",
+          "riskDescription": {
+            "context": "Infrastructure Setup & DevOps was 70% complete as of July 22, 2026, against a target of 95%. The project has no dedicated DevOps resource; David from AI Platform Build Claims POD is providing on-need support. Challenges from July 22 included Citrix server slowness and timeouts impacting offshore team efforts. (ART - WSR)",
+            "condition": "If infrastructure components or DevOps pipelines experience failures or performance issues during production use.",
+            "consequence": "Producers may experience slow page load times, timeouts, or intermittent outages, leading to poor user experience, support escalations, and potential need for emergency infrastructure fixes or scaling adjustments."
+          },
+          "category": "Infrastructure Instability",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct load testing with 500 concurrent users and validate Azure Front Door, APIM, and ACA container scaling configuration before mass rollout.",
+          "contingencyCorrectiveAction": "If page load times exceed 5 seconds or timeout rate exceeds 2%, engage David and Azure support to scale container instances and adjust APIM throttling within 4 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "20-10-2026",
+          "status": "Open",
+          "reasoning": "Infrastructure was only 70% complete as of July 22 (25% gap to target), and the project relies on on-need DevOps support. Citrix server slowness was already impacting the team. However, production deployment proceeded, suggesting some gaps were closed. Single signal with some mitigation supports Possible likelihood."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Governance and Compliance",
+          "riskDescription": {
+            "context": "Quality metrics from June 18, 2026 showed 86 CVEs detected, including 4 Critical and 82 High severity vulnerabilities. Code quality metrics showed 190 Code Smells, including 2 Critical and 80 Major. SAST scans with Sonar, Snyk scans, and software composition analysis using JFrog Xray were integrated to build and deploy pipelines. (ART - WSR)",
+            "condition": "If any of the 4 Critical or 82 High severity CVEs were not fully remediated before production deployment, or if new vulnerabilities are discovered post-deployment.",
+            "consequence": "The portal may be vulnerable to security exploits, potentially leading to unauthorized access to producer data, data breach, regulatory penalties under HIPAA, and reputational damage."
+          },
+          "category": "Security Vulnerability",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Review Snyk and JFrog Xray scan results from final production build to confirm all Critical and High CVEs are remediated or accepted with documented risk.",
+          "contingencyCorrectiveAction": "Upon discovery of unpatched Critical CVE in production, deploy emergency patch within 24 hours and escalate to Premera Cyber team and Ascendion security lead immediately.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "22-10-2026",
+          "status": "Open",
+          "reasoning": "The presence of 4 Critical and 82 High CVEs as of June 18 indicates significant security debt. Security scans were integrated, and the project likely addressed critical vulnerabilities before production, but the high count suggests some may remain. In HCLS, security vulnerabilities carry high regulatory and reputational risk."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "Quality metrics from June 18, 2026 showed 190 Code Smells, including 2 Critical and 80 Major. Code coverage was 98% for Frontend and 57% for Backend. Test failure rate was 15% with 11 bugs open and spilled. The WSR from July 22 noted continue fixing bugs for next code drop of October 30. (ART - WSR)",
+            "condition": "If the 2 Critical and 80 Major Code Smells, along with the 11 spilled bugs, were not fully addressed before production deployment due to schedule pressure.",
+            "consequence": "The codebase may contain technical debt that increases maintenance cost, slows future feature development, and increases the risk of defects surfacing during production use, requiring emergency patches and potentially causing user-facing errors."
+          },
+          "category": "Technical Debt",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement biweekly technical debt review and prioritize remediation of 2 Critical Code Smells and 11 spilled bugs during Hypercare period.",
+          "contingencyCorrectiveAction": "If defects attributed to technical debt are reported by 15 or more users, allocate dedicated developer to address critical code smells and communicate remediation timeline to Premera within 3 business days.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "30-10-2026",
+          "status": "Open",
+          "reasoning": "The presence of 2 Critical and 80 Major Code Smells, 57% backend code coverage, and 15% test failure rate with 11 bugs spilled indicates significant code quality debt. The project experienced 3-month milestone slippage and 19 scope changes, creating schedule pressure. Multiple signals support Likely likelihood."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Resource and People",
+          "riskDescription": {
+            "context": "The SOW specifies a 4-week Hypercare period from July 16 to August 31, 2026. The actual production deployment occurred after August, meaning Hypercare would extend beyond the SOW end date. The project has no dedicated DevOps resource and relies on on-need support. The big-bang rollout to 2,500+ producers creates high support demand. (ART - SOW; ALT - Watchlist)",
+            "condition": "If the volume of support tickets, incidents, and user questions from 2,500+ producers during the first 4 weeks post-rollout exceeds the team's capacity to respond within SLA.",
+            "consequence": "Producers may experience delayed incident resolution, unanswered questions, and poor support experience, leading to user frustration, escalations to Premera leadership, and potential impact to producer adoption and satisfaction."
+          },
+          "category": "Support Overload",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish dedicated Hypercare support rotation with defined SLA for ticket response and escalate resource augmentation request to Premera if ticket volume exceeds 50 per day.",
+          "contingencyCorrectiveAction": "If support ticket backlog exceeds 100 open tickets or SLA breach rate exceeds 20%, engage additional support resource from Ascendion bench within 48 hours and communicate extended resolution timeline to Premera.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "25-10-2026",
+          "status": "Open",
+          "reasoning": "The big-bang rollout to 2,500+ producers creates high support demand. The project has resource constraints and experienced quality issues, suggesting higher-than-normal defect rate post-deployment. The Hypercare period extends beyond SOW end date. Multiple signals support Likely likelihood."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Scope and Contract",
+          "riskDescription": {
+            "context": "The project absorbed 19 scope changes between March-July 2026, with no formal change control process until a decision on June 25, 2026. The project has no dedicated Business Analyst to manage requirements and enforce change control. Scope changes included major items such as Auth0 config ownership, CCS API ownership, Infra provisioning ownership, and Frontend repo restructure. (ART - WSR)",
+            "condition": "If Premera requests additional features, enhancements, or changes based on producer feedback during the first 4 weeks post-rollout, and the late-stage change control process is not consistently enforced.",
+            "consequence": "The project may experience additional scope creep, requiring rework, extending the Hypercare period beyond the SOW end date, increasing cost, and delaying closure of the engagement."
+          },
+          "category": "Scope Creep",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement formal change request process requiring Premera program leadership sign-off and impact assessment for any enhancement request during Hypercare period.",
+          "contingencyCorrectiveAction": "If Premera requests scope changes exceeding 5 story points during Hypercare, document impact to SOW end date and cost and escalate to Ascendion delivery head for contract amendment discussion within 5 business days.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "25-10-2026",
+          "status": "Open",
+          "reasoning": "The project has a demonstrated pattern of scope creep and did not establish formal change control until June 25. The absence of a BA increases risk. Producer feedback from 2,500+ users is likely to generate enhancement requests. However, the late-stage change control process may now be enforced."
+        },
+        {
+          "sNo": 11,
+          "riskId": "R - 011",
+          "subjectArea": "Resource and People",
+          "riskDescription": {
+            "context": "The project has single-person dependencies: Drew is the only person with access to the ACPT tenant for Auth0 DB connection configuration updates, and David from AI Platform Build Claims POD provides on-need DevOps support. The Auth0 configuration risk mitigation plan was to work with Ganesh to get time from Drew. (ART - WSR)",
+            "condition": "If Drew or David is unavailable when an emergency Auth0 configuration change or DevOps issue arises during production use.",
+            "consequence": "The team may be unable to resolve a critical production issue, leading to extended downtime for 2,500+ producers and client escalation."
+          },
+          "category": "Key-Person Dependency",
+          "probability": "Unlikely",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Secure backup contact with ACPT tenant access from Premera Cyber team and document David's backup from AI Platform Build Claims POD before rollout.",
+          "contingencyCorrectiveAction": "Upon unavailability of Drew or David during critical incident, escalate to Premera Cyber team lead and Ascendion delivery head within 15 minutes to engage alternate resource with required access.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "22-10-2026",
+          "status": "Open",
+          "reasoning": "Single-person dependencies create a bottleneck and single point of failure. However, both individuals are presumably available most of the time. Weak signal with no evidence of past unavailability issues supports Unlikely likelihood. Impact is High because unavailability during critical incident could cause extended production outage for 2,500+ users."
+        },
+        {
+          "sNo": 12,
+          "riskId": "R - 012",
+          "subjectArea": "Governance and Compliance",
+          "riskDescription": {
+            "context": "A scope change from the WSR noted the dual role requirement was changed from highest role to role specific to agency. A decision from July 16, 2026 noted that logged in users with dual role should get entitlement based on the role played for an agency. Status: Pending. The requirement involves complex RBAC logic. (ART - WSR)",
+            "condition": "If the dual role requirement was not fully implemented or tested before production deployment, given that the decision was still Pending as of July 16, 2026.",
+            "consequence": "Producers with dual roles may see incorrect data entitlements, be unable to access agencies they should have access to, or see data for agencies they should not have access to, leading to user complaints, potential compliance issues with RBAC requirements, and need for emergency fixes."
+          },
+          "category": "RBAC Defect",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct RBAC testing for 10 dual-role producer accounts across different agency combinations and document entitlement validation results before mass rollout.",
+          "contingencyCorrectiveAction": "If RBAC entitlement errors are reported by 5 or more dual-role producers, implement manual entitlement override process and deploy corrected RBAC logic within 5 business days.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "20-10-2026",
+          "status": "Open",
+          "reasoning": "The dual role requirement was identified as a scope change with Discussions underway status and a related decision was Pending as of July 16. The requirement involves complex RBAC logic. However, the requirement was identified and discussed. Single signal with some mitigation supports Possible likelihood."
+        }
+      ]
+    }
+  ]
+}
