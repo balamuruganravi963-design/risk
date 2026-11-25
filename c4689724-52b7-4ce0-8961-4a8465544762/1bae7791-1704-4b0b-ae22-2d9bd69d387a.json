@@ -1,0 +1,159 @@
+{
+  "clientName": "",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Watchlist",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "ART",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R-001",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "The Producer Portal application was deployed to production on October 23, 2026, and mass producer onboarding (2,500+ users) was initiated via big-bang rollout on October 22, 2026 (ALT - Watchlist Report). However, the production deployment was preceded by unresolved code quality issues including 190 code smells (2 critical, 80 major), 86 CVEs (4 critical, 82 high), backend test coverage at 57% vs 80% acceptance criteria, test failure rate of 15%, and 11 open bugs as of June 18, 2026, with a resolved risk warning that performance and NFR issues will only become visible after integration (ART - WSR, EMS - Risks).",
+            "condition": "If latent defects or performance issues surface under the load of 2,500+ concurrent producer registrations and transactions.",
+            "consequence": "The mass producer onboarding may fail, requiring rollback of the production deployment and remediation of defects, delaying the Go-Live milestone completion and extending the Hypercare phase beyond the SOW end date of November 30, 2026."
+          },
+          "category": "Defect Leakage",
+          "probability": "Very Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Conduct load and defect testing on production application with 500-user pilot group before expanding mass onboarding to remaining producers.",
+          "contingencyCorrectiveAction": "If critical defect affects producers after onboarding starts, roll back to pre-deployment state within 2 hours and activate emergency defect remediation team with client escalation.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "30-10-2026",
+          "status": "Open",
+          "reasoning": "The combination of unresolved code quality issues, below-target test coverage, elevated test failure rate, and the explicit warning about latent performance/NFR issues creates a high probability that defects will surface during the high-load mass onboarding event. The big-bang rollout approach amplifies the impact, as any failure would affect the entire producer population and require immediate rollback."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R-002",
+          "subjectArea": "Scope and Contract",
+          "riskDescription": {
+            "context": "The project has absorbed 14 scope changes equivalent to 0.75-1 sprint of additional effort, with an active scope risk opened June 29, 2026 warning that further scope additions may impact delivery timelines (EMS - Risks). The risk mitigation plan is marked needs to be arrived with no due date or ETA, and the risk has remained unmitigated for 117 days as of October 23, 2026 (EMS - Risks).",
+            "condition": "If additional scope changes are requested during the Hypercare phase or post-Go-Live stabilization period without formal change control and impact assessment.",
+            "consequence": "Further scope additions could consume an additional 1-2 sprints of effort, delaying the completion of the Hypercare milestone beyond the SOW end date of November 30, 2026 and triggering a contract amendment or budget overrun."
+          },
+          "category": "Scope Creep",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement formal change control process requiring client sign-off and impact assessment for all Hypercare scope additions before acceptance.",
+          "contingencyCorrectiveAction": "Upon receiving scope change request during Hypercare, escalate to client leadership for prioritization and agree SOW amendment with extended timeline before work starts.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "27-10-2026",
+          "status": "Open",
+          "reasoning": "The trend of 19 documented scope changes with 14 already absorbed demonstrates a pattern of scope growth without effective change control. The absence of a mitigation plan for 117 days indicates weak governance and increases the likelihood that further scope changes will be accepted without impact assessment during Hypercare."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R-003",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "As of June 18, 2026, the project had 190 code smells (2 critical, 80 major), 86 CVEs (4 critical, 82 high), backend unit test coverage at 57% vs 80% acceptance criteria, test failure rate of 15%, and 11 open bugs (1 spilled), all marked In-Progress with no resolution timeline (ART - WSR). The production deployment was completed on October 23, 2026 without documented resolution of these issues (ALT - Watchlist Report).",
+            "condition": "If defects from unresolved code quality issues are discovered during Hypercare or post-Go-Live operations.",
+            "consequence": "Defect remediation may consume Hypercare capacity, reducing availability for user support and incident resolution, and may extend the Hypercare phase beyond the SOW end date of November 30, 2026 or trigger post-Hypercare support requests."
+          },
+          "category": "Defect Leakage",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Resolve critical and major code smells and CVEs through dedicated remediation sprint before November 15, 2026 to reduce defect surface area.",
+          "contingencyCorrectiveAction": "When production defects exceed 5 high-severity incidents per week, allocate dedicated defect remediation team and communicate Hypercare extension to client with revised closure date.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "17-11-2026",
+          "status": "Open",
+          "reasoning": "The 23-percentage-point gap between actual test coverage and acceptance criteria, combined with elevated code smells, CVEs, test failure rate, and open bugs, creates a high probability that defects will surface in production. The absence of a QA Manager and the lack of resolution timelines for code quality issues indicate weak quality governance."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R-004",
+          "subjectArea": "Governance and Compliance",
+          "riskDescription": {
+            "context": "The project has no assigned BA, Delivery Manager, QA Manager, or Client Manager, with the Engineering Manager Saitej Ballav serving as the sole assigned governance role (EMS - Resources, ART - WSR). No RAG status has been set, the Go-Green Plan is empty, and the scope risk has remained unmitigated for 117 days with mitigation plan marked needs to be arrived (EMS - RAG, EMS - Risks).",
+            "condition": "If issues arise during the mass producer onboarding (2,500+ users) or Hypercare phase that require rapid escalation and cross-functional coordination.",
+            "consequence": "The absence of assigned governance roles may delay issue resolution and escalation to client leadership, increasing the risk of client dissatisfaction and potential contract penalties or relationship damage."
+          },
+          "category": "Governance Gap",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Assign Delivery Manager and QA Manager with defined escalation authority and establish weekly RAG review cadence before November 1, 2026.",
+          "contingencyCorrectiveAction": "Should critical issue require cross-functional coordination during onboarding, escalate directly to client program leadership within 4 hours and activate backup decision-making authority.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "03-11-2026",
+          "status": "Open",
+          "reasoning": "The single-person governance structure creates a bottleneck for escalation and cross-functional coordination, particularly during high-visibility events like mass producer onboarding. The absence of RAG status and Go-Green Plan indicates weak governance oversight, and the 117-day unmitigated scope risk demonstrates reactive risk management."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R-005",
+          "subjectArea": "Technical and Integration",
+          "riskDescription": {
+            "context": "Two dependencies remain open and overdue as of October 23, 2026: access to Premera-specific tools for AAVA integration, needed by June 15, 2026 (130 days overdue), and confirmation from Data Hub on total premium fields, needed by July 6, 2026 (109 days overdue) (ART - WSR). Neither dependency has a resolution owner or ETA (ART - WSR).",
+            "condition": "If AAVA agent functionality or Data Hub total premium calculations fail during mass producer onboarding or Hypercare operations due to unresolved integration dependencies.",
+            "consequence": "Integration failures may cause incorrect data display or transaction errors for producers, requiring emergency fixes during Hypercare and potentially extending the Hypercare phase beyond the SOW end date of November 30, 2026."
+          },
+          "category": "Integration Dependency",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate AAVA tool integration and Data Hub total premium calculation accuracy through end-to-end testing with production data before October 30, 2026.",
+          "contingencyCorrectiveAction": "Once integration failure is detected during onboarding, activate manual workaround for affected transactions and engage Data Hub team for emergency fix within 24 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "30-10-2026",
+          "status": "Open",
+          "reasoning": "The 130-day and 109-day overdue status of the open dependencies, combined with the absence of resolution owners or ETAs, indicates these integration gaps have not been formally addressed. The mass producer onboarding will stress-test these integrations under production load, increasing the probability that failures will surface."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R-006",
+          "subjectArea": "Finance and Commercial",
+          "riskDescription": {
+            "context": "The ART source shows UAT and Go-Live milestones at 0% complete with revised sign-off dates of August 14, 2026 and August 25, 2026 respectively as of July 22, 2026 (ART - WSR), while the ALT source shows production deployment completed and application ready for onboarding as of October 23, 2026 (ALT - Watchlist Report). Milestones 1-4 are eligible for invoicing ($260,000) as of July 22, 2026, but actual invoiced/paid amounts are not stated.",
+            "condition": "If formal milestone acceptance and sign-off processes have not been completed despite production deployment being complete.",
+            "consequence": "The conflict between milestone status and production deployment may delay formal milestone closure and associated payments ($390,000 for Milestones 5-7), creating cash flow issues and requiring contract amendment or extension beyond the SOW end date of November 30, 2026."
+          },
+          "category": "Milestone Acceptance Delay",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Secure formal UAT and Go-Live milestone sign-off from client within 15 business days per SOW acceptance criteria before November 15, 2026.",
+          "contingencyCorrectiveAction": "If client sign-off is not received by November 15, escalate to client program leadership and propose interim payment release pending formal acceptance documentation.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "17-11-2026",
+          "status": "Open",
+          "reasoning": "The source conflict between milestone status and production deployment indicates a gap between technical deployment completion and formal milestone acceptance. The 15-business-day acceptance period per SOW means formal sign-off may still be pending even though deployment is complete."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R-007",
+          "subjectArea": "Schedule and Delivery",
+          "riskDescription": {
+            "context": "The EMS source shows an 82% resource capacity gap with 8 story points delivered vs 45 story points baseline as of May 22, 2026 (EMS - Resources), while the ART source shows sprint velocity consistently above planned (56, 75, 88 story points) across PI4 sprints (ART - WSR). The ART source also shows overall project progress at 19% as of June 30, 2026, while component progress is at 95-100% for most areas as of July 22, 2026 (ART - WSR).",
+            "condition": "If the data conflicts between EMS and ART sources reflect inaccurate or inconsistent tracking of team capacity, velocity, and progress.",
+            "consequence": "Inaccurate capacity and progress tracking may obscure actual schedule performance, preventing early detection of delays and reducing the ability to forecast Hypercare completion and SOW end date (November 30, 2026) attainment."
+          },
+          "category": "Data Quality Issue",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Reconcile EMS and ART capacity and progress data through joint review with project team and update tracking systems with consistent baseline by November 1, 2026.",
+          "contingencyCorrectiveAction": "If data conflicts prevent accurate schedule forecasting, establish manual weekly progress tracking with client and adjust Hypercare completion forecast based on actual defect and support ticket trends.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "03-11-2026",
+          "status": "Open",
+          "reasoning": "The conflicts between EMS and ART sources create uncertainty about actual team performance and project completion status. These data quality issues prevent accurate schedule forecasting and early-warning detection of delays, though production deployment is already complete."
+        }
+      ]
+    }
+  ]
+}
