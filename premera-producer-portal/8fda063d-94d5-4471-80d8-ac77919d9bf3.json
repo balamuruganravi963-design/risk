@@ -1,0 +1,359 @@
+{
+  "clientName": "",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Premera Blue Cross - Producer Portal Development - Phase 1",
+      "projectStatus": "Watchlist",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "EMS",
+        "ART",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R - 001",
+          "subjectArea": "Schedule and Delivery",
+          "riskDescription": {
+            "context": "All seven SOW milestones show 'Yet to Start' status in EMS despite scheduled end dates having passed as of July 22, 2026, and Go-Live scheduled for July 1-15, 2026 occurred around October 22, 2026, approximately 3+ months late (EMS - Milestones; ART - Work Assignment; ALT - Watchlist Summary, Slide 6).",
+            "condition": "If milestone tracking discipline is not restored and actual completion dates are not recorded.",
+            "consequence": "Future phase gates and client sign-offs may be missed without visibility, delaying remaining deliverables and eroding client confidence in project governance."
+          },
+          "category": "Milestone Tracking Breakdown",
+          "probability": "Very Likely",
+          "impact": "Medium",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Establish weekly milestone status update cadence with actual start and completion dates recorded in EMS within 48 hours.",
+          "contingencyCorrectiveAction": "Upon discovery of milestone data lag exceeding 7 days, escalate to Delivery Manager and conduct immediate project health audit.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "The 3+ month Go-Live delay and absence of milestone actuals indicate either a data reporting failure or execution stall. Given production deployment occurred October 22, the former is more likely, but the gap prevents proactive schedule management. Likelihood is Very Likely (already occurring — milestone tracking breakdown is evident), Impact is Medium (affects governance visibility and future phase planning, but production deployment has occurred)."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R - 002",
+          "subjectArea": "Scope and Contract",
+          "riskDescription": {
+            "context": "About 14 scope changes have been absorbed equivalent to 0.75-1 sprint of effort, with 19 scope changes documented in the WSR, and an active risk (ID 857) warns further scope additions are likely (EMS - Risks; ART - WSR week of 22 July 2026).",
+            "condition": "If additional scope changes arrive without impact assessment and change control approval.",
+            "consequence": "Further scope additions could consume an additional 1-2 sprints of effort, delaying remaining deliverables or forcing scope de-scoping, and eroding margin if changes are absorbed without billing."
+          },
+          "category": "Scope Creep",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement change control board with mandatory impact assessment for schedule, cost, and resource before any scope addition approval.",
+          "contingencyCorrectiveAction": "When cumulative scope changes exceed 1 sprint effort, freeze new additions and escalate to client steering committee for prioritization.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "08-Nov-2026",
+          "status": "Open",
+          "reasoning": "The pattern of 14-19 absorbed changes with no concrete mitigation plan (status 'Assessed,' plan states 'mitigation needs to be arrived') and no scope freeze indicates weak change control. Production deployment has occurred, limiting schedule impact to post-production enhancements."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R - 003",
+          "subjectArea": "Schedule and Delivery",
+          "riskDescription": {
+            "context": "Data Hub API integration risks were resolved June 29, 2026, but the WSR dated July 22, 2026 shows ongoing data mapping issues with ETA July 15 and 4 additional total premium fields delayed to July 30 (EMS - Risks, resolved risks IDs 855, 856; ART - WSR week of 22 July 2026, Open Risks dated June 25 and July 3).",
+            "condition": "If Data Hub field availability or data mapping discrepancies surface during end-to-end testing or production use.",
+            "consequence": "Integration defects may emerge during UAT, production validation, or mass producer onboarding, requiring emergency fixes or rollback of the October 22 deployment."
+          },
+          "category": "Integration Dependency",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Conduct daily data validation checkpoints with Data Hub team and business stakeholders to identify mapping discrepancies before production use.",
+          "contingencyCorrectiveAction": "Upon detection of critical data mapping defect in production, activate emergency fix team and notify producers within 2 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "The resolved risks closed prematurely (June 29) while WSR shows ongoing issues as of July 22. The 4 total premium fields ETA July 30 is 8 days from the WSR report date, and data mapping issues could lead to design changes per WSR risk."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R - 004",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "As of June 18, 2026, 86 CVEs were detected (4 Critical, 82 High), 190 code smells (2 Critical, 80 Major), 15% test failure rate (11 of 71 functional tests failed), and 57% backend code coverage, with production deployment completed October 22, 2026 (ART - WSR week of 22 July 2026; ALT - Watchlist Summary, Slide 6).",
+            "condition": "If the quality debt identified in June was not fully remediated before production deployment.",
+            "consequence": "Critical security vulnerabilities, functional defects, or performance issues may surface during the mass producer onboarding of 2,500+ users on October 22, forcing rollback or emergency patching and damaging client confidence."
+          },
+          "category": "Defect Leakage",
+          "probability": "Likely",
+          "impact": "High",
+          "rag": "Red",
+          "mitigationPreventiveAction": "Execute security scan remediation sprint to resolve all Critical and High CVEs before mass producer onboarding commences.",
+          "contingencyCorrectiveAction": "Once Critical CVE or P1 defect surfaces in production, invoke emergency patch deployment and rollback plan within 4 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "25-Oct-2026",
+          "status": "Open",
+          "reasoning": "The high CVE count (4 Critical, 82 High) and elevated test failure rate (15%) as of June 18, combined with Data Hub API integration delay compressing NFR testing, suggest quality debt was carried to production. The big-bang onboarding approach (2,500+ users) amplifies defect exposure."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R - 005",
+          "subjectArea": "Technical and Integration",
+          "riskDescription": {
+            "context": "Infrastructure was identified as the primary bottleneck in the Category 1 assessment, and Citrix server slowness and timeouts continue to impact offshore team efforts as of July 22, 2026 (EMS - Project Categorization; ART - WSR week of 22 July 2026).",
+            "condition": "If infrastructure performance issues are not resolved before Hypercare phase or post-production support activities.",
+            "consequence": "Incident resolution and defect remediation during Hypercare may be delayed due to offshore team access issues, extending incident response times and impacting SLA compliance."
+          },
+          "category": "Infrastructure Bottleneck",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate Citrix performance issue to infrastructure team and establish alternate remote access solution for offshore team by mid-November.",
+          "contingencyCorrectiveAction": "When Citrix downtime exceeds 2 hours during Hypercare, redirect critical incidents to onshore team and notify client of response delay.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "The infrastructure bottleneck persists from Category 1 assessment through July 22 WSR, indicating it has not been resolved despite production deployment. Hypercare requires intensive support and rapid incident resolution, which will be hampered by Citrix slowness."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R - 006",
+          "subjectArea": "Resource and People",
+          "riskDescription": {
+            "context": "No Business Analyst, QA Manager, or Delivery Manager are assigned, and only 2 Ascenders cover Scrum Master, Architect, Development, and Testing roles, with QA resource Kishore having exited May 1, 2026 (EMS - Resources; EMS - Project Details; ART - WSR week of 22 July 2026, Decision #1).",
+            "condition": "If either of the 2 Ascenders exits during Hypercare or post-production support.",
+            "consequence": "Multiple critical functions (Scrum Master, Architect, Development, Testing) could collapse simultaneously, delaying incident resolution, defect remediation, and knowledge transfer, and jeopardizing Hypercare success."
+          },
+          "category": "Key-Person Dependency",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Identify and onboard backup resources for Scrum Master, Architect, and Testing roles with knowledge transfer sessions completed by mid-November.",
+          "contingencyCorrectiveAction": "Should either Ascender exit, immediately engage bench resource or contractor and conduct accelerated knowledge transfer within 5 business days.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "The concentration of multiple critical roles in only 2 Ascenders creates single-point-of-failure risk. The precedent of Kishore's exit in May demonstrates attrition risk. Hypercare phase requires intensive support and knowledge retention."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R - 007",
+          "subjectArea": "Schedule and Delivery",
+          "riskDescription": {
+            "context": "Premera is planning to send registration emails to 2,500+ producers on October 22, 2026 using a big-bang rollout approach, with end-to-end registration process completed for 11 users and application technically ready, but status of mass rollout is awaited (ALT - Watchlist Summary, Slide 6).",
+            "condition": "If a critical issue is encountered during the mass producer onboarding of 2,500+ users.",
+            "consequence": "The rollout may need to be rolled back and remediated, delaying producer access to the portal, impacting business operations, and damaging client confidence in the delivery."
+          },
+          "category": "Deployment Rollback",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct phased rollout with 100-user pilot cohort before mass onboarding to validate registration flow and identify critical issues early.",
+          "contingencyCorrectiveAction": "Upon encountering P1 defect affecting 10% of users, halt registration emails and activate rollback plan within 1 hour.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "22-Oct-2026",
+          "status": "Open",
+          "reasoning": "The big-bang approach with 2,500+ users amplifies risk exposure compared to phased rollout. Quality debt (86 CVEs, 190 code smells, 15% test failure rate) and ongoing Data Hub integration issues increase the probability of encountering a critical issue. The ALT Deck explicitly flags this rollback risk."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R - 008",
+          "subjectArea": "Governance and Compliance",
+          "riskDescription": {
+            "context": "Active scope risk (ID 857) opened June 29, 2026 shows mitigation status 'Assessed' with plan stating 'Identified part of PMR, mitigation needs to be arrived' and no due date for mitigation completion (EMS - Risks).",
+            "condition": "If a concrete scope change control process with approval thresholds and impact assessment is not established.",
+            "consequence": "Scope additions will continue without governance oversight, consuming effort, delaying deliverables, and eroding margin, with no mechanism to prevent or manage changes."
+          },
+          "category": "Weak Mitigation",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Define scope change control process with approval authority, impact assessment template, and client sign-off requirement within 7 days.",
+          "contingencyCorrectiveAction": "When unapproved scope change is identified, halt work immediately and escalate to project steering committee for prioritization decision.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "08-Nov-2026",
+          "status": "Open",
+          "reasoning": "The weak mitigation plan (no concrete actions, no due date) and pattern of 14-19 absorbed changes indicate scope control is reactive rather than proactive. The active risk warns further additions are likely."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R - 009",
+          "subjectArea": "Schedule and Delivery",
+          "riskDescription": {
+            "context": "An open risk dated July 6, 2026 states that Auth0 DB connection configuration needs to be updated by Premera team to enable move to ACPT environment, with ETA July 10, 2026, which has passed as of the July 22, 2026 WSR report date (ART - WSR week of 22 July 2026, Open Risk dated July 6).",
+            "condition": "If the Auth0 configuration update continues to be delayed beyond the July 10 ETA.",
+            "consequence": "The move to ACPT environment may be blocked, delaying end-to-end testing, UAT, or production validation activities, and extending the timeline for environment readiness."
+          },
+          "category": "Dependency Overdue",
+          "probability": "Unlikely",
+          "impact": "Medium",
+          "rag": "Green",
+          "mitigationPreventiveAction": "Monitor Auth0 configuration dependencies weekly and escalate to client infrastructure team if ETA slips beyond 5 business days.",
+          "contingencyCorrectiveAction": "If Auth0 configuration blocks environment readiness, use alternate authentication method or mock configuration to unblock testing activities.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "TBD",
+          "status": "Mitigated",
+          "reasoning": "The ETA July 10 has passed as of July 22 report date, indicating the dependency is overdue. However, production deployment occurred October 22, suggesting the issue was eventually resolved. The risk is that similar dependencies could recur in post-production environments."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R - 010",
+          "subjectArea": "Technical and Integration",
+          "riskDescription": {
+            "context": "An open risk dated July 3, 2026 states that 4 additional fields needed for total premium calculation would be provided by Data Hub on July 30, 2026, which is 8 days from the July 22, 2026 WSR report date, and if delayed, changes can only be made by August 5 (ART - WSR week of 22 July 2026, Open Risk dated July 3).",
+            "condition": "If the 4 total premium fields are not delivered by Data Hub on July 30, 2026.",
+            "consequence": "Total premium calculation functionality will be incomplete or incorrect in production, requiring emergency fixes by August 5 or deferring the feature to a future release, impacting producer experience and business operations."
+          },
+          "category": "Integration Dependency",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish daily sync with Data Hub team on total premium field delivery status and prepare fallback calculation logic by July 28.",
+          "contingencyCorrectiveAction": "Should Data Hub fields miss July 30 deadline, deploy feature toggle to hide total premium display and communicate workaround to producers.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "30-Jul-2026",
+          "status": "Closed",
+          "reasoning": "The field delivery is 8 days away from the WSR report date, and the risk explicitly states a 6-day window (July 30 to August 5) for implementation if delivered on time. Any delay beyond July 30 compresses the implementation window or forces deferral."
+        },
+        {
+          "sNo": 11,
+          "riskId": "R - 011",
+          "subjectArea": "Technical and Integration",
+          "riskDescription": {
+            "context": "Six agent-related risks opened March 9-17, 2026 remain open as of July 22, 2026, covering single LLM limitation, tools integration delays, agent hardening concerns, limited training datasets, client template alignment, tool/API invocation failures, and agent orchestration challenges, with no ETAs stated for most (ART - WSR week of 22 July 2026, Open Risks dated March 9-17).",
+            "condition": "If agent framework limitations (single LLM, tools integration, hardening, orchestration) are not addressed before Hypercare or post-production enhancements.",
+            "consequence": "Agent-generated outputs may exhibit inconsistent behavior, require manual rework, or fail to meet client-specific format expectations, reducing productivity gains and increasing support effort during Hypercare."
+          },
+          "category": "Agent Framework Maturity",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct agent output quality review with client stakeholders and document acceptable variance thresholds before Hypercare phase begins.",
+          "contingencyCorrectiveAction": "When agent output fails quality threshold, revert to manual process and log issue for agent retraining in next sprint.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "The six agent-related risks have been open for 3-4 months (March to July) with no ETAs, indicating they are long-running and not prioritized for resolution. The WSR notes approximately 70% agent-generated test cases and 42% development tasks achieved with agents, so agent maturity impacts productivity."
+        },
+        {
+          "sNo": 12,
+          "riskId": "R - 012",
+          "subjectArea": "Scope and Contract",
+          "riskDescription": {
+            "context": "EMS states SOW end date as November 30, 2026, while the ART Work Assignment states SOW term as March 1, 2026 to August 31, 2026 (EMS - Project Details; ART - Work Assignment).",
+            "condition": "If the SOW term discrepancy is not resolved and the actual SOW end date is August 31, 2026.",
+            "consequence": "Post-production support activities, Hypercare, or enhancements planned for September-November 2026 may fall outside the SOW term, requiring a contract amendment or being performed without contractual coverage, creating commercial and legal risk."
+          },
+          "category": "SOW Term Conflict",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate SOW term with client contracts team and execute amendment if required to extend coverage through November 30.",
+          "contingencyCorrectiveAction": "If SOW expires August 31, immediately halt non-contractual work and escalate to commercial team for emergency amendment approval.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "08-Nov-2026",
+          "status": "Open",
+          "reasoning": "The 3-month discrepancy (August 31 vs. November 30) is significant. Given production deployment occurred October 22, post-production support and Hypercare would extend beyond August 31 if that is the actual SOW end. The conflict suggests either a data error or an unapproved SOW extension."
+        },
+        {
+          "sNo": 13,
+          "riskId": "R - 013",
+          "subjectArea": "Governance and Compliance",
+          "riskDescription": {
+            "context": "EMS shows no RAG status reported for any dimension (Overall, Scope, Cost, Timeline, Quality, Talent, CSAT), while the WSR dated July 22, 2026 shows Schedule and Scope as Minor Deviation (amber) (EMS - RAG; ART - WSR week of 22 July 2026).",
+            "condition": "If RAG reporting discipline is not established in EMS for Category 1 projects.",
+            "consequence": "Project health deterioration may not be visible to executive stakeholders or governance bodies, delaying escalation and corrective actions for future issues or similar projects."
+          },
+          "category": "RAG Reporting Gap",
+          "probability": "Very Likely",
+          "impact": "Low",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Establish weekly RAG status update in EMS for all dimensions with mandatory review before monthly governance meetings.",
+          "contingencyCorrectiveAction": "When RAG data lag exceeds 2 weeks, send manual status summary to governance stakeholders via email until EMS is updated.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "15-Nov-2026",
+          "status": "Open",
+          "reasoning": "The absence of RAG status in EMS for a Category 1 project contradicts governance protocols requiring enhanced visibility. The WSR shows amber health, but this is not reflected in EMS. The gap is a governance process issue rather than a delivery risk."
+        },
+        {
+          "sNo": 14,
+          "riskId": "R - 014",
+          "subjectArea": "Technical and Integration",
+          "riskDescription": {
+            "context": "The Work Assignment assumes cloud infrastructure and environments would be provided before development start, but infrastructure was identified as the primary bottleneck in the Category 1 assessment, and Citrix slowness continues to impact the offshore team as of July 22, 2026 (ART - Work Assignment, Assumptions; EMS - Project Categorization; ART - WSR week of 22 July 2026).",
+            "condition": "If infrastructure readiness assumptions are not validated before future project phases or similar engagements.",
+            "consequence": "Future development phases, enhancements, or similar projects may experience delays due to environment provisioning or access issues, repeating the infrastructure bottleneck pattern."
+          },
+          "category": "Infrastructure Assumption Violation",
+          "probability": "Possible",
+          "impact": "Low",
+          "rag": "Green",
+          "mitigationPreventiveAction": "Document infrastructure readiness lessons learned and validate environment availability before committing to future phase timelines.",
+          "contingencyCorrectiveAction": "If infrastructure delay recurs in future phases, activate contingency budget for alternate access solutions or onshore resource reallocation.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "30-Nov-2026",
+          "status": "Open",
+          "reasoning": "The assumption was contradicted by reality (bottleneck identified, Citrix slowness ongoing). This is a lessons-learned item for future phases rather than an immediate delivery risk, as production deployment has occurred."
+        },
+        {
+          "sNo": 15,
+          "riskId": "R - 015",
+          "subjectArea": "Schedule and Delivery",
+          "riskDescription": {
+            "context": "The SOW milestone plan shows UAT scheduled June 16-30, 2026, Go-Live July 1-15, 2026, and Hypercare July 16-August 31, 2026, with no buffer between phases and UAT depending on Development and Testing completion by June 15, 2026 (ART - Work Assignment).",
+            "condition": "If any defects or issues emerge during UAT or Go-Live that require remediation time.",
+            "consequence": "Defect remediation will consume the next phase's window, cascading delays through Go-Live and Hypercare, or forcing Go-Live with known defects, increasing production risk."
+          },
+          "category": "Schedule Buffer Inadequacy",
+          "probability": "Unlikely",
+          "impact": "Low",
+          "rag": "Green",
+          "mitigationPreventiveAction": "Review milestone plan for future phases and incorporate 5-day buffer between critical phase gates to absorb defect remediation.",
+          "contingencyCorrectiveAction": "If defect remediation exceeds phase window, escalate to client for Go-Live date adjustment and communicate impact to stakeholders.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "TBD",
+          "status": "Closed",
+          "reasoning": "The zero-buffer schedule design creates a critical path with no slack. Given the 3+ month Go-Live delay that occurred, the lack of buffer was a contributing factor. This is a lessons-learned item for future phases."
+        },
+        {
+          "sNo": 16,
+          "riskId": "R - 016",
+          "subjectArea": "Governance and Compliance",
+          "riskDescription": {
+            "context": "Four decisions in the WSR dated July 22, 2026 show status 'Pending' with no 'Agreed By' stated, covering design for additional API call post Data Hub event, penetration testing split into two phases, deployment to production as dark deploy, and dual role requirement for logged-in users (ART - WSR week of 22 July 2026, Decisions #4, 20, 33, 37).",
+            "condition": "If the four pending decisions are not resolved before they block dependent activities.",
+            "consequence": "Dependent activities such as penetration testing, production deployment, or dual role functionality may be delayed, extending the timeline for feature completeness or security validation."
+          },
+          "category": "Decision Delay",
+          "probability": "Unlikely",
+          "impact": "Low",
+          "rag": "Green",
+          "mitigationPreventiveAction": "Establish decision tracking log with owner, due date, and escalation path for decisions pending beyond 7 business days.",
+          "contingencyCorrectiveAction": "When pending decision blocks critical path activity, escalate to project steering committee for expedited resolution within 48 hours.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "TBD",
+          "status": "Closed",
+          "reasoning": "The four pending decisions as of July 22 may have been resolved by the time of production deployment October 22, but the 3-month gap suggests decision-making delays contributed to schedule slippage. This is a lessons-learned item for governance process improvement."
+        },
+        {
+          "sNo": 17,
+          "riskId": "R - 017",
+          "subjectArea": "Customer and Relationship",
+          "riskDescription": {
+            "context": "The project was placed on Watchlist as of October 2026, with reasoning that if an issue is encountered during the mass producer onboarding of 2,500+ users on October 22, 2026, the rollout may need to be rolled back and remediated (ALT - Watchlist Summary, Slide 6).",
+            "condition": "If the mass producer onboarding encounters critical issues requiring rollback.",
+            "consequence": "The Watchlist status may escalate to Red or require executive intervention, damaging client confidence, impacting future business opportunities, and triggering enhanced governance oversight."
+          },
+          "category": "Escalation",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct war room monitoring during mass onboarding with real-time incident triage and client communication protocol for first 48 hours.",
+          "contingencyCorrectiveAction": "Upon encountering rollback scenario, activate executive communication plan and convene client steering committee within 4 hours to approve remediation approach.",
+          "owner": "Saitej Ballav (EM)",
+          "targetDate": "22-Oct-2026",
+          "status": "In Progress",
+          "reasoning": "The Watchlist placement indicates elevated executive attention and client concern. The big-bang onboarding approach with quality debt amplifies rollback risk. If rollback occurs, the Watchlist status will likely escalate."
+        }
+      ]
+    }
+  ]
+}
