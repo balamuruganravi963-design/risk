@@ -1,0 +1,360 @@
+{
+  "clientName": "",
+  "projects": [
+    {
+      "projectId": "11987",
+      "projectName": "Producer Portal Development - Phase 1",
+      "projectStatus": "Watchlist",
+      "riskPredictionDate": "",
+      "sourcesUsed": [
+        "ART",
+        "ALT"
+      ],
+      "sourcesNotAvailable": [
+        "EMS"
+      ],
+      "risks": [
+        {
+          "sNo": 1,
+          "riskId": "R-001",
+          "subjectArea": "Schedule and Delivery",
+          "riskDescription": {
+            "context": "The Producer Portal application and supporting infrastructure are fully deployed to Production, with IT validation and high-level PO/business validation completed; Premera initiated mass producer onboarding of 2,500+ producers on October 22, 2026 using a big-bang rollout approach, with registration emails sent to all producers at once rather than a phased rollout (ALT - Watchlist Summary).",
+            "condition": "If an issue is encountered during the mass producer onboarding process affecting registration, authentication, or data access for a significant portion of the 2,500+ producers.",
+            "consequence": "The rollout may need to be rolled back to a previous stable state, requiring remediation of the identified issue, re-testing, and a second deployment attempt, which could delay full producer onboarding by several weeks and impact Premera's business operations and producer satisfaction (ALT - Watchlist Summary)."
+          },
+          "category": "Deployment Rollback",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct daily monitoring of registration, authentication, and data access metrics for the first 500 producers to detect anomalies early.",
+          "contingencyCorrectiveAction": "Upon detection of critical defects affecting 10% or more producers, activate rollback to pre-deployment state, escalate to project board, and initiate remediation within 24 hours.",
+          "owner": "{\"name\": \"\", \"role\": \"EM\"}",
+          "targetDate": "25-Oct-2026",
+          "status": "Open",
+          "reasoning": "The big-bang approach to onboarding 2,500+ producers simultaneously creates concentration risk; while end-to-end registration was successfully tested with 11 users, production load and edge cases at scale may surface issues not caught in limited testing. Impact is High because rollback and remediation would delay full producer onboarding and disrupt Premera's business operations."
+        },
+        {
+          "sNo": 2,
+          "riskId": "R-002",
+          "subjectArea": "Scope and Contract",
+          "riskDescription": {
+            "context": "The SOW term runs from March 1, 2026 to August 31, 2026; Go-Live is scheduled for September 2, 2026 (2 days after SOW end), and Hypercare is defined as 4 weeks after Go-Live or until no open defects/incidents remain, whichever is later, extending the engagement to at least September 30, 2026 and potentially beyond (ART - Work Assignment).",
+            "condition": "If Hypercare extends beyond September 30, 2026 due to open defects or incidents, or if Go-Live was delayed beyond September 2, 2026.",
+            "consequence": "Contractor effort and costs will be incurred beyond the SOW term end date of August 31, 2026 without a formal amendment or change order in place, creating commercial ambiguity regarding payment terms, liability, and resource commitment, and may lead to disputes over out-of-scope charges (ART - Work Assignment)."
+          },
+          "category": "Contract Term Overrun",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Initiate SOW amendment discussions with Premera by October 25, 2026 to formalize Hypercare extension terms, payment schedule, and closure criteria.",
+          "contingencyCorrectiveAction": "If Hypercare extends past September 30, 2026 without amendment, document all additional effort, escalate to commercial team, and suspend non-critical work pending contract resolution.",
+          "owner": "{\"name\": \"\", \"role\": \"EM\"}",
+          "targetDate": "25-Oct-2026",
+          "status": "Open",
+          "reasoning": "As of October 22, 2026, the SOW term end date of August 31, 2026 has passed by 52 days, and mass producer onboarding is underway, indicating Go-Live occurred and Hypercare is in progress or recently completed; no amendment or change order is mentioned in the sources. Impact is Medium because the overrun is material (at least 30 days, potentially more) and creates commercial ambiguity, but the Fixed Bid model limits cost exposure."
+        },
+        {
+          "sNo": 3,
+          "riskId": "R-003",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "Backend unit test coverage stands at 57% as of PI4 Sprint 3 (June 18, 2026), 23 percentage points below the minimum 80% target specified for the Wrapper Service, while Frontend coverage is at 98% (ART - Work Assignment; ART - WSR).",
+            "condition": "If Backend unit test coverage remains below 80% through UAT and Go-Live phases.",
+            "consequence": "Untested code paths may contain defects that surface in production during mass producer onboarding or Hypercare, leading to incidents, rollback risk, remediation effort, and potential SLA breaches or customer escalations, and the deliverable may not meet the acceptance criteria requiring minimum 80% test coverage (ART - Work Assignment; ART - WSR)."
+          },
+          "category": "Test Coverage Gap",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement targeted unit test creation for Backend critical paths, prioritizing Wrapper Service API endpoints, to achieve 80% coverage by October 31, 2026.",
+          "contingencyCorrectiveAction": "If coverage remains below 80%, conduct manual code review of untested paths, document risk acceptance with Premera, and establish enhanced production monitoring for untested modules.",
+          "owner": "{\"name\": \"\", \"role\": \"EM\"}",
+          "targetDate": "31-Oct-2026",
+          "status": "Open",
+          "reasoning": "The 23-percentage-point gap is material and has persisted through at least PI4 Sprint 3; no mitigation plan or timeline to close the gap is stated in the sources. Impact is Medium because the gap increases defect risk in production, but the 98% Frontend coverage and 100% test execution rate provide some quality assurance."
+        },
+        {
+          "sNo": 4,
+          "riskId": "R-004",
+          "subjectArea": "Governance and Compliance",
+          "riskDescription": {
+            "context": "86 Common Vulnerabilities and Exposures (CVEs) were detected as of PI4 Sprint 3 (June 18, 2026), including 4 Critical and 82 High severity issues, all on the alpine base image; no remediation plan or timeline is stated (ART - WSR).",
+            "condition": "If the 4 Critical and 82 High severity CVEs remain unresolved through production deployment and mass producer onboarding.",
+            "consequence": "The Producer Portal may be exposed to known security vulnerabilities that could be exploited by attackers, leading to data breaches, unauthorized access, service disruption, regulatory non-compliance, and reputational damage to Premera, and may fail security testing acceptance criteria (ART - Work Assignment; ART - WSR)."
+          },
+          "category": "Security Vulnerability",
+          "probability": "Possible",
+          "impact": "High",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Upgrade alpine base image to latest patched version and re-scan with Snyk to remediate all 4 Critical CVEs by October 28, 2026.",
+          "contingencyCorrectiveAction": "Upon detection of exploit attempts or security breach, isolate affected containers, activate incident response team, escalate to Premera security lead, and deploy patched image within 4 hours.",
+          "owner": "{\"name\": \"\", \"role\": \"EM\"}",
+          "targetDate": "28-Oct-2026",
+          "status": "Open",
+          "reasoning": "The presence of 4 Critical and 82 High severity CVEs is a material security risk; however, the sources indicate security testing with JFrog is integrated into the pipeline, and penetration testing is planned prior to production deployment. Impact is High because exploitation of Critical or High CVEs could lead to data breaches, unauthorized access, or service disruption in a healthcare environment with sensitive producer and member data."
+        },
+        {
+          "sNo": 5,
+          "riskId": "R-005",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "190 code smells were detected as of PI4 Sprint 3 (June 18, 2026), including 2 Critical, 80 Major, 104 Minor, and 4 Info severity issues; code quality issues, incomplete impact analysis, and regression due to parallel phase activities are noted as challenges; code review comments total 70, with the majority related to comments and mocking (ART - WSR).",
+            "condition": "If code smells and code quality issues continue to accumulate without remediation through UAT and Go-Live phases.",
+            "consequence": "Technical debt will increase, making the codebase harder to maintain, debug, and extend; future enhancements and defect fixes will require more effort and time, increasing post-Go-Live support costs and reducing agility, and may lead to defects surfacing in production during mass producer onboarding or Hypercare (ART - WSR)."
+          },
+          "category": "Technical Debt Accumulation",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Remediate all 2 Critical and 20 highest-priority Major code smells identified by SonarQube before November 8, 2026 to reduce technical debt.",
+          "contingencyCorrectiveAction": "If code smells cause production defects, prioritize defect fixes over new features, allocate dedicated refactoring sprint, and communicate timeline impact to Premera stakeholders.",
+          "owner": "{\"name\": \"\", \"role\": \"EM\"}",
+          "targetDate": "08-Nov-2026",
+          "status": "Open",
+          "reasoning": "The 190 code smells, including 2 Critical and 80 Major issues, represent material technical debt; code quality issues and incomplete impact analysis are noted as challenges, suggesting remediation is not keeping pace with development. Impact is Medium because technical debt increases maintenance cost and defect risk, but does not immediately threaten delivery."
+        },
+        {
+          "sNo": 6,
+          "riskId": "R-006",
+          "subjectArea": "Quality",
+          "riskDescription": {
+            "context": "Test failure rate stands at 15% as of PI4 Sprint 3 (June 18, 2026), with 11 of 71 functional test cases failing; 1 bug is open and spilled; code quality issues, incomplete impact analysis, and regression due to parallel phase activities are noted as challenges (ART - WSR).",
+            "condition": "If test failure rate remains elevated or increases through UAT and Go-Live phases.",
+            "consequence": "Defects may leak into production during mass producer onboarding or Hypercare, leading to incidents, rollback risk, remediation effort, and potential customer escalations, and UAT acceptance may be delayed or conditional (ART - WSR; ALT - Watchlist Summary)."
+          },
+          "category": "Defect Leakage",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Resolve all 11 failing functional test cases and the 1 open spilled bug before October 30, 2026 to reduce test failure rate below 5%.",
+          "contingencyCorrectiveAction": "If defects leak to production, activate hotfix process, deploy patches within 48 hours, and conduct root cause analysis to prevent recurrence during Hypercare.",
+          "owner": "{\"name\": \"\", \"role\": \"EM\"}",
+          "targetDate": "30-Oct-2026",
+          "status": "Open",
+          "reasoning": "A 15% test failure rate is elevated and indicates quality issues; the 1 open and spilled bug and challenges with code quality issues, incomplete impact analysis, and regression suggest defect management is under pressure. Impact is Medium because defect leakage increases production incident risk, but the 100% test execution rate and ongoing testing provide some quality assurance."
+        },
+        {
+          "sNo": 7,
+          "riskId": "R-007",
+          "subjectArea": "Technical and Integration",
+          "riskDescription": {
+            "context": "Access to Premera Specific Tools (SharePoint, Azure Blob, ADO) for AAVA integration is a Critical priority dependency needed by June 15, 2026, and remains open as of July 22, 2026, 37 days overdue (ART - WSR).",
+            "condition": "If access to Premera Specific Tools for AAVA integration remains unavailable through UAT and Go-Live phases.",
+            "consequence": "AAVA agent integration and orchestration layer functionality may be incomplete or untested, leading to agent underperformance, inconsistent behavior, or failures in production during mass producer onboarding or Hypercare, and may require manual workarounds or rework, delaying full feature availability (ART - Work Assignment; ART - WSR)."
+          },
+          "category": "Integration Dependency Overdue",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate Premera Specific Tools access request to Premera IT leadership and secure access by October 27, 2026 to complete AAVA integration testing.",
+          "contingencyCorrectiveAction": "If access remains unavailable, implement manual workarounds for AAVA-dependent features, document scope reduction, and communicate feature availability timeline to Premera stakeholders.",
+          "owner": "{\"name\": \"\", \"role\": \"EM\"}",
+          "targetDate": "27-Oct-2026",
+          "status": "Open",
+          "reasoning": "The dependency is 37 days overdue as of July 22, 2026 and is marked Critical priority, indicating material impact; however, production deployment was completed and mass producer onboarding initiated, suggesting either the dependency was resolved after July 22, 2026, or AAVA integration was de-scoped or worked around. Impact is Medium because AAVA integration is part of the scope and incomplete integration may affect agent functionality."
+        },
+        {
+          "sNo": 8,
+          "riskId": "R-008",
+          "subjectArea": "Technical and Integration",
+          "riskDescription": {
+            "context": "Confirmation from Data Hub on total premium fields shared by business is a High priority dependency needed by July 6, 2026, and remains open as of July 22, 2026, 16 days overdue; the 4 additional fields needed for total premium calculation would be provided by Data Hub on July 30, 2026, and if made available on July 30, changes can only be made by August 5, 2026 (ART - WSR).",
+            "condition": "If the 4 additional total premium fields from Data Hub were not made available by July 30, 2026, or if the fields were provided but changes could not be completed by August 5, 2026.",
+            "consequence": "Total premium calculation on the Book of Business page may be incomplete or incorrect, leading to data accuracy issues for producers, potential customer escalations, and rework required during UAT or Hypercare, and may delay UAT acceptance or require a post-Go-Live fix (ART - WSR)."
+          },
+          "category": "Data Integration Dependency Overdue",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Validate total premium calculation accuracy with Data Hub team using available fields and document any data gaps for post-Go-Live resolution by October 29, 2026.",
+          "contingencyCorrectiveAction": "If total premium data is inaccurate, display disclaimer to producers, provide manual calculation support, and schedule hotfix deployment once Data Hub provides missing fields.",
+          "owner": "{\"name\": \"\", \"role\": \"EM\"}",
+          "targetDate": "29-Oct-2026",
+          "status": "Open",
+          "reasoning": "The dependency was 16 days overdue as of July 22, 2026, and the mitigation plan relies on Data Hub providing fields by July 30, 2026, with only 6 days to implement and test changes before UAT Signoff; the tight timeline increases risk of incomplete or incorrect implementation. Impact is Medium because total premium is a key data element for producers, but the issue is localized to one calculation."
+        },
+        {
+          "sNo": 9,
+          "riskId": "R-009",
+          "subjectArea": "Technical and Integration",
+          "riskDescription": {
+            "context": "Data Hub Integration risk was opened June 25, 2026, noting that the team is proceeding with data mappings provided, but if any issues with values from these mappings lead back to design (entity stitching), it might have some time impact; mitigation ETA was July 15, 2026, and as of July 22, 2026, the risk remains open 7 days past ETA (ART - WSR).",
+            "condition": "If issues with data mappings from Data Hub APIs surface during UAT, integration testing, or mass producer onboarding that require entity stitching design changes.",
+            "consequence": "Rework of the entity stitching logic, data model, and API integration layer will be required, consuming additional development and testing effort, delaying UAT acceptance or requiring post-Go-Live fixes during Hypercare, and may affect data accuracy for producers on the Book of Business and Dashboard pages (ART - WSR)."
+          },
+          "category": "Integration Design Rework",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct end-to-end integration testing of Data Hub entity stitching with production-like data volumes by October 28, 2026 to validate data mappings.",
+          "contingencyCorrectiveAction": "If entity stitching issues surface, implement data correction layer as temporary workaround, escalate to Data Hub team, and schedule design rework in next sprint.",
+          "owner": "{\"name\": \"\", \"role\": \"EM\"}",
+          "targetDate": "28-Oct-2026",
+          "status": "Open",
+          "reasoning": "The risk was opened June 25, 2026, and mitigation was overdue by 7 days as of July 22, 2026, indicating the issue was not fully resolved; entity stitching is complex and issues may not surface until integration testing or production load. Impact is Medium because entity stitching affects data accuracy for key features, but the issue is localized to data integration."
+        },
+        {
+          "sNo": 10,
+          "riskId": "R-010",
+          "subjectArea": "Technical and Integration",
+          "riskDescription": {
+            "context": "Auth0 Change Propagation risk was opened July 6, 2026, noting that the DB connection configuration is maintained outside Auth0; Ascendion can promote other changes but DB connection config needs to be updated by Premera team as Ascendion doesn't have access to ACPT tenant; mitigation ETA was July 10, 2026, and as of July 22, 2026, the risk remains open 12 days past ETA; mitigation plan is working with Ganesh to get time from Drew to update the configuration as he has the access (ART - WSR).",
+            "condition": "If Drew's availability to update the Auth0 DB connection configuration in ACPT tenant is delayed or unavailable.",
+            "consequence": "Auth0 integration testing and deployment to ACPT environment will be blocked, delaying UAT start, and if the delay extends into the UAT window, UAT acceptance and Go-Live may be delayed, or Auth0 integration may be incomplete in production, affecting producer registration and authentication during mass producer onboarding (ART - WSR)."
+          },
+          "category": "Single-Person Dependency",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Identify backup resource with ACPT tenant access and schedule Auth0 DB connection configuration update with Drew or backup by October 26, 2026.",
+          "contingencyCorrectiveAction": "If Drew is unavailable on due date, escalate to Premera IT leadership to assign backup resource with ACPT access and complete configuration within 24 hours.",
+          "owner": "{\"name\": \"\", \"role\": \"EM\"}",
+          "targetDate": "26-Oct-2026",
+          "status": "Open",
+          "reasoning": "The mitigation was 12 days overdue as of July 22, 2026, and depends on a single person (Drew) with access to ACPT tenant; single-person dependencies create availability risk. Impact is Medium because Auth0 integration is critical for registration and authentication, but production deployment was completed and 11-user registration test was successful, suggesting the configuration was eventually updated."
+        },
+        {
+          "sNo": 11,
+          "riskId": "R-011",
+          "subjectArea": "Resource and People",
+          "riskDescription": {
+            "context": "No dedicated DevOps resource is planned for the project; DevOps support is provided on-need basis by David, who works for the AI Platform Build Claims POD, identified April 14, 2026 (ART - WSR).",
+            "condition": "If David's availability from the AI Platform Build Claims POD is constrained due to competing priorities or if David is unavailable due to leave or attrition.",
+            "consequence": "Infrastructure provisioning, deployment pipeline support, and production issue resolution may be delayed, affecting UAT environment readiness, Go-Live deployment, or Hypercare incident response, and may require escalation to secure alternative DevOps support (ART - WSR)."
+          },
+          "category": "Key-Person Dependency",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Identify backup DevOps resource from Ascendion DevOps team and establish on-call rotation with David to ensure 24/7 Hypercare support coverage.",
+          "contingencyCorrectiveAction": "If David is unavailable during critical incident, engage Ascendion DevOps escalation team, provide access credentials, and ensure incident resolution within agreed SLA timeframes.",
+          "owner": "{\"name\": \"\", \"role\": \"EM\"}",
+          "targetDate": "27-Oct-2026",
+          "status": "Open",
+          "reasoning": "Single-person dependency on David from another POD creates availability risk; on-need basis support may not provide sufficient responsiveness for time-sensitive deployment or production issues. Impact is Medium because DevOps support is critical for deployment and production issue resolution, but Infrastructure Setup & DevOps progress reached 95% as of July 15, 2026, and production deployment was completed."
+        },
+        {
+          "sNo": 12,
+          "riskId": "R-012",
+          "subjectArea": "Resource and People",
+          "riskDescription": {
+            "context": "Low team morale, team burn-out, resignations, and increased sick leaves are becoming noticeable as of July 22, 2026; Citrix server slowness and timeouts are impacting offshore team efforts; recurring network issues, environment downtimes, VPN/tool access issues, and license expiries continue to impact team productivity (ART - WSR).",
+            "condition": "If team morale continues to deteriorate and attrition increases during UAT, Go-Live, or Hypercare phases.",
+            "consequence": "Key team members may leave the project, creating knowledge loss and resource gaps; remaining team members may experience reduced productivity and increased error rates, affecting UAT execution, Go-Live deployment quality, or Hypercare incident response, and may require backfill hiring and onboarding, delaying deliverables (ART - WSR)."
+          },
+          "category": "Attrition and Morale",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Conduct team retrospective to address morale concerns, resolve Citrix and infrastructure issues, and implement workload balancing by October 30, 2026.",
+          "contingencyCorrectiveAction": "If key team member resigns, activate knowledge transfer protocol, engage backfill resource within 5 days, and adjust Hypercare timeline to accommodate onboarding.",
+          "owner": "{\"name\": \"\", \"role\": \"EM\"}",
+          "targetDate": "30-Oct-2026",
+          "status": "Open",
+          "reasoning": "Low morale, burn-out, resignations, and increased sick leaves are explicitly noted as becoming noticeable, indicating the issue is active; recurring infrastructure issues are contributing factors. Impact is Medium because attrition creates knowledge loss and resource gaps, but the project has reached production deployment and mass producer onboarding, suggesting the team delivered through Go-Live despite morale issues."
+        },
+        {
+          "sNo": 13,
+          "riskId": "R-013",
+          "subjectArea": "Technical and Integration",
+          "riskDescription": {
+            "context": "Citrix server slowness and timeouts are impacting offshore team efforts; recurring network issues, environment downtimes, VPN/tool access issues, and license expiries continue to impact team productivity as of July 22, 2026 (ART - WSR).",
+            "condition": "If Citrix server slowness, network issues, environment downtimes, VPN/tool access issues, or license expiries recur during UAT, Go-Live, or Hypercare phases.",
+            "consequence": "Team productivity will be reduced, affecting UAT execution, Go-Live deployment, or Hypercare incident response; environment downtimes may block testing or production access, delaying UAT acceptance or causing production incidents during mass producer onboarding (ART - WSR)."
+          },
+          "category": "Infrastructure Reliability",
+          "probability": "Likely",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Escalate Citrix performance issues to Premera IT infrastructure team and implement monitoring alerts for network and environment availability by October 28, 2026.",
+          "contingencyCorrectiveAction": "If infrastructure downtime blocks critical work, switch to local development environments, reschedule affected activities, and communicate revised timeline to Premera stakeholders.",
+          "owner": "{\"name\": \"\", \"role\": \"EM\"}",
+          "targetDate": "28-Oct-2026",
+          "status": "Open",
+          "reasoning": "The issues are described as recurring and impacting team efforts as of July 22, 2026, indicating they are ongoing and not fully resolved. Impact is Medium because infrastructure issues reduce productivity and may block testing or production access, but the project has reached production deployment and mass producer onboarding, suggesting the issues were manageable through Go-Live."
+        },
+        {
+          "sNo": 14,
+          "riskId": "R-014",
+          "subjectArea": "Scope and Contract",
+          "riskDescription": {
+            "context": "19 scope changes were agreed upon during the project, including Identity setup configuration, CCS APIs implementation, Infrastructure provisioning and IaC pipelines, QA Automation tech stack change, and others; Dual role requirement shows Medium effort with discussions underway as of July 22, 2026; Spike/Mid-Sprint Changes total 19 story points in PI4 Sprint 3; Carry Over Story Points total 16 in PI4 Sprint 3 (ART - WSR).",
+            "condition": "If additional scope changes are accepted during UAT, Go-Live, or Hypercare phases without formal impact assessment and change order approval.",
+            "consequence": "Development and testing effort will increase beyond the Fixed Bid contract value of $650,000, eroding margin or requiring out-of-scope charges; UAT acceptance or Go-Live may be delayed to accommodate scope changes; and the Fixed Bid model may be breached, leading to commercial disputes (ART - Work Assignment; ART - WSR)."
+          },
+          "category": "Scope Creep",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Implement formal change control gate requiring impact assessment and Premera approval for all scope changes during Hypercare by October 25, 2026.",
+          "contingencyCorrectiveAction": "If unapproved scope changes are requested, document effort impact, defer to post-Hypercare phase, and escalate to Premera project sponsor for prioritization decision.",
+          "owner": "{\"name\": \"\", \"role\": \"EM\"}",
+          "targetDate": "25-Oct-2026",
+          "status": "Open",
+          "reasoning": "19 scope changes during the project indicate active scope growth; Dual role requirement discussions underway as of July 22, 2026 indicate scope changes continued into late stages; Spike/Mid-Sprint Changes and Carry Over Story Points indicate scope changes are affecting sprint velocity. Impact is Medium because scope changes consume effort and may erode margin under the Fixed Bid model."
+        },
+        {
+          "sNo": 15,
+          "riskId": "R-015",
+          "subjectArea": "Schedule and Delivery",
+          "riskDescription": {
+            "context": "UAT Signoff date is stated as August 14, 2026 in the Work Assignment document and August 25, 2026 in the WSR timeline graphic, an 11-day difference (ART - Work Assignment; ART - WSR).",
+            "condition": "If the UAT Signoff date conflict was not resolved and stakeholders operated on different assumptions about the UAT completion deadline.",
+            "consequence": "UAT execution may have been rushed to meet the August 14, 2026 deadline, increasing defect leakage risk, or UAT may have extended to August 25, 2026, compressing the buffer to Go-Live on September 2, 2026 (8 days), increasing Go-Live deployment risk and reducing time for issue resolution (ART - Work Assignment; ART - WSR)."
+          },
+          "category": "Milestone Date Conflict",
+          "probability": "Possible",
+          "impact": "Low",
+          "rag": "Green",
+          "mitigationPreventiveAction": "Review UAT completion documentation with Premera to confirm actual signoff date and update project records by October 28, 2026.",
+          "contingencyCorrectiveAction": "If date conflict caused UAT quality issues, conduct supplementary regression testing during Hypercare and document lessons learned for future project governance.",
+          "owner": "{\"name\": \"\", \"role\": \"EM\"}",
+          "targetDate": "28-Oct-2026",
+          "status": "Open",
+          "reasoning": "The 11-day date conflict creates ambiguity about UAT completion deadline; however, as of October 22, 2026, mass producer onboarding is underway, indicating Go-Live occurred and UAT was completed, suggesting the conflict was resolved. Impact is Low because the conflict is limited to 11 days and does not materially affect the overall project timeline."
+        },
+        {
+          "sNo": 16,
+          "riskId": "R-016",
+          "subjectArea": "Technical and Integration",
+          "riskDescription": {
+            "context": "Seven AAVA agent-related risks were opened in March 2026 and remain open as of July 22, 2026 (4+ months running) with no ETA stated: Single LLM, Tools Integration, Agent Hardening, Agent Learning, Client Template Alignment, Tool/API Invocation Failures, Agent Orchestration; the Work Assignment states that the use of AAVA shall not be required for the Deliverables to function following the Term of the Work Assignment (ART - Work Assignment; ART - WSR).",
+            "condition": "If AAVA agent risks remain unmitigated through UAT, Go-Live, and Hypercare phases.",
+            "consequence": "AAVA agent functionality may underperform, produce inconsistent outputs, or fail in production during mass producer onboarding or Hypercare, requiring manual workarounds, reducing expected productivity gains, and potentially affecting features that depend on agent integration, and may require post-Go-Live remediation effort (ART - WSR)."
+          },
+          "category": "Agent Integration Risk",
+          "probability": "Possible",
+          "impact": "Low",
+          "rag": "Green",
+          "mitigationPreventiveAction": "Document AAVA agent limitations, implement fallback to manual processes, and monitor agent performance metrics during Hypercare for optimization opportunities.",
+          "contingencyCorrectiveAction": "If AAVA agents fail, disable agent features, activate manual workarounds, and communicate reduced automation to Premera with post-Hypercare enhancement roadmap.",
+          "owner": "{\"name\": \"\", \"role\": \"EM\"}",
+          "targetDate": "01-Nov-2026",
+          "status": "Open",
+          "reasoning": "The seven agent risks have been open for 4+ months with no ETA, indicating they are either low priority, accepted risks, or mitigated informally; the Work Assignment states AAVA is not required for core deliverables to function. Impact is Low because AAVA agent functionality is not required for core portal features to function, and the 11-user registration test and mass producer onboarding suggest core features are working."
+        },
+        {
+          "sNo": 17,
+          "riskId": "R-017",
+          "subjectArea": "Schedule and Delivery",
+          "riskDescription": {
+            "context": "Hypercare is defined as 4 weeks after Go-Live date (September 2, 2026) or until no open defects/incidents remain, whichever is later; as of October 22, 2026, mass producer onboarding of 2,500+ producers is underway, and if issues are encountered, rollback and remediation may be required (ART - Work Assignment; ALT - Watchlist Summary).",
+            "condition": "If defects or incidents surface during mass producer onboarding or Hypercare that cannot be resolved within the 4-week Hypercare window ending September 30, 2026.",
+            "consequence": "Hypercare will extend beyond September 30, 2026, consuming additional Contractor effort and costs beyond the SOW term end date of August 31, 2026, and the final milestone payment of $130,000 for Hypercare completion may be delayed until all open defects/incidents are resolved, affecting project closure and cash flow (ART - Work Assignment; ALT - Watchlist Summary)."
+          },
+          "category": "Milestone Duration Uncertainty",
+          "probability": "Possible",
+          "impact": "Medium",
+          "rag": "Amber",
+          "mitigationPreventiveAction": "Define Hypercare closure criteria with Premera, track open defects weekly, and forecast completion date by October 30, 2026 to manage expectations.",
+          "contingencyCorrectiveAction": "If Hypercare extends past September 30, 2026, document additional effort, request interim milestone payment, and negotiate extended support terms with Premera commercial team.",
+          "owner": "{\"name\": \"\", \"role\": \"EM\"}",
+          "targetDate": "30-Oct-2026",
+          "status": "Open",
+          "reasoning": "Hypercare duration is defined as whichever is later between 4 weeks and no open defects/incidents, creating uncertainty; mass producer onboarding of 2,500+ producers using big-bang approach increases risk of issues surfacing that require extended Hypercare. Impact is Medium because extended Hypercare consumes effort beyond SOW term and delays final milestone payment, but the Fixed Bid model limits cost exposure."
+        }
+      ]
+    }
+  ]
+}
